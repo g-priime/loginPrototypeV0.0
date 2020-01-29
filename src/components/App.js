@@ -27,12 +27,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <BrowserRouter>
-                    <div>
-                        <Route path="/" exact component={PageOne} />
-                        <Route path="/pageTwo" component={PageTwo} />
-                    </div>
-                </BrowserRouter>
+                <PageOne />
             </div>
             /*
             <div className="ui container" style={{ marginTop: '10px'}}>
