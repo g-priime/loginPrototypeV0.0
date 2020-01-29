@@ -1,21 +1,17 @@
-//import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React from 'react';
 
-import unsplash from '../api/unsplash';
-//import ImageList from './ImageList';
+import BasePath from '../api/BasePath';
 import SearchBar from './SearchBar';
 import HomePage from './HomePage';
 
 class App extends React.Component {
-    //state = { images: [] };
     state = { images: [] };
 
-    onSearchSubmit = async (term, password) => {
-        const response = await unsplash.put('/webresources/generic', { term , password });
-        //const response = await unsplash.get('/webresources/generic_1');
+    onSearchSubmit = async (username, password) => {
+        const response = await BasePath.put('/webresources/generic', { username , password });
+
         console.log(response.data);
-        //const response = 'goodbye';
         this.setState({ images: response.data});
     }
 
@@ -24,17 +20,13 @@ class App extends React.Component {
 
         if(isValid !== 'valid'){
             return (
-            
-            
                 <div className="ui container" style={{ marginTop: '10px'}}>
                     <SearchBar onSubmit={this.onSearchSubmit} />
-                    <div>{this.state.images}</div>
-                    <div>
-                    
-                </div>
+                    <div>{this.state.images}</div>                  
                 </div>
             );    
-        } else {
+        } 
+        else {
             return (
                 <div>
                     <HomePage />
