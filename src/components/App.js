@@ -1,16 +1,11 @@
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React from 'react';
-import {BrowserRouter, Route } from 'react-router-dom';
 
 import unsplash from '../api/unsplash';
 //import ImageList from './ImageList';
-import PageOne from './PageOne';
-
-
-const PageTwo = () => {
-    return <div>PageTwo</div>;
-};
+import SearchBar from './SearchBar';
+import HomePage from './HomePage';
 
 class App extends React.Component {
     //state = { images: [] };
@@ -25,17 +20,27 @@ class App extends React.Component {
     }
 
     render() {
-        return (
-            <div>
-                <PageOne />
-            </div>
-            /*
-            <div className="ui container" style={{ marginTop: '10px'}}>
-                <SearchBar onSubmit={this.onSearchSubmit} />
-                <div>{this.state.images}</div>
-                
-            </div>*/
-        );
+        var isValid = this.state.images;
+
+        if(isValid !== 'valid'){
+            return (
+            
+            
+                <div className="ui container" style={{ marginTop: '10px'}}>
+                    <SearchBar onSubmit={this.onSearchSubmit} />
+                    <div>{this.state.images}</div>
+                    <div>
+                    
+                </div>
+                </div>
+            );    
+        } else {
+            return (
+                <div>
+                    <HomePage />
+                </div>
+            );
+        }
     }
 }
 
