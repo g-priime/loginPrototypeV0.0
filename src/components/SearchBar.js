@@ -1,15 +1,12 @@
 import React from 'react';
 
-//import Button from 'react-bootstrap';
-
 class SearchBar extends React.Component {
-    state = { term: '', password: '' };
+    state = { username: '', password: '' };
 
     onFormSubmit = (event) => {
         event.preventDefault();
 
-        this.props.onSubmit(this.state.term, this.state.password);
-        //this.props.onSubmit(this.state.password);
+        this.props.onSubmit(this.state.username, this.state.password);
     }
 
     render() {
@@ -20,9 +17,9 @@ class SearchBar extends React.Component {
                         <label>Login Page</label>
                         <input 
                             type="text" 
-                            value={this.state.term}
+                            value={this.state.username}
                             onChange={e =>
-                                 this.setState({ term: e.target.value })
+                                 this.setState({ username: e.target.value })
                             } 
                         />
                         <input 
