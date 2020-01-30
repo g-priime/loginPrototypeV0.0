@@ -19,7 +19,7 @@ class App extends React.Component {
     render() {
         var isValid = this.state.images;
 
-        if(isValid !== 'valid'){
+        if(isValid !== 'account registered'){
             return (
                 <div className="ui container" style={{ marginTop: '10px'}}>
                     <SearchBar onSubmit={this.onSearchSubmit} />
