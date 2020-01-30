@@ -2,7 +2,7 @@
 import React from 'react';
 
 import BasePath from '../api/BasePath';
-import SearchBar from './SearchBar';
+import RegisterPage from './RegisterPage';
 import HomePage from './HomePage';
 
 class App extends React.Component {
@@ -22,7 +22,7 @@ class App extends React.Component {
         if(isValid !== 'account registered'){
             return (
                 <div className="ui container" style={{ marginTop: '10px'}}>
-                    <SearchBar onSubmit={this.onSearchSubmit} />
+                    <RegisterPage onSubmit={this.onSearchSubmit} />
                     <div>{this.state.images}</div>                  
                 </div>
             );    
