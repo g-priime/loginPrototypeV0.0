@@ -15,7 +15,7 @@ class SearchBar extends React.Component {
             <div className="ui segment">
                 <form onSubmit={this.onFormSubmit} className="ui form">
                     <div className="field">
-                        <label>Login Page</label>
+                        <label>Registration Page</label>
                         <input 
                             type="text" 
                             value={this.state.username}
@@ -52,7 +52,7 @@ class SearchBar extends React.Component {
                             } 
                         />
                     </div>
-                    <button className="btn btn-primary">Login</button>
+                    <button className="btn btn-primary">Register</button>
                 </form>
             </div>
         );
