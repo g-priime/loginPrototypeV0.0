@@ -1,12 +1,13 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-    state = { username: '', password: '' };
+    state = { username: '', password: '', fname: '', lname: '', email: '' };
 
     onFormSubmit = (event) => {
         event.preventDefault();
 
-        this.props.onSubmit(this.state.username, this.state.password);
+        this.props.onSubmit(this.state.username, this.state.password, this.state.fname,
+            this.state.lname, this.state.email);
     }
 
     render() {
@@ -27,6 +28,27 @@ class SearchBar extends React.Component {
                             value={this.state.password}
                             onChange={e =>
                                  this.setState({ password: e.target.value })
+                            } 
+                        />
+                        <input 
+                            type="text" 
+                            value={this.state.fname}
+                            onChange={e =>
+                                 this.setState({ fname: e.target.value })
+                            } 
+                        />
+                        <input 
+                            type="text" 
+                            value={this.state.lname}
+                            onChange={e =>
+                                 this.setState({ lname: e.target.value })
+                            } 
+                        />
+                        <input 
+                            type="text" 
+                            value={this.state.email}
+                            onChange={e =>
+                                 this.setState({ email: e.target.value })
                             } 
                         />
                     </div>
