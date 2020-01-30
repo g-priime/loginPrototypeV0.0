@@ -8,8 +8,9 @@ import HomePage from './HomePage';
 class App extends React.Component {
     state = { images: [] };
 
-    onSearchSubmit = async (username, password) => {
-        const response = await BasePath.put('/webresources/generic', { username , password });
+    onSearchSubmit = async (username, password, fname, lname, email) => {
+        const response = await BasePath.put('/webresources/register', 
+        { username , password , fname , lname , email });
 
         console.log(response.data);
         this.setState({ images: response.data});
