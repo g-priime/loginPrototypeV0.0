@@ -29,7 +29,7 @@ class App extends React.Component {
             <div>
                 <BrowserRouter>
                     <div>
-                        <Route path="/" exact component={PageOne} />
+                        <Route path="/SearchBar" exact component={PageOne} />
                         <Route path="/pageTwo" component={PageTwo} />
                     </div>
                 </BrowserRouter>
