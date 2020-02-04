@@ -1,5 +1,4 @@
 import React from 'react';
-import { Field, Form, Formik } from 'formik';
 
 class Register extends React.Component {
     state = { username: '', 
@@ -22,14 +21,13 @@ class Register extends React.Component {
         return (
 
             <div className="ui segment p-3 mb-2 bg-primary text-white" >
-                <Formik >
-                <Form onSubmit={this.onFormSubmit} className="ui form" >
+                <form onSubmit={this.onFormSubmit} className="ui form" >
                     <div className="field d-flex flex-md-column" >
                         <label><h1>Registration Page</h1></label>
 
                         <label><h2>Step 1</h2></label>
                         <label>Username:</label>
-                        <Field className="field b-5"
+                        <input className="field b-5"
                             type="text" 
                             placeholder="Enter username"
                             value={this.state.username}
@@ -39,7 +37,7 @@ class Register extends React.Component {
                         />
                         <br />
                         <label>Password:</label>
-                        <Field
+                        <input
                             type="password" 
                             name="password"
                             placeholder="Enter password"
@@ -50,7 +48,7 @@ class Register extends React.Component {
                         />
                         <br />
                         <label>Confirm Password:</label>
-                        <Field
+                        <input
                             type="password" 
                             name="confirmPassword"
                             placeholder="Confirm password"
@@ -61,7 +59,7 @@ class Register extends React.Component {
                         />
                         <br />
                         <label>First Name:</label>
-                        <Field 
+                        <input 
                             type="text" 
                             placeholder="Enter First Name"
                             value={this.state.fname}
@@ -71,7 +69,7 @@ class Register extends React.Component {
                         />
                         <br />
                         <label>Last Name:</label>
-                        <Field 
+                        <input 
                             type="text" 
                             placeholder="Enter Last Name"
                             value={this.state.lname}
@@ -81,7 +79,7 @@ class Register extends React.Component {
                         />
                         <br />
                         <label>Email:</label>
-                        <Field 
+                        <input 
                             type="text" 
                             placeholder="Enter Email"
                             value={this.state.email}
@@ -92,8 +90,7 @@ class Register extends React.Component {
                     </div>
                     <button className="btn btn-dark">Next Step</button>{' '}
                     <button className="btn btn-dark">Cancel</button>
-                </Form>
-                </Formik>
+                </form>
             </div>
 
         );
