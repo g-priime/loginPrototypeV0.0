@@ -28,7 +28,7 @@ class Register2 extends React.Component {
             <div className="ui segment p-3 mb-2 " style={{backgroundColor: "#ECEBE7"}} >
                 <form onSubmit={this.onFormSubmit} className="ui form" >
                     <div className="field d-flex flex-md-column" >
-                        <label font-weight="bold"><h1>Add Dog</h1></label>
+                        <label><h1><b>Add Dog</b></h1></label>
 
                         <label><h2>Step 2</h2></label>
                         <label>Name:</label>
