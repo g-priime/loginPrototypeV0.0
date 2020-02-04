@@ -1,4 +1,6 @@
 import React from 'react';
+//import ReactDOM from 'react-dom';
+import './reg.css';
 
 class Register extends React.Component {
     state = { username: '', 
@@ -20,8 +22,8 @@ class Register extends React.Component {
     render() {
         return (
 
-            <div className="ui segment p-3 mb-2 bg-primary text-white" >
-                <form onSubmit={this.onFormSubmit} className="ui form" >
+            <div className="ui segment " style={{backgroundColor: "#6298C8"}}>
+                <form onSubmit={this.onFormSubmit} className="ui form" style={{backgroundColor: "#ECEBE7 "}}>
                     <div className="field d-flex flex-md-column" >
                         <label><h1>Registration Page</h1></label>
 
