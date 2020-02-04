@@ -3,14 +3,15 @@ import React from 'react';
 
 import BasePath from '../api/BasePath';
 import RegisterPage from './RegisterPage';
+import Register2 from './Register2';
 import HomePage from './HomePage';
 
 class App extends React.Component {
     state = { images: [] };
 
-    onSearchSubmit = async (username, password, fname, lname, email) => {
+    onSearchSubmit = async (username, password, confirmPassword, fname, lname, email) => {
         const response = await BasePath.put('/webresources/register', 
-        { username , password , fname , lname , email });
+        { username , password , confirmPassword, fname , lname , email });
 
         console.log(response.data);
         this.setState({ images: response.data});
@@ -30,7 +31,7 @@ class App extends React.Component {
         else {
             return (
                 <div>
-                    <HomePage />
+                    <Register2 />
                 </div>
             );
         }
