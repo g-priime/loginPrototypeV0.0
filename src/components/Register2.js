@@ -169,7 +169,7 @@ class Register2 extends React.Component {
 
 
                     </div>
-                    <button className="btn "style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Previous Step</button>{' '}
+                    <button className="btn " style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Previous Step</button>{' '}
                     <button className="btn " style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Register</button>
                 </form>
             </div>
