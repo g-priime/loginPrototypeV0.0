@@ -91,8 +91,8 @@ class Register extends React.Component {
                         />
                     </div>
                     <div className="d-flex justify-content-between">
-                    <button className="btn  " style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Back to Home Page</button>
-                    <button className="btn  " style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Next Step</button>
+                    <button className="btn ml-3 mb-3" style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Back to Home Page</button>
+                    <button className="btn mr-3 mb-3" style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Next Step</button>
                     </div>
                 </form>
             </div>
