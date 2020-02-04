@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from 'react-bootstrap';
+import './reg.css';
 
 class Register2 extends React.Component {
     state = { dogname: '', 
