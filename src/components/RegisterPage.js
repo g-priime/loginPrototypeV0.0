@@ -24,7 +24,7 @@ class Register extends React.Component {
 
             <div className="ui segment " style={{backgroundColor: "#6298C8"}}>
                 <form onSubmit={this.onFormSubmit} className="ui form" style={{backgroundColor: "#ECEBE7 "}}>
-                    <div className="field d-flex flex-md-column" >
+                    <div className="field d-flex flex-md-column ml-3 mr-3 mb-3 mt-3" >
                         <label><h1>Registration Page</h1></label>
 
                         <label><h2>Step 1</h2></label>
@@ -90,8 +90,10 @@ class Register extends React.Component {
                             } 
                         />
                     </div>
-                    <button className="btn btn-dark">Next Step</button>{' '}
-                    <button className="btn btn-dark">Cancel</button>
+                    <div className="d-flex justify-content-between">
+                    <button className="btn btn-dark ml-3 mb-3">Back to Home Page</button>
+                    <button className="btn btn-dark mr-3 mb-3">Next Step</button>
+                    </div>
                 </form>
             </div>
 
