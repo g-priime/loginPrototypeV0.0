@@ -5,6 +5,7 @@ import BasePath from '../api/BasePath';
 import RegisterPage from './RegisterPage';
 import Register2 from './Register2';
 import HomePage from './HomePage';
+import Header from './Header';
 
 class App extends React.Component {
     state = { images: [] };
@@ -24,7 +25,7 @@ class App extends React.Component {
             return (
                 <div className="ui container" style={{ marginTop: '10px'}}>
                     <RegisterPage onSubmit={this.onSearchSubmit} />
-                    <div>{this.state.images}</div>                  
+                    <div>{this.sitate.images}</div>                  
                 </div>
             );    
         } 
