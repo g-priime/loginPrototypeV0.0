@@ -101,29 +101,34 @@ class Register2 extends React.Component {
                         />
                         <br />
 
+                        <label>Is your dog neutered or spayed?:</label>    
+
                         <label>
                             <input
-                            type="checkbox"
-                            value="Neutered"
-                            checked={this.state.neutered}
+                            type="radio"
+                            name="neuteredspayed"
+                            value="yes"
+                            checked={this.state.neuteredspayed === "yes"}
                             onChange={e =>
-                                this.setState({ neutered: e.target.value }
+                                this.setState({ neuteredspayed: e.target.value }
                                 )}
                             />
-                            <span>Neutered</span>
+                            <span>Yes</span>
                         </label>
 
                         <label>
                             <input
-                            type="checkbox"
-                            value="Spayed"
-                            checked={this.state.spayed}
+                            type="radio"
+                            name="neuteredspayed"
+                            value="no"
+                            checked={this.state.neuteredspayed === "no"}
                             onChange={e =>
-                                this.setState({ spayed: e.target.value }
+                                this.setState({ neuteredspayed: e.target.value }
                                 )}
                             />
-                            <span>Spayed</span>
+                            <span>No</span>
                         </label>
+                        <br />
                         <label><h2>Care</h2></label>
 
                         <label>Medication:</label>
