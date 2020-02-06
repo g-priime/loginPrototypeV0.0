@@ -25,7 +25,7 @@ class App extends React.Component {
             return (
                 <div className="ui container" style={{ marginTop: '10px'}}>
                     <RegisterPage onSubmit={this.onSearchSubmit} />
-                    <div>{this.sitate.images}</div>                  
+                    <div>{this.state.images}</div>                  
                 </div>
             );    
         } 
