@@ -1,5 +1,6 @@
 import React from 'react';
 import './reg.css';
+import './reg2.css';
 
 class Register2 extends React.Component {
     state = { dogname: '', 
@@ -171,7 +172,113 @@ class Register2 extends React.Component {
                         <br />
                         <button className="btn " style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Upload Picture</button>
                         <br />
-
+                        <table>
+                            <tr>
+                                <th>Pet behavior Profile</th>
+                                <th>Yes</th> 
+                                <th>No</th>
+                            </tr>
+                            <tr>
+                                <td>Is your dog comfortable with strangers?</td>
+                                <td>                     <label>
+                            <input
+                            type="radio"
+                            name="straingers"
+                            value="yes"
+                            checked={this.state.straingers === "yes"}
+                            onChange={e =>
+                                this.setState({ straingers: e.target.value }
+                                )}
+                            />
+                        </label></td>
+                                <td>                        <label>
+                            <input
+                            type="radio"
+                            name="straingers"
+                            value="no"
+                            checked={this.state.straingers === "no"}
+                            onChange={e =>
+                                this.setState({ straingers: e.target.value }
+                                )}
+                            />
+                        </label></td>
+                            </tr>
+                            <tr>
+                                <td>Does your dog get along well with larger dogs?</td>
+                                <td>                     <label>
+                            <input
+                            type="radio"
+                            name="largerdogs"
+                            value="yes"
+                            checked={this.state.largerdogs === "yes"}
+                            onChange={e =>
+                                this.setState({ largerdogs: e.target.value }
+                                )}
+                            />
+                        </label></td>
+                                <td>                        <label>
+                            <input
+                            type="radio"
+                            name="largerdogs"
+                            value="no"
+                            checked={this.state.largerdogs === "no"}
+                            onChange={e =>
+                                this.setState({ largerdogs: e.target.value }
+                                )}
+                            />
+                        </label></td>
+                            </tr>
+                            <tr>
+                                <td>Does your dog get along well with smaller dogs?</td>
+                                <td>                     <label>
+                            <input
+                            type="radio"
+                            name="smalldogs"
+                            value="yes"
+                            checked={this.state.smalldogs === "yes"}
+                            onChange={e =>
+                                this.setState({ smalldogs: e.target.value }
+                                )}
+                            />
+                        </label></td>
+                                <td>                        <label>
+                            <input
+                            type="radio"
+                            name="smalldogs"
+                            value="no"
+                            checked={this.state.smalldogs === "no"}
+                            onChange={e =>
+                                this.setState({ smalldogs: e.target.value }
+                                )}
+                            />
+                        </label></td>
+                            </tr>
+                            <tr>
+                                <td>does your dog get along well with puppies?</td>
+                                <td>                     <label>
+                            <input
+                            type="radio"
+                            name="puppies"
+                            value="yes"
+                            checked={this.state.puppies === "yes"}
+                            onChange={e =>
+                                this.setState({ puppies: e.target.value }
+                                )}
+                            />
+                        </label></td>
+                                <td>                        <label>
+                            <input
+                            type="radio"
+                            name="puppies"
+                            value="no"
+                            checked={this.state.puppies === "no"}
+                            onChange={e =>
+                                this.setState({ puppies: e.target.value }
+                                )}
+                            />
+                        </label></td>
+                            </tr>
+                            </table>
 
                     </div>
                     <button className="btn " style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Previous Step</button>{' '}
