@@ -126,7 +126,6 @@ class Register2 extends React.Component {
                                 this.setState({ neuteredspayed: e.target.value }
                                 )}
                             />
-                            
                             <span>No</span>
                         </label>
                         <br />
