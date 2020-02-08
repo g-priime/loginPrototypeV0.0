@@ -3,9 +3,9 @@ import "./reg.css";
 import "./reg2.css";
 //import Hint from "./hint.svg"; //import of svg "hint"
 
-//const App = () => <img src={Hint} alt="" />; // don't know if we need that
+const Hint = () => <img src={"./hint.svg"} alt="" />; // don't know if we need that
 
-class Register2 extends React.Component {
+class AddDog extends React.Component {
   state = {
     dogname: "",
     breed: "",
@@ -348,7 +348,7 @@ class Register2 extends React.Component {
               <table>
                 <tr>
                   <td>
-                    {/* <img src={Hint} /> */}
+                  <Hint />
                   </td>
                   <td>DA2PP</td>
                   <td>
@@ -364,7 +364,7 @@ class Register2 extends React.Component {
                 </tr>
                 <tr>
                   <td>
-                    {/* <img src={Hint} /> */}
+                  <Hint />
                   </td>
                   <td>RABIES</td>
                   <td>
@@ -380,7 +380,7 @@ class Register2 extends React.Component {
                 </tr>
                 <tr>
                   <td>
-                    {/* <img src={Hint} /> */}
+                    <Hint />
                   </td>
                   <td>BORDETELLA</td>
                   <td>
@@ -431,4 +431,4 @@ class Register2 extends React.Component {
   }
 }
 
-export default Register2;
+export default AddDog;
