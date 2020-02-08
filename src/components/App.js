@@ -7,8 +7,6 @@ import Register2 from './Register2';
 import HomePage from './HomePage';
 import Header from './Header';
 
-import GridTest from './GridTest';
-
 class App extends React.Component {
     state = { images: [] };
 
@@ -34,7 +32,7 @@ class App extends React.Component {
         else {
             return (
                 <div className="ui container">
-                    <GridTest />
+                    <Register2 />
                 </div>
             );
         }
