@@ -34,69 +34,83 @@ class Register extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container">
-            <div className="row">
-              <div className="col-med">
-                <h1>Registration Page</h1>
+            <h1>Registration Page</h1>
 
-                <h2>Step 1</h2>
+            <h2>Step 1</h2>
+
+            <div className="row">
+              <div className="col-sm">
+                <label>Username:</label>
+                <input
+                  className="field b-5"
+                  type="text"
+                  placeholder="Enter username"
+                  value={this.state.username}
+                  onChange={e => this.setState({ username: e.target.value })}
+                />
+                <br />
+                <br />
+                
+                <label>Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter password"
+                  value={this.state.password}
+                  onChange={e => this.setState({ password: e.target.value })}
+                />
+                <br />
+                <br />
+
+                <label>Confirm Password:</label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm password"
+                  value={this.state.confirmPassword}
+                  onChange={e =>
+                    this.setState({ confirmPassword: e.target.value })
+                  } //how to confirm it?
+                />
+              </div>
+              <br />
+              <br />
+
+              <div className="col-sm">
+                <label>First Name:</label>
+                <input
+                  type="text"
+                  placeholder="Enter First Name"
+                  value={this.state.fname}
+                  onChange={e => this.setState({ fname: e.target.value })}
+                />
+                <br />
+                <br />
+
+                <label>Last Name:</label>
+                <input
+                  type="text"
+                  placeholder="Enter Last Name"
+                  value={this.state.lname}
+                  onChange={e => this.setState({ lname: e.target.value })}
+                />
+                <br />
+                <br />
+
+                <label>Email:</label>
+                <input
+                  type="text"
+                  placeholder="Enter Email"
+                  value={this.state.email}
+                  onChange={e => this.setState({ email: e.target.value })}
+                />
+                <br />
+                <br />
+                
               </div>
             </div>
-            <div className="row">
-              <label>Username:</label>
-              <input
-                className="field b-5"
-                type="text"
-                placeholder="Enter username"
-                value={this.state.username}
-                onChange={e => this.setState({ username: e.target.value })}
-              />
-              <br />
-              <label>Password:</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter password"
-                value={this.state.password}
-                onChange={e => this.setState({ password: e.target.value })}
-              />
-              <br />
-              <label>Confirm Password:</label>
-              <input
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm password"
-                value={this.state.confirmPassword}
-                onChange={e =>
-                  this.setState({ confirmPassword: e.target.value })
-                } //how to confirm it?
-              />
-              <br />
-              <label>First Name:</label>
-              <input
-                type="text"
-                placeholder="Enter First Name"
-                value={this.state.fname}
-                onChange={e => this.setState({ fname: e.target.value })}
-              />
-              <br />
-              <label>Last Name:</label>
-              <input
-                type="text"
-                placeholder="Enter Last Name"
-                value={this.state.lname}
-                onChange={e => this.setState({ lname: e.target.value })}
-              />
-              <br />
-              <label>Email:</label>
-              <input
-                type="text"
-                placeholder="Enter Email"
-                value={this.state.email}
-                onChange={e => this.setState({ email: e.target.value })}
-              />
-            </div>
           </div>
-          <br />
+          
           <div className="d-flex justify-content-between">
             <button
               className="btn ml-3 mb-3"
