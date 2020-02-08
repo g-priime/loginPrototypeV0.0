@@ -23,7 +23,7 @@ class App extends React.Component {
     render() {
         var isValid = this.state.images;
 
-        if(isValid === 'account registered'){
+        if(isValid !== 'account registered'){
             return (
                 <div className="ui container" style={{ marginTop: '10px'}}>
                     <RegisterPage onSubmit={this.onSearchSubmit} />
@@ -33,7 +33,7 @@ class App extends React.Component {
         } 
         else {
             return (
-                <div>
+                <div className="ui container">
                     <GridTest />
                 </div>
             );
