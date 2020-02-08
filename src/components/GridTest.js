@@ -28,7 +28,6 @@ class GridTest extends React.Component {
                         <div className="container">
 
                         <h1>Add Dog</h1>
-
                         <h2>Step 2</h2>
 
                         <div className="row">
