@@ -38,25 +38,93 @@ class Register2 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container">
-            <div className="row">
+            
               <div className="col-med">
                 <h1>Registration Page</h1>
 
                 <h2>Step 2</h2>
               </div>
-            </div>
+              <h2>Address:</h2>
+            
+
             <div className="row">
-              <label><h2>Address:</h2></label>
-              <label>Apartment/House</label>
+              
+               
+              
+              <label>Apartment/House:</label>
               <input
                 className="field b-5"
                 type="text"
-                placeholder="Enter your apartment or house"
+                placeholder="Enter your apartment/house"
                 value={this.state.appt}
                 onChange={e => this.setState({ appt: e.target.value })}
               />
               <br />
- 
+              <label>Street/Avenue:</label>
+              <input
+                className="field b-5"
+                type="text"
+                placeholder="Enter your street/avenue"
+                value={this.state.street}
+                onChange={e => this.setState({ street: e.target.value })}
+              />
+              <br />
+              <label>City:</label>
+              <input
+                className="field b-5"
+                type="text"
+                placeholder="Enter your city"
+                value={this.state.city}
+                onChange={e => this.setState({ city: e.target.value })}
+              />
+              <br />
+              <label>Postal Code:</label>
+              <input
+                className="field b-5"
+                type="text"
+                placeholder="Enter your postal code"
+                value={this.state.postcode}
+                onChange={e => this.setState({ postcode: e.target.value })}
+              />
+              <br />
+              <label>Province:</label> 
+              <input
+                className="field b-5"
+                type="text"
+                placeholder="Enter your province"
+                value={this.state.province}
+                onChange={e => this.setState({ province: e.target.value })}
+              />
+              <br />
+              <label>Phone number</label>
+              <label>Personal Phone:</label> 
+              <input
+                className="field b-5"
+                type="text"
+                placeholder="Enter your phone number"
+                value={this.state.phone}
+                onChange={e => this.setState({ phone: e.target.value })}
+              />
+              <br />
+              <label>Emergency Contact</label>
+              <label>Emergency Phone number:</label> 
+              <input
+                className="field b-5"
+                type="text"
+                placeholder="Enter your emergency contact phone number"
+                value={this.state.emergencyphone}
+                onChange={e => this.setState({ emergencyphone: e.target.value })}
+              />
+              <br />
+              <label>Emergency Name:</label> 
+              <input
+                className="field b-5"
+                type="text"
+                placeholder="Enter your emergency contact Name"
+                value={this.state.emergencyname}
+                onChange={e => this.setState({ emergencyname: e.target.value })}
+              />
+              <br />
             </div>
           </div>
           <br />
@@ -71,7 +139,7 @@ class Register2 extends React.Component {
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
               }}
             >
-              Back to Home Page
+              Previours Step
             </button>
             <button
               className="btn mr-3 mb-3"
@@ -83,7 +151,7 @@ class Register2 extends React.Component {
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
               }}
             >
-              Next Step
+              Register
             </button>
           </div>
         </form>
