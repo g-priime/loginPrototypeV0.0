@@ -1,20 +1,16 @@
 import React from "react";
-//import ReactDOM from 'react-dom';
 import "./reg.css";
 
-//const Hint = () => <img src="./hint.svg" alt="" />; // don't know if we need that
-
-//import { ReactSVG } from 'react-svg'
 
 class Register2 extends React.Component {
   state = {
-    phone: "",
     appt: "",
     building: "",
     street: "",
     city: "",
     province: "",
     postcode: "",
+    phone: "",
     emergencyphone: "",
     emergencyname: ""
   };
@@ -23,13 +19,13 @@ class Register2 extends React.Component {
     event.preventDefault();
 
     this.props.onSubmit(
-      this.state.phone,
       this.state.appt,
       this.state.building,
       this.state.street,
       this.state.city,
-      this.state.prvince,
+      this.state.province,
       this.state.postcode,
+      this.state.phone,
       this.state.emergencyphone,
       this.state.emergencyname
     );
@@ -108,10 +104,10 @@ class Register2 extends React.Component {
                   value={this.state.province}
                   onChange={e => this.setState({ province: e.target.value })}
                 />
-                </div>
-                <br />
-                <br />
-                <div className="col-sm">
+              </div>
+              <br />
+              <br />
+              <div className="col-sm">
                 <h2>Phone number information</h2>
                 <label>Personal Phone:</label>
                 <input
