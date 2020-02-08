@@ -2,8 +2,8 @@ import React from "react";
 import "./reg.css";
 import "./reg2.css";
 //import Hint from "./hint.svg"; //import of svg "hint"
-
-const Hint = () => <img src={"./hint.svg"} alt="" />; // don't know if we need that
+import { ReactSVG } from 'react-svg'
+//const Hint = () => <img src={"./hint.svg"} alt="" />; // don't know if we need that
 
 class AddDog extends React.Component {
   state = {
@@ -348,7 +348,7 @@ class AddDog extends React.Component {
               <table>
                 <tr>
                   <td>
-                  <Hint />
+                  {/* <ReactSVG src="./hint.svg" /> */}
                   </td>
                   <td>DA2PP</td>
                   <td>
@@ -364,7 +364,7 @@ class AddDog extends React.Component {
                 </tr>
                 <tr>
                   <td>
-                  <Hint />
+                  {/* <ReactSVG src="./hint.svg" /> */}
                   </td>
                   <td>RABIES</td>
                   <td>
@@ -380,7 +380,7 @@ class AddDog extends React.Component {
                 </tr>
                 <tr>
                   <td>
-                    <Hint />
+                  {/* <ReactSVG src="./hint.svg" /> */}
                   </td>
                   <td>BORDETELLA</td>
                   <td>
