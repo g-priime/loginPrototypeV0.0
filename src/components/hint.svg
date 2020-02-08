@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50" height="50">
+   <circle cx="25" cy="25" r="20" stroke="gray" stroke-width="1" fill="gray"  />
+   <text x="17" y="40" class="small" font-size="40px" fill="white" font-weight="bold" font-family="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">?</text>
+   Sorry, your browser does not support inline SVG.
+</svg> 
