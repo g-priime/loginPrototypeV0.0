@@ -26,9 +26,9 @@ class Register extends React.Component {
                 <form onSubmit={this.onFormSubmit} className="ui form" style={{backgroundColor: "#ECEBE7 "}}>
                     <div className="container" >
                     
-                        <label><h1>Registration Page</h1></label>
+                        <h1>Registration Page</h1>
 
-                        <label><h2>Step 1</h2></label>
+                        <h2>Step 1</h2>
                         <label>Username:</label>
                         <input className="field b-5"
                             type="text" 
