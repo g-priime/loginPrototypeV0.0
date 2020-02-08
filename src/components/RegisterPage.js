@@ -22,12 +22,13 @@ class Register extends React.Component {
     render() {
         return (
 
-            <div className="ui segment " style={{backgroundColor: "#6298C8"}}>
+            <div className="ui segment " style={{backgroundColor: "#ECEBE7"}}>
                 <form onSubmit={this.onFormSubmit} className="ui form" style={{backgroundColor: "#ECEBE7 "}}>
-                    <div className="field d-flex flex-md-column ml-3 mr-3 mb-3 mt-3" >
-                        <label><h1>Registration Page</h1></label>
+                    <div className="container" >
+                    
+                        <h1>Registration Page</h1>
 
-                        <label><h2>Step 1</h2></label>
+                        <h2>Step 1</h2>
                         <label>Username:</label>
                         <input className="field b-5"
                             type="text" 
@@ -89,7 +90,9 @@ class Register extends React.Component {
                                  this.setState({ email: e.target.value })
                             } 
                         />
+                    
                     </div>
+                    <br/>
                     <div className="d-flex justify-content-between">
                     <button className="btn ml-3 mb-3" style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Back to Home Page</button>
                     <button className="btn mr-3 mb-3" style={{fontWeight:"bold",backgroundColor: "#1D3461", color: "#ECEBE7", boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"}}>Next Step</button>

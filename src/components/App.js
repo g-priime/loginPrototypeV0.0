@@ -31,7 +31,7 @@ class App extends React.Component {
         } 
         else {
             return (
-                <div>
+                <div className="ui container">
                     <Register2 />
                 </div>
             );
