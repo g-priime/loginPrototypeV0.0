@@ -2,6 +2,10 @@ import React from "react";
 //import ReactDOM from 'react-dom';
 import "./reg.css";
 
+//const Hint = () => <img src="./hint.svg" alt="" />; // don't know if we need that
+
+import { ReactSVG } from 'react-svg'
+
 class Register2 extends React.Component {
   state = {
     phone: "",
@@ -43,7 +47,10 @@ class Register2 extends React.Component {
                 <h1>Registration Page</h1>
 
                 <h2>Step 2</h2>
+                
               </div>
+
+             
               <h2>Address:</h2>
             
 
@@ -96,7 +103,8 @@ class Register2 extends React.Component {
                 onChange={e => this.setState({ province: e.target.value })}
               />
               <br />
-              <label>Phone number</label>
+              <label>Phone number information</label>
+              <br />
               <label>Personal Phone:</label> 
               <input
                 className="field b-5"
@@ -107,6 +115,7 @@ class Register2 extends React.Component {
               />
               <br />
               <label>Emergency Contact</label>
+              <br />
               <label>Emergency Phone number:</label> 
               <input
                 className="field b-5"
