@@ -10,6 +10,7 @@ class Register2 extends React.Component {
   state = {
     phone: "",
     appt: "",
+    building: "",
     street: "",
     city: "",
     province: "",
@@ -24,6 +25,7 @@ class Register2 extends React.Component {
     this.props.onSubmit(
       this.state.phone,
       this.state.appt,
+      this.state.building,
       this.state.street,
       this.state.city,
       this.state.prvince,
@@ -44,16 +46,27 @@ class Register2 extends React.Component {
           <div className="container">
             <h1>Registration Page</h1>
             <h2>Step 2</h2>
+            <h2>Personal Information</h2>
             <div className="row">
               <div className="col-sm">
                 <h2>Address</h2>
-                <label>Apartment/House:</label>
+                <label>Apartment/House Number:</label>
                 <input
                   className="field b-5"
                   type="text"
                   placeholder="Enter your apartment/house"
                   value={this.state.appt}
                   onChange={e => this.setState({ appt: e.target.value })}
+                />
+                <br />
+                <br />
+                <label>Buiding Number:</label>
+                <input
+                  className="field b-5"
+                  type="text"
+                  placeholder="Enter your building number"
+                  value={this.state.building}
+                  onChange={e => this.setState({ building: e.target.value })}
                 />
                 <br />
                 <br />
@@ -151,7 +164,7 @@ class Register2 extends React.Component {
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
               }}
             >
-              Previours Step
+              Previous Step
             </button>
             <button
               className="btn mr-3 mb-3"
