@@ -13,16 +13,16 @@ class Header extends React.Component {
 
     render() {
         return (
-            <Navbar bg="light" variant="light" expand="md">
+            <Navbar bg="light" variant="light">
                     <Navbar.Brand onClick={() => {this.props.onChangePage('home')}}>Dog</Navbar.Brand>
                     <Navbar.Collapse>
                         <Nav>
-                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>Home</Nav.Item>
-                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>Services</Nav.Item>
-                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>Gallery</Nav.Item>
-                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>Testimonials</Nav.Item>
-                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>FAQ</Nav.Item>
-                            <Nav.Item onClick={() => {this.props.onChangePage('register')}}>Login/Register</Nav.Item>
+                            <Nav.Link onClick={() => {this.props.onChangePage('home')}}>Home</Nav.Link>
+                            <Nav.Link onClick={() => {this.props.onChangePage(0)}}>Services</Nav.Link>
+                            <Nav.Link onClick={() => {this.props.onChangePage(0)}}>Gallery</Nav.Link>
+                            <Nav.Link onClick={() => {this.props.onChangePage(0)}}>Testimonials</Nav.Link>
+                            <Nav.Link onClick={() => {this.props.onChangePage(0)}}>FAQ</Nav.Link>
+                            <Nav.Link onClick={() => {this.props.onChangePage('register')}}>Login/Register</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
             </Navbar>
