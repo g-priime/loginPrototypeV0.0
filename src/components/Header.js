@@ -6,20 +6,26 @@ import RegisterPage from './RegisterPage';
 
 class Header extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
+
+
     render() {
         return (
-            <div>
-            <Navbar>
-            <Navbar.Header>
-                <Navbar.Brand href={HomePage}>Dog</Navbar.Brand>
-            </Navbar.Header>
-                <Nav>
-                    <Nav.Link href={RegisterPage}>Register</Nav.Link>
-                    <Nav.Link href="">Services</Nav.Link>
-                    <Nav.Link href="">Gallery</Nav.Link>
-                </Nav>
+            <Navbar bg="light" variant="light" expand="md">
+                    <Navbar.Brand onClick={() => {this.props.onChangePage('home')}}>Dog</Navbar.Brand>
+                    <Navbar.Collapse>
+                        <Nav>
+                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>Home</Nav.Item>
+                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>Services</Nav.Item>
+                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>Gallery</Nav.Item>
+                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>Testimonials</Nav.Item>
+                            <Nav.Item onClick={() => {this.props.onChangePage(0)}}>FAQ</Nav.Item>
+                            <Nav.Item onClick={() => {this.props.onChangePage('register')}}>Login/Register</Nav.Item>
+                        </Nav>
+                    </Navbar.Collapse>
             </Navbar>
-            </div>
         );
     }
 }
