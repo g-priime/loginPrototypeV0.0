@@ -209,7 +209,7 @@ class AddDog extends React.Component {
                 <label>Physical limitations or health problems: </label>
                 <Hint />
                 <textarea
-                  rows="5"
+                  rows="2"
                   value={this.state.physlimit}
                   onChange={e => this.setState({ physlimit: e.target.value })}
                 />
