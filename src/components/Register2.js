@@ -1,6 +1,7 @@
 import React from "react";
 import "./reg.css";
 
+
 class Register2 extends React.Component {
   state = {
     appt: "",
