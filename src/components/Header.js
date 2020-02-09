@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import HomePage from './HomePage';
 import RegisterPage from './RegisterPage';
+import './head.css';
 
 class Header extends React.Component {
 
@@ -13,19 +14,20 @@ class Header extends React.Component {
 
     render() {
         return (
-            <Navbar bg="light" variant="light">
-                    <Navbar.Brand onClick={() => {this.props.onChangePage('home')}}>Dog</Navbar.Brand>
-                    <Navbar.Collapse>
-                        <Nav className="">
-                            <Nav.Link onClick={() => {this.props.onChangePage('home')}}>Home</Nav.Link>
-                            <Nav.Link onClick={() => {this.props.onChangePage(0)}}>Services</Nav.Link>
-                            <Nav.Link onClick={() => {this.props.onChangePage(0)}}>Gallery</Nav.Link>
-                            <Nav.Link onClick={() => {this.props.onChangePage(0)}}>Testimonials</Nav.Link>
-                            <Nav.Link onClick={() => {this.props.onChangePage(0)}}>FAQ</Nav.Link>
-                            <Nav.Link onClick={() => {this.props.onChangePage('register')}}>Login/Register</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-            </Navbar>
+            <div>
+            <div className="d-flex justify-content-between">
+                <div onClick={() => {this.props.onChangePage('home')}}>Dog Logo</div>
+                <h1 className="title">K9 FUN FAMILY</h1>
+            </div>
+            <div className="pt-3 pb-3 d-flex justify-content-around header" style={{ backgroundColor: "#ECEBE7" }}>
+                            <div onClick={() => {this.props.onChangePage('home')}}>Home</div>
+                            <div onClick={() => {this.props.onChangePage(0)}}>Services</div>
+                            <div onClick={() => {this.props.onChangePage(0)}}>Gallery</div>
+                            <div onClick={() => {this.props.onChangePage(0)}}>Testimonials</div>
+                            <div onClick={() => {this.props.onChangePage(0)}}>FAQ</div>
+                            <div onClick={() => {this.props.onChangePage('register')}}>Login/Register</div>
+            </div>
+            </div>
         );
     }
 }
