@@ -46,21 +46,21 @@ class Register2 extends React.Component {
               <div className="col-sm">
                 <div className="row">
                   <div className="col-sm">
-                    <label>Apartment/House Number:</label>
+                    <label>Apartment/House#:</label>
                     <input
                       className="field b-5"
                       type="text"
-                      placeholder="Apartment/suit/unit/house number"
+                      placeholder="Apartment/suit/unit/house #"
                       value={this.state.appt}
                       onChange={e => this.setState({ appt: e.target.value })}
                     />
                   </div>
                   <div className="col-sm">
-                    <label>Buiding Number:</label>
+                    <label>Buiding#:</label>
                     <input
                       className="field b-5"
                       type="text"
-                      placeholder="Enter your building number"
+                      placeholder="Building #"
                       value={this.state.building}
                       onChange={e =>
                         this.setState({ building: e.target.value })
@@ -87,19 +87,6 @@ class Register2 extends React.Component {
                 <div className="col-sm">
                   <div className="row">
                     <div className="col-sm">
-                      <label>City:</label>
-                      <input
-                        className="field b-5"
-                        type="text"
-                        placeholder="Enter your city"
-                        value={this.state.city}
-                        onChange={e => this.setState({ city: e.target.value })}
-                      />
-                    </div>
-                  </div>
-                  <br />
-                  <div className="row">
-                    <div className="col-sm">
                       <label>Postal Code:</label>
                       <input
                         className="field b-5"
@@ -122,6 +109,21 @@ class Register2 extends React.Component {
                         onChange={e =>
                           this.setState({ province: e.target.value })
                         }
+                      />
+                      
+                    </div>
+                  
+                  </div>
+                  <br/>
+                    <div className="row">
+                    <div className="col-sm">
+                      <label>City:</label>
+                      <input
+                        className="field b-5"
+                        type="text"
+                        placeholder="Enter your city"
+                        value={this.state.city}
+                        onChange={e => this.setState({ city: e.target.value })}
                       />
                     </div>
                   </div>
