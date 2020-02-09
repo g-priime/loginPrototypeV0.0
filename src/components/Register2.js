@@ -46,7 +46,7 @@ class Register2 extends React.Component {
               <div className="col-sm">
                 <div className="row">
                   <div className="col-sm">
-                    <label>Apartment/House#:</label>
+                    <label>Apartment/House #:</label>
                     <input
                       className="field b-5"
                       type="text"
@@ -56,7 +56,7 @@ class Register2 extends React.Component {
                     />
                   </div>
                   <div className="col-sm">
-                    <label>Buiding#:</label>
+                    <label>Buiding #:</label>
                     <input
                       className="field b-5"
                       type="text"
