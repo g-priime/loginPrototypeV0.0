@@ -1,4 +1,11 @@
-.navbar-nav {
-    padding-left:30px;
-    padding-right:30px;
+.header div:hover {
+   color:lightblue;
 } 
+
+div,h1 {
+    font-style: Segoe UI;
+}
+
+.title {
+    color:white;
+}
