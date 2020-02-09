@@ -17,23 +17,24 @@ class RegisterMain extends React.Component {
         this.setState({ fieldName: [username, password, confirmPassword, fname, lname, email] })
 
         const response = await BasePath.put('/webresources/register', 
-        { username , password , confirmPassword, fname , lname , email });
+        { username , password , confirmPassword });
 
         console.log(response.data);
         this.setState({ images: response.data});
     }
 
-    onSearchSubmit2 = async () => {
+    onSearchSubmit2 = async (appt, building, street, city, province, postcode, phone, emergencyphone, emergencyname) => {
 
         var username = this.state.fieldName[0];
         var password = this.state.fieldName[1];
-        var confirmPassword = this.state.fieldName[2];
+
         var fname = this.state.fieldName[3];
         var lname = this.state.fieldName[4];
         var email = this.state.fieldName[5];
 
         const response = await BasePath.put('/webresources/register', 
-        { username , password , confirmPassword, fname , lname , email });
+        { username , password , fname , lname , email, 
+            appt, building, street, city, province, postcode, phone, emergencyphone, emergencyname });
 
         console.log(response.data);
         this.setState({ images: response.data});
