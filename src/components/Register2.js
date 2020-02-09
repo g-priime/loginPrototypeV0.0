@@ -50,7 +50,7 @@ class Register2 extends React.Component {
                     <input
                       className="field b-5"
                       type="text"
-                      placeholder="Enter your apartment/suit/unit/house number"
+                      placeholder="Apartment/suit/unit/house number"
                       value={this.state.appt}
                       onChange={e => this.setState({ appt: e.target.value })}
                     />
@@ -70,28 +70,32 @@ class Register2 extends React.Component {
                 </div>
                 <br />
                 <div className="row">
-                  <label>Street/Avenue:</label>
-                  <input
-                    className="field b-5"
-                    type="text"
-                    placeholder="Enter your street/avenue"
-                    value={this.state.street}
-                    onChange={e => this.setState({ street: e.target.value })}
-                  />
+                  <div className="col-sm">
+                    <label>Street/Avenue:</label>
+                    <input
+                      className="field b-5"
+                      type="text"
+                      placeholder="Enter your street/avenue"
+                      value={this.state.street}
+                      onChange={e => this.setState({ street: e.target.value })}
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="col-sm">
                 <div className="col-sm">
                   <div className="row">
-                    <label>City:</label>
-                    <input
-                      className="field b-5"
-                      type="text"
-                      placeholder="Enter your city"
-                      value={this.state.city}
-                      onChange={e => this.setState({ city: e.target.value })}
-                    />
+                    <div className="col-sm">
+                      <label>City:</label>
+                      <input
+                        className="field b-5"
+                        type="text"
+                        placeholder="Enter your city"
+                        value={this.state.city}
+                        onChange={e => this.setState({ city: e.target.value })}
+                      />
+                    </div>
                   </div>
                   <br />
                   <div className="row">
