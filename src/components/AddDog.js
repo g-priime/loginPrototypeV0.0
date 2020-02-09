@@ -148,7 +148,7 @@ class AddDog extends React.Component {
                 <br />
                 <label>Weight (Lb):</label>
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Enter dog's weight"
                   value={this.state.weight}
                   onChange={e => this.setState({ weight: e.target.value })}
@@ -188,7 +188,8 @@ class AddDog extends React.Component {
               <div className="col-sm">
                 <h2>Care</h2>
 
-                <label>Medication:</label>
+                <label>Medication: </label>
+                <Hint />
                 <input
                   type="text"
                   value={this.state.medication}
@@ -196,7 +197,8 @@ class AddDog extends React.Component {
                 />
                 <br />
                 <br />
-                <label>Allergies:</label>
+                <label>Allergies: </label>
+                <Hint />
                 <input
                   type="text"
                   value={this.state.allergies}
@@ -204,7 +206,8 @@ class AddDog extends React.Component {
                 />
                 <br />
                 <br />
-                <label>Physical limitations or health problems:</label>
+                <label>Physical limitations or health problems: </label>
+                <Hint />
                 <textarea
                   rows="5"
                   value={this.state.physlimit}
@@ -212,7 +215,8 @@ class AddDog extends React.Component {
                 />
                 <br />
                 <br />
-                <label>Who is your veterinarian:</label>
+                <label>Who is your veterinarian: </label>
+                <Hint />
                 <input
                   type="text"
                   value={this.state.veterinarian}
