@@ -1,7 +1,6 @@
 import React from "react";
 import "./reg.css";
 
-
 class Register2 extends React.Component {
   state = {
     appt: "",
@@ -42,109 +41,132 @@ class Register2 extends React.Component {
           <div className="container">
             <h1>Registration Page</h1>
             <h2>Step 2</h2>
-            <h2>Personal Information</h2>
+            <h2>Address</h2>
             <div className="row">
               <div className="col-sm">
-                <h2>Address</h2>
-                <label>Apartment/House Number:</label>
-                <input
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter your apartment/house"
-                  value={this.state.appt}
-                  onChange={e => this.setState({ appt: e.target.value })}
-                />
+                <div className="row">
+                  <div className="col-sm">
+                    <label>Apartment/House Number:</label>
+                    <input
+                      className="field b-5"
+                      type="text"
+                      placeholder="Enter your apartment/suit/unit/house number"
+                      value={this.state.appt}
+                      onChange={e => this.setState({ appt: e.target.value })}
+                    />
+                  </div>
+                  <div className="col-sm">
+                    <label>Buiding Number:</label>
+                    <input
+                      className="field b-5"
+                      type="text"
+                      placeholder="Enter your building number"
+                      value={this.state.building}
+                      onChange={e =>
+                        this.setState({ building: e.target.value })
+                      }
+                    />
+                  </div>
+                </div>
                 <br />
-                <br />
-                <label>Buiding Number:</label>
-                <input
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter your building number"
-                  value={this.state.building}
-                  onChange={e => this.setState({ building: e.target.value })}
-                />
-                <br />
-                <br />
-                <label>Street/Avenue:</label>
-                <input
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter your street/avenue"
-                  value={this.state.street}
-                  onChange={e => this.setState({ street: e.target.value })}
-                />
-                <br />
-                <br />
-                <label>City:</label>
-                <input
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter your city"
-                  value={this.state.city}
-                  onChange={e => this.setState({ city: e.target.value })}
-                />
-                <br />
-                <br />
-                <label>Postal Code:</label>
-                <input
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter your postal code"
-                  value={this.state.postcode}
-                  onChange={e => this.setState({ postcode: e.target.value })}
-                />
-                <br />
-                <br />
-                <label>Province:</label>
-                <input
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter your province"
-                  value={this.state.province}
-                  onChange={e => this.setState({ province: e.target.value })}
-                />
+                <div className="row">
+                  <label>Street/Avenue:</label>
+                  <input
+                    className="field b-5"
+                    type="text"
+                    placeholder="Enter your street/avenue"
+                    value={this.state.street}
+                    onChange={e => this.setState({ street: e.target.value })}
+                  />
+                </div>
               </div>
-              <br />
-              <br />
+
               <div className="col-sm">
-                <h2>Phone number information</h2>
-                <label>Personal Phone:</label>
-                <input
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter your phone number"
-                  value={this.state.phone}
-                  onChange={e => this.setState({ phone: e.target.value })}
-                />
-                <br />
-                <br />
-                <h3>Emergency Contact</h3>
-                <br />
-                <label>Emergency Phone number:</label>
-                <input
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter your emergency contact phone number"
-                  value={this.state.emergencyphone}
-                  onChange={e =>
-                    this.setState({ emergencyphone: e.target.value })
-                  }
-                />
-                <br />
-                <br />
-                <label>Emergency Name:</label>
-                <input
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter your emergency contact Name"
-                  value={this.state.emergencyname}
-                  onChange={e =>
-                    this.setState({ emergencyname: e.target.value })
-                  }
-                />
-                <br />
-                <br />
+                <div className="col-sm">
+                  <div className="row">
+                    <label>City:</label>
+                    <input
+                      className="field b-5"
+                      type="text"
+                      placeholder="Enter your city"
+                      value={this.state.city}
+                      onChange={e => this.setState({ city: e.target.value })}
+                    />
+                  </div>
+                  <br />
+                  <div className="row">
+                    <div className="col-sm">
+                      <label>Postal Code:</label>
+                      <input
+                        className="field b-5"
+                        type="text"
+                        placeholder="Enter your postal code"
+                        value={this.state.postcode}
+                        onChange={e =>
+                          this.setState({ postcode: e.target.value })
+                        }
+                      />
+                    </div>
+
+                    <div className="col-sm">
+                      <label>Province:</label>
+                      <input
+                        className="field b-5"
+                        type="text"
+                        placeholder="Enter your province"
+                        value={this.state.province}
+                        onChange={e =>
+                          this.setState({ province: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <br />
+            <div>
+              <h2>Phone number information</h2>
+              <div className="row">
+                <div className="col-sm">
+                  <label>Personal Phone:</label>
+                  <input
+                    className="field b-5"
+                    type="text"
+                    placeholder="Enter your phone number"
+                    value={this.state.phone}
+                    onChange={e => this.setState({ phone: e.target.value })}
+                  />
+                </div>
+                <div className="col-sm">
+                  <div className="row">
+                    <div className="col-sm">
+                      <label>Emergency Contact Phone number:</label>
+                      <input
+                        className="field b-5"
+                        type="text"
+                        placeholder="Enter your emergency contact phone number"
+                        value={this.state.emergencyphone}
+                        onChange={e =>
+                          this.setState({ emergencyphone: e.target.value })
+                        }
+                      />
+                    </div>
+                    <div className="col-sm">
+                      <label>Emergency Contact Name:</label>
+                      <input
+                        className="field b-5"
+                        type="text"
+                        placeholder="Enter your emergency contact Name"
+                        value={this.state.emergencyname}
+                        onChange={e =>
+                          this.setState({ emergencyname: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
