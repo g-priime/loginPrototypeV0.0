@@ -1,5 +1,6 @@
 .header div:hover {
    color:lightblue;
+   cursor: pointer;
 } 
 
 div,h1 {
