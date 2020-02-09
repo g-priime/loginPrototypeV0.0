@@ -145,10 +145,12 @@ class Register2 extends React.Component {
                     onChange={e => this.setState({ phone: e.target.value })}
                   />
                 </div>
+              </div>
+              <br />
                 <div className="col-sm">
                   <div className="row">
                     <div className="col-sm">
-                      <label>Emergency Contact Phone number:</label>
+                      <label>Emergency Contact Phone:</label>
                       <input
                         className="field b-5"
                         type="text"
@@ -173,7 +175,6 @@ class Register2 extends React.Component {
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
           <br />
