@@ -9,7 +9,16 @@ class Register extends React.Component {
     confirmPassword: "",
     fname: "",
     lname: "",
-    email: ""
+    email: "",
+    phone: "",
+    appt: "",
+    street: "",
+    city: "",
+    province: "",
+    postcode: "",
+    emergencyphone: "",
+    emergencyname: "",
+    
   };
 
   onFormSubmit = event => {
@@ -21,9 +30,19 @@ class Register extends React.Component {
       this.state.confirmPassword,
       this.state.fname,
       this.state.lname,
-      this.state.email
+      this.state.email,
+      this.state.phone,
+      this.state.appt,
+      this.state.street,
+      this.state.city,
+      this.state.prvince,
+      this.state.postcode,
+      this.state.emergencyphone,
+      this.state.emergencyname
     );
   };
+
+  step1
 
   render() {
     return (
@@ -112,7 +131,7 @@ class Register extends React.Component {
           </div>
           
           <div className="d-flex justify-content-between">
-            <button
+            <button onClick = {() => {this.props.onRoutingChange(0)}}
               className="btn ml-3 mb-3"
               style={{
                 fontWeight: "bold",
@@ -124,7 +143,7 @@ class Register extends React.Component {
             >
               Back to Home Page
             </button>
-            <button
+            <button onClick = {() => {this.props.onRoutingChange(2)}}
               className="btn mr-3 mb-3"
               style={{
                 fontWeight: "bold",
