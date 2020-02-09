@@ -3,39 +3,41 @@ import React from 'react';
 
 import BasePath from '../api/BasePath';
 import RegisterPage from './RegisterPage';
-import Register2 from './Register2';
 import HomePage from './HomePage';
 import Header from './Header';
 
 class App extends React.Component {
-    state = { images: [] };
+
+    CURRENT_PAGE = {
+        'home': <HomePage/>,
+        'register': <RegisterPage onSubmit={this.onSearchSubmit}/>
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: this.CURRENT_PAGE['home']
+        }
+    }
+
+    onChangePage = (page) => {
+        this.setState({
+            page: this.CURRENT_PAGE[page]
+        })
+    }
 
     onSearchSubmit = async (username, password, confirmPassword, fname, lname, email) => {
         const response = await BasePath.put('/webresources/register', 
         { username , password , confirmPassword, fname , lname , email });
-
-        console.log(response.data);
-        this.setState({ images: response.data});
     }
 
     render() {
-        var isValid = this.state.images;
-
-        if(isValid !== 'account registered'){
             return (
                 <div className="ui container" style={{ marginTop: '10px'}}>
-                    <RegisterPage onSubmit={this.onSearchSubmit} />
-                    <div>{this.state.images}</div>                  
+                    <Header onChangePage={this.onChangePage}></Header>
+                    {this.state.page}                 
                 </div>
             );    
-        } 
-        else {
-            return (
-                <div className="ui container">
-                    <Register2 />
-                </div>
-            );
-        }
     }
 }
 
