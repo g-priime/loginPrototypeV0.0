@@ -1,9 +1,18 @@
 import React from "react";
 import "./reg.css";
 import "./reg2.css";
-//import Hint from "./hint.svg"; //import of svg "hint"
-import { ReactSVG } from 'react-svg'
-//const Hint = () => <img src={"./hint.svg"} alt="" />; // don't know if we need that
+
+import { ReactComponent as Hint } from './hint.svg';
+const hint = () => (
+  <div>
+    {<svg width="25" height="25">
+   <circle cx="11" cy="11" r="10" stroke="gray" stroke-width="1" fill="gray"  />
+   <text x="6" y="19" font-size="22px " fill="white" font-weight="bold" font-family="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">?</text>
+   Sorry, your browser does not support inline SVG.
+</svg>  }
+    <Hint />
+  </div>
+);
 
 class AddDog extends React.Component {
   state = {
@@ -348,7 +357,7 @@ class AddDog extends React.Component {
               <table>
                 <tr>
                   <td>
-                  {/* <ReactSVG src="./hint.svg" /> */}
+                  <Hint />
                   </td>
                   <td>DA2PP</td>
                   <td>
@@ -364,7 +373,7 @@ class AddDog extends React.Component {
                 </tr>
                 <tr>
                   <td>
-                  {/* <ReactSVG src="./hint.svg" /> */}
+                  <Hint />
                   </td>
                   <td>RABIES</td>
                   <td>
@@ -380,7 +389,7 @@ class AddDog extends React.Component {
                 </tr>
                 <tr>
                   <td>
-                  {/* <ReactSVG src="./hint.svg" /> */}
+                  <Hint />
                   </td>
                   <td>BORDETELLA</td>
                   <td>
