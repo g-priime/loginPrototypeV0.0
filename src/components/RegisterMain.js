@@ -20,6 +20,7 @@ class RegisterMain extends React.Component {
         { username , password , confirmPassword });
 
         console.log(response.data);
+        console.log(response.status);
         this.setState({ images: response.data});
     }
 
@@ -37,6 +38,7 @@ class RegisterMain extends React.Component {
             appt, building, street, city, province, postcode, phone, emergencyphone, emergencyname });
 
         console.log(response.data);
+        console.log(response.status);
         this.setState({ images: response.data});
     }
 
@@ -45,7 +47,7 @@ class RegisterMain extends React.Component {
 
         if(isValid !== 'Valid'){
             return (
-                <div className="ui container" style={{ marginTop: '10px'}}>
+                <div style={{ marginTop: '10px'}}>
                     <Register1 onSubmit={this.onSearchSubmit1} />
                     <div>{this.state.images}</div>               
                 </div>
@@ -53,7 +55,7 @@ class RegisterMain extends React.Component {
         } 
         else {
             return (
-                <div className="ui container">
+                <div style={{ marginTop: '10px'}}>
                     <Register2
                     onSubmit={this.onSearchSubmit2} />
                     <div>{this.state.images}</div>
