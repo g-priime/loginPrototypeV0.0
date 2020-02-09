@@ -2,14 +2,32 @@ import React from "react";
 import "./reg.css";
 import "./reg2.css";
 
-import { ReactComponent as Hint } from './hint.svg';
+import { ReactComponent as Hint } from "./hint.svg";
 const hint = () => (
   <div>
-    {<svg width="25" height="25">
-   <circle cx="11" cy="11" r="10" stroke="gray" stroke-width="1" fill="gray"  />
-   <text x="6" y="19" font-size="22px " fill="white" font-weight="bold" font-family="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">?</text>
-   Sorry, your browser does not support inline SVG.
-</svg>  }
+    {
+      <svg width="25" height="25">
+        <circle
+          cx="11"
+          cy="11"
+          r="10"
+          stroke="gray"
+          stroke-width="1"
+          fill="gray"
+        />
+        <text
+          x="6"
+          y="19"
+          font-size="22px "
+          fill="white"
+          font-weight="bold"
+          font-family="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+        >
+          ?
+        </text>
+        Sorry, your browser does not support inline SVG.
+      </svg>
+    }
     <Hint />
   </div>
 );
@@ -82,6 +100,7 @@ class AddDog extends React.Component {
                   onChange={e => this.setState({ dogname: e.target.value })}
                 />
                 <br />
+                <br />
                 <label>Breed:</label>
                 <input
                   type="text"
@@ -89,6 +108,7 @@ class AddDog extends React.Component {
                   value={this.state.breed}
                   onChange={e => this.setState({ breed: e.target.value })}
                 />
+                <br />
                 <br />
                 <label>Date of birth:</label>
                 <input
@@ -99,6 +119,7 @@ class AddDog extends React.Component {
                     shrink: true
                   }}
                 />
+                <br />
                 <br />
                 <label>Gender:</label>
 
@@ -123,7 +144,7 @@ class AddDog extends React.Component {
                   />
                   <span>Female</span>
                 </label>
-
+                <br />
                 <br />
                 <label>Weight (Lb):</label>
                 <input
@@ -133,7 +154,7 @@ class AddDog extends React.Component {
                   onChange={e => this.setState({ weight: e.target.value })}
                 />
                 <br />
-
+                <br />
                 <label>Is your dog neutered or spayed?:</label>
 
                 <label>
@@ -174,19 +195,22 @@ class AddDog extends React.Component {
                   onChange={e => this.setState({ medication: e.target.value })}
                 />
                 <br />
+                <br />
                 <label>Allergies:</label>
                 <input
                   type="text"
                   value={this.state.allergies}
                   onChange={e => this.setState({ allergies: e.target.value })}
                 />
-
+                <br />
+                <br />
                 <label>Physical limitations or health problems:</label>
                 <textarea
                   rows="5"
                   value={this.state.physlimit}
                   onChange={e => this.setState({ physlimit: e.target.value })}
                 />
+                <br />
                 <br />
                 <label>Who is your veterinarian:</label>
                 <input
@@ -198,7 +222,6 @@ class AddDog extends React.Component {
                 />
               </div>
             </div>
-
             <br />
             <br />
             <div className="row">
@@ -350,63 +373,64 @@ class AddDog extends React.Component {
                   </td>
                 </tr>
               </table>
-              </div>
-              <br />
-              <label><h2>Dog must have up to date vaccination Documents from vet</h2></label>
+            </div>
+            <br />
+            <label>
+              <h2>Dog must have up to date vaccination Documents from vet</h2>
+            </label>
 
-              <table>
-                <tr>
-                  <td>
+            <table>
+              <tr>
+                <td>
                   <Hint />
-                  </td>
-                  <td>DA2PP</td>
-                  <td>
-                    <input
-                      type="date"
-                      value={this.state.da2pp}
-                      onChange={e => this.setState({ da2pp: e.target.value })}
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
+                </td>
+                <td>DA2PP</td>
+                <td>
+                  <input
+                    type="date"
+                    value={this.state.da2pp}
+                    onChange={e => this.setState({ da2pp: e.target.value })}
+                    InputLabelProps={{
+                      shrink: true
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
                   <Hint />
-                  </td>
-                  <td>RABIES</td>
-                  <td>
-                    <input
-                      type="date"
-                      value={this.state.rabies}
-                      onChange={e => this.setState({ rabies: e.target.value })}
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
+                </td>
+                <td>RABIES</td>
+                <td>
+                  <input
+                    type="date"
+                    value={this.state.rabies}
+                    onChange={e => this.setState({ rabies: e.target.value })}
+                    InputLabelProps={{
+                      shrink: true
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
                   <Hint />
-                  </td>
-                  <td>BORDETELLA</td>
-                  <td>
-                    <input
-                      type="date"
-                      value={this.state.bordetella}
-                      onChange={e =>
-                        this.setState({ bordetella: e.target.value })
-                      }
-                      InputLabelProps={{
-                        shrink: true
-                      }}
-                    />
-                  </td>
-                </tr>
-              </table>
-            
+                </td>
+                <td>BORDETELLA</td>
+                <td>
+                  <input
+                    type="date"
+                    value={this.state.bordetella}
+                    onChange={e =>
+                      this.setState({ bordetella: e.target.value })
+                    }
+                    InputLabelProps={{
+                      shrink: true
+                    }}
+                  />
+                </td>
+              </tr>
+            </table>
           </div>
           <div className="d-flex justify-content-between">
             <button
