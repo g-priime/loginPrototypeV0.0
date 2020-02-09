@@ -5,12 +5,13 @@ import BasePath from '../api/BasePath';
 import RegisterPage from './RegisterPage';
 import HomePage from './HomePage';
 import Header from './Header';
+import RegisterMain from './RegisterMain';
 
 class App extends React.Component {
 
     CURRENT_PAGE = {
         'home': <HomePage/>,
-        'register': <RegisterPage onSubmit={this.onSearchSubmit}/>
+        'register': <RegisterMain />
     }
 
     constructor(props) {
