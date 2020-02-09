@@ -16,7 +16,7 @@ class Header extends React.Component {
             <Navbar bg="light" variant="light">
                     <Navbar.Brand onClick={() => {this.props.onChangePage('home')}}>Dog</Navbar.Brand>
                     <Navbar.Collapse>
-                        <Nav>
+                        <Nav className="">
                             <Nav.Link onClick={() => {this.props.onChangePage('home')}}>Home</Nav.Link>
                             <Nav.Link onClick={() => {this.props.onChangePage(0)}}>Services</Nav.Link>
                             <Nav.Link onClick={() => {this.props.onChangePage(0)}}>Gallery</Nav.Link>
