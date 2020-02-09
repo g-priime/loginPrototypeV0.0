@@ -16,7 +16,7 @@ class RegisterMain extends React.Component {
     onSearchSubmit1 = async (username, password, confirmPassword, fname, lname, email) => {
         this.setState({ fieldName: [username, password, confirmPassword, fname, lname, email] })
 
-        const response = await BasePath.put('/webresources/register', 
+        const response = await BasePath.put('/webresources/verify', 
         { username , password , confirmPassword });
 
         console.log(response.data);
@@ -32,7 +32,7 @@ class RegisterMain extends React.Component {
         var lname = this.state.fieldName[4];
         var email = this.state.fieldName[5];
 
-        const response = await BasePath.put('/webresources/register', 
+        const response = await BasePath.put('/webresources/register2', 
         { username , password , fname , lname , email, 
             appt, building, street, city, province, postcode, phone, emergencyphone, emergencyname });
 
