@@ -7,6 +7,7 @@ import Register2 from './Register2';
 import HomePage from './HomePage';
 import Header from './Header';
 import Register1 from './Register1';
+import Register3 from './Register3';
 
 
 
@@ -47,8 +48,9 @@ class RegisterMain extends React.Component {
 
         if(isValid === 'account registered'){
             return (
-                <div>
-                    "Account has been registered"
+                <div style={{ marginTop: '10px'}}>
+                    <Register3 />
+                    <div>{this.state.images}</div>               
                 </div>
             );
         }
