@@ -43,6 +43,12 @@ class RegisterMain extends React.Component {
         this.setState({ images: response.data});
     }
 
+    onPrevious = () => {
+        console.log("main");
+        this.setState({ images: [] });
+        console.log(this.state.images);
+    }
+
     render() {
         var isValid = this.state.images;
 
@@ -66,7 +72,8 @@ class RegisterMain extends React.Component {
             return (
                 <div style={{ marginTop: '10px'}}>
                     <Register2
-                    onSubmit={this.onSearchSubmit2} />
+                    onSubmit={this.onSearchSubmit2}
+                    onClick={this.onPrevious} />
                     <div>{this.state.images}</div>
                 </div>
             );
