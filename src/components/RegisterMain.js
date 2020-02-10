@@ -45,7 +45,14 @@ class RegisterMain extends React.Component {
     render() {
         var isValid = this.state.images;
 
-        if(isValid !== 'Valid'){
+        if(isValid === 'account registered'){
+            return (
+                <div>
+                    "Account has been registered"
+                </div>
+            );
+        }
+        else if(isValid !== 'Valid'){
             return (
                 <div style={{ marginTop: '10px'}}>
                     <Register1 onSubmit={this.onSearchSubmit1} />
