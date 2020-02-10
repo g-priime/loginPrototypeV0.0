@@ -30,6 +30,15 @@ class Register2 extends React.Component {
     );
   };
 
+  previousStep_onClick = event => {
+    event.preventDefault();
+    
+    this.props.onClick(
+
+    );
+    console.log("here");
+  }
+
   render() {
     return (
       <div className="ui segment " style={{ backgroundColor: "#ECEBE7" }}>
@@ -53,7 +62,8 @@ class Register2 extends React.Component {
                       placeholder="Apartment/suit/unit/house #"
                       value={this.state.appt}
                       onChange={e => this.setState({ appt: e.target.value })}
-                      required/>
+                      required
+                    />
                   </div>
                   <div className="col-sm">
                     <label>Buiding #:</label>
@@ -65,7 +75,8 @@ class Register2 extends React.Component {
                       onChange={e =>
                         this.setState({ building: e.target.value })
                       }
-                      required/>
+                      required
+                    />
                   </div>
                 </div>
                 <br />
@@ -78,7 +89,8 @@ class Register2 extends React.Component {
                       placeholder="Enter your street/avenue"
                       value={this.state.street}
                       onChange={e => this.setState({ street: e.target.value })}
-                      required/>
+                      required
+                    />
                   </div>
                 </div>
               </div>
@@ -96,7 +108,8 @@ class Register2 extends React.Component {
                         onChange={e =>
                           this.setState({ postcode: e.target.value })
                         }
-                        required/>
+                        required
+                      />
                     </div>
 
                     <div className="col-sm">
@@ -109,12 +122,12 @@ class Register2 extends React.Component {
                         onChange={e =>
                           this.setState({ province: e.target.value })
                         }
-                        required/>
+                        required
+                      />
                     </div>
-                  
                   </div>
-                  <br/>
-                    <div className="row">
+                  <br />
+                  <div className="row">
                     <div className="col-sm">
                       <label>City:</label>
                       <input
@@ -123,7 +136,8 @@ class Register2 extends React.Component {
                         placeholder="Enter your city"
                         value={this.state.city}
                         onChange={e => this.setState({ city: e.target.value })}
-                        required/>
+                        required
+                      />
                     </div>
                   </div>
                 </div>
@@ -142,41 +156,45 @@ class Register2 extends React.Component {
                     placeholder="Enter your phone number"
                     value={this.state.phone}
                     onChange={e => this.setState({ phone: e.target.value })}
-                    required/>
+                    required
+                  />
                 </div>
-              <br />
-               
-                    <div className="col-sm">
-                      <label>Emergency Contact Phone:</label>
-                      <input
-                        className="field b-5"
-                        type="text"
-                        placeholder="Enter your emergency contact phone number"
-                        value={this.state.emergencyphone}
-                        onChange={e =>
-                          this.setState({ emergencyphone: e.target.value })
-                        }
-                        required/>
-                    </div>
-                    <div className="col-sm">
-                      <label>Emergency Contact Name:</label>
-                      <input
-                        className="field b-5"
-                        type="text"
-                        placeholder="Enter your emergency contact Name"
-                        value={this.state.emergencyname}
-                        onChange={e =>
-                          this.setState({ emergencyname: e.target.value })
-                        }
-                        required/>
-                    </div>
-                  </div>
-        
+                <br />
+
+                <div className="col-sm">
+                  <label>Emergency Contact Phone:</label>
+                  <input
+                    className="field b-5"
+                    type="text"
+                    placeholder="Enter your emergency contact phone number"
+                    value={this.state.emergencyphone}
+                    onChange={e =>
+                      this.setState({ emergencyphone: e.target.value })
+                    }
+                    required
+                  />
+                </div>
+                <div className="col-sm">
+                  <label>Emergency Contact Name:</label>
+                  <input
+                    className="field b-5"
+                    type="text"
+                    placeholder="Enter your emergency contact Name"
+                    value={this.state.emergencyname}
+                    onChange={e =>
+                      this.setState({ emergencyname: e.target.value })
+                    }
+                    required
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <br />
           <div className="d-flex justify-content-between">
             <button
+              type="button"
+              onClick={this.previousStep_onClick}
               className="btn ml-3 mb-3"
               style={{
                 fontWeight: "bold",
