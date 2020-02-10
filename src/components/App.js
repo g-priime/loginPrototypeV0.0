@@ -6,13 +6,21 @@ import RegisterPage from './RegisterPage';
 import HomePage from './HomePage';
 import Header from './Header';
 import RegisterMain from './RegisterMain';
+import Gallery from './Gallery';
+import FAQ from './FAQ';
+import Testimonials from './Testimonials';
+import Services from './Services';
 import './main.css';
 
 class App extends React.Component {
 
     CURRENT_PAGE = {
         'home': <HomePage/>,
-        'register': <RegisterMain />
+        'register': <RegisterMain />,
+        'services' : <Services/>,
+        'gallery' : <Gallery />,
+        'testimonials' : <Testimonials/>,
+        'faq' : <FAQ/>
     }
 
     constructor(props) {
