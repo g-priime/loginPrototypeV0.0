@@ -1,6 +1,6 @@
 import React from "react";
 import "./reg.css";
-import "./addDog.css";
+import "./reg2.css";
 
 import { ReactComponent as Hint } from "./hint.svg";
 const hint = () => (
