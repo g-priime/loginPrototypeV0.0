@@ -6,6 +6,7 @@ import RegisterPage from './RegisterPage';
 import HomePage from './HomePage';
 import Header from './Header';
 import RegisterMain from './RegisterMain';
+import './main.css';
 
 class App extends React.Component {
 
