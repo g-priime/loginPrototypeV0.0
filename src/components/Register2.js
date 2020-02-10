@@ -133,7 +133,7 @@ class Register2 extends React.Component {
             <br />
             <div>
               {/* <h2>Phone number information</h2> */}
-              <div className="row">
+              <div className="row pr-3">
                 <div className="col-sm">
                   <label>Personal Phone:</label>
                   <input
