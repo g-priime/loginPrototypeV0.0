@@ -10,3 +10,8 @@ body {
 #register3row {
   height: 400px;
 }
+
+.cont {
+  height: 70%;
+  width:100%;
+}
