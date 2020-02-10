@@ -47,7 +47,7 @@ class Register1 extends React.Component {
                   placeholder="Enter username"
                   value={this.state.username}
                   onChange={e => this.setState({ username: e.target.value })}
-                />
+                required/>
                 <br />
                 <br />
                 
@@ -58,7 +58,7 @@ class Register1 extends React.Component {
                   placeholder="Enter password"
                   value={this.state.password}
                   onChange={e => this.setState({ password: e.target.value })}
-                />
+                  required/>
                 <br />
                 <br />
 
@@ -71,7 +71,7 @@ class Register1 extends React.Component {
                   onChange={e =>
                     this.setState({ confirmPassword: e.target.value })
                   } //how to confirm it?
-                />
+                  required/>
               </div>
               <br />
               <br />
@@ -83,7 +83,7 @@ class Register1 extends React.Component {
                   placeholder="Enter First Name"
                   value={this.state.fname}
                   onChange={e => this.setState({ fname: e.target.value })}
-                />
+                  required/>
                 <br />
                 <br />
 
@@ -93,7 +93,7 @@ class Register1 extends React.Component {
                   placeholder="Enter Last Name"
                   value={this.state.lname}
                   onChange={e => this.setState({ lname: e.target.value })}
-                />
+                  required/>
                 <br />
                 <br />
 
@@ -103,7 +103,7 @@ class Register1 extends React.Component {
                   placeholder="Enter Email"
                   value={this.state.email}
                   onChange={e => this.setState({ email: e.target.value })}
-                />
+                  required/>
                 <br />
                 <br />
                 
