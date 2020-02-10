@@ -42,6 +42,7 @@ class Register1 extends React.Component {
               <div className="col-sm">
                 <label>Username:</label>
                 <input
+                pattern="^[a-zA-Z1-9]{1,20}$"
                   className="field b-5"
                   type="text"
                   placeholder="Enter username"
@@ -55,6 +56,7 @@ class Register1 extends React.Component {
                 <input
                   type="password"
                   name="password"
+                  pattern="^[a-zA-Z1-9_*-]{1,20}$"
                   placeholder="Enter password"
                   value={this.state.password}
                   onChange={e => this.setState({ password: e.target.value })}
@@ -66,6 +68,7 @@ class Register1 extends React.Component {
                 <input
                   type="password"
                   name="confirmPassword"
+                  pattern="^[a-zA-Z1-9_*-]{1,20}$"
                   placeholder="Confirm password"
                   value={this.state.confirmPassword}
                   onChange={e =>
@@ -79,6 +82,7 @@ class Register1 extends React.Component {
               <div className="col-sm">
                 <label>First Name:</label>
                 <input
+                  pattern="^[a-zA-Z'-]{1,20}$"
                   type="text"
                   placeholder="Enter First Name"
                   value={this.state.fname}
@@ -89,6 +93,7 @@ class Register1 extends React.Component {
 
                 <label>Last Name:</label>
                 <input
+                  pattern="^[a-zA-Z'-]{1,20}$"
                   type="text"
                   placeholder="Enter Last Name"
                   value={this.state.lname}
@@ -99,7 +104,10 @@ class Register1 extends React.Component {
 
                 <label>Email:</label>
                 <input
-                  type="text"
+                  type="email"
+                  pattern="^.+(.com)$"
+                  maxLength="20"
+                  minLength="3S"
                   placeholder="Enter Email"
                   value={this.state.email}
                   onChange={e => this.setState({ email: e.target.value })}
