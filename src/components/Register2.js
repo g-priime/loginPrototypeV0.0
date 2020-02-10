@@ -32,7 +32,7 @@ class Register2 extends React.Component {
 
   render() {
     return (
-      <div className="ui segment " style={{ backgroundColor: "#ECEBE7" }}>
+      <div className="ui segment cont" style={{ backgroundColor: "#ECEBE7" }}>
         <form
           onSubmit={this.onFormSubmit}
           className="ui form"
