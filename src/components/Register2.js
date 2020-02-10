@@ -41,7 +41,7 @@ class Register2 extends React.Component {
           <div className="container">
             <h1>Registration Page</h1>
             <h2>Step 2</h2>
-            <h2>Address</h2>
+            {/* <h2>Address</h2> */}
             <div className="row">
               <div className="col-sm">
                 <div className="row">
@@ -53,7 +53,7 @@ class Register2 extends React.Component {
                       placeholder="Apartment/suit/unit/house #"
                       value={this.state.appt}
                       onChange={e => this.setState({ appt: e.target.value })}
-                    />
+                      required/>
                   </div>
                   <div className="col-sm">
                     <label>Buiding #:</label>
@@ -65,7 +65,7 @@ class Register2 extends React.Component {
                       onChange={e =>
                         this.setState({ building: e.target.value })
                       }
-                    />
+                      required/>
                   </div>
                 </div>
                 <br />
@@ -78,7 +78,7 @@ class Register2 extends React.Component {
                       placeholder="Enter your street/avenue"
                       value={this.state.street}
                       onChange={e => this.setState({ street: e.target.value })}
-                    />
+                      required/>
                   </div>
                 </div>
               </div>
@@ -96,7 +96,7 @@ class Register2 extends React.Component {
                         onChange={e =>
                           this.setState({ postcode: e.target.value })
                         }
-                      />
+                        required/>
                     </div>
 
                     <div className="col-sm">
@@ -109,8 +109,7 @@ class Register2 extends React.Component {
                         onChange={e =>
                           this.setState({ province: e.target.value })
                         }
-                      />
-                      
+                        required/>
                     </div>
                   
                   </div>
@@ -124,7 +123,7 @@ class Register2 extends React.Component {
                         placeholder="Enter your city"
                         value={this.state.city}
                         onChange={e => this.setState({ city: e.target.value })}
-                      />
+                        required/>
                     </div>
                   </div>
                 </div>
@@ -133,7 +132,7 @@ class Register2 extends React.Component {
             <br />
             <br />
             <div>
-              <h2>Phone number information</h2>
+              {/* <h2>Phone number information</h2> */}
               <div className="row">
                 <div className="col-sm">
                   <label>Personal Phone:</label>
@@ -143,12 +142,10 @@ class Register2 extends React.Component {
                     placeholder="Enter your phone number"
                     value={this.state.phone}
                     onChange={e => this.setState({ phone: e.target.value })}
-                  />
+                    required/>
                 </div>
-              </div>
               <br />
-                <div className="col-sm">
-                  <div className="row">
+               
                     <div className="col-sm">
                       <label>Emergency Contact Phone:</label>
                       <input
@@ -159,7 +156,7 @@ class Register2 extends React.Component {
                         onChange={e =>
                           this.setState({ emergencyphone: e.target.value })
                         }
-                      />
+                        required/>
                     </div>
                     <div className="col-sm">
                       <label>Emergency Contact Name:</label>
@@ -171,10 +168,10 @@ class Register2 extends React.Component {
                         onChange={e =>
                           this.setState({ emergencyname: e.target.value })
                         }
-                      />
+                        required/>
                     </div>
                   </div>
-                </div>
+        
             </div>
           </div>
           <br />
