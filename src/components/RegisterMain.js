@@ -16,35 +16,45 @@ class RegisterMain extends React.Component {
     onSearchSubmit1 = async (username, password, confirmPassword, fname, lname, email) => {
         this.setState({ fieldName: [username, password, confirmPassword, fname, lname, email] })
 
-        const response = await BasePath.put('/webresources/register', 
-        { username , password , confirmPassword, fname , lname , email });
+        const response = await BasePath.put('/webresources/verify', 
+        { username , password , confirmPassword });
 
         console.log(response.data);
+        console.log(response.status);
         this.setState({ images: response.data});
     }
 
-    onSearchSubmit2 = async () => {
+    onSearchSubmit2 = async (appt, building, street, city, province, postcode, phone, emergencyphone, emergencyname) => {
 
         var username = this.state.fieldName[0];
         var password = this.state.fieldName[1];
-        var confirmPassword = this.state.fieldName[2];
+
         var fname = this.state.fieldName[3];
         var lname = this.state.fieldName[4];
         var email = this.state.fieldName[5];
 
-        const response = await BasePath.put('/webresources/register', 
-        { username , password , confirmPassword, fname , lname , email });
+        const response = await BasePath.put('/webresources/register2', 
+        { username , password , fname , lname , email, 
+            appt, building, street, city, province, postcode, phone, emergencyphone, emergencyname });
 
         console.log(response.data);
+        console.log(response.status);
         this.setState({ images: response.data});
     }
 
     render() {
         var isValid = this.state.images;
 
-        if(isValid !== 'account registered'){
+        if(isValid === 'account registered'){
             return (
-                <div className="ui container" style={{ marginTop: '10px'}}>
+                <div>
+                    "Account has been registered"
+                </div>
+            );
+        }
+        else if(isValid !== 'Valid'){
+            return (
+                <div style={{ marginTop: '10px'}}>
                     <Register1 onSubmit={this.onSearchSubmit1} />
                     <div>{this.state.images}</div>               
                 </div>
@@ -52,7 +62,7 @@ class RegisterMain extends React.Component {
         } 
         else {
             return (
-                <div className="ui container">
+                <div style={{ marginTop: '10px'}}>
                     <Register2
                     onSubmit={this.onSearchSubmit2} />
                     <div>{this.state.images}</div>
