@@ -22,10 +22,10 @@ class Header extends React.Component {
             </div>
             <div className="pt-3 pb-3 d-flex justify-content-around header" style={{ backgroundColor: "#ECEBE7" }}>
                             <div onClick={() => {this.props.onChangePage('home')}}>Home</div>
-                            <div onClick={() => {this.props.onChangePage(0)}}>Services</div>
-                            <div onClick={() => {this.props.onChangePage(0)}}>Gallery</div>
-                            <div onClick={() => {this.props.onChangePage(0)}}>Testimonials</div>
-                            <div onClick={() => {this.props.onChangePage(0)}}>FAQ</div>
+                            <div onClick={() => {this.props.onChangePage('services')}}>Services</div>
+                            <div onClick={() => {this.props.onChangePage('gallery')}}>Gallery</div>
+                            <div onClick={() => {this.props.onChangePage('testimonials')}}>Testimonials</div>
+                            <div onClick={() => {this.props.onChangePage('faq')}}>FAQ</div>
                             <div onClick={() => {this.props.onChangePage('register')}}>Login/Register</div>
             </div>
             </div>
