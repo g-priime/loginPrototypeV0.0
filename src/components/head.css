@@ -3,10 +3,15 @@
    cursor: pointer;
 } 
 
+.header {
+    color:black;
+}
+
 div,h1 {
     font-style: Segoe UI;
 }
 
 .title {
+    margin-top: 0;
     color:white;
 }
