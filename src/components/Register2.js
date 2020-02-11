@@ -190,13 +190,12 @@ class Register2 extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
           <br />
           <div className="d-flex justify-content-between">
             <button
               type="button"
               onClick={this.previousStep_onClick}
-              className="btn ml-3 mb-3"
+              className="btn mb-3"
               style={{
                 fontWeight: "bold",
                 backgroundColor: "#1D3461",
@@ -219,6 +218,7 @@ class Register2 extends React.Component {
             >
               Register
             </button>
+          </div>
           </div>
         </form>
       </div>
