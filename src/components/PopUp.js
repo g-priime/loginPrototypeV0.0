@@ -6,7 +6,9 @@ class Popup extends React.Component {
 
   render() { 
       return (  
-        <div className={this.props.cn}>  
+        <div className='container'>
+          <div className='row'>
+          <div className={this.props.cn}>  
         <div className='popup\_inner'>  
         <h1>{this.props.text}</h1>  
         <button className="btn" 
@@ -19,7 +21,9 @@ class Popup extends React.Component {
         }}
         onClick={this.props.closePopup}>Okay</button>  
         </div>  
-        </div>  
+        </div> 
+        </div>
+        </div>
         );  
 
 }  
