@@ -1,8 +1,13 @@
 import React from "react";
 //import ReactDOM from 'react-dom';
 import "./reg.css";
+import { Link } from 'react-router-dom';
 
 class Register1 extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     username: "",
     password: "",
@@ -23,6 +28,13 @@ class Register1 extends React.Component {
       this.state.lname,
       this.state.email
     );
+  };
+
+  previousStep_onClick = event => {
+    event.preventDefault();
+
+    this.props.onClick();
+    console.log("here");
   };
 
   render() {
@@ -48,10 +60,11 @@ class Register1 extends React.Component {
                   placeholder="Enter username"
                   value={this.state.username}
                   onChange={e => this.setState({ username: e.target.value })}
-                required/>
+                  required
+                />
                 <br />
                 <br />
-                
+
                 <label>Password:</label>
                 <input
                   type="password"
@@ -60,7 +73,8 @@ class Register1 extends React.Component {
                   placeholder="Enter password"
                   value={this.state.password}
                   onChange={e => this.setState({ password: e.target.value })}
-                  required/>
+                  required
+                />
                 <br />
                 <br />
 
@@ -74,7 +88,8 @@ class Register1 extends React.Component {
                   onChange={e =>
                     this.setState({ confirmPassword: e.target.value })
                   } //how to confirm it?
-                  required/>
+                  required
+                />
               </div>
               <br />
               <br />
@@ -87,7 +102,8 @@ class Register1 extends React.Component {
                   placeholder="Enter First Name"
                   value={this.state.fname}
                   onChange={e => this.setState({ fname: e.target.value })}
-                  required/>
+                  required
+                />
                 <br />
                 <br />
 
@@ -98,7 +114,8 @@ class Register1 extends React.Component {
                   placeholder="Enter Last Name"
                   value={this.state.lname}
                   onChange={e => this.setState({ lname: e.target.value })}
-                  required/>
+                  required
+                />
                 <br />
                 <br />
 
@@ -111,16 +128,18 @@ class Register1 extends React.Component {
                   placeholder="Enter Email"
                   value={this.state.email}
                   onChange={e => this.setState({ email: e.target.value })}
-                  required/>
+                  required
+                />
                 <br />
                 <br />
-                
               </div>
             </div>
           </div>
-          
+
           <div className="d-flex justify-content-between">
-            <button
+            <Link
+            to="/"
+              type="button"
               className="btn ml-3 mb-3"
               style={{
                 fontWeight: "bold",
@@ -131,7 +150,7 @@ class Register1 extends React.Component {
               }}
             >
               Back to Home Page
-            </button>
+            </Link>
             <button
               className="btn mr-3 mb-3"
               style={{
