@@ -23,13 +23,14 @@ class Header1 extends React.Component {
                 </Link>
                 <h1 className="title mr-3">K9 FUN FAMILY</h1>
             </div>
-            <div className="pt-3 pb-3 d-flex justify-content-around header" style={{ backgroundColor: "#ECEBE7" }}>
-                            <div><Link to="/" style={{ color: "black" }}>Home</Link></div>
+            <div className="container-head d-flex align-items-center d-flex justify-content-around header" style={{ backgroundColor: "#ECEBE7" }}>
+                            <div><Link to="/" style={{ color: "black" }} ></Link>Home</div>
                             <div><Link to="/Services" style={{ color: "black" }}>Services</Link></div>
                             <div><Link to="/Gallery" style={{ color: "black" }}>Gallery</Link></div>
                             <div><Link to="/Testimonials" style={{ color: "black" }}>Testimonials</Link></div>
                             <div><Link to="/FAQ" style={{ color: "black" }}>FAQ</Link></div>
                             <div><Link to="/Register" style={{ color: "black" }}>Login/Register</Link></div>
+            
             </div>
             </div>
         );
