@@ -13,7 +13,7 @@
     text-align: center;
 }
 
-a:active >div {
+a:focus >div {
     background-color: #376996;
     color: #FEF6F6;
 }
