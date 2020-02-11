@@ -7,6 +7,15 @@
     color:black;
 }
 
+.header > div {
+    width:100%;
+    height:100%;
+}
+
+.container-head {
+    height: 50px;
+}
+
 div,h1 {
     font-style: Segoe UI;
 }
