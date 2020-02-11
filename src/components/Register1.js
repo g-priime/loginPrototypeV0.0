@@ -105,9 +105,8 @@ class Register1 extends React.Component {
                 <label>Email:</label>
                 <input
                   type="email"
-                  pattern="^.+(.com)$"
                   maxLength="20"
-                  minLength="3S"
+                  minLength="3"
                   placeholder="Enter Email"
                   value={this.state.email}
                   onChange={e => this.setState({ email: e.target.value })}
