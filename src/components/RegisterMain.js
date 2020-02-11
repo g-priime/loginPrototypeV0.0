@@ -86,6 +86,8 @@ class RegisterMain extends React.Component {
     console.log(response.data);
     console.log(response.status);
     this.setState({ images: response.data });
+
+    this.togglePopup();
   };
 
   onPrevious = () => {
