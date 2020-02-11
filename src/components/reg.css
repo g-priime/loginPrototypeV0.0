@@ -10,3 +10,42 @@ body {
 #register3row {
   height: 400px;
 }
+
+.popup1 {  
+  position: fixed;  
+  width: 25%;  
+  height: 15%;  
+  top: 0%;  
+  left: 0;  
+  right: 40%;  
+  bottom: 0;  
+  margin: auto;  
+  border-radius: 20px;
+  border-color: red;
+  border-style: solid;
+  background-color: white;  
+}  
+.popup2 {  
+  position: fixed;  
+  width: 25%;  
+  height: 15%;  
+  top: 25%;  
+  left: 0;  
+  right: 40%;  
+  bottom: 0;  
+  margin: auto;  
+  border-radius: 20px;
+  border-color: red;
+  border-style: solid;
+  background-color: white;  
+}  
+.popup\_inner {  
+  position: absolute;  
+  left: 25%;  
+  right: 25%;  
+  top: 25%;  
+  bottom: 25%;  
+  margin: auto;  
+  border-radius: 20px;  
+  background: white;  
+}
