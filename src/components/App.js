@@ -12,6 +12,8 @@ import Testimonials from './Testimonials';
 import Services from './Services';
 import './main.css';
 
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
 class App extends React.Component {
 
     CURRENT_PAGE = {
@@ -45,6 +47,7 @@ class App extends React.Component {
             return (
                 <div className="ui container" style={{ marginTop: '10px'}}>
                     <Header onChangePage={this.onChangePage}></Header>
+                    <RegisterMain onChangePage={this.onChangePage}/>
                     {this.state.page}                 
                 </div>
             );    

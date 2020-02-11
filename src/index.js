@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
+import App1 from './components/App1';
 
-ReactDOM.render(<App />, 
+ReactDOM.render(<App1 />, 
     document.querySelector('#root'));
