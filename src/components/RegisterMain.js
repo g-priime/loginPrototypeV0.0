@@ -127,7 +127,8 @@ class RegisterMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/"
+              pathname: "/",
+              state: { message: "Account Registered" }
             }}
           />
         </div>
@@ -151,6 +152,7 @@ class RegisterMain extends React.Component {
                 cn={this.state.cn}
                 text={this.state.images}
                 closePopup={this.togglePopup.bind(this)}
+                bgColor='red'
               />
             ) : null}
           </div>
