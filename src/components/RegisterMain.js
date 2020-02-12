@@ -136,6 +136,10 @@ class RegisterMain extends React.Component {
       return (
         <div style={{ marginTop: "10px" }}>
           <Register1
+            username={this.state.fieldName[0]}
+            fname={this.state.fieldName[2]}
+            lname={this.state.fieldName[3]}
+            email={this.state.fieldName[4]}
             onSubmit={this.onSearchSubmit1}
             onClick={() => {
               this.props.onChangePage("about");
