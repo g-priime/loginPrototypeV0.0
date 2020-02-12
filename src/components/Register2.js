@@ -87,6 +87,8 @@ class Register2 extends React.Component {
                     <input
                       className="field b-5"
                       type="text"
+                      min="1"
+                      max="20"
                       placeholder="Enter your street/avenue"
                       value={this.state.street}
                       onChange={e => this.setState({ street: e.target.value })}
@@ -104,7 +106,8 @@ class Register2 extends React.Component {
                       <input
                         className="field b-5"
                         type="text"
-                        placeholder="Enter your postal code"
+                        placeholder="Format: A1A1A1"
+                        pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$"
                         value={this.state.postcode}
                         onChange={e =>
                           this.setState({ postcode: e.target.value })
@@ -119,6 +122,7 @@ class Register2 extends React.Component {
                         className="field b-5"
                         type="text"
                         placeholder="Enter your province"
+                        max="20"
                         value={this.state.province}
                         onChange={e =>
                           this.setState({ province: e.target.value })
@@ -134,6 +138,7 @@ class Register2 extends React.Component {
                       <input
                         className="field b-5"
                         type="text"
+                        max="20"
                         placeholder="Enter your city"
                         value={this.state.city}
                         onChange={e => this.setState({ city: e.target.value })}
@@ -154,7 +159,8 @@ class Register2 extends React.Component {
                   <input
                     className="field b-5"
                     type="text"
-                    placeholder="Enter your phone number"
+                    placeholder="Format: 5551235678"
+                    pattern="^\d{10}$"
                     value={this.state.phone}
                     onChange={e => this.setState({ phone: e.target.value })}
                     required
@@ -167,7 +173,8 @@ class Register2 extends React.Component {
                   <input
                     className="field b-5"
                     type="text"
-                    placeholder="Enter your emergency contact phone number"
+                    placeholder="Format: 5551235678"
+                    pattern="^\d{10}$"
                     value={this.state.emergencyphone}
                     onChange={e =>
                       this.setState({ emergencyphone: e.target.value })
@@ -181,6 +188,7 @@ class Register2 extends React.Component {
                     className="field b-5"
                     type="text"
                     placeholder="Enter your emergency contact Name"
+                    max="40"
                     value={this.state.emergencyname}
                     onChange={e =>
                       this.setState({ emergencyname: e.target.value })
