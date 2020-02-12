@@ -1,7 +1,7 @@
 import React from "react";
 //import ReactDOM from 'react-dom';
 import "./reg.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class Register1 extends React.Component {
   constructor(props) {
@@ -37,6 +37,13 @@ class Register1 extends React.Component {
     console.log("here");
   };
 
+  componentWillMount = () => {
+    this.setState({ username: this.props.username });
+    this.setState({ fname: this.props.fname });
+    this.setState({ lname: this.props.lname });
+    this.setState({ email: this.props.email });
+  };
+
   render() {
     return (
       <div className="ui segment cont" style={{ backgroundColor: "#ECEBE7" }}>
@@ -54,7 +61,7 @@ class Register1 extends React.Component {
               <div className="col-sm">
                 <label>Username:</label>
                 <input
-                pattern="^[a-zA-Z1-9]{1,20}$"
+                  pattern="^[a-zA-Z1-9]{1,20}$"
                   className="field b-5"
                   type="text"
                   placeholder="Enter username"
@@ -133,36 +140,35 @@ class Register1 extends React.Component {
                 <br />
               </div>
             </div>
-      
 
-          <div className="d-flex justify-content-between">
-            <Link
-            to="/"
-              type="button"
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-              }}
-            >
-              Back to Home Page
-            </Link>
-            <button
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-              }}
-            >
-              Next Step
-            </button>
-          </div>
+            <div className="d-flex justify-content-between">
+              <Link
+                to="/"
+                type="button"
+                className="btn mb-3"
+                style={{
+                  fontWeight: "bold",
+                  backgroundColor: "#1D3461",
+                  color: "#ECEBE7",
+                  boxShadow:
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                }}
+              >
+                Back to Home Page
+              </Link>
+              <button
+                className="btn mb-3"
+                style={{
+                  fontWeight: "bold",
+                  backgroundColor: "#1D3461",
+                  color: "#ECEBE7",
+                  boxShadow:
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                }}
+              >
+                Next Step
+              </button>
+            </div>
           </div>
         </form>
       </div>
