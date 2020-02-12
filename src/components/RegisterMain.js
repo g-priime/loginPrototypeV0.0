@@ -8,13 +8,14 @@ import Header from "./Header";
 import Register1 from "./Register1";
 import Register3 from "./Register3";
 import { Redirect } from "react-router-dom";
+import Popup from "./PopUp";
 
 class RegisterMain extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  state = { images: [], fieldName: [], page: "" };
+  state = { images: [], fieldName: [], page: "", showPopup: false, cn: "" };
 
   onSearchSubmit1 = async (
     username,
@@ -37,6 +38,14 @@ class RegisterMain extends React.Component {
     console.log(response.data);
     console.log(response.status);
     this.setState({ images: response.data });
+
+    if (this.state.images === "Username Already Exists") {
+      this.setState({ cn: "popup1" });
+      this.togglePopup();
+    } else if (this.state.images === "Passwords do not match") {
+      this.setState({ cn: "popup2" });
+      this.togglePopup();
+    }
   };
 
   onSearchSubmit2 = async (
@@ -78,6 +87,7 @@ class RegisterMain extends React.Component {
     console.log(response.status);
     this.setState({ images: response.data });
 
+    this.togglePopup();
   };
 
   onPrevious = () => {
@@ -103,6 +113,12 @@ class RegisterMain extends React.Component {
     console.log("here");
   };
 
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
   render() {
     var isValid = this.state.images;
 
@@ -114,7 +130,6 @@ class RegisterMain extends React.Component {
               pathname: "/"
             }}
           />
-          <div>{this.state.images}</div>
         </div>
       );
     } else if (isValid !== "Valid") {
@@ -126,7 +141,15 @@ class RegisterMain extends React.Component {
               this.props.onChangePage("about");
             }}
           />
-          <div>{this.state.images}</div>
+          <div>
+            {this.state.showPopup ? (
+              <Popup
+                cn={this.state.cn}
+                text={this.state.images}
+                closePopup={this.togglePopup.bind(this)}
+              />
+            ) : null}
+          </div>
         </div>
       );
     } else {
@@ -136,7 +159,6 @@ class RegisterMain extends React.Component {
             onSubmit={this.onSearchSubmit2}
             onClick={this.onPrevious}
           />
-          <div>{this.state.images}</div>
         </div>
       );
     }

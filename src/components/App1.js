@@ -22,6 +22,7 @@ class App1 extends React.Component {
                 <BrowserRouter>
                 <div>
                     <Header1 />
+                    <div className="mt-4 ml-5 mr-5">
                     <Route path="/" exact 
                     component={HomePage} />
                     <Route path="/Register" component={RegisterMain} />
@@ -29,6 +30,7 @@ class App1 extends React.Component {
                     <Route path="/Gallery" component={Gallery} />
                     <Route path="/Testimonials" component={Testimonials} />
                     <Route path="/FAQ" component={FAQ} />
+                    </div>
                 </div>
                 </BrowserRouter>
             </div>

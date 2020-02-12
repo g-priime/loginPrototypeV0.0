@@ -18,16 +18,19 @@ class Header1 extends React.Component {
         return (
             <div>
             <div className="d-flex justify-content-between">
-                <img src={dog} height="40" width="50" className="align-self-end" onClick={() => {this.props.onChangePage('home')}}Dog Logo/>
-                <h1 className="title">K9 FUN FAMILY</h1>
+                <Link to="/">
+                <img src={dog} height="40" width="50" className="align-self-end"/>
+                </Link>
+                <h1 className="title mr-3">K9 FUN FAMILY</h1>
             </div>
-            <div className="pt-3 pb-3 d-flex justify-content-around header" style={{ backgroundColor: "#ECEBE7" }}>
-                            <Link to="/">Home</Link>
-                            <Link to="/Services">Services</Link>
-                            <Link to="/Gallery">Gallery</Link>
-                            <Link to="/Testimonials">Testimonials</Link>
-                            <Link to="/FAQ">FAQ</Link>
-                            <Link to="/Register">Login/Register</Link>
+            <div className="container-head d-flex align-items-center d-flex justify-content-around header" style={{ backgroundColor: "#ECEBE7" }}>
+                            <div><Link to="/" style={{ color: "#707070" }} ><div className="pt-3 pb-3">Home</div></Link></div>
+                            <div><Link to="/Services" style={{ color: "#707070" }}><div className="pt-3 pb-3">Services</div></Link></div>
+                            <div><Link to="/Gallery" style={{ color: "#707070" }}><div className="pt-3 pb-3">Gallery</div></Link></div>
+                            <div><Link to="/Testimonials" style={{ color: "#707070" }}><div className="pt-3 pb-3">Testimonials</div></Link></div>
+                            <div><Link to="/FAQ" style={{ color: "#707070" }}><div className="pt-3 pb-3">FAQ</div></Link></div>
+                            <div><Link to="/Register" style={{ color: "#707070" }}><div className="pt-3 pb-3">Login/Register</div></Link></div>
+            
             </div>
             </div>
         );

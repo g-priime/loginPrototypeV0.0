@@ -133,13 +133,13 @@ class Register1 extends React.Component {
                 <br />
               </div>
             </div>
-          </div>
+      
 
           <div className="d-flex justify-content-between">
             <Link
             to="/"
               type="button"
-              className="btn ml-3 mb-3"
+              className="btn mb-3"
               style={{
                 fontWeight: "bold",
                 backgroundColor: "#1D3461",
@@ -151,7 +151,7 @@ class Register1 extends React.Component {
               Back to Home Page
             </Link>
             <button
-              className="btn mr-3 mb-3"
+              className="btn mb-3"
               style={{
                 fontWeight: "bold",
                 backgroundColor: "#1D3461",
@@ -162,6 +162,7 @@ class Register1 extends React.Component {
             >
               Next Step
             </button>
+          </div>
           </div>
         </form>
       </div>
