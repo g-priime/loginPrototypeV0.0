@@ -19,7 +19,8 @@ a:focus >div {
 }
 
 .container-head {
-    height: 33px;
+    height: 47px;
+    font-size: 120%;
 }
 
 div,h1 {
