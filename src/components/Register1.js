@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 class Register1 extends React.Component {
   constructor(props) {
     super(props);
-    
   }
 
   state = {
@@ -20,7 +19,12 @@ class Register1 extends React.Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-
+    /*
+    this.setState({ username: {username}});
+    this.setState({ fname: {fname}});
+    this.setState({ lname: {lname}});
+    this.setState({ email: {email}});
+*/
     this.props.onSubmit(
       this.state.username,
       this.state.password,
@@ -38,12 +42,8 @@ class Register1 extends React.Component {
     console.log("here");
   };
 
-  
-
   render() {
-    
     return (
-      
       <div className="ui segment cont" style={{ backgroundColor: "#ECEBE7" }}>
         <form
           onSubmit={this.onFormSubmit}
@@ -76,8 +76,8 @@ class Register1 extends React.Component {
                   name="password"
                   pattern="^[a-zA-Z1-9_*-]{1,20}$"
                   placeholder="Enter password"
-                  value={this.state.password}
-                  onChange={e => this.setState({ password: e.target.value })}
+                  value={this.props.password}
+                  onChange={this.props.onChangePassword}
                   required
                 />
                 <br />
@@ -89,10 +89,8 @@ class Register1 extends React.Component {
                   name="confirmPassword"
                   pattern="^[a-zA-Z1-9_*-]{1,20}$"
                   placeholder="Confirm password"
-                  value={this.state.confirmPassword}
-                  onChange={e =>
-                    this.setState({ confirmPassword: e.target.value })
-                  } //how to confirm it?
+                  value={this.props.confirmPassword}
+                  onChange={this.props.onChangeConfirmPassword} //how to confirm it?
                   required
                 />
               </div>
