@@ -28,21 +28,25 @@ class RegisterMain extends React.Component {
   };
 
   onSearchSubmit1 = async (
-    username,
-    password,
-    confirmPassword,
-    fname,
-    lname,
-    email
+    //username,
+    //password,
+    //confirmPassword,
+    //fname,
+    //lname,
+    //email
   ) => {
     this.setState({
-      fieldName: [username, password, confirmPassword, fname, lname, email]
+      fieldName: [this.state.username, this.state.password, this.state.confirmPassword, this.state.fname, this.state.lname, this.state.email]
     });
 
+    var uname = this.state.username;
+    var pword = this.state.password;
+    var confirmPword = this.state.confirmPassword;
+
     const response = await BasePath.put("/webresources/verify", {
-      username,
-      password,
-      confirmPassword
+      uname,
+      pword,
+      confirmPword
     });
 
     console.log(response.data);
@@ -133,6 +137,14 @@ class RegisterMain extends React.Component {
     this.setState({ username: event.target.value });
   };
 
+  handleChangePassword = event => {
+    this.setState({ password: event.target.value });
+  };
+
+  handleChangeConfirmPassword = event => {
+    this.setState({ confirmPassword: event.target.value });
+  };
+
   handleChangeFname = event => {
     this.setState({ fname: event.target.value });
   };
@@ -164,6 +176,8 @@ class RegisterMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Register1
             onChangeUsername={this.handleChangeUsername}
+            onChangePassword={this.handleChangePassword}
+            onChangeConfirmPassword={this.handleChangeConfirmPassword}
             onChangeFname={this.handleChangeFname}
             onChangeLname={this.handleChangeLname}
             onChangeEmail={this.handleChangeEmail}
