@@ -148,7 +148,8 @@ class Register2 extends React.Component {
                   <input
                     className="field b-5"
                     type="text"
-                    placeholder="Enter your phone number"
+                    placeholder="Format: 5551235678"
+                    pattern="^\d{10}$"
                     value={this.props.phone}
                     onChange={this.props.onChangePhone}
                     required
@@ -161,7 +162,8 @@ class Register2 extends React.Component {
                   <input
                     className="field b-5"
                     type="text"
-                    placeholder="Enter your emergency contact phone number"
+                    placeholder="Format: 5551235678"
+                    pattern="^\d{10}$"
                     value={this.props.emergencyphone}
                     onChange={this.props.onChangeEmergencyphone}
                     required
