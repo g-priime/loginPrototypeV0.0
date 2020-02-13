@@ -61,8 +61,8 @@ class Register2 extends React.Component {
                       className="field b-5"
                       type="text"
                       placeholder="Apartment/suit/unit/house #"
-                      value={this.state.appt}
-                      onChange={e => this.setState({ appt: e.target.value })}
+                      value={this.props.appt}
+                      onChange={this.props.onChangeAppt}
                       required
                     />
                   </div>
@@ -72,10 +72,8 @@ class Register2 extends React.Component {
                       className="field b-5"
                       type="text"
                       placeholder="Building #"
-                      value={this.state.building}
-                      onChange={e =>
-                        this.setState({ building: e.target.value })
-                      }
+                      value={this.props.building}
+                      onChange={this.props.onChangeBuilding}
                       required
                     />
                   </div>
@@ -88,8 +86,8 @@ class Register2 extends React.Component {
                       className="field b-5"
                       type="text"
                       placeholder="Enter your street/avenue"
-                      value={this.state.street}
-                      onChange={e => this.setState({ street: e.target.value })}
+                      value={this.props.street}
+                      onChange={this.props.onChangeStreet}
                       required
                     />
                   </div>
@@ -105,10 +103,8 @@ class Register2 extends React.Component {
                         className="field b-5"
                         type="text"
                         placeholder="Enter your postal code"
-                        value={this.state.postcode}
-                        onChange={e =>
-                          this.setState({ postcode: e.target.value })
-                        }
+                        value={this.props.postcode}
+                        onChange={this.props.onChangePostcode}
                         required
                       />
                     </div>
@@ -119,10 +115,8 @@ class Register2 extends React.Component {
                         className="field b-5"
                         type="text"
                         placeholder="Enter your province"
-                        value={this.state.province}
-                        onChange={e =>
-                          this.setState({ province: e.target.value })
-                        }
+                        value={this.props.province}
+                        onChange={this.props.onChangeProvince}
                         required
                       />
                     </div>
@@ -135,8 +129,8 @@ class Register2 extends React.Component {
                         className="field b-5"
                         type="text"
                         placeholder="Enter your city"
-                        value={this.state.city}
-                        onChange={e => this.setState({ city: e.target.value })}
+                        value={this.props.city}
+                        onChange={this.props.onChangeCity}
                         required
                       />
                     </div>
@@ -155,8 +149,8 @@ class Register2 extends React.Component {
                     className="field b-5"
                     type="text"
                     placeholder="Enter your phone number"
-                    value={this.state.phone}
-                    onChange={e => this.setState({ phone: e.target.value })}
+                    value={this.props.phone}
+                    onChange={this.props.onChangePhone}
                     required
                   />
                 </div>
@@ -168,10 +162,8 @@ class Register2 extends React.Component {
                     className="field b-5"
                     type="text"
                     placeholder="Enter your emergency contact phone number"
-                    value={this.state.emergencyphone}
-                    onChange={e =>
-                      this.setState({ emergencyphone: e.target.value })
-                    }
+                    value={this.props.emergencyphone}
+                    onChange={this.props.onChangeEmergencyphone}
                     required
                   />
                 </div>
@@ -181,10 +173,8 @@ class Register2 extends React.Component {
                     className="field b-5"
                     type="text"
                     placeholder="Enter your emergency contact Name"
-                    value={this.state.emergencyname}
-                    onChange={e =>
-                      this.setState({ emergencyname: e.target.value })
-                    }
+                    value={this.props.emergencyname}
+                    onChange={this.props.onChangeEmergencyname}
                     required
                   />
                 </div>
