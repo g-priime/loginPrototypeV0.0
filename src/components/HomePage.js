@@ -4,17 +4,22 @@ import { withRouter } from "react-router-dom";
 import Popup from "./PopUp";
 
 class HomePage extends React.Component {
+    constructor(props) {
+        super(props);
+        
+      }
+
   state = { message: "", cn: "", bgColor: 'blue' };
 
-  componentWillMount = () => {
+ componentWillMount() {
     if (typeof this.props.location.state == "undefined") {
-      this.setState({ message: "" });
-    } else {
-      this.setState({ message: this.props.location.state.message });
-      this.setState({ cn: "popup3" });
-      this.togglePopup();
-    }
-  };
+        this.setState({ message: "" });
+      } else {
+        this.setState({ message: this.props.location.state.message });
+        this.setState({ cn: "popup3" });
+        this.togglePopup();
+      }
+ }
 
   togglePopup() {
     this.setState({
