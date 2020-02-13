@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 class Register1 extends React.Component {
   constructor(props) {
     super(props);
+    
   }
 
   state = {
@@ -37,15 +38,12 @@ class Register1 extends React.Component {
     console.log("here");
   };
 
-  componentWillMount = () => {
-    this.setState({ username: this.props.username });
-    this.setState({ fname: this.props.fname });
-    this.setState({ lname: this.props.lname });
-    this.setState({ email: this.props.email });
-  };
+  
 
   render() {
+    
     return (
+      
       <div className="ui segment cont" style={{ backgroundColor: "#ECEBE7" }}>
         <form
           onSubmit={this.onFormSubmit}
@@ -65,8 +63,8 @@ class Register1 extends React.Component {
                   className="field b-5"
                   type="text"
                   placeholder="Enter username"
-                  value={this.state.username}
-                  onChange={e => this.setState({ username: e.target.value })}
+                  value={this.props.username}
+                  onChange={this.props.onChangeUsername}
                   required
                 />
                 <br />
@@ -107,8 +105,8 @@ class Register1 extends React.Component {
                   pattern="^[a-zA-Z'-]{1,20}$"
                   type="text"
                   placeholder="Enter First Name"
-                  value={this.state.fname}
-                  onChange={e => this.setState({ fname: e.target.value })}
+                  value={this.props.fname}
+                  onChange={this.props.onChangeFname}
                   required
                 />
                 <br />
@@ -119,8 +117,8 @@ class Register1 extends React.Component {
                   pattern="^[a-zA-Z'-]{1,20}$"
                   type="text"
                   placeholder="Enter Last Name"
-                  value={this.state.lname}
-                  onChange={e => this.setState({ lname: e.target.value })}
+                  value={this.props.lname}
+                  onChange={this.props.onChangeLname}
                   required
                 />
                 <br />
@@ -132,8 +130,8 @@ class Register1 extends React.Component {
                   maxLength="20"
                   minLength="3"
                   placeholder="Enter Email"
-                  value={this.state.email}
-                  onChange={e => this.setState({ email: e.target.value })}
+                  value={this.props.email}
+                  onChange={this.props.onChangeEmail}
                   required
                 />
                 <br />
