@@ -24,7 +24,17 @@ class RegisterMain extends React.Component {
     username: "",
     fname: "",
     lname: "",
-    email: ""
+    email: "",
+
+    appt: '',
+      building: '',
+      street: '',
+      city: '',
+      province: '',
+      postcode: '',
+      phone: '',
+      emergencyphone: '',
+      emergencyname: ''
   };
 
   onSearchSubmit1 = async (
@@ -63,15 +73,7 @@ class RegisterMain extends React.Component {
   };
 
   onSearchSubmit2 = async (
-    appt,
-    building,
-    street,
-    city,
-    province,
-    postcode,
-    phone,
-    emergencyphone,
-    emergencyname
+    
   ) => {
     var username = this.state.fieldName[0];
     var password = this.state.fieldName[1];
@@ -80,12 +82,23 @@ class RegisterMain extends React.Component {
     var lname = this.state.fieldName[4];
     var email = this.state.fieldName[5];
 
+var appt = this.state.appt;
+var building = this.state.building;
+var street = this.state.street;
+var city = this.state.city;
+var province = this.state.province;
+var postcode = this.state.postcode;
+var phone = this.state.phone;
+var emergencyphone = this.state.emergencyphone;
+var emergencyname = this.state.emergencyname;
+
     const response = await BasePath.put("/webresources/register2", {
       username,
       password,
       fname,
       lname,
       email,
+
       appt,
       building,
       street,
@@ -157,6 +170,43 @@ class RegisterMain extends React.Component {
     this.setState({ email: event.target.value });
   };
 
+
+  handleChangeAppt = event => {
+    this.setState({ appt: event.target.value });
+  };
+
+  handleChangeBuilding = event => {
+    this.setState({ building: event.target.value });
+  };
+
+  handleChangeStreet = event => {
+    this.setState({ street: event.target.value });
+  };
+
+  handleChangeCity = event => {
+    this.setState({ city: event.target.value });
+  };
+
+  handleChangeProvince = event => {
+    this.setState({ province: event.target.value });
+  };
+
+  handleChangePostcode = event => {
+    this.setState({ postcode: event.target.value });
+  };
+
+  handleChangePhone = event => {
+    this.setState({ phone: event.target.value });
+  };
+
+  handleChangeEmergencyphone = event => {
+    this.setState({ emergencyphone: event.target.value });
+  };
+
+  handleChangeEmergencyname = event => {
+    this.setState({ emergencyname: event.target.value });
+  };
+
   render() {
     var isValid = this.state.images;
 
@@ -206,6 +256,25 @@ class RegisterMain extends React.Component {
       return (
         <div style={{ marginTop: "10px" }}>
           <Register2
+          onChangeAppt={this.handleChangeAppt}
+          onChangeBuilding={this.handleChangeBuilding}
+          onChangeStreet={this.handleChangeStreet}
+          onChangeCity={this.handleChangeCity}
+          onChangeProvince={this.handleChangeProvince}
+          onChangePostcode={this.handleChangePostcode}
+          onChangePhone={this.handleChangePhone}
+          onChangeEmergencyphone={this.handleChangeEmergencyphone}
+          onChangeEmergencyname={this.handleChangeEmergencyname}
+
+          appt={this.state.appt}
+          building={this.state.building}
+          street={this.state.street}
+          city={this.state.city}
+          province={this.state.province}
+          postcode={this.state.postcode}
+          phone={this.state.phone}
+          emergencyphone={this.state.emergencyphone}
+          emergencyname={this.state.emergencyname}
             onSubmit={this.onSearchSubmit2}
             onClick={this.onPrevious}
           />
