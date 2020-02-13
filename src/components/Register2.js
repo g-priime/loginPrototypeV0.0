@@ -101,6 +101,7 @@ class Register2 extends React.Component {
                       <label>Postal Code:</label>
                       <input
                         className="field b-5"
+                        type="text"
                         placeholder="Format: A1A1A1"
                         pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$"
                         value={this.props.postcode}
