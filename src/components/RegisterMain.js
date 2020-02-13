@@ -15,7 +15,17 @@ class RegisterMain extends React.Component {
     super(props);
   }
 
-  state = { images: [], fieldName: [], page: "", showPopup: false, cn: "" };
+  state = {
+    images: [],
+    fieldName: [],
+    page: "",
+    showPopup: false,
+    cn: "",
+    username: "",
+    fname: "",
+    lname: "",
+    email: ""
+  };
 
   onSearchSubmit1 = async (
     username,
@@ -119,6 +129,22 @@ class RegisterMain extends React.Component {
     });
   }
 
+  handleChangeUsername = event => {
+    this.setState({ username: event.target.value });
+  };
+
+  handleChangeFname = event => {
+    this.setState({ fname: event.target.value });
+  };
+
+  handleChangeLname = event => {
+    this.setState({ lname: event.target.value });
+  };
+
+  handleChangeEmail = event => {
+    this.setState({ email: event.target.value });
+  };
+
   render() {
     var isValid = this.state.images;
 
@@ -137,10 +163,14 @@ class RegisterMain extends React.Component {
       return (
         <div style={{ marginTop: "10px" }}>
           <Register1
-            username={this.state.fieldName[0]}
-            fname={this.state.fieldName[2]}
-            lname={this.state.fieldName[3]}
-            email={this.state.fieldName[4]}
+            onChangeUsername={this.handleChangeUsername}
+            onChangeFname={this.handleChangeFname}
+            onChangeLname={this.handleChangeLname}
+            onChangeEmail={this.handleChangeEmail}
+            username={this.state.username}
+            fname={this.state.fname}
+            lname={this.state.lname}
+            email={this.state.email}
             onSubmit={this.onSearchSubmit1}
             onClick={() => {
               this.props.onChangePage("about");
@@ -152,7 +182,7 @@ class RegisterMain extends React.Component {
                 cn={this.state.cn}
                 text={this.state.images}
                 closePopup={this.togglePopup.bind(this)}
-                bgColor='red'
+                bgColor="red"
               />
             ) : null}
           </div>
