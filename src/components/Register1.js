@@ -1,6 +1,6 @@
 import React from "react";
 //import ReactDOM from 'react-dom';
-import "./reg.css";
+import "../css/reg.css";
 import { Link } from "react-router-dom";
 
 class Register1 extends React.Component {
