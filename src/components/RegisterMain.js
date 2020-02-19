@@ -1,19 +1,12 @@
 import React from "react";
 
 import BasePath from "../api/BasePath";
-import RegisterPage from "./RegisterPage";
 import Register2 from "./Register2";
-import HomePage from "./HomePage";
-import Header from "./Header";
 import Register1 from "./Register1";
-import Register3 from "./Register3";
 import { Redirect } from "react-router-dom";
 import Popup from "./PopUp";
 
 class RegisterMain extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   state = {
     images: [],
