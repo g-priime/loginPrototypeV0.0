@@ -52,11 +52,13 @@ class RegisterMain extends React.Component {
     var uname = this.state.username;
     var pword = this.state.password;
     var confirmPword = this.state.confirmPassword;
+    var email = this.state.email;
 
     const response = await BasePath.put("/webresources/verify", {
       uname,
       pword,
-      confirmPword
+      confirmPword,
+      email
     });
 
     console.log(response.data);
@@ -92,7 +94,7 @@ var phone = this.state.phone;
 var emergencyphone = this.state.emergencyphone;
 var emergencyname = this.state.emergencyname;
 
-    const response = await BasePath.put("/webresources/register2", {
+    const response = await BasePath.put("/webresources/register", {
       username,
       password,
       fname,
