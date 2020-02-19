@@ -6,7 +6,7 @@ import Gallery from './Gallery';
 import FAQ from './FAQ';
 import Testimonials from './Testimonials';
 import Services from './Services';
-import './main.css';
+import '../css/main.css';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header1 from './Header1';
