@@ -1,5 +1,5 @@
 import React from "react";
-import "./reg.css";
+import "../css/reg.css";
 import "../css/addDog.css";
 
 import { ReactComponent as Hint } from "./hint.svg";
