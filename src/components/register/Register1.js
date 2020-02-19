@@ -1,10 +1,8 @@
 import React from "react";
-//import ReactDOM from 'react-dom';
-import "./reg.css";
+import "../../css/reg.css";
 import { Link } from "react-router-dom";
 
 class Register1 extends React.Component {
-
   state = {
     username: "",
     password: "",
@@ -16,12 +14,7 @@ class Register1 extends React.Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    /*
-    this.setState({ username: {username}});
-    this.setState({ fname: {fname}});
-    this.setState({ lname: {lname}});
-    this.setState({ email: {email}});
-*/
+
     this.props.onSubmit(
       this.state.username,
       this.state.password,
@@ -34,7 +27,6 @@ class Register1 extends React.Component {
 
   previousStep_onClick = event => {
     event.preventDefault();
-
     this.props.onClick();
     console.log("here");
   };

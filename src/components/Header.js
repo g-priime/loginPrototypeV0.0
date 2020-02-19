@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import HomePage from './HomePage';
 import RegisterPage from './RegisterPage';
 import dog from "./tempdog.JPG";
-import './head.css';
+import '../css/head.css';
 
 class Header extends React.Component {
 

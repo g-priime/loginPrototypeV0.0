@@ -1,6 +1,6 @@
 import React from 'react';
 import dog from "./tempdog.JPG";
-import './head.css';
+import '../css/head.css';
 import { Link } from 'react-router-dom';
 
 class Header1 extends React.Component {

@@ -1,13 +1,12 @@
 import React from "react";
 
-import BasePath from "../api/BasePath";
+import BasePath from "../../api/BasePath";
 import Register2 from "./Register2";
 import Register1 from "./Register1";
 import { Redirect } from "react-router-dom";
-import Popup from "./PopUp";
+import Popup from "../PopUp";
 
 class RegisterMain extends React.Component {
-
   state = {
     images: [],
     fieldName: [],
@@ -19,27 +18,27 @@ class RegisterMain extends React.Component {
     lname: "",
     email: "",
 
-    appt: '',
-      building: '',
-      street: '',
-      city: '',
-      province: '',
-      postcode: '',
-      phone: '',
-      emergencyphone: '',
-      emergencyname: ''
+    appt: "",
+    building: "",
+    street: "",
+    city: "",
+    province: "",
+    postcode: "",
+    phone: "",
+    emergencyphone: "",
+    emergencyname: ""
   };
 
-  onSearchSubmit1 = async (
-    //username,
-    //password,
-    //confirmPassword,
-    //fname,
-    //lname,
-    //email
-  ) => {
+  onSearchSubmit1 = async () => {
     this.setState({
-      fieldName: [this.state.username, this.state.password, this.state.confirmPassword, this.state.fname, this.state.lname, this.state.email]
+      fieldName: [
+        this.state.username,
+        this.state.password,
+        this.state.confirmPassword,
+        this.state.fname,
+        this.state.lname,
+        this.state.email
+      ]
     });
 
     var uname = this.state.username;
@@ -67,9 +66,7 @@ class RegisterMain extends React.Component {
     }
   };
 
-  onSearchSubmit2 = async (
-    
-  ) => {
+  onSearchSubmit2 = async () => {
     var username = this.state.fieldName[0];
     var password = this.state.fieldName[1];
 
@@ -77,15 +74,15 @@ class RegisterMain extends React.Component {
     var lname = this.state.fieldName[4];
     var email = this.state.fieldName[5];
 
-var appt = this.state.appt;
-var building = this.state.building;
-var street = this.state.street;
-var city = this.state.city;
-var province = this.state.province;
-var postcode = this.state.postcode;
-var phone = this.state.phone;
-var emergencyphone = this.state.emergencyphone;
-var emergencyname = this.state.emergencyname;
+    var appt = this.state.appt;
+    var building = this.state.building;
+    var street = this.state.street;
+    var city = this.state.city;
+    var province = this.state.province;
+    var postcode = this.state.postcode;
+    var phone = this.state.phone;
+    var emergencyphone = this.state.emergencyphone;
+    var emergencyname = this.state.emergencyname;
 
     const response = await BasePath.put("/webresources/register", {
       username,
@@ -120,17 +117,11 @@ var emergencyname = this.state.emergencyname;
 
   onHome = event => {
     event.preventDefault();
-
     this.props.onClick("home");
-
     console.log("main event");
-    //this.setState({ images: [] });
-    //console.log(this.state.images);
   };
 
   onChangePage = () => {
-    //event.preventDefault();
-
     this.props.onClick(this.state.page);
     console.log("here");
   };
@@ -164,7 +155,6 @@ var emergencyname = this.state.emergencyname;
   handleChangeEmail = event => {
     this.setState({ email: event.target.value });
   };
-
 
   handleChangeAppt = event => {
     this.setState({ appt: event.target.value });
@@ -251,25 +241,24 @@ var emergencyname = this.state.emergencyname;
       return (
         <div style={{ marginTop: "10px" }}>
           <Register2
-          onChangeAppt={this.handleChangeAppt}
-          onChangeBuilding={this.handleChangeBuilding}
-          onChangeStreet={this.handleChangeStreet}
-          onChangeCity={this.handleChangeCity}
-          onChangeProvince={this.handleChangeProvince}
-          onChangePostcode={this.handleChangePostcode}
-          onChangePhone={this.handleChangePhone}
-          onChangeEmergencyphone={this.handleChangeEmergencyphone}
-          onChangeEmergencyname={this.handleChangeEmergencyname}
-
-          appt={this.state.appt}
-          building={this.state.building}
-          street={this.state.street}
-          city={this.state.city}
-          province={this.state.province}
-          postcode={this.state.postcode}
-          phone={this.state.phone}
-          emergencyphone={this.state.emergencyphone}
-          emergencyname={this.state.emergencyname}
+            onChangeAppt={this.handleChangeAppt}
+            onChangeBuilding={this.handleChangeBuilding}
+            onChangeStreet={this.handleChangeStreet}
+            onChangeCity={this.handleChangeCity}
+            onChangeProvince={this.handleChangeProvince}
+            onChangePostcode={this.handleChangePostcode}
+            onChangePhone={this.handleChangePhone}
+            onChangeEmergencyphone={this.handleChangeEmergencyphone}
+            onChangeEmergencyname={this.handleChangeEmergencyname}
+            appt={this.state.appt}
+            building={this.state.building}
+            street={this.state.street}
+            city={this.state.city}
+            province={this.state.province}
+            postcode={this.state.postcode}
+            phone={this.state.phone}
+            emergencyphone={this.state.emergencyphone}
+            emergencyname={this.state.emergencyname}
             onSubmit={this.onSearchSubmit2}
             onClick={this.onPrevious}
           />
