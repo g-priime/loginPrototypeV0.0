@@ -4,9 +4,6 @@ import "./reg.css";
 import { Link } from "react-router-dom";
 
 class Register1 extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   state = {
     username: "",
