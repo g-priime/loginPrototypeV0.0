@@ -106,7 +106,10 @@ class RegisterMain extends React.Component {
     console.log(response.status);
     this.setState({ images: response.data });
 
-    this.togglePopup();
+    if (this.state.images === "Username already taken.") {
+      this.setState({ cn: "popup1" });
+      this.togglePopup();
+    }
   };
 
   onPrevious = () => {
