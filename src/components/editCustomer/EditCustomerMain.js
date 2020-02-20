@@ -114,7 +114,7 @@ class EditCustomerMain extends React.Component {
     var emergencyphone = this.state.emergencyphone;
     var emergencyname = this.state.emergencyname;
 
-    const response = await BasePath.put("/webresources/registerAccount", {
+    const response = await BasePath.put("/webresources/register", {
       username,
       password,
       fname,
