@@ -14,6 +14,8 @@ class EditCustomerMain extends React.Component {
     showPopup: false,
     cn: "",
     username: "",
+    password: "",
+    confirmPassword: "",
     fname: "",
     lname: "",
     email: "",
@@ -26,7 +28,35 @@ class EditCustomerMain extends React.Component {
     postcode: "",
     phone: "",
     emergencyphone: "",
-    emergencyname: ""
+    emergencyname: "",
+
+    initialStates: false
+  };
+
+  getCustomerInfo = async () => {
+    const customerInfo = await BasePath.get("/webresources/sendCustomerInfo");
+
+    if (this.state.initialStates === false) {
+      this.setState({
+        initialStates: true,
+        username: customerInfo.data.username,
+        password: customerInfo.data.password,
+        confirmPassword: customerInfo.data.password,
+        fname: customerInfo.data.firstName,
+        lname: customerInfo.data.lastName,
+        email: customerInfo.data.email,
+
+        appt: customerInfo.data.appt,
+        building: customerInfo.data.building,
+        street: customerInfo.data.street,
+        city: customerInfo.data.city,
+        province: customerInfo.data.province,
+        postcode: customerInfo.data.postcode,
+        phone: customerInfo.data.phone,
+        emergencyphone: customerInfo.data.emergencyphone,
+        emergencyname: customerInfo.data.emergencyname
+      });
+    }
   };
 
   onSearchSubmit1 = async () => {
@@ -57,7 +87,7 @@ class EditCustomerMain extends React.Component {
     console.log(response.status);
     this.setState({ images: response.data });
 
-    if (this.state.images === "Username Already Exists") {
+    if (this.state.images === "Username Already Exists" || this.state.images === "Username already taken.") {
       this.setState({ cn: "popup1" });
       this.togglePopup();
     } else if (this.state.images === "Passwords do not match") {
@@ -106,7 +136,10 @@ class EditCustomerMain extends React.Component {
     console.log(response.status);
     this.setState({ images: response.data });
 
-    this.togglePopup();
+    if (this.state.images === "Username already taken.") {
+      this.setState({ cn: "popup1" });
+      this.togglePopup();
+    }
   };
 
   onPrevious = () => {
@@ -193,6 +226,8 @@ class EditCustomerMain extends React.Component {
   };
 
   render() {
+    this.getCustomerInfo();
+
     var isValid = this.state.images;
 
     if (isValid === "account registered") {
@@ -217,6 +252,8 @@ class EditCustomerMain extends React.Component {
             onChangeLname={this.handleChangeLname}
             onChangeEmail={this.handleChangeEmail}
             username={this.state.username}
+            password={this.state.password}
+            confirmPassword={this.state.confirmPassword}
             fname={this.state.fname}
             lname={this.state.lname}
             email={this.state.email}
