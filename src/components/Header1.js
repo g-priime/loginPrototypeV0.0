@@ -1,25 +1,16 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import HomePage from './HomePage';
-import RegisterPage from './RegisterPage';
 import dog from "./tempdog.JPG";
-import './head.css';
+import '../css/head.css';
 import { Link } from 'react-router-dom';
 
 class Header1 extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
 
     render() {
         return (
             <div>
             <div className="d-flex justify-content-between">
                 <Link to="/">
-                <img src={dog} height="30" width="50" className="align-self-end"/>
+                <img src={dog} alt="dog" height="30" width="50" className="align-self-end"/>
                 </Link>
                 <h2 className="title mr-3">K9 FUN FAMILY</h2>
             </div>

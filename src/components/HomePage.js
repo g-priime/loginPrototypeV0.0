@@ -1,13 +1,7 @@
 import React from "react";
-import Header from "./Header";
-import { withRouter } from "react-router-dom";
 import Popup from "./PopUp";
 
 class HomePage extends React.Component {
-    constructor(props) {
-        super(props);
-        
-      }
 
   state = { message: "", cn: "", bgColor: 'blue' };
 

@@ -1,8 +1,7 @@
 import React from "react";
-import "./reg.css";
-import { Link } from 'react-router-dom';
+import "../../css/reg.css";
 
-class Register2 extends React.Component {
+class EditCustomer2 extends React.Component {
   state = {
     appt: "",
     building: "",
@@ -33,12 +32,9 @@ class Register2 extends React.Component {
 
   previousStep_onClick = event => {
     event.preventDefault();
-    
-    this.props.onClick(
-
-    );
+    this.props.onClick();
     console.log("here");
-  }
+  };
 
   render() {
     return (
@@ -49,7 +45,7 @@ class Register2 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container">
-            <h1>Registration Page</h1>
+            <h1>Edit Information</h1>
             <h2>Step 2</h2>
             {/* <h2>Address</h2> */}
             <div className="row">
@@ -186,35 +182,35 @@ class Register2 extends React.Component {
                 </div>
               </div>
             </div>
-          <br />
-          <div className="d-flex justify-content-between">
-            <button
-              type="button"
-              onClick={this.previousStep_onClick}
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-              }}
-            >
-              Previous Step
-            </button>
-            <button
-              className="btn mr-3 mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-              }}
-            >
-              Register
-            </button>
-          </div>
+            <br />
+            <div className="d-flex justify-content-between">
+              <button
+                type="button"
+                onClick={this.previousStep_onClick}
+                className="btn mb-3"
+                style={{
+                  fontWeight: "bold",
+                  backgroundColor: "#1D3461",
+                  color: "#ECEBE7",
+                  boxShadow:
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                }}
+              >
+                Previous Step
+              </button>
+              <button
+                className="btn mr-3 mb-3"
+                style={{
+                  fontWeight: "bold",
+                  backgroundColor: "#1D3461",
+                  color: "#ECEBE7",
+                  boxShadow:
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                }}
+              >
+                Register
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -222,4 +218,4 @@ class Register2 extends React.Component {
   }
 }
 
-export default Register2;
+export default EditCustomer2;

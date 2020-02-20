@@ -1,13 +1,8 @@
 import React from "react";
-//import ReactDOM from 'react-dom';
-import "./reg.css";
+import "../../css/reg.css";
 import { Link } from "react-router-dom";
 
-class Register1 extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+class EditCustomer1 extends React.Component {
   state = {
     username: "",
     password: "",
@@ -19,12 +14,7 @@ class Register1 extends React.Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    /*
-    this.setState({ username: {username}});
-    this.setState({ fname: {fname}});
-    this.setState({ lname: {lname}});
-    this.setState({ email: {email}});
-*/
+
     this.props.onSubmit(
       this.state.username,
       this.state.password,
@@ -37,7 +27,6 @@ class Register1 extends React.Component {
 
   previousStep_onClick = event => {
     event.preventDefault();
-
     this.props.onClick();
     console.log("here");
   };
@@ -51,7 +40,7 @@ class Register1 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container">
-            <h1>Registration Page</h1>
+            <h1>Edit Information</h1>
 
             <h2>Step 1</h2>
 
@@ -59,14 +48,13 @@ class Register1 extends React.Component {
               <div className="col-sm">
                 <label>Username:</label>
                 <input
-                required
-                title="Cannot be longer then 20 characters, can only contain numbers and letters"
                   pattern="^[a-zA-Z1-9]{1,20}$"
                   className="field b-5"
                   type="text"
                   placeholder="Enter username"
                   value={this.props.username}
                   onChange={this.props.onChangeUsername}
+                  required
                 />
                 <br />
                 <br />
@@ -76,7 +64,6 @@ class Register1 extends React.Component {
                   type="password"
                   name="password"
                   pattern="^[a-zA-Z1-9_*-]{1,20}$"
-                  title="Cannot be longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
                   placeholder="Enter password"
                   value={this.props.password}
                   onChange={this.props.onChangePassword}
@@ -90,7 +77,6 @@ class Register1 extends React.Component {
                   type="password"
                   name="confirmPassword"
                   pattern="^[a-zA-Z1-9_*-]{1,20}$"
-                  title="Cannot be longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
                   placeholder="Confirm password"
                   value={this.props.confirmPassword}
                   onChange={this.props.onChangeConfirmPassword} //how to confirm it?
@@ -105,7 +91,6 @@ class Register1 extends React.Component {
                 <input
                   pattern="^[a-zA-Z'-]{1,20}$"
                   type="text"
-                  title="Cannot be longer then 20 characters, ' and - allowed"
                   placeholder="Enter First Name"
                   value={this.props.fname}
                   onChange={this.props.onChangeFname}
@@ -176,4 +161,4 @@ class Register1 extends React.Component {
   }
 }
 
-export default Register1;
+export default EditCustomer1;
