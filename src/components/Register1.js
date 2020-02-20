@@ -59,13 +59,14 @@ class Register1 extends React.Component {
               <div className="col-sm">
                 <label>Username:</label>
                 <input
+                required
+                title="Cannot be longer then 20 characters, can only contain numbers and letters"
                   pattern="^[a-zA-Z1-9]{1,20}$"
                   className="field b-5"
                   type="text"
                   placeholder="Enter username"
                   value={this.props.username}
                   onChange={this.props.onChangeUsername}
-                  required
                 />
                 <br />
                 <br />
@@ -75,6 +76,7 @@ class Register1 extends React.Component {
                   type="password"
                   name="password"
                   pattern="^[a-zA-Z1-9_*-]{1,20}$"
+                  title="Cannot be longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
                   placeholder="Enter password"
                   value={this.props.password}
                   onChange={this.props.onChangePassword}
@@ -88,6 +90,7 @@ class Register1 extends React.Component {
                   type="password"
                   name="confirmPassword"
                   pattern="^[a-zA-Z1-9_*-]{1,20}$"
+                  title="Cannot be longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
                   placeholder="Confirm password"
                   value={this.props.confirmPassword}
                   onChange={this.props.onChangeConfirmPassword} //how to confirm it?
@@ -102,6 +105,7 @@ class Register1 extends React.Component {
                 <input
                   pattern="^[a-zA-Z'-]{1,20}$"
                   type="text"
+                  title="Cannot be longer then 20 characters, ' and - allowed"
                   placeholder="Enter First Name"
                   value={this.props.fname}
                   onChange={this.props.onChangeFname}
