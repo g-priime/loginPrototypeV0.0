@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/reg.css";
+import "../../css/changePassword.css";
 import { Link } from "react-router-dom";
 
 class ChangePassword1 extends React.Component {
@@ -27,7 +27,7 @@ class ChangePassword1 extends React.Component {
 
   render() {
     return (
-      <div className="ui segment cont" style={{ backgroundColor: "#ECEBE7" }}>
+      <div className="ui segment contChangePassword" style={{ backgroundColor: "#ECEBE7" }}>
         <form
           onSubmit={this.onFormSubmit}
           className="ui form"
@@ -35,8 +35,6 @@ class ChangePassword1 extends React.Component {
         >
           <div className="container">
             <h1>Change Password</h1>
-
-            <h2>Step 1</h2>
 
             <div className="row">
               <div className="col-sm">
@@ -46,7 +44,7 @@ class ChangePassword1 extends React.Component {
                   name="oldPassword"
                   pattern="^[a-zA-Z1-9_*-]{1,20}$"
                   title="Cannot be longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
-                  placeholder="Enter password"
+                  placeholder="Enter old password"
                   value={this.props.oldPassword}
                   onChange={this.props.onChangeOldPassword}
                   required
@@ -54,13 +52,13 @@ class ChangePassword1 extends React.Component {
                 <br />
                 <br />
 
-                <label>Password:</label>
+                <label>New Password:</label>
                 <input
                   type="password"
                   name="password"
                   pattern="^[a-zA-Z1-9_*-]{1,20}$"
                   title="Cannot be longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
-                  placeholder="Enter password"
+                  placeholder="Enter new password"
                   value={this.props.password}
                   onChange={this.props.onChangePassword}
                   required
@@ -68,13 +66,13 @@ class ChangePassword1 extends React.Component {
                 <br />
                 <br />
 
-                <label>Confirm Password:</label>
+                <label>Confirm New Password:</label>
                 <input
                   type="password"
                   name="confirmPassword"
                   pattern="^[a-zA-Z1-9_*-]{1,20}$"
                   title="Cannot be longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
-                  placeholder="Confirm password"
+                  placeholder="Confirm new password"
                   value={this.props.confirmPassword}
                   onChange={this.props.onChangeConfirmPassword} //how to confirm it?
                   required
@@ -84,6 +82,7 @@ class ChangePassword1 extends React.Component {
               <br />
 
             </div>
+            <br />
 
             <div className="d-flex justify-content-between">
               <Link
@@ -110,7 +109,7 @@ class ChangePassword1 extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
               >
-                Next Step
+                Submit
               </button>
             </div>
           </div>
