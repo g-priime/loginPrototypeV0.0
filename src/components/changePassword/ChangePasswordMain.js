@@ -11,24 +11,30 @@ class ChangePasswordMain extends React.Component {
     fieldName: [],
     page: "",
     showPopup: false,
-    cn: "",
-    oldPassword: ""
+    cn: ""
   };
 
-  onSearchSubmit1 = async () => {
+  onSearchSubmit1 = async (oldPassword) => {
     this.setState({
       fieldName: [
         this.state.oldPassword,
         this.state.password,
-        this.state.confirmPassword
+        this.state.confirmPassword,
+        this.state.sessionId
       ]
     });
+
+    //TODO: get some kind of sessionId that's set during login
+    var sessionId = "123";
 
     var oldPword = this.state.oldPassword;
     var pword = this.state.password;
     var confirmPword = this.state.confirmPassword;
 
+    console.log(this.state.sessionId);
+
     const response = await BasePath.put("/webresources/changePassword", {
+      sessionId,
       oldPword,
       pword,
       confirmPword,
@@ -38,11 +44,11 @@ class ChangePasswordMain extends React.Component {
     console.log(response.status);
     this.setState({ images: response.data });
 
-    if (this.state.images === "Old password does not match") {
-      this.setState({ cn: "popup1" });
+    if (this.state.images === "Old password is incorrect") {
+      this.setState({ cn: "popup4" });
       this.togglePopup();
-    } else if (this.state.images === "Passwords do not match") {
-      this.setState({ cn: "popup2" });
+    } else if (this.state.images === "New passwords do not match") {
+      this.setState({ cn: "popup5" });
       this.togglePopup();
     }
   };
@@ -91,7 +97,7 @@ class ChangePasswordMain extends React.Component {
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Account Registered" }
+              state: { message: "Password has been changed" }
             }}
           />
         </div>
