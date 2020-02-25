@@ -20,7 +20,7 @@ class Header1 extends React.Component {
                             <div><Link to="/Gallery" style={{ color: "#707070" }}><div className="pt-3 pb-3">Gallery</div></Link></div>
                             <div><Link to="/Testimonials" style={{ color: "#707070" }}><div className="pt-3 pb-3">Testimonials</div></Link></div>
                             <div><Link to="/FAQ" style={{ color: "#707070" }}><div className="pt-3 pb-3">FAQ</div></Link></div>
-                            <div><Link to="/Register" style={{ color: "#707070" }}><div className="pt-3 pb-3">Login/Register</div></Link></div>
+                            <div><Link to="/Login" style={{ color: "#707070" }}><div className="pt-3 pb-3">Login/Register</div></Link></div>
             
             </div>
             </div>
