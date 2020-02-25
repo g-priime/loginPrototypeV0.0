@@ -17,26 +17,38 @@ import Header1 from './Header1';
 
 class App1 extends React.Component {
 
-    render(){
-        return(
+    state={
+        show: false
+    }
+
+    toggleLogin = () => {
+        this.setState({show: !this.state.show})
+    };
+
+    render() {
+        return (
             <div>
                 <BrowserRouter>
-                <div>
-                    <Header1 />
-                    <div className="mt-4 ml-5 mr-5">
-                    <Route path="/" exact component={HomePage} />
-                    <Route path="/Login" component={Login} />
-                    <Route path="/Services" component={Services} />
-                    <Route path="/Gallery" component={Gallery} />
-                    <Route path="/Testimonials" component={Testimonials} />
-                    <Route path="/FAQ" component={FAQ} />
+                    <div>
+                        <Header1 showLogin={this.toggleLogin}/>
+                        <div className="mt-4 ml-5 mr-5">
+                            <Route path="/" exact component={HomePage} />
+                            <Route path="/Register" component={RegisterMain} />
+                            <Route path="/Services" component={Services} />
+                            <Route path="/Gallery" component={Gallery} />
+                            <Route path="/Testimonials" component={Testimonials} />
+                            <Route path="/FAQ" component={FAQ} />
+                        </div>
                     </div>
-                </div>
                 </BrowserRouter>
+                <Login
+                    show={this.state.show}
+                    onHide={() => this.setState({ show: false })}
+                />
             </div>
         )
     }
-    
+
 }
 
 export default App1;
