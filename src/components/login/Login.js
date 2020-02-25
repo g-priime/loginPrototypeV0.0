@@ -14,7 +14,7 @@ class Login extends React.Component {
   };
 
   loginUser = () => {
-    this.BasePath.post('/login', {
+    BasePath.post('/webresources/login', {
       username: this.state.username,
       password: this.state.password
     })
@@ -39,7 +39,8 @@ class Login extends React.Component {
       <div >
       <h1 > Login </h1>
       Enter Username: < input type = "text" onChange = {(event, newValue) => this.setState({username: newValue})}/>
-      Enter Password: < input type = "password" onChange = {(event, newValue) => this.setState({password: newValue})}/>  
+      Enter Password: < input type = "password" onChange = {(event, newValue) => this.setState({password: newValue})}/> 
+      <button onClick = {this.loginUser}>Login</button> 
       </div>
       //  </Modal.Body>
       //   <Modal.Footer>
