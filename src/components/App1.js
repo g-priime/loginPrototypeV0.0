@@ -16,13 +16,24 @@ import Header1 from './Header1';
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
 
 class App1 extends React.Component {
+
     state = {
-        show: false
+        show: false,
+        errMsg: ""
     }
 
     toggleLogin = () => {
         this.setState({ show: true });
     };
+
+    onHide = () => {
+        this.setState({ show: false });
+        this.setState({ errMsg: ""});
+    }
+
+    changeErr = (msg) => {
+        this.setState({ errMsg: msg});
+    }
 
     render() {
         return (
@@ -40,7 +51,9 @@ class App1 extends React.Component {
                             <Route path="/ChangePass" component={ChangePasswordMain}/>
                             <Login
                                 show={this.state.show}
-                                onHide={() => this.setState({ show: false })}
+                                onHide={this.onHide}
+                                errMsg={this.state.errMsg}
+                                changeErr={this.changeErr}
                             />
                         </div>
                     </div>
