@@ -34,6 +34,10 @@ class Login extends React.Component {
       });
   };
 
+  closeLogin = () => {
+    this.props.onHide();
+  }
+
   render() {
     return (
       <Modal size="lg" centered show={this.props.show} onHide={this.props.onHide}>
@@ -43,14 +47,22 @@ class Login extends React.Component {
            </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <form>
           <div className="m-4">
-            <div className="m-4">
-            Enter Username: < input type="text" onChange={(event) => this.setState({ username: event.target.value })} />
+            <div className="m-4 pt-3">
+            Enter Username: < input type="text" onChange={(event) => this.setState({ username: event.target.value })} required/>
             <br /><br />
-            Enter Password: < input type="password" onChange={(event) => this.setState({ password: event.target.value })} />
+            Enter Password: < input type="password" onChange={(event) => this.setState({ password: event.target.value })} required/>
             <br /><br />
+            <Link
+              to="/ChangePass"
+              onClick={this.closeLogin}
+            >
+              Forgot your Password?
+              </Link>
             </div>
-            <button className="btn mb-3"
+            <button type="submit"
+              className="btn mb-3"
               style={{
                 fontWeight: "bold",
                 backgroundColor: "#1D3461",
@@ -63,6 +75,7 @@ class Login extends React.Component {
             <Link
               to="/Register"
               type="button"
+              onClick={this.closeLogin}
               className="btn mb-3"
               style={{
                 fontWeight: "bold",
@@ -75,6 +88,7 @@ class Login extends React.Component {
               Register New Account
               </Link>
           </div>
+          </form>
         </Modal.Body>
       </Modal>
 
