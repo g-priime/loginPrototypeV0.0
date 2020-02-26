@@ -7,6 +7,10 @@
     font-size: 180%;
 }
 
+#titleErr {
+    color: rgba(255, 0, 0, 0.89);
+}
+
 .close {
     color: white;
 }
