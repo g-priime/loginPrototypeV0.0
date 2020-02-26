@@ -24,12 +24,11 @@ class Login extends React.Component {
       .then(result => {
         if (result.data != "invalid login") {
           localStorage.setItem('token', result.data);
-          console.log(localStorage.getItem('token'));
           this.props.onHide();
           //after this would change tab to account with drop down in header
         } else {
-          console.log('invalid name or password');
-          this.setState({ showErr: true })
+          this.props.changeErr("Invalid username or password");
+          this.setState({ showErr: true });
         }
       })
       .catch(err => {
@@ -39,6 +38,15 @@ class Login extends React.Component {
 
   closeLogin = () => {
     this.props.onHide();
+  }
+
+  validateAndLogin = () => {
+    if (this.state.username == "" || this.state.password == "") {
+      this.props.changeErr("Username and/or Password cannot be empty");
+      this.setState({ showErr: true });
+    } else {
+      this.loginUser();
+    }
   }
 
   render() {
@@ -58,7 +66,7 @@ class Login extends React.Component {
               Enter Password: < input type="password" onChange={(event) => this.setState({ password: event.target.value })} required />
               <br /><br />
                 {this.state.showErr ? (
-                  <div>Invalid username or password</div>
+                  <div className="error">{this.props.errMsg}</div>
                 ) : null}
               <br />
               <Link
@@ -77,7 +85,7 @@ class Login extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-              }} onClick={this.loginUser}>Login</button><br />
+              }} onClick={this.validateAndLogin}>Login</button><br />
             <div>OR</div>
             <br />
             <Link
