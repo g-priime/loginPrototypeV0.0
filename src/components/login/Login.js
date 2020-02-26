@@ -26,6 +26,7 @@ class Login extends React.Component {
           localStorage.setItem('token', result.data);
           console.log(localStorage.getItem('token'));
           this.props.onHide();
+          //after this would change tab to account with drop down in header
         } else {
           console.log('invalid name or password');
           this.setState({ showErr: true })
@@ -64,6 +65,7 @@ class Login extends React.Component {
                 to="/ChangePass"
                 onClick={this.closeLogin}
               >
+                {/* get username and send to the change password link*/}
                 Forgot your Password?
               </Link>
             </div>
