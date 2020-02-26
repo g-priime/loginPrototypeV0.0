@@ -10,7 +10,7 @@ class Header1 extends React.Component {
             <div>
             <div className="d-flex justify-content-between">
                 <Link to="/">
-                <img src={dog} alt="dog" height="30" width="50" className="align-self-end"/>
+                <img src={dog} alt="dog" height="30" width="40" className="align-self-end"/>
                 </Link>
                 <h2 className="title mr-3">K9 FUN FAMILY</h2>
             </div>
@@ -20,7 +20,7 @@ class Header1 extends React.Component {
                             <div><Link to="/Gallery" style={{ color: "#707070" }}><div className="pt-3 pb-3">Gallery</div></Link></div>
                             <div><Link to="/Testimonials" style={{ color: "#707070" }}><div className="pt-3 pb-3">Testimonials</div></Link></div>
                             <div><Link to="/FAQ" style={{ color: "#707070" }}><div className="pt-3 pb-3">FAQ</div></Link></div>
-                            <div><Link to="/Register" style={{ color: "#707070" }}><div className="pt-3 pb-3">Login/Register</div></Link></div>
+                            <div style={{ color: "#707070" }} onClick={this.props.showLogin}><div className="pt-3 pb-3">Login/Register</div></div>
             
             </div>
             </div>
