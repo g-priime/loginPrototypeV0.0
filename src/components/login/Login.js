@@ -27,7 +27,7 @@ class Login extends React.Component {
           this.props.onHide();
           //after this would change tab to account with drop down in header
         } else {
-          this.props.changeErr("Invalid username or password");
+          this.props.changeErr("Invalid username and/or password");
           this.setState({ showErr: true });
         }
       })
