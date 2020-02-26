@@ -1,7 +1,5 @@
 import React from "react";
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../../css/login.css";
 import BasePath from "../../api/BasePath";
 import Modal from 'react-bootstrap/Modal';
@@ -10,12 +8,12 @@ class Login extends React.Component {
 
   constructor(props) {
     super(props);
-  };
 
-  state = {
-    username: "",
-    password: ""
-  };
+    this.state = {
+      username: "",
+      password: ""
+    };
+  }
 
   loginUser = () => {
     BasePath.post('/webresources/login', {
@@ -26,8 +24,9 @@ class Login extends React.Component {
         if (result.data != "invalid login") {
           localStorage.setItem('token', result.data);
           console.log(localStorage.getItem('token'));
+          this.props.onHide();
         } else {
-          console.log('invalid');
+          console.log('invalid name or password');
         }
       })
       .catch(err => {
@@ -37,19 +36,44 @@ class Login extends React.Component {
 
   render() {
     return (
-
-      <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Login/Register
+      <Modal size="lg" centered show={this.props.show} onHide={this.props.onHide}>
+        <Modal.Header closeButton className="header">
+          <Modal.Title id="title">
+            Login
            </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div >
-            <h1 > Login </h1>
+          <div className="m-4">
+            <div className="m-4">
             Enter Username: < input type="text" onChange={(event) => this.setState({ username: event.target.value })} />
+            <br /><br />
             Enter Password: < input type="password" onChange={(event) => this.setState({ password: event.target.value })} />
-            <button onClick={this.loginUser}>Login</button>
+            <br /><br />
+            </div>
+            <button className="btn mb-3"
+              style={{
+                fontWeight: "bold",
+                backgroundColor: "#1D3461",
+                color: "#ECEBE7",
+                boxShadow:
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+              }} onClick={this.loginUser}>Login</button><br />
+            <div>OR</div>
+            <br />
+            <Link
+              to="/Register"
+              type="button"
+              className="btn mb-3"
+              style={{
+                fontWeight: "bold",
+                backgroundColor: "#1D3461",
+                color: "#ECEBE7",
+                boxShadow:
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+              }}
+            >
+              Register New Account
+              </Link>
           </div>
         </Modal.Body>
       </Modal>
