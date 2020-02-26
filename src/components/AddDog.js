@@ -2,6 +2,7 @@ import React from "react";
 import "../css/reg.css";
 import "../css/addDog.css";
 
+
 import { ReactComponent as Hint } from "./hint.svg";
 const hint = () => (
   <div>
