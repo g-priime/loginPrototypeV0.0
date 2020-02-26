@@ -14,6 +14,7 @@ class Header1 extends React.Component {
                 </Link>
                 <h2 className="title mr-3">K9 FUN FAMILY</h2>
             </div>
+            {/* TODO: find a way to keep track of current page for highlighting the tab, maybe store in session? */}
             <div className="container-head d-flex align-items-center d-flex justify-content-around header" style={{ backgroundColor: "#ECEBE7" }}>
                             <div><Link to="/" style={{ color: "#707070" }} ><div className="pt-3 pb-3">Home</div></Link></div>
                             <div><Link to="/Services" style={{ color: "#707070" }}><div className="pt-3 pb-3">Services</div></Link></div>
