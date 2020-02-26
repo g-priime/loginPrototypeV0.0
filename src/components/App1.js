@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import HomePage from './HomePage';
 import RegisterMain from './register/RegisterMain';
@@ -16,13 +16,12 @@ import Header1 from './Header1';
 //import ChangePasswordMain from './changePassword/ChangePasswordMain';
 
 class App1 extends React.Component {
-
-    state={
+    state = {
         show: false
     }
 
     toggleLogin = () => {
-        this.setState({show: !this.state.show})
+        this.setState({ show: true });
     };
 
     render() {
@@ -30,7 +29,7 @@ class App1 extends React.Component {
             <div>
                 <BrowserRouter>
                     <div>
-                        <Header1 showLogin={this.toggleLogin}/>
+                        <Header1 showLogin={this.toggleLogin} />
                         <div className="mt-4 ml-5 mr-5">
                             <Route path="/" exact component={HomePage} />
                             <Route path="/Register" component={RegisterMain} />
@@ -38,13 +37,13 @@ class App1 extends React.Component {
                             <Route path="/Gallery" component={Gallery} />
                             <Route path="/Testimonials" component={Testimonials} />
                             <Route path="/FAQ" component={FAQ} />
+                            <Login
+                                show={this.state.show}
+                                onHide={() => this.setState({ show: false })}
+                            />
                         </div>
                     </div>
                 </BrowserRouter>
-                <Login
-                    show={this.state.show}
-                    onHide={() => this.setState({ show: false })}
-                />
             </div>
         )
     }
