@@ -13,7 +13,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header1 from './Header1';
 
 //import EditCustomerMain from './editCustomer/EditCustomerMain';
-//import ChangePasswordMain from './changePassword/ChangePasswordMain';
+import ChangePasswordMain from './changePassword/ChangePasswordMain';
 
 class App1 extends React.Component {
     state = {
@@ -37,6 +37,7 @@ class App1 extends React.Component {
                             <Route path="/Gallery" component={Gallery} />
                             <Route path="/Testimonials" component={Testimonials} />
                             <Route path="/FAQ" component={FAQ} />
+                            <Route path="/ChangePass" component={ChangePasswordMain}/>
                             <Login
                                 show={this.state.show}
                                 onHide={() => this.setState({ show: false })}
