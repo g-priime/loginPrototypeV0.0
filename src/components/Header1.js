@@ -10,7 +10,7 @@ class Header1 extends React.Component {
             <div>
             <div className="d-flex justify-content-between">
                 <Link to="/">
-                <img src={dog} alt="dog" height="30" width="50" className="align-self-end"/>
+                <img src={dog} alt="dog" height="30" width="40" className="align-self-end"/>
                 </Link>
                 <h2 className="title mr-3">K9 FUN FAMILY</h2>
             </div>
