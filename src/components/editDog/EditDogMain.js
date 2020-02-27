@@ -56,7 +56,7 @@ class EditDogMain extends React.Component {
     physlimit: "",
     veterinarian: "",
 
-    straingers: "",
+    strangers: "",
     largerdogs: "",
     smalldogs: "",
     puppies: "",
