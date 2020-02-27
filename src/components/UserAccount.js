@@ -1,4 +1,5 @@
 import React from "react";
+import { Collapse } from "react-collapse";
 import "../css/reg.css";
 import "../css/userAccount.css";
 
@@ -185,6 +186,13 @@ class UserAccount extends React.Component {
                   Add new dog
                 </button>
               </div>
+            </div>
+            <br />
+            <br />
+            <div>
+
+
+
             </div>
           </div>
         </div>
