@@ -1,7 +1,9 @@
 import React from "react";
-import { Collapse } from "react-collapse";
 import "../css/reg.css";
 import "../css/userAccount.css";
+import DogProfile from "./DogProfile";
+
+
 
 class UserAccount extends React.Component {
   state = {
@@ -191,7 +193,7 @@ class UserAccount extends React.Component {
             <br />
             <div>
 
-
+<DogProfile />
 
             </div>
           </div>
@@ -202,3 +204,6 @@ class UserAccount extends React.Component {
 }
 
 export default UserAccount;
+
+
+
