@@ -56,7 +56,7 @@ class AddDogMain extends React.Component {
     physlimit: "",
     veterinarian: "",
 
-    straingers: "",
+    strangers: "",
     largerdogs: "",
     smalldogs: "",
     puppies: "",
@@ -154,7 +154,7 @@ class AddDogMain extends React.Component {
     var physlimit = this.state.fieldName[8];
     var veterinarian = this.state.fieldName[9];
 
-    var straingers = this.state.straingers;
+    var strangers = this.state.strangers;
     var largerdogs = this.state.largerdogs;
     var smalldogs = this.state.smalldogs;
     var puppies = this.state.puppies;
@@ -175,7 +175,7 @@ class AddDogMain extends React.Component {
       physlimit,
       veterinarian,
 
-      straingers,
+      strangers,
       largerdogs,
       smalldogs,
       puppies,
@@ -235,8 +235,8 @@ class AddDogMain extends React.Component {
     this.setState({ veterinarian: event.target.value });
   };
 
-  handleChangeStraingers = event => {
-    this.setState({ straingers: event.target.value });
+  handleChangeStrangers = event => {
+    this.setState({ strangers: event.target.value });
   };
 
   handleChangeLargerdogs = event => {
@@ -328,14 +328,14 @@ class AddDogMain extends React.Component {
       return (
         <div style={{ marginTop: "10px" }}>
           <AddDog2
-            onChangeStraingers={this.handleChangeStraingers}
+            onChangeStrangers={this.handleChangeStrangers}
             onChangeLargerdogs={this.handleChangeLargerdogs}
             onChangeSmalldogs={this.handleChangeSmalldogs}
             onChangePuppies={this.handleChangePuppies}
             onChangeDa2pp={this.handleChangeDa2pp}
             onChangeRabies={this.handleChangeRabies}
             onChangeBordetella={this.handleChangeBordetella}
-            straingers={this.state.straingers}
+            strangers={this.state.strangers}
             largerdogs={this.state.largerdogs}
             smalldogs={this.state.smalldogs}
             puppies={this.state.puppies}
