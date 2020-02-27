@@ -34,7 +34,7 @@ const hint = () => (
 
 class AddDog2 extends React.Component {
   state = {
-    straingers: "",
+    strangers: "",
     largerdogs: "",
     smalldogs: "",
     puppies: "",
@@ -47,7 +47,7 @@ class AddDog2 extends React.Component {
     event.preventDefault();
 
     this.props.onSubmit(
-      this.state.straingers,
+      this.state.strangers,
       this.state.largerdogs,
       this.state.smalldogs,
       this.state.puppies,
@@ -88,10 +88,10 @@ class AddDog2 extends React.Component {
                     <label>
                       <input
                         type="radio"
-                        name="straingers"
+                        name="strangers"
                         value="yes"
-                        checked={this.props.straingers === "yes"}
-                        onChange={this.props.onChangeStraingers}
+                        checked={this.props.strangers === "yes"}
+                        onChange={this.props.onChangeStrangers}
                       />
                     </label>
                   </td>
@@ -100,10 +100,10 @@ class AddDog2 extends React.Component {
                     <label>
                       <input
                         type="radio"
-                        name="straingers"
+                        name="strangers"
                         value="no"
-                        checked={this.props.straingers === "no"}
-                        onChange={this.props.onChangeStraingers}
+                        checked={this.props.strangers === "no"}
+                        onChange={this.props.onChangeStrangers}
                       />
                     </label>
                   </td>
