@@ -3,10 +3,10 @@ import "../css/reg.css";
 import "../css/userAccount.css";
 import DogProfile from "./DogProfile";
 
-
-
 class UserAccount extends React.Component {
   state = {
+    dogList: [],
+    dog: null,
     username: "",
     password: "",
     fname: "",
@@ -192,9 +192,8 @@ class UserAccount extends React.Component {
             <br />
             <br />
             <div>
-
-<DogProfile />
-
+                {/* {this.state.dogList.map((dog) => <DogProfile chosenDog={dog}/> )} */}
+                <DogProfile />
             </div>
           </div>
         </div>
@@ -204,6 +203,3 @@ class UserAccount extends React.Component {
 }
 
 export default UserAccount;
-
-
-
