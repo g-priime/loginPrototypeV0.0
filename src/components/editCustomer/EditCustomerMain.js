@@ -37,6 +37,7 @@ class EditCustomerMain extends React.Component {
     var token = localStorage.getItem('token');
 
     const customerInfo = await BasePath.get(`/webresources/RetrieveUser/${token}`);
+    //console.log(customerInfo);
 
     if (this.state.initialStates === false) {
       this.setState({
@@ -48,15 +49,15 @@ class EditCustomerMain extends React.Component {
         lname: customerInfo.data.lastName,
         email: customerInfo.data.email,
 
-        appt: customerInfo.data.appt,
-        building: customerInfo.data.building,
-        street: customerInfo.data.street,
-        city: customerInfo.data.city,
-        province: customerInfo.data.province,
-        postcode: customerInfo.data.postcode,
+        appt: customerInfo.data.address.appt,
+        building: customerInfo.data.address.building,
+        street: customerInfo.data.address.street,
+        city: customerInfo.data.address.city,
+        province: customerInfo.data.address.province,
+        postcode: customerInfo.data.address.post,
         phone: customerInfo.data.phone,
-        emergencyphone: customerInfo.data.emergencyphone,
-        emergencyname: customerInfo.data.emergencyname
+        emergencyphone: customerInfo.data.emergencyPhone,
+        emergencyname: customerInfo.data.emergencyName
       });
     }
   };
@@ -116,7 +117,7 @@ class EditCustomerMain extends React.Component {
     var emergencyphone = this.state.emergencyphone;
     var emergencyname = this.state.emergencyname;
 
-    const response = await BasePath.put("/webresources/register", {
+    const response = await BasePath.put("/webresources/update", {
       username,
       password,
       fname,
@@ -232,7 +233,7 @@ class EditCustomerMain extends React.Component {
 
     var isValid = this.state.images;
 
-    if (isValid === "account registered") {
+    if (isValid === "Updated") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
