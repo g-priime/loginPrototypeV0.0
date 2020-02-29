@@ -18,7 +18,8 @@ const DogProfile = props => {
           backgroundColor: "#1D3461",
           color: "#ECEBE7",
           boxShadow:
-            "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+            "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+            marginBottom: '1rem'
         }}
         onClick={toggle}
         // style={{ marginBottom: "1rem" }}
