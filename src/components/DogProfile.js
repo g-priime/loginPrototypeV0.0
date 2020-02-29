@@ -34,13 +34,13 @@ const DogProfile = props => {
 
               <div className="row">
                 <div className="col-sm">
-                <div className="row">
-                  <div className="col-sm">
-                    <div className="left">
-                      <b>Breed: </b>
+                  <div className="row">
+                    <div className="col-sm">
+                      <div className="left">
+                        <b>Breed: </b>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-sm">---</div>
+                    <div className="col-sm">---</div>
                   </div>
                   <div className="row">
                     <div className="col-sm">
