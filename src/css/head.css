@@ -1,9 +1,9 @@
-.header div:hover {
+.header:hover {
    color:lightblue;
    cursor: pointer;
 } 
 
-.header {
+.headerNav {
     color:black;
 }
 
