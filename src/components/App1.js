@@ -1,5 +1,5 @@
 import React from 'react';
-
+import UserAccount from './UserAccount';
 import HomePage from './HomePage';
 import RegisterMain from './register/RegisterMain';
 import Gallery from './Gallery';
@@ -11,7 +11,9 @@ import '../css/main.css';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header1 from './Header1';
-
+import AddDog from './AddDog';
+import EditCustomerMain from './editCustomer/EditCustomerMain';
+import EditCustomer1 from './editCustomer/EditCustomerMain';
 //import EditCustomerMain from './editCustomer/EditCustomerMain';
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
 
@@ -39,6 +41,7 @@ class App1 extends React.Component {
         return (
             <div>
                 <BrowserRouter>
+
                     <div>
                         <Header1 showLogin={this.toggleLogin} />
                         <div className="mt-4 ml-5 mr-5">
@@ -56,6 +59,7 @@ class App1 extends React.Component {
                                 changeErr={this.changeErr}
                             />
                         </div>
+
                     </div>
                 </BrowserRouter>
             </div>
