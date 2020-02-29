@@ -34,17 +34,37 @@ const DogProfile = props => {
 
               <div className="row">
                 <div className="col-sm">
-                  <div className="left">
-                    <b>Breed: </b>---
+                <div className="row">
+                  <div className="col-sm">
+                    <div className="left">
+                      <b>Breed: </b>
+                    </div>
                   </div>
-                  <div className="left">
-                    <b>Date of birth: </b>---
+                  <div className="col-sm">---</div>
                   </div>
-                  <div className="left">
-                    <b>Gender: </b>---
+                  <div className="row">
+                    <div className="col-sm">
+                      <div className="left">
+                        <b>Date of birth: </b>
+                      </div>
+                    </div>
+                    <div className="col-sm">---</div>
                   </div>
-                  <div className="left">
-                    <b>Weight: </b>---
+                  <div className="row">
+                    <div className="col-sm">
+                      <div className="left">
+                        <b>Gender: </b>
+                      </div>
+                    </div>
+                    <div className="col-sm">---</div>
+                  </div>
+                  <div className="row">
+                    <div className="col-sm">
+                      <div className="left">
+                        <b>Weight: </b>
+                      </div>
+                    </div>
+                    <div className="col-sm">---</div>
                   </div>
                   <div className="left">
                     <b>neuteredSpayed</b>
