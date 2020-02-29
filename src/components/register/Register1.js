@@ -48,8 +48,8 @@ class Register1 extends React.Component {
               <div className="col-sm">
                 <label>Username:</label>
                 <input
-                required
-                title="Cannot be longer then 20 characters, can only contain numbers and letters"
+                  required
+                  title="Cannot be longer then 20 characters, can only contain numbers and letters"
                   pattern="^[a-zA-Z1-9]{1,20}$"
                   className="field b-5"
                   type="text"
