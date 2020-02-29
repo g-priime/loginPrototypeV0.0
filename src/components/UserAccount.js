@@ -43,46 +43,46 @@ class UserAccount extends React.Component {
     bordetella: ""
   };
 
-  onFormSubmit = event => {
-    event.preventDefault();
+  // onFormSubmit = event => {
+  //   event.preventDefault();
 
-    this.props.onSubmit(
-      this.state.username,
-      this.state.password,
-      this.state.fname,
-      this.state.lname,
-      this.state.email,
+  //   this.props.onSubmit(
+  //     this.state.username,
+  //     this.state.password,
+  //     this.state.fname,
+  //     this.state.lname,
+  //     this.state.email,
 
-      this.state.appt,
-      this.state.building,
-      this.state.street,
-      this.state.city,
-      this.state.province,
-      this.state.postcode,
-      this.state.phone,
-      this.state.emergencyphone,
-      this.state.emergencyname,
+  //     this.state.appt,
+  //     this.state.building,
+  //     this.state.street,
+  //     this.state.city,
+  //     this.state.province,
+  //     this.state.postcode,
+  //     this.state.phone,
+  //     this.state.emergencyphone,
+  //     this.state.emergencyname,
 
-      this.state.dogname,
-      this.state.breed,
-      this.state.dob,
-      this.state.gender,
-      this.state.weight,
-      this.state.neuteredspayed,
-      this.state.medication,
-      this.state.allergies,
-      this.state.physlimit,
-      this.state.veterinarian,
+  //     this.state.dogname,
+  //     this.state.breed,
+  //     this.state.dob,
+  //     this.state.gender,
+  //     this.state.weight,
+  //     this.state.neuteredspayed,
+  //     this.state.medication,
+  //     this.state.allergies,
+  //     this.state.physlimit,
+  //     this.state.veterinarian,
 
-      this.state.strangers,
-      this.state.largerdogs,
-      this.state.smalldogs,
-      this.state.puppies,
-      this.state.da2pp,
-      this.state.rabies,
-      this.state.bordetella
-    );
-  };
+  //     this.state.strangers,
+  //     this.state.largerdogs,
+  //     this.state.smalldogs,
+  //     this.state.puppies,
+  //     this.state.da2pp,
+  //     this.state.rabies,
+  //     this.state.bordetella
+  //   );
+  // };
 
   render() {
     return (
