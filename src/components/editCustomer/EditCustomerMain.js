@@ -35,10 +35,9 @@ class EditCustomerMain extends React.Component {
 
   getCustomerInfo = async () => {
     var token = localStorage.getItem('token');
-    console.log(token);
-    var content = "minnie";
+    //console.log(token);
 
-    const customerInfo = await BasePath.get(`/webresources/RetrieveUser/${content}`);
+    const customerInfo = await BasePath.get(`/webresources/RetrieveUser/${token}`);
 
     if (this.state.initialStates === false) {
       this.setState({
