@@ -5,6 +5,7 @@ import DogProfile from "./DogProfile";
 
 class UserAccount extends React.Component {
   state = {
+    userList: [],
     dogList: [],
     dog: null,
     username: "",
@@ -192,8 +193,8 @@ class UserAccount extends React.Component {
             <br />
             <br />
             <div>
-                {/* {this.state.dogList.map((dog) => <DogProfile chosenDog={dog}/> )} */}
-                <DogProfile />
+              {/* {this.state.dogList.map((dog) => <DogProfile chosenDog={dog}/> )} */}
+              <DogProfile />
             </div>
           </div>
         </div>
