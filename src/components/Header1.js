@@ -14,7 +14,7 @@ class Header1 extends React.Component {
                 </Link>
                 <h2 className="title mr-3">K9 FUN FAMILY</h2>
             </div>
-            <div className="container-head d-flex justify-content-around">
+            <div className="container-head d-flex justify-content-around header">
             
             <NavLink className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
                         color: "#FEF6F6"
