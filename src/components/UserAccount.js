@@ -2,15 +2,13 @@ import React from "react";
 import "../css/reg.css";
 import "../css/userAccount.css";
 import DogProfile from "./DogProfile";
-import BasePath from "../../api/BasePath";
-import { getQueriesForElement } from "@testing-library/react";
 
 class UserAccount extends React.Component {
   state = {
     userList: [],
     dogList: [],
     dog: null,
-    user: null,
+    username: "",
     password: "",
     fname: "",
     lname: "",
@@ -44,8 +42,6 @@ class UserAccount extends React.Component {
     rabies: "",
     bordetella: ""
   };
-
-
 
   // onFormSubmit = event => {
   //   event.preventDefault();
@@ -88,19 +84,8 @@ class UserAccount extends React.Component {
   //   );
   // };
 
-  getUser = () => {
-    BasePath.get('/webresources/RetrieveUser/' + localStorage.getItem('token'))
-    .then( result => {
-      console.log(result.data);
-    });
-  }
-
   render() {
-
-    getUser;
-
     return (
-
       <div className="row">
         <div className="col-sm-4">
           <div
@@ -108,7 +93,7 @@ class UserAccount extends React.Component {
             style={{ backgroundColor: "#ECEBE7" }}
           >
             <div>
-              <h1>{this.state.username}</h1>
+              <h1>Customer Name goes here</h1>
             </div>
             <br />
             <div className="left">
