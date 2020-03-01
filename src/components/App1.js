@@ -17,7 +17,6 @@ import EditCustomer1 from './editCustomer/EditCustomerMain';
 import AddDogMain from './addDog/AddDogMain';
 import AddDog1 from './addDog/AddDog1';
 import AddDog2 from './addDog/AddDog2';
-//import EditCustomerMain from './editCustomer/EditCustomerMain';
 
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
 
@@ -52,7 +51,7 @@ class App1 extends React.Component {
                             <Route path="/" exact component={HomePage} />
                             <Route path="/Register" component={RegisterMain} />
                             <Route path="/Services" component={EditCustomerMain} />
-                            <Route path="/Gallery" component={Gallery} />
+                            <Route path="/Gallery" component={ChangePasswordMain} />
                             <Route path="/Testimonials" component={Testimonials} />
                             <Route path="/FAQ" component={FAQ} />
                             <Route path="/ChangePass" component={ChangePasswordMain}/>
