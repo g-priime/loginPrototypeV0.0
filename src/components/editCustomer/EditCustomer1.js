@@ -1,5 +1,6 @@
 import React from "react";
 import "../../css/reg.css";
+import "../../css/editCustomer.css";
 import { Link } from "react-router-dom";
 
 class EditCustomer1 extends React.Component {
@@ -45,48 +46,8 @@ class EditCustomer1 extends React.Component {
             <h2>Step 1</h2>
 
             <div className="row">
-              <div className="col-sm">
-                <label>Username:</label>
-                <input
-                  pattern="^[a-zA-Z1-9]{1,20}$"
-                  className="field b-5"
-                  type="text"
-                  placeholder="Enter username"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                  required
-                />
-                <br />
-                <br />
 
-                <label>Password:</label>
-                <input
-                  type="password"
-                  name="password"
-                  pattern="^[a-zA-Z1-9_*-]{1,20}$"
-                  placeholder="Enter password"
-                  value={this.props.password}
-                  onChange={this.props.onChangePassword}
-                  required
-                />
-                <br />
-                <br />
-
-                <label>Confirm Password:</label>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  pattern="^[a-zA-Z1-9_*-]{1,20}$"
-                  placeholder="Confirm password"
-                  value={this.props.confirmPassword}
-                  onChange={this.props.onChangeConfirmPassword} //how to confirm it?
-                  required
-                />
-              </div>
-              <br />
-              <br />
-
-              <div className="col-sm">
+              <div className="col-sm colEditCustomer">
                 <label>First Name:</label>
                 <input
                   pattern="^[a-zA-Z'-]{1,20}$"

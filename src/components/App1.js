@@ -11,12 +11,14 @@ import '../css/main.css';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header1 from './Header1';
+
 import EditCustomerMain from './editCustomer/EditCustomerMain';
 import EditCustomer1 from './editCustomer/EditCustomerMain';
 import AddDogMain from './addDog/AddDogMain';
 import AddDog1 from './addDog/AddDog1';
 import AddDog2 from './addDog/AddDog2';
 //import EditCustomerMain from './editCustomer/EditCustomerMain';
+
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
 
 class App1 extends React.Component {
@@ -49,7 +51,7 @@ class App1 extends React.Component {
                         <div className="mt-4 ml-5 mr-5">
                             <Route path="/" exact component={HomePage} />
                             <Route path="/Register" component={RegisterMain} />
-                            <Route path="/Services" component={Services} />
+                            <Route path="/Services" component={EditCustomerMain} />
                             <Route path="/Gallery" component={Gallery} />
                             <Route path="/Testimonials" component={Testimonials} />
                             <Route path="/FAQ" component={FAQ} />
