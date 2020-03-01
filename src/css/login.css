@@ -1,0 +1,16 @@
+.header {
+    background-color: #376996;
+}
+
+#title {
+    color: white;
+    font-size: 180%;
+}
+
+.error{
+    color: rgba(255, 0, 0, 0.89);
+}
+
+.close {
+    color: white;
+}
