@@ -74,14 +74,10 @@ class EditCustomerMain extends React.Component {
     });
 
     var uname = this.state.username;
-    var pword = this.state.password;
-    var confirmPword = this.state.confirmPassword;
     var email = this.state.email;
 
-    const response = await BasePath.put("/webresources/verify", {
+    const response = await BasePath.put("/webresources/checkEditCustomer", {
       uname,
-      pword,
-      confirmPword,
       email
     });
 
@@ -94,6 +90,9 @@ class EditCustomerMain extends React.Component {
       this.togglePopup();
     } else if (this.state.images === "Passwords do not match") {
       this.setState({ cn: "popup2" });
+      this.togglePopup();
+    } else if (this.state.images === "Email Already in Use") {
+      this.setState({ cn: "popup6" });
       this.togglePopup();
     }
   };
