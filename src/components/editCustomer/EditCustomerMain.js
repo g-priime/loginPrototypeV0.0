@@ -37,7 +37,6 @@ class EditCustomerMain extends React.Component {
     var token = localStorage.getItem('token');
 
     const customerInfo = await BasePath.get(`/webresources/RetrieveUser/${token}`);
-    //console.log(customerInfo);
 
     if (this.state.initialStates === false) {
       this.setState({
@@ -101,7 +100,6 @@ class EditCustomerMain extends React.Component {
 
   onSearchSubmit2 = async () => {
     var username = this.state.fieldName[0];
-    var password = this.state.fieldName[1];
 
     var fname = this.state.fieldName[3];
     var lname = this.state.fieldName[4];
@@ -119,7 +117,6 @@ class EditCustomerMain extends React.Component {
 
     const response = await BasePath.put("/webresources/update", {
       username,
-      password,
       fname,
       lname,
       email,
@@ -239,7 +236,7 @@ class EditCustomerMain extends React.Component {
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Account Registered" }
+              state: { message: "Account Updated" }
             }}
           />
         </div>
