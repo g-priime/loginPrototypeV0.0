@@ -24,8 +24,7 @@ class ChangePasswordMain extends React.Component {
       ]
     });
 
-    //TODO: get some kind of sessionId that's set during login
-    var sessionId = "123";
+    var token = localStorage.getItem('token');
 
     var oldPword = this.state.oldPassword;
     var pword = this.state.password;
@@ -33,8 +32,8 @@ class ChangePasswordMain extends React.Component {
 
     console.log(this.state.sessionId);
 
-    const response = await BasePath.put("/webresources/changePassword", {
-      sessionId,
+    const response = await BasePath.put("/webresources/changepassword", {
+      token,
       oldPword,
       pword,
       confirmPword,
@@ -91,7 +90,7 @@ class ChangePasswordMain extends React.Component {
   render() {
     var isValid = this.state.images;
 
-    if (isValid === "account registered") {
+    if (isValid === "Password changed") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
@@ -102,7 +101,7 @@ class ChangePasswordMain extends React.Component {
           />
         </div>
       );
-    } else if (isValid !== "Valid") {
+    } else {
       return (
         <div style={{ marginTop: "10px" }}>
           <ChangePassword1
