@@ -48,8 +48,6 @@ class UserAccount extends React.Component {
     bordetella: ""
   };
 
-
-
   // onFormSubmit = event => {
   //   event.preventDefault();
 
@@ -107,7 +105,6 @@ class UserAccount extends React.Component {
   render() {
 
     return (
-
       <div className="row">
         <div className="col-sm-4">
           <div

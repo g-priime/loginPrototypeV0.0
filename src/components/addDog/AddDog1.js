@@ -2,8 +2,8 @@ import React from "react";
 import "../../css/addDog.css";
 import "../../css/reg.css";
 import { Link } from "react-router-dom";
-
 import { ReactComponent as Hint } from "../hint.svg";
+
 const hint = () => (
   <div>
     {
