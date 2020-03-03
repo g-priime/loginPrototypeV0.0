@@ -175,7 +175,9 @@ class UserAccount extends React.Component {
             </Link>
             <br />
             <br />
-            <button
+            <Link
+              to="ChangePass"
+              type="button"
               className="btn "
               style={{
                 fontWeight: "bold",
@@ -186,7 +188,7 @@ class UserAccount extends React.Component {
               }}
             >
               Change password
-            </button>
+            </Link>
           </div>
         </div>
         <div className="col-sm-8">
