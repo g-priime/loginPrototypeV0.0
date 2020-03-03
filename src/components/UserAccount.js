@@ -2,15 +2,18 @@ import React from "react";
 import "../css/reg.css";
 import "../css/userAccount.css";
 import DogProfile from "./DogProfile";
-import BasePath from "../../api/BasePath";
+import BasePath from "../api/BasePath";
 import { getQueriesForElement } from "@testing-library/react";
+import { Link } from "react-router-dom";
 
 class UserAccount extends React.Component {
+
   state = {
     userList: [],
     dogList: [],
-    dog: null,
-    user: null,
+    dog: "",
+    user: {},
+    address: {},
     password: "",
     fname: "",
     lname: "",
@@ -88,16 +91,20 @@ class UserAccount extends React.Component {
   //   );
   // };
 
-  getUser = () => {
-    BasePath.get('/webresources/RetrieveUser/' + localStorage.getItem('token'))
-    .then( result => {
-      console.log(result.data);
-    });
+  UNSAFE_componentWillMount() {
+    var token = localStorage.getItem('token');
+    BasePath.get(`/webresources/RetrieveUser/${token}`)
+      .then(result => {
+        this.setState({ user: result.data });
+        this.setState({address: this.state.user.address});
+        console.log(this.state.address);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
-
-    getUser;
 
     return (
 
@@ -105,10 +112,9 @@ class UserAccount extends React.Component {
         <div className="col-sm-4">
           <div
             className="ui segment p-3 mb-2 "
-            style={{ backgroundColor: "#ECEBE7" }}
-          >
+            style={{ backgroundColor: "#ECEBE7" }}>
             <div>
-              <h1>{this.state.username}</h1>
+              <h1>{this.state.user.username}</h1>
             </div>
             <br />
             <div className="left">
@@ -116,25 +122,25 @@ class UserAccount extends React.Component {
                 <div className="col-sm">
                   <b>Username: </b>
                 </div>
-                <div className="col-sm">usernamegoeshere</div>
+                <div className="col-sm">{this.state.user.username}</div>
               </div>
               <div className="row">
                 <div className="col-sm">
                   <b>Email: </b>
                 </div>
-                <div className="col-sm">emailgoeshere</div>
+                <div className="col-sm">{this.state.user.email}</div>
               </div>
               <div className="row">
                 <div className="col-sm">
                   <b>Address: </b>
                 </div>
-                <div className="col-sm">addressgoeshere</div>
+                <div className="col-sm">{this.state.address.city}</div>
               </div>
               <div className="row">
                 <div className="col-sm">
                   <b>Phone: </b>
                 </div>
-                <div className="col-sm">phonegoeshere</div>
+                <div className="col-sm">{this.state.user.phone}</div>
               </div>
               <br />
               <br />
@@ -142,18 +148,20 @@ class UserAccount extends React.Component {
                 <div className="col-sm">
                   <b>Emergency name: </b>
                 </div>
-                <div className="col-sm">emergencynamegoesh</div>
+                <div className="col-sm">{this.state.user.emergencyname}</div>
               </div>
               <div className="row">
                 <div className="col-sm">
                   <b>Emergency phone #: </b>
                 </div>
-                <div className="col-sm">12345678912</div>
+                <div className="col-sm">{this.state.user.emergencyphone}</div>
               </div>
             </div>
             <br />
             <br />
-            <button
+            <Link
+              to="EditCustomer"
+              type="button"
               className="btn "
               style={{
                 fontWeight: "bold",
@@ -164,7 +172,7 @@ class UserAccount extends React.Component {
               }}
             >
               Edit customer information
-            </button>
+            </Link>
             <br />
             <br />
             <button
