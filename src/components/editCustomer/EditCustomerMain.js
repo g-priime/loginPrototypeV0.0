@@ -73,11 +73,11 @@ class EditCustomerMain extends React.Component {
       ]
     });
 
-    var uname = this.state.username;
+    var token = localStorage.getItem('token');
     var email = this.state.email;
 
     const response = await BasePath.put("/webresources/checkEditCustomer", {
-      uname,
+      token,
       email
     });
 
@@ -100,35 +100,41 @@ class EditCustomerMain extends React.Component {
   onSearchSubmit2 = async () => {
     var username = this.state.fieldName[0];
 
-    var fname = this.state.fieldName[3];
-    var lname = this.state.fieldName[4];
+    var firstName = this.state.fieldName[3];
+    var lastName = this.state.fieldName[4];
     var email = this.state.fieldName[5];
 
-    var appt = this.state.appt;
-    var building = this.state.building;
-    var street = this.state.street;
+    var houseNum = this.state.appt;
+    var buildingNum = this.state.building;
+    var streetName = this.state.street;
     var city = this.state.city;
     var province = this.state.province;
-    var postcode = this.state.postcode;
-    var phone = this.state.phone;
-    var emergencyphone = this.state.emergencyphone;
-    var emergencyname = this.state.emergencyname;
+    var postal = this.state.postcode;
+    var phoneNumber = this.state.phone;
+    var emergencyPhone = this.state.emergencyphone;
+    var emergencyName = this.state.emergencyname;
+
+    var token = localStorage.getItem('token');
 
     const response = await BasePath.put("/webresources/update", {
+      token,
       username,
-      fname,
-      lname,
-      email,
 
-      appt,
-      building,
-      street,
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      emergencyPhone,
+      emergencyName,
+
+      address:{
+      houseNum,
+      buildingNum,
+      streetName,
       city,
       province,
-      postcode,
-      phone,
-      emergencyphone,
-      emergencyname
+      postal
+      }
     });
 
     console.log(response.data);
