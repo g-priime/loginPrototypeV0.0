@@ -24,6 +24,7 @@ class Login extends React.Component {
       .then(result => {
         if (result.data != "invalid login") {
           localStorage.setItem('token', result.data);
+          console.log(result.data);
           this.props.onHide();
           //after this would change tab to account with drop down in header
         } else {
