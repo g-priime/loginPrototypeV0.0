@@ -1,25 +1,22 @@
-.header div:hover {
+.header:hover {
    color:lightblue;
    cursor: pointer;
 } 
 
-.header {
+.headerNav {
     color:black;
 }
 
-.header > div {
-    width:100%;
-    height:100%;
-    text-align: center;
+.bg {
+    background-color: #ECEBE7;
 }
 
-a:focus >div {
+.active {
     background-color: #376996;
     color: #FEF6F6;
 }
 
 .container-head {
-    height: 47px;
     font-size: 120%;
 }
 
