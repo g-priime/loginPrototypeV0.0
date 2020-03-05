@@ -225,9 +225,12 @@ class UserAccount extends React.Component {
           >
             <div className="row">
               <div className="col-sm">
+              <div className="left">
                 <h1>Your dogs: </h1>
+                </div>
               </div>
               <div className="col-sm">
+              <div className="left">
               <Link 
               to="/AddDog" 
               type="button"
@@ -242,6 +245,7 @@ class UserAccount extends React.Component {
             >
               Add new dog
             </Link>
+            </div>
               </div>
             </div>
             <br />
