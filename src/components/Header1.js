@@ -1,18 +1,10 @@
 import React from "react";
 import dog from "./tempdog.JPG";
 import "../css/head.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import BasePath from "../api/BasePath";
-import { DropdownButton, Dropdown, ButtonGroup, Button } from "react-bootstrap";
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavLink,
-  NavItem,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -26,30 +18,27 @@ class Header1 extends React.Component {
   };
 
   getCustomerInfo = async () => {
-    //localStorage.clear();
     var token = localStorage.getItem("token");
 
     const customerInfo = await BasePath.get(
       `/webresources/RetrieveUser/${token}`
     );
 
-    console.log(customerInfo.data);
-
-    if (this.state.initialStates === false && customerInfo.data !== "Authentication error, bad token") {
+    if (
+      this.state.initialStates === false &&
+      customerInfo.data !== "Authentication error, bad token"
+    ) {
       this.setState({
         initialStates: true,
         username: customerInfo.data.username
       });
     }
-    console.log(this.state.username);
   };
 
   logOut = () => {
     localStorage.clear();
-    this.setState({ initialStates: false,
-     username: "" });
-    console.log("pressed");
-  }
+    this.setState({ initialStates: false, username: "" });
+  };
 
   render() {
     this.getCustomerInfo();
@@ -59,7 +48,7 @@ class Header1 extends React.Component {
       return (
         <div>
           <div className="d-flex justify-content-between">
-            <Link to="/">
+            <NavLink to="/">
               <img
                 src={dog}
                 alt="dog"
@@ -67,7 +56,7 @@ class Header1 extends React.Component {
                 width="40"
                 className="align-self-end"
               />
-            </Link>
+            </NavLink>
             <h2 className="title mr-3">K9 FUN FAMILY</h2>
           </div>
           {/* TODO: find a way to keep track of current page for highlighting the tab, maybe store in session? */}
@@ -76,58 +65,61 @@ class Header1 extends React.Component {
             style={{ backgroundColor: "#ECEBE7" }}
           >
             <div>
-              <Link to="/" style={{ color: "#707070" }}>
+              <NavLink to="/" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">Home</div>
-              </Link>
+              </NavLink>
             </div>
             <div>
-              <Link to="/Services" style={{ color: "#707070" }}>
+              <NavLink to="/Services" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">Services</div>
-              </Link>
+              </NavLink>
             </div>
             <div>
-              <Link to="/Gallery" style={{ color: "#707070" }}>
+              <NavLink to="/Gallery" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">Gallery</div>
-              </Link>
+              </NavLink>
             </div>
             <div>
-              <Link to="/Testimonials" style={{ color: "#707070" }}>
+              <NavLink to="/Testimonials" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">Testimonials</div>
-              </Link>
+              </NavLink>
             </div>
             <div>
-              <Link to="/FAQ" style={{ color: "#707070" }}>
+              <NavLink to="/FAQ" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">FAQ</div>
-              </Link>
+              </NavLink>
             </div>
             <div className="dropDown">
-
-              <UncontrolledDropdown >
-                <DropdownToggle nav caret >
-                
-                <div className="pt-3 pb-3">Account</div>
-                
+              <UncontrolledDropdown>
+                <DropdownToggle nav caret style={{ color: "#707070" }}>
+                  <div className="pt-3 pb-3">Account</div>
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    <Link to="/Profile" style={{ color: "#707070" }}>
-                      <div className="pt-3 pb-3">Profile</div>
-                    </Link>
+                    <NavLink to="/Profile" style={{ color: "#707070" }}>
+                      Profile
+                    </NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    <Link to="/ViewAppointments" style={{ color: "#707070" }}>
-                      <div className="pt-3 pb-3">View Appointments</div>
-                    </Link>
+                    <NavLink
+                      to="/ViewAppointments"
+                      style={{ color: "#707070" }}
+                    >
+                      View Appointments
+                    </NavLink>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    <Link onClick={this.logOut} to="/" style={{ color: "#707070" }}>
-                      <div className="pt-3 pb-3">Log Out</div>
-                    </Link>
+                    <NavLink
+                      onClick={this.logOut}
+                      to="/"
+                      style={{ color: "#707070" }}
+                    >
+                      Log Out
+                    </NavLink>
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              
             </div>
           </div>
         </div>
@@ -136,7 +128,7 @@ class Header1 extends React.Component {
       return (
         <div>
           <div className="d-flex justify-content-between">
-            <Link to="/">
+            <NavLink to="/">
               <img
                 src={dog}
                 alt="dog"
@@ -144,7 +136,7 @@ class Header1 extends React.Component {
                 width="40"
                 className="align-self-end"
               />
-            </Link>
+            </NavLink>
             <h2 className="title mr-3">K9 FUN FAMILY</h2>
           </div>
           {/* TODO: find a way to keep track of current page for highlighting the tab, maybe store in session? */}
@@ -153,29 +145,29 @@ class Header1 extends React.Component {
             style={{ backgroundColor: "#ECEBE7" }}
           >
             <div>
-              <Link to="/" style={{ color: "#707070" }}>
+              <NavLink to="/" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">Home</div>
-              </Link>
+              </NavLink>
             </div>
             <div>
-              <Link to="/Services" style={{ color: "#707070" }}>
+              <NavLink to="/Services" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">Services</div>
-              </Link>
+              </NavLink>
             </div>
             <div>
-              <Link to="/Gallery" style={{ color: "#707070" }}>
+              <NavLink to="/Gallery" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">Gallery</div>
-              </Link>
+              </NavLink>
             </div>
             <div>
-              <Link to="/Testimonials" style={{ color: "#707070" }}>
+              <NavLink to="/Testimonials" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">Testimonials</div>
-              </Link>
+              </NavLink>
             </div>
             <div>
-              <Link to="/FAQ" style={{ color: "#707070" }}>
+              <NavLink to="/FAQ" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">FAQ</div>
-              </Link>
+              </NavLink>
             </div>
             <div style={{ color: "#707070" }} onClick={this.props.showLogin}>
               <div className="pt-3 pb-3">Login/Register</div>
