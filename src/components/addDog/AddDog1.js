@@ -3,6 +3,7 @@ import "../../css/addDog.css";
 import "../../css/reg.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Hint } from "../hint.svg";
+import AddDog2 from './AddDog2';
 
 const hint = () => (
   <div>
@@ -120,8 +121,9 @@ class AddDog1 extends React.Component {
                     type="radio"
                     name="gender"
                     value="Male"
-                    checked={this.props.gender === "Male"}
-                    onChange={this.props.onChangeGender}
+                    // checked={this.props.gender === "Male"}
+                    // onChange={this.props.onChangeGender}
+                    checked={this.props.onChangeGender}
                   />
                   <span>Male</span>
                 </label>
@@ -131,14 +133,15 @@ class AddDog1 extends React.Component {
                     type="radio"
                     name="gender"
                     value="Female"
-                    checked={this.props.gender === "Female"}
-                    onChange={this.props.onChangeGender}
+                    // checked={this.props.gender === "Female"}
+                    // onChange={this.props.onChangeGender}
+                    checked={this.props.onChangeGender}
                   />
                   <span>Female</span>
                 </label>
                 <br />
                 <br />
-                <label>Weight (Lb):</label>
+                <label>Weight (kg):</label>
                 <input
                   type="number"
                   placeholder="Enter dog's weight"
@@ -248,7 +251,9 @@ class AddDog1 extends React.Component {
             >
               Back to User Account
             </Link>
-            <button
+            <Link //creates a link, styled like a button
+              to="/AddDog2" //telling to go to home, in adddog it should be accinfo
+              type="button"
               className="btn mb-3"
               style={{
                 fontWeight: "bold",
@@ -259,7 +264,7 @@ class AddDog1 extends React.Component {
               }}
             >
               Go to Step 2
-            </button>
+            </Link>
           </div>
         </form>
       </div>
