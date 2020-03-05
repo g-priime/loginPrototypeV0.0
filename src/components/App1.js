@@ -16,6 +16,10 @@ import EditCustomerMain from './editCustomer/EditCustomerMain';
 import EditCustomer1 from './editCustomer/EditCustomerMain';
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
 import { getQueriesForElement } from '@testing-library/react';
+import AddDogMain from './addDog/AddDogMain';
+import EditDogMain from './editDog/EditDogMain';
+import AddDog2 from './addDog/AddDog2';
+import AddDog1 from './addDog/AddDog1';
 
 class App1 extends React.Component {
 
@@ -54,6 +58,11 @@ class App1 extends React.Component {
                             <Route path="/FAQ" component={FAQ} />
                             <Route path="/ChangePass" component={ChangePasswordMain}/>
                             <Route path="/EditCustomer" component={EditCustomerMain}/>
+                            <Route path="/AddDog" component={AddDogMain}/>
+                            <Route path="/UserAccount" component={UserAccount}/>
+                            <Route path="/EditDog" component={EditDogMain}/>
+                            <Route path="/AddDog1" component={AddDog1}/>
+                            <Route path="/AddDog2" component={AddDog2}/>
                             <Login
                                 show={this.state.show}
                                 onHide={this.onHide}
