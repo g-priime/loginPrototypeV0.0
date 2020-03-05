@@ -80,25 +80,21 @@ class Header1 extends React.Component {
                         <NavLink className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
                             color: "#FEF6F6"
                         }} to="/FAQ" style={{ color: "#707070" }} >FAQ</NavLink>
-                        <div className="dropDown">
+                        <div className="mt-1 flex-grow-1 bg">
                             <UncontrolledDropdown>
-                                <DropdownToggle nav caret style={{ color: "#707070" }}>
-                                    <div className="pt-3 pb-3">Account</div>
+                                <DropdownToggle nav caret style={{ color: "#707070" }} >
+                                    <div >Account</div>
                                 </DropdownToggle>
                                 <DropdownMenu right>
                                     <DropdownItem>
-                                        <NavLink to="/Profile" exact activeClassName="active" activeStyle={{
-                                            color: "#FEF6F6"
-                                        }} style={{ color: "#707070" }}>
+                                        <NavLink to="/Profile" style={{ color: "#707070" }}>
                                             Profile
                     </NavLink>
                                     </DropdownItem>
                                     <DropdownItem>
                                         <NavLink
                                             to="/ViewAppointments"
-                                            exact activeClassName="active" activeStyle={{
-                                                color: "#FEF6F6"
-                                            }} style={{ color: "#707070" }}
+                                             style={{ color: "#707070" }}
                                         >
                                             View Appointments
                     </NavLink>
@@ -108,9 +104,7 @@ class Header1 extends React.Component {
                                         <NavLink
                                             onClick={this.logOut}
                                             to="/"
-                                            exact activeClassName="active" activeStyle={{
-                                                color: "#FEF6F6"
-                                            }} style={{ color: "#707070" }}
+                                            style={{ color: "#707070" }}
                                         >
                                             Log Out
                     </NavLink>
@@ -142,38 +136,38 @@ class Header1 extends React.Component {
                         style={{ backgroundColor: "#ECEBE7" }}
                     >
 
-                        <NavLink to="/" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        <NavLink to="/" className="pt-3 pb-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
                             color: "#FEF6F6"
                         }} style={{ color: "#707070" }}>
                             Home
               </NavLink>
 
 
-                        <NavLink to="/Services" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        <NavLink to="/Services" className="pt-3 pb-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
                             color: "#FEF6F6"
                         }} style={{ color: "#707070" }}>
                             Services
               </NavLink>
 
-                        <NavLink to="/Gallery" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        <NavLink to="/Gallery" className="pt-3 pb-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
                             color: "#FEF6F6"
                         }} style={{ color: "#707070" }}>
                             Gallery
               </NavLink>
 
-                        <NavLink to="/Testimonials" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        <NavLink to="/Testimonials" className="pt-3 pb-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
                             color: "#FEF6F6"
                         }} style={{ color: "#707070" }}>
                             Testimonials
               </NavLink>
 
-                        <NavLink to="/FAQ" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        <NavLink to="/FAQ" className="pt-3 pb-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
                             color: "#FEF6F6"
                         }} style={{ color: "#707070" }}>
                             FAQ
               </NavLink>
 
-                        <div className="pt-3 flex-grow-1 bg"  style={{ color: "#707070" }} onClick={this.props.showLogin}>
+                        <div className="pt-3 pb-3 flex-grow-1 bg"  style={{ color: "#707070" }} onClick={this.props.showLogin}>
                             Login/Register
                         </div>
                     </div>
