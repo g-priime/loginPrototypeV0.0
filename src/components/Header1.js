@@ -100,10 +100,13 @@ class Header1 extends React.Component {
                 <div className="pt-3 pb-3">FAQ</div>
               </Link>
             </div>
-            <div>
-              <UncontrolledDropdown>
-                <DropdownToggle nav caret>
-                  Account
+            <div className="dropDown">
+
+              <UncontrolledDropdown >
+                <DropdownToggle nav caret >
+                
+                <div className="pt-3 pb-3">Account</div>
+                
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
@@ -124,6 +127,7 @@ class Header1 extends React.Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+              
             </div>
           </div>
         </div>
