@@ -101,15 +101,12 @@ class UserAccount extends React.Component {
       .catch(err => {
         console.log(err);
       });
-  }
-
-  UNSAFE_componentWillMount() {
-    var token = localStorage.getItem('token');
+      var token = localStorage.getItem('token');
     BasePath.get(`/webresources/RetrieveDogs/${token}`)
     .then(result => {
       this.setState({ dogList: result.data });
       const dogz = this.state.dogList.map((dog) => dog + "dog");
-      console.log(dogz);
+      // console.log(this.state.dogList);
     })
     .catch(err => {
       console.log(err);
