@@ -43,7 +43,7 @@ dropdownLink:link {
     text-decoration: none
 }
 
-.dropdownLink:focus {
+.dropDown:focus {
     background-color: #376996;
     color: #FEF6F6;
 }
@@ -51,4 +51,10 @@ dropdownLink:link {
 dropdownLink:active {
     color: #000000;
     text-decoration: none
+}
+
+.dropDown {
+    font-style: Segoe UI;
+    font-size: 17px;
+    padding-bottom: 50px;
 }
