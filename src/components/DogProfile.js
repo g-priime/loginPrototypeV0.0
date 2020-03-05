@@ -57,7 +57,7 @@ class DogProfile extends React.Component {
             boxShadow:
               "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
             marginBottom: "1rem",
-            width: 300
+            width: "30%"
           }}
           onClick={this.toggle}
         >
