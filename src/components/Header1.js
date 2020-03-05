@@ -46,6 +46,9 @@ class Header1 extends React.Component {
 
   logOut = () => {
     localStorage.clear();
+    this.setState({ initialStates: false,
+     username: "" });
+    console.log("pressed");
   }
 
   render() {
@@ -115,7 +118,7 @@ class Header1 extends React.Component {
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
-                    <Link to="/" style={{ color: "#707070" }}>
+                    <Link onClick={this.logOut} to="/" style={{ color: "#707070" }}>
                       <div className="pt-3 pb-3">Log Out</div>
                     </Link>
                   </DropdownItem>
