@@ -7,7 +7,6 @@ import { getQueriesForElement } from "@testing-library/react";
 import { Link } from "react-router-dom";
 
 class UserAccount extends React.Component {
-
   state = {
     userList: [],
     dogList: [],
@@ -27,7 +26,7 @@ class UserAccount extends React.Component {
     postcode: "",
     phone: "",
     emergencyphone: "",
-    emergencyname: "",
+    emergencyname: ""
 
     // dogname: "",
     // breed: "",
@@ -90,37 +89,37 @@ class UserAccount extends React.Component {
   // };
 
   UNSAFE_componentWillMount() {
-    var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
     BasePath.get(`/webresources/RetrieveUser/${token}`)
       .then(result => {
         this.setState({ user: result.data });
-        this.setState({address: this.state.user.address});
+        this.setState({ address: this.state.user.address });
         console.log(this.state.user);
-        console.log(localStorage.getItem('token')+"!!!!!");
+        console.log(localStorage.getItem("token") + "!!!!!");
       })
       .catch(err => {
         console.log(err);
       });
-      var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
     BasePath.get(`/webresources/RetrieveDogs/${token}`)
-    .then(result => {
-      this.setState({ dogList: result.data });
-      const dogz = this.state.dogList.map((dog) => dog + "dog");
-      // console.log(this.state.dogList);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+      .then(result => {
+        this.setState({ dogList: result.data });
+        const dogz = this.state.dogList.map(dog => dog + "dog");
+        // console.log(this.state.dogList);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
-
     return (
       <div className="row">
         <div className="col-sm-4">
           <div
             className="ui segment p-3 mb-2 "
-            style={{ backgroundColor: "#ECEBE7" }}>
+            style={{ backgroundColor: "#ECEBE7" }}
+          >
             <div>
               <h1>{this.state.user.username}</h1>
             </div>
@@ -152,12 +151,15 @@ class UserAccount extends React.Component {
                 <div className="col-sm">{this.state.user.lastName}</div>
               </div>
 
-
               <div className="row">
                 <div className="col-sm">
                   <b>Address: </b>
                 </div>
-                <div className="col-sm">{this.state.address.appt} {this.state.address.building} {this.state.address.street} {this.state.address.city} {this.state.address.province} {this.state.address.post}</div>
+                <div className="col-sm">
+                  {this.state.address.appt} {this.state.address.building}{" "}
+                  {this.state.address.street} {this.state.address.city}{" "}
+                  {this.state.address.province} {this.state.address.post}
+                </div>
               </div>
               <div className="row">
                 <div className="col-sm">
@@ -192,7 +194,7 @@ class UserAccount extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 300
+                width: "50%"
               }}
             >
               Edit customer information
@@ -209,7 +211,7 @@ class UserAccount extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 300
+                width: "50%"
               }}
             >
               Change password
@@ -243,7 +245,9 @@ class UserAccount extends React.Component {
             <br />
             <br />
             <div>
-              {this.state.dogList.map((dog) => <DogProfile key={dog.idNumber} chosenDog={dog}/> )}
+              {this.state.dogList.map(dog => (
+                <DogProfile key={dog.idNumber} chosenDog={dog} />
+              ))}
               {/* <DogProfile /> */}
             </div>
           </div>
