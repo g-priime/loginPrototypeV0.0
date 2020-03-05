@@ -5,6 +5,19 @@ import { Link } from "react-router-dom";
 
 import BasePath from "../api/BasePath";
 import { DropdownButton, Dropdown, ButtonGroup, Button } from "react-bootstrap";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavLink,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 
 class Header1 extends React.Component {
   state = {
@@ -20,18 +33,26 @@ class Header1 extends React.Component {
       `/webresources/RetrieveUser/${token}`
     );
 
-    if (this.state.initialStates === false) {
+    console.log(customerInfo.data);
+
+    if (this.state.initialStates === false && customerInfo.data !== "Authentication error, bad token") {
       this.setState({
         initialStates: true,
         username: customerInfo.data.username
       });
     }
+    console.log(this.state.username);
   };
+
+  logOut = () => {
+    localStorage.clear();
+  }
 
   render() {
     this.getCustomerInfo();
+    var username = this.state.username;
 
-    if (this.state.username !== null) {
+    if (username !== "") {
       return (
         <div>
           <div className="d-flex justify-content-between">
@@ -76,22 +97,30 @@ class Header1 extends React.Component {
                 <div className="pt-3 pb-3">FAQ</div>
               </Link>
             </div>
-            <div className="pt-3 pb-3" style={{ color: "#707070" }}>
-              <Dropdown>
-                <Dropdown.Toggle variant="btn btn-link pt-3 pb-3" id="dropdown-basic" style={{ color: "#707070" }}>
-                  Dropdown Button
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
-                    Another action
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    Something else
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+            <div>
+              <UncontrolledDropdown>
+                <DropdownToggle nav caret>
+                  Account
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    <Link to="/Profile" style={{ color: "#707070" }}>
+                      <div className="pt-3 pb-3">Profile</div>
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link to="/ViewAppointments" style={{ color: "#707070" }}>
+                      <div className="pt-3 pb-3">View Appointments</div>
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    <Link to="/" style={{ color: "#707070" }}>
+                      <div className="pt-3 pb-3">Log Out</div>
+                    </Link>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </div>
           </div>
         </div>
