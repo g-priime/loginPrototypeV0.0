@@ -61,7 +61,7 @@ class Header1 extends React.Component {
           </div>
           {/* TODO: find a way to keep track of current page for highlighting the tab, maybe store in session? */}
           <div
-            className="container-head d-flex align-items-center d-flex justify-content-around header"
+            className="container-head d-flex justify-content-around header"
             style={{ backgroundColor: "#ECEBE7" }}
           >
             <div>
