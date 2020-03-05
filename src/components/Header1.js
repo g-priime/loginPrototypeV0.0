@@ -173,7 +173,7 @@ class Header1 extends React.Component {
                             FAQ
               </NavLink>
 
-                        <div style={{ color: "#707070" }} onClick={this.props.showLogin}>
+                        <div className="pt-3 flex-grow-1 bg"  style={{ color: "#707070" }} onClick={this.props.showLogin}>
                             Login/Register
                         </div>
                     </div>
