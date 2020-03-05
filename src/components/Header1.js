@@ -64,31 +64,22 @@ class Header1 extends React.Component {
             className="container-head d-flex justify-content-around header"
             style={{ backgroundColor: "#ECEBE7" }}
           >
-            <div>
-              <NavLink to="/" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Home</div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to="/Services" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Services</div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to="/Gallery" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Gallery</div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to="/Testimonials" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Testimonials</div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to="/FAQ" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">FAQ</div>
-              </NavLink>
-            </div>
+                        
+                    <NavLink className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} to="/" style={{ color: "#707070" }} >Home</NavLink>
+            <NavLink className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} to="/Services" style={{ color: "#707070" }} >Services</NavLink>
+                    <NavLink className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} to="/Gallery" style={{ color: "#707070" }} >Gallery</NavLink>
+                    <NavLink className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} to="/Testimonials" style={{ color: "#707070" }} >Testimonials</NavLink>
+                    <NavLink className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} to="/FAQ" style={{ color: "#707070" }} >FAQ</NavLink>
             <div className="dropDown">
               <UncontrolledDropdown>
                 <DropdownToggle nav caret style={{ color: "#707070" }}>
