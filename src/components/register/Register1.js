@@ -49,8 +49,8 @@ class Register1 extends React.Component {
                 <label>Username:</label>
                 <input
                   required
-                  title="Cannot be longer then 20 characters, can only contain numbers and letters"
-                  pattern="^[a-zA-Z1-9]{8,20}$"
+                  title="Cannot be shorter than 4 and longer then 20 characters, can only contain numbers and letters"
+                  pattern="^[a-zA-Z1-9]{4,20}$"
                   className="field b-5"
                   type="text"
                   placeholder="Enter username"
@@ -65,7 +65,7 @@ class Register1 extends React.Component {
                   type="password"
                   name="password"
                   pattern="^[a-zA-Z1-9_*-]{8,20}$"
-                  title="Cannot be longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
+                  title="Cannot be shorter than 8 and longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
                   placeholder="Enter password"
                   value={this.props.password}
                   onChange={this.props.onChangePassword}
@@ -79,7 +79,7 @@ class Register1 extends React.Component {
                   type="password"
                   name="confirmPassword"
                   pattern="^[a-zA-Z1-9_*-]{8,20}$"
-                  title="Cannot be longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
+                  title="Cannot be shorter than 8 and longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
                   placeholder="Confirm password"
                   value={this.props.confirmPassword}
                   onChange={this.props.onChangeConfirmPassword} //how to confirm it?
