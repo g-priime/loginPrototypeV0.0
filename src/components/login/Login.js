@@ -22,7 +22,8 @@ class Login extends React.Component {
       password: this.state.password
     })
       .then(result => {
-        if (result.data != "invalid login") {
+        console.log(result.data);
+        if (result.data != "") {
           localStorage.setItem('token', result.data);
           console.log(result.data);
           this.props.onHide();

@@ -5,8 +5,8 @@ class HomePage extends React.Component {
 
   state = { message: "", cn: "", bgColor: 'blue' };
 
- componentWillMount() {
-    if (typeof this.props.location.state == "undefined") {
+ UNSAFE_componentWillMount() {
+    if (typeof this.props.location.state == "undefined" || this.props.location.state === null) {
         this.setState({ message: "" });
       } else {
         this.setState({ message: this.props.location.state.message });

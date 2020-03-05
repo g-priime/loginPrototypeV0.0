@@ -1,19 +1,19 @@
 .header div:hover {
-   color:lightblue;
-   cursor: pointer;
-} 
-
-.header {
-    color:black;
+    color: lightblue;
+    cursor: pointer;
 }
 
-.header > div {
-    width:100%;
-    height:100%;
+.header {
+    color: black;
+}
+
+.header>div {
+    width: 100%;
+    height: 100%;
     text-align: center;
 }
 
-a:focus >div {
+a:focus>div {
     background-color: #376996;
     color: #FEF6F6;
 }
@@ -23,11 +23,20 @@ a:focus >div {
     font-size: 120%;
 }
 
-div,h1 {
+div,
+h1 {
     font-style: Segoe UI;
 }
 
 .title {
     margin-top: 0;
-    color:white;
+    color: white;
+}
+
+.dropDown {
+    font-style: Segoe UI;
+    font-size: 17.5px;
+    padding-bottom: 62px;
+    margin-left: -15px;
+    margin-right: -15px;
 }
