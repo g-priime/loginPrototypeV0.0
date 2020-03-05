@@ -87,14 +87,18 @@ class Header1 extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    <NavLink to="/Profile" style={{ color: "#707070" }}>
+                    <NavLink to="/Profile" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} style={{ color: "#707070" }}>
                       Profile
                     </NavLink>
                   </DropdownItem>
                   <DropdownItem>
                     <NavLink
                       to="/ViewAppointments"
-                      style={{ color: "#707070" }}
+                      exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} style={{ color: "#707070" }}
                     >
                       View Appointments
                     </NavLink>
@@ -104,7 +108,9 @@ class Header1 extends React.Component {
                     <NavLink
                       onClick={this.logOut}
                       to="/"
-                      style={{ color: "#707070" }}
+                      exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} style={{ color: "#707070" }}
                     >
                       Log Out
                     </NavLink>
@@ -132,32 +138,42 @@ class Header1 extends React.Component {
           </div>
           {/* TODO: find a way to keep track of current page for highlighting the tab, maybe store in session? */}
           <div
-            className="container-head d-flex align-items-center d-flex justify-content-around header"
+            className="container-head d-flex justify-content-around header"
             style={{ backgroundColor: "#ECEBE7" }}
           >
             <div>
-              <NavLink to="/" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Home</div>
+              <NavLink to="/" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} style={{ color: "#707070" }}>
+                Home
               </NavLink>
             </div>
             <div>
-              <NavLink to="/Services" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Services</div>
+              <NavLink to="/Services" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} style={{ color: "#707070" }}>
+                Services
               </NavLink>
             </div>
             <div>
-              <NavLink to="/Gallery" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Gallery</div>
+              <NavLink to="/Gallery" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} style={{ color: "#707070" }}>
+                Gallery
               </NavLink>
             </div>
             <div>
-              <NavLink to="/Testimonials" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Testimonials</div>
+              <NavLink to="/Testimonials" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} style={{ color: "#707070" }}>
+                Testimonials
               </NavLink>
             </div>
             <div>
-              <NavLink to="/FAQ" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">FAQ</div>
+              <NavLink to="/FAQ" className="pt-3 flex-grow-1 bg" exact activeClassName="active" activeStyle={{
+                        color: "#FEF6F6"
+                    }} style={{ color: "#707070" }}>
+                FAQ
               </NavLink>
             </div>
             <div style={{ color: "#707070" }} onClick={this.props.showLogin}>
