@@ -162,8 +162,10 @@ class AddDogMain extends React.Component {
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
 
-    const response = await BasePath.put("/webresources/register", {
+    var token = localStorage.getItem('token');
+    const response = await BasePath.put("/webresources/registerDog", {
       //what path??????????
+      token,
       dogname,
       breed,
       dob,
