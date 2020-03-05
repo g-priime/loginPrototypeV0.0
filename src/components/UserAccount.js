@@ -29,23 +29,23 @@ class UserAccount extends React.Component {
     emergencyphone: "",
     emergencyname: "",
 
-    dogname: "",
-    breed: "",
-    dob: "",
-    gender: "",
-    weight: "",
-    neuteredspayed: "",
-    medication: "",
-    allergies: "",
-    physlimit: "",
-    veterinarian: "",
-    strangers: "",
-    largerdogs: "",
-    smalldogs: "",
-    puppies: "",
-    da2pp: "",
-    rabies: "",
-    bordetella: ""
+    // dogname: "",
+    // breed: "",
+    // dob: "",
+    // gender: "",
+    // weight: "",
+    // neuteredspayed: "",
+    // medication: "",
+    // allergies: "",
+    // physlimit: "",
+    // veterinarian: "",
+    // strangers: "",
+    // largerdogs: "",
+    // smalldogs: "",
+    // puppies: "",
+    // da2pp: "",
+    // rabies: "",
+    // bordetella: ""
   };
 
   // onFormSubmit = event => {
@@ -95,11 +95,25 @@ class UserAccount extends React.Component {
       .then(result => {
         this.setState({ user: result.data });
         this.setState({address: this.state.user.address});
-        console.log(this.state.address);
+        console.log(this.state.user);
+        console.log(localStorage.getItem('token')+"!!!!!");
       })
       .catch(err => {
         console.log(err);
       });
+  }
+
+  UNSAFE_componentWillMount() {
+    var token = localStorage.getItem('token');
+    BasePath.get(`/webresources/RetrieveDogs/${token}`)
+    .then(result => {
+      this.setState({ dogList: result.data });
+      const dogz = this.state.dogList.map((dog) => dog + "dog");
+      console.log(dogz);
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
   render() {
@@ -127,11 +141,26 @@ class UserAccount extends React.Component {
                 </div>
                 <div className="col-sm">{this.state.user.email}</div>
               </div>
+              <br />
+              <div className="row">
+                <div className="col-sm">
+                  <b>First Name: </b>
+                </div>
+                <div className="col-sm">{this.state.user.firstName}</div>
+              </div>
+              <div className="row">
+                <div className="col-sm">
+                  <b>Last Name: </b>
+                </div>
+                <div className="col-sm">{this.state.user.lastName}</div>
+              </div>
+
+
               <div className="row">
                 <div className="col-sm">
                   <b>Address: </b>
                 </div>
-                <div className="col-sm">{this.state.address.city}</div>
+                <div className="col-sm">{this.state.address.appt} {this.state.address.building} {this.state.address.street} {this.state.address.city} {this.state.address.province} {this.state.address.post}</div>
               </div>
               <div className="row">
                 <div className="col-sm">
@@ -145,13 +174,13 @@ class UserAccount extends React.Component {
                 <div className="col-sm">
                   <b>Emergency name: </b>
                 </div>
-                <div className="col-sm">{this.state.user.emergencyname}</div>
+                <div className="col-sm">{this.state.user.emergencyName}</div>
               </div>
               <div className="row">
                 <div className="col-sm">
                   <b>Emergency phone #: </b>
                 </div>
-                <div className="col-sm">{this.state.user.emergencyphone}</div>
+                <div className="col-sm">{this.state.user.emergencyPhone}</div>
               </div>
             </div>
             <br />
@@ -215,8 +244,8 @@ class UserAccount extends React.Component {
             <br />
             <br />
             <div>
-              {/* {this.state.dogList.map((dog) => <DogProfile chosenDog={dog}/> )} */}
-              <DogProfile />
+              {this.state.dogList.map((dog) => <DogProfile key={dog.idNumber} chosenDog={dog}/> )}
+              {/* <DogProfile /> */}
             </div>
           </div>
         </div>
