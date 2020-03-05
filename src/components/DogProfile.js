@@ -37,19 +37,6 @@ class DogProfile extends React.Component {
     bordetella: ""
   };
 
-  // UNSAFE_componentWillMount() {
-  //   var token = localStorage.getItem('token');
-  //   BasePath.get(`/webresources/RetrieveDogs/${token}`)
-  //     .then(result => {
-  //       console.log(result.data);
-  //       this.setState({ dogList: result.data });
-  //       console.log(this.state.dogList);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // }
-
   toggle = () => {
     if (this.state.isOpen) {
       this.setState({ isOpen: false });
@@ -93,7 +80,7 @@ class DogProfile extends React.Component {
                           <b>Breed: </b>
                         </div>
                       </div>
-                      <div className="col-sm">---</div>
+                      <div className="col-sm">{this.props.chosenDog.breed}</div>
                     </div>
                     <div className="row">
                       <div className="col-sm">
@@ -101,7 +88,7 @@ class DogProfile extends React.Component {
                           <b>Date of birth: </b>
                         </div>
                       </div>
-                      <div className="col-sm">---</div>
+                      <div className="col-sm">{this.props.chosenDog.dateOfBirth}</div>
                     </div>
                     <div className="row">
                       <div className="col-sm">
@@ -109,7 +96,7 @@ class DogProfile extends React.Component {
                           <b>Gender: </b>
                         </div>
                       </div>
-                      <div className="col-sm">---</div>
+                      <div className="col-sm">{this.props.chosenDog.gender}</div>
                     </div>
                     <div className="row">
                       <div className="col-sm">
@@ -117,7 +104,7 @@ class DogProfile extends React.Component {
                           <b>Weight: </b>
                         </div>
                       </div>
-                      <div className="col-sm">---</div>
+                      <div className="col-sm">{this.props.chosenDog.weight}kg</div>
                     </div>
                     <div className="left">
                       <b>neuteredSpayed</b>
@@ -125,6 +112,7 @@ class DogProfile extends React.Component {
                   </div>
                   <div className="col-sm">
                     <div className="center">picture goes here</div>
+                    {/* find some way to store an image and bring it to the front end? */}
                   </div>
                 </div>
                 <br />
