@@ -20,7 +20,6 @@ class EditCustomerMain extends React.Component {
     lname: "",
     email: "",
 
-    //address: {},
     appt: "",
     building: "",
     street: "",
@@ -49,15 +48,12 @@ class EditCustomerMain extends React.Component {
         lname: customerInfo.data.lastName,
         email: customerInfo.data.email,
 
-        //address: customerInfo.data.address,
-
         appt: customerInfo.data.address.appt,
         building: customerInfo.data.address.building,
         street: customerInfo.data.address.street,
         city: customerInfo.data.address.city,
         province: customerInfo.data.address.province,
         postcode: customerInfo.data.address.post,
-
         phone: customerInfo.data.phone,
         emergencyphone: customerInfo.data.emergencyPhone,
         emergencyname: customerInfo.data.emergencyName
@@ -198,7 +194,7 @@ class EditCustomerMain extends React.Component {
     this.setState({ email: event.target.value });
   };
 
-  handleChangeappt = event => {
+  handleChangeAppt = event => {
     this.setState({ appt: event.target.value });
   };
 
@@ -287,7 +283,7 @@ class EditCustomerMain extends React.Component {
       return (
         <div style={{ marginTop: "10px" }}>
           <EditCustomer2
-            onChangeappt={this.handleChangeappt}
+            onChangeAppt={this.handleChangeAppt}
             onChangeBuilding={this.handleChangeBuilding}
             onChangeStreet={this.handleChangeStreet}
             onChangeCity={this.handleChangeCity}
