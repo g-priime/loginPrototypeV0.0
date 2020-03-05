@@ -228,18 +228,20 @@ class UserAccount extends React.Component {
                 <h1>Your dogs: </h1>
               </div>
               <div className="col-sm">
-                <button
-                  className="btn "
-                  style={{
-                    fontWeight: "bold",
-                    backgroundColor: "#1D3461",
-                    color: "#ECEBE7",
-                    boxShadow:
-                      "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                  }}
-                >
-                  Add new dog
-                </button>
+              <Link 
+              to="/AddDog" 
+              type="button"
+              className="btn mb-3"
+              style={{
+                fontWeight: "bold",
+                backgroundColor: "#1D3461",
+                color: "#ECEBE7",
+                boxShadow:
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+              }}
+            >
+              Add new dog
+            </Link>
               </div>
             </div>
             <br />
