@@ -18,10 +18,6 @@
     color: #FEF6F6;
 }
 
-a:focus>div {
-    background-color: #376996;
-    color: #FEF6F6;
-}
 
 .container-head {
     height: 47px;
