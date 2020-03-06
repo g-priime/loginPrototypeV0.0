@@ -46,7 +46,6 @@ class AddDog2 extends React.Component {
   };
 
   onFormSubmit = event => {
-    //debugger;
     event.preventDefault();
 
     this.props.onSubmit(
@@ -64,7 +63,6 @@ class AddDog2 extends React.Component {
   };
 
   previousStep_onClick = event => {
-    //differents name?
     event.preventDefault();
     this.props.onClick();
   };
@@ -278,20 +276,20 @@ class AddDog2 extends React.Component {
            
           </div>
           <div className="d-flex justify-content-between">
-            <Link //creates a link, styled like a button
-              to="/AddDog1" //telling to go to home, in adddog it should be accinfo
-              type="button"
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-              }}
-            >
-              Previous Step
-            </Link>
+          <Link
+                to="/AddDog1"
+                type="button"
+                className="btn mb-3"
+                style={{
+                  fontWeight: "bold",
+                  backgroundColor: "#1D3461",
+                  color: "#ECEBE7",
+                  boxShadow:
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                }}
+              >
+                Previous Step
+              </Link>
             <button
               className="btn mr-3 mb-3"
               style={{
