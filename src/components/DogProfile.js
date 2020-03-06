@@ -119,8 +119,15 @@ class DogProfile extends React.Component {
                       </div>
                       <div className="col-sm">{this.props.chosenDog.weight}kg</div>
                     </div>
-                    <div className="left">
-                      <b>neuteredSpayed</b>
+                    <div className="row">
+                      <div className="col-sm">
+                        <div className="left">
+                          <b>Spayed or </b>
+                          <b>Neutered?:</b>
+                        </div>
+                      </div>
+            {" "}
+                      {this.props.chosenDog.spayedNeutered ? (<div className="col-sm">Yes</div>) : (<div className="col-sm">No</div>) }
                     </div>
                   </div>
                   <div className="col-sm">
@@ -159,6 +166,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
+                    <div className="left"></div>
                     <div className="left">--</div>
                   </div>
                 </div>
