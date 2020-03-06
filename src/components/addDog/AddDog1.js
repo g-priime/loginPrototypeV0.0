@@ -61,7 +61,7 @@ class AddDog1 extends React.Component {
       this.state.selectedFile,
       this.state.selectedFile.name
     );
-    // BasePath.post('my-domain.com/file-upload', formData) //path??????
+     BasePath.post('my-domain.com/file-upload', formData) //path??????
 
   };
 
