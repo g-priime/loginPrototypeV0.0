@@ -19,12 +19,6 @@ class BookAppointment1 extends React.Component {
     );
   };
 
-  previousStep_onClick = event => {
-    event.preventDefault();
-    this.props.onClick();
-    console.log("here");
-  };
-
   render() {
     return (
       <div
