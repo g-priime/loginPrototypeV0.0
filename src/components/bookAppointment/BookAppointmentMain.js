@@ -32,7 +32,7 @@ class BookAppointmentMain extends React.Component {
 
     console.log(this.state.sessionId);
 
-    const response = await BasePath.put("/webresources/changestartTime", {
+    const response = await BasePath.put("/webresources/bookAppointment", {
       token,
       dog,
       startTime,
@@ -40,7 +40,7 @@ class BookAppointmentMain extends React.Component {
     });
 
     console.log(response.data);
-    console.log(response.status);
+    
     this.setState({ images: response.data });
 
     if (this.state.images === "Old startTime is incorrect") {
@@ -50,23 +50,6 @@ class BookAppointmentMain extends React.Component {
       this.setState({ cn: "popup5" });
       this.togglePopup();
     }
-  };
-
-  onPrevious = () => {
-    console.log("main");
-    this.setState({ images: [] });
-    console.log(this.state.images);
-  };
-
-  onHome = event => {
-    event.preventDefault();
-    this.props.onClick("home");
-    console.log("main event");
-  };
-
-  onChangePage = () => {
-    this.props.onClick(this.state.page);
-    console.log("here");
   };
 
   togglePopup() {
@@ -90,13 +73,13 @@ class BookAppointmentMain extends React.Component {
   render() {
     var isValid = this.state.images;
 
-    if (isValid === "startTime changed") {
+    if (isValid === "Valid") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "startTime has been changed" }
+              state: { message: "Appointment has been added" }
             }}
           />
         </div>
@@ -109,9 +92,6 @@ class BookAppointmentMain extends React.Component {
             onChangeStartTime={this.handleChangeStartTime}
             onChangeEndTime={this.handleChangeEndTime}
             onSubmit={this.onSearchSubmit1}
-            onClick={() => {
-              this.props.onChangePage("about");
-            }}
           />
           <div>
             {this.state.showPopup ? (
