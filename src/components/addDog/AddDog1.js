@@ -3,7 +3,7 @@ import "../../css/addDog.css";
 import "../../css/reg.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Hint } from "../hint.svg";
-import AddDog2 from './AddDog2';
+import AddDog2 from "./AddDog2";
 
 const hint = () => (
   <div>
@@ -36,6 +36,7 @@ const hint = () => (
 
 class AddDog1 extends React.Component {
   state = {
+    selectedFile: null,
     dogname: "",
     breed: "",
     dob: "",
@@ -48,11 +49,28 @@ class AddDog1 extends React.Component {
     veterinarian: ""
   };
 
+  fileChangedHandler = event => {
+    this.setState({ selectedFile: event.target.files[0] });
+  };
+
+  uploadHandler = () => {
+    const formData = new FormData();
+    formData.append(
+      "myFile",
+      this.state.selectedFile,
+      this.state.selectedFile.name
+    );
+    // axios.post('my-domain.com/file-upload', formData, { //path??????
+    //   onUploadProgress: progressEvent => {
+    //     console.log(progressEvent.loaded / progressEvent.total)
+    //   }
+    // })
+  };
+
   onFormSubmit = event => {
     event.preventDefault();
 
     this.props.onSubmit(
-      
       this.state.dogname,
       this.state.breed,
       this.state.dob,
@@ -63,7 +81,6 @@ class AddDog1 extends React.Component {
       this.state.allergies,
       this.state.physlimit,
       this.state.veterinaria
-      
     );
   };
 
@@ -220,9 +237,10 @@ class AddDog1 extends React.Component {
             <br />
             <br />
             <div className="row">
-              <Link //creates a link, styled like a button
-                to="/" //telling to go to home, in adddog it should be accinfo
-                type="button"
+              <input type="file" onChange={this.fileChangedHandler} />
+
+              <button //button to upload the picture
+                onClick={this.uploadHandler}
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
@@ -232,8 +250,8 @@ class AddDog1 extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
               >
-                Upload Picture
-              </Link>
+                Upload picture
+              </button>
             </div>
             <br />
             <br />
