@@ -358,7 +358,7 @@ class AddDogMain extends React.Component {
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
             onSubmit={this.onSearchSubmit2} //calls onsearch submit, all the stuff is getting passed from main page to the step2
-            // onClick={this.onPrevious} //don't need
+             onClick={this.onPrevious} //don't need
           />
         </div>
       );
