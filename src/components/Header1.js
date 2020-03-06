@@ -1,6 +1,5 @@
 import React from "react";
 import dog from "./tempdog.JPG";
-
 import "../css/head.css";
 import { NavLink } from "react-router-dom";
 
@@ -85,7 +84,6 @@ class Header1 extends React.Component {
                 <div className="pt-3 pb-3">Testimonials</div>
               </NavLink>
             </div>
-
             <div>
               <NavLink to="/FAQ" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">FAQ</div>
@@ -170,7 +168,6 @@ class Header1 extends React.Component {
               <NavLink to="/FAQ" style={{ color: "#707070" }}>
                 <div className="pt-3 pb-3">FAQ</div>
               </NavLink>
-
             </div>
             <div style={{ color: "#707070" }} onClick={this.props.showLogin}>
               <div className="pt-3 pb-3">Login/Register</div>
