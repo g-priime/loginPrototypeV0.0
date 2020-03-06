@@ -4,6 +4,7 @@ import "../../css/reg.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Hint } from "../hint.svg";
 import AddDog2 from "./AddDog2";
+import BasePath from "../api/BasePath";
 
 const hint = () => (
   <div>
@@ -60,11 +61,8 @@ class AddDog1 extends React.Component {
       this.state.selectedFile,
       this.state.selectedFile.name
     );
-    // axios.post('my-domain.com/file-upload', formData, { //path??????
-    //   onUploadProgress: progressEvent => {
-    //     console.log(progressEvent.loaded / progressEvent.total)
-    //   }
-    // })
+    // BasePath.post('my-domain.com/file-upload', formData) //path??????
+
   };
 
   onFormSubmit = event => {
