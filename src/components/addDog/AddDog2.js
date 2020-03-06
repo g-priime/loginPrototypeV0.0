@@ -46,9 +46,11 @@ class AddDog2 extends React.Component {
   };
 
   onFormSubmit = event => {
+    //debugger;
     event.preventDefault();
 
     this.props.onSubmit(
+      
       this.state.strangers,
       this.state.largerdogs,
       this.state.smalldogs,
@@ -56,7 +58,9 @@ class AddDog2 extends React.Component {
       this.state.da2pp,
       this.state.rabies,
       this.state.bordetella
+      
     );
+    
   };
 
   previousStep_onClick = event => {
@@ -88,7 +92,8 @@ class AddDog2 extends React.Component {
                 </div>
               </div>
               <br />
-              <div className="row">
+              
+               <div className="row">
                 <div className="col-sm-6">
                   Is your dog comfortable with strangers?
                 </div>
@@ -99,7 +104,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="strangers"
                       value="yes"
-                      checked={this.props.strangers === "yes"}
+                       //checked={this.props.strangers}
                       onChange={this.props.onChangeStrangers}
                     />
                   </label>
@@ -111,7 +116,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="strangers"
                       value="no"
-                      checked={this.props.strangers === "no"}
+                       //checked={this.props.strangers}
                       onChange={this.props.onChangeStrangers}
                     />
                   </label>
@@ -129,7 +134,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="largerdogs"
                       value="yes"
-                      checked={this.props.largerdogs === "yes"}
+                       //checked={this.props.largerdogs}
                       onChange={this.props.onChangeLargerdogs}
                     />
                   </label>
@@ -141,7 +146,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="largerdogs"
                       value="no"
-                      checked={this.props.largerdogs === "no"}
+                       //checked={this.props.largerdogs}
                       onChange={this.props.onChangeLargerdogs}
                     />
                   </label>
@@ -159,7 +164,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="smalldogs"
                       value="yes"
-                      checked={this.props.smalldogs === "yes"}
+                      //checked={this.props.smalldogs}
                       onChange={this.props.onChangeSmalldogs}
                     />
                   </label>
@@ -171,7 +176,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="smalldogs"
                       value="no"
-                      checked={this.props.smalldogs === "no"}
+                       //checked={this.props.smalldogs}
                       onChange={this.props.onChangeSmalldogs}
                     />
                   </label>
@@ -189,7 +194,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="puppies"
                       value="yes"
-                      checked={this.props.puppies === "yes"}
+                       //checked={this.props.puppies}
                       onChange={this.props.onChangePuppies}
                     />
                   </label>
@@ -201,17 +206,17 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="puppies"
                       value="no"
-                      checked={this.props.puppies === "no"}
+                       //checked={this.props.puppies}
                       onChange={this.props.onChangePuppies}
                     />
                   </label>
                 </div>
-              </div>
+              </div> 
               <br />
               <br />
               <h3>Dog must have up to date vaccination Documents from vet</h3>
               
-                <div className="row">
+                 <div className="row">
                   
                   <div className="col-sm">
                     {" "}
@@ -225,7 +230,7 @@ class AddDog2 extends React.Component {
                       type="date"
                       value={this.props.da2pp}
                       onChange={this.props.onChangeDa2pp}
-                      InputLabelProps={{
+                      inputlabelprops={{
                         shrink: true
                       }}
                     />
@@ -244,7 +249,7 @@ class AddDog2 extends React.Component {
                       type="date"
                       value={this.props.rabies}
                       onChange={this.props.onChangeRabies}
-                      InputLabelProps={{
+                      inputlabelprops={{
                         shrink: true
                       }}
                     />
@@ -263,12 +268,12 @@ class AddDog2 extends React.Component {
                       type="date"
                       value={this.props.bordetella}
                       onChange={this.props.onChangeBordetella}
-                      InputLabelProps={{
+                      inputlabelprops={{
                         shrink: true
                       }}
                     />
                   </div>
-                </div>
+                </div> 
               </div>
            
           </div>
