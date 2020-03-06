@@ -14,39 +14,39 @@ class BookAppointmentMain extends React.Component {
     cn: ""
   };
 
-  onSearchSubmit1 = async (oldPassword) => {
+  onSearchSubmit1 = async (dog) => {
     this.setState({
       fieldName: [
-        this.state.oldPassword,
-        this.state.password,
-        this.state.confirmPassword,
+        this.state.dog,
+        this.state.startTime,
+        this.state.endTime,
         this.state.sessionId
       ]
     });
 
     var token = localStorage.getItem('token');
 
-    var oldPword = this.state.oldPassword;
-    var pword = this.state.password;
-    var confirmPword = this.state.confirmPassword;
+    var dog = this.state.dog;
+    var startTime = this.state.startTime;
+    var endTime = this.state.endTime;
 
     console.log(this.state.sessionId);
 
-    const response = await BasePath.put("/webresources/changepassword", {
+    const response = await BasePath.put("/webresources/changestartTime", {
       token,
-      oldPword,
-      pword,
-      confirmPword,
+      dog,
+      startTime,
+      endTime,
     });
 
     console.log(response.data);
     console.log(response.status);
     this.setState({ images: response.data });
 
-    if (this.state.images === "Old password is incorrect") {
+    if (this.state.images === "Old startTime is incorrect") {
       this.setState({ cn: "popup4" });
       this.togglePopup();
-    } else if (this.state.images === "New passwords do not match") {
+    } else if (this.state.images === "New startTimes do not match") {
       this.setState({ cn: "popup5" });
       this.togglePopup();
     }
@@ -75,28 +75,28 @@ class BookAppointmentMain extends React.Component {
     });
   }
 
-  handleChangeOldPassword = event => {
-    this.setState({ oldPassword: event.target.value });
+  handleChangeDog = event => {
+    this.setState({ dog: event.target.value });
   };
 
-  handleChangePassword = event => {
-    this.setState({ password: event.target.value });
+  handleChangeStartTime = event => {
+    this.setState({ startTime: event.target.value });
   };
 
-  handleChangeConfirmPassword = event => {
-    this.setState({ confirmPassword: event.target.value });
+  handleChangeEndTime = event => {
+    this.setState({ endTime: event.target.value });
   };
 
   render() {
     var isValid = this.state.images;
 
-    if (isValid === "Password changed") {
+    if (isValid === "startTime changed") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Password has been changed" }
+              state: { message: "startTime has been changed" }
             }}
           />
         </div>
@@ -105,9 +105,9 @@ class BookAppointmentMain extends React.Component {
       return (
         <div style={{ marginTop: "10px" }}>
           <BookAppointment1
-            onChangeOldPassword={this.handleChangeOldPassword}
-            onChangePassword={this.handleChangePassword}
-            onChangeConfirmPassword={this.handleChangeConfirmPassword}
+            onChangeDog={this.handleChangeDog}
+            onChangeStartTime={this.handleChangeStartTime}
+            onChangeEndTime={this.handleChangeEndTime}
             onSubmit={this.onSearchSubmit1}
             onClick={() => {
               this.props.onChangePage("about");
