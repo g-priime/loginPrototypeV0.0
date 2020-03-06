@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 
 class BookAppointment1 extends React.Component {
   state = {
-    oldPassword: "",
-    password: "",
-    confirmPassword: ""
+    dog: "",
+    startTime: "",
+    endTime: ""
   };
 
   onFormSubmit = event => {
     event.preventDefault();
 
     this.props.onSubmit(
-      this.state.oldPassword,
-      this.state.password,
-      this.state.confirmPassword,
+      this.state.dog,
+      this.state.startTime,
+      this.state.endTime
     );
   };
 
@@ -27,60 +27,55 @@ class BookAppointment1 extends React.Component {
 
   render() {
     return (
-      <div className="ui segment contChangePassword" style={{ backgroundColor: "#ECEBE7" }}>
+      <div
+        className="ui segment contChangestartTime"
+        style={{ backgroundColor: "#ECEBE7" }}
+      >
         <form
           onSubmit={this.onFormSubmit}
           className="ui form"
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container">
-            <h1>Change Password</h1>
+            <h1>Book Appointment</h1>
 
             <div className="row">
               <div className="col-sm">
-              <label>Old Password:</label>
+                <label>Select Dog:</label>
+                <select
+                  value={this.props.dog}
+                  onChange={this.props.onChangeDog}
+                >
+                  <option value="fido">Fido</option>
+                  <option value="fritz">Fritz</option>
+                  <option value="dexter">Dexter</option>
+                  <option value="lasagna">Lasagna</option>
+                </select>
+                <br />
+                <br />
+
+                <label>Select Start Time:</label>
                 <input
-                  type="password"
-                  name="oldPassword"
-                  pattern="^[a-zA-Z1-9_*-]{1,20}$"
-                  title="Cannot be longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
-                  placeholder="Enter old password"
-                  value={this.props.oldPassword}
-                  onChange={this.props.onChangeOldPassword}
+                  type="datetime-local"
+                  name="startTime"
+                  value={this.props.startTime}
+                  onChange={this.props.onChangeStartTime}
                   required
                 />
                 <br />
                 <br />
 
-                <label>New Password:</label>
+                <label>Select End Time:</label>
                 <input
-                  type="password"
-                  name="password"
-                  pattern="^[a-zA-Z1-9_*-]{1,20}$"
-                  title="Cannot be longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
-                  placeholder="Enter new password"
-                  value={this.props.password}
-                  onChange={this.props.onChangePassword}
-                  required
-                />
-                <br />
-                <br />
-
-                <label>Confirm New Password:</label>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  pattern="^[a-zA-Z1-9_*-]{1,20}$"
-                  title="Cannot be longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
-                  placeholder="Confirm new password"
-                  value={this.props.confirmPassword}
-                  onChange={this.props.onChangeConfirmPassword} //how to confirm it?
+                  type="datetime-local"
+                  name="endTime"
+                  value={this.props.endTime}
+                  onChange={this.props.onChangeEndTime} //how to confirm it?
                   required
                 />
               </div>
               <br />
               <br />
-
             </div>
             <br />
 
