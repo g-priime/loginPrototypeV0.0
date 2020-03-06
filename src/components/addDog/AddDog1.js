@@ -52,6 +52,7 @@ class AddDog1 extends React.Component {
     event.preventDefault();
 
     this.props.onSubmit(
+      
       this.state.dogname,
       this.state.breed,
       this.state.dob,
@@ -61,7 +62,8 @@ class AddDog1 extends React.Component {
       this.state.medication,
       this.state.allergies,
       this.state.physlimit,
-      this.state.veterinarian
+      this.state.veterinaria
+      
     );
   };
 
@@ -108,7 +110,7 @@ class AddDog1 extends React.Component {
                   type="date"
                   value={this.props.dob}
                   onChange={this.props.onChangeDob}
-                  InputLabelProps={{
+                  inputlabelprops={{
                     shrink: true
                   }}
                 />
@@ -123,7 +125,7 @@ class AddDog1 extends React.Component {
                     value="Male"
                     // checked={this.props.gender === "Male"}
                     // onChange={this.props.onChangeGender}
-                    checked={this.props.onChangeGender}
+                    onChange={this.props.onChangeGender}
                   />
                   <span>Male</span>
                 </label>
@@ -135,7 +137,7 @@ class AddDog1 extends React.Component {
                     value="Female"
                     // checked={this.props.gender === "Female"}
                     // onChange={this.props.onChangeGender}
-                    checked={this.props.onChangeGender}
+                    onChange={this.props.onChangeGender}
                   />
                   <span>Female</span>
                 </label>
@@ -157,7 +159,7 @@ class AddDog1 extends React.Component {
                     type="radio"
                     name="neuteredspayed"
                     value="yes"
-                    checked={this.props.neuteredspayed === "yes"}
+                    // checked={this.props.neuteredspayed === "yes"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>Yes</span>
@@ -168,7 +170,7 @@ class AddDog1 extends React.Component {
                     type="radio"
                     name="neuteredspayed"
                     value="no"
-                    checked={this.props.neuteredspayed === "no"}
+                    // checked={this.props.neuteredspayed === "no"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>No</span>
@@ -251,9 +253,9 @@ class AddDog1 extends React.Component {
             >
               Back to User Account
             </Link>
-            <Link //creates a link, styled like a button
-              to="/AddDog2" //telling to go to home, in adddog it should be accinfo
-              type="button"
+            <button //creates a link, styled like a button
+              //to="/AddDog2" //telling to go to home, in adddog it should be accinfo
+              //type="button"
               className="btn mb-3"
               style={{
                 fontWeight: "bold",
@@ -264,7 +266,7 @@ class AddDog1 extends React.Component {
               }}
             >
               Go to Step 2
-            </Link>
+            </button>
           </div>
         </form>
       </div>
