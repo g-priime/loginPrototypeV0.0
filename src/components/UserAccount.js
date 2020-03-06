@@ -10,83 +10,9 @@ class UserAccount extends React.Component {
   state = {
     userList: [],
     dogList: [],
-    dog: "",
     user: {},
-    address: {},
-    password: "",
-    fname: "",
-    lname: "",
-    email: "",
-
-    appt: "",
-    building: "",
-    street: "",
-    city: "",
-    province: "",
-    postcode: "",
-    phone: "",
-    emergencyphone: "",
-    emergencyname: ""
-
-    // dogname: "",
-    // breed: "",
-    // dob: "",
-    // gender: "",
-    // weight: "",
-    // neuteredspayed: "",
-    // medication: "",
-    // allergies: "",
-    // physlimit: "",
-    // veterinarian: "",
-    // strangers: "",
-    // largerdogs: "",
-    // smalldogs: "",
-    // puppies: "",
-    // da2pp: "",
-    // rabies: "",
-    // bordetella: ""
+    address: {}
   };
-
-  // onFormSubmit = event => {
-  //   event.preventDefault();
-
-  //   this.props.onSubmit(
-  //     this.state.username,
-  //     this.state.password,
-  //     this.state.fname,
-  //     this.state.lname,
-  //     this.state.email,
-
-  //     this.state.appt,
-  //     this.state.building,
-  //     this.state.street,
-  //     this.state.city,
-  //     this.state.province,
-  //     this.state.postcode,
-  //     this.state.phone,
-  //     this.state.emergencyphone,
-  //     this.state.emergencyname,
-
-  //     this.state.dogname,
-  //     this.state.breed,
-  //     this.state.dob,
-  //     this.state.gender,
-  //     this.state.weight,
-  //     this.state.neuteredspayed,
-  //     this.state.medication,
-  //     this.state.allergies,
-  //     this.state.physlimit,
-  //     this.state.veterinarian,
-
-  //     this.state.strangers,
-  //     this.state.largerdogs,
-  //     this.state.smalldogs,
-  //     this.state.puppies,
-  //     this.state.da2pp,
-  //     this.state.rabies,
-  //     this.state.bordetella
-  //   );
-  // };
 
   UNSAFE_componentWillMount() {
     var token = localStorage.getItem("token");
@@ -105,7 +31,7 @@ class UserAccount extends React.Component {
       .then(result => {
         this.setState({ dogList: result.data });
         const dogz = this.state.dogList.map(dog => dog + "dog");
-        // console.log(this.state.dogList);
+        console.log(this.state.dogList);
       })
       .catch(err => {
         console.log(err);
@@ -115,7 +41,7 @@ class UserAccount extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-sm-4">
+        <div className="col-sm-5">
           <div
             className="ui segment p-3 mb-2 "
             style={{ backgroundColor: "#ECEBE7" }}
@@ -218,7 +144,7 @@ class UserAccount extends React.Component {
             </Link>
           </div>
         </div>
-        <div className="col-sm-8">
+        <div className="col-sm-7">
           <div
             className="ui segment p-3 mb-2 "
             style={{ backgroundColor: "#ECEBE7" }}
@@ -252,9 +178,8 @@ class UserAccount extends React.Component {
             <br />
             <div>
               {this.state.dogList.map(dog => (
-                <DogProfile key={dog.idNumber} chosenDog={dog} />
+                <DogProfile key={dog.idNumber} chosenDog={dog} allergies={dog.allergies}/>
               ))}
-              {/* <DogProfile /> */}
             </div>
           </div>
         </div>

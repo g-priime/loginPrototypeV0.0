@@ -13,29 +13,7 @@ class DogProfile extends React.Component {
   //   const toggle = () => setIsOpen(!isOpen);
 
   state = {
-    userList: [],
-    dogList: [],
-    dog: "",
-    user: {},
-    isOpen: false,
-
-    dogname: "",
-    breed: "",
-    dob: "",
-    gender: "",
-    weight: "",
-    neuteredspayed: "",
-    medication: "",
-    allergies: "",
-    physlimit: "",
-    veterinarian: "",
-    strangers: "",
-    largerdogs: "",
-    smalldogs: "",
-    puppies: "",
-    da2pp: "",
-    rabies: "",
-    bordetella: ""
+    isOpen: false
   };
 
   toggle = () => {
@@ -159,7 +137,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                    <div className="left">{this.props.chosenDog.medications}</div>
                   </div>
                 </div>
                 <div className="row">
@@ -169,7 +147,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+            <div className="left">{this.props.chosenDog.allergies}</div>
                   </div>
                 </div>
                 <div className="row">
@@ -181,7 +159,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                    <div className="left">--</div>
                   </div>
                 </div>
                 <div className="row">
@@ -191,7 +169,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                    <div className="left">{this.props.chosenDog.veterinarian.name}</div>
                   </div>
                 </div>
                 <br />
@@ -203,7 +181,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                  {this.props.chosenDog.strangerComfortable ? (<div className="left">Yes</div>) : (<div className="left">No</div>) }
                   </div>
                 </div>
                 <div className="row">
@@ -213,17 +191,17 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                  {this.props.chosenDog.largeDogFriendly ? (<div className="left">Yes</div>) : (<div className="left">No</div>) }
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-sm-10">
                     <div className="left">
-                      <b>Does your dog get along well with smaller dogs?</b>
+                      <b>Does your dog get along well with smaller dogs?:</b>
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                    {this.props.chosenDog.smallDogFriendly ? (<div className="left">Yes</div>) : (<div className="left">No</div>) }
                   </div>
                 </div>
                 <div className="row">
@@ -233,7 +211,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                  {this.props.chosenDog.puppyFriendly ? (<div className="left">Yes</div>) : (<div className="left">No</div>) }
                   </div>
                 </div>
                 <br />
@@ -245,7 +223,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                    <div className="left"></div>
                   </div>
                 </div>
                 <div className="row">
