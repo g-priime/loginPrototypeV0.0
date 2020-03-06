@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 
 class BookAppointment1 extends React.Component {
   state = {
-    dog: "",
+    dog: "fido",
     startTime: "",
     endTime: ""
   };
 
   onFormSubmit = event => {
     event.preventDefault();
+
+    console.log(this.state.dog);
 
     this.props.onSubmit(
       this.state.dog,
