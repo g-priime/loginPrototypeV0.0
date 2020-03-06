@@ -4,7 +4,7 @@ import "../../css/reg.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Hint } from "../hint.svg";
 import AddDog2 from "./AddDog2";
-import BasePath from "../api/BasePath";
+import BasePath from "../../api/BasePath";
 
 const hint = () => (
   <div>
