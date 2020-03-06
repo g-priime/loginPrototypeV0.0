@@ -3,7 +3,8 @@ import Popup from "./PopUp";
 
 class HomePage extends React.Component {
 
-  state = { message: "", cn: "", bgColor: 'blue' };
+//   state = { message: "", cn: "", bgColor: 'blue' };
+
 
  UNSAFE_componentWillMount() {
     if (typeof this.props.location.state == "undefined" || this.props.location.state === null) {
@@ -15,16 +16,16 @@ class HomePage extends React.Component {
       }
  }
 
-  togglePopup() {
-    this.setState({
-      showPopup: !this.state.showPopup
-    });
-  }
+//   togglePopup() {
+//     this.setState({
+//       showPopup: !this.state.showPopup
+//     });
+//   }
 
   render() {
     return (
       <div className="ui segment">
-        Homepage
+        {/* Homepage
         <div>
           {this.state.showPopup ? (
             <Popup
@@ -34,7 +35,7 @@ class HomePage extends React.Component {
               bgColor={this.state.bgColor}
             />
           ) : null}
-        </div>
+        </div> */}
       </div>
     );
   }
