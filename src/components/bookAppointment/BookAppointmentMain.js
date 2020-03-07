@@ -13,7 +13,7 @@ class BookAppointmentMain extends React.Component {
     showPopup: false,
     cn: "",
 
-    dog: "fido",
+    dog: "",
     dogs: []
   };
 
@@ -35,7 +35,7 @@ class BookAppointmentMain extends React.Component {
 
     console.log(this.state.dog);
 
-    const response = await BasePath.put("/webresources/bookAppointment", {
+    const response = await BasePath.put("/webresources/bookboarding", {
       token,
       dog,
       startTime,
