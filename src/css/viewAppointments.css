@@ -24,4 +24,14 @@
     font-size: large;
   }
 
+.pad {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.padRight {
+
+    padding-right: 10%;
+}
+
   
