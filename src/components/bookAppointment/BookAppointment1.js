@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 class BookAppointment1 extends React.Component {
   state = {
-    dog: "fido",
+    dog: "",
     startTime: "",
     endTime: ""
   };
