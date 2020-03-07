@@ -10,28 +10,9 @@ class BookAppointment1 extends React.Component {
     startTime: "",
     endTime: "",
 
-    dogs: [],
-    initialStates: false
-  };
-
-  getDogs = async () => {
-    var token = localStorage.getItem('token');
-    const response = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
-    console.log(response.data[0].name);
-
-    const dogs = response.data;
-    var dogArray = [];
-    dogs.map(doggy => (
-      dogArray.push(doggy.name)
-    ));
-
-    if(!this.state.initialStates){
-      this.setState({ dogs: dogArray,
-      initialStates: true });
-    }
+    dogs: []
     
-    console.log(this.state.dogs);
-  }
+  };
 
   onFormSubmit = event => {
     event.preventDefault();
@@ -46,7 +27,7 @@ class BookAppointment1 extends React.Component {
   };
 
   render() {
-    this.getDogs();
+    
 
     return (
       <div
@@ -68,7 +49,7 @@ class BookAppointment1 extends React.Component {
                   value={this.props.dog}
                   onChange={this.props.onChangeDog}
                 >
-                  {this.state.dogs.map(doggy => (
+                  {this.props.dogs.map(doggy => (
                     <option key={doggy} value={doggy}>{doggy}</option>
                   ))}
                 </select>
