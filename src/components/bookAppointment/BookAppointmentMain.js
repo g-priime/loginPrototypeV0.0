@@ -14,8 +14,29 @@ class BookAppointmentMain extends React.Component {
     cn: "",
 
     dog: "",
-    dogs: []
+    dogs: [],
+    initialStates: false
   };
+
+  getDogs = async () => {
+    var token = localStorage.getItem('token');
+    const response = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
+    //console.log(response.data[0].name);
+
+    const dogs = response.data;
+    var dogArray = [];
+    dogs.map(doggy => (
+      dogArray.push(doggy.name)
+    ));
+
+    if(!this.state.initialStates){
+      this.setState({ dogs: dogArray,
+      initialStates: true,
+    dog: dogArray[0] });
+    }
+    
+    //console.log(this.state.dogs);
+  }
 
   onSearchSubmit1 = async () => {
     this.setState({
@@ -74,6 +95,8 @@ class BookAppointmentMain extends React.Component {
   };
 
   render() {
+    this.getDogs();
+
     var isValid = this.state.images;
 
     if (isValid === "Valid") {
@@ -95,6 +118,8 @@ class BookAppointmentMain extends React.Component {
             onChangeStartTime={this.handleChangeStartTime}
             onChangeEndTime={this.handleChangeEndTime}
             onSubmit={this.onSearchSubmit1}
+
+            dogs={this.state.dogs}
           />
           <div>
             {this.state.showPopup ? (
