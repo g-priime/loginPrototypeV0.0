@@ -9,7 +9,8 @@ class BookAppointment1 extends React.Component {
     endTime: "",
 
     dogs: [],
-    comments: ""
+    comments: "",
+    grooming: true
   };
 
   onFormSubmit = event => {
@@ -85,7 +86,7 @@ class BookAppointment1 extends React.Component {
                     type="radio"
                     name="grooming"
                     value="Yes"
-                    //checked={this.props.gender === "Male"}
+                    checked={this.props.grooming === 'Yes'}
                     onChange={this.props.onChangeGrooming}
                   />
                   <span>Yes</span>
@@ -96,7 +97,7 @@ class BookAppointment1 extends React.Component {
                     type="radio"
                     name="grooming"
                     value="No"
-                    //checked={this.props.gender === "Female"}
+                    checked={this.props.grooming === 'No'}
                     onChange={this.props.onChangeGrooming}
                   />
                   <span>No</span>
