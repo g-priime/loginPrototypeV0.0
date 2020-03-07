@@ -19,6 +19,7 @@ import EditCustomerMain from './editCustomer/EditCustomerMain';
 
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
 import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
+import ViewAppointments from './ViewAppointments';
 
 class App1 extends React.Component {
 
@@ -56,7 +57,7 @@ class App1 extends React.Component {
                             <Route path="/FAQ" component={FAQ} />
                             <Route path="/ChangePass" component={ChangePasswordMain}/>
                             <Route path="/Profile" component={EditCustomerMain}/>
-                            <Route path="/ViewAppointments" component={ChangePasswordMain}/>
+                            <Route path="/ViewAppointments" component={ViewAppointments}/>
                             <Login
                                 show={this.state.show}
                                 onHide={this.onHide}
