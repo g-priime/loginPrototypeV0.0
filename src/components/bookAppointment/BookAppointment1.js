@@ -2,8 +2,6 @@ import React from "react";
 import "../../css/changePassword.css";
 import { Link } from "react-router-dom";
 
-import BasePath from "../../api/BasePath";
-
 class BookAppointment1 extends React.Component {
   state = {
     dog: "",
@@ -11,7 +9,6 @@ class BookAppointment1 extends React.Component {
     endTime: "",
 
     dogs: []
-    
   };
 
   onFormSubmit = event => {
@@ -27,8 +24,6 @@ class BookAppointment1 extends React.Component {
   };
 
   render() {
-    
-
     return (
       <div
         className="ui segment contChangestartTime"
@@ -50,7 +45,9 @@ class BookAppointment1 extends React.Component {
                   onChange={this.props.onChangeDog}
                 >
                   {this.props.dogs.map(doggy => (
-                    <option key={doggy} value={doggy}>{doggy}</option>
+                    <option key={doggy} value={doggy}>
+                      {doggy}
+                    </option>
                   ))}
                 </select>
                 <br />
