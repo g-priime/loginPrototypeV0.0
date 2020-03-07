@@ -13,7 +13,8 @@ class BookAppointmentMain extends React.Component {
     showPopup: false,
     cn: "",
 
-    dog: "fido"
+    dog: "fido",
+    dogs: []
   };
 
   onSearchSubmit1 = async () => {
