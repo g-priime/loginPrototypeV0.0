@@ -8,7 +8,8 @@ class BookAppointment1 extends React.Component {
     startTime: "",
     endTime: "",
 
-    dogs: []
+    dogs: [],
+    comments: ""
   };
 
   onFormSubmit = event => {
@@ -19,7 +20,9 @@ class BookAppointment1 extends React.Component {
     this.props.onSubmit(
       this.state.dog,
       this.state.startTime,
-      this.state.endTime
+      this.state.endTime,
+      this.state.grooming,
+      this.state.comments
     );
   };
 
@@ -71,6 +74,42 @@ class BookAppointment1 extends React.Component {
                   value={this.props.endTime}
                   onChange={this.props.onChangeEndTime} //how to confirm it?
                   required
+                />
+                <br />
+                <br />
+
+                <label>Add Grooming:</label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="grooming"
+                    value="Yes"
+                    //checked={this.props.gender === "Male"}
+                    onChange={this.props.onChangeGrooming}
+                  />
+                  <span>Male</span>
+                </label>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="grooming"
+                    value="No"
+                    //checked={this.props.gender === "Female"}
+                    onChange={this.props.onChangeGrooming}
+                  />
+                  <span>Female</span>
+                </label>
+                <br />
+                <br />
+
+                <label>Additional Comments: </label>
+                <textarea
+                  rows="2"
+                  name="comments"
+                  value={this.props.comments}
+                  onChange={this.props.onChangeComments}
                 />
               </div>
               <br />
