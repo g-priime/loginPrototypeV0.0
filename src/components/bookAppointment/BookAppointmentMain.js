@@ -41,6 +41,8 @@ class BookAppointmentMain extends React.Component {
         this.state.dog,
         this.state.startTime,
         this.state.endTime,
+        this.state.grooming,
+        this.state.comments,
         this.state.sessionId
       ]
     });
@@ -56,7 +58,32 @@ class BookAppointmentMain extends React.Component {
     }
     var comments = this.state.comments;
 
-    console.log(this.state.dog);
+    //console.log(this.state.dog);
+
+    const response = await BasePath.get(`/webresources/bookboarding/${token}${startTime}`);
+
+    this.setState({ response: response.data });
+    console.log(this.state.response);
+
+    if (this.state.response === "Old startTime is incorrect") {
+      this.setState({ cn: "popup4" });
+      this.togglePopup();
+    } else if (this.state.response === "New startTimes do not match") {
+      this.setState({ cn: "popup5" });
+      this.togglePopup();
+    }
+  };
+
+  onSearchSubmit2 = async () => {
+    var token = localStorage.getItem("token");
+
+    var dog = this.state.fieldName[0];
+    var startTime = this.state.fieldName[1];
+    var endTime = this.state.fieldName[2];
+    var grooming = this.state.fieldName[3];
+    var comments = this.state.fieldName[4];
+
+    //console.log(this.state.dog);
 
     const response = await BasePath.put("/webresources/bookboarding", {
       token,
@@ -127,6 +154,7 @@ class BookAppointmentMain extends React.Component {
             grooming={this.state.grooming}
             comments={this.state.comments}
             onClick={this.onPrevious}
+            onSubmit={this.onSearchSubmit2}
           />
         </div>
       );
