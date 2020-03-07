@@ -58,6 +58,7 @@ class App1 extends React.Component {
                             <Route path="/ChangePass" component={ChangePasswordMain}/>
                             <Route path="/Profile" component={EditCustomerMain}/>
                             <Route path="/ViewAppointments" component={ViewAppointments}/>
+                            <Route path="/BookAppointment" component={BookAppointmentMain}/>
                             <Login
                                 show={this.state.show}
                                 onHide={this.onHide}
