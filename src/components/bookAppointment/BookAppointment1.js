@@ -15,7 +15,7 @@ class BookAppointment1 extends React.Component {
   onFormSubmit = event => {
     event.preventDefault();
 
-    console.log(this.state.dog);
+    //console.log(this.state.dog);
 
     this.props.onSubmit(
       this.state.dog,
