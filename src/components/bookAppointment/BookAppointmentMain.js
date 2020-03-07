@@ -53,6 +53,11 @@ class BookAppointmentMain extends React.Component {
     var dog = this.state.dog;
     var startTime = this.state.startTime;
     var endTime = this.state.endTime;
+    var grooming = false;
+    if(this.state.grooming === "Yes"){
+      grooming = true;
+    }
+    var comments = this.state.comments;
 
     console.log(this.state.dog);
 
@@ -61,6 +66,8 @@ class BookAppointmentMain extends React.Component {
       dog,
       startTime,
       endTime,
+      grooming,
+      comments
     });
 
     //console.log(response.data);
@@ -94,6 +101,14 @@ class BookAppointmentMain extends React.Component {
     this.setState({ endTime: event.target.value });
   };
 
+  handleChangeGrooming = event => {
+    this.setState({ grooming: event.target.value });
+  };
+
+  handleChangeComments = event => {
+    this.setState({ comments: event.target.value });
+  };
+
   render() {
     this.getDogs();
 
@@ -117,6 +132,8 @@ class BookAppointmentMain extends React.Component {
             onChangeDog={this.handleChangeDog}
             onChangeStartTime={this.handleChangeStartTime}
             onChangeEndTime={this.handleChangeEndTime}
+            onChangeGrooming={this.handleChangeGrooming}
+            onChangeComments={this.handleChangeComments}
             onSubmit={this.onSearchSubmit1}
 
             dogs={this.state.dogs}
