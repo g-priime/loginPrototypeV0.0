@@ -40,8 +40,31 @@ class ViewAppointments extends React.Component {
         className="ui segment p-3 mb-2 "
         style={{ backgroundColor: "#ECEBE7" }}
       >
-        <div className="leftPad">
-          <h1>Your appointments:</h1>
+        <br />
+        <br />
+        <div className="row ">
+          <div className="col-sm">
+            <div className="leftPad">
+              <h1>Your appointments:</h1>
+            </div>
+          </div>
+          <div className="col-sm">
+            <div className="center">
+              <button
+                className="btn mb-3"
+                style={{
+                  fontWeight: "bold",
+                  backgroundColor: "#1D3461",
+                  color: "#ECEBE7",
+                  boxShadow:
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+                  width: 200
+                }}
+              >
+                Book New Appointment
+              </button>
+            </div>
+          </div>
         </div>
         <br />
         <br />
@@ -146,23 +169,9 @@ class ViewAppointments extends React.Component {
         </div>
         <br />
         <br />
-        <div className="right padRight">
-            <button
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 200
-              }}
-            >
-              Book New Appointment
-            </button>
-            </div>
-            <br />
-            <br />
+
+        <br />
+        <br />
         <div className="row">
           <div className="col-sm-1 right">
             <Hint />{" "}
@@ -176,12 +185,15 @@ class ViewAppointments extends React.Component {
         <br />
         <br />
         <div className="pad">
-        <div
-          className="ui segment p-3 mb-2"
-          style={{ backgroundColor: "#FFFFFF" }}
-        ></div>
+          <div
+            className="ui segment p-3 mb-2"
+            style={{ backgroundColor: "#FFFFFF" }}
+          ></div>
         </div>
-        <button
+        <br />
+        <div className="row">
+          <div className="col-sm">
+            <button
               className="btn mb-3"
               style={{
                 fontWeight: "bold",
@@ -194,6 +206,8 @@ class ViewAppointments extends React.Component {
             >
               Download
             </button>
+          </div>
+          <div className="col-sm">
             <button
               className="btn mb-3"
               style={{
@@ -207,6 +221,8 @@ class ViewAppointments extends React.Component {
             >
               Print
             </button>
+          </div>
+        </div>
       </div>
     );
   }
