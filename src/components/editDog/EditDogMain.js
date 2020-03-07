@@ -90,7 +90,7 @@ class EditDogMain extends React.Component {
         gender: dogInfo.gender,
         weight: dogInfo.weight,
         neuteredspayed: dogInfo.spayedNeutered,
-        medication: dogInfo.medication,
+        medication: dogInfo.medications,
         allergies: dogInfo.allergies,
         physlimit: dogInfo.physLimit,
         veterinarian: dogInfo.veterinarian.name,
@@ -99,7 +99,7 @@ class EditDogMain extends React.Component {
         largerdogs: dogInfo.largerdogs,
         smalldogs: dogInfo.smalldogs,
         puppies: dogInfo.puppies,
-        da2pp: dogInfo.da2pp,
+        da2pp: dogInfo.vaccines.da2pp,
         rabies: dogInfo.rabies,
         bordetella: dogInfo.bordetella
       });
