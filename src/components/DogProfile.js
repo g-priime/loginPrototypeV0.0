@@ -24,6 +24,10 @@ class DogProfile extends React.Component {
     }
   };
 
+  // editDog = () => {
+  //   localStorage.setItem('editDog', this.props.chosenDog.idNumber);
+  // };
+
   render() {
     return (
       <div className="align-items: left">
@@ -45,7 +49,7 @@ class DogProfile extends React.Component {
         </Button>
 
         <Link
-          to="/EditDog"
+          to={{pathname:"/EditDog", state:{dog: this.props.chosenDog}}}
           type="button"
           className="btn mb-3"
           style={{
@@ -56,6 +60,7 @@ class DogProfile extends React.Component {
               "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
             marginRight: 15
           }}
+          //onClick={this.editDog}
         >
           Edit dog
         </Link>
@@ -178,7 +183,7 @@ class DogProfile extends React.Component {
                   </div>
                   <div className="col-sm">
                     <div className="left"></div>
-                    <div className="left">--</div>
+                    <div className="left">{this.props.chosenDog.healthProblems}</div>
                   </div>
                 </div>
                 <div className="row">
@@ -270,7 +275,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                    <div className="left">{this.props.chosenDog.vaccines.expirationDate}</div>
                   </div>
                 </div>
                 <div className="row">
@@ -280,7 +285,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">---</div>
+                    <div className="left">{this.props.chosenDog.vaccines.expirationDate}</div>
                   </div>
                 </div>
               </div>
