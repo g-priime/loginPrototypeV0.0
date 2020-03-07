@@ -11,10 +11,12 @@ class BookAppointmentMain extends React.Component {
     fieldName: [],
     page: "",
     showPopup: false,
-    cn: ""
+    cn: "",
+
+    dog: "fido"
   };
 
-  onSearchSubmit1 = async (dog) => {
+  onSearchSubmit1 = async () => {
     this.setState({
       fieldName: [
         this.state.dog,
@@ -30,7 +32,7 @@ class BookAppointmentMain extends React.Component {
     var startTime = this.state.startTime;
     var endTime = this.state.endTime;
 
-    console.log(this.state.sessionId);
+    console.log(this.state.dog);
 
     const response = await BasePath.put("/webresources/bookAppointment", {
       token,
