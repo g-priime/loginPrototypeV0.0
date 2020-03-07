@@ -2,14 +2,36 @@ import React from "react";
 import "../../css/changePassword.css";
 import { Link } from "react-router-dom";
 
+import BasePath from "../../api/BasePath";
+
 class BookAppointment1 extends React.Component {
   state = {
     dog: "",
     startTime: "",
     endTime: "",
 
-    dogs: ["fritz", "lasagna"]
+    dogs: [],
+    initialStates: false
   };
+
+  getDogs = async () => {
+    var token = localStorage.getItem('token');
+    const response = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
+    console.log(response.data[0].name);
+
+    const dogs = response.data;
+    var dogArray = [];
+    dogs.map(doggy => (
+      dogArray.push(doggy.name)
+    ));
+
+    if(!this.state.initialStates){
+      this.setState({ dogs: dogArray,
+      initialStates: true });
+    }
+    
+    console.log(this.state.dogs);
+  }
 
   onFormSubmit = event => {
     event.preventDefault();
@@ -24,6 +46,8 @@ class BookAppointment1 extends React.Component {
   };
 
   render() {
+    this.getDogs();
+
     return (
       <div
         className="ui segment contChangestartTime"
