@@ -7,7 +7,7 @@ import Popup from "../PopUp";
 
 class BookAppointmentMain extends React.Component {
   state = {
-    images: [],
+    response: "",
     fieldName: [],
     page: "",
     showPopup: false,
@@ -63,14 +63,14 @@ class BookAppointmentMain extends React.Component {
       endTime,
     });
 
-    console.log(response.data);
+    //console.log(response.data);
     
-    this.setState({ images: response.data });
+    this.setState({ response: response.data });
 
-    if (this.state.images === "Old startTime is incorrect") {
+    if (this.state.response === "Old startTime is incorrect") {
       this.setState({ cn: "popup4" });
       this.togglePopup();
-    } else if (this.state.images === "New startTimes do not match") {
+    } else if (this.state.response === "New startTimes do not match") {
       this.setState({ cn: "popup5" });
       this.togglePopup();
     }
@@ -97,7 +97,7 @@ class BookAppointmentMain extends React.Component {
   render() {
     this.getDogs();
 
-    var isValid = this.state.images;
+    var isValid = this.state.response;
 
     if (isValid === "Valid") {
       return (
@@ -105,7 +105,7 @@ class BookAppointmentMain extends React.Component {
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Appointment has been added" }
+              state: { message: "Appointment is now waiting for approval" }
             }}
           />
         </div>
@@ -125,7 +125,7 @@ class BookAppointmentMain extends React.Component {
             {this.state.showPopup ? (
               <Popup
                 cn={this.state.cn}
-                text={this.state.images}
+                text={this.state.response}
                 closePopup={this.togglePopup.bind(this)}
                 bgColor="red"
               />
