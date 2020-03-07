@@ -28,6 +28,7 @@ import AddDogMain from './addDog/AddDogMain';
 import EditDogMain from './editDog/EditDogMain';
 import AddDog2 from './addDog/AddDog2';
 import AddDog1 from './addDog/AddDog1';
+import ViewAppointments from './ViewAppointments';
 
 
 class App1 extends React.Component {
@@ -76,6 +77,7 @@ class App1 extends React.Component {
                             <Route path="/AddDog1" component={AddDog1}/>
                             <Route path="/AddDog2" component={AddDog2}/>
                             <Route path="/Profile" component={UserAccount}/>
+                            <Route path="/ViewAppointments" component={ViewAppointments}/>
 
                             <Login
                                 show={this.state.show}
