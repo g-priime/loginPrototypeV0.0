@@ -44,6 +44,8 @@ class EditDogMain extends React.Component {
     page: "",
     showPopup: false,
     cn: "",
+    dog: {},
+    dogsList:[],
 
     dogname: "",
     breed: "",
@@ -67,32 +69,39 @@ class EditDogMain extends React.Component {
     initialStates: false
   };
 
+  // UNSAFE_componentWillMount() {
+  //   this.setState({dog: this.props.location.state});
+  // }
+
   getDogInfo = async () => {
     // should be the dog info somewhere
     //for editing not for Add
-    const dogInfo = await BasePath.get("/webresources/sendCustomerInfo"); // the path?
+    //const dogInfo = await BasePath.get("/webresources/"); // the path?
+    //this.setState({dog: this.props.location.state});
+    const dogInfo = this.props.location.state.dog;
+    console.log(dogInfo.name);
 
     if (this.state.initialStates === false) {
       this.setState({
         initialStates: true,
-        dogname: dogInfo.data.dogname,
-        breed: dogInfo.data.breed,
-        dob: dogInfo.data.dob,
-        gender: dogInfo.data.gender,
-        weight: dogInfo.data.weight,
-        neuteredspayed: dogInfo.data.neuteredspayed,
-        medication: dogInfo.data.medication,
-        allergies: dogInfo.data.allergies,
-        physlimit: dogInfo.data.physlimit,
-        veterinarian: dogInfo.data.veterinarian,
+        dogname: dogInfo.name,
+        breed: dogInfo.breed,
+        dob: dogInfo.dob,
+        gender: dogInfo.gender,
+        weight: dogInfo.weight,
+        neuteredspayed: dogInfo.neuteredspayed,
+        medication: dogInfo.medication,
+        allergies: dogInfo.allergies,
+        physlimit: dogInfo.physlimit,
+        veterinarian: dogInfo.veterinarian.name,
 
-        strangers: dogInfo.data.strangers,
-        largerdogs: dogInfo.data.largerdogs,
-        smalldogs: dogInfo.data.smalldogs,
-        puppies: dogInfo.data.puppies,
-        da2pp: dogInfo.data.da2pp,
-        rabies: dogInfo.data.rabies,
-        bordetella: dogInfo.data.bordetella
+        strangers: dogInfo.strangers,
+        largerdogs: dogInfo.largerdogs,
+        smalldogs: dogInfo.smalldogs,
+        puppies: dogInfo.puppies,
+        da2pp: dogInfo.da2pp,
+        rabies: dogInfo.rabies,
+        bordetella: dogInfo.bordetella
       });
     }
   };
@@ -267,7 +276,7 @@ class EditDogMain extends React.Component {
   };
 
   render() {
-    //this.getCustomerInfo(); //just for editing
+    this.getDogInfo(); //just for editing
 
     var isValid = this.state.images; // images - message sent from the back
 
