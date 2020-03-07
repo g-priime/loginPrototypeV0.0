@@ -80,6 +80,12 @@ class BookAppointmentMain extends React.Component {
     }
   };
 
+  onPrevious = () => {
+    //console.log("main");
+    this.setState({ response: "" });
+    //console.log(this.state.images);
+  };
+
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup
@@ -120,6 +126,7 @@ class BookAppointmentMain extends React.Component {
             endTime={this.state.endTime}
             grooming={this.state.grooming}
             comments={this.state.comments}
+            onClick={this.onPrevious}
           />
         </div>
       );
