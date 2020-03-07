@@ -183,7 +183,7 @@ class DogProfile extends React.Component {
                   </div>
                   <div className="col-sm">
                     <div className="left"></div>
-                    <div className="left">{this.props.chosenDog.healthProblems}</div>
+                    <div className="left">{this.props.chosenDog.physLimit}</div>
                   </div>
                 </div>
                 <div className="row">
