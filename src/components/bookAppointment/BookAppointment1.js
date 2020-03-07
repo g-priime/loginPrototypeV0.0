@@ -6,7 +6,7 @@ class BookAppointment1 extends React.Component {
   state = {
     dog: "",
     startTime: "",
-    endTime: "",
+    endTime: new Date(),
 
     dogs: [],
     comments: "",
@@ -62,6 +62,8 @@ class BookAppointment1 extends React.Component {
                   type="datetime-local"
                   name="startTime"
                   value={this.props.startTime}
+                  selected={this.props.startTime}
+                  defaultValue={this.props.startTime}
                   onChange={this.props.onChangeStartTime}
                   required
                 />
@@ -73,7 +75,9 @@ class BookAppointment1 extends React.Component {
                   type="datetime-local"
                   name="endTime"
                   value={this.props.endTime}
-                  onChange={this.props.onChangeEndTime} //how to confirm it?
+                  selected={this.props.endTime}
+                  defaultValue={this.props.endTime}
+                  onChange={this.props.onChangeEndTime} 
                   required
                 />
                 <br />
