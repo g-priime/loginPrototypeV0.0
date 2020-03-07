@@ -88,7 +88,7 @@ class BookAppointment1 extends React.Component {
                     //checked={this.props.gender === "Male"}
                     onChange={this.props.onChangeGrooming}
                   />
-                  <span>Male</span>
+                  <span>Yes</span>
                 </label>
 
                 <label>
@@ -99,7 +99,7 @@ class BookAppointment1 extends React.Component {
                     //checked={this.props.gender === "Female"}
                     onChange={this.props.onChangeGrooming}
                   />
-                  <span>Female</span>
+                  <span>No</span>
                 </label>
                 <br />
                 <br />
@@ -130,7 +130,7 @@ class BookAppointment1 extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
               >
-                Back to Home Page
+                Cancel
               </Link>
               <button
                 className="btn mb-3"
@@ -142,7 +142,7 @@ class BookAppointment1 extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
               >
-                Submit
+                Continue
               </button>
             </div>
           </div>
