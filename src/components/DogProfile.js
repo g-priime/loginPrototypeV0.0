@@ -231,7 +231,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left"></div>
+                    <div className="left">{this.props.chosenDog.vaccines.expirationDate}</div>
                   </div>
                 </div>
                 <div className="row">
@@ -247,7 +247,7 @@ class DogProfile extends React.Component {
                 <div className="row">
                   <div className="col-sm-4">
                     <div className="left">
-                      <b>Bordetella</b>
+                      <b>Bordetella:</b>
                     </div>
                   </div>
                   <div className="col-sm">
