@@ -60,10 +60,10 @@ class BookAppointmentMain extends React.Component {
 
     //console.log(this.state.dog);
 
-    const response = await BasePath.get(`/webresources/bookboarding/${token}${startTime}`);
+    const response = await BasePath.get(`/webresources/bookboarding/${token}`);
 
     this.setState({ response: response.data });
-    console.log(this.state.response);
+    console.log("here");
 
     if (this.state.response === "Old startTime is incorrect") {
       this.setState({ cn: "popup4" });
