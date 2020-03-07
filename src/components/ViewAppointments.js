@@ -50,19 +50,20 @@ class ViewAppointments extends React.Component {
           </div>
           <div className="col-sm">
             <div className="center">
-              <button
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                  width: 200
-                }}
-              >
-                Book New Appointment
-              </button>
+            <Link //creates a link, styled like a button
+              to="/BookAppointment" //telling to go to home, in adddog it should be accinfo
+              type="button"
+              className="btn mb-3"
+              style={{
+                fontWeight: "bold",
+                backgroundColor: "#1D3461",
+                color: "#ECEBE7",
+                boxShadow:
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+              }}
+            >
+              Book Appointment
+            </Link>
             </div>
           </div>
         </div>
@@ -167,12 +168,8 @@ class ViewAppointments extends React.Component {
             </button>
           </div>
         </div>
-        <br />
-        <br />
 
-        <br />
-        <br />
-        <div className="row">
+        {/* <div className="row">
           <div className="col-sm-1 right">
             <Hint />{" "}
           </div>
@@ -222,7 +219,7 @@ class ViewAppointments extends React.Component {
               Print
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
