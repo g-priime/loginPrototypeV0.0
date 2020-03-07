@@ -64,6 +64,8 @@ class BookAppointment2 extends React.Component {
 
                 <label>Additional Comments:</label>
                 {this.props.comments}
+                <br />
+                <br />
 
                 <label>Cost:</label>
                 $1,000,000,000.00
@@ -86,8 +88,22 @@ class BookAppointment2 extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
               >
-                Cancel
+                Cancel Appointment
               </Link>
+              <button
+                type="button"
+                onClick={this.props.onClick}
+                className="btn mb-3"
+                style={{
+                  fontWeight: "bold",
+                  backgroundColor: "#1D3461",
+                  color: "#ECEBE7",
+                  boxShadow:
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                }}
+              >
+                Modify Information
+              </button>
               <button
                 className="btn mb-3"
                 style={{
@@ -98,7 +114,19 @@ class BookAppointment2 extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
               >
-                Continue
+                Proceed To Payment
+              </button>
+              <button
+                className="btn mb-3"
+                style={{
+                  fontWeight: "bold",
+                  backgroundColor: "#1D3461",
+                  color: "#ECEBE7",
+                  boxShadow:
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                }}
+              >
+                Book Now Pay Later
               </button>
             </div>
           </div>
