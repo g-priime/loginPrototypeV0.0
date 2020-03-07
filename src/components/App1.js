@@ -5,8 +5,11 @@ import RegisterMain from './register/RegisterMain';
 import Gallery from './Gallery';
 import FAQ from './FAQ';
 import Testimonials from './Testimonials';
-//import Services from './Services';
-import Login from './login/Login'
+
+import Services from './Services';
+import Login from './login/Login';
+import BasePath from './../api/BasePath';
+
 import '../css/main.css';
 
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -16,10 +19,16 @@ import EditCustomerMain from './editCustomer/EditCustomerMain';
 //import AddDogMain from './addDog/AddDogMain';
 //import AddDog1 from './addDog/AddDog1';
 //import AddDog2 from './addDog/AddDog2';
+import UserAccount from './UserAccount';
 
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
-import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
-import ViewAppointments from './ViewAppointments';
+
+import { getQueriesForElement } from '@testing-library/react';
+import AddDogMain from './addDog/AddDogMain';
+import EditDogMain from './editDog/EditDogMain';
+import AddDog2 from './addDog/AddDog2';
+import AddDog1 from './addDog/AddDog1';
+
 
 class App1 extends React.Component {
 
@@ -42,6 +51,7 @@ class App1 extends React.Component {
     }
 
     render() {
+ 
         return (
             <div>
                 <BrowserRouter>
@@ -51,14 +61,22 @@ class App1 extends React.Component {
                         <div className="mt-4 ml-5 mr-5">
                             <Route path="/" exact component={HomePage} />
                             <Route path="/Register" component={RegisterMain} />
-                            <Route path="/Services" component={BookAppointmentMain} />
+
+                            <Route path="/Services" component={Services}/>
+
                             <Route path="/Gallery" component={Gallery} />
                             <Route path="/Testimonials" component={Testimonials} />
                             <Route path="/FAQ" component={FAQ} />
                             <Route path="/ChangePass" component={ChangePasswordMain}/>
-                            <Route path="/Profile" component={EditCustomerMain}/>
-                            <Route path="/ViewAppointments" component={ViewAppointments}/>
-                            <Route path="/BookAppointment" component={BookAppointmentMain}/>
+
+                            <Route path="/EditCustomer" component={EditCustomerMain}/>
+                            <Route path="/AddDog" component={AddDogMain}/>
+                            <Route path="/UserAccount" component={UserAccount}/>
+                            <Route path="/EditDog" component={EditDogMain}/>
+                            <Route path="/AddDog1" component={AddDog1}/>
+                            <Route path="/AddDog2" component={AddDog2}/>
+                            <Route path="/Profile" component={UserAccount}/>
+
                             <Login
                                 show={this.state.show}
                                 onHide={this.onHide}

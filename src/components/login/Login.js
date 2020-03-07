@@ -25,6 +25,7 @@ class Login extends React.Component {
         console.log(result.data);
         if (result.data !== "") {
           localStorage.setItem('token', result.data);
+          console.log(result.data);
           this.props.onHide();
           //after this would change tab to account with drop down in header
         } else {

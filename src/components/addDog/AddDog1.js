@@ -2,8 +2,10 @@ import React from "react";
 import "../../css/addDog.css";
 import "../../css/reg.css";
 import { Link } from "react-router-dom";
-
 import { ReactComponent as Hint } from "../hint.svg";
+import AddDog2 from "./AddDog2";
+import BasePath from "../../api/BasePath";
+
 const hint = () => (
   <div>
     {
@@ -35,6 +37,7 @@ const hint = () => (
 
 class AddDog1 extends React.Component {
   state = {
+    selectedFile: null,
     dogname: "",
     breed: "",
     dob: "",
@@ -45,6 +48,21 @@ class AddDog1 extends React.Component {
     allergies: "",
     physlimit: "",
     veterinarian: ""
+  };
+
+  fileChangedHandler = event => {
+    this.setState({ selectedFile: event.target.files[0] });
+  };
+
+  uploadHandler = () => {
+    const formData = new FormData();
+    formData.append(
+      "myFile",
+      this.state.selectedFile,
+      this.state.selectedFile.name
+    );
+     BasePath.post('my-domain.com/file-upload', formData) //path??????
+
   };
 
   onFormSubmit = event => {
@@ -60,7 +78,7 @@ class AddDog1 extends React.Component {
       this.state.medication,
       this.state.allergies,
       this.state.physlimit,
-      this.state.veterinarian
+      this.state.veterinaria
     );
   };
 
@@ -107,7 +125,7 @@ class AddDog1 extends React.Component {
                   type="date"
                   value={this.props.dob}
                   onChange={this.props.onChangeDob}
-                  InputLabelProps={{
+                  inputlabelprops={{
                     shrink: true
                   }}
                 />
@@ -120,7 +138,8 @@ class AddDog1 extends React.Component {
                     type="radio"
                     name="gender"
                     value="Male"
-                    checked={this.props.gender === "Male"}
+                    // checked={this.props.gender === "Male"}
+                    // onChange={this.props.onChangeGender}
                     onChange={this.props.onChangeGender}
                   />
                   <span>Male</span>
@@ -131,14 +150,15 @@ class AddDog1 extends React.Component {
                     type="radio"
                     name="gender"
                     value="Female"
-                    checked={this.props.gender === "Female"}
+                    // checked={this.props.gender === "Female"}
+                    // onChange={this.props.onChangeGender}
                     onChange={this.props.onChangeGender}
                   />
                   <span>Female</span>
                 </label>
                 <br />
                 <br />
-                <label>Weight (Lb):</label>
+                <label>Weight (kg):</label>
                 <input
                   type="number"
                   placeholder="Enter dog's weight"
@@ -154,7 +174,7 @@ class AddDog1 extends React.Component {
                     type="radio"
                     name="neuteredspayed"
                     value="yes"
-                    checked={this.props.neuteredspayed === "yes"}
+                    // checked={this.props.neuteredspayed === "yes"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>Yes</span>
@@ -165,7 +185,7 @@ class AddDog1 extends React.Component {
                     type="radio"
                     name="neuteredspayed"
                     value="no"
-                    checked={this.props.neuteredspayed === "no"}
+                    // checked={this.props.neuteredspayed === "no"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>No</span>
@@ -215,9 +235,12 @@ class AddDog1 extends React.Component {
             <br />
             <br />
             <div className="row">
-              <Link //creates a link, styled like a button
-                to="/" //telling to go to home, in adddog it should be accinfo
-                type="button"
+              <input type="file" onChange={this.fileChangedHandler} />
+
+              <button //button to upload the picture
+                onClick={this.uploadHandler}
+                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                maxFileSize={5242880}
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
@@ -227,15 +250,15 @@ class AddDog1 extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
               >
-                Upload Picture
-              </Link>
+                Upload picture
+              </button>
             </div>
             <br />
             <br />
           </div>
           <div className="d-flex justify-content-between">
             <Link //creates a link, styled like a button
-              to="/" //telling to go to home, in adddog it should be accinfo
+              to="/UserAccount" //telling to go to home, in adddog it should be accinfo
               type="button"
               className="btn mb-3"
               style={{
@@ -248,7 +271,9 @@ class AddDog1 extends React.Component {
             >
               Back to User Account
             </Link>
-            <button
+            <button //creates a link, styled like a button
+              //to="/AddDog2" //telling to go to home, in adddog it should be accinfo
+              //type="button"
               className="btn mb-3"
               style={{
                 fontWeight: "bold",

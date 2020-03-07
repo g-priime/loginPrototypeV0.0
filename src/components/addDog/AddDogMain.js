@@ -128,20 +128,24 @@ class AddDogMain extends React.Component {
     var allerg = this.state.allergies;
     var plimit = this.state.physlimit;
     var vet = this.state.veterinarian;
+    
 
-    const response = await BasePath.put("/webresources/verify", {
+    const response = await BasePath.get("/webresources/registerDog", {
+      /*
       dname,
       br,
       dateofbirth,
       gen,
       wei
+      */
     });
-
+ //console.log(response);
     this.setState({ images: response.data });
   };
 
   onSearchSubmit2 = async () => {
     //called when step 2 submitted
+    
     var dogname = this.state.fieldName[0];
     var breed = this.state.fieldName[1];
 
@@ -162,8 +166,12 @@ class AddDogMain extends React.Component {
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
 
-    const response = await BasePath.put("/webresources/register", {
+    var token = localStorage.getItem('token');
+    
+    const response = await BasePath.put("/webresources/registerDog", {
       //what path??????????
+      
+      token,
       dogname,
       breed,
       dob,
@@ -182,6 +190,7 @@ class AddDogMain extends React.Component {
       da2pp,
       rabies,
       bordetella
+      
     });
 
     this.setState({ images: response.data });
@@ -193,7 +202,12 @@ class AddDogMain extends React.Component {
       showPopup: !this.state.showPopup
     });
   }
-
+/*
+  onChangePage = () => {
+    this.props.onClick(this.state.page);
+    console.log("here");
+  };
+*/
   handleChangeDogname = event => {
     //getting info from the fields, needed
     this.setState({ dogname: event.target.value });
@@ -208,6 +222,7 @@ class AddDogMain extends React.Component {
   };
 
   handleChangeGender = event => {
+    console.log(event.target.value);
     this.setState({ gender: event.target.value });
   };
 
@@ -306,10 +321,10 @@ class AddDogMain extends React.Component {
             physlimit={this.state.physlimit}
             veterinarian={this.state.veterinarian}
             onSubmit={this.onSearchSubmit1}
-            // onClick={() => {
+             //onClick={() => {
             //   //no needed
-            //   this.props.onChangePage("about"); //no needed
-            // }}
+               //this.props.onChangePage("about"); //no needed
+             //}}
           />
           <div>
             {this.state.showPopup ? ( //need it probably for error messages
@@ -343,7 +358,7 @@ class AddDogMain extends React.Component {
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
             onSubmit={this.onSearchSubmit2} //calls onsearch submit, all the stuff is getting passed from main page to the step2
-            // onClick={this.onPrevious} //don't need
+             onClick={this.onPrevious} //don't need
           />
         </div>
       );
