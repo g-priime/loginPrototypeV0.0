@@ -6,7 +6,9 @@ class BookAppointment1 extends React.Component {
   state = {
     dog: "",
     startTime: "",
-    endTime: ""
+    endTime: "",
+
+    dogs: ["fritz", "lasagna"]
   };
 
   onFormSubmit = event => {
@@ -42,10 +44,9 @@ class BookAppointment1 extends React.Component {
                   value={this.props.dog}
                   onChange={this.props.onChangeDog}
                 >
-                  <option value="fido">Fido</option>
-                  <option value="fritz">Fritz</option>
-                  <option value="dexter">Dexter</option>
-                  <option value="lasagna">Lasagna</option>
+                  {this.state.dogs.map(doggy => (
+                    <option key={doggy} value={doggy}>{doggy}</option>
+                  ))}
                 </select>
                 <br />
                 <br />
