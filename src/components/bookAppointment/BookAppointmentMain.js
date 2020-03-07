@@ -38,6 +38,11 @@ class BookAppointmentMain extends React.Component {
   };
 
   onSearchSubmit1 = async () => {
+    var grooming = false;
+    if (this.state.grooming === "Yes") {
+      grooming = true;
+    }
+
     this.setState({
       fieldName: [
         this.state.dog,
@@ -51,19 +56,14 @@ class BookAppointmentMain extends React.Component {
 
     var token = localStorage.getItem("token");
 
-    var dog = this.state.dog;
     var startTime = this.state.startTime;
     var formattedStart = Moment(startTime).format('DD-MM-YY hh-mm-ss');
     var endTime = this.state.endTime;
-    var grooming = false;
-    if (this.state.grooming === "Yes") {
-      grooming = true;
-    }
-    var comments = this.state.comments;
+    var formattedEnd = Moment(endTime).format('DD-MM-YY hh-mm-ss');
 
     //console.log(this.state.dog);
 
-    const response = await BasePath.get(`/webresources/bookboarding/${token}/${formattedStart}/cat`);
+    const response = await BasePath.get(`/webresources/bookboarding/${token}/${formattedStart}/${formattedEnd}`);
 
     this.setState({ response: response.data });
     console.log("here");
@@ -181,6 +181,13 @@ class BookAppointmentMain extends React.Component {
             onChangeEndTime={this.handleChangeEndTime}
             onChangeGrooming={this.handleChangeGrooming}
             onChangeComments={this.handleChangeComments}
+
+            dog={this.state.dog}
+            //startTime={this.state.startTime}
+            //endTime={this.state.endTime}
+            grooming={this.state.grooming}
+            comments={this.state.comments}
+
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
           />
