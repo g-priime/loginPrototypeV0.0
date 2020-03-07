@@ -44,37 +44,37 @@ class DogProfile extends React.Component {
           {this.props.chosenDog.name}
         </Button>
 
-        <Link 
-              to="/EditDog" 
-              type="button"
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                  marginRight: 15
-              }}
-            >
-              Edit dog
-            </Link>
+        <Link
+          to="/EditDog"
+          type="button"
+          className="btn mb-3"
+          style={{
+            fontWeight: "bold",
+            backgroundColor: "#1D3461",
+            color: "#ECEBE7",
+            boxShadow:
+              "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+            marginRight: 15
+          }}
+        >
+          Edit dog
+        </Link>
 
-            <Link 
-              to="/" //will be the path to delete a dog
-              type="button"
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                  marginRight: 15
-              }}
-            >
-              Delete dog
-            </Link>
+        <Link
+          to="/" //will be the path to delete a dog
+          type="button"
+          className="btn mb-3"
+          style={{
+            fontWeight: "bold",
+            backgroundColor: "#1D3461",
+            color: "#ECEBE7",
+            boxShadow:
+              "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+            marginRight: 15
+          }}
+        >
+          Delete dog
+        </Link>
 
         {/* 2 buttons. for Edit onClick goes to function that Edit willgo to edit dog ....in edit dog=>(Put method....BasePath.put(chosenDog.idNumber, {})) Edit would onClick sets boolean and if Edit is true - display the other HTML */}
         {/* {this.props.chosenDog.dogname} */}
@@ -101,7 +101,9 @@ class DogProfile extends React.Component {
                           <b>Date of birth: </b>
                         </div>
                       </div>
-                      <div className="col-sm">{this.props.chosenDog.dateOfBirth}</div>
+                      <div className="col-sm">
+                        {this.props.chosenDog.dateOfBirth}
+                      </div>
                     </div>
                     <div className="row">
                       <div className="col-sm">
@@ -109,7 +111,9 @@ class DogProfile extends React.Component {
                           <b>Gender: </b>
                         </div>
                       </div>
-                      <div className="col-sm">{this.props.chosenDog.gender}</div>
+                      <div className="col-sm">
+                        {this.props.chosenDog.gender}
+                      </div>
                     </div>
                     <div className="row">
                       <div className="col-sm">
@@ -117,7 +121,9 @@ class DogProfile extends React.Component {
                           <b>Weight: </b>
                         </div>
                       </div>
-                      <div className="col-sm">{this.props.chosenDog.weight}kg</div>
+                      <div className="col-sm">
+                        {this.props.chosenDog.weight}kg
+                      </div>
                     </div>
                     <div className="row">
                       <div className="col-sm">
@@ -125,9 +131,12 @@ class DogProfile extends React.Component {
                           <b>Spayed or </b>
                           <b>Neutered?:</b>
                         </div>
-                      </div>
-            {" "}
-                      {this.props.chosenDog.spayedNeutered ? (<div className="col-sm">Yes</div>) : (<div className="col-sm">No</div>) }
+                      </div>{" "}
+                      {this.props.chosenDog.spayedNeutered ? (
+                        <div className="col-sm">Yes</div>
+                      ) : (
+                        <div className="col-sm">No</div>
+                      )}
                     </div>
                   </div>
                   <div className="col-sm">
@@ -144,7 +153,9 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">{this.props.chosenDog.medications}</div>
+                    <div className="left">
+                      {this.props.chosenDog.medications}
+                    </div>
                   </div>
                 </div>
                 <div className="row">
@@ -154,7 +165,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-            <div className="left">{this.props.chosenDog.allergies}</div>
+                    <div className="left">{this.props.chosenDog.allergies}</div>
                   </div>
                 </div>
                 <div className="row">
@@ -177,7 +188,9 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">{this.props.chosenDog.veterinarian.name}</div>
+                    <div className="left">
+                      {this.props.chosenDog.veterinarian.name}
+                    </div>
                   </div>
                 </div>
                 <br />
@@ -189,7 +202,11 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                  {this.props.chosenDog.strangerComfortable ? (<div className="left">Yes</div>) : (<div className="left">No</div>) }
+                    {this.props.chosenDog.strangerComfortable ? (
+                      <div className="left">Yes</div>
+                    ) : (
+                      <div className="left">No</div>
+                    )}
                   </div>
                 </div>
                 <div className="row">
@@ -199,7 +216,11 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                  {this.props.chosenDog.largeDogFriendly ? (<div className="left">Yes</div>) : (<div className="left">No</div>) }
+                    {this.props.chosenDog.largeDogFriendly ? (
+                      <div className="left">Yes</div>
+                    ) : (
+                      <div className="left">No</div>
+                    )}
                   </div>
                 </div>
                 <div className="row">
@@ -209,7 +230,11 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    {this.props.chosenDog.smallDogFriendly ? (<div className="left">Yes</div>) : (<div className="left">No</div>) }
+                    {this.props.chosenDog.smallDogFriendly ? (
+                      <div className="left">Yes</div>
+                    ) : (
+                      <div className="left">No</div>
+                    )}
                   </div>
                 </div>
                 <div className="row">
@@ -219,7 +244,11 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                  {this.props.chosenDog.puppyFriendly ? (<div className="left">Yes</div>) : (<div className="left">No</div>) }
+                    {this.props.chosenDog.puppyFriendly ? (
+                      <div className="left">Yes</div>
+                    ) : (
+                      <div className="left">No</div>
+                    )}
                   </div>
                 </div>
                 <br />
