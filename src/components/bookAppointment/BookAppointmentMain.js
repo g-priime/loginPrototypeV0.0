@@ -183,8 +183,8 @@ class BookAppointmentMain extends React.Component {
             onChangeComments={this.handleChangeComments}
 
             dog={this.state.dog}
-            //startTime={this.state.startTime}
-            //endTime={this.state.endTime}
+            startTime={this.state.startTime}
+            endTime={this.state.endTime}
             grooming={this.state.grooming}
             comments={this.state.comments}
 
