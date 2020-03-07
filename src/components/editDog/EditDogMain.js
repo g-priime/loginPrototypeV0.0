@@ -79,20 +79,20 @@ class EditDogMain extends React.Component {
     //const dogInfo = await BasePath.get("/webresources/"); // the path?
     //this.setState({dog: this.props.location.state});
     const dogInfo = this.props.location.state.dog;
-    console.log(dogInfo.name);
+    console.log(dogInfo);
 
     if (this.state.initialStates === false) {
       this.setState({
         initialStates: true,
         dogname: dogInfo.name,
         breed: dogInfo.breed,
-        dob: dogInfo.dob,
+        dob: dogInfo.dateOfBirth,
         gender: dogInfo.gender,
         weight: dogInfo.weight,
-        neuteredspayed: dogInfo.neuteredspayed,
+        neuteredspayed: dogInfo.spayedNeutered,
         medication: dogInfo.medication,
         allergies: dogInfo.allergies,
-        physlimit: dogInfo.physlimit,
+        physlimit: dogInfo.physLimit,
         veterinarian: dogInfo.veterinarian.name,
 
         strangers: dogInfo.strangers,
