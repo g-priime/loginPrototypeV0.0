@@ -2,6 +2,7 @@ import React from "react";
 
 import BasePath from "../../api/BasePath";
 import BookAppointment1 from "./BookAppointment1";
+import BookAppointment2 from "./BookAppointment2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
@@ -19,24 +20,20 @@ class BookAppointmentMain extends React.Component {
   };
 
   getDogs = async () => {
-    var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
     const response = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
     //console.log(response.data[0].name);
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy => (
-      dogArray.push(doggy.name)
-    ));
+    dogs.map(doggy => dogArray.push(doggy.name));
 
-    if(!this.state.initialStates){
-      this.setState({ dogs: dogArray,
-      initialStates: true,
-    dog: dogArray[0] });
+    if (!this.state.initialStates) {
+      this.setState({ dogs: dogArray, initialStates: true, dog: dogArray[0] });
     }
-    
+
     //console.log(this.state.dogs);
-  }
+  };
 
   onSearchSubmit1 = async () => {
     this.setState({
@@ -48,13 +45,13 @@ class BookAppointmentMain extends React.Component {
       ]
     });
 
-    var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
 
     var dog = this.state.dog;
     var startTime = this.state.startTime;
     var endTime = this.state.endTime;
     var grooming = false;
-    if(this.state.grooming === "Yes"){
+    if (this.state.grooming === "Yes") {
       grooming = true;
     }
     var comments = this.state.comments;
@@ -71,7 +68,7 @@ class BookAppointmentMain extends React.Component {
     });
 
     //console.log(response.data);
-    
+
     this.setState({ response: response.data });
 
     if (this.state.response === "Old startTime is incorrect") {
@@ -117,6 +114,18 @@ class BookAppointmentMain extends React.Component {
     if (isValid === "Valid") {
       return (
         <div style={{ marginTop: "10px" }}>
+          <BookAppointment2
+            dog={this.state.dog}
+            startTime={this.state.startTime}
+            endTime={this.state.endTime}
+            grooming={this.state.grooming}
+            comments={this.state.comments}
+          />
+        </div>
+      );
+    } else if (isValid === "Pay Later") {
+      return (
+        <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
               pathname: "/",
@@ -135,7 +144,6 @@ class BookAppointmentMain extends React.Component {
             onChangeGrooming={this.handleChangeGrooming}
             onChangeComments={this.handleChangeComments}
             onSubmit={this.onSearchSubmit1}
-
             dogs={this.state.dogs}
           />
           <div>
@@ -150,7 +158,7 @@ class BookAppointmentMain extends React.Component {
           </div>
         </div>
       );
-    } 
+    }
   }
 }
 
