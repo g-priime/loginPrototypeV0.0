@@ -265,7 +265,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">{this.props.chosenDog.vaccines.expirationDate}</div>
+                      <div className="left">{this.props.chosenDog.vaccines.da2pp}</div>
                   </div>
                 </div>
                 <div className="row">
@@ -275,7 +275,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">{this.props.chosenDog.vaccines.expirationDate}</div>
+                    <div className="left">{this.props.chosenDog.vaccines.rabies}</div>
                   </div>
                 </div>
                 <div className="row">
@@ -285,7 +285,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">{this.props.chosenDog.vaccines.expirationDate}</div>
+                    <div className="left">{this.props.chosenDog.vaccines.bordetella}</div>
                   </div>
                 </div>
               </div>
