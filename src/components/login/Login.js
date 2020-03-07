@@ -23,7 +23,7 @@ class Login extends React.Component {
     })
       .then(result => {
         console.log(result.data);
-        if (result.data != "") {
+        if (result.data !== "") {
           localStorage.setItem('token', result.data);
           this.props.onHide();
           //after this would change tab to account with drop down in header
@@ -42,7 +42,7 @@ class Login extends React.Component {
   }
 
   validateAndLogin = () => {
-    if (this.state.username == "" || this.state.password == "") {
+    if (this.state.username === "" || this.state.password === "") {
       this.props.changeErr("Username and/or Password cannot be empty");
       this.setState({ showErr: true });
     } else {
