@@ -6,6 +6,8 @@ import BookAppointment2 from "./BookAppointment2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
+import Moment from "moment";
+
 class BookAppointmentMain extends React.Component {
   state = {
     response: "",
@@ -51,6 +53,7 @@ class BookAppointmentMain extends React.Component {
 
     var dog = this.state.dog;
     var startTime = this.state.startTime;
+    var formattedStart = Moment(startTime).format('DD-MM-YY hh-mm-ss');
     var endTime = this.state.endTime;
     var grooming = false;
     if (this.state.grooming === "Yes") {
@@ -60,7 +63,7 @@ class BookAppointmentMain extends React.Component {
 
     //console.log(this.state.dog);
 
-    const response = await BasePath.get(`/webresources/bookboarding/${token}`);
+    const response = await BasePath.get(`/webresources/bookboarding/${token}/${formattedStart}/cat`);
 
     this.setState({ response: response.data });
     console.log("here");
