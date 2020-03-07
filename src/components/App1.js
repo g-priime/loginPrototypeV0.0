@@ -5,7 +5,7 @@ import RegisterMain from './register/RegisterMain';
 import Gallery from './Gallery';
 import FAQ from './FAQ';
 import Testimonials from './Testimonials';
-import Services from './Services';
+//import Services from './Services';
 import Login from './login/Login'
 import '../css/main.css';
 
