@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/changePassword.css";
+import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
 
 class BookAppointment1 extends React.Component {
@@ -30,7 +30,7 @@ class BookAppointment1 extends React.Component {
   render() {
     return (
       <div
-        className="ui segment contChangestartTime"
+        className="ui segment contChangePassword"
         style={{ backgroundColor: "#ECEBE7" }}
       >
         <form
@@ -38,7 +38,7 @@ class BookAppointment1 extends React.Component {
           className="ui form"
           style={{ backgroundColor: "#ECEBE7 " }}
         >
-          <div className="container">
+          <div className="container fieldContainer">
             <h1>Book Appointment</h1>
 
             <div className="row">
@@ -54,7 +54,6 @@ class BookAppointment1 extends React.Component {
                     </option>
                   ))}
                 </select>
-                <br />
                 <br />
 
                 <label>Select Start Time:</label>
@@ -77,36 +76,42 @@ class BookAppointment1 extends React.Component {
                   //value={this.props.endTime}
                   //selected={this.props.endTime}
                   defaultValue={this.props.endTime}
-                  onChange={this.props.onChangeEndTime} 
+                  onChange={this.props.onChangeEndTime}
                   required
                 />
                 <br />
                 <br />
 
-                <label>Add Grooming:</label>
+                <div className="row">
+                  <div className="col-sm">
+                    <label>Add Grooming:</label>
+                  </div>
 
-                <label>
-                  <input
-                    type="radio"
-                    name="grooming"
-                    value="Yes"
-                    checked={this.props.grooming === 'Yes'}
-                    onChange={this.props.onChangeGrooming}
-                  />
-                  <span>Yes</span>
-                </label>
-
-                <label>
-                  <input
-                    type="radio"
-                    name="grooming"
-                    value="No"
-                    checked={this.props.grooming === 'No'}
-                    onChange={this.props.onChangeGrooming}
-                  />
-                  <span>No</span>
-                </label>
-                <br />
+                  <div className="col-sm">
+                    <label>
+                      <input
+                        type="radio"
+                        name="grooming"
+                        value="Yes"
+                        checked={this.props.grooming === "Yes"}
+                        onChange={this.props.onChangeGrooming}
+                      />
+                      <span>Yes</span>
+                    </label>
+                  </div>
+                  <div className="col-sm">
+                    <label>
+                      <input
+                        type="radio"
+                        name="grooming"
+                        value="No"
+                        checked={this.props.grooming === "No"}
+                        onChange={this.props.onChangeGrooming}
+                      />
+                      <span>No</span>
+                    </label>
+                  </div>
+                </div>
                 <br />
 
                 <label>Additional Comments: </label>
