@@ -68,7 +68,7 @@ class BookAppointment2 extends React.Component {
                 <br />
 
                 <label>Cost:</label>
-                $1,000,000,000.00
+                {this.props.cost}
               </div>
               <br />
               <br />
