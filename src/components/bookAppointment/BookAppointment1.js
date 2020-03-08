@@ -61,8 +61,8 @@ class BookAppointment1 extends React.Component {
                 <input
                   type="datetime-local"
                   name="startTime"
-                  value={this.props.startTime}
-                  selected={this.props.startTime}
+                  //value={this.props.startTime}
+                  //selected={this.props.startTime}
                   defaultValue={this.props.startTime}
                   onChange={this.props.onChangeStartTime}
                   required
@@ -74,8 +74,8 @@ class BookAppointment1 extends React.Component {
                 <input
                   type="datetime-local"
                   name="endTime"
-                  value={this.props.endTime}
-                  selected={this.props.endTime}
+                  //value={this.props.endTime}
+                  //selected={this.props.endTime}
                   defaultValue={this.props.endTime}
                   onChange={this.props.onChangeEndTime} 
                   required
