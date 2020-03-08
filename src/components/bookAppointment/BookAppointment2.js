@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/changePassword.css";
+import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
 
 class BookAppointment2 extends React.Component {
@@ -29,7 +29,7 @@ class BookAppointment2 extends React.Component {
   render() {
     return (
       <div
-        className="ui segment contChangestartTime"
+        className="ui segment contChangePassword"
         style={{ backgroundColor: "#ECEBE7" }}
       >
         <form
@@ -74,61 +74,77 @@ class BookAppointment2 extends React.Component {
               <br />
             </div>
             <br />
+            <br />
+            <br />
+            <br />
+            <br />
 
-            <div className="d-flex justify-content-between">
-              <Link
-                to="/"
-                type="button"
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-              >
-                Cancel Appointment
-              </Link>
-              <button
-                type="button"
-                onClick={this.props.onClick}
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-              >
-                Modify Information
-              </button>
-              <button
-                onClick={this.props.proceedToPayment}
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-              >
-                Proceed To Payment
-              </button>
-              <button
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-              >
-                Book Now Pay Later
-              </button>
+            <div className="row">
+              <div className="col-sm">
+                <div className="d-flex justify-content-between">
+                  <Link
+                    to="/"
+                    type="button"
+                    className="btn mb-3"
+                    style={{
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Cancel Appointment
+                  </Link>
+                  <button
+                    onClick={this.props.proceedToPayment}
+                    className="btn mb-3"
+                    style={{
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Proceed To Payment
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-sm">
+                <div className="d-flex justify-content-between">
+                  <button
+                    type="button"
+                    onClick={this.props.onClick}
+                    className="btn mb-3"
+                    style={{
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Modify Information
+                  </button>
+
+                  <button
+                    className="btn mb-3"
+                    style={{
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Book Now Pay Later
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </form>
