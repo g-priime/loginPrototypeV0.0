@@ -18,7 +18,8 @@ class BookAppointmentMain extends React.Component {
 
     dog: "",
     dogs: [],
-    initialStates: false
+    initialStates: false,
+    cost: ""
   };
 
   getDogs = async () => {
@@ -38,11 +39,12 @@ class BookAppointmentMain extends React.Component {
   };
 
   onSearchSubmit1 = async () => {
+    /*
     var grooming = false;
     if (this.state.grooming === "Yes") {
       grooming = true;
     }
-
+*/
     this.setState({
       fieldName: [
         this.state.dog,
@@ -60,13 +62,14 @@ class BookAppointmentMain extends React.Component {
     var formattedStart = Moment(startTime).format('DD-MM-YY hh-mm-ss');
     var endTime = this.state.endTime;
     var formattedEnd = Moment(endTime).format('DD-MM-YY hh-mm-ss');
+    var grooming = this.state.grooming;
 
     //console.log(this.state.dog);
 
-    const response = await BasePath.get(`/webresources/bookboarding/${token}/${formattedStart}/${formattedEnd}`);
+    const response = await BasePath.get(`/webresources/bookboarding/${token}/${formattedStart}/${formattedEnd}/${grooming}`);
 
-    this.setState({ response: response.data });
-    console.log("here");
+    this.setState({ response: response.data.value, cost: response.data.cost });
+    //console.log("here");
 
     if (this.state.response === "Old startTime is incorrect") {
       this.setState({ cn: "popup4" });
@@ -156,6 +159,8 @@ class BookAppointmentMain extends React.Component {
             endTime={this.state.endTime}
             grooming={this.state.grooming}
             comments={this.state.comments}
+            cost={this.state.cost}
+
             onClick={this.onPrevious}
             onSubmit={this.onSearchSubmit2}
           />
