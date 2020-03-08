@@ -53,17 +53,19 @@ class BookAppointmentMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var startTime = this.state.startTime;
-    var formattedStart = Moment(startTime).format('YYYY-MM-DD hh-mm-am');
+    var formattedStart = Moment(startTime).format("YYYY-MM-DD hh-mm-am");
     var endTime = this.state.endTime;
-    var formattedEnd = Moment(endTime).format('YYYY-MM-DD hh-mm-am');
+    var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh-mm-am");
     var grooming = false;
-    if(this.state.grooming === "Yes"){
+    if (this.state.grooming === "Yes") {
       grooming = true;
-    };
+    }
 
     //console.log(this.state.dog);
 
-    const response = await BasePath.get(`/webresources/bookboarding/${token}/${formattedStart}/${formattedEnd}/${grooming}`);
+    const response = await BasePath.get(
+      `/webresources/bookboarding/${token}/${formattedStart}/${formattedEnd}/${grooming}`
+    );
 
     this.setState({ response: response.data.value, cost: response.data.cost });
     //console.log("here");
@@ -84,9 +86,9 @@ class BookAppointmentMain extends React.Component {
     var startTime = this.state.fieldName[1];
     var endTime = this.state.fieldName[2];
     var grooming = false;
-    if(this.state.fieldName[3] === "Yes"){
+    if (this.state.fieldName[3] === "Yes") {
       grooming = true;
-    };
+    }
     var additionalComments = this.state.fieldName[4];
 
     //console.log(this.state.dog);
@@ -117,6 +119,10 @@ class BookAppointmentMain extends React.Component {
     //console.log("main");
     this.setState({ response: "" });
     //console.log(this.state.images);
+  };
+
+  proceedToPayment = () => {
+    this.setState({ response: "Payment" });
   };
 
   togglePopup() {
@@ -160,8 +166,8 @@ class BookAppointmentMain extends React.Component {
             grooming={this.state.grooming}
             comments={this.state.comments}
             cost={this.state.cost}
-
             onClick={this.onPrevious}
+            proceedToPayment={this.proceedToPayment}
             onSubmit={this.onSearchSubmit2}
           />
         </div>
@@ -172,7 +178,18 @@ class BookAppointmentMain extends React.Component {
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Appointment is now waiting for approval" }
+              state: { message: "Appointment is booked pending approval" }
+            }}
+          />
+        </div>
+      );
+    } else if (isValid === "Payment") {
+      return (
+        <div style={{ marginTop: "10px" }}>
+          <Redirect
+            to={{
+              pathname: "/",
+              state: { message: "Redirect to PayPal" }
             }}
           />
         </div>
@@ -186,13 +203,11 @@ class BookAppointmentMain extends React.Component {
             onChangeEndTime={this.handleChangeEndTime}
             onChangeGrooming={this.handleChangeGrooming}
             onChangeComments={this.handleChangeComments}
-
             dog={this.state.dog}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
             grooming={this.state.grooming}
             comments={this.state.comments}
-
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
           />
