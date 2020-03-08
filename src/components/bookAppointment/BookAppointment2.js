@@ -105,6 +105,7 @@ class BookAppointment2 extends React.Component {
                 Modify Information
               </button>
               <button
+                onClick={this.props.proceedToPayment}
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
