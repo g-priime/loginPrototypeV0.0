@@ -4,6 +4,7 @@ import {
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import '../css/services.css';
+import boarding from '../images/boarding.jpg';
 
 class Services extends React.Component {
 
@@ -11,7 +12,7 @@ class Services extends React.Component {
         return (
             <div className="ui segment d-flex justify-content-around p-0 m-0 bg">
                 <Card className="cardbg">
-                    <CardImg top width="100%" src="/images/boarding.jpg" alt="Card image cap" />
+                    <CardImg className="images" top width="100%" src={require("../images/boarding.jpg")} alt="Card image cap" />
                     <CardBody>
                         <CardTitle><h1>Boarding</h1></CardTitle>
                         <CardSubtitle>Card subtitle</CardSubtitle>
@@ -20,7 +21,7 @@ class Services extends React.Component {
                     </CardBody>
                 </Card>
                 <Card className="cardbg">
-                    <CardImg top width="100%" src="/images/training.jpg" alt="Card image cap" />
+                    <CardImg className="images" top width="100%" src={require("../images/training.jpg")} alt="Card image cap" />
                     <CardBody>
                         <CardTitle><h1>Training</h1></CardTitle>
                         <CardSubtitle>Card subtitle</CardSubtitle>
@@ -29,7 +30,7 @@ class Services extends React.Component {
                     </CardBody>
                 </Card>
                 <Card className="cardbg">
-                    <CardImg top width="100%" src="/images/day.jpg" alt="Card image cap" />
+                    <CardImg className="images" top width="100%" src={require("../images/day.jpg")} alt="Card image cap" />
                     <CardBody>
                         <CardTitle><h1>Day Care</h1></CardTitle>
                         <CardSubtitle>Card subtitle</CardSubtitle>
