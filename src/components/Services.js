@@ -21,7 +21,7 @@ class Services extends React.Component {
                     </CardBody>
                 </Card>
                 <Card className="cardbg">
-                    <CardImg className="images" top width="100%" src={require("../images/training.jpg")} alt="Card image cap" />
+                    <CardImg className="images" top max-width="100%" src={require("../images/training.jpg")} alt="Card image cap" />
                     <CardBody>
                         <CardTitle><h1>Training</h1></CardTitle>
                         <CardSubtitle>Card subtitle</CardSubtitle>
