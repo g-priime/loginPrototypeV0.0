@@ -11,6 +11,7 @@ import '../css/main.css';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header1 from './Header1';
+import HomePageHTML from './HomePageHTML';
 
 import EditCustomerMain from './editCustomer/EditCustomerMain';
 //import AddDogMain from './addDog/AddDogMain';
