@@ -12,7 +12,7 @@ class Services extends React.Component {
                 <Card className="m-3">
                     <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle>Card title</CardTitle>
+                        <CardTitle>Boarding</CardTitle>
                         <CardSubtitle>Card subtitle</CardSubtitle>
                         <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
                         <Button>Book Now</Button>
@@ -21,7 +21,7 @@ class Services extends React.Component {
                 <Card className="m-3">
                     <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle>Card title</CardTitle>
+                        <CardTitle>Grooming</CardTitle>
                         <CardSubtitle>Card subtitle</CardSubtitle>
                         <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
                         <Button>Book Now</Button>
@@ -30,7 +30,7 @@ class Services extends React.Component {
                 <Card className="m-3">
                     <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
                     <CardBody>
-                        <CardTitle>Card title</CardTitle>
+                        <CardTitle>Day Care</CardTitle>
                         <CardSubtitle>Card subtitle</CardSubtitle>
                         <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
                         <Button>Book Now</Button>
