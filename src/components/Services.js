@@ -12,7 +12,7 @@ class Services extends React.Component {
         return (
             <div className="ui segment d-flex justify-content-around p-0 m-0 bg card-group">
                 <Card className="cardbg">
-                    <CardImg className="images" top width="100%" src={require("../images/boarding.jpg")} alt="Card image cap" />
+                    <CardImg className="img-fluid images" top width="100%" src={require("../images/boarding.jpg")} alt="Card image cap" />
                     <CardBody>
                         <CardTitle><h1>Boarding</h1></CardTitle>
                         <CardText className="left">
@@ -40,7 +40,7 @@ class Services extends React.Component {
                     </CardBody>
                 </Card>
                 <Card className="cardbg">
-                    <CardImg className="images" top width="100%" src={require("../images/training.jpg")} alt="Card image cap" />
+                    <CardImg className="img-fluid images" top width="100%" src={require("../images/training.jpg")} alt="Card image cap" />
                     <CardBody>
                         <CardTitle><h1>Training</h1></CardTitle>
                         <CardText>In the Calgary area and need professional training for your dog(s)? We provide a great training program for dogs inclduing 
@@ -49,7 +49,7 @@ class Services extends React.Component {
                     </CardBody>
                 </Card>
                 <Card className="cardbg">
-                    <CardImg className="images" top width="100%" src={require("../images/day.jpg")} alt="Card image cap" />
+                    <CardImg className="img-fluid images" top width="100%" src={require("../images/day.jpg")} alt="Card image cap" />
                     <CardBody>
                         <CardTitle><h1>Day Care</h1></CardTitle>
                         <CardText>In the Calgary area and need somewhere to send your dog somewhere for one day? We can 
