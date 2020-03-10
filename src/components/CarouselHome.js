@@ -11,11 +11,13 @@ import {
 const items = [
   {
    src: require('../images/carousel1.jpg'),
-    altText: 'Slide 1'
+    altText: 'Slide 1',
+    borderColor: "#827153"
   },
   {
     src: require('../images/carousel2.jpg'),
-    altText: 'Slide 2'
+    altText: 'Slide 2',
+    borderColor: "#827153"
   },
   {
     src: require('../images/carousel3.jpg'),
@@ -23,7 +25,7 @@ const items = [
   },
   {
     src: require('../images/carousel4.jpg'),
-     altText: 'Slide 3'
+     altText: 'Slide 4'
   }
 ];
 
