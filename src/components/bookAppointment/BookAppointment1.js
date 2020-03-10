@@ -71,8 +71,8 @@ handleChange = selectedOption => {
                   isMulti
                   closeMenuOnSelect={false}
                   //defaultValue={[1,2,3]}
-                  value={this.props.dog}
-                  //value={this.props.selectedDogs}
+                  //value={this.props.dog}
+                  value={this.props.selectedDogs}
                   //value={this.state.dog}
                   onChange={this.props.onChangeDog}
                   //onChange={this.handleChange}
