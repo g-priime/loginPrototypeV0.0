@@ -13,9 +13,6 @@ import {
   Button
 } from "reactstrap";
 
-
-
-
 class HomePageHTML extends React.Component {
   render() {
     return (
@@ -61,13 +58,15 @@ class HomePageHTML extends React.Component {
               <CarouselHome />
             </div>
           </div>
-<br />
+          <br />
           <div className="row">
             <div className="col-sm">
               <div
                 className="ui segment p-3 mb-2 "
                 style={{ backgroundColor: "#ECEBE7" }}
-              ></div>
+              >
+                <h1 style={{ color: "#715d5c" }}>Features and benefits</h1>
+              </div>
             </div>
           </div>
         </div>
