@@ -53,9 +53,11 @@ class BookAppointmentMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var startTime = this.state.startTime;
-    var formattedStart = Moment(startTime).format("YYYY-MM-DD hh-mm-am");
+    var formattedStart = Moment(startTime).format("x");
+    //var formattedStart = startTime.getTime();
     var endTime = this.state.endTime;
-    var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh-mm-am");
+    //var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh-mm-am");
+    var formattedEnd = Moment(endTime).format("x");
     var grooming = false;
     if (this.state.grooming === "Yes") {
       grooming = true;
