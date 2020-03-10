@@ -67,9 +67,41 @@ class Services extends React.Component {
                     <CardImg className="img-fluid images" top width="100%" src={require("../images/day.jpg")} alt="Card image cap" />
                     <CardBody>
                         <CardTitle><h1 style={{ color: "#715d5c" }}>Day Care</h1></CardTitle>
-                        <CardText>In the Calgary area and need somewhere to send your dog somewhere for one day? We can 
-                            take care of your dog(s) for the day while you go to work or a school.
-                            We will make sure they get the best care during their stay. Just register and book a day care appointment.</CardText>
+                        <CardText className="left">
+                        We look after friendly and vaccinated dogs in our home with our own dogs and treat them like a 
+                        member of the family! That means plenty of potty breaks, play time in our large fenced 
+                        in yard, and lots of cuddle time and cookies!  Raw or dehydrated food, medications, 
+                        injections and blind or deaf dogs are no worry for us; we are happy to accommodate 
+                        them for no additional charge.
+                        </CardText>
+                        <CardSubtitle><h4 style={{ color: "#715d5c" }}>Requirements</h4></CardSubtitle><br></br>
+                        <CardText className="left">
+                        <ul>
+                        <li>Dogs must be dog friendly</li>
+
+                        <li>Adults must be house trained and able to be crated, or non-destructive</li>
+
+                        <li>All dogs must be up to date on distemper, bordetella and rabies vaccines for their age</li>
+
+                        <li>We will happily send picture or video updates at your request.</li>
+
+                        </ul>
+                        </CardText>
+                        <CardSubtitle><h4 style={{ color: "#715d5c" }}>What to bring</h4></CardSubtitle><br></br>
+                        <CardText className="left">
+                        <ul>
+                        <li>Enough food for the duration of your dog’s stay</li>
+
+                        <li>Treats, chews, and cookies you want the dog to have while they are here</li>
+
+                        <li>Any supplements they are on</li>
+
+                        <li>A leash and collar with ID tags</li>
+
+                        <li>No need to bring crates, bowls, or dog beds- we have plenty of those here!</li>
+                        </ul>
+                        </CardText><br></br>
+                        <CardSubtitle><h4 style={{ color: "#715d5c" }}>$30 +5% GST per dog per day</h4></CardSubtitle>
                         <Button className="button">Book Now</Button>
                     </CardBody>
                 </Card>
