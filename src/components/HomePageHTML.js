@@ -72,7 +72,7 @@ class HomePageHTML extends React.Component {
                       loving home environment!{" "}
                     </li>
                     <li>
-                      Private Dog Training Gives You the Exact Solution You Need
+                      Private Dog Training gives you the exact solution you need
                     </li>
                     <li>
                       Board and train options are one of the most popular
