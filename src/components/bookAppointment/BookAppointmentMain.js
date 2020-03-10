@@ -25,11 +25,11 @@ class BookAppointmentMain extends React.Component {
   getDogs = async () => {
     var token = localStorage.getItem("token");
     const response = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
-    //console.log(response.data[0].name);
+    //console.log(response.data);
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy => dogArray.push(doggy.name));
+    dogs.map(doggy => dogArray.push({key:doggy.idNumber,value:doggy.name}));
 
     if (!this.state.initialStates) {
       this.setState({ dogs: dogArray, initialStates: true, dog: dogArray[0] });
