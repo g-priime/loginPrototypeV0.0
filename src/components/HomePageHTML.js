@@ -11,6 +11,8 @@ import {
   Button
 } from "reactstrap";
 
+import Carousel from 'react-bootstrap/Carousel';
+
 class HomePageHTML extends React.Component {
   render() {
     return (
@@ -22,9 +24,10 @@ class HomePageHTML extends React.Component {
           >
             <Card className="cardbg" >
               <CardImg
-                className="images"
+                className="images img-fluid"
                 top
-                width="100%"
+                width="auto"
+                height= "auto"
                 src={require("../images/welcome.jpg")}
                 alt="Card image cap"
               />
