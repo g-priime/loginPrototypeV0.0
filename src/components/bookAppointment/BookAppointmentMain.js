@@ -139,7 +139,7 @@ class BookAppointmentMain extends React.Component {
 */
   handleChangeDog = selectedOption => {
     this.setState(
-      { dog: selectedOption },
+      { dog: selectedOption[0] },
       () => console.log(`Option selected:`, this.state.dog)
     );
   };
