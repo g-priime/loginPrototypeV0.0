@@ -25,9 +25,9 @@ class HomePageHTML extends React.Component {
             <Card
               className="cardbg"
               style={{
+                padding: "0rem",
                 borderColor: "#827153",
-                borderWidth: "3px",
-                width: "80%",
+                borderWidth: "4px",
                 margin: "35px"
               }}
             >
@@ -35,7 +35,6 @@ class HomePageHTML extends React.Component {
                 top
                 width="auto"
                 height="auto"
-                borderColor="#F44336"
                 src={require("../images/welcome.jpg")}
                 alt="Card image cap"
               />
