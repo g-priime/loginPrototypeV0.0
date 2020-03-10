@@ -32,7 +32,7 @@ class BookAppointmentMain extends React.Component {
     dogs.map(doggy => dogArray.push({key:doggy.idNumber,value:doggy.name}));
 
     if (!this.state.initialStates) {
-      this.setState({ dogs: dogArray, initialStates: true, selectedDogs: [] });
+      this.setState({ dogs: dogArray, initialStates: true, dog: "barksy" });
     }
 
     //console.log(this.state.dogs);
@@ -41,7 +41,7 @@ class BookAppointmentMain extends React.Component {
   onSearchSubmit1 = async () => {
     this.setState({
       fieldName: [
-        this.state.selectedDogs,
+        this.state.dog,
         this.state.startTime,
         this.state.endTime,
         this.state.grooming,
@@ -84,7 +84,7 @@ class BookAppointmentMain extends React.Component {
   onSearchSubmit2 = async () => {
     var token = localStorage.getItem("token");
 
-    var selectedDogs = this.state.fieldName[0];
+    var dog = this.state.fieldName[0].key;
     var startTime = this.state.fieldName[1];
     var endTime = this.state.fieldName[2];
     var grooming = false;
@@ -97,7 +97,7 @@ class BookAppointmentMain extends React.Component {
 
     const response = await BasePath.put("/webresources/bookboarding", {
       token,
-      selectedDogs,
+      dog,
       startTime,
       endTime,
       grooming,
@@ -132,9 +132,16 @@ class BookAppointmentMain extends React.Component {
       showPopup: !this.state.showPopup
     });
   }
-
-  handleChangeDog = event => {
-    this.setState({ selectedDogs: event.target.value });
+/*
+  handleChangeDog = ({selectedOption}) => {
+    this.setState({ dog: selectedOption });
+  };
+*/
+  handleChangeDog = selectedOption => {
+    this.setState(
+      { dog: selectedOption },
+      () => console.log(`Option selected:`, this.state.dog)
+    );
   };
 
   handleChangeStartTime = event => {
@@ -162,6 +169,7 @@ class BookAppointmentMain extends React.Component {
       return (
         <div style={{ marginTop: "10px" }}>
           <BookAppointment2
+          dog={this.state.dog}
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
@@ -205,6 +213,7 @@ class BookAppointmentMain extends React.Component {
             onChangeEndTime={this.handleChangeEndTime}
             onChangeGrooming={this.handleChangeGrooming}
             onChangeComments={this.handleChangeComments}
+            dog={this.state.dog}
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
