@@ -2,6 +2,8 @@ import React from "react";
 import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
 
+import Select from "react-select";
+
 class BookAppointment1 extends React.Component {
   state = {
     dog: "",
@@ -44,16 +46,25 @@ class BookAppointment1 extends React.Component {
             <div className="row">
               <div className="col-sm">
                 <label>Select Dog:</label>
-                <select
-                  value={this.props.dog}
-                  onChange={this.props.onChangeDog}
-                >
+                <Select
+                  isMulti
+                  closeMenuOnSelect={false}
+                  //defaultValue={[1,2,3]}
+                  //value={[1,2,3]}
+                  //value={this.props.dogs}
+                  //onChange={this.props.onChangeDog}
+                  //options={[{key:"1",value:"1"},{key:'hi',value:'hi'}]}
+                  options={this.props.dogs}
+                  getOptionLabel={option => option.value}
+                  getOptionValue={option => option.key}
+                />
+                {/*
                   {this.props.dogs.map(doggy => (
                     <option key={doggy} value={doggy}>
                       {doggy}
                     </option>
                   ))}
-                </select>
+                  */}
                 <br />
 
                 <label>Select Start Time:</label>
