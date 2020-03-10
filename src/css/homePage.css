@@ -11,3 +11,7 @@ p {
     /* flex: 1 1 auto; */
     padding: 0;
   }
+
+  .d-md-block {
+    display: none !important;
+}
