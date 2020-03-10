@@ -15,3 +15,17 @@ p {
   .d-md-block {
     display: none !important;
 }
+
+.bold {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40pt;
+    color: #482e2d;
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+ul>li {
+    padding-left: 40px;
+}
