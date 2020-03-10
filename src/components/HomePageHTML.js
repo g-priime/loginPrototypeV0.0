@@ -67,16 +67,27 @@ class HomePageHTML extends React.Component {
                 <h1 style={{ color: "#715d5c" }}>Features and benefits</h1>
                 <div className="bold">
                   <ul>
-                    <li>Daycare and overnight boarding are both available, in a loving home environment! </li>
-                    <li>Private Dog Training Gives You the Exact Solution You Need</li>
-                    <li>Board and train options are one of the most popular methods of dog training on the market right now</li>
+                    <li>
+                      Daycare and overnight boarding are both available, in a
+                      loving home environment!{" "}
+                    </li>
+                    <li>
+                      Private Dog Training Gives You the Exact Solution You Need
+                    </li>
+                    <li>
+                      Board and train options are one of the most popular
+                      methods of dog training on the market right now
+                    </li>
                     <li>Huge variety of the skills and behaviors we tackle</li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                    <li>Schedule at your convenience</li>
+                    <li>
+                      No need to bring crates, bowls, or dog beds- we have
+                      plenty of those here!
+                    </li>
+                    <li>
+                      We understand how important your dog is to you, and we
+                      want to be a part of your adventure together!
+                    </li>
                   </ul>
                 </div>
               </div>
