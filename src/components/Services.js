@@ -17,7 +17,9 @@ class Services extends React.Component {
                         <CardTitle><h1 style={{ color: "#715d5c" }}>Boarding</h1></CardTitle>
                         <CardText className="left">
                         We board friendly and vaccinated dogs in our home with our own dogs and treat them like a 
-                        member of the family! That means plenty of potty breaks, play time in our large fenced 
+                        member of the family! The Day Care appointment is for dogs who need to be looked after
+                        for the hours between 9am and 9pm in the day.
+                        That means plenty of potty breaks, play time in our large fenced 
                         in yard, and lots of cuddle time and cookies!  Raw or dehydrated food, medications, 
                         injections and blind or deaf dogs are no worry for us; we are happy to accommodate 
                         them for no additional charge.
@@ -69,7 +71,8 @@ class Services extends React.Component {
                         <CardTitle><h1 style={{ color: "#715d5c" }}>Day Care</h1></CardTitle>
                         <CardText className="left">
                         We look after friendly and vaccinated dogs in our home with our own dogs and treat them like a 
-                        member of the family! That means plenty of potty breaks, play time in our large fenced 
+                        member of the family! The Boarding appointment is for dogs who need to be looked after
+                        for overnight and multiple days. That means plenty of potty breaks, play time in our large fenced 
                         in yard, and lots of cuddle time and cookies!  Raw or dehydrated food, medications, 
                         injections and blind or deaf dogs are no worry for us; we are happy to accommodate 
                         them for no additional charge.
@@ -101,7 +104,7 @@ class Services extends React.Component {
                         <li>No need to bring crates, bowls, or dog beds- we have plenty of those here!</li>
                         </ul>
                         </CardText><br></br>
-                        <CardSubtitle><h4 style={{ color: "#715d5c" }}>$30 +5% GST per dog per day</h4></CardSubtitle><br></br>
+                        <CardSubtitle><h4 style={{ color: "#715d5c" }}>$30 +5% GST per dog per day</h4></CardSubtitle><br></br><br></br>
                         <Button className="button">Book Now</Button>
                     </CardBody>
                 </Card>
