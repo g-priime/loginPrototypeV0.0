@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../css/homePage.css";
 import {
   Carousel,
   CarouselItem,
@@ -10,18 +11,15 @@ import {
 const items = [
   {
    src: require('../images/carousel1.jpg'),
-    altText: 'Slide 1',
-    caption: 'Slide 1'
+    altText: 'Slide 1'
   },
   {
     src: require('../images/carousel2.jpg'),
-    altText: 'Slide 2',
-    caption: 'Slide 2'
+    altText: 'Slide 2'
   },
   {
     src: require('../images/carousel3.jpg'),
-     altText: 'Slide 3',
-    caption: 'Slide 3'
+     altText: 'Slide 3'
   }
 ];
 
