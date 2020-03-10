@@ -44,7 +44,10 @@ class BookAppointment2 extends React.Component {
             <div className="row">
               <div className="col-sm">
                 <label>Dog:</label>
-                {this.props.dog.value}
+
+                {this.props.selectedDogs.map(doggy => (
+                    doggy.value
+                  ))}
                 <br />
                 <br />
 
