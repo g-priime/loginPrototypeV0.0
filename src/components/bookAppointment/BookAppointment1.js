@@ -68,8 +68,8 @@ handleChange = selectedOption => {
                 <label>Select Dog:</label>
                 
                 <Select
-                  //isMulti
-                  //closeMenuOnSelect={false}
+                  isMulti
+                  closeMenuOnSelect={false}
                   //defaultValue={[1,2,3]}
                   value={this.props.dog}
                   //value={this.props.selectedDogs}
