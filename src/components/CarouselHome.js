@@ -20,6 +20,10 @@ const items = [
   {
     src: require('../images/carousel3.jpg'),
      altText: 'Slide 3'
+  },
+  {
+    src: require('../images/carousel4.jpg'),
+     altText: 'Slide 3'
   }
 ];
 
