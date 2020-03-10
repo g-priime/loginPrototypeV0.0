@@ -48,7 +48,7 @@ class App1 extends React.Component {
                     <div>
                         <Header1 showLogin={this.toggleLogin} />
                         <div className="mt-4 ml-5 mr-5">
-                            <Route path="/" exact component={HomePage} />
+                            <Route path="/" exact component={HomePageHTML} />
                             <Route path="/Register" component={RegisterMain} />
                             <Route path="/Services" component={Services} />
                             <Route path="/Gallery" component={Gallery} />
