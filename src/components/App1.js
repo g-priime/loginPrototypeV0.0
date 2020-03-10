@@ -20,7 +20,7 @@ import EditCustomerMain from "./editCustomer/EditCustomerMain";
 //import AddDog2 from './addDog/AddDog2';
 
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
-//import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
+import BookAppointmentMain from "./bookAppointment/BookAppointmentMain";
 
 
 class App1 extends React.Component {
@@ -52,7 +52,7 @@ class App1 extends React.Component {
               <Route path="/" exact component={HomePageHTML} />
               <Route path="/Register" component={RegisterMain} />
               <Route path="/Services" component={Services} />
-              <Route path="/Gallery" component={Gallery} />
+              <Route path="/Gallery" component={BookAppointmentMain} />
               <Route path="/Testimonials" component={Testimonials} />
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
