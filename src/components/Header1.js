@@ -1,5 +1,5 @@
 import React from "react";
-import dog from "./tempdog.JPG";
+import dog from "../images/logo.png";
 import "../css/head.css";
 import { NavLink } from "react-router-dom";
 
@@ -52,8 +52,8 @@ class Header1 extends React.Component {
               <img
                 src={dog}
                 alt="dog"
-                height="30"
-                width="40"
+                height="35"
+                width="35"
                 className="align-self-end"
               />
             </NavLink>
@@ -132,8 +132,8 @@ class Header1 extends React.Component {
               <img
                 src={dog}
                 alt="dog"
-                height="30"
-                width="40"
+                height="35"
+                width="35"
                 className="align-self-end"
               />
             </NavLink>
