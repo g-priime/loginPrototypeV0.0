@@ -17,6 +17,7 @@ class BookAppointmentMain extends React.Component {
     cn: "",
 
     dog: "",
+    selectedDogs: [],
     dogs: [],
     initialStates: false,
     cost: ""
@@ -32,7 +33,7 @@ class BookAppointmentMain extends React.Component {
     dogs.map(doggy => dogArray.push({key:doggy.idNumber,value:doggy.name}));
 
     if (!this.state.initialStates) {
-      this.setState({ dogs: dogArray, initialStates: true, dog: "barksy" });
+      this.setState({ dogs: dogArray, initialStates: true, selectedDogs: [] });
     }
 
     //console.log(this.state.dogs);
@@ -41,7 +42,8 @@ class BookAppointmentMain extends React.Component {
   onSearchSubmit1 = async () => {
     this.setState({
       fieldName: [
-        this.state.dog,
+        //this.state.dog,
+        this.state.selectedDogs,
         this.state.startTime,
         this.state.endTime,
         this.state.grooming,
@@ -84,7 +86,11 @@ class BookAppointmentMain extends React.Component {
   onSearchSubmit2 = async () => {
     var token = localStorage.getItem("token");
 
-    var dog = this.state.fieldName[0].key;
+    var selectedDogs = [];
+    this.state.fieldName[0].map(doggy => (
+      selectedDogs.push(doggy.key)
+    ));
+    //var dog = this.state.fieldName[0].key;
     var startTime = this.state.fieldName[1];
     var endTime = this.state.fieldName[2];
     var grooming = false;
@@ -97,7 +103,7 @@ class BookAppointmentMain extends React.Component {
 
     const response = await BasePath.put("/webresources/bookboarding", {
       token,
-      dog,
+      selectedDogs,
       startTime,
       endTime,
       grooming,
@@ -137,10 +143,22 @@ class BookAppointmentMain extends React.Component {
     this.setState({ dog: selectedOption });
   };
 */
+/*
   handleChangeDog = selectedOption => {
     this.setState(
       { dog: selectedOption[0] },
       () => console.log(`Option selected:`, this.state.dog)
+    );
+  };
+*/
+  handleChangeDog = selectedOption => {
+    /*var selectedDogs = [];
+    selectedOption.map(dog => {
+      selectedDogs.push(dog);
+    });*/
+    this.setState(
+      { selectedDogs: selectedOption },
+      () => console.log(`Option selected:`, this.state.selectedDogs)
     );
   };
 
