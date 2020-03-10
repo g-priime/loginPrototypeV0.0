@@ -1,6 +1,8 @@
 import React from "react";
 import "../css/reg.css";
 import "../css/homePage.css";
+import CarouselHome from "./CarouselHome";
+
 import {
   Card,
   CardImg,
@@ -11,7 +13,8 @@ import {
   Button
 } from "reactstrap";
 
-import Carousel from "react-bootstrap/Carousel";
+
+
 
 class HomePageHTML extends React.Component {
   render() {
@@ -54,9 +57,11 @@ class HomePageHTML extends React.Component {
 
         <div className="col-sm">
           <div className="row">
-            <div className="col-sm"></div>
+            <div className="col-sm">
+              <CarouselHome />
+            </div>
           </div>
-
+<br />
           <div className="row">
             <div className="col-sm">
               <div
