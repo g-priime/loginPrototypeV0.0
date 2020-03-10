@@ -25,7 +25,6 @@ class HomePageHTML extends React.Component {
             <Card
               className="cardbg"
               style={{
-                padding: "0rem",
                 borderColor: "#827153",
                 borderWidth: "4px",
                 margin: "35px"
@@ -66,6 +65,20 @@ class HomePageHTML extends React.Component {
                 style={{ backgroundColor: "#ECEBE7" }}
               >
                 <h1 style={{ color: "#715d5c" }}>Features and benefits</h1>
+                <div className="bold">
+                  <ul>
+                    <li>Daycare and overnight boarding are both available, in a loving home environment! </li>
+                    <li>Private Dog Training Gives You the Exact Solution You Need</li>
+                    <li>Board and train options are one of the most popular methods of dog training on the market right now</li>
+                    <li>Huge variety of the skills and behaviors we tackle</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
