@@ -12,7 +12,8 @@ class BookAppointment1 extends React.Component {
 
     dogs: [],
     comments: "",
-    grooming: true
+    grooming: true,
+    selectedDogs: []
   };
 
   onFormSubmit = event => {
@@ -21,7 +22,7 @@ class BookAppointment1 extends React.Component {
     //console.log(this.state.dog);
 
     this.props.onSubmit(
-      this.state.dog,
+      this.state.selectedDogs,
       this.state.startTime,
       this.state.endTime,
       this.state.grooming,
