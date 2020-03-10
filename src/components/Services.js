@@ -101,7 +101,7 @@ class Services extends React.Component {
                         <li>No need to bring crates, bowls, or dog beds- we have plenty of those here!</li>
                         </ul>
                         </CardText><br></br>
-                        <CardSubtitle><h4 style={{ color: "#715d5c" }}>$30 +5% GST per dog per day</h4></CardSubtitle>
+                        <CardSubtitle><h4 style={{ color: "#715d5c" }}>$30 +5% GST per dog per day</h4></CardSubtitle><br></br>
                         <Button className="button">Book Now</Button>
                     </CardBody>
                 </Card>
