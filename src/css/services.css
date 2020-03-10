@@ -10,6 +10,10 @@ body {
     background-color: #ECEBE7;
 }
 
+.left {
+    text-align: left;
+}
+
 .button{
     font-weight: bold;
     background-color: #1D3461;
@@ -18,7 +22,7 @@ body {
 }
 
 .images{
-    width:350px;
+    width:400px;
     height:300px;
     align-self: center;
     margin-top: 10px;
