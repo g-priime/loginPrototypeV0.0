@@ -19,7 +19,7 @@ p {
 .bold {
     font-size: 20px;
     font-weight: bold;
-    line-height: 39pt;
+    line-height: 21pt;
     color: #482e2d;
     text-align: justify;
     padding-left: 5%;
@@ -27,5 +27,5 @@ p {
 }
 
 ul>li {
-    padding-left: 40px;
+    padding-left: 20px;
 }
