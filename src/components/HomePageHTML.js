@@ -40,7 +40,9 @@ class HomePageHTML extends React.Component {
               <CardBody></CardBody>
             </Card>
             <h1 style={{ color: "#715d5c" }}>Welcome to our fun family!</h1>
-            <p style={{ width: "70%", margin: "45px" }}>
+            {/* <p style={{ width: "70%", margin: "45px" }}> */}
+            <div style={{ width: "100%", display:"flex",flexDirection:"column"}}>
+            <p style={{ width: "80%", alignSelf: "center"}}>
               We have everything you need for the day to day care of your canine
               friend. We offer progressive training methods to help you get
               through the toughest problems and shape your pal into the perfect
@@ -48,6 +50,7 @@ class HomePageHTML extends React.Component {
               our home. We understand how important your dog is to you, and we
               want to be a part of your adventure together!
             </p>
+            </div>
           </div>
         </div>
 
@@ -65,6 +68,7 @@ class HomePageHTML extends React.Component {
                 style={{ backgroundColor: "#ECEBE7" }}
               >
                 <h1 style={{ color: "#715d5c" }}>Features and benefits</h1>
+                <br />
                 <div className="bold">
                   <ul>
                     <li>
@@ -87,6 +91,9 @@ class HomePageHTML extends React.Component {
                     <li>
                       We understand how important your dog is to you, and we
                       want to be a part of your adventure together!
+                    </li>
+                    <li>
+                    After the private consultation, you can purchase the training bundle that’s right for you.
                     </li>
                   </ul>
                 </div>
