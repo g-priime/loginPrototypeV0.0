@@ -26,7 +26,7 @@ function Footer({ children }) {
       <div style={phantom} />
       <div style={style}>
         {children}
-        <div className="title mr-3 left">K9 FUN FAMILY</div>
+        <div className="title mr-3 footLeft">K9 FUN FAMILY</div>
       </div>
     </div>
   );
