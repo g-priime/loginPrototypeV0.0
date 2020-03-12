@@ -42,7 +42,7 @@ class HomePageHTML extends React.Component {
             <h1 style={{ color: "#715d5c" }}>Welcome to our fun family!</h1>
             {/* <p style={{ width: "70%", margin: "45px" }}> */}
             <div style={{ width: "100%", display:"flex",flexDirection:"column"}}>
-            <p style={{ width: "80%", alignSelf: "center"}}>
+            <p className="par" style={{ width: "80%", alignSelf: "center"}}>
               We have everything you need for the day to day care of your canine
               friend. We offer progressive training methods to help you get
               through the toughest problems and shape your pal into the perfect
@@ -69,7 +69,7 @@ class HomePageHTML extends React.Component {
               >
                 <h1 style={{ color: "#715d5c" }}>Features and benefits</h1>
                 <br />
-                <div className="bold">
+                <div className="bolder">
                   <ul>
                     <li>
                       Daycare and overnight boarding are both available, in a
