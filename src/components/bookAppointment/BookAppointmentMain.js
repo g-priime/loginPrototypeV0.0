@@ -30,7 +30,9 @@ class BookAppointmentMain extends React.Component {
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy => dogArray.push({key:doggy.idNumber,value:doggy.name}));
+    dogs.map(doggy =>
+      dogArray.push({ key: doggy.idNumber, value: doggy.name })
+    );
 
     if (!this.state.initialStates) {
       this.setState({ dogs: dogArray, initialStates: true, selectedDogs: [] });
@@ -53,25 +55,42 @@ class BookAppointmentMain extends React.Component {
     });
 
     var token = localStorage.getItem("token");
-
+    var dogs = [];
+    this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
+    var dogString = dogs.toString();
+    //var selectedDogs = this.state.selectedDogs;
+//var dogString = selectedDogs.toString();
     var startTime = this.state.startTime;
-    var formattedStart = Moment(startTime).format("x");
+    //var formattedStart = Moment(startTime).format("x");
+    var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
     //var formattedStart = startTime.getTime();
     var endTime = this.state.endTime;
-    //var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh-mm-am");
-    var formattedEnd = Moment(endTime).format("x");
-    var grooming = false;
+    var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
+    //var formattedEnd = Moment(endTime).format("x");
+    
+    var grooming = "false";
     if (this.state.grooming === "Yes") {
-      grooming = true;
+      grooming = "true";
     }
+    var type = "boarding";
 
     console.log(this.state.dog);
-
+    /*
     const response = await BasePath.get(
       `/webresources/bookboarding/${token}/${formattedStart}/${formattedEnd}/${grooming}`
     );
+*/
+    const response = await BasePath.put("/webresources/calculatecost2", {
+      token,
+      dogString,
+      formattedStart,
+      formattedEnd,
+      grooming,
+      type
+    });
 
-    this.setState({ response: response.data.value, cost: response.data.cost });
+    console.log(response);
+    this.setState({ response: response.data.message, cost: response.data.total });
     //console.log("here");
 
     if (this.state.response === "Old startTime is incorrect") {
@@ -87,9 +106,7 @@ class BookAppointmentMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var selectedDogs = [];
-    this.state.fieldName[0].map(doggy => (
-      selectedDogs.push(doggy.key)
-    ));
+    this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
     //var dog = this.state.fieldName[0].key;
     var startTime = this.state.fieldName[1];
     var endTime = this.state.fieldName[2];
@@ -138,12 +155,12 @@ class BookAppointmentMain extends React.Component {
       showPopup: !this.state.showPopup
     });
   }
-/*
+  /*
   handleChangeDog = ({selectedOption}) => {
     this.setState({ dog: selectedOption });
   };
 */
-/*
+  /*
   handleChangeDog = selectedOption => {
     this.setState(
       { dog: selectedOption[0] },
@@ -156,9 +173,8 @@ class BookAppointmentMain extends React.Component {
     selectedOption.map(dog => {
       selectedDogs.push(dog);
     });*/
-    this.setState(
-      { selectedDogs: selectedOption },
-      () => console.log(`Option selected:`, this.state.selectedDogs)
+    this.setState({ selectedDogs: selectedOption }, () =>
+      console.log(`Option selected:`, this.state.selectedDogs)
     );
   };
 
@@ -183,11 +199,11 @@ class BookAppointmentMain extends React.Component {
 
     var isValid = this.state.response;
 
-    if (isValid === "Valid") {
+    if (isValid === "Cost estimate successful") {
       return (
         <div style={{ marginTop: "10px" }}>
           <BookAppointment2
-          dog={this.state.dog}
+            dog={this.state.dog}
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
