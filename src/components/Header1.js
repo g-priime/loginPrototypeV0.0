@@ -124,56 +124,6 @@ class Header1 extends React.Component {
           </div>
         </div>
       );
-    } else if (username == 'admin') {
-      return (
-        <div>
-          <div className="d-flex justify-content-between">
-            <NavLink to="/">
-              <img
-                src={dog}
-                alt="dog"
-                height="30"
-                width="40"
-                className="align-self-end"
-              />
-            </NavLink>
-            <h2 className="title mr-3">K9 FUN FAMILY</h2>
-          </div>
-          {/* TODO: find a way to keep track of current page for highlighting the tab, maybe store in session? */}
-          <div
-            className="container-head d-flex align-items-center d-flex justify-content-around header"
-            style={{ backgroundColor: "#ECEBE7" }}
-          >
-            <div>
-              <NavLink to="/" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Home</div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to="/Services" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Services</div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to="/Gallery" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Gallery</div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to="/Testimonials" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Testimonials</div>
-              </NavLink>
-            </div>
-            <div>
-              <NavLink to="/FAQ" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">FAQ</div>
-              </NavLink>
-            </div>
-            <div style={{ color: "#707070" }} onClick={this.props.showLogin}>
-              <div className="pt-3 pb-3">Login/Register</div>
-            </div>
-          </div>
-        </div>);
     } else {
       return (
         <div>
