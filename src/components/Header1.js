@@ -44,7 +44,7 @@ class Header1 extends React.Component {
     this.getCustomerInfo();
     var username = this.state.username;
 
-    if (username !== "" && username !== "admin") {
+    if (username !== "") {
       return (
         <div>
           <div className="d-flex justify-content-between">
