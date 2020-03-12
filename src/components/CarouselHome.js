@@ -58,7 +58,7 @@ const CarouselHome = (props) => {
         key={item.src}
       >
         <img src={item.src} alt={item.altText} />
-        <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+        <CarouselCaption captionText='' captionHeader={item.caption} />
       </CarouselItem>
     );
   });
