@@ -1,4 +1,4 @@
-p {
+.par {
     text-align: left;
     padding: 10%;
     border: 2px solid #827153;
@@ -16,7 +16,7 @@ p {
     display: none !important;
 }
 
-.bold {
+.bolder {
     font-size: 20px;
     font-weight: bold;
     line-height: 21pt;
