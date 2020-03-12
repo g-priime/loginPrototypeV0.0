@@ -80,7 +80,7 @@ class EditDog1 extends React.Component {
                 <h2>General</h2>
                 <label>Name:</label>
                 <input
-                  pattern="^[a-zA-Z1-9]{1,20}$"
+                  pattern="^[a-zA-Z]{1,30}$"
                   className="field b-5"
                   type="text"
                   placeholder="Enter dog's name"
@@ -92,7 +92,7 @@ class EditDog1 extends React.Component {
                 <br />
                 <label>Breed:</label>
                 <input
-                  pattern="^[a-zA-Z1-9]{1,20}$"
+                  pattern="^[a-zA-Z ]{1,30}$"
                   type="text"
                   placeholder="Enter breed"
                   value={this.props.breed}
@@ -154,7 +154,7 @@ class EditDog1 extends React.Component {
                     type="radio"
                     name="neuteredspayed"
                     value="yes"
-                    checked={this.props.neuteredspayed === "yes"}
+                    checked={this.props.neuteredspayed === true}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>Yes</span>
@@ -165,7 +165,7 @@ class EditDog1 extends React.Component {
                     type="radio"
                     name="neuteredspayed"
                     value="no"
-                    checked={this.props.neuteredspayed === "no"}
+                    checked={this.props.neuteredspayed === false}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>No</span>
@@ -235,7 +235,7 @@ class EditDog1 extends React.Component {
           </div>
           <div className="d-flex justify-content-between">
             <Link //creates a link, styled like a button
-              to="/" //telling to go to home, in adddog it should be accinfo
+              to="/UserAccount" //telling to go to home, in adddog it should be accinfo
               type="button"
               className="btn mb-3"
               style={{
