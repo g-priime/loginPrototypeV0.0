@@ -14,7 +14,8 @@ import {
 class Header1 extends React.Component {
   state = {
     initialStates: false,
-    username: ""
+    username: "",
+    user: {}
   };
 
   getCustomerInfo = async () => {
@@ -30,7 +31,8 @@ class Header1 extends React.Component {
     ) {
       this.setState({
         initialStates: true,
-        username: customerInfo.data.username
+        username: customerInfo.data.username,
+        user: customerInfo
       });
     }
   };
@@ -124,7 +126,7 @@ class Header1 extends React.Component {
           </div>
         </div>
       );
-    } else if (username == 'admin') {
+    } else if (username == "admin") {
       return (
         <div>
           <div className="d-flex justify-content-between">
@@ -170,7 +172,7 @@ class Header1 extends React.Component {
               </NavLink>
             </div>
             <div style={{ color: "#707070" }} onClick={this.props.showLogin}>
-              <div className="pt-3 pb-3">Login/Register</div>
+              <div className="pt-3 pb-3">Admin Tool</div>
             </div>
           </div>
         </div>);
