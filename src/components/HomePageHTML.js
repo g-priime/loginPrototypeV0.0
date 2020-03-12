@@ -23,7 +23,7 @@ class HomePageHTML extends React.Component {
             style={{ backgroundColor: "#ECEBE7" }}
           >
             <Card
-              className="cardbg"
+              className="cardbg "
               style={{
                 borderColor: "#827153",
                 borderWidth: "4px",
@@ -37,7 +37,7 @@ class HomePageHTML extends React.Component {
                 src={require("../images/welcome.jpg")}
                 alt="Card image cap"
               />
-              <CardBody></CardBody>
+              <CardBody className="card-bodyHome"></CardBody>
             </Card>
             <h1 style={{ color: "#715d5c" }}>Welcome to our fun family!</h1>
             {/* <p style={{ width: "70%", margin: "45px" }}> */}
