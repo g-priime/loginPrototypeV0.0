@@ -9,6 +9,7 @@ import Services from './Services';
 import Login from './login/Login';
 import BasePath from './../api/BasePath';
 import '../css/main.css';
+import Admin from './AdminTool';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header1 from './Header1';
@@ -69,6 +70,7 @@ class App1 extends React.Component {
                             <Route path="/AddDog1" component={AddDog1}/>
                             <Route path="/AddDog2" component={AddDog2}/>
                             <Route path="/Profile" component={UserAccount}/>
+                            <Route path="/Admin" component={Admin}/>
                             <Login
                                 show={this.state.show}
                                 onHide={this.onHide}
