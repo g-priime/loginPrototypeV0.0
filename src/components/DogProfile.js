@@ -65,8 +65,7 @@ class DogProfile extends React.Component {
           Edit dog
         </Link>
 
-        <Link
-          to="/" //will be the path to delete a dog
+        <div
           type="button"
           className="btn mb-3"
           style={{
@@ -79,7 +78,7 @@ class DogProfile extends React.Component {
           }}
         >
           Delete dog
-        </Link>
+        </div>
 
         {/* 2 buttons. for Edit onClick goes to function that Edit willgo to edit dog ....in edit dog=>(Put method....BasePath.put(chosenDog.idNumber, {})) Edit would onClick sets boolean and if Edit is true - display the other HTML */}
         {/* {this.props.chosenDog.dogname} */}
@@ -193,9 +192,8 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">
-                      {this.props.chosenDog.veterinarian.name}
-                    </div>
+                      {this.props.veterinarian != null?
+                      ( <div className="left">{this.props.chosenDog.veterinarian.name}</div>):null}
                   </div>
                 </div>
                 <br />
