@@ -1,4 +1,4 @@
-p {
+.par {
     text-align: left;
     padding: 10%;
     border: 2px solid #827153;
@@ -7,7 +7,7 @@ p {
 
 }
 
-.card-body {
+.card-bodyHome {
     /* flex: 1 1 auto; */
     padding: 0;
   }
@@ -16,10 +16,10 @@ p {
     display: none !important;
 }
 
-.bold {
+.bolder {
     font-size: 20px;
     font-weight: bold;
-    line-height: 39pt;
+    line-height: 21pt;
     color: #482e2d;
     text-align: justify;
     padding-left: 5%;
@@ -27,5 +27,5 @@ p {
 }
 
 ul>li {
-    padding-left: 40px;
+    padding-left: 20px;
 }

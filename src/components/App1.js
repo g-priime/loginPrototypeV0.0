@@ -15,12 +15,16 @@ import Header1 from "./Header1";
 import HomePageHTML from "./HomePageHTML";
 
 import EditCustomerMain from "./editCustomer/EditCustomerMain";
-//import AddDogMain from './addDog/AddDogMain';
-//import AddDog1 from './addDog/AddDog1';
-//import AddDog2 from './addDog/AddDog2';
+import UserAccount from './UserAccount';
 
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
-import BookAppointmentMain from "./bookAppointment/BookAppointmentMain";
+
+import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
+import { getQueriesForElement } from '@testing-library/react';
+import AddDogMain from './addDog/AddDogMain';
+import EditDogMain from './editDog/EditDogMain';
+import AddDog2 from './addDog/AddDog2';
+import AddDog1 from './addDog/AddDog1';
 
 
 class App1 extends React.Component {
