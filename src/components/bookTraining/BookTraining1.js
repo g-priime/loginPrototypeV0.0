@@ -41,7 +41,7 @@ class BookTraining1 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container bookAppointmentContainer">
-            <h1>Book Appointment</h1>
+            <h1>Book Training</h1>
 
             <div className="row">
               <div className="col-sm">
