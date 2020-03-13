@@ -20,8 +20,6 @@ class BookAppointment1 extends React.Component {
   onFormSubmit = event => {
     event.preventDefault();
 
-    //console.log(this.state.dog);
-
     this.props.onSubmit(
       this.state.dog,
       this.state.startTime,
@@ -30,24 +28,6 @@ class BookAppointment1 extends React.Component {
       this.state.comments
     );
   };
-/*
-  handleChange = event => {
-    var options = event.target.options;
-    var value = [];
-    for (var i = 0, l = options.length; i<l; i++){
-      if(options[i].selected){
-        value.push(options[i].value);
-      }
-    }
-    console.log(value);
-  }
-*/
-handleChange = selectedOption => {
-  this.setState(
-    { dog: selectedOption },
-    () => console.log(`Option selected:`, this.state.dog)
-  );
-};
 
   render() {
     return (
@@ -60,52 +40,32 @@ handleChange = selectedOption => {
           className="ui form"
           style={{ backgroundColor: "#ECEBE7 " }}
         >
-          <div className="container fieldContainer">
+          <div className="container bookAppointmentContainer">
             <h1>Book Appointment</h1>
 
             <div className="row">
               <div className="col-sm">
-                <label>Select Dog:</label>
+
+                <br/>
+                
+                <label>Select Dogs:</label>
                 
                 <Select
                   isMulti
                   closeMenuOnSelect={false}
-                  //defaultValue={[1,2,3]}
-                  //value={this.props.dog}
                   value={this.props.selectedDogs}
-                  //value={this.state.dog}
                   onChange={this.props.onChangeDog}
-                  //onChange={this.handleChange}
-                  //options={[{key:"1",value:"1"},{key:'hi',value:'hi'}]}
                   options={this.props.dogs}
                   getOptionLabel={option => option.value}
                   getOptionValue={option => option.value}
-                  //getOptionValue={this.state.dog}
                   getOptionKey={option => option.key}
-                  //selectedOption={option => option.value}
                 />
-    {/*
-                <select
-                
-                value={this.props.dog}
-                onChange={this.props.onChangeDog}
-                >
-                  {this.props.dogs.map(doggy => (
-                    <option key={doggy.key} value={doggy.value}>
-                      {doggy.value}
-                    </option>
-                  ))}
-                  
-                  </select>
-                  */}
                 <br />
 
                 <label>Select Start Time:</label>
                 <input
                   type="datetime-local"
                   name="startTime"
-                  //value={this.props.startTime}
-                  //selected={this.props.startTime}
                   defaultValue={this.props.startTime}
                   onChange={this.props.onChangeStartTime}
                   required
@@ -117,8 +77,6 @@ handleChange = selectedOption => {
                 <input
                   type="datetime-local"
                   name="endTime"
-                  //value={this.props.endTime}
-                  //selected={this.props.endTime}
                   defaultValue={this.props.endTime}
                   onChange={this.props.onChangeEndTime}
                   required

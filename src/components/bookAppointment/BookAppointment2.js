@@ -1,6 +1,7 @@
 import React from "react";
 import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
+import Moment from "moment";
 
 class BookAppointment2 extends React.Component {
   state = {
@@ -38,115 +39,113 @@ class BookAppointment2 extends React.Component {
           className="ui form"
           style={{ backgroundColor: "#ECEBE7 " }}
         >
-          <div className="container">
+          <div className="container bookAppointmentContainer">
             <h1>Appointment Details</h1>
 
-            <div className="row">
-              <div className="col-sm">
-                <label>Dog:</label>
+            <table className="table table-bordered">
+              <tbody>
+                <tr>
+                  <td>Dogs:</td>
+                  <td>
+                    {this.props.selectedDogs.map(doggy => (
+                      <div key={doggy.key.toString()}>{doggy.value}</div>
+                    ))}
+                  </td>
+                </tr>
 
-                {this.props.selectedDogs.map(doggy => (
-                    doggy.value
-                  ))}
-                <br />
-                <br />
+                <tr>
+                  <td>Start Time:</td>
+                  <td>{Moment(this.props.startTime).format("MMMM Do YYYY, h:mm a")}</td>
+                </tr>
 
-                <label>Start Time:</label>
-                {this.props.startTime}
-                <br />
-                <br />
+                <tr>
+                  <td>End Time:</td>
+                  <td>{Moment(this.props.endTime).format("MMMM Do YYYY, h:mm a")}</td>
+                </tr>
 
-                <label>End Time:</label>
-                {this.props.endTime}
-                <br />
-                <br />
+                <tr>
+                  <td>Grooming Added:</td>
+                  <td>{this.props.grooming}</td>
+                </tr>
 
-                <label>Grooming Added:</label>
-                {this.props.grooming}
-                <br />
-                <br />
+                <tr>
+                  <td>Additional Comments:</td>
+                  <td>{this.props.comments}</td>
+                </tr>
 
-                <label>Additional Comments:</label>
-                {this.props.comments}
-                <br />
-                <br />
+                <tr>
+                  <td>Cost:</td>
+                  <td>${this.props.cost}</td>
+                </tr>
+              </tbody>
+            </table>
 
-                <label>Cost:</label>
-                {this.props.cost}
-              </div>
-              <br />
-              <br />
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-
-            <div className="row">
-              <div className="col-sm">
-                <div className="d-flex justify-content-between">
-                  <Link
-                    to="/"
-                    type="button"
-                    className="btn mb-3"
-                    style={{
-                      fontWeight: "bold",
-                      backgroundColor: "#1D3461",
-                      color: "#ECEBE7",
-                      boxShadow:
-                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                    }}
-                  >
-                    Cancel Appointment
-                  </Link>
-                  <button
-                    onClick={this.props.proceedToPayment}
-                    className="btn mb-3"
-                    style={{
-                      fontWeight: "bold",
-                      backgroundColor: "#1D3461",
-                      color: "#ECEBE7",
-                      boxShadow:
-                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                    }}
-                  >
-                    Proceed To Payment
-                  </button>
+            <div className="bookAppointmentFooter">
+              <div className="row">
+                <div className="col-sm">
+                  <div className="d-flex justify-content-between">
+                    <Link
+                      to="/"
+                      type="button"
+                      className="btn mb-3"
+                      style={{
+                        fontWeight: "bold",
+                        backgroundColor: "#1D3461",
+                        color: "#ECEBE7",
+                        boxShadow:
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                      }}
+                    >
+                      Cancel Appointment
+                    </Link>
+                    <button
+                      onClick={this.props.proceedToPayment}
+                      className="btn mb-3"
+                      style={{
+                        fontWeight: "bold",
+                        backgroundColor: "#1D3461",
+                        color: "#ECEBE7",
+                        boxShadow:
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                      }}
+                    >
+                      Proceed To Payment
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="col-sm">
-                <div className="d-flex justify-content-between">
-                  <button
-                    type="button"
-                    onClick={this.props.onClick}
-                    className="btn mb-3"
-                    style={{
-                      fontWeight: "bold",
-                      backgroundColor: "#1D3461",
-                      color: "#ECEBE7",
-                      boxShadow:
-                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                    }}
-                  >
-                    Modify Information
-                  </button>
+              <div className="row">
+                <div className="col-sm">
+                  <div className="d-flex justify-content-between">
+                    <button
+                      type="button"
+                      onClick={this.props.onClick}
+                      className="btn mb-3"
+                      style={{
+                        fontWeight: "bold",
+                        backgroundColor: "#1D3461",
+                        color: "#ECEBE7",
+                        boxShadow:
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                      }}
+                    >
+                      Modify Information
+                    </button>
 
-                  <button
-                    className="btn mb-3"
-                    style={{
-                      fontWeight: "bold",
-                      backgroundColor: "#1D3461",
-                      color: "#ECEBE7",
-                      boxShadow:
-                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                    }}
-                  >
-                    Book Now Pay Later
-                  </button>
+                    <button
+                      className="btn mb-3"
+                      style={{
+                        fontWeight: "bold",
+                        backgroundColor: "#1D3461",
+                        color: "#ECEBE7",
+                        boxShadow:
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                      }}
+                    >
+                      Book Now Pay Later
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

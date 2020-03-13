@@ -1,13 +1,21 @@
-
-
-.contChangePassword { 
-    width: 40%;   
-    left: 30%; 
-    height: 565px;   
+.contChangePassword {
+    width: 50%;
+    left: 25%;
+    height: 80vh;
 }
 
-.fieldContainer { 
-    width: 80%;   
-    left: 30%;  
+.fieldContainer {
+    width: 80%;
+    left: 30%;
 }
 
+.container.bookAppointmentContainer {
+    justify-content: space-between;
+    flex-direction: column;
+    height: 75vh;
+    display: flex;
+}
+
+.container .bookAppointmentFooter {
+    justify-content: flex-end;
+}
