@@ -48,7 +48,7 @@ class BookAppointment1 extends React.Component {
 
                 <br/>
                 
-                <label>Select Dog:</label>
+                <label>Select Dogs:</label>
                 
                 <Select
                   isMulti
