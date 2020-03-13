@@ -1,14 +1,14 @@
 import React from "react";
 
 import BasePath from "../../api/BasePath";
-import BookAppointment1 from "./BookAppointment1";
-import BookAppointment2 from "./BookAppointment2";
+import BookDaycare1 from "./BookDaycare1";
+import BookDaycare2 from "./BookDaycare2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
 import Moment from "moment";
 
-class BookAppointmentMain extends React.Component {
+class BookDaycareMain extends React.Component {
   state = {
     response: "",
     fieldName: [],
@@ -20,8 +20,7 @@ class BookAppointmentMain extends React.Component {
     selectedDogs: [],
     dogs: [],
     initialStates: false,
-    cost: "",
-    grooming: "No"
+    cost: ""
   };
 
   getDogs = async () => {
@@ -45,7 +44,6 @@ class BookAppointmentMain extends React.Component {
         this.state.selectedDogs,
         this.state.startTime,
         this.state.endTime,
-        this.state.grooming,
         this.state.comments,
         this.state.sessionId
       ]
@@ -59,12 +57,8 @@ class BookAppointmentMain extends React.Component {
     var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
     var endTime = this.state.endTime;
     var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
-    
     var grooming = "false";
-    if (this.state.grooming === "Yes") {
-      grooming = "true";
-    }
-    var type = "boarding";
+    var type = "daycare";
 
     console.log(this.state.dog);
 
@@ -97,21 +91,16 @@ class BookAppointmentMain extends React.Component {
     var dogIdNumber = selectedDogs.toString();
     var startTime = Moment(this.state.fieldName[1]).format("YYYY-MM-DD hh:mm:ss");
     var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD hh:mm:ss");
-    var grooming = "false";
-    if (this.state.fieldName[3] === "Yes") {
-      grooming = "true";
-    }
-    var additionalComments = this.state.fieldName[4];
+    var additionalComments = this.state.fieldName[3];
     var total = this.state.cost;
 
-    const response = await BasePath.put("/webresources/bookboarding", {
+    const response = await BasePath.put("/webresources/bookdaycare", {
       token,
       dogIdNumber,
       startTime,
       endTime,
       total,
-      additionalComments,
-      grooming
+      additionalComments
     });
 
     this.setState({ response: response.data });
@@ -153,10 +142,6 @@ class BookAppointmentMain extends React.Component {
     this.setState({ endTime: event.target.value });
   };
 
-  handleChangeGrooming = event => {
-    this.setState({ grooming: event.target.value });
-  };
-
   handleChangeComments = event => {
     this.setState({ comments: event.target.value });
   };
@@ -169,12 +154,12 @@ class BookAppointmentMain extends React.Component {
     if (isValid === "Cost estimate successful") {
       return (
         <div style={{ marginTop: "10px" }}>
-          <BookAppointment2
+          <BookDaycare2
             dog={this.state.dog}
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
-            grooming={this.state.grooming}
+
             comments={this.state.comments}
             cost={this.state.cost}
             onClick={this.onPrevious}
@@ -183,7 +168,7 @@ class BookAppointmentMain extends React.Component {
           />
         </div>
       );
-    } else if (isValid === "Successfully added appointment") {
+    } else if (isValid === "Succsessfully added appointment") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
@@ -208,7 +193,7 @@ class BookAppointmentMain extends React.Component {
     } else {
       return (
         <div style={{ marginTop: "10px" }}>
-          <BookAppointment1
+          <BookDaycare1
             onChangeDog={this.handleChangeDog}
             onChangeStartTime={this.handleChangeStartTime}
             onChangeEndTime={this.handleChangeEndTime}
@@ -218,7 +203,7 @@ class BookAppointmentMain extends React.Component {
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
-            grooming={this.state.grooming}
+
             comments={this.state.comments}
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
@@ -239,4 +224,4 @@ class BookAppointmentMain extends React.Component {
   }
 }
 
-export default BookAppointmentMain;
+export default BookDaycareMain;

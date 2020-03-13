@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Select from "react-select";
 
-class BookAppointment1 extends React.Component {
+class BookTraining1 extends React.Component {
   state = {
     dog: "",
     startTime: "",
@@ -41,7 +41,7 @@ class BookAppointment1 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container bookAppointmentContainer">
-            <h1>Book Boarding</h1>
+            <h1>Book Training</h1>
 
             <div className="row">
               <div className="col-sm">
@@ -164,4 +164,4 @@ class BookAppointment1 extends React.Component {
   }
 }
 
-export default BookAppointment1;
+export default BookTraining1;

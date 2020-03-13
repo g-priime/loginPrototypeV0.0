@@ -3,7 +3,7 @@ import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
 import Moment from "moment";
 
-class BookAppointment2 extends React.Component {
+class BookTraining2 extends React.Component {
   state = {
     dog: "",
     startTime: "",
@@ -156,4 +156,4 @@ class BookAppointment2 extends React.Component {
   }
 }
 
-export default BookAppointment2;
+export default BookTraining2;

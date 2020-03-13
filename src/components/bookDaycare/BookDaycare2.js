@@ -3,7 +3,7 @@ import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
 import Moment from "moment";
 
-class BookAppointment2 extends React.Component {
+class BookDaycare2 extends React.Component {
   state = {
     dog: "",
     startTime: "",
@@ -23,7 +23,6 @@ class BookAppointment2 extends React.Component {
       this.state.selectedDogs,
       this.state.startTime,
       this.state.endTime,
-      this.state.grooming,
       this.state.comments
     );
   };
@@ -63,10 +62,7 @@ class BookAppointment2 extends React.Component {
                   <td>{Moment(this.props.endTime).format("MMMM Do YYYY, h:mm a")}</td>
                 </tr>
 
-                <tr>
-                  <td>Grooming Added:</td>
-                  <td>{this.props.grooming}</td>
-                </tr>
+                
 
                 <tr>
                   <td>Additional Comments:</td>
@@ -156,4 +152,4 @@ class BookAppointment2 extends React.Component {
   }
 }
 
-export default BookAppointment2;
+export default BookDaycare2;

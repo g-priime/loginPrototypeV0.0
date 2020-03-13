@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import Select from "react-select";
 
-class BookAppointment1 extends React.Component {
+class BookDaycare1 extends React.Component {
   state = {
     dog: "",
     startTime: "",
@@ -12,7 +12,6 @@ class BookAppointment1 extends React.Component {
 
     dogs: [],
     comments: "",
-    grooming: true,
     selectedDogs: [],
     selectedOption: null
   };
@@ -24,7 +23,6 @@ class BookAppointment1 extends React.Component {
       this.state.dog,
       this.state.startTime,
       this.state.endTime,
-      this.state.grooming,
       this.state.comments
     );
   };
@@ -41,7 +39,7 @@ class BookAppointment1 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container bookAppointmentContainer">
-            <h1>Book Boarding</h1>
+            <h1>Book Daycare</h1>
 
             <div className="row">
               <div className="col-sm">
@@ -84,37 +82,7 @@ class BookAppointment1 extends React.Component {
                 <br />
                 <br />
 
-                <div className="row">
-                  <div className="col-sm">
-                    <label>Add Grooming:</label>
-                  </div>
-
-                  <div className="col-sm">
-                    <label>
-                      <input
-                        type="radio"
-                        name="grooming"
-                        value="Yes"
-                        checked={this.props.grooming === "Yes"}
-                        onChange={this.props.onChangeGrooming}
-                      />
-                      <span>Yes</span>
-                    </label>
-                  </div>
-                  <div className="col-sm">
-                    <label>
-                      <input
-                        type="radio"
-                        name="grooming"
-                        value="No"
-                        checked={this.props.grooming === "No"}
-                        onChange={this.props.onChangeGrooming}
-                      />
-                      <span>No</span>
-                    </label>
-                  </div>
-                </div>
-                <br />
+                
 
                 <label>Additional Comments: </label>
                 <textarea
@@ -164,4 +132,4 @@ class BookAppointment1 extends React.Component {
   }
 }
 
-export default BookAppointment1;
+export default BookDaycare1;

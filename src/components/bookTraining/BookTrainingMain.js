@@ -1,14 +1,14 @@
 import React from "react";
 
 import BasePath from "../../api/BasePath";
-import BookAppointment1 from "./BookAppointment1";
-import BookAppointment2 from "./BookAppointment2";
+import BookTraining1 from "./BookTraining1";
+import BookTraining2 from "./BookTraining2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
 import Moment from "moment";
 
-class BookAppointmentMain extends React.Component {
+class BookTrainingMain extends React.Component {
   state = {
     response: "",
     fieldName: [],
@@ -169,7 +169,7 @@ class BookAppointmentMain extends React.Component {
     if (isValid === "Cost estimate successful") {
       return (
         <div style={{ marginTop: "10px" }}>
-          <BookAppointment2
+          <BookTraining2
             dog={this.state.dog}
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
@@ -183,7 +183,7 @@ class BookAppointmentMain extends React.Component {
           />
         </div>
       );
-    } else if (isValid === "Successfully added appointment") {
+    } else if (isValid === "Succsessfully added appointment") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
@@ -208,7 +208,7 @@ class BookAppointmentMain extends React.Component {
     } else {
       return (
         <div style={{ marginTop: "10px" }}>
-          <BookAppointment1
+          <BookTraining1
             onChangeDog={this.handleChangeDog}
             onChangeStartTime={this.handleChangeStartTime}
             onChangeEndTime={this.handleChangeEndTime}
@@ -239,4 +239,4 @@ class BookAppointmentMain extends React.Component {
   }
 }
 
-export default BookAppointmentMain;
+export default BookTrainingMain;
