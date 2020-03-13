@@ -41,42 +41,42 @@ class BookAppointment2 extends React.Component {
           <div className="container">
             <h1>Appointment Details</h1>
 
-            <div className="row">
-              <div className="col-sm">
-                <label>Dog:</label>
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <td>Dog:</td>
+                      <td>
+                        {this.props.selectedDogs.map(doggy => doggy.value)}
+                      </td>
+                    </tr>
 
-                {this.props.selectedDogs.map(doggy => (
-                    doggy.value
-                  ))}
-                <br />
-                <br />
+                    <tr>
+                      <td>Start Time:</td>
+                      <td>{this.props.startTime}</td>
+                    </tr>
 
-                <label>Start Time:</label>
-                {this.props.startTime}
-                <br />
-                <br />
+                    <tr>
+                      <td>End Time:</td>
+                      <td>{this.props.endTime}</td>
+                    </tr>
 
-                <label>End Time:</label>
-                {this.props.endTime}
-                <br />
-                <br />
+                    <tr>
+                      <td>Grooming Added:</td>
+                      <td>{this.props.grooming}</td>
+                    </tr>
 
-                <label>Grooming Added:</label>
-                {this.props.grooming}
-                <br />
-                <br />
+                    <tr>
+                      <td>Additional Comments:</td>
+                      <td>{this.props.comments}</td>
+                    </tr>
 
-                <label>Additional Comments:</label>
-                {this.props.comments}
-                <br />
-                <br />
+                    <tr>
+                      <td>Cost:</td>
+                      <td>{this.props.cost}</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-                <label>Cost:</label>
-                {this.props.cost}
-              </div>
-              <br />
-              <br />
-            </div>
             <br />
             <br />
             <br />
