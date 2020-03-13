@@ -41,12 +41,12 @@ class BookAppointment2 extends React.Component {
           <div className="container">
             <h1>Appointment Details</h1>
 
-                <table class="table table-bordered">
+                <table className="table table-bordered">
                   <tbody>
                     <tr>
                       <td>Dog:</td>
                       <td>
-                        {this.props.selectedDogs.map(doggy => doggy.value)}
+                        {this.props.selectedDogs.map(doggy => <div>{doggy.value}</div>)}
                       </td>
                     </tr>
 
