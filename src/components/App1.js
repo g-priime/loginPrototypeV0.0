@@ -3,7 +3,7 @@ import React from "react";
 //import HomePage from "./HomePage";
 import RegisterMain from "./register/RegisterMain";
 //import Gallery from "./Gallery";
-import FAQ from "./FAQ";
+//import FAQ from "./FAQ";
 //import Testimonials from "./Testimonials";
 import Services from "./Services";
 import Login from "./login/Login";
@@ -25,6 +25,7 @@ import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
 //import AddDog2 from './addDog/AddDog2';
 //import AddDog1 from './addDog/AddDog1';
 import BookDaycareMain from './bookDaycare/BookDaycareMain';
+import BookTrainingMain from './bookTraining/BookTrainingMain';
 
 
 class App1 extends React.Component {
@@ -58,10 +59,11 @@ class App1 extends React.Component {
               <Route path="/Services" component={Services} />
               <Route path="/Gallery" component={BookAppointmentMain} />
               <Route path="/Testimonials" component={BookDaycareMain} />
-              <Route path="/FAQ" component={FAQ} />
+              <Route path="/FAQ" component={BookTrainingMain} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={EditCustomerMain} />
               <Route path="/ViewAppointments" component={ChangePasswordMain} />
+              <Route path="/BookBoarding" component={BookAppointmentMain} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
