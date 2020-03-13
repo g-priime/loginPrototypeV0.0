@@ -99,7 +99,7 @@ class BookDaycare1 extends React.Component {
 
             <div className="d-flex justify-content-between">
               <Link
-                to="/"
+                to="/Services"
                 type="button"
                 className="btn mb-3"
                 style={{
