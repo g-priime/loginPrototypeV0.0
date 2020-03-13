@@ -68,7 +68,7 @@ class BookAppointmentMain extends React.Component {
 
     console.log(this.state.dog);
 
-    const response = await BasePath.put("/webresources/calculatecost2", {
+    const response = await BasePath.put("/webresources/calculatecost", {
       token,
       dogString,
       formattedStart,
