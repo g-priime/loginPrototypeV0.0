@@ -88,7 +88,7 @@ class BookDaycareMain extends React.Component {
 
     var selectedDogs = [];
     this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
-    var dogid = selectedDogs.toString();
+    var dogIdNumber = selectedDogs.toString();
     var startTime = Moment(this.state.fieldName[1]).format("YYYY-MM-DD hh:mm:ss");
     var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD hh:mm:ss");
     var additionalComments = this.state.fieldName[3];
@@ -96,7 +96,7 @@ class BookDaycareMain extends React.Component {
 
     const response = await BasePath.put("/webresources/bookdaycare", {
       token,
-      dogid,
+      dogIdNumber,
       startTime,
       endTime,
       total,
@@ -168,12 +168,12 @@ class BookDaycareMain extends React.Component {
           />
         </div>
       );
-    } else if (isValid === "Successfuly added appointment") {
+    } else if (isValid === "Succsessfully added appointment") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/Services",
               state: { message: "Appointment is booked pending approval" }
             }}
           />
