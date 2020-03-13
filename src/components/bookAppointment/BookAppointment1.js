@@ -40,11 +40,14 @@ class BookAppointment1 extends React.Component {
           className="ui form"
           style={{ backgroundColor: "#ECEBE7 " }}
         >
-          <div className="container fieldContainer">
+          <div className="container bookAppointmentContainer">
             <h1>Book Appointment</h1>
 
             <div className="row">
               <div className="col-sm">
+
+                <br/>
+                
                 <label>Select Dog:</label>
                 
                 <Select
