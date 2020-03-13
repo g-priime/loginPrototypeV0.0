@@ -107,24 +107,29 @@ class BookAppointmentMain extends React.Component {
 
     var selectedDogs = [];
     this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
+    var dogid = selectedDogs.toString();
     //var dog = this.state.fieldName[0].key;
-    var startTime = this.state.fieldName[1];
-    var endTime = this.state.fieldName[2];
-    var grooming = false;
+    //var startTime = this.state.fieldName[1];
+    var startTime = Moment(this.state.fieldName[1]).format("YYYY-MM-DD hh:mm:ss");
+    //var endTime = this.state.fieldName[2];
+    var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD hh:mm:ss");
+    var grooming = "false";
     if (this.state.fieldName[3] === "Yes") {
-      grooming = true;
+      grooming = "true";
     }
     var additionalComments = this.state.fieldName[4];
+    var total = this.state.cost;
 
     //console.log(this.state.dog);
 
     const response = await BasePath.put("/webresources/bookboarding", {
       token,
-      selectedDogs,
+      dogid,
       startTime,
       endTime,
-      grooming,
-      additionalComments
+      total,
+      additionalComments,
+      grooming
     });
 
     //console.log(response.data);
@@ -216,7 +221,7 @@ class BookAppointmentMain extends React.Component {
           />
         </div>
       );
-    } else if (isValid === "Pay Later") {
+    } else if (isValid === "Successfuly added appointment") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
