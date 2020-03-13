@@ -20,7 +20,8 @@ class BookAppointmentMain extends React.Component {
     selectedDogs: [],
     dogs: [],
     initialStates: false,
-    cost: ""
+    cost: "",
+    grooming: "No"
   };
 
   getDogs = async () => {
