@@ -26,7 +26,8 @@ class Header1 extends React.Component {
 
     if (
       this.state.initialStates === false &&
-      customerInfo.data !== "Authentication error, bad token"
+      customerInfo.data !== "Authentication error, bad token" &&
+      customerInfo.data !== ""
     ) {
       this.setState({
         initialStates: true,
