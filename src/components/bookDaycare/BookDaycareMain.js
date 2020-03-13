@@ -57,6 +57,7 @@ class BookDaycareMain extends React.Component {
     var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
     var endTime = this.state.endTime;
     var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
+    var grooming = "false";
     var type = "daycare";
 
     console.log(this.state.dog);
@@ -66,6 +67,7 @@ class BookDaycareMain extends React.Component {
       dogString,
       formattedStart,
       formattedEnd,
+      grooming,
       type
     });
 
