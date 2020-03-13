@@ -1,6 +1,7 @@
 import React from "react";
 import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
+import Moment from "moment";
 
 class BookAppointment2 extends React.Component {
   state = {
@@ -44,22 +45,22 @@ class BookAppointment2 extends React.Component {
             <table className="table table-bordered">
               <tbody>
                 <tr>
-                  <td>Dog:</td>
+                  <td>Dogs:</td>
                   <td>
                     {this.props.selectedDogs.map(doggy => (
-                      <div>{doggy.value}</div>
+                      <div key={doggy.key.toString()}>{doggy.value}</div>
                     ))}
                   </td>
                 </tr>
 
                 <tr>
                   <td>Start Time:</td>
-                  <td>{this.props.startTime}</td>
+                  <td>{Moment(this.props.startTime).format("MMMM Do YYYY, h:mm a")}</td>
                 </tr>
 
                 <tr>
                   <td>End Time:</td>
-                  <td>{this.props.endTime}</td>
+                  <td>{Moment(this.props.endTime).format("MMMM Do YYYY, h:mm a")}</td>
                 </tr>
 
                 <tr>
@@ -74,7 +75,7 @@ class BookAppointment2 extends React.Component {
 
                 <tr>
                   <td>Cost:</td>
-                  <td>{this.props.cost}</td>
+                  <td>${this.props.cost}</td>
                 </tr>
               </tbody>
             </table>
