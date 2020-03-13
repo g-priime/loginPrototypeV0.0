@@ -2,9 +2,9 @@ import React from "react";
 //import UserAccount from './UserAccount';
 //import HomePage from "./HomePage";
 import RegisterMain from "./register/RegisterMain";
-//import Gallery from "./Gallery";
-//import FAQ from "./FAQ";
-//import Testimonials from "./Testimonials";
+import Gallery from "./Gallery";
+import FAQ from "./FAQ";
+import Testimonials from "./Testimonials";
 import Services from "./Services";
 import Login from "./login/Login";
 import Footer from "./Footer";
@@ -57,13 +57,15 @@ class App1 extends React.Component {
               <Route path="/" exact component={HomePageHTML} />
               <Route path="/Register" component={RegisterMain} />
               <Route path="/Services" component={Services} />
-              <Route path="/Gallery" component={BookAppointmentMain} />
-              <Route path="/Testimonials" component={BookDaycareMain} />
-              <Route path="/FAQ" component={BookTrainingMain} />
+              <Route path="/Gallery" component={Gallery} />
+              <Route path="/Testimonials" component={Testimonials} />
+              <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={EditCustomerMain} />
               <Route path="/ViewAppointments" component={ChangePasswordMain} />
               <Route path="/BookBoarding" component={BookAppointmentMain} />
+              <Route path="/BookTraining" component={BookTrainingMain} />
+              <Route path="/BookDaycare" component={BookDaycareMain} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
