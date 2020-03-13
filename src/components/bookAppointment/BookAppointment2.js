@@ -38,115 +38,113 @@ class BookAppointment2 extends React.Component {
           className="ui form"
           style={{ backgroundColor: "#ECEBE7 " }}
         >
-          <div className="container">
+          <div className="container bookAppointmentContainer">
             <h1>Appointment Details</h1>
 
-                <table className="table table-bordered">
-                  <tbody>
-                    <tr>
-                      <td>Dog:</td>
-                      <td>
-                        {this.props.selectedDogs.map(doggy => <div>{doggy.value}</div>)}
-                      </td>
-                    </tr>
+            <table className="table table-bordered">
+              <tbody>
+                <tr>
+                  <td>Dog:</td>
+                  <td>
+                    {this.props.selectedDogs.map(doggy => (
+                      <div>{doggy.value}</div>
+                    ))}
+                  </td>
+                </tr>
 
-                    <tr>
-                      <td>Start Time:</td>
-                      <td>{this.props.startTime}</td>
-                    </tr>
+                <tr>
+                  <td>Start Time:</td>
+                  <td>{this.props.startTime}</td>
+                </tr>
 
-                    <tr>
-                      <td>End Time:</td>
-                      <td>{this.props.endTime}</td>
-                    </tr>
+                <tr>
+                  <td>End Time:</td>
+                  <td>{this.props.endTime}</td>
+                </tr>
 
-                    <tr>
-                      <td>Grooming Added:</td>
-                      <td>{this.props.grooming}</td>
-                    </tr>
+                <tr>
+                  <td>Grooming Added:</td>
+                  <td>{this.props.grooming}</td>
+                </tr>
 
-                    <tr>
-                      <td>Additional Comments:</td>
-                      <td>{this.props.comments}</td>
-                    </tr>
+                <tr>
+                  <td>Additional Comments:</td>
+                  <td>{this.props.comments}</td>
+                </tr>
 
-                    <tr>
-                      <td>Cost:</td>
-                      <td>{this.props.cost}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <tr>
+                  <td>Cost:</td>
+                  <td>{this.props.cost}</td>
+                </tr>
+              </tbody>
+            </table>
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-
-            <div className="row">
-              <div className="col-sm">
-                <div className="d-flex justify-content-between">
-                  <Link
-                    to="/"
-                    type="button"
-                    className="btn mb-3"
-                    style={{
-                      fontWeight: "bold",
-                      backgroundColor: "#1D3461",
-                      color: "#ECEBE7",
-                      boxShadow:
-                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                    }}
-                  >
-                    Cancel Appointment
-                  </Link>
-                  <button
-                    onClick={this.props.proceedToPayment}
-                    className="btn mb-3"
-                    style={{
-                      fontWeight: "bold",
-                      backgroundColor: "#1D3461",
-                      color: "#ECEBE7",
-                      boxShadow:
-                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                    }}
-                  >
-                    Proceed To Payment
-                  </button>
+            <div className="bookAppointmentFooter">
+              <div className="row">
+                <div className="col-sm">
+                  <div className="d-flex justify-content-between">
+                    <Link
+                      to="/"
+                      type="button"
+                      className="btn mb-3"
+                      style={{
+                        fontWeight: "bold",
+                        backgroundColor: "#1D3461",
+                        color: "#ECEBE7",
+                        boxShadow:
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                      }}
+                    >
+                      Cancel Appointment
+                    </Link>
+                    <button
+                      onClick={this.props.proceedToPayment}
+                      className="btn mb-3"
+                      style={{
+                        fontWeight: "bold",
+                        backgroundColor: "#1D3461",
+                        color: "#ECEBE7",
+                        boxShadow:
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                      }}
+                    >
+                      Proceed To Payment
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="col-sm">
-                <div className="d-flex justify-content-between">
-                  <button
-                    type="button"
-                    onClick={this.props.onClick}
-                    className="btn mb-3"
-                    style={{
-                      fontWeight: "bold",
-                      backgroundColor: "#1D3461",
-                      color: "#ECEBE7",
-                      boxShadow:
-                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                    }}
-                  >
-                    Modify Information
-                  </button>
+              <div className="row">
+                <div className="col-sm">
+                  <div className="d-flex justify-content-between">
+                    <button
+                      type="button"
+                      onClick={this.props.onClick}
+                      className="btn mb-3"
+                      style={{
+                        fontWeight: "bold",
+                        backgroundColor: "#1D3461",
+                        color: "#ECEBE7",
+                        boxShadow:
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                      }}
+                    >
+                      Modify Information
+                    </button>
 
-                  <button
-                    className="btn mb-3"
-                    style={{
-                      fontWeight: "bold",
-                      backgroundColor: "#1D3461",
-                      color: "#ECEBE7",
-                      boxShadow:
-                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                    }}
-                  >
-                    Book Now Pay Later
-                  </button>
+                    <button
+                      className="btn mb-3"
+                      style={{
+                        fontWeight: "bold",
+                        backgroundColor: "#1D3461",
+                        color: "#ECEBE7",
+                        boxShadow:
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                      }}
+                    >
+                      Book Now Pay Later
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
