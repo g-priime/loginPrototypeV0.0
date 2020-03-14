@@ -197,6 +197,10 @@ class BookTraining3 extends React.Component {
                       <td>Additional Household Members:</td>
                       <td>{this.props.members}</td>
                     </tr>
+                    <tr>
+                      <td>Play:</td>
+                      <td>{this.props.play}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
