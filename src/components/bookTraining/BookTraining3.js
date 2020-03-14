@@ -31,7 +31,7 @@ class BookTraining3 extends React.Component {
   render() {
     return (
       <div
-        className="ui segment contChangePassword"
+        className="ui segment contBookTraining"
         style={{ backgroundColor: "#ECEBE7" }}
       >
         <form
@@ -42,110 +42,227 @@ class BookTraining3 extends React.Component {
           <div className="container bookAppointmentContainer">
             <h1>Appointment Details</h1>
 
-            <table className="table table-bordered">
-              <tbody>
-                <tr>
-                  <td>Dogs:</td>
-                  <td>
-                    {this.props.selectedDogs.map(doggy => (
-                      <div key={doggy.key.toString()}>{doggy.value}</div>
-                    ))}
-                  </td>
-                </tr>
+            <br />
+            <br />
+            <div className="row">
+              <div className="col-sm">
+                <table className="table table-borderless table-dark">
+                  <tbody>
+                    <tr>
+                      <td>Dog:</td>
+                      <td>Fido</td>
+                    </tr>
 
-                <tr>
-                  <td>Start Time:</td>
-                  <td>{Moment(this.props.startTime).format("MMMM Do YYYY, h:mm a")}</td>
-                </tr>
+                    <tr>
+                      <td>Start Time:</td>
+                      <td>March 13, 2020 11:00am</td>
+                    </tr>
 
-                <tr>
-                  <td>End Time:</td>
-                  <td>{Moment(this.props.endTime).format("MMMM Do YYYY, h:mm a")}</td>
-                </tr>
+                    <tr>
+                      <td>End Time:</td>
+                      <td>March 13, 2020 1:00pm</td>
+                    </tr>
 
-                <tr>
-                  <td>Grooming Added:</td>
-                  <td>{this.props.grooming}</td>
-                </tr>
+                    <tr>
+                      <td>Additional Comments:</td>
+                      <td>none</td>
+                    </tr>
 
-                <tr>
-                  <td>Additional Comments:</td>
-                  <td>{this.props.comments}</td>
-                </tr>
+                    <tr>
+                      <td>Cost:</td>
+                      <td>${this.props.cost}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
-                <tr>
-                  <td>Cost:</td>
-                  <td>${this.props.cost}</td>
-                </tr>
-              </tbody>
-            </table>
+              <div className="col-sm">
+                <table className="table table-striped">
+                  <tbody>
+                    <tr>
+                      <td>Barking:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Chewing Destruction:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Counter Surfing:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Digging:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Jumping:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Pulling on Leash:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Building Confidence:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Chewing:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Handling:</td>
+                      <td>Yes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="col-sm">
+                <table className="table table-striped">
+                  <tbody>
+                    <tr>
+                      <td>House Training:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Mouthing:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Socialization:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Children and Dogs:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Distraction Strategies:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Exercise:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Focus Strategies:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Loose Leash Walking:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Mat Work:</td>
+                      <td>Yes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="col-sm">
+                <table className="table table-striped">
+                  <tbody>
+                    <tr>
+                      <td>New Baby:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>New Cat:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>New Dog:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>New Home:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>New Significant Other:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Stealing Items Chase Game:</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Additional Household Members:</td>
+                      <td>Yes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
             <div className="bookAppointmentFooter">
               <div className="row">
                 <div className="col-sm">
-                  <div className="d-flex justify-content-between">
-                    <Link
-                      to="/Services"
-                      type="button"
-                      className="btn mb-3"
-                      style={{
-                        fontWeight: "bold",
-                        backgroundColor: "#1D3461",
-                        color: "#ECEBE7",
-                        boxShadow:
-                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                      }}
-                    >
-                      Cancel Appointment
-                    </Link>
-                    <button
-                      onClick={this.props.proceedToPayment}
-                      className="btn mb-3"
-                      style={{
-                        fontWeight: "bold",
-                        backgroundColor: "#1D3461",
-                        color: "#ECEBE7",
-                        boxShadow:
-                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                      }}
-                    >
-                      Proceed To Payment
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={this.props.onClick}
+                    className="btn mb-3"
+                    style={{
+                      marginRight: "3%",
+                      marginLeft: "-30%",
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Modify Information
+                  </button>
+                  <Link
+                    to="/Services"
+                    type="button"
+                    className="btn mb-3"
+                    style={{
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Cancel Appointment
+                  </Link>
                 </div>
-              </div>
 
-              <div className="row">
+                <div className="col-xs"></div>
+
                 <div className="col-sm">
-                  <div className="d-flex justify-content-between">
-                    <button
-                      type="button"
-                      onClick={this.props.onClick}
-                      className="btn mb-3"
-                      style={{
-                        fontWeight: "bold",
-                        backgroundColor: "#1D3461",
-                        color: "#ECEBE7",
-                        boxShadow:
-                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                      }}
-                    >
-                      Modify Information
-                    </button>
-
-                    <button
-                      className="btn mb-3"
-                      style={{
-                        fontWeight: "bold",
-                        backgroundColor: "#1D3461",
-                        color: "#ECEBE7",
-                        boxShadow:
-                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                      }}
-                    >
-                      Book Now Pay Later
-                    </button>
-                  </div>
+                  <button
+                    onClick={this.props.proceedToPayment}
+                    className="btn mb-3"
+                    style={{
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Proceed To Payment
+                  </button>
+                  <button
+                    className="btn mb-3"
+                    style={{
+                      marginLeft: "3%",
+                      marginRight: "-30%",
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Book Now Pay Later
+                  </button>
                 </div>
               </div>
             </div>
