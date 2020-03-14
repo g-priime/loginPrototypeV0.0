@@ -6,11 +6,11 @@ import CarouselHome from "./CarouselHome";
 import {
   Card,
   CardImg,
-  CardText,
+  //CardText,
   CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button
+  //CardTitle,
+  //CardSubtitle,
+  //Button
 } from "reactstrap";
 
 class HomePageHTML extends React.Component {
