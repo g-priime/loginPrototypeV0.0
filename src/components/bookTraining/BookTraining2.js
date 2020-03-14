@@ -2,7 +2,7 @@ import React from "react";
 import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
 
-import Select from "react-select";
+//import Select from "react-select";
 
 class BookTraining2 extends React.Component {
   state = {
@@ -57,20 +57,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="barking"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.barking === "Yes"}
+                          onChange={this.props.onChangeBarking}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="barking"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.barking === "No"}
+                          onChange={this.props.onChangeBarking}
                         />
                       </td>
                       <td>No</td>
@@ -80,20 +80,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="destruction"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.destruction === "Yes"}
+                          onChange={this.props.onChangeDestruction}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="destruction"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.destruction === "No"}
+                          onChange={this.props.onChangeDestruction}
                         />
                       </td>
                       <td>No</td>
@@ -103,20 +103,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="surfing"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.surfing === "Yes"}
+                          onChange={this.props.onChangeSurfing}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="surfing"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.surfing === "No"}
+                          onChange={this.props.onChangeSurfing}
                         />
                       </td>
                       <td>No</td>
@@ -126,20 +126,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="digging"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.digging === "Yes"}
+                          onChange={this.props.onChangeDigging}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="digging"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.digging === "No"}
+                          onChange={this.props.onChangeDigging}
                         />
                       </td>
                       <td>No</td>
@@ -149,20 +149,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="jumping"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.jumping === "Yes"}
+                          onChange={this.props.onChangeJumping}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="jumping"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.jumping === "No"}
+                          onChange={this.props.onChangeJumping}
                         />
                       </td>
                       <td>No</td>
@@ -172,20 +172,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="pulling"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.pulling === "Yes"}
+                          onChange={this.props.onChangePulling}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="pulling"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.pulling === "No"}
+                          onChange={this.props.onChangePulling}
                         />
                       </td>
                       <td>No</td>
@@ -195,20 +195,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="confidence"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.confidence === "Yes"}
+                          onChange={this.props.onChangeConfidence}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="confidence"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.confidence === "No"}
+                          onChange={this.props.onChangeConfidence}
                         />
                       </td>
                       <td>No</td>
@@ -218,20 +218,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="chewing"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.chewing === "Yes"}
+                          onChange={this.props.onChangeChewing}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="chewing"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.chewing === "No"}
+                          onChange={this.props.onChangeChewing}
                         />
                       </td>
                       <td>No</td>
@@ -241,20 +241,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="handling"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.handling === "Yes"}
+                          onChange={this.props.onChangeHandling}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="handling"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.handling === "No"}
+                          onChange={this.props.onChangeHandling}
                         />
                       </td>
                       <td>No</td>
@@ -271,20 +271,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="houseTraining"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.houseTraining === "Yes"}
+                          onChange={this.props.onChangeHouseTraining}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="houseTraining"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.houseTraining === "No"}
+                          onChange={this.props.onChangeHouseTraining}
                         />
                       </td>
                       <td>No</td>
@@ -294,20 +294,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="mouthing"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.mouthing === "Yes"}
+                          onChange={this.props.onChangeMouthing}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="mouthing"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.mouthing === "No"}
+                          onChange={this.props.onChangeMouthing}
                         />
                       </td>
                       <td>No</td>
@@ -317,20 +317,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="socialization"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.socialization === "Yes"}
+                          onChange={this.props.onChangeSocialization}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="socialization"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.socialization === "No"}
+                          onChange={this.props.onChangeSocialization}
                         />
                       </td>
                       <td>No</td>
@@ -340,20 +340,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="distraction"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.distraction === "Yes"}
+                          onChange={this.props.onChangeDistraction}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="distraction"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.distraction === "No"}
+                          onChange={this.props.onChangeDistraction}
                         />
                       </td>
                       <td>No</td>
@@ -363,20 +363,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="exercise"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.exercise === "Yes"}
+                          onChange={this.props.onChangeExercise}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="exercise"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.exercise === "No"}
+                          onChange={this.props.onChangeExercise}
                         />
                       </td>
                       <td>No</td>
@@ -386,20 +386,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="focus"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.focus === "Yes"}
+                          onChange={this.props.onChangeFocus}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="focus"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.focus === "No"}
+                          onChange={this.props.onChangeFocus}
                         />
                       </td>
                       <td>No</td>
@@ -409,20 +409,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="walking"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.walking === "Yes"}
+                          onChange={this.props.onChangeWalking}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="walking"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.walking === "No"}
+                          onChange={this.props.onChangeWalking}
                         />
                       </td>
                       <td>No</td>
@@ -432,20 +432,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="matWork"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.matWork === "Yes"}
+                          onChange={this.props.onChangeMatWork}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="matWork"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.matWork === "No"}
+                          onChange={this.props.onChangeMatWork}
                         />
                       </td>
                       <td>No</td>
@@ -455,20 +455,20 @@ class BookTraining2 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="stealing"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.stealing === "Yes"}
+                          onChange={this.props.onChangeStealing}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="stealing"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          checked={this.props.stealing === "No"}
+                          onChange={this.props.onChangeStealing}
                         />
                       </td>
                       <td>No</td>
