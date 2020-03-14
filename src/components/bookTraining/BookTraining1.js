@@ -32,7 +32,7 @@ class BookTraining1 extends React.Component {
   render() {
     return (
       <div
-        className="ui segment contChangePassword"
+        className="ui segment contBookTraining"
         style={{ backgroundColor: "#ECEBE7" }}
       >
         <form
@@ -41,10 +41,10 @@ class BookTraining1 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container bookAppointmentContainer">
-            <h1>Book Training</h1>
+            <h1>Book Training: Step 1</h1>
 
             <div className="row">
-              <div className="col-sm">
+              <div className="col-sm" style={{ marginLeft: "10%", marginRight: "5%" }}>
                 <label>Select Dogs:</label>
 
                 <Select
@@ -88,6 +88,175 @@ class BookTraining1 extends React.Component {
                   value={this.props.comments}
                   onChange={this.props.onChangeComments}
                 />
+              </div>
+
+              <div className="col-sm" style={{ marginLeft: "5%", marginRight: "10%" }}>
+                <label>Select others interacting with dog:</label>
+                <table className="table table-striped">
+                  <tbody>
+                    <tr>
+                      <td>New Baby:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="Yes"
+                          checked={this.props.grooming === "Yes"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="No"
+                          checked={this.props.grooming === "No"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>New Cat:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="Yes"
+                          checked={this.props.grooming === "Yes"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="No"
+                          checked={this.props.grooming === "No"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>New Dog:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="Yes"
+                          checked={this.props.grooming === "Yes"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="No"
+                          checked={this.props.grooming === "No"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>New Significant Other:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="Yes"
+                          checked={this.props.grooming === "Yes"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="No"
+                          checked={this.props.grooming === "No"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>Additional Household Members:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="Yes"
+                          checked={this.props.grooming === "Yes"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="No"
+                          checked={this.props.grooming === "No"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>Children and Dogs:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="Yes"
+                          checked={this.props.grooming === "Yes"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="No"
+                          checked={this.props.grooming === "No"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>New Home:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="Yes"
+                          checked={this.props.grooming === "Yes"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="grooming"
+                          value="No"
+                          checked={this.props.grooming === "No"}
+                          onChange={this.props.onChangeGrooming}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
               <br />
