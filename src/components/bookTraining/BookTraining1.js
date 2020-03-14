@@ -45,11 +45,8 @@ class BookTraining1 extends React.Component {
 
             <div className="row">
               <div className="col-sm">
-
-                <br/>
-                
                 <label>Select Dogs:</label>
-                
+
                 <Select
                   isMulti
                   closeMenuOnSelect={false}
@@ -84,38 +81,6 @@ class BookTraining1 extends React.Component {
                 <br />
                 <br />
 
-                <div className="row">
-                  <div className="col-sm">
-                    <label>Add Grooming:</label>
-                  </div>
-
-                  <div className="col-sm">
-                    <label>
-                      <input
-                        type="radio"
-                        name="grooming"
-                        value="Yes"
-                        checked={this.props.grooming === "Yes"}
-                        onChange={this.props.onChangeGrooming}
-                      />
-                      <span>Yes</span>
-                    </label>
-                  </div>
-                  <div className="col-sm">
-                    <label>
-                      <input
-                        type="radio"
-                        name="grooming"
-                        value="No"
-                        checked={this.props.grooming === "No"}
-                        onChange={this.props.onChangeGrooming}
-                      />
-                      <span>No</span>
-                    </label>
-                  </div>
-                </div>
-                <br />
-
                 <label>Additional Comments: </label>
                 <textarea
                   rows="2"
@@ -124,7 +89,7 @@ class BookTraining1 extends React.Component {
                   onChange={this.props.onChangeComments}
                 />
               </div>
-              <br />
+
               <br />
             </div>
             <br />
