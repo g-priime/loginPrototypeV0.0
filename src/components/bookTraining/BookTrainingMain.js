@@ -22,7 +22,8 @@ class BookTrainingMain extends React.Component {
     dogs: [],
     initialStates: false,
     cost: "",
-    baby: "No"
+    baby: "No",
+    barking: ""
   };
 
   getDogs = async () => {
@@ -66,7 +67,7 @@ class BookTrainingMain extends React.Component {
     if (this.state.grooming === "Yes") {
       grooming = "true";
     }
-    var type = "boarding";
+    var type = "training";
 
     console.log(this.state.dog);
 
@@ -104,24 +105,150 @@ class BookTrainingMain extends React.Component {
       "YYYY-MM-DD hh:mm:ss"
     );
     var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD hh:mm:ss");
-    var grooming = "false";
-    if (this.state.fieldName[3] === "Yes") {
-      grooming = "true";
-    }
+
     var additionalComments = this.state.fieldName[4];
     var total = this.state.cost;
 
-    const response = await BasePath.put("/webresources/bookboarding", {
+    var barking = false;
+    if (this.state.barking === "Yes") {
+      barking = true;
+    }
+    var chewingDestruction = false;
+    if (this.state.destruction === "Yes") {
+      chewingDestruction = true;
+    }
+    var counterSurfing = false;
+    if (this.state.surfing === "Yes") {
+      counterSurfing = true;
+    }
+    var digging = false;
+    if (this.state.digging === "Yes") {
+      digging = true;
+    }
+    var jumping = false;
+    if (this.state.jumping === "Yes") {
+      jumping = true;
+    }
+    var pullingOnLeash = false;
+    if (this.state.pulling === "Yes") {
+      pullingOnLeash = true;
+    }
+    var buildingConfidence = false;
+    if (this.state.confidence === "Yes") {
+      buildingConfidence = true;
+    }
+    var chewing = false;
+    if (this.state.chewing === "Yes") {
+      chewing = true;
+    }
+    var handling = false;
+    if (this.state.handling === "Yes") {
+      handling = true;
+    }
+
+    var houseTraining = false;
+    if (this.state.houseTraining === "Yes") {
+      houseTraining = true;
+    }
+    var mouthing = false;
+    if (this.state.mouthing === "Yes") {
+      mouthing = true;
+    }
+    var socialization = false;
+    if (this.state.socialization === "Yes") {
+      socialization = true;
+    }
+    var distractionStrategies = false;
+    if (this.state.distraction === "Yes") {
+      distractionStrategies = true;
+    }
+    var exercise = false;
+    if (this.state.exercise === "Yes") {
+      exercise = true;
+    }
+    var focusStrategies = false;
+    if (this.state.focus === "Yes") {
+      focusStrategies = true;
+    }
+    var looseLeashWalking = false;
+    if (this.state.walking === "Yes") {
+      looseLeashWalking = true;
+    }
+    var matWork = false;
+    if (this.state.matWork === "Yes") {
+      matWork = true;
+    }
+    var stealingItemsChaseGame = false;
+    if (this.state.stealing === "Yes") {
+      stealingItemsChaseGame = true;
+    }
+
+    var newBaby = false;
+    if (this.state.baby === "Yes") {
+      newBaby = true;
+    }
+    var newCat = false;
+    if (this.state.cat === "Yes") {
+      newCat = true;
+    }
+    var newDog = false;
+    if (this.state.newDog === "Yes") {
+      newDog = true;
+    }
+    var newSignificantOther = false;
+    if (this.state.significantOther === "Yes") {
+      newSignificantOther = true;
+    }
+    var additionalHouseholdMembers = false;
+    if (this.state.members === "Yes") {
+      additionalHouseholdMembers = true;
+    }
+    var childrenAndDogs = false;
+    if (this.state.children === "Yes") {
+      childrenAndDogs = true;
+    }
+    var newHome = false;
+    if (this.state.home === "Yes") {
+      newHome = true;
+    }
+
+    const response = await BasePath.put("/webresources/booktraining", {
       token,
       dogIdNumber,
       startTime,
       endTime,
       total,
       additionalComments,
-      grooming
+      barking,
+      chewingDestruction,
+      counterSurfing,
+      digging,
+      jumping,
+      pullingOnLeash,
+      buildingConfidence,
+      chewing,
+      handling,
+      houseTraining,
+      mouthing,
+      socialization,
+      distractionStrategies,
+      exercise,
+      focusStrategies,
+      looseLeashWalking,
+      matWork,
+      stealingItemsChaseGame,
+      newBaby,
+      newCat,
+      newDog,
+      newSignificantOther,
+      additionalHouseholdMembers,
+      childrenAndDogs,
+      newHome
     });
 
     this.setState({ response: response.data });
+
+    console.log(this.state.response);
 
     if (this.state.response === "Old startTime is incorrect") {
       this.setState({ cn: "popup4" });
@@ -290,8 +417,6 @@ class BookTrainingMain extends React.Component {
             stealing={this.state.stealing}
             onClick={this.onPrevious}
             toDetails={this.toDetails}
-            proceedToPayment={this.proceedToPayment}
-            onSubmit={this.onSearchSubmit2}
           />
         </div>
       );
@@ -329,10 +454,12 @@ class BookTrainingMain extends React.Component {
             members={this.state.members}
             children={this.state.children}
             home={this.state.home}
+            proceedToPayment={this.proceedToPayment}
+            onSubmit={this.onSearchSubmit2}
           />
         </div>
       );
-    } else if (isValid === "Succsessfully added appointment") {
+    } else if (isValid === "Successfully added appointment") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
