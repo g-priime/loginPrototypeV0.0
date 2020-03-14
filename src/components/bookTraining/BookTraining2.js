@@ -258,6 +258,29 @@ class BookTraining2 extends React.Component {
                       </td>
                       <td>No</td>
                     </tr>
+                    <tr>
+                      <td>Play:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="play"
+                          value="Yes"
+                          defaultChecked={this.props.play === "Yes"}
+                          onChange={this.props.onChangePlay}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="play"
+                          value="No"
+                          defaultChecked={this.props.play === "No"}
+                          onChange={this.props.onChangePlay}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
