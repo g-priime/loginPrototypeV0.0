@@ -12,7 +12,6 @@ class BookTraining1 extends React.Component {
 
     dogs: [],
     comments: "",
-    grooming: true,
     selectedDogs: [],
     selectedOption: null
   };
