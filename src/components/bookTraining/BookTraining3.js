@@ -211,7 +211,7 @@ class BookTraining3 extends React.Component {
                 <div className="col-sm">
                   <button
                     type="button"
-                    onClick={this.props.onClick}
+                    onClick={this.props.toPage2}
                     className="btn mb-3"
                     style={{
                       marginRight: "3%",
@@ -223,7 +223,7 @@ class BookTraining3 extends React.Component {
                         "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                     }}
                   >
-                    Modify Information
+                    Previous Step
                   </button>
                   <Link
                     to="/Services"
