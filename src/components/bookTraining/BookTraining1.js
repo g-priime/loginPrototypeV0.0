@@ -44,7 +44,7 @@ class BookTraining1 extends React.Component {
           <div className="container bookAppointmentContainer">
             <h1>Book Training: Step 1</h1>
 
-            <div className="row">
+            <div className="row" style={{ marginTop: "6%" }}>
               <div className="col-sm" style={{ marginLeft: "10%", marginRight: "5%" }}>
                 <label>Select Dog:</label>
 
@@ -270,6 +270,7 @@ class BookTraining1 extends React.Component {
                 type="button"
                 className="btn mb-3"
                 style={{
+                  marginTop: "5%",
                   fontWeight: "bold",
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
@@ -282,6 +283,7 @@ class BookTraining1 extends React.Component {
               <button
                 className="btn mb-3"
                 style={{
+                  marginTop: "5%",
                   fontWeight: "bold",
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
