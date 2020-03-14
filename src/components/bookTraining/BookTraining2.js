@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/bookAppointment.css";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 //import Select from "react-select";
 
@@ -493,6 +493,7 @@ class BookTraining2 extends React.Component {
                 Modify Information
               </button>
               <button
+                type="button"
                 onClick={this.props.toDetails}
                 className="btn mb-3"
                 style={{
