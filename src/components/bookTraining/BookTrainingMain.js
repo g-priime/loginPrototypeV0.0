@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
 import Moment from "moment";
+import BookTraining3 from "./BookTraining3";
 
 class BookTrainingMain extends React.Component {
   state = {
@@ -21,7 +22,6 @@ class BookTrainingMain extends React.Component {
     dogs: [],
     initialStates: false,
     cost: "",
-    grooming: "No",
     baby: "No"
   };
 
@@ -61,7 +61,7 @@ class BookTrainingMain extends React.Component {
     var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
     var endTime = this.state.endTime;
     var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
-    
+
     var grooming = "false";
     if (this.state.grooming === "Yes") {
       grooming = "true";
@@ -80,7 +80,10 @@ class BookTrainingMain extends React.Component {
     });
 
     console.log(response);
-    this.setState({ response: response.data.message, cost: response.data.total });
+    this.setState({
+      response: response.data.message,
+      cost: response.data.total
+    });
 
     if (this.state.response === "Old startTime is incorrect") {
       this.setState({ cn: "popup4" });
@@ -97,7 +100,9 @@ class BookTrainingMain extends React.Component {
     var selectedDogs = [];
     this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
-    var startTime = Moment(this.state.fieldName[1]).format("YYYY-MM-DD hh:mm:ss");
+    var startTime = Moment(this.state.fieldName[1]).format(
+      "YYYY-MM-DD hh:mm:ss"
+    );
     var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD hh:mm:ss");
     var grooming = "false";
     if (this.state.fieldName[3] === "Yes") {
@@ -131,6 +136,10 @@ class BookTrainingMain extends React.Component {
     this.setState({ response: "" });
   };
 
+  toDetails = () => {
+    this.setState({ response: "Details" });
+  };
+
   proceedToPayment = () => {
     this.setState({ response: "Payment" });
   };
@@ -146,24 +155,92 @@ class BookTrainingMain extends React.Component {
       console.log(`Option selected:`, this.state.selectedDogs)
     );
   };
-
   handleChangeStartTime = event => {
     this.setState({ startTime: event.target.value });
   };
-
   handleChangeEndTime = event => {
     this.setState({ endTime: event.target.value });
   };
-
-  handleChangeGrooming = event => {
-    this.setState({ grooming: event.target.value });
+  handleChangeComments = event => {
+    this.setState({ comments: event.target.value });
   };
+
   handleChangeBaby = event => {
     this.setState({ baby: event.target.value });
   };
+  handleChangeCat = event => {
+    this.setState({ cat: event.target.value });
+  };
+  handleChangeNewDog = event => {
+    this.setState({ newDog: event.target.value });
+  };
+  handleChangeSignificantOther = event => {
+    this.setState({ significantOther: event.target.value });
+  };
+  handleChangeMembers = event => {
+    this.setState({ members: event.target.value });
+  };
+  handleChangeChildren = event => {
+    this.setState({ children: event.target.value });
+  };
+  handleChangeHome = event => {
+    this.setState({ home: event.target.value });
+  };
 
-  handleChangeComments = event => {
-    this.setState({ comments: event.target.value });
+  handleChangeBarking = event => {
+    this.setState({ barking: event.target.value });
+  };
+  handleChangeDestruction = event => {
+    this.setState({ destruction: event.target.value });
+  };
+  handleChangeSurfing = event => {
+    this.setState({ surfing: event.target.value });
+  };
+  handleChangeDigging = event => {
+    this.setState({ digging: event.target.value });
+  };
+  handleChangeJumping = event => {
+    this.setState({ jumping: event.target.value });
+  };
+  handleChangePulling = event => {
+    this.setState({ pulling: event.target.value });
+  };
+  handleChangeConfidence = event => {
+    this.setState({ confidence: event.target.value });
+  };
+  handleChangeChewing = event => {
+    this.setState({ chewing: event.target.value });
+  };
+  handleChangeHandling = event => {
+    this.setState({ handling: event.target.value });
+  };
+
+  handleChangeHouseTraining = event => {
+    this.setState({ houseTraining: event.target.value });
+  };
+  handleChangeMouthing = event => {
+    this.setState({ mouthing: event.target.value });
+  };
+  handleChangeSocialization = event => {
+    this.setState({ socialization: event.target.value });
+  };
+  handleChangeDistraction = event => {
+    this.setState({ distraction: event.target.value });
+  };
+  handleChangeExercise = event => {
+    this.setState({ exercise: event.target.value });
+  };
+  handleChangeFocus = event => {
+    this.setState({ focus: event.target.value });
+  };
+  handleChangeWalking = event => {
+    this.setState({ walking: event.target.value });
+  };
+  handleChangeMatWork = event => {
+    this.setState({ matWork: event.target.value });
+  };
+  handleChangeStealing = event => {
+    this.setState({ stealing: event.target.value });
   };
 
   render() {
@@ -175,16 +252,83 @@ class BookTrainingMain extends React.Component {
       return (
         <div style={{ marginTop: "10px" }}>
           <BookTraining2
-            dog={this.state.dog}
+            onChangeBarking={this.handleChangeBarking}
+            onChangeDestruction={this.handleChangeDestruction}
+            onChangeSurfing={this.handleChangeSurfing}
+            onChangeDigging={this.handleChangeDigging}
+            onChangeJumping={this.handleChangeJumping}
+            onChangePulling={this.handleChangePulling}
+            onChangeConfidence={this.handleChangeConfidence}
+            onChangeChewing={this.handleChangeChewing}
+            onChangeHandling={this.handleChangeHandling}
+            onChangeHouseTraining={this.handleChangeHouseTraining}
+            onChangeMouthing={this.handleChangeMouthing}
+            onChangeSocialization={this.handleChangeSocialization}
+            onChangeDistraction={this.handleChangeDistraction}
+            onChangeExercise={this.handleChangeExercise}
+            onChangeFocus={this.handleChangeFocus}
+            onChangeWalking={this.handleChangeWalking}
+            onChangeMatWork={this.handleChangeMatWork}
+            onChangeStealing={this.handleChangeStealing}
+            barking={this.state.barking}
+            destruction={this.state.destruction}
+            surfing={this.state.surfing}
+            digging={this.state.digging}
+            jumping={this.state.jumping}
+            pulling={this.state.pulling}
+            confidence={this.state.confidence}
+            chewing={this.state.chewing}
+            handling={this.state.handling}
+            houseTraining={this.state.houseTraining}
+            mouthing={this.state.mouthing}
+            socialization={this.state.socialization}
+            distraction={this.state.distraction}
+            exercise={this.state.exercise}
+            focus={this.state.focus}
+            walking={this.state.walking}
+            matWork={this.state.matWork}
+            stealing={this.state.stealing}
+            onClick={this.onPrevious}
+            toDetails={this.toDetails}
+            proceedToPayment={this.proceedToPayment}
+            onSubmit={this.onSearchSubmit2}
+          />
+        </div>
+      );
+    } else if (isValid === "Details") {
+      return (
+        <div style={{ marginTop: "10px" }}>
+          <BookTraining3
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
-            grooming={this.state.grooming}
             comments={this.state.comments}
             cost={this.state.cost}
-            onClick={this.onPrevious}
-            proceedToPayment={this.proceedToPayment}
-            onSubmit={this.onSearchSubmit2}
+            barking={this.state.barking}
+            destruction={this.state.destruction}
+            surfing={this.state.surfing}
+            digging={this.state.digging}
+            jumping={this.state.jumping}
+            pulling={this.state.pulling}
+            confidence={this.state.confidence}
+            chewing={this.state.chewing}
+            handling={this.state.handling}
+            houseTraining={this.state.houseTraining}
+            mouthing={this.state.mouthing}
+            socialization={this.state.socialization}
+            distraction={this.state.distraction}
+            exercise={this.state.exercise}
+            focus={this.state.focus}
+            walking={this.state.walking}
+            matWork={this.state.matWork}
+            stealing={this.state.stealing}
+            baby={this.state.baby}
+            cat={this.state.cat}
+            newDog={this.state.newDog}
+            significantOther={this.state.significantOther}
+            members={this.state.members}
+            children={this.state.children}
+            home={this.state.home}
           />
         </div>
       );
@@ -217,17 +361,25 @@ class BookTrainingMain extends React.Component {
             onChangeDog={this.handleChangeDog}
             onChangeStartTime={this.handleChangeStartTime}
             onChangeEndTime={this.handleChangeEndTime}
-            onChangeGrooming={this.handleChangeGrooming}
             onChangeBaby={this.handleChangeBaby}
-
+            onChangeCat={this.handleChangeCat}
+            onChangeNewDog={this.handleChangeNewDog}
+            onChangeSignificantOther={this.handleChangeSignificantOther}
+            onChangeMembers={this.handleChangeMembers}
+            onChangeChildren={this.handleChangeChildren}
+            onChangeHome={this.handleChangeHome}
             onChangeComments={this.handleChangeComments}
             dog={this.state.dog}
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
-            grooming={this.state.grooming}
             baby={this.state.baby}
-
+            cat={this.state.cat}
+            newDog={this.state.newDog}
+            significantOther={this.state.significantOther}
+            members={this.state.members}
+            children={this.state.children}
+            home={this.state.home}
             comments={this.state.comments}
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
