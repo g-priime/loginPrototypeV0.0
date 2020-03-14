@@ -21,7 +21,8 @@ class BookTrainingMain extends React.Component {
     dogs: [],
     initialStates: false,
     cost: "",
-    grooming: "No"
+    grooming: "No",
+    baby: "No"
   };
 
   getDogs = async () => {
@@ -47,7 +48,8 @@ class BookTrainingMain extends React.Component {
         this.state.endTime,
         this.state.grooming,
         this.state.comments,
-        this.state.sessionId
+        //this.state.sessionId
+        this.state.baby
       ]
     });
 
@@ -156,6 +158,9 @@ class BookTrainingMain extends React.Component {
   handleChangeGrooming = event => {
     this.setState({ grooming: event.target.value });
   };
+  handleChangeBaby = event => {
+    this.setState({ baby: event.target.value });
+  };
 
   handleChangeComments = event => {
     this.setState({ comments: event.target.value });
@@ -213,12 +218,16 @@ class BookTrainingMain extends React.Component {
             onChangeStartTime={this.handleChangeStartTime}
             onChangeEndTime={this.handleChangeEndTime}
             onChangeGrooming={this.handleChangeGrooming}
+            onChangeBaby={this.handleChangeBaby}
+
             onChangeComments={this.handleChangeComments}
             dog={this.state.dog}
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
             grooming={this.state.grooming}
+            baby={this.state.baby}
+
             comments={this.state.comments}
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
