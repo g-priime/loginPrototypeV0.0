@@ -273,6 +273,10 @@ class BookTrainingMain extends React.Component {
     this.setState({ response: "Details" });
   };
 
+  toPage2 = () => {
+    this.setState({ response: "Cost estimate successful" });
+  };
+
   proceedToPayment = () => {
     this.setState({ response: "Payment" });
   };
@@ -466,6 +470,7 @@ class BookTrainingMain extends React.Component {
             members={this.state.members}
             children={this.state.children}
             home={this.state.home}
+            toPage2={this.toPage2}
             proceedToPayment={this.proceedToPayment}
             onSubmit={this.onSearchSubmit2}
           />
