@@ -45,7 +45,7 @@ class BookTraining1 extends React.Component {
 
             <div className="row">
               <div className="col-sm" style={{ marginLeft: "10%", marginRight: "5%" }}>
-                <label>Select Dogs:</label>
+                <label>Select Dog:</label>
 
                 <Select
                   isMulti
@@ -91,7 +91,7 @@ class BookTraining1 extends React.Component {
               </div>
 
               <div className="col-sm" style={{ marginLeft: "5%", marginRight: "10%" }}>
-                <label>Select others interacting with dog:</label>
+                <label>Select other interactions for dog:</label>
                 <table className="table table-striped">
                   <tbody>
                     <tr>
