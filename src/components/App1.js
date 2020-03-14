@@ -26,7 +26,7 @@ import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
 //import AddDog1 from './addDog/AddDog1';
 import BookDaycareMain from './bookDaycare/BookDaycareMain';
 import BookTrainingMain from './bookTraining/BookTrainingMain';
-
+import BookTraining2 from './bookTraining/BookTraining2';
 
 class App1 extends React.Component {
   state = {
@@ -58,7 +58,7 @@ class App1 extends React.Component {
               <Route path="/Register" component={RegisterMain} />
               <Route path="/Services" component={Services} />
               <Route path="/Gallery" component={Gallery} />
-              <Route path="/Testimonials" component={Testimonials} />
+              <Route path="/Testimonials" component={BookTraining2} />
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={EditCustomerMain} />
