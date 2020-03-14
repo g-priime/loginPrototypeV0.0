@@ -212,6 +212,11 @@ class BookTrainingMain extends React.Component {
       newHome = true;
     }
 
+    var play = false;
+    if (this.state.play === "Yes") {
+      play = true;
+    }
+
     const response = await BasePath.put("/webresources/booktraining", {
       token,
       dogIdNumber,
@@ -243,7 +248,8 @@ class BookTrainingMain extends React.Component {
       newSignificantOther,
       additionalHouseholdMembers,
       childrenAndDogs,
-      newHome
+      newHome,
+      play
     });
 
     this.setState({ response: response.data });
@@ -341,6 +347,9 @@ class BookTrainingMain extends React.Component {
   handleChangeHandling = event => {
     this.setState({ handling: event.target.value });
   };
+  handleChangePlay = event => {
+    this.setState({ play: event.target.value });
+  };
 
   handleChangeHouseTraining = event => {
     this.setState({ houseTraining: event.target.value });
@@ -388,6 +397,7 @@ class BookTrainingMain extends React.Component {
             onChangeConfidence={this.handleChangeConfidence}
             onChangeChewing={this.handleChangeChewing}
             onChangeHandling={this.handleChangeHandling}
+            onChangePlay={this.handleChangePlay}
             onChangeHouseTraining={this.handleChangeHouseTraining}
             onChangeMouthing={this.handleChangeMouthing}
             onChangeSocialization={this.handleChangeSocialization}
@@ -406,6 +416,7 @@ class BookTrainingMain extends React.Component {
             confidence={this.state.confidence}
             chewing={this.state.chewing}
             handling={this.state.handling}
+            play={this.state.play}
             houseTraining={this.state.houseTraining}
             mouthing={this.state.mouthing}
             socialization={this.state.socialization}
@@ -438,6 +449,7 @@ class BookTrainingMain extends React.Component {
             confidence={this.state.confidence}
             chewing={this.state.chewing}
             handling={this.state.handling}
+            play={this.state.play}
             houseTraining={this.state.houseTraining}
             mouthing={this.state.mouthing}
             socialization={this.state.socialization}
