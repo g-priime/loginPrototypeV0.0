@@ -203,7 +203,7 @@ class BookTraining3 extends React.Component {
             </div>
 
             <div className="bookAppointmentFooter">
-              <div className="row">
+              <div className="row" style={{ marginTop: "5%" }}>
                 <div className="col-sm">
                   <button
                     type="button"
