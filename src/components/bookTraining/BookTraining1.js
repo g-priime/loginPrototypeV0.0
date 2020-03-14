@@ -25,7 +25,9 @@ class BookTraining1 extends React.Component {
       this.state.startTime,
       this.state.endTime,
       this.state.grooming,
-      this.state.comments
+      this.state.comments,
+
+      this.state.baby
     );
   };
 
@@ -99,20 +101,20 @@ class BookTraining1 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="baby"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.baby === "Yes"}
+                          onChange={this.props.onChangeBaby}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="baby"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.baby === "No"}
+                          onChange={this.props.onChangeBaby}
                         />
                       </td>
                       <td>No</td>
@@ -122,20 +124,20 @@ class BookTraining1 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="cat"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.cat === "Yes"}
+                          onChange={this.props.onChangeCat}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="cat"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.cat === "No"}
+                          onChange={this.props.onChangeCat}
                         />
                       </td>
                       <td>No</td>
@@ -145,20 +147,20 @@ class BookTraining1 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="newDog"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.newDog === "Yes"}
+                          onChange={this.props.onChangeNewDog}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="newDog"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.newDog === "No"}
+                          onChange={this.props.onChangeNewDog}
                         />
                       </td>
                       <td>No</td>
@@ -168,20 +170,20 @@ class BookTraining1 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="significantOther"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.significantOther === "Yes"}
+                          onChange={this.props.onChangeSignificantOther}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="significantOther"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.significantOther === "No"}
+                          onChange={this.props.onChangeSignificantOther}
                         />
                       </td>
                       <td>No</td>
@@ -191,20 +193,20 @@ class BookTraining1 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="members"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.members === "Yes"}
+                          onChange={this.props.onChangeMembers}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="members"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.members === "No"}
+                          onChange={this.props.onChangeMembers}
                         />
                       </td>
                       <td>No</td>
@@ -214,20 +216,20 @@ class BookTraining1 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="children"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.children === "Yes"}
+                          onChange={this.props.onChangeChildren}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="children"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.children === "No"}
+                          onChange={this.props.onChangeChildren}
                         />
                       </td>
                       <td>No</td>
@@ -237,20 +239,20 @@ class BookTraining1 extends React.Component {
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="home"
                           value="Yes"
-                          checked={this.props.grooming === "Yes"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.home === "Yes"}
+                          onChange={this.props.onChangeHome}
                         />
                       </td>
                       <td>Yes</td>
                       <td>
                         <input
                           type="radio"
-                          name="grooming"
+                          name="home"
                           value="No"
-                          checked={this.props.grooming === "No"}
-                          onChange={this.props.onChangeGrooming}
+                          defaultChecked={this.props.home === "No"}
+                          onChange={this.props.onChangeHome}
                         />
                       </td>
                       <td>No</td>
