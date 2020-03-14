@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
-import Moment from "moment";
+//import Moment from "moment";
 
 class BookTraining3 extends React.Component {
   state = {
