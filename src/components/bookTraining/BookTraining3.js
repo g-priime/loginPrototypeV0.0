@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
-//import Moment from "moment";
+import Moment from "moment";
 
 class BookTraining3 extends React.Component {
   state = {
@@ -50,22 +50,26 @@ class BookTraining3 extends React.Component {
                   <tbody>
                     <tr>
                       <td>Dog:</td>
-                      <td>Fido</td>
+                      <td>
+                        {this.props.selectedDogs.map(doggy => (
+                          <div key={doggy.key.toString()}>{doggy.value}</div>
+                        ))}
+                      </td>
                     </tr>
 
                     <tr>
                       <td>Start Time:</td>
-                      <td>March 13, 2020 11:00am</td>
+                      <td>{Moment(this.props.startTime).format("MMMM Do YYYY, h:mm a")}</td>
                     </tr>
 
                     <tr>
                       <td>End Time:</td>
-                      <td>March 13, 2020 1:00pm</td>
+                      <td>{Moment(this.props.endTime).format("MMMM Do YYYY, h:mm a")}</td>
                     </tr>
 
                     <tr>
                       <td>Additional Comments:</td>
-                      <td>none</td>
+                      <td>{this.props.comments}</td>
                     </tr>
 
                     <tr>
@@ -81,39 +85,39 @@ class BookTraining3 extends React.Component {
                   <tbody>
                     <tr>
                       <td>Barking:</td>
-                      <td>Yes</td>
+                      <td>{this.props.barking}</td>
                     </tr>
                     <tr>
                       <td>Chewing Destruction:</td>
-                      <td>Yes</td>
+                      <td>{this.props.destruction}</td>
                     </tr>
                     <tr>
                       <td>Counter Surfing:</td>
-                      <td>Yes</td>
+                      <td>{this.props.surfing}</td>
                     </tr>
                     <tr>
                       <td>Digging:</td>
-                      <td>Yes</td>
+                      <td>{this.props.digging}</td>
                     </tr>
                     <tr>
                       <td>Jumping:</td>
-                      <td>Yes</td>
+                      <td>{this.props.jumping}</td>
                     </tr>
                     <tr>
                       <td>Pulling on Leash:</td>
-                      <td>Yes</td>
+                      <td>{this.props.pulling}</td>
                     </tr>
                     <tr>
                       <td>Building Confidence:</td>
-                      <td>Yes</td>
+                      <td>{this.props.confidence}</td>
                     </tr>
                     <tr>
                       <td>Chewing:</td>
-                      <td>Yes</td>
+                      <td>{this.props.chewing}</td>
                     </tr>
                     <tr>
                       <td>Handling:</td>
-                      <td>Yes</td>
+                      <td>{this.props.handling}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -124,39 +128,39 @@ class BookTraining3 extends React.Component {
                   <tbody>
                     <tr>
                       <td>House Training:</td>
-                      <td>Yes</td>
+                      <td>{this.props.houseTraining}</td>
                     </tr>
                     <tr>
                       <td>Mouthing:</td>
-                      <td>Yes</td>
+                      <td>{this.props.mouthing}</td>
                     </tr>
                     <tr>
                       <td>Socialization:</td>
-                      <td>Yes</td>
+                      <td>{this.props.socialization}</td>
                     </tr>
                     <tr>
                       <td>Children and Dogs:</td>
-                      <td>Yes</td>
+                      <td>{this.props.children}</td>
                     </tr>
                     <tr>
                       <td>Distraction Strategies:</td>
-                      <td>Yes</td>
+                      <td>{this.props.distraction}</td>
                     </tr>
                     <tr>
                       <td>Exercise:</td>
-                      <td>Yes</td>
+                      <td>{this.props.exercise}</td>
                     </tr>
                     <tr>
                       <td>Focus Strategies:</td>
-                      <td>Yes</td>
+                      <td>{this.props.focus}</td>
                     </tr>
                     <tr>
                       <td>Loose Leash Walking:</td>
-                      <td>Yes</td>
+                      <td>{this.props.walking}</td>
                     </tr>
                     <tr>
                       <td>Mat Work:</td>
-                      <td>Yes</td>
+                      <td>{this.props.matWork}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -167,31 +171,31 @@ class BookTraining3 extends React.Component {
                   <tbody>
                     <tr>
                       <td>New Baby:</td>
-                      <td>Yes</td>
+                      <td>{this.props.baby}</td>
                     </tr>
                     <tr>
                       <td>New Cat:</td>
-                      <td>Yes</td>
+                      <td>{this.props.cat}</td>
                     </tr>
                     <tr>
                       <td>New Dog:</td>
-                      <td>Yes</td>
+                      <td>{this.props.newDog}</td>
                     </tr>
                     <tr>
                       <td>New Home:</td>
-                      <td>Yes</td>
+                      <td>{this.props.home}</td>
                     </tr>
                     <tr>
                       <td>New Significant Other:</td>
-                      <td>Yes</td>
+                      <td>{this.props.significantOther}</td>
                     </tr>
                     <tr>
                       <td>Stealing Items Chase Game:</td>
-                      <td>Yes</td>
+                      <td>{this.props.stealing}</td>
                     </tr>
                     <tr>
                       <td>Additional Household Members:</td>
-                      <td>Yes</td>
+                      <td>{this.props.members}</td>
                     </tr>
                   </tbody>
                 </table>
