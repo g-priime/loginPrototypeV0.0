@@ -29,7 +29,6 @@ import BookTrainingMain from './bookTraining/BookTrainingMain';
 import BookTraining2 from './bookTraining/BookTraining2';
 import BookTraining1 from './bookTraining/BookTraining1';
 import BookTraining3 from './bookTraining/BookTraining3';
-import BookTraining4 from './bookTraining/BookTraining4';
 
 
 class App1 extends React.Component {
@@ -63,7 +62,7 @@ class App1 extends React.Component {
               <Route path="/Services" component={Services} />
               <Route path="/Gallery" component={BookTraining1} />
               <Route path="/Testimonials" component={BookTraining2} />
-              <Route path="/FAQ" component={BookTraining4} />
+              <Route path="/FAQ" component={BookTraining3} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={EditCustomerMain} />
               <Route path="/ViewAppointments" component={ChangePasswordMain} />
