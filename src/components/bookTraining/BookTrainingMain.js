@@ -492,7 +492,7 @@ class BookTrainingMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/Services",
               state: { message: "Redirect to PayPal" }
             }}
           />
