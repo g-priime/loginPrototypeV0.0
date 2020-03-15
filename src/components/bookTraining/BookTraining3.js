@@ -215,7 +215,7 @@ class BookTraining3 extends React.Component {
                     className="btn mb-3"
                     style={{
                       marginRight: "3%",
-                      marginLeft: "-30%",
+                      marginLeft: "-55%",
                       fontWeight: "bold",
                       backgroundColor: "#1D3461",
                       color: "#ECEBE7",
@@ -237,7 +237,7 @@ class BookTraining3 extends React.Component {
                         "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                     }}
                   >
-                    Cancel Appointment
+                    Cancel 
                   </Link>
                 </div>
 
@@ -261,7 +261,7 @@ class BookTraining3 extends React.Component {
                     className="btn mb-3"
                     style={{
                       marginLeft: "3%",
-                      marginRight: "-30%",
+                      marginRight: "-28%",
                       fontWeight: "bold",
                       backgroundColor: "#1D3461",
                       color: "#ECEBE7",
