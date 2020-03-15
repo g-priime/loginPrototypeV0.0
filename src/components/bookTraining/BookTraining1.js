@@ -12,7 +12,6 @@ class BookTraining1 extends React.Component {
 
     dogs: [],
     comments: "",
-    grooming: true,
     selectedDogs: [],
     selectedOption: null
   };
@@ -25,14 +24,16 @@ class BookTraining1 extends React.Component {
       this.state.startTime,
       this.state.endTime,
       this.state.grooming,
-      this.state.comments
+      this.state.comments,
+
+      this.state.baby
     );
   };
 
   render() {
     return (
       <div
-        className="ui segment contChangePassword"
+        className="ui segment contBookTraining"
         style={{ backgroundColor: "#ECEBE7" }}
       >
         <form
@@ -41,18 +42,15 @@ class BookTraining1 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container bookAppointmentContainer">
-            <h1>Book Training</h1>
+            <h1>Book Training: Step 1</h1>
 
-            <div className="row">
-              <div className="col-sm">
+            <div className="row" style={{ marginTop: "6%" }}>
+              <div className="col-sm" style={{ marginLeft: "10%", marginRight: "5%" }}>
+                <label>Select Dog:</label>
 
-                <br/>
-                
-                <label>Select Dogs:</label>
-                
                 <Select
-                  isMulti
-                  closeMenuOnSelect={false}
+                  //isMulti
+                  closeMenuOnSelect={true}
                   value={this.props.selectedDogs}
                   onChange={this.props.onChangeDog}
                   options={this.props.dogs}
@@ -84,38 +82,6 @@ class BookTraining1 extends React.Component {
                 <br />
                 <br />
 
-                <div className="row">
-                  <div className="col-sm">
-                    <label>Add Grooming:</label>
-                  </div>
-
-                  <div className="col-sm">
-                    <label>
-                      <input
-                        type="radio"
-                        name="grooming"
-                        value="Yes"
-                        checked={this.props.grooming === "Yes"}
-                        onChange={this.props.onChangeGrooming}
-                      />
-                      <span>Yes</span>
-                    </label>
-                  </div>
-                  <div className="col-sm">
-                    <label>
-                      <input
-                        type="radio"
-                        name="grooming"
-                        value="No"
-                        checked={this.props.grooming === "No"}
-                        onChange={this.props.onChangeGrooming}
-                      />
-                      <span>No</span>
-                    </label>
-                  </div>
-                </div>
-                <br />
-
                 <label>Additional Comments: </label>
                 <textarea
                   rows="2"
@@ -124,7 +90,176 @@ class BookTraining1 extends React.Component {
                   onChange={this.props.onChangeComments}
                 />
               </div>
-              <br />
+
+              <div className="col-sm" style={{ marginLeft: "5%", marginRight: "10%" }}>
+                <label>Select other interactions for dog:</label>
+                <table className="table table-striped">
+                  <tbody>
+                    <tr>
+                      <td>New Baby:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="baby"
+                          value="Yes"
+                          defaultChecked={this.props.baby === "Yes"}
+                          onChange={this.props.onChangeBaby}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="baby"
+                          value="No"
+                          defaultChecked={this.props.baby === "No"}
+                          onChange={this.props.onChangeBaby}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>New Cat:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="cat"
+                          value="Yes"
+                          defaultChecked={this.props.cat === "Yes"}
+                          onChange={this.props.onChangeCat}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="cat"
+                          value="No"
+                          defaultChecked={this.props.cat === "No"}
+                          onChange={this.props.onChangeCat}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>New Dog:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="newDog"
+                          value="Yes"
+                          defaultChecked={this.props.newDog === "Yes"}
+                          onChange={this.props.onChangeNewDog}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="newDog"
+                          value="No"
+                          defaultChecked={this.props.newDog === "No"}
+                          onChange={this.props.onChangeNewDog}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>New Significant Other:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="significantOther"
+                          value="Yes"
+                          defaultChecked={this.props.significantOther === "Yes"}
+                          onChange={this.props.onChangeSignificantOther}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="significantOther"
+                          value="No"
+                          defaultChecked={this.props.significantOther === "No"}
+                          onChange={this.props.onChangeSignificantOther}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>Additional Household Members:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="members"
+                          value="Yes"
+                          defaultChecked={this.props.members === "Yes"}
+                          onChange={this.props.onChangeMembers}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="members"
+                          value="No"
+                          defaultChecked={this.props.members === "No"}
+                          onChange={this.props.onChangeMembers}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>Children and Dogs:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="children"
+                          value="Yes"
+                          defaultChecked={this.props.children === "Yes"}
+                          onChange={this.props.onChangeChildren}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="children"
+                          value="No"
+                          defaultChecked={this.props.children === "No"}
+                          onChange={this.props.onChangeChildren}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>New Home:</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="home"
+                          value="Yes"
+                          defaultChecked={this.props.home === "Yes"}
+                          onChange={this.props.onChangeHome}
+                        />
+                      </td>
+                      <td>Yes</td>
+                      <td>
+                        <input
+                          type="radio"
+                          name="home"
+                          value="No"
+                          defaultChecked={this.props.home === "No"}
+                          onChange={this.props.onChangeHome}
+                        />
+                      </td>
+                      <td>No</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
               <br />
             </div>
             <br />
@@ -135,6 +270,8 @@ class BookTraining1 extends React.Component {
                 type="button"
                 className="btn mb-3"
                 style={{
+                  marginTop: "4.5%",
+                  marginLeft: "0.5%",
                   fontWeight: "bold",
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
@@ -147,6 +284,8 @@ class BookTraining1 extends React.Component {
               <button
                 className="btn mb-3"
                 style={{
+                  marginTop: "4.5%",
+                  marginRight: "0.5%",
                   fontWeight: "bold",
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
