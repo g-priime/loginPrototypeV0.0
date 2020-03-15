@@ -1,0 +1,36 @@
+.left {
+    text-align: left;
+    /* padding-left: 20px; */
+    padding-bottom: 5px;
+    font-size: large;
+  }
+
+.right {
+  text-align: right;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  font-size: large;
+}
+
+.center {
+  text-align: center;
+  font-size: large;
+}
+
+.leftPad {
+    text-align: left;
+    padding-left: 10%;
+    padding-bottom: 5px;
+    font-size: large;
+  }
+
+.pad {
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+
+
+
+
+  

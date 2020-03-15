@@ -1,14 +1,16 @@
 import React from "react";
 //import UserAccount from './UserAccount';
-//import HomePage from "./HomePage";
-import RegisterMain from "./register/RegisterMain";
-import Gallery from "./Gallery";
-import FAQ from "./FAQ";
-import Testimonials from "./Testimonials";
-import Services from "./Services";
-import Login from "./login/Login";
-import Footer from "./Footer";
-import "../css/main.css";
+import HomePage from './HomePage';
+import RegisterMain from './register/RegisterMain';
+import Gallery from './Gallery';
+import FAQ from './FAQ';
+import Testimonials from './Testimonials';
+
+import Services from './Services';
+import Login from './login/Login';
+import BasePath from './../api/BasePath';
+
+import '../css/main.css';
 
 import { BrowserRouter, Route } from "react-router-dom";
 import Header1 from "./Header1";
@@ -28,6 +30,15 @@ import UserAccount from './UserAccount';
 import AddDog from './addDog/AddDogMain';
 import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
+import ViewAppointments from './ViewAppointments';
+
+import ChangePasswordMain from './changePassword/ChangePasswordMain';
+
+import { getQueriesForElement } from '@testing-library/react';
+import AddDogMain from './addDog/AddDogMain';
+import EditDogMain from './editDog/EditDogMain';
+import AddDog2 from './addDog/AddDog2';
+import AddDog1 from './addDog/AddDog1';
 import ViewAppointments from './ViewAppointments';
 
 
@@ -64,6 +75,7 @@ class App1 extends React.Component {
               <Route path="/Testimonials" component={Testimonials} />
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
+              
               <Route path="/Profile" component={UserAccount} />
               <Route path="/ViewAppointments" component={ViewAppointments} />
               <Route path="/BookBoarding" component={BookAppointmentMain} />
