@@ -26,6 +26,7 @@ class BookTrainingMain extends React.Component {
 
   getDogs = async () => {
     var token = localStorage.getItem("token");
+    console.log(token);
     const response = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
 
     const dogs = response.data;
