@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/bookAppointment.css";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //import Select from "react-select";
 
@@ -500,35 +500,57 @@ class BookTraining2 extends React.Component {
               </div>
             </div>
 
-            <div className="d-flex justify-content-between">
-              <button
-                type="button"
-                onClick={this.props.onClick}
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-              >
-                Previous Step
-              </button>
-              <button
-                type="button"
-                onClick={this.props.toDetails}
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-              >
-                Continue
-              </button>
+            <div className="bookAppointmentFooter">
+              <div className="row">
+                <div className="col-sm">
+                  <button
+                    type="button"
+                    onClick={this.props.onClick}
+                    className="btn mb-3"
+                    style={{
+                      marginRight: "3%",
+                      marginLeft: "-50%",
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Previous Step
+                  </button>
+                  <Link
+                    to="/Services"
+                    type="button"
+                    className="btn mb-3"
+                    style={{
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    }}
+                  >
+                    Cancel
+                  </Link>
+                </div>
+                <div className="col-sm"></div>
+                <button
+                  type="button"
+                  onClick={this.props.toDetails}
+                  className="btn mb-3"
+                  style={{
+                    marginRight: "2%",
+                    fontWeight: "bold",
+                    backgroundColor: "#1D3461",
+                    color: "#ECEBE7",
+                    boxShadow:
+                      "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  }}
+                >
+                  Continue
+                </button>
+              </div>
             </div>
           </div>
         </form>
