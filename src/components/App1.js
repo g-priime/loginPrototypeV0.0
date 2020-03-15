@@ -27,6 +27,7 @@ import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
 import BookDaycareMain from './bookDaycare/BookDaycareMain';
 import BookTrainingMain from './bookTraining/BookTrainingMain';
 import UserAccount from './UserAccount';
+import AddDog from './addDog/AddDogMain';
 
 
 class App1 extends React.Component {
@@ -67,6 +68,7 @@ class App1 extends React.Component {
               <Route path="/BookBoarding" component={BookAppointmentMain} />
               <Route path="/BookTraining" component={BookTrainingMain} />
               <Route path="/BookDaycare" component={BookDaycareMain} />
+              <Route path="/AddDog" component={AddDog}
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
