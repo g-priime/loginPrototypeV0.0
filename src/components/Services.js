@@ -11,9 +11,63 @@ import {
 import "../css/services.css";
 //import boarding from '../images/boarding.jpg';
 import { Link } from "react-router-dom";
+import Popup from "./PopUp";
+import BasePath from "../api/BasePath";
 
 class Services extends React.Component {
+  state = {
+    initialStates: false,
+    message: "",
+    cn: "",
+    bgColor: "blue",
+    daycareLink: "/Register",
+    boardingLink: "/Register",
+    trainingLink: "/Register"
+  };
+
+  getCustomerInfo = async () => {
+    var token = localStorage.getItem("token");
+
+    const customerInfo = await BasePath.get(
+      `/webresources/RetrieveUser/${token}`
+    );
+
+    if (
+      this.state.initialStates === false &&
+      customerInfo.data !== "Authentication error, bad token" &&
+      customerInfo.data !== ""
+    ) {
+      this.setState({
+        initialStates: true,
+        daycareLink: "/BookDaycare",
+        boardingLink: "/BookBoarding",
+        trainingLink: "/BookTraining"
+      });
+    }
+  };
+
+  UNSAFE_componentWillMount() {
+    if (
+      typeof this.props.location.state == "undefined" ||
+      this.props.location.state === null
+    ) {
+      this.setState({ message: "" });
+    } else {
+      this.setState({ message: this.props.location.state.message });
+      this.setState({ cn: "popup3" });
+      this.togglePopup();
+    }
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
   render() {
+    this.getCustomerInfo();
+
     return (
       <div className="ui segment d-flex justify-content-around p-0 m-0 bg card-group">
         <Card className="cardbg">
@@ -98,7 +152,7 @@ class Services extends React.Component {
             <br></br>
             {/*<Button className="button">Book Now</Button>*/}
             <Link
-              to="/BookBoarding"
+              to={this.state.boardingLink}
               type="button"
               className="btn mb-3"
               style={{
@@ -153,7 +207,7 @@ class Services extends React.Component {
             <br></br>
             {/*<Button className="button">Book Now</Button>*/}
             <Link
-              to="/BookTraining"
+              to={this.state.trainingLink}
               type="button"
               className="btn mb-3"
               style={{
@@ -243,7 +297,7 @@ class Services extends React.Component {
             <br></br>
             <br></br>
             <Link
-              to="/BookDaycare"
+              to={this.state.daycareLink}
               type="button"
               className="btn mb-3"
               style={{
@@ -258,6 +312,16 @@ class Services extends React.Component {
             </Link>
           </CardBody>
         </Card>
+        <div>
+          {this.state.showPopup ? (
+            <Popup
+              cn={this.state.cn}
+              text={this.state.message}
+              closePopup={this.togglePopup.bind(this)}
+              bgColor={this.state.bgColor}
+            />
+          ) : null}
+        </div>
       </div>
     );
   }
