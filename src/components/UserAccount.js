@@ -5,13 +5,17 @@ import DogProfile from "./DogProfile";
 import BasePath from "../api/BasePath";
 import { getQueriesForElement } from "@testing-library/react";
 import { Link } from "react-router-dom";
+import Popup from "./PopUp";
 
 class UserAccount extends React.Component {
   state = {
     userList: [],
     dogList: [],
     user: {},
-    address: {}
+    address: {},
+    message: "",
+    cn: "",
+    bgColor: "blue"
   };
 
   UNSAFE_componentWillMount() {
@@ -36,6 +40,23 @@ class UserAccount extends React.Component {
       .catch(err => {
         console.log(err);
       });
+
+      if (
+        typeof this.props.location.state == "undefined" ||
+        this.props.location.state === null
+      ) {
+        this.setState({ message: "" });
+      } else {
+        this.setState({ message: this.props.location.state.message });
+        this.setState({ cn: "popup3" });
+        this.togglePopup();
+      }
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
   }
 
   render() {
@@ -182,6 +203,16 @@ class UserAccount extends React.Component {
               ))}
             </div>
           </div>
+        </div>
+        <div>
+          {this.state.showPopup ? (
+            <Popup
+              cn={this.state.cn}
+              text={this.state.message}
+              closePopup={this.togglePopup.bind(this)}
+              bgColor={this.state.bgColor}
+            />
+          ) : null}
         </div>
       </div>
     );
