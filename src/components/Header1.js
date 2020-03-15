@@ -1,5 +1,7 @@
 import React from "react";
+
 import dog from "../images/logo.png";
+
 import "../css/head.css";
 import { NavLink } from "react-router-dom";
 
