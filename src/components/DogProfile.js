@@ -49,7 +49,7 @@ class DogProfile extends React.Component {
         </Button>
 
         <Link
-          to={{pathname:"/EditDog", state:{dog: this.props.chosenDog}}}
+          to={{pathname:"EditDog", state:{dog: this.props.chosenDog}}}
           type="button"
           className="btn mb-3"
           style={{
