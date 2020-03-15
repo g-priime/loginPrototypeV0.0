@@ -18,7 +18,7 @@ class BookTrainingMain extends React.Component {
     cn: "",
 
     dog: "",
-    selectedDogs: [],
+    selectedDogs: "",
     dogs: [],
     initialStates: false,
     cost: ""
@@ -36,7 +36,7 @@ class BookTrainingMain extends React.Component {
     );
 
     if (!this.state.initialStates) {
-      this.setState({ dogs: dogArray, initialStates: true, selectedDogs: [] });
+      this.setState({ dogs: dogArray, initialStates: true, selectedDogs: "" });
     }
   };
 
@@ -54,9 +54,15 @@ class BookTrainingMain extends React.Component {
     });
 
     var token = localStorage.getItem("token");
-    var dogs = this.state.selectedDogs.key;
+
+    var dogs = "";
+    if (this.state.selectedDogs !== ""){
+      dogs = this.state.selectedDogs.key;
+    }
+    console.log(this.state.selectedDogs);
     //this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
     var dogString = dogs.toString();
+
     var startTime = this.state.startTime;
     var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
     var endTime = this.state.endTime;
@@ -79,17 +85,13 @@ class BookTrainingMain extends React.Component {
       type
     });
 
-    console.log(response);
     this.setState({
       response: response.data.message,
       cost: response.data.total
     });
 
-    if (this.state.response === "Old startTime is incorrect") {
-      this.setState({ cn: "popup4" });
-      this.togglePopup();
-    } else if (this.state.response === "New startTimes do not match") {
-      this.setState({ cn: "popup5" });
+    if (response.data === "") {
+      this.setState({ cn: "popup4", response: "Must select at least one dog" });
       this.togglePopup();
     }
   };
@@ -252,16 +254,6 @@ class BookTrainingMain extends React.Component {
     });
 
     this.setState({ response: response.data });
-
-    console.log(this.state.response);
-
-    if (this.state.response === "Old startTime is incorrect") {
-      this.setState({ cn: "popup4" });
-      this.togglePopup();
-    } else if (this.state.response === "New startTimes do not match") {
-      this.setState({ cn: "popup5" });
-      this.togglePopup();
-    }
   };
 
   onPrevious = () => {
