@@ -95,7 +95,7 @@ class ChangePasswordMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/Profile",
               state: { message: "Password has been changed" }
             }}
           />
