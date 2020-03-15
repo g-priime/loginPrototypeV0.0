@@ -49,8 +49,8 @@ class BookTraining1 extends React.Component {
                 <label>Select Dog:</label>
 
                 <Select
-                  isMulti
-                  closeMenuOnSelect={false}
+                  //isMulti
+                  closeMenuOnSelect={true}
                   value={this.props.selectedDogs}
                   onChange={this.props.onChangeDog}
                   options={this.props.dogs}
