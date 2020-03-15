@@ -1,0 +1,27 @@
+.contChangePassword {
+    width: 50%;
+    left: 25%;
+    height: 80vh;
+}
+
+.contBookTraining {
+    width: 80%;
+    left: 10%;
+    height: 85vh;
+}
+
+.fieldContainer {
+    width: 80%;
+    left: 30%;
+}
+
+.container.bookAppointmentContainer {
+    justify-content: space-between;
+    flex-direction: column;
+    height: 75vh;
+    display: flex;
+}
+
+.container .bookAppointmentFooter {
+    justify-content: flex-end;
+}

@@ -1,0 +1,31 @@
+.par {
+    text-align: left;
+    padding: 10%;
+    border: 2px solid #827153;
+    background-color: #ffffff;
+    line-height: 20pt;
+
+}
+
+.card-bodyHome {
+    /* flex: 1 1 auto; */
+    padding: 0;
+  }
+
+  .d-md-block {
+    display: none !important;
+}
+
+.bolder {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 21pt;
+    color: #482e2d;
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+ul>li {
+    padding-left: 20px;
+}
