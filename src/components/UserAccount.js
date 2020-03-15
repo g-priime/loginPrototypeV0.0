@@ -158,7 +158,7 @@ class UserAccount extends React.Component {
               <div className="col-sm">
               <div className="left">
               <Link 
-              to="/AddDog" 
+              to="AddDog" 
               type="button"
               className="btn mb-3"
               style={{
