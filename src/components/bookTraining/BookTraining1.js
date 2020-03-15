@@ -270,7 +270,8 @@ class BookTraining1 extends React.Component {
                 type="button"
                 className="btn mb-3"
                 style={{
-                  marginTop: "5%",
+                  marginTop: "4.5%",
+                  marginLeft: "0.5%",
                   fontWeight: "bold",
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
@@ -283,7 +284,8 @@ class BookTraining1 extends React.Component {
               <button
                 className="btn mb-3"
                 style={{
-                  marginTop: "5%",
+                  marginTop: "4.5%",
+                  marginRight: "0.5%",
                   fontWeight: "bold",
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
