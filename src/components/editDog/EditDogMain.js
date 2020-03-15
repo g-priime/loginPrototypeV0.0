@@ -93,7 +93,7 @@ class EditDogMain extends React.Component {
         medication: dogInfo.medications,
         allergies: dogInfo.allergies,
         physlimit: dogInfo.physLimit,
-        veterinarian: dogInfo.veterinarian.name,
+        //veterinarian: dogInfo.veterinarian.name,
 
         strangers: dogInfo.strangers,
         largerdogs: dogInfo.largerdogs,
@@ -316,7 +316,7 @@ class EditDogMain extends React.Component {
             medication={this.state.medication}
             allergies={this.state.allergies}
             physlimit={this.state.physlimit}
-            veterinarian={this.state.veterinarian}
+            //veterinarian={this.state.veterinarian}
             onSubmit={this.onSearchSubmit1}
             // onClick={() => {
             //   //no needed
