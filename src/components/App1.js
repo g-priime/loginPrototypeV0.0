@@ -26,6 +26,7 @@ import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
 //import AddDog1 from './addDog/AddDog1';
 import BookDaycareMain from './bookDaycare/BookDaycareMain';
 import BookTrainingMain from './bookTraining/BookTrainingMain';
+import UserAccount from './UserAccount';
 
 
 class App1 extends React.Component {
@@ -61,7 +62,7 @@ class App1 extends React.Component {
               <Route path="/Testimonials" component={Testimonials} />
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
-              <Route path="/Profile" component={EditCustomerMain} />
+              <Route path="/Profile" component={UserAccount} />
               <Route path="/ViewAppointments" component={ChangePasswordMain} />
               <Route path="/BookBoarding" component={BookAppointmentMain} />
               <Route path="/BookTraining" component={BookTrainingMain} />
