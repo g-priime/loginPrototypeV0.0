@@ -68,7 +68,7 @@ class App1 extends React.Component {
               <Route path="/BookBoarding" component={BookAppointmentMain} />
               <Route path="/BookTraining" component={BookTrainingMain} />
               <Route path="/BookDaycare" component={BookDaycareMain} />
-              <Route path="/AddDog" component={AddDog}
+              <Route path="/AddDog" component={AddDog} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
