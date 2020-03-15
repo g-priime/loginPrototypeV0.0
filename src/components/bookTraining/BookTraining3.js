@@ -51,9 +51,7 @@ class BookTraining3 extends React.Component {
                     <tr>
                       <td>Dog:</td>
                       <td>
-                        {this.props.selectedDogs.map(doggy => (
-                          <div key={doggy.key.toString()}>{doggy.value}</div>
-                        ))}
+                        {this.props.selectedDogs.value}
                       </td>
                     </tr>
 
