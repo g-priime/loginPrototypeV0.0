@@ -2,9 +2,9 @@ import React from "react";
 //import UserAccount from './UserAccount';
 //import HomePage from "./HomePage";
 import RegisterMain from "./register/RegisterMain";
-//import Gallery from "./Gallery";
-//import FAQ from "./FAQ";
-//import Testimonials from "./Testimonials";
+import Gallery from "./Gallery";
+import FAQ from "./FAQ";
+import Testimonials from "./Testimonials";
 import Services from "./Services";
 import Login from "./login/Login";
 import Footer from "./Footer";
@@ -26,9 +26,6 @@ import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
 //import AddDog1 from './addDog/AddDog1';
 import BookDaycareMain from './bookDaycare/BookDaycareMain';
 import BookTrainingMain from './bookTraining/BookTrainingMain';
-import BookTraining2 from './bookTraining/BookTraining2';
-import BookTraining1 from './bookTraining/BookTraining1';
-import BookTraining3 from './bookTraining/BookTraining3';
 
 
 class App1 extends React.Component {
@@ -60,9 +57,9 @@ class App1 extends React.Component {
               <Route path="/" exact component={HomePageHTML} />
               <Route path="/Register" component={RegisterMain} />
               <Route path="/Services" component={Services} />
-              <Route path="/Gallery" component={BookTraining1} />
-              <Route path="/Testimonials" component={BookTraining2} />
-              <Route path="/FAQ" component={BookTraining3} />
+              <Route path="/Gallery" component={Gallery} />
+              <Route path="/Testimonials" component={Testimonials} />
+              <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={EditCustomerMain} />
               <Route path="/ViewAppointments" component={ChangePasswordMain} />
