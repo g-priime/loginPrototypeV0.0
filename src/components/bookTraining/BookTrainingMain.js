@@ -21,9 +21,7 @@ class BookTrainingMain extends React.Component {
     selectedDogs: [],
     dogs: [],
     initialStates: false,
-    cost: "",
-    baby: "No",
-    barking: ""
+    cost: ""
   };
 
   getDogs = async () => {
@@ -55,8 +53,8 @@ class BookTrainingMain extends React.Component {
     });
 
     var token = localStorage.getItem("token");
-    var dogs = [];
-    this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
+    var dogs = this.state.selectedDogs.key;
+    //this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
     var dogString = dogs.toString();
     var startTime = this.state.startTime;
     var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
@@ -98,8 +96,8 @@ class BookTrainingMain extends React.Component {
   onSearchSubmit2 = async () => {
     var token = localStorage.getItem("token");
 
-    var selectedDogs = [];
-    this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
+    var selectedDogs = this.state.selectedDogs.key;
+    //this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
     var startTime = Moment(this.state.fieldName[1]).format(
       "YYYY-MM-DD hh:mm:ss"
