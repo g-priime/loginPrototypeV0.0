@@ -239,8 +239,8 @@ class AddDog1 extends React.Component {
 
               <button //button to upload the picture
                 onClick={this.uploadHandler}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                maxFileSize={5242880}
+                // imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                // maxFileSize={5242880}
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
