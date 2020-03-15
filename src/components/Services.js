@@ -12,19 +12,52 @@ import "../css/services.css";
 //import boarding from '../images/boarding.jpg';
 import { Link } from "react-router-dom";
 import Popup from "./PopUp";
+import BasePath from "../api/BasePath";
 
 class Services extends React.Component {
-  state = { message: "", cn: "", bgColor: 'blue' };
+  state = {
+    initialStates: false,
+    message: "",
+    cn: "",
+    bgColor: "blue",
+    daycareLink: "/Register",
+    boardingLink: "/Register",
+    trainingLink: "/Register"
+  };
 
- UNSAFE_componentWillMount() {
-    if (typeof this.props.location.state == "undefined" || this.props.location.state === null) {
-        this.setState({ message: "" });
-      } else {
-        this.setState({ message: this.props.location.state.message });
-        this.setState({ cn: "popup3" });
-        this.togglePopup();
-      }
- }
+  getCustomerInfo = async () => {
+    var token = localStorage.getItem("token");
+
+    const customerInfo = await BasePath.get(
+      `/webresources/RetrieveUser/${token}`
+    );
+
+    if (
+      this.state.initialStates === false &&
+      customerInfo.data !== "Authentication error, bad token" &&
+      customerInfo.data !== ""
+    ) {
+      this.setState({
+        initialStates: true,
+        daycareLink: "/BookDaycare",
+        boardingLink: "/BookBoarding",
+        trainingLink: "/BookTraining"
+      });
+    }
+  };
+
+  UNSAFE_componentWillMount() {
+    if (
+      typeof this.props.location.state == "undefined" ||
+      this.props.location.state === null
+    ) {
+      this.setState({ message: "" });
+    } else {
+      this.setState({ message: this.props.location.state.message });
+      this.setState({ cn: "popup3" });
+      this.togglePopup();
+    }
+  }
 
   togglePopup() {
     this.setState({
@@ -33,6 +66,8 @@ class Services extends React.Component {
   }
 
   render() {
+    this.getCustomerInfo();
+
     return (
       <div className="ui segment d-flex justify-content-around p-0 m-0 bg card-group">
         <Card className="cardbg">
@@ -117,7 +152,7 @@ class Services extends React.Component {
             <br></br>
             {/*<Button className="button">Book Now</Button>*/}
             <Link
-              to="/BookBoarding"
+              to={this.state.boardingLink}
               type="button"
               className="btn mb-3"
               style={{
@@ -172,7 +207,7 @@ class Services extends React.Component {
             <br></br>
             {/*<Button className="button">Book Now</Button>*/}
             <Link
-              to="/BookTraining"
+              to={this.state.trainingLink}
               type="button"
               className="btn mb-3"
               style={{
@@ -262,7 +297,7 @@ class Services extends React.Component {
             <br></br>
             <br></br>
             <Link
-              to="/BookDaycare"
+              to={this.state.daycareLink}
               type="button"
               className="btn mb-3"
               style={{
