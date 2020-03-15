@@ -28,6 +28,8 @@ import BookDaycareMain from './bookDaycare/BookDaycareMain';
 import BookTrainingMain from './bookTraining/BookTrainingMain';
 import UserAccount from './UserAccount';
 import AddDog from './addDog/AddDogMain';
+import EditDog from './editDog/EditDogMain';
+import EditCustomer from './editCustomer/EditCustomerMain';
 
 
 class App1 extends React.Component {
@@ -69,6 +71,8 @@ class App1 extends React.Component {
               <Route path="/BookTraining" component={BookTrainingMain} />
               <Route path="/BookDaycare" component={BookDaycareMain} />
               <Route path="/AddDog" component={AddDog} />
+              <Route path="/EditDog" component={EditDog} />
+              <Route path="/EditCustomer" component={EditCustomer} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
