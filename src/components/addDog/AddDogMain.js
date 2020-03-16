@@ -118,6 +118,8 @@ class AddDogMain extends React.Component {
     //   console.log(this.state.images);
     // };
 
+    //these vars weren't being used so i commented them out
+/*
     var dname = this.state.dogname; //passing the state from the fields
     var br = this.state.breed;
     var dateofbirth = this.state.dob;
@@ -128,7 +130,7 @@ class AddDogMain extends React.Component {
     var allerg = this.state.allergies;
     var plimit = this.state.physlimit;
     var vet = this.state.veterinarian;
-    
+    */
 
     const response = await BasePath.get("/webresources/registerDog", {
       /*
