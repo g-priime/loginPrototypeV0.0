@@ -102,7 +102,7 @@ class DogProfile extends React.Component {
         </div>
 
         { this.state.showCon ? (
-        <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text="Are you sure you want to delete?" cn="popup4"/>
+        <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text={'Are you sure you want to delete '+ this.props.chosenDog.name +'?'} cn="popup3"/>
         ) : null}
 
         {/* 2 buttons. for Edit onClick goes to function that Edit willgo to edit dog ....in edit dog=>(Put method....BasePath.put(chosenDog.idNumber, {})) Edit would onClick sets boolean and if Edit is true - display the other HTML */}
