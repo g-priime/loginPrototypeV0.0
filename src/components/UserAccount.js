@@ -24,8 +24,6 @@ class UserAccount extends React.Component {
       .then(result => {
         this.setState({ user: result.data });
         this.setState({ address: this.state.user.address });
-        console.log(this.state.user);
-        console.log(localStorage.getItem("token") + "!!!!!");
       })
       .catch(err => {
         console.log(err);
@@ -34,8 +32,6 @@ class UserAccount extends React.Component {
     BasePath.get(`/webresources/RetrieveDogs/${token}`)
       .then(result => {
         this.setState({ dogList: result.data });
-        const dogz = this.state.dogList.map(dog => dog + "dog");
-        console.log(this.state.dogList);
       })
       .catch(err => {
         console.log(err);
@@ -57,6 +53,14 @@ class UserAccount extends React.Component {
     this.setState({
       showPopup: !this.state.showPopup
     });
+  }
+
+  updateList =()=> {
+    var token = localStorage.getItem("token");
+    BasePath.get(`/webresources/RetrieveDogs/${token}`)
+      .then(result => {
+        this.setState({ dogList: result.data });
+      });
   }
 
   render() {
@@ -199,7 +203,7 @@ class UserAccount extends React.Component {
             <br />
             <div>
               {this.state.dogList.map(dog => (
-                <DogProfile key={dog.idNumber} chosenDog={dog} allergies={dog.allergies}/>
+                <DogProfile key={dog.idNumber} chosenDog={dog} allergies={dog.allergies} updateList={this.updateList}/>
               ))}
             </div>
           </div>
