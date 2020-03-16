@@ -28,7 +28,7 @@ import UserAccount from './UserAccount';
 import AddDog from './addDog/AddDogMain';
 import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
-import ViewAppointments from './ViewAppointments';
+import ViewAppointments from './viewAppointments/ViewAppointments';
 
 
 class App1 extends React.Component {
