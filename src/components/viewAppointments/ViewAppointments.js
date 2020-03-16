@@ -56,7 +56,7 @@ class ViewAppointments extends React.Component {
       const pendingList = [];
       const approvedList = [];
       for (var i = 0; i < this.state.appointmentList.length; i++) {
-        if (this.state.appointmentList[i].trainingDone === false) {
+        if (this.state.appointmentList[i].trainingDone === true) {
           approvedList.push(this.state.appointmentList[i]);
         } else {
           pendingList.push(this.state.appointmentList[i]);
@@ -135,7 +135,8 @@ class ViewAppointments extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
+                width: 150,
+                display: "none"
               }}
             >
               Edit
@@ -150,13 +151,15 @@ class ViewAppointments extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
+                width: 150,
+                display: "none"
               }}
             >
               Make Payment
             </button>
           </div>
         </div>
+        <br />
 
         <div>
           {this.state.approvedList.map(appointment => (
@@ -197,7 +200,8 @@ class ViewAppointments extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
+                width: 150,
+                display: "none"
               }}
             >
               Edit
@@ -212,13 +216,15 @@ class ViewAppointments extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
+                width: 150,
+                display: "none"
               }}
             >
               Cancel
             </button>
           </div>
         </div>
+        <br />
 
         <div>
           {this.state.pendingList.map(appointment => (
