@@ -135,11 +135,15 @@ class EditDogMain extends React.Component {
     var dateofbirth = this.state.dob;
     var gen = this.state.gender;
     var wei = this.state.weight;
+
+    //commented out cuz not being used
+    /*
     var ns = this.state.neuteredspayed;
     var med = this.state.medication;
     var allerg = this.state.allergies;
     var plimit = this.state.physlimit;
     var vet = this.state.veterinarian;
+    */
 
     const response = await BasePath.put("/webresources/verify", {
       dname,
