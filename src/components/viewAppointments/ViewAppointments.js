@@ -46,6 +46,8 @@ class ViewAppointments extends React.Component {
 
   getAppointmentInfo = async () => {
     var token = localStorage.getItem("token");
+
+    //use dog info as placeholder til backend creates resource to get appointment info
     const result = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
     if (this.state.initialStates === false) {
       this.setState({
