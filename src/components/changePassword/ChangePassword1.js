@@ -86,7 +86,7 @@ class ChangePassword1 extends React.Component {
 
             <div className="d-flex justify-content-between">
               <Link
-                to="/"
+                to="/Profile"
                 type="button"
                 className="btn mb-3"
                 style={{
@@ -97,7 +97,7 @@ class ChangePassword1 extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
               >
-                Back to Home Page
+                Back to Profile
               </Link>
               <button
                 className="btn mb-3"

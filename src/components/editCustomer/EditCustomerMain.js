@@ -48,13 +48,13 @@ class EditCustomerMain extends React.Component {
         lname: customerInfo.data.lastName,
         email: customerInfo.data.email,
 
-        appt: customerInfo.data.address.appt,
-        building: customerInfo.data.address.building,
-        street: customerInfo.data.address.street,
+        appt: customerInfo.data.address.houseNum,
+        building: customerInfo.data.address.buildingNum,
+        street: customerInfo.data.address.streetName,
         city: customerInfo.data.address.city,
         province: customerInfo.data.address.province,
-        postcode: customerInfo.data.address.post,
-        phone: customerInfo.data.phone,
+        postcode: customerInfo.data.address.postal,
+        phone: customerInfo.data.phoneNumber,
         emergencyphone: customerInfo.data.emergencyPhone,
         emergencyname: customerInfo.data.emergencyName
       });
@@ -240,7 +240,7 @@ class EditCustomerMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/Profile",
               state: { message: "Account Updated" }
             }}
           />

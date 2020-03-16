@@ -14,8 +14,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header1 from "./Header1";
 import HomePageHTML from "./HomePageHTML";
 
-import EditCustomerMain from "./editCustomer/EditCustomerMain";
-
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
 
 import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
@@ -30,6 +28,7 @@ import UserAccount from './UserAccount';
 import AddDog from './addDog/AddDogMain';
 import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
+import ViewAppointments from './ViewAppointments';
 
 
 class App1 extends React.Component {
@@ -66,7 +65,7 @@ class App1 extends React.Component {
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={UserAccount} />
-              <Route path="/ViewAppointments" component={ChangePasswordMain} />
+              <Route path="/ViewAppointments" component={ViewAppointments} />
               <Route path="/BookBoarding" component={BookAppointmentMain} />
               <Route path="/BookTraining" component={BookTrainingMain} />
               <Route path="/BookDaycare" component={BookDaycareMain} />
