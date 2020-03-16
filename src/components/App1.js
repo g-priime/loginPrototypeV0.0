@@ -9,7 +9,7 @@ import Services from './Services';
 import Login from './login/Login';
 import BasePath from './../api/BasePath';
 import '../css/main.css';
-import Admin from './AdminTool';
+import Admin from './admintool/AdminTool';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header1 from './Header1';
