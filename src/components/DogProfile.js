@@ -25,13 +25,12 @@ class DogProfile extends React.Component {
   };
 
   deleteDog = () => {
-    console.log('in delete');
     var token = localStorage.getItem('token');
     BasePath.put('/webresources/deleteDog', {
       token: token,
       petID: this.props.chosenDog.idNumber
     }).then( result => {
-      console.log(result);
+      this.props.updateList();
     });
   };
 
