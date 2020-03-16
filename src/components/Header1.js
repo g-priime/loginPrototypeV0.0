@@ -171,8 +171,10 @@ class Header1 extends React.Component {
                 <div className="pt-3 pb-3">FAQ</div>
               </NavLink>
             </div>
-            <div style={{ color: "#707070" }} onClick={this.props.showLogin}>
-              <div className="pt-3 pb-3">Admin Tool</div>
+            <div>
+              <NavLink to="/Admin" style={{ color: "#707070" }}>
+                <div className="pt-3 pb-3">Admin Tool</div>
+              </NavLink>
             </div>
           </div>
         </div>);
