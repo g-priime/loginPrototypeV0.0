@@ -4,6 +4,7 @@ import BasePath from "../api/BasePath";
 import "../css/reg.css";
 import "../css/userAccount.css";
 import { Link } from "react-router-dom";
+import PopUpConfirm from './PopUpConfirm';
 //here receive the dog, in the props
 
 class DogProfile extends React.Component {
@@ -13,7 +14,8 @@ class DogProfile extends React.Component {
   //   const toggle = () => setIsOpen(!isOpen);
 
   state = {
-    isOpen: false
+    isOpen: false,
+    showCon: false
   };
 
   toggle = () => {
@@ -33,6 +35,19 @@ class DogProfile extends React.Component {
       this.props.updateList();
     });
   };
+
+  showConAndDel = () => {
+    this.setState({showCon : true});
+  }
+
+  dontConfirm = () => {
+    this.setState({showCon : false});
+  }
+
+  confirm = () => {
+    this.setState({showCon : false});
+    this.deleteDog();
+  }
 
   render() {
     return (
@@ -66,7 +81,6 @@ class DogProfile extends React.Component {
               "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
             marginRight: 15
           }}
-          //onClick={this.editDog}
         >
           Edit dog
         </Link>
@@ -82,10 +96,14 @@ class DogProfile extends React.Component {
               "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
             marginRight: 15
           }}
-          onClick={this.deleteDog}
+          onClick={this.showConAndDel}
         >
           Delete dog
         </div>
+
+        { this.state.showCon ? (
+        <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text="Are you sure you want to delete?" cn="popup4"/>
+        ) : null}
 
         {/* 2 buttons. for Edit onClick goes to function that Edit willgo to edit dog ....in edit dog=>(Put method....BasePath.put(chosenDog.idNumber, {})) Edit would onClick sets boolean and if Edit is true - display the other HTML */}
         {/* {this.props.chosenDog.dogname} */}
