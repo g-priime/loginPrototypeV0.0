@@ -11,12 +11,13 @@ class PopUpConfirm extends React.Component {
           <div className={this.props.cn}>
             <div className="popup\_inner">
               <h1>{this.props.text}</h1>
+              <div className="d-flex justify-content-around">
               <button
                 className="btn"
                 style={{
                   fontWeight: "bold",
                   backgroundColor: this.props.bgColor,
-                  color: "#ECEBE7",
+                  color: "black",
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
@@ -29,7 +30,7 @@ class PopUpConfirm extends React.Component {
                 style={{
                   fontWeight: "bold",
                   backgroundColor: this.props.bgColor,
-                  color: "#ECEBE7",
+                  color: "black",
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
@@ -37,6 +38,7 @@ class PopUpConfirm extends React.Component {
               >
                 No
               </button>
+              </div>
             </div>
           </div>
         </div>
