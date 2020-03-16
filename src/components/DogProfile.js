@@ -24,9 +24,16 @@ class DogProfile extends React.Component {
     }
   };
 
-  // editDog = () => {
-  //   localStorage.setItem('editDog', this.props.chosenDog.idNumber);
-  // };
+  deleteDog = () => {
+    console.log('in delete');
+    var token = localStorage.getItem('token');
+    BasePath.put('/webresources/deleteDog', {
+      token: token,
+      petID: this.props.chosenDog.idNumber
+    }).then( result => {
+      console.log(result);
+    });
+  };
 
   render() {
     return (
@@ -76,6 +83,7 @@ class DogProfile extends React.Component {
               "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
             marginRight: 15
           }}
+          onClick={this.deleteDog}
         >
           Delete dog
         </div>
