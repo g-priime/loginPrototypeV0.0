@@ -29,6 +29,7 @@ import AddDog from './addDog/AddDogMain';
 import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
 import ViewAppointments from './viewAppointments/ViewAppointments';
+import DisableAccountMain from "./disableAccount/DisableAccountMain";
 
 
 class App1 extends React.Component {
@@ -72,6 +73,7 @@ class App1 extends React.Component {
               <Route path="/AddDog" component={AddDog} />
               <Route path="/EditDog" component={EditDog} />
               <Route path="/EditCustomer" component={EditCustomer} />
+              <Route path="/DisableAccount" component={DisableAccountMain} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
