@@ -171,13 +171,27 @@ class Header1 extends React.Component {
                 <div className="pt-3 pb-3">FAQ</div>
               </NavLink>
             </div>
-            <div>
-              <NavLink to="/Admin" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Admin Tool</div>
-              </NavLink>
-            </div>
+            <div className="dropDown">
+              <UncontrolledDropdown>
+                <DropdownToggle nav caret style={{ color: "#707070" }}>
+                  <NavLink className="pt-3 pb-3" to="/AdminTool" style={{ color: "#707070" }}>
+                    Admin Tool
+                  </NavLink>
+                </DropdownToggle>
+                <DropdownItem divider />
+                <DropdownItem>
+                  <NavLink
+                    onClick={this.logOut}
+                    to="/"
+                    style={{ color: "#707070" }}
+                  >
+                    Log Out
+                    </NavLink>
+                </DropdownItem>
+              </UncontrolledDropdown>
           </div>
-        </div>);
+        </div>
+        </div >);
     } else {
       return (
         <div>
