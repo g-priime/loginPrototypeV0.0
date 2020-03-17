@@ -163,6 +163,23 @@ class UserAccount extends React.Component {
             >
               Change password
             </Link>
+            <br />
+            <br />
+            <Link
+              to="DisableAccount"
+              type="button"
+              className="btn "
+              style={{
+                fontWeight: "bold",
+                backgroundColor: "#1D3461",
+                color: "#ECEBE7",
+                boxShadow:
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+                width: "50%"
+              }}
+            >
+              Disable Account
+            </Link>
           </div>
         </div>
         <div className="col-sm-7">
