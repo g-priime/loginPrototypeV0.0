@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import "../../css/changePassword.css";
 
 class DisableAccount1 extends React.Component {
+  state = { password: "" };
+
   onFormSubmit = event => {
     event.preventDefault();
 
-    this.props.onSubmit(
-      this.state.password
-    );
+    this.props.onSubmit(this.state.password);
   };
 
   render() {
