@@ -22,6 +22,8 @@ class DisableAccountMain extends React.Component {
     if (this.state.response === "Password is incorrect") {
       this.setState({ cn: "popup4" });
       this.togglePopup();
+    } else if (this.state.response === "Disabled") {
+      this.logOut();
     }
   };
 
@@ -44,11 +46,10 @@ class DisableAccountMain extends React.Component {
     if (this.state.response === "Disabled") {
       return (
         <div style={{ marginTop: "10px" }}>
-          {this.logOut}
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Password has been changed" }
+              state: { message: "Account has been disabled" }
             }}
           />
         </div>
