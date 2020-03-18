@@ -58,7 +58,6 @@ class App1 extends React.Component {
 
   onHideDisableAccount = () => {
     this.setState({ showDisableAccount: false });
-    this.setState({ errMsg: "" });
   };
 
   render() {
@@ -93,8 +92,6 @@ class App1 extends React.Component {
               <DisableAccountMain
                 showDisableAccount={this.state.showDisableAccount}
                 onHideDisableAccount={this.onHideDisableAccount}
-                errMsg={this.state.errMsg}
-                changeErr={this.changeErr}
               />
             </div>
           </div>
