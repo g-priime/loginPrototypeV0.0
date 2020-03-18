@@ -113,7 +113,7 @@ class Header1 extends React.Component {
                   </DropdownItem>
                   <DropdownItem>
                   <div style={{ color: "#707070" }} onClick={this.props.showDisableAccount}>
-              <div className="pt-3 pb-3">Disable Account</div>
+              Disable Account
             </div>
             </DropdownItem>
                   <DropdownItem divider />
