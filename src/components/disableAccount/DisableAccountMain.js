@@ -59,7 +59,7 @@ class DisableAccountMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/Register",
               state: { message: "Account has been disabled" }
             }}
           />
@@ -74,7 +74,7 @@ class DisableAccountMain extends React.Component {
           onHide={this.props.onHideDisableAccount}
         >
           <Modal.Header closeButton className="header">
-            <Modal.Title id="title">Login</Modal.Title>
+            <Modal.Title id="title">Disable Account</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div>
