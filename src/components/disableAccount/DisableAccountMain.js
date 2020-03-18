@@ -3,9 +3,14 @@ import DisableAccount1 from "./DisableAccount1";
 import BasePath from "../../api/BasePath";
 import Popup from "../PopUp";
 import { Redirect } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 
 class DisableAccountMain extends React.Component {
-  state = { response: "", password: "", showPopup: false, cn: "" };
+  constructor(props) {
+    super(props);
+
+    this.state = { response: "", password: "", showPopup: false, cn: "" };
+  }
 
   onSubmit = async () => {
     //add back in when done testing
@@ -24,7 +29,13 @@ class DisableAccountMain extends React.Component {
       this.togglePopup();
     } else if (this.state.response === "Disabled") {
       this.logOut();
+      this.props.onHideDisableAccount();
+      this.setState({ response: "" });
     }
+  };
+
+  closeDisableAccount = () => {
+    this.props.onHideDisableAccount();
   };
 
   togglePopup() {
@@ -56,23 +67,35 @@ class DisableAccountMain extends React.Component {
       );
     } else {
       return (
-        <div>
-          <DisableAccount1
-            password={this.state.password}
-            onChangePassword={this.handleChangePassword}
-            onSubmit={this.onSubmit}
-          />
-          <div>
-            {this.state.showPopup ? (
-              <Popup
-                cn={this.state.cn}
-                text={this.state.response}
-                closePopup={this.togglePopup.bind(this)}
-                bgColor="red"
+        <Modal
+          size="m"
+          centered
+          show={this.props.showDisableAccount}
+          onHide={this.props.onHideDisableAccount}
+        >
+          <Modal.Header closeButton className="header">
+            <Modal.Title id="title">Login</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div>
+              <DisableAccount1
+                password={this.state.password}
+                onChangePassword={this.handleChangePassword}
+                onSubmit={this.onSubmit}
               />
-            ) : null}
-          </div>
-        </div>
+              <div>
+                {this.state.showPopup ? (
+                  <Popup
+                    cn={this.state.cn}
+                    text={this.state.response}
+                    closePopup={this.togglePopup.bind(this)}
+                    bgColor="red"
+                  />
+                ) : null}
+              </div>
+            </div>
+          </Modal.Body>
+        </Modal>
       );
     }
   }
