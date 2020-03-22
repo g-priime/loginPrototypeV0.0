@@ -14,8 +14,6 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Header1 from "./Header1";
 import HomePageHTML from "./HomePageHTML";
 
-import EditCustomerMain from "./editCustomer/EditCustomerMain";
-
 import ChangePasswordMain from './changePassword/ChangePasswordMain';
 
 import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
@@ -26,12 +24,19 @@ import BookAppointmentMain from './bookAppointment/BookAppointmentMain';
 //import AddDog1 from './addDog/AddDog1';
 import BookDaycareMain from './bookDaycare/BookDaycareMain';
 import BookTrainingMain from './bookTraining/BookTrainingMain';
+import UserAccount from './UserAccount';
+import AddDog from './addDog/AddDogMain';
+import EditDog from './editDog/EditDogMain';
+import EditCustomer from './editCustomer/EditCustomerMain';
+import ViewAppointments from './viewAppointments/ViewAppointments';
+import DisableAccountMain from "./disableAccount/DisableAccountMain";
 
 
 class App1 extends React.Component {
   state = {
     show: false,
-    errMsg: ""
+    errMsg: "",
+    showDisableAccount: false
   };
 
   toggleLogin = () => {
@@ -47,12 +52,20 @@ class App1 extends React.Component {
     this.setState({ errMsg: msg });
   };
 
+  toggleDisableAccount = () => {
+    this.setState({ showDisableAccount: true });
+  };
+
+  onHideDisableAccount = () => {
+    this.setState({ showDisableAccount: false });
+  };
+
   render() {
     return (
       <div>
         <BrowserRouter>
           <div>
-            <Header1 showLogin={this.toggleLogin} />
+            <Header1 showLogin={this.toggleLogin} showDisableAccount={this.toggleDisableAccount} />
             <div className="mt-4 ml-5 mr-5">
               <Route path="/" exact component={HomePageHTML} />
               <Route path="/Register" component={RegisterMain} />
@@ -61,16 +74,24 @@ class App1 extends React.Component {
               <Route path="/Testimonials" component={Testimonials} />
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
-              <Route path="/Profile" component={EditCustomerMain} />
-              <Route path="/ViewAppointments" component={ChangePasswordMain} />
+              <Route path="/Profile" component={UserAccount} />
+              <Route path="/ViewAppointments" component={ViewAppointments} />
               <Route path="/BookBoarding" component={BookAppointmentMain} />
               <Route path="/BookTraining" component={BookTrainingMain} />
               <Route path="/BookDaycare" component={BookDaycareMain} />
+              <Route path="/AddDog" component={AddDog} />
+              <Route path="/EditDog" component={EditDog} />
+              <Route path="/EditCustomer" component={EditCustomer} />
+              <Route path="/DisableAccount" component={DisableAccountMain} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
                 errMsg={this.state.errMsg}
                 changeErr={this.changeErr}
+              />
+              <DisableAccountMain
+                showDisableAccount={this.state.showDisableAccount}
+                onHideDisableAccount={this.onHideDisableAccount}
               />
             </div>
           </div>

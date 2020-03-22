@@ -71,14 +71,10 @@ class BookDaycareMain extends React.Component {
       type
     });
 
-    console.log(response);
     this.setState({ response: response.data.message, cost: response.data.total });
 
-    if (this.state.response === "Old startTime is incorrect") {
-      this.setState({ cn: "popup4" });
-      this.togglePopup();
-    } else if (this.state.response === "New startTimes do not match") {
-      this.setState({ cn: "popup5" });
+    if (response.data === "") {
+      this.setState({ cn: "popup4", response: "Must select at least one dog" });
       this.togglePopup();
     }
   };
@@ -104,14 +100,6 @@ class BookDaycareMain extends React.Component {
     });
 
     this.setState({ response: response.data });
-
-    if (this.state.response === "Old startTime is incorrect") {
-      this.setState({ cn: "popup4" });
-      this.togglePopup();
-    } else if (this.state.response === "New startTimes do not match") {
-      this.setState({ cn: "popup5" });
-      this.togglePopup();
-    }
   };
 
   onPrevious = () => {

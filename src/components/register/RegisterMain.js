@@ -29,6 +29,16 @@ class RegisterMain extends React.Component {
     emergencyname: ""
   };
 
+  UNSAFE_componentWillMount() {
+    if (typeof this.props.location.state == "undefined" || this.props.location.state === null) {
+        this.setState({ message: "" });
+      } else {
+        this.setState({ message: this.props.location.state.message });
+        this.setState({ cn: "popup3" });
+        this.togglePopup();
+      }
+ }
+
   onSearchSubmit1 = async () => {
     this.setState({
       fieldName: [
@@ -58,10 +68,10 @@ class RegisterMain extends React.Component {
     this.setState({ images: response.data });
 
     if (this.state.images === "Username Already Exists") {
-      this.setState({ cn: "popup1" });
+      this.setState({ cn: "popup1", message: "Username already exists" });
       this.togglePopup();
     } else if (this.state.images === "Passwords do not match") {
-      this.setState({ cn: "popup2" });
+      this.setState({ cn: "popup2", message: "Passwords do not match" });
       this.togglePopup();
     }
   };
@@ -234,7 +244,7 @@ class RegisterMain extends React.Component {
             {this.state.showPopup ? (
               <Popup
                 cn={this.state.cn}
-                text={this.state.images}
+                text={this.state.message}
                 closePopup={this.togglePopup.bind(this)}
                 bgColor="red"
               />

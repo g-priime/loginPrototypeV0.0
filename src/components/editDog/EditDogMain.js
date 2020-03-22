@@ -93,7 +93,7 @@ class EditDogMain extends React.Component {
         medication: dogInfo.medications,
         allergies: dogInfo.allergies,
         physlimit: dogInfo.physLimit,
-        veterinarian: dogInfo.veterinarian.name,
+        //veterinarian: dogInfo.veterinarian.name,
 
         strangers: dogInfo.strangers,
         largerdogs: dogInfo.largerdogs,
@@ -135,11 +135,15 @@ class EditDogMain extends React.Component {
     var dateofbirth = this.state.dob;
     var gen = this.state.gender;
     var wei = this.state.weight;
+
+    //commented out cuz not being used
+    /*
     var ns = this.state.neuteredspayed;
     var med = this.state.medication;
     var allerg = this.state.allergies;
     var plimit = this.state.physlimit;
     var vet = this.state.veterinarian;
+    */
 
     const response = await BasePath.put("/webresources/verify", {
       dname,
@@ -316,7 +320,7 @@ class EditDogMain extends React.Component {
             medication={this.state.medication}
             allergies={this.state.allergies}
             physlimit={this.state.physlimit}
-            veterinarian={this.state.veterinarian}
+            //veterinarian={this.state.veterinarian}
             onSubmit={this.onSearchSubmit1}
             // onClick={() => {
             //   //no needed

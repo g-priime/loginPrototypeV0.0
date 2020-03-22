@@ -5,13 +5,17 @@ import DogProfile from "./DogProfile";
 import BasePath from "../api/BasePath";
 import { getQueriesForElement } from "@testing-library/react";
 import { Link } from "react-router-dom";
+import Popup from "./PopUp";
 
 class UserAccount extends React.Component {
   state = {
     userList: [],
     dogList: [],
     user: {},
-    address: {}
+    address: {},
+    message: "",
+    cn: "",
+    bgColor: "blue"
   };
 
   UNSAFE_componentWillMount() {
@@ -20,8 +24,6 @@ class UserAccount extends React.Component {
       .then(result => {
         this.setState({ user: result.data });
         this.setState({ address: this.state.user.address });
-        console.log(this.state.user);
-        console.log(localStorage.getItem("token") + "!!!!!");
       })
       .catch(err => {
         console.log(err);
@@ -30,11 +32,34 @@ class UserAccount extends React.Component {
     BasePath.get(`/webresources/RetrieveDogs/${token}`)
       .then(result => {
         this.setState({ dogList: result.data });
-        const dogz = this.state.dogList.map(dog => dog + "dog");
-        console.log(this.state.dogList);
       })
       .catch(err => {
         console.log(err);
+      });
+
+      if (
+        typeof this.props.location.state == "undefined" ||
+        this.props.location.state === null
+      ) {
+        this.setState({ message: "" });
+      } else {
+        this.setState({ message: this.props.location.state.message });
+        this.setState({ cn: "popup3" });
+        this.togglePopup();
+      }
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
+
+  updateList =()=> {
+    var token = localStorage.getItem("token");
+    BasePath.get(`/webresources/RetrieveDogs/${token}`)
+      .then(result => {
+        this.setState({ dogList: result.data });
       });
   }
 
@@ -142,6 +167,7 @@ class UserAccount extends React.Component {
             >
               Change password
             </Link>
+            
           </div>
         </div>
         <div className="col-sm-7">
@@ -158,7 +184,7 @@ class UserAccount extends React.Component {
               <div className="col-sm">
               <div className="left">
               <Link 
-              to="/AddDog" 
+              to="AddDog" 
               type="button"
               className="btn mb-3"
               style={{
@@ -178,10 +204,20 @@ class UserAccount extends React.Component {
             <br />
             <div>
               {this.state.dogList.map(dog => (
-                <DogProfile key={dog.idNumber} chosenDog={dog} allergies={dog.allergies}/>
+                <DogProfile key={dog.idNumber} chosenDog={dog} allergies={dog.allergies} updateList={this.updateList}/>
               ))}
             </div>
           </div>
+        </div>
+        <div>
+          {this.state.showPopup ? (
+            <Popup
+              cn={this.state.cn}
+              text={this.state.message}
+              closePopup={this.togglePopup.bind(this)}
+              bgColor={this.state.bgColor}
+            />
+          ) : null}
         </div>
       </div>
     );
