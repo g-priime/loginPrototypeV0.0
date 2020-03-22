@@ -167,6 +167,7 @@ class UserAccount extends React.Component {
             >
               Change password
             </Link>
+            
           </div>
         </div>
         <div className="col-sm-7">

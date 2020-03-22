@@ -1,9 +1,13 @@
 import React from "react";
-import "../css/reg.css";
-import "../css/viewAppointments.css";
+import "../../css/reg.css";
+import "../../css/viewAppointments.css";
 import { Link } from "react-router-dom";
+import BasePath from "../../api/BasePath";
+import ApprovedAppointment from "./ApprovedAppointment";
+import PendingAppointment from "./PendingAppointment";
+import Moment from "moment";
 
-import { ReactComponent as Hint } from "./hint.svg";
+import { ReactComponent as Hint } from "../hint.svg";
 const hint = () => (
   <div>
     {
@@ -34,7 +38,46 @@ const hint = () => (
 );
 
 class ViewAppointments extends React.Component {
+  state = {
+    initialStates: false,
+    appointmentList: [],
+    approvedList: [],
+    pendingList: []
+  };
+
+  getAppointmentInfo = async () => {
+    var token = localStorage.getItem("token");
+
+    //use dog info as placeholder til backend creates resource to get appointment info
+    const result = await BasePath.get(`/webresources/getappointments/${token}`);
+    if (this.state.initialStates === false) {
+      this.setState({
+        initialStates: true,
+        appointmentList: result.data
+      });
+      console.log(result);
+
+      const pendingList = [];
+      const approvedList = [];
+      for (var i = 0; i < this.state.appointmentList.length; i++) {
+        if (this.state.appointmentList[i].isApproved === true) {
+          approvedList.push(this.state.appointmentList[i]);
+        } else {
+          pendingList.push(this.state.appointmentList[i]);
+        }
+      }
+      this.setState({
+        approvedList: approvedList,
+        pendingList: pendingList
+      });
+    }
+    //const dogz = this.state.dogList.map(dog => dog + "dog");
+    console.log(this.state.appointmentList);
+  };
+
   render() {
+    this.getAppointmentInfo();
+
     return (
       <div
         className="ui segment p-3 mb-2 "
@@ -83,10 +126,10 @@ class ViewAppointments extends React.Component {
         <br />
         <div className="row ">
           <div className="col-sm right">
-            <b>AppointmentType</b>
+            <b>Appointment Type</b>
           </div>
-          <div className="col-sm left">StartTime</div>
-          <div className="col-sm left">EndTime</div>
+          <div className="col-sm left">Start Time</div>
+          <div className="col-sm left">End Time</div>
           <div className="col-sm left">
             <button
               className="btn mb-3"
@@ -96,7 +139,8 @@ class ViewAppointments extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
+                width: 150,
+                display: "none"
               }}
             >
               Edit
@@ -111,13 +155,27 @@ class ViewAppointments extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
+                width: 150,
+                display: "none"
               }}
             >
               Make Payment
             </button>
           </div>
         </div>
+        <br />
+
+        <div>
+          {this.state.approvedList.map(appointment => (
+            <ApprovedAppointment
+              key={appointment.idNumber}
+              appointmentType={appointment.type.toUpperCase()}
+              startTime={Moment(appointment.startTime).format("LL LT")}
+            endTime={Moment(appointment.endTime).format("LL LT")}
+            />
+          ))}
+        </div>
+
         <br />
         <br />
         <div className="row">
@@ -133,10 +191,10 @@ class ViewAppointments extends React.Component {
         <br />
         <div className="row ">
           <div className="col-sm right">
-            <b>AppointmentType</b>
+            <b>Appointment Type</b>
           </div>
-          <div className="col-sm left">StartTime</div>
-          <div className="col-sm left">EndTime</div>
+          <div className="col-sm left">Start Time</div>
+          <div className="col-sm left">End Time</div>
           <div className="col-sm left">
             <button
               className="btn mb-3"
@@ -146,7 +204,8 @@ class ViewAppointments extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
+                width: 150,
+                display: "none"
               }}
             >
               Edit
@@ -161,12 +220,25 @@ class ViewAppointments extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
+                width: 150,
+                display: "none"
               }}
             >
               Cancel
             </button>
           </div>
+        </div>
+        <br />
+
+        <div>
+          {this.state.pendingList.map(appointment => (
+            <PendingAppointment
+            key={appointment.idNumber}
+            appointmentType={appointment.type.toUpperCase()}
+            startTime={Moment(appointment.startTime).format("LL LT")}
+            endTime={Moment(appointment.endTime).format("LL LT")}
+            />
+          ))}
         </div>
 
         {/* <div className="row">

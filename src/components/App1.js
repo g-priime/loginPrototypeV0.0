@@ -28,13 +28,15 @@ import UserAccount from './UserAccount';
 import AddDog from './addDog/AddDogMain';
 import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
-import ViewAppointments from './ViewAppointments';
+import ViewAppointments from './viewAppointments/ViewAppointments';
+import DisableAccountMain from "./disableAccount/DisableAccountMain";
 
 
 class App1 extends React.Component {
   state = {
     show: false,
-    errMsg: ""
+    errMsg: "",
+    showDisableAccount: false
   };
 
   toggleLogin = () => {
@@ -50,12 +52,20 @@ class App1 extends React.Component {
     this.setState({ errMsg: msg });
   };
 
+  toggleDisableAccount = () => {
+    this.setState({ showDisableAccount: true });
+  };
+
+  onHideDisableAccount = () => {
+    this.setState({ showDisableAccount: false });
+  };
+
   render() {
     return (
       <div>
         <BrowserRouter>
           <div>
-            <Header1 showLogin={this.toggleLogin} />
+            <Header1 showLogin={this.toggleLogin} showDisableAccount={this.toggleDisableAccount} />
             <div className="mt-4 ml-5 mr-5">
               <Route path="/" exact component={HomePageHTML} />
               <Route path="/Register" component={RegisterMain} />
@@ -72,11 +82,16 @@ class App1 extends React.Component {
               <Route path="/AddDog" component={AddDog} />
               <Route path="/EditDog" component={EditDog} />
               <Route path="/EditCustomer" component={EditCustomer} />
+              <Route path="/DisableAccount" component={DisableAccountMain} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
                 errMsg={this.state.errMsg}
                 changeErr={this.changeErr}
+              />
+              <DisableAccountMain
+                showDisableAccount={this.state.showDisableAccount}
+                onHideDisableAccount={this.onHideDisableAccount}
               />
             </div>
           </div>

@@ -47,7 +47,7 @@ class Header1 extends React.Component {
     this.getCustomerInfo();
     var username = this.state.username;
 
-    if (username !== "") {
+    if (username !== "" && localStorage.getItem("token") != null) {
       return (
         <div>
           <div className="d-flex justify-content-between">
@@ -111,6 +111,11 @@ class Header1 extends React.Component {
                       View Appointments
                     </NavLink>
                   </DropdownItem>
+                  <DropdownItem>
+                  <div style={{ color: "#707070" }} onClick={this.props.showDisableAccount}>
+              Disable Account
+            </div>
+            </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
                     <NavLink
