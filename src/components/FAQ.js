@@ -21,7 +21,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                What harsh truths do you prefer to ignore?
+                How to register account?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -35,7 +35,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                How to login to the account?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -49,7 +49,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                How to change the password?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -63,7 +63,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                How to book an appointment?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -77,7 +77,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                How to add a dog to the account?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -91,7 +91,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                How to check the existing appointments?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -105,7 +105,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                How to change the personal information?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -119,7 +119,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                How to change the information about the dog?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -133,7 +133,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                What to do if the dog's vaccine has expired?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -147,7 +147,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                How to pay for the appointment?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -161,7 +161,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+              How to cancel the appointmen?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -175,7 +175,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                Is free will real or just an illusion?
+                What behaviour skills should be trained?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
