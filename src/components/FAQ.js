@@ -161,7 +161,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-              How to cancel the appointmen?
+                How to cancel the appointmen?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
@@ -180,9 +180,28 @@ class FAQ extends React.Component {
             </AccordionItemHeading>
             <AccordionItemPanel>
               <p>
-                In ad velit in ex nostrud dolore cupidatat consectetur ea in ut
-                nostrud velit in irure cillum tempor laboris sed adipisicing eu
-                esse duis nulla non.
+                <ul>
+                  <li>Crate training</li>
+                  <li>House training</li>
+                  <li>Appropriate chewing</li>
+                  <li>Sit</li>
+                  <li>Sit and Wait at doorways</li>
+                  <li>Sit and wait for meals</li>
+                  <li>Down</li>
+                  <li>Impulse control around food</li>
+                  <li>Place command</li>
+                  <li>Response to name, handler focus</li>
+                  <li>Non-reactivity in the yard and on leash</li>
+                  <li>Stay</li>
+                  <li>Loose leash walking</li>
+                  <li>Come when called</li>
+                  <li>Off leash reliability</li>
+                  <li>Non-reactivity out and about</li>
+                  <li>Travel socialization</li>
+                  <li>Counter surfing</li>
+                  <li>Jumping fences</li>
+                  <li>Resource guarding</li>
+                </ul>
               </p>
             </AccordionItemPanel>
           </AccordionItem>
