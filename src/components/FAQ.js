@@ -175,7 +175,7 @@ class FAQ extends React.Component {
           <AccordionItem>
             <AccordionItemHeading>
               <AccordionItemButton>
-                What behaviour skills should be trained?
+                What behaviour skills can be trained?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
