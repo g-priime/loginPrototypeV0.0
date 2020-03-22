@@ -126,10 +126,10 @@ class ViewAppointments extends React.Component {
         <br />
         <div className="row ">
           <div className="col-sm right">
-            <b>AppointmentType</b>
+            <b>Appointment Type</b>
           </div>
-          <div className="col-sm left">StartTime</div>
-          <div className="col-sm left">EndTime</div>
+          <div className="col-sm left">Start Time</div>
+          <div className="col-sm left">End Time</div>
           <div className="col-sm left">
             <button
               className="btn mb-3"
@@ -169,7 +169,7 @@ class ViewAppointments extends React.Component {
           {this.state.approvedList.map(appointment => (
             <ApprovedAppointment
               key={appointment.idNumber}
-              appointmentType={appointment.type}
+              appointmentType={appointment.type.toUpperCase()}
               startTime={Moment(appointment.startTime).format("LL LT")}
             endTime={Moment(appointment.endTime).format("LL LT")}
             />
@@ -191,10 +191,10 @@ class ViewAppointments extends React.Component {
         <br />
         <div className="row ">
           <div className="col-sm right">
-            <b>AppointmentType</b>
+            <b>Appointment Type</b>
           </div>
-          <div className="col-sm left">StartTime</div>
-          <div className="col-sm left">EndTime</div>
+          <div className="col-sm left">Start Time</div>
+          <div className="col-sm left">End Time</div>
           <div className="col-sm left">
             <button
               className="btn mb-3"
@@ -234,7 +234,7 @@ class ViewAppointments extends React.Component {
           {this.state.pendingList.map(appointment => (
             <PendingAppointment
             key={appointment.idNumber}
-            appointmentType={appointment.type}
+            appointmentType={appointment.type.toUpperCase()}
             startTime={Moment(appointment.startTime).format("LL LT")}
             endTime={Moment(appointment.endTime).format("LL LT")}
             />
