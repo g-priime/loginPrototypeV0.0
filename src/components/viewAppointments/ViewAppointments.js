@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import BasePath from "../../api/BasePath";
 import ApprovedAppointment from "./ApprovedAppointment";
 import PendingAppointment from "./PendingAppointment";
+import Moment from "moment";
 
 import { ReactComponent as Hint } from "../hint.svg";
 const hint = () => (
@@ -48,17 +49,18 @@ class ViewAppointments extends React.Component {
     var token = localStorage.getItem("token");
 
     //use dog info as placeholder til backend creates resource to get appointment info
-    const result = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
+    const result = await BasePath.get(`/webresources/getappointments/${token}`);
     if (this.state.initialStates === false) {
       this.setState({
         initialStates: true,
         appointmentList: result.data
       });
+      console.log(result);
 
       const pendingList = [];
       const approvedList = [];
       for (var i = 0; i < this.state.appointmentList.length; i++) {
-        if (this.state.appointmentList[i].trainingDone === true) {
+        if (this.state.appointmentList[i].isApproved === true) {
           approvedList.push(this.state.appointmentList[i]);
         } else {
           pendingList.push(this.state.appointmentList[i]);
@@ -167,9 +169,9 @@ class ViewAppointments extends React.Component {
           {this.state.approvedList.map(appointment => (
             <ApprovedAppointment
               key={appointment.idNumber}
-              appointmentType={appointment.breed}
-              startTime={appointment.dateOfBirth}
-              endTime={appointment.dateOfBirth}
+              appointmentType={appointment.type}
+              startTime={appointment.startTime}
+              endTime={appointment.endTime}
             />
           ))}
         </div>
@@ -231,10 +233,10 @@ class ViewAppointments extends React.Component {
         <div>
           {this.state.pendingList.map(appointment => (
             <PendingAppointment
-              key={appointment.idNumber}
-              appointmentType={appointment.breed}
-              startTime={appointment.dateOfBirth}
-              endTime={appointment.dateOfBirth}
+            key={appointment.idNumber}
+            appointmentType={appointment.type}
+            startTime={appointment.startTime}
+            endTime={Moment(appointment.endTime).format("YYYY-MM-DD hh:mm:x")}
             />
           ))}
         </div>
