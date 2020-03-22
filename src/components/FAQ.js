@@ -26,9 +26,31 @@ class FAQ extends React.Component {
             </AccordionItemHeading>
             <AccordionItemPanel>
               <p>
-                Exercitation in fugiat est ut ad ea cupidatat ut in cupidatat
-                occaecat ut occaecat consequat est minim minim esse tempor
-                laborum consequat esse adipisicing eu reprehenderit enim.
+                If you don't have an account yet you need to register one to use
+                the website services and for booking the appointments. To
+                register the account click{" "}
+                <i>
+                  <b>Login/Register</b>
+                </i>{" "}
+                button on the top navigation menu bar. The pop-up window will
+                appears. Click{" "}
+                <i>
+                  <b>Register New Account</b>
+                </i>{" "}
+                button. Fill out all the fields. Create the unique user name -
+                you will be using it to log in into the system. The user name
+                should be at least 5 characters long. Create the password for
+                your account - the lenght of it must be at least 8 characters.
+                Enter your first name, last name and email. Go to the next step.
+                Fill out all the fields and click{" "}
+                <i>
+                  <b>Register</b>
+                </i>{" "}
+                button. Your account is created. Now proceed to the{" "}
+                <i>
+                  <b>Login/Register</b>
+                </i>{" "}
+                menu tab to login to the system.
               </p>
             </AccordionItemPanel>
           </AccordionItem>
@@ -40,9 +62,11 @@ class FAQ extends React.Component {
             </AccordionItemHeading>
             <AccordionItemPanel>
               <p>
-                In ad velit in ex nostrud dolore cupidatat consectetur ea in ut
-                nostrud velit in irure cillum tempor laboris sed adipisicing eu
-                esse duis nulla non.
+                To login to your account click{" "}
+                <i>
+                  <b>Login/Register</b>
+                </i>{" "}
+                button on the top menu bar. 
               </p>
             </AccordionItemPanel>
           </AccordionItem>
@@ -120,6 +144,20 @@ class FAQ extends React.Component {
             <AccordionItemHeading>
               <AccordionItemButton>
                 How to change the information about the dog?
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel>
+              <p>
+                In ad velit in ex nostrud dolore cupidatat consectetur ea in ut
+                nostrud velit in irure cillum tempor laboris sed adipisicing eu
+                esse duis nulla non.
+              </p>
+            </AccordionItemPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <AccordionItemHeading>
+              <AccordionItemButton>
+                What vaccines are mandotory?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
