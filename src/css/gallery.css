@@ -110,7 +110,7 @@ body {
     }
 }
 
-.modal {
+.modal1 {
     position: fixed;
     z-index: 999;
     width: 50%;
@@ -147,7 +147,7 @@ body {
     left: 0;
 }
 
-.modal-body a {
+.modal1-body a {
     position: absolute;
     display: inline;
     color: $black;
@@ -161,14 +161,14 @@ body {
     text-align: center;
 }
 
-.modal-body .modal-close {
+.modal1-body .modal1-close {
     right: 0;
     top: 0;
     border-radius: 0 0 0 5px;
 }
 
-.modal-body .modal-next,
-.modal-body .modal-prev {
+.modal1-body .modal1-next,
+.modal1-body .modal1-prev {
     right: 0;
     top: calc(50% - 25px);
     border-radius: 5px 0 0 5px;
@@ -177,12 +177,12 @@ body {
     font-size: 60px;
 }
 
-.modal-body .modal-prev {
+.modal1-body .modal1-prev {
     left: 0;
     right: auto;
     border-radius: 0 5px 5px 0;
 }
 
-.modal-body {
+.modal1-body {
     position: relative;
 }
