@@ -38,9 +38,9 @@ class CalendarMain extends React.Component {
         appointmentList: result.data
       });
 
-      console.log(result);
+      console.log(this.state.appointmentList);
 
-      const appointments = [];
+      var appointments = [];
       var appointment = {
         Id: 0,
         Subject: "",
@@ -48,14 +48,16 @@ class CalendarMain extends React.Component {
         EndTime: new Date(2020, 0, 0, 0, 0)
       };
       for (var i = 0; i < 3; i++) {
-        appointment.Id = this.state.appointmentList[i].idNumber;
-        appointment.Subject = this.state.appointmentList[i].type;
-        appointment.StartTime = this.state.appointmentList[i].startTime;
-        appointment.EndTime = this.state.appointmentList[i].endTime;
+        appointment.Id = result.data[i].idNumber;
+        appointment.Subject = result.data[i].type;
+        appointment.StartTime = result.data[i].startTime;
+        appointment.EndTime = result.data[i].endTime;
         appointments.push(appointment);
+        console.log(appointment);
+        console.log(appointments);
       }
       this.setState({ appointments: appointments });
-      console.log(this.state.appointments);
+      //console.log(this.state.appointments);
     }
     /*
       const pendingList = [];
