@@ -135,11 +135,11 @@ class GalleryModal extends React.Component {
     return (
       <div>
         {/* <div className="modal-overlay" onClick={closeModal}></div> */}
-        <div isOpen={!!src} className="modal">
-          <div className="modal-body">
+        <div isOpen={!!src} className="modal1">
+          <div className="modal1-body">
             <a
               href="#"
-              className="modal-close"
+              className="modal1-close"
               onClick={closeModal}
               onKeyDown={this.handleKeyDown}
             >
@@ -148,7 +148,7 @@ class GalleryModal extends React.Component {
             {hasPrev && (
               <a
                 href="#"
-                className="modal-prev"
+                className="modal1-prev"
                 onClick={findPrev}
                 onKeyDown={this.handleKeyDown}
               >
@@ -158,7 +158,7 @@ class GalleryModal extends React.Component {
             {hasNext && (
               <a
                 href="#"
-                className="modal-next"
+                className="modal1-next"
                 onClick={findNext}
                 onKeyDown={this.handleKeyDown}
               >
