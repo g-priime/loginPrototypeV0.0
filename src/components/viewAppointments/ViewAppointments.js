@@ -170,8 +170,8 @@ class ViewAppointments extends React.Component {
             <ApprovedAppointment
               key={appointment.idNumber}
               appointmentType={appointment.type}
-              startTime={appointment.startTime}
-              endTime={appointment.endTime}
+              startTime={Moment(appointment.startTime).format("LL LT")}
+            endTime={Moment(appointment.endTime).format("LL LT")}
             />
           ))}
         </div>
@@ -235,8 +235,8 @@ class ViewAppointments extends React.Component {
             <PendingAppointment
             key={appointment.idNumber}
             appointmentType={appointment.type}
-            startTime={appointment.startTime}
-            endTime={Moment(appointment.endTime).format("YYYY-MM-DD hh:mm:x")}
+            startTime={Moment(appointment.startTime).format("LL LT")}
+            endTime={Moment(appointment.endTime).format("LL LT")}
             />
           ))}
         </div>
