@@ -134,7 +134,7 @@ class GalleryModal extends React.Component {
     }
     return (
       <div>
-        {/* <div className="modal-overlay" onClick={closeModal}></div> */}
+        <div className="modal1-overlay" onClick={closeModal}></div>
         <div isOpen={!!src} className="modal1">
           <div className="modal1-body">
             <a
