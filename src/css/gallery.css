@@ -137,7 +137,7 @@ body {
     }
 }
 
-.modal-overlay {
+.modal1-overlay {
     position: fixed;
     z-index: 1;
     height: 100%;
