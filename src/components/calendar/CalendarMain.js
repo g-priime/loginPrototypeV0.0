@@ -23,60 +23,31 @@ class CalendarMain extends React.Component {
 
   state = {
     initialStates: false,
-    appointmentList: [],
     appointments: []
   };
 
   getAppointmentInfo = async () => {
     var token = localStorage.getItem("token");
 
-    //use dog info as placeholder til backend creates resource to get appointment info
     const result = await BasePath.get(`/webresources/getappointments/${token}`);
     if (this.state.initialStates === false) {
       this.setState({
-        initialStates: true,
-        appointmentList: result.data
+        initialStates: true
       });
 
-      console.log(this.state.appointmentList);
-
       var appointments = [];
-      var appointment = {
-        Id: 0,
-        Subject: "",
-        StartTime: new Date(2020, 0, 0, 0, 0),
-        EndTime: new Date(2020, 0, 0, 0, 0)
-      };
-      for (var i = 0; i < 3; i++) {
+
+      for (let i = 0; i < result.data.length; i++) {
+        var appointment = new Object();
         appointment.Id = result.data[i].idNumber;
         appointment.Subject = result.data[i].type;
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
         appointments.push(appointment);
-        console.log(appointment);
-        console.log(appointments);
       }
       this.setState({ appointments: appointments });
-      //console.log(this.state.appointments);
     }
-    /*
-      const pendingList = [];
-      const approvedList = [];
-      for (var i = 0; i < this.state.appointmentList.length; i++) {
-        if (this.state.appointmentList[i].isApproved === true) {
-          approvedList.push(this.state.appointmentList[i]);
-        } else {
-          pendingList.push(this.state.appointmentList[i]);
-        }
-      }
-      this.setState({
-        approvedList: approvedList,
-        pendingList: pendingList
-      });*/
   };
-  //const dogz = this.state.dogList.map(dog => dog + "dog");
-  //console.log(this.state.appointmentList);
-  //};
 
   render() {
     this.getAppointmentInfo();
