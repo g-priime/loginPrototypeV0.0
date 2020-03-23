@@ -1,7 +1,4 @@
-.admin {
-    background-color: #6298C8;
-}
-
-.admin-nav{
-    background-color: #6298C8;
+body {
+    background-color:  #6298C8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
