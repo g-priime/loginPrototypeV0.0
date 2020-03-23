@@ -17,7 +17,7 @@ class Header1 extends React.Component {
   state = {
     initialStates: false,
     username: "",
-    user: {}
+    admin: false
   };
 
   getCustomerInfo = async () => {
@@ -35,7 +35,7 @@ class Header1 extends React.Component {
       this.setState({
         initialStates: true,
         username: customerInfo.data.username,
-        user: customerInfo
+        admin: customerInfo.data.admin
       });
     }
   };
@@ -48,8 +48,9 @@ class Header1 extends React.Component {
   render() {
     this.getCustomerInfo();
     var username = this.state.username;
+    var admin = this.state.admin;
 
-    if (username !== "" && localStorage.getItem("token") != null) {
+    if (username !== "" && localStorage.getItem("token") != null && admin == false) {
       return (
         <div>
           <div className="d-flex justify-content-between">
@@ -114,10 +115,10 @@ class Header1 extends React.Component {
                     </NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                  <div style={{ color: "#707070" }} onClick={this.props.showDisableAccount}>
-              Disable Account
-            </div>
-            </DropdownItem>
+                    <div style={{ color: "#707070" }} onClick={this.props.showDisableAccount}>
+                      Disable Account
+                     </div>
+                  </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
                     <NavLink
@@ -134,7 +135,7 @@ class Header1 extends React.Component {
           </div>
         </div>
       );
-    } else if (username == "admin") {
+    } else if (username !== "" && localStorage.getItem("token") != null && admin == true) {
       return (
         <div>
           <div className="d-flex justify-content-between">
@@ -179,26 +180,12 @@ class Header1 extends React.Component {
                 <div className="pt-3 pb-3">FAQ</div>
               </NavLink>
             </div>
-            <div className="dropDown">
-              <UncontrolledDropdown>
-                <DropdownToggle nav caret style={{ color: "#707070" }}>
-                  <NavLink className="pt-3 pb-3" to="/AdminTool" style={{ color: "#707070" }}>
-                    Admin Tool
-                  </NavLink>
-                </DropdownToggle>
-                <DropdownItem divider />
-                <DropdownItem>
-                  <NavLink
-                    onClick={this.logOut}
-                    to="/"
-                    style={{ color: "#707070" }}
-                  >
-                    Log Out
-                    </NavLink>
-                </DropdownItem>
-              </UncontrolledDropdown>
+            <div>
+              <NavLink to="/admin" style={{ color: "#707070" }}>
+                <div className="pt-3 pb-3">Admin Tool</div>
+              </NavLink>
+            </div>
           </div>
-        </div>
         </div >);
     } else {
       return (
