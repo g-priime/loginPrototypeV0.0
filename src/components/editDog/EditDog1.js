@@ -207,7 +207,8 @@ class EditDog1 extends React.Component {
                 <Hint />
                 <input
                   type="text"
-                  value={this.props.veterinarian}
+                  value=""
+                  // value={this.props.veterinarian}
                   onChange={this.props.onChangeVeterinarian}
                 />
               </div>
@@ -235,7 +236,7 @@ class EditDog1 extends React.Component {
           </div>
           <div className="d-flex justify-content-between">
             <Link //creates a link, styled like a button
-              to="/UserAccount" //telling to go to home, in adddog it should be accinfo
+              to="Profile" //telling to go to home, in adddog it should be accinfo
               type="button"
               className="btn mb-3"
               style={{
