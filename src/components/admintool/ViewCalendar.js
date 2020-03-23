@@ -4,7 +4,7 @@ class ViewCalendar extends React.Component {
 
     render() {
         return (
-            <div className="ui segment">
+            <div>
                 view calendar
             </div>
         );
