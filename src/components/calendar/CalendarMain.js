@@ -58,19 +58,51 @@ class CalendarMain extends React.Component {
   }
 
   eventTemplate(props) {
-    return (
-      <div
-        className="template-wrap"
-        style={{ background: props.SecondaryColor }}
-      >
-        <div className="subject" style={{ background: props.PrimaryColor }}>
-          {props.Subject}
+    if (props.Subject === "daycare"){
+      return (
+        <div
+          className="template-wrap"
+          style={{ background: "red" }}
+        >
+          <div className="subject" style={{ background: "red" }}>
+            {props.Subject}
+          </div>
+          <div className="time" style={{ background: "red" }}>
+            Time: {this.getTimeString(props.StartTime)} - {this.getTimeString(props.EndTime)}
+          </div>
         </div>
-        <div className="time" style={{ background: props.PrimaryColor }}>
-          Time: {this.getTimeString(props.StartTime)} - {this.getTimeString(props.EndTime)}
+      );
+    }
+    else if (props.Subject === "boarding") {
+      return (
+        <div
+          className="template-wrap"
+          style={{ background: "green" }}
+        >
+          <div className="subject" style={{ background: "green" }}>
+            {props.Subject}
+          </div>
+          <div className="time" style={{ background: "green" }}>
+            Time: {this.getTimeString(props.StartTime)} - {this.getTimeString(props.EndTime)}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    else {
+      return (
+        <div
+          className="template-wrap"
+          style={{ background: "orange" }}
+        >
+          <div className="subject" style={{ background: "orange" }}>
+            {props.Subject}
+          </div>
+          <div className="time" style={{ background: "orange" }}>
+            Time: {this.getTimeString(props.StartTime)} - {this.getTimeString(props.EndTime)}
+          </div>
+        </div>
+      );
+    }
   }
 
   render() {
