@@ -24,8 +24,7 @@ class AdminTool extends React.Component {
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
+                  backgroundColor: "#ECEBE7",
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>View Calendar
@@ -36,8 +35,7 @@ class AdminTool extends React.Component {
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
+                  backgroundColor: "#ECEBE7",
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Create user Account
@@ -48,8 +46,8 @@ class AdminTool extends React.Component {
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
+                  backgroundColor: "#ECEBE7",
+                 
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Manage Users
@@ -60,8 +58,8 @@ class AdminTool extends React.Component {
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
+                  backgroundColor: "#ECEBE7",
+                  
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Manage Photos
@@ -72,8 +70,8 @@ class AdminTool extends React.Component {
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
+                  backgroundColor: "#ECEBE7",
+                
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Manage Testimonials
@@ -84,8 +82,8 @@ class AdminTool extends React.Component {
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
+                  backgroundColor: "#ECEBE7",
+                  
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Reports
@@ -96,8 +94,7 @@ class AdminTool extends React.Component {
                 className="btn mb-3"
                 style={{
                   fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
+                  backgroundColor: "#ECEBE7",
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Log Out
