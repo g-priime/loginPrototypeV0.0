@@ -13,17 +13,17 @@ import {
 import BasePath from "../../api/BasePath";
 
 class CalendarMain extends React.Component {
-  /*
   constructor() {
     super(...arguments);
 
-    this.data = [];
+    this.data = [{
+      
+    }];
   }
-  */
 
   state = {
-    initialStates: false,
-    appointments: []
+    initialStates: false
+    //appointments: []
   };
 
   getAppointmentInfo = async () => {
@@ -34,8 +34,8 @@ class CalendarMain extends React.Component {
       this.setState({
         initialStates: true
       });
-
-      var appointments = [];
+console.log(result.data);
+      //var appointments = [];
 
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
@@ -43,9 +43,12 @@ class CalendarMain extends React.Component {
         appointment.Subject = result.data[i].type;
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
-        appointments.push(appointment);
+        appointment.dogIdNumber = result.data[i].dogIdNumber;
+        appointment.username = result.data[i].username;
+        this.data.push(appointment);
       }
-      this.setState({ appointments: appointments });
+      //this.setState({ appointments: appointments });
+      //this.data = appointments;
     }
   };
 
@@ -55,7 +58,11 @@ class CalendarMain extends React.Component {
     return (
       <ScheduleComponent
         currentView="Month"
-        eventSettings={{ dataSource: this.state.appointments }}
+        eventSettings={{ dataSource: this.data,
+        fields: {
+          description: { name: 'dogIdNumber', title: 'Dogs' },
+          location: { name: 'username', title: 'Owner' }
+        } }}
       >
         <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
       </ScheduleComponent>
