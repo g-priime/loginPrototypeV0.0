@@ -13,7 +13,7 @@ class AdminTool extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "rgba(255,255,255,0)" }} className="admin-container">
+      <div style={{ backgroundColor: "rgba(255,255,255,0)" }} className="ui segment admin-container">
         <h1 style={{ color: "white" }}>K9 Fun Family Admin Tool</h1>
         <div style={{ backgroundColor: "rgba(255,255,255,0)" }}>
           <div className="admin-row">
