@@ -10,15 +10,9 @@ import Login from './login/Login';
 import BasePath from './../api/BasePath';
 import '../css/main.css';
 import Admin from './admintool/AdminTool';
-//import HomePage from "./HomePage";
-import RegisterMain from "./register/RegisterMain";
-import Gallery from "./Gallery";
-import FAQ from "./FAQ";
-import Testimonials from "./Testimonials";
-import Services from "./Services";
-import Login from "./login/Login";
 import Footer from "./Footer";
-import "../css/main.css";
+import AdminTool from './admintool/AdminTool';
+//import "../css/main.css";
 
 import { BrowserRouter, Route } from "react-router-dom";
 import Header1 from "./Header1";
@@ -66,31 +60,6 @@ class App1 extends React.Component {
     this.setState({ showDisableAccount: true });
   };
 
-                    <div>
-                        <Header1 showLogin={this.toggleLogin} />
-                        <div className="mt-4 ml-5 mr-5">
-                            <Route path="/" exact component={HomePage} />
-                            <Route path="/Register" component={RegisterMain} />
-                            <Route path="/Services" component={Services}/>
-                            <Route path="/Gallery" component={Gallery} />
-                            <Route path="/Testimonials" component={Testimonials} />
-                            <Route path="/FAQ" component={FAQ} />
-                            <Route path="/ChangePass" component={ChangePasswordMain}/>
-                            <Route path="/EditCustomer" component={EditCustomerMain}/>
-                            <Route path="/AddDog" component={AddDogMain}/>
-                            <Route path="/UserAccount" component={UserAccount}/>
-                            <Route path="/EditDog" component={EditDogMain}/>
-                            <Route path="/AddDog1" component={AddDog1}/>
-                            <Route path="/AddDog2" component={AddDog2}/>
-                            <Route path="/Profile" component={UserAccount}/>
-                            <Route path="/Admin" component={Admin}/>
-                            <Login
-                                show={this.state.show}
-                                onHide={this.onHide}
-                                errMsg={this.state.errMsg}
-                                changeErr={this.changeErr}
-                            />
-                        </div>
   onHideDisableAccount = () => {
     this.setState({ showDisableAccount: false });
   };
@@ -118,6 +87,7 @@ class App1 extends React.Component {
               <Route path="/EditDog" component={EditDog} />
               <Route path="/EditCustomer" component={EditCustomer} />
               <Route path="/DisableAccount" component={DisableAccountMain} />
+              <Route path="/admin" component={AdminTool} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
