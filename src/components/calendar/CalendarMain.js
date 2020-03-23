@@ -11,14 +11,15 @@ import {
 } from "@syncfusion/ej2-react-schedule";
 //import { DataManager, WebApiAdaptor } from "@syncfusion/ej2-data";
 import BasePath from "../../api/BasePath";
+//import { WebinarData } from './dataSource';
+import { Internationalization, extend } from "@syncfusion/ej2-base";
 
 class CalendarMain extends React.Component {
   constructor() {
     super(...arguments);
 
-    this.data = [{
-      
-    }];
+    this.data = extend([{}], null, true);
+    this.instance = new Internationalization();
   }
 
   state = {
@@ -34,7 +35,7 @@ class CalendarMain extends React.Component {
       this.setState({
         initialStates: true
       });
-console.log(result.data);
+      console.log(result.data);
       //var appointments = [];
 
       for (let i = 0; i < result.data.length; i++) {
@@ -52,17 +53,40 @@ console.log(result.data);
     }
   };
 
+  getTimeString(value){
+    return this.instance.formatDate(value, { skeleton: 'hm' })
+  }
+
+  eventTemplate(props) {
+    return (
+      <div
+        className="template-wrap"
+        style={{ background: props.SecondaryColor }}
+      >
+        <div className="subject" style={{ background: props.PrimaryColor }}>
+          {props.Subject}
+        </div>
+        <div className="time" style={{ background: props.PrimaryColor }}>
+          Time: {this.getTimeString(props.StartTime)} - {this.getTimeString(props.EndTime)}
+        </div>
+      </div>
+    );
+  }
+
   render() {
     this.getAppointmentInfo();
 
     return (
       <ScheduleComponent
         currentView="Month"
-        eventSettings={{ dataSource: this.data,
-        fields: {
-          description: { name: 'dogIdNumber', title: 'Dogs' },
-          location: { name: 'username', title: 'Owner' }
-        } }}
+        eventSettings={{
+          dataSource: this.data,
+          template: this.eventTemplate.bind(this),
+          fields: {
+            description: { name: "dogIdNumber", title: "Dogs" },
+            location: { name: "username", title: "Owner" }
+          }
+        }}
       >
         <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
       </ScheduleComponent>
