@@ -5,7 +5,7 @@ class ManagePhotos extends React.Component {
     render() {
         return (
             <div>
-                create user
+                manage photos
             </div>
         );
     }
