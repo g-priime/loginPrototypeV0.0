@@ -20,6 +20,7 @@ import {
 //import { DropDownList } from "@syncfusion/ej2-dropdowns";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
+import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 
 class CalendarMain extends React.Component {
   constructor() {
@@ -160,16 +161,16 @@ class CalendarMain extends React.Component {
             <td colSpan={4}>
               <DropDownListComponent
                 id="username"
-                placeholder="Choose appointment type"
+                placeholder="Choose customer"
                 data-name="username"
                 className="e-field"
                 style={{ width: "100%" }}
-                dataSource={ this.state.customers }
+                dataSource={this.state.customers}
                 value={props.username || null}
               ></DropDownListComponent>
             </td>
           </tr>
-          
+
           <tr>
             <td className="e-textlabel">Dogs</td>
             <td colSpan={4}>
@@ -233,37 +234,43 @@ class CalendarMain extends React.Component {
           <tr>
             <td className="e-textlabel">Approved</td>
             <td colSpan={4}>
-              <input
+              <CheckBoxComponent
                 id="isApproved"
-                className="e-field e-input"
-                type="text"
-                name="isApproved"
+                className="e-field"
+                type="checkbox"
+                data-name="isApproved"
                 style={{ width: "100%" }}
-              />
+                value={props.isApproved}
+                checked={props.isApproved}
+              ></CheckBoxComponent>
             </td>
-          </tr>
+          </tr>        
           <tr>
             <td className="e-textlabel">Cancelled</td>
             <td colSpan={4}>
-              <input
+              <CheckBoxComponent
                 id="isCancelled"
-                className="e-field e-input"
-                type="text"
-                name="isCancelled"
+                className="e-field"
+                type="checkbox"
+                data-name="isCancelled"
                 style={{ width: "100%" }}
-              />
+                value={props.isCancelled}
+                checked={props.isCancelled}
+              ></CheckBoxComponent>
             </td>
           </tr>
           <tr>
             <td className="e-textlabel">Paid</td>
             <td colSpan={4}>
-              <input
+              <CheckBoxComponent
                 id="isPaid"
-                className="e-field e-input"
-                type="text"
-                name="isPaid"
+                className="e-field"
+                type="checkbox"
+                data-name="isPaid"
                 style={{ width: "100%" }}
-              />
+                value={props.isPaid}
+                checked={props.isPaid}
+              ></CheckBoxComponent>
             </td>
           </tr>
           <tr>
