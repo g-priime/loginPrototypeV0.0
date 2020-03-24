@@ -14,12 +14,12 @@ import BasePath from "../../api/BasePath";
 //import { WebinarData } from './dataSource';
 import {
   Internationalization,
-  extend,
-  createElement
+  extend
+  //createElement
 } from "@syncfusion/ej2-base";
-import { DropDownList } from '@syncfusion/ej2-dropdowns'
-import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+//import { DropDownList } from "@syncfusion/ej2-dropdowns";
+import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
+import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 
 class CalendarMain extends React.Component {
   constructor() {
@@ -30,8 +30,9 @@ class CalendarMain extends React.Component {
   }
 
   state = {
-    initialStates: false
-    //appointments: []
+    initialStates: false,
+    initialCustomers: false,
+    customers: []
   };
 
   getAppointmentInfo = async () => {
@@ -43,7 +44,6 @@ class CalendarMain extends React.Component {
         initialStates: true
       });
       console.log(result.data);
-      //var appointments = [];
 
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
@@ -54,10 +54,33 @@ class CalendarMain extends React.Component {
         appointment.dogIdNumber = result.data[i].dogIdNumber;
         appointment.username = result.data[i].username;
         appointment.EventType = result.data[i].type;
+        appointment.total = result.data[i].total;
+        appointment.amountPaid = result.data[i].amountPaid;
+        appointment.isApproved = result.data[i].isApproved;
+        appointment.isCancelled = result.data[i].isCancelled;
+        appointment.isPaid = result.data[i].isPaid;
+        appointment.additionalComments = result.data[i].additionalComments;
+
         this.data.push(appointment);
       }
-      //this.setState({ appointments: appointments });
-      //this.data = appointments;
+    }
+  };
+
+  getCustomerInfo = async () => {
+    var token = localStorage.getItem("token");
+
+    //get dogs instead of customers for until back end has get all customers
+    const result = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
+    if (this.state.initialCustomers === false) {
+      this.setState({
+        initialCustomers: true
+      });
+
+      let customers = [];
+      for (let i = 0; i < result.data.length; i++) {
+        customers.push(result.data[i].name);
+      }
+      this.setState({ customers: customers });
     }
   };
 
@@ -104,75 +127,172 @@ class CalendarMain extends React.Component {
       );
     }
   }
-/*
+
   onPopupOpen(args) {
     if (args.type === "Editor") {
-      if (!args.element.querySelector(".custom-field-row")) {
-        let row = createElement("div", { className: "custom-field-row" });
-        let formElement = args.element.querySelector(".e-schedule-form");
-        formElement.lastChild.insertBefore(
-          row,
-          formElement.lastChild.lastChild
-        );
-        let container = createElement("div", {
-          className: "custom-field-container"
-        });
-        let inputEle = createElement("input", {
-          className: "e-field",
-          attrs: { name: "EventType" }
-        });
-        
-        container.appendChild(inputEle);
-        row.appendChild(container);
-        let drowDownList = new DropDownList({
-          dataSource: [
-            { text: "Public Event", value: "public-event" },
-            { text: "Maintenance", value: "maintenance" },
-            { text: "Commercial Event", value: "commercial-event" },
-            { text: "Family Event", value: "family-event" }
-          ],
-          fields: { text: "text", value: "value" },
-          value: args.data.EventType,
-          floatLabelType: "Always",
-          placeholder: "Event Type"
-        });
-        drowDownList.appendTo(inputEle);
-        inputEle.setAttribute("name", "EventType");
-        
-      }
+      let statusElement = args.element.querySelector("#Subject");
+      statusElement.setAttribute("name", "Subject");
     }
   }
-*/
-onPopupOpen(args) {
-  if (args.type === 'Editor') {
-      let statusElement = args.element.querySelector('#EventType');
-      statusElement.setAttribute('name', 'EventType');
+  editorTemplate(props) {
+    return props !== undefined ? (
+      <table
+        className="custom-event-editor"
+        style={{ width: "100%", cellpadding: "5" }}
+      >
+        <tbody>
+          <tr>
+            <td className="e-textlabel">Appointment Type</td>
+            <td colSpan={4}>
+              <DropDownListComponent
+                id="Subject"
+                placeholder="Choose appointment type"
+                data-name="Subject"
+                className="e-field"
+                style={{ width: "100%" }}
+                dataSource={["daycare", "boarding", "training"]}
+                value={props.Subject || null}
+              ></DropDownListComponent>
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Owner</td>
+            <td colSpan={4}>
+              <DropDownListComponent
+                id="username"
+                placeholder="Choose appointment type"
+                data-name="username"
+                className="e-field"
+                style={{ width: "100%" }}
+                dataSource={ this.state.customers }
+                value={props.username || null}
+              ></DropDownListComponent>
+            </td>
+          </tr>
+          
+          <tr>
+            <td className="e-textlabel">Dogs</td>
+            <td colSpan={4}>
+              <input
+                id="Dogs"
+                className="e-field e-input"
+                type="text"
+                name="dogIdNumber"
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Start Time</td>
+            <td colSpan={4}>
+              <DateTimePickerComponent
+                format="dd/MM/yy hh:mm a"
+                id="StartTime"
+                data-name="StartTime"
+                value={new Date(props.startTime || props.StartTime)}
+                className="e-field"
+              ></DateTimePickerComponent>
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">End Time</td>
+            <td colSpan={4}>
+              <DateTimePickerComponent
+                format="dd/MM/yy hh:mm a"
+                id="EndTime"
+                data-name="EndTime"
+                value={new Date(props.endTime || props.EndTime)}
+                className="e-field"
+              ></DateTimePickerComponent>
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Total</td>
+            <td colSpan={4}>
+              <input
+                id="total"
+                className="e-field e-input"
+                type="text"
+                name="total"
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Amount Paid</td>
+            <td colSpan={4}>
+              <input
+                id="amountPaid"
+                className="e-field e-input"
+                type="text"
+                name="amountPaid"
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Approved</td>
+            <td colSpan={4}>
+              <input
+                id="isApproved"
+                className="e-field e-input"
+                type="text"
+                name="isApproved"
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Cancelled</td>
+            <td colSpan={4}>
+              <input
+                id="isCancelled"
+                className="e-field e-input"
+                type="text"
+                name="isCancelled"
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Paid</td>
+            <td colSpan={4}>
+              <input
+                id="isPaid"
+                className="e-field e-input"
+                type="text"
+                name="isPaid"
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td className="e-textlabel">Additional Comments</td>
+            <td colSpan={4}>
+              <textarea
+                id="additionalComments"
+                className="e-field e-input"
+                name="additionalComments"
+                rows={3}
+                cols={50}
+                style={{
+                  width: "100%",
+                  height: "60px !important",
+                  resize: "vertical"
+                }}
+              ></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    ) : (
+      <div></div>
+    );
   }
-}
-editorTemplate(props) {
-  return (props !== undefined ? <table className="custom-event-editor" style={{ width: '100%', cellpadding: '5' }}><tbody>
-<tr><td className="e-textlabel">Appointment Type</td><td colSpan={4}>
-  <input id="Appointment Type" className="e-field e-input" type="text" name="Subject" style={{ width: '100%' }}/>
-</td></tr>
-<tr><td className="e-textlabel">Owner</td><td colSpan={4}>
-  <input id="Owner" className="e-field e-input" type="text" name="username" style={{ width: '100%' }}/>
-</td></tr>
-<tr><td className="e-textlabel">Status</td><td colSpan={4}>
-  <DropDownListComponent id="EventType" placeholder='Choose status' data-name="EventType" className="e-field" style={{ width: '100%' }} dataSource={['New', 'Requested', 'Confirmed']} value={props.EventType || null}></DropDownListComponent>
-</td></tr>
-<tr><td className="e-textlabel">From</td><td colSpan={4}>
-  <DateTimePickerComponent format='dd/MM/yy hh:mm a' id="StartTime" data-name="StartTime" value={new Date(props.startTime || props.StartTime)} className="e-field"></DateTimePickerComponent>
-</td></tr>
-<tr><td className="e-textlabel">To</td><td colSpan={4}>
-  <DateTimePickerComponent format='dd/MM/yy hh:mm a' id="EndTime" data-name="EndTime" value={new Date(props.endTime || props.EndTime)} className="e-field"></DateTimePickerComponent>
-</td></tr>
-<tr><td className="e-textlabel">Reason</td><td colSpan={4}>
-  <textarea id="Description" className="e-field e-input" name="Description" rows={3} cols={50} style={{ width: '100%', height: '60px !important', resize: 'vertical' }}></textarea>
-</td></tr></tbody></table> : <div></div>);
-}
 
   render() {
     this.getAppointmentInfo();
+    this.getCustomerInfo();
 
     return (
       <ScheduleComponent
