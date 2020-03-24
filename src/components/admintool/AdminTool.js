@@ -19,6 +19,7 @@ class AdminTool extends React.Component {
   render() {
     return (
       <div style={{ backgroundColor: "rgba(255,255,255,0)" }} className="ui segment admin-container">
+         <BrowserRouter>
         <h1 style={{ color: "white" }}>K9 Fun Family Admin Tool</h1>
         <div style={{ backgroundColor: "rgba(255,255,255,0)" }}>
           <div className="admin-row">
@@ -106,7 +107,7 @@ class AdminTool extends React.Component {
               </Link>
             </div>
             <div style={{backgroundColor: "#ECEBE7"}} className="output">
-              <BrowserRouter>
+              {/* <BrowserRouter> */}
                 <div>
                   <div className="mt-4 ml-5 mr-5">
                     <Route path="/ViewCalendar" exact component={ViewCalendar} />
@@ -117,10 +118,11 @@ class AdminTool extends React.Component {
                     <Route path="/Reports" exact component={Reports} />
                   </div>
                 </div>
-              </BrowserRouter>
+              {/* </BrowserRouter> */}
             </div>
           </div>
         </div>
+        </BrowserRouter>
       </div>
     );
   }
