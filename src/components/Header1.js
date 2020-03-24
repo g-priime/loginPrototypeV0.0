@@ -32,6 +32,7 @@ class Header1 extends React.Component {
       customerInfo.data !== "Authentication error, bad token" &&
       customerInfo.data !== ""
     ) {
+      console.log(customerInfo.data);
       this.props.authenticate(true);
       this.setState({
         initialStates: true,
