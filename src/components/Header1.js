@@ -32,6 +32,7 @@ class Header1 extends React.Component {
       customerInfo.data !== "Authentication error, bad token" &&
       customerInfo.data !== ""
     ) {
+      this.props.authenticate(true);
       this.setState({
         initialStates: true,
         username: customerInfo.data.username,
@@ -42,6 +43,7 @@ class Header1 extends React.Component {
 
   logOut = () => {
     localStorage.clear();
+    this.props.authenticate(false);
     this.setState({ initialStates: false, username: "" });
   };
 
@@ -50,7 +52,7 @@ class Header1 extends React.Component {
     var username = this.state.username;
     var admin = this.state.admin;
 
-    if (username !== "" && localStorage.getItem("token") != null && admin == false) {
+    if (this.props.authenticated === true && admin === false) {
       return (
         <div>
           <div className="d-flex justify-content-between">
@@ -135,7 +137,7 @@ class Header1 extends React.Component {
           </div>
         </div>
       );
-    } else if (username !== "" && localStorage.getItem("token") != null && admin == true) {
+    } else if (this.props.authenticated === true && admin === true) {
       return (
         <div>
           <div className="d-flex justify-content-between">
