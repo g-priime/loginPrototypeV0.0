@@ -94,6 +94,7 @@ class AdminTool extends React.Component {
                 }}>Reports
               </Link>
               <Link
+                onClick={this.logout}
                 to="/"
                 type="button"
                 className="btn mb-3"
@@ -103,7 +104,7 @@ class AdminTool extends React.Component {
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
-                onClick={this.logout}>Log Out
+                >Log Out
               </Link>
             </div>
             <div style={{backgroundColor: "#ECEBE7"}} className="output">
