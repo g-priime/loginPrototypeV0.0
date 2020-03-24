@@ -19,7 +19,10 @@ import {
 } from "@syncfusion/ej2-base";
 //import { DropDownList } from "@syncfusion/ej2-dropdowns";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
-import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
+import {
+  DropDownListComponent,
+  MultiSelectComponent
+} from "@syncfusion/ej2-react-dropdowns";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 
 class CalendarMain extends React.Component {
@@ -49,10 +52,13 @@ class CalendarMain extends React.Component {
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
         appointment.Id = result.data[i].idNumber;
+
         appointment.Subject = result.data[i].type;
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
-        appointment.dogIdNumber = result.data[i].dogIdNumber;
+
+        appointment.dogIdNumber = result.data[i].dogIdNumber.split(',');
+
         appointment.username = result.data[i].username;
         appointment.EventType = result.data[i].type;
         appointment.total = result.data[i].total;
@@ -170,17 +176,20 @@ class CalendarMain extends React.Component {
               ></DropDownListComponent>
             </td>
           </tr>
-
           <tr>
             <td className="e-textlabel">Dogs</td>
             <td colSpan={4}>
-              <input
-                id="Dogs"
-                className="e-field e-input"
-                type="text"
-                name="dogIdNumber"
+              <MultiSelectComponent
+                id="dogIdNumber"
+                placeholder="Choose dogs"
+                data-name="dogIdNumber"
+                className="e-field"
                 style={{ width: "100%" }}
-              />
+                dataSource={["1", "2"]}
+                value={props.dogIdNumber}
+                fields={["1", "2"]} 
+                mode="Box"
+              ></MultiSelectComponent>
             </td>
           </tr>
           <tr>
@@ -244,7 +253,7 @@ class CalendarMain extends React.Component {
                 checked={props.isApproved}
               ></CheckBoxComponent>
             </td>
-          </tr>        
+          </tr>
           <tr>
             <td className="e-textlabel">Cancelled</td>
             <td colSpan={4}>
