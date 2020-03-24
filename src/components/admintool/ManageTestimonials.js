@@ -5,7 +5,7 @@ class ManageTestimonials extends React.Component {
     render() {
         return (
             <div>
-                create user
+                manage testimonials
             </div>
         );
     }
