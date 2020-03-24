@@ -40,7 +40,8 @@ class App1 extends React.Component {
   state = {
     show: false,
     errMsg: "",
-    showDisableAccount: false
+    showDisableAccount: false,
+    authenticated: false
   };
 
   toggleLogin = () => {
@@ -64,12 +65,20 @@ class App1 extends React.Component {
     this.setState({ showDisableAccount: false });
   };
 
+  authenticate= (value) => {
+    if (value) {
+      this.setState({authenticated: true});
+    } else {
+      this.setState({authenticated: false});
+    }
+  }
+
   render() {
     return (
       <div>
         <BrowserRouter>
           <div>
-            <Header1 showLogin={this.toggleLogin} showDisableAccount={this.toggleDisableAccount} />
+            <Header1 showLogin={this.toggleLogin} authenticate={this.authenticate} authenticated={this.state.authenticated} showDisableAccount={this.toggleDisableAccount} />
             <div className="mt-4 ml-5 mr-5">
               <Route path="/" exact component={HomePageHTML} />
               <Route path="/Register" component={RegisterMain} />
@@ -87,7 +96,7 @@ class App1 extends React.Component {
               <Route path="/EditDog" component={EditDog} />
               <Route path="/EditCustomer" component={EditCustomer} />
               <Route path="/DisableAccount" component={DisableAccountMain} />
-              <Route path="/admin" component={AdminTool} />
+              <Route path="/admin" component={() => <AdminTool authenticate={this.authenticate}/>} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
