@@ -11,6 +11,11 @@ import Reports from './Reports';
 
 class AdminTool extends React.Component {
 
+  logout = () => {
+    localStorage.clear();
+    this.props.authenticate(false);
+  }
+
   render() {
     return (
       <div style={{ backgroundColor: "rgba(255,255,255,0)" }} className="ui segment admin-container">
@@ -47,7 +52,7 @@ class AdminTool extends React.Component {
                 style={{
                   fontWeight: "bold",
                   backgroundColor: "#ECEBE7",
-                 
+
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Manage Users
@@ -59,7 +64,7 @@ class AdminTool extends React.Component {
                 style={{
                   fontWeight: "bold",
                   backgroundColor: "#ECEBE7",
-                  
+
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Manage Photos
@@ -71,7 +76,7 @@ class AdminTool extends React.Component {
                 style={{
                   fontWeight: "bold",
                   backgroundColor: "#ECEBE7",
-                
+
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Manage Testimonials
@@ -83,13 +88,12 @@ class AdminTool extends React.Component {
                 style={{
                   fontWeight: "bold",
                   backgroundColor: "#ECEBE7",
-                  
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Reports
               </Link>
               <Link
-                to="ManageTestimonials"
+                to="/"
                 type="button"
                 className="btn mb-3"
                 style={{
@@ -97,12 +101,12 @@ class AdminTool extends React.Component {
                   backgroundColor: "#ECEBE7",
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}>Log Out
+                }}
+                onClick={this.logout}>Log Out
               </Link>
             </div>
-            <div>
+            <div style={{backgroundColor: "#ECEBE7"}}>
               <BrowserRouter>
-
                 <div>
                   <div className="mt-4 ml-5 mr-5">
                     <Route path="/ViewCalendar" exact component={ViewCalendar} />
@@ -112,7 +116,6 @@ class AdminTool extends React.Component {
                     <Route path="/ManageTestimonials" exact component={ManageTestimonials} />
                     <Route path="/Reports" exact component={Reports} />
                   </div>
-
                 </div>
               </BrowserRouter>
             </div>
