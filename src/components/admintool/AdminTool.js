@@ -105,7 +105,7 @@ class AdminTool extends React.Component {
                 onClick={this.logout}>Log Out
               </Link>
             </div>
-            <div style={{backgroundColor: "#ECEBE7"}}>
+            <div style={{backgroundColor: "#ECEBE7"}} className="output">
               <BrowserRouter>
                 <div>
                   <div className="mt-4 ml-5 mr-5">
