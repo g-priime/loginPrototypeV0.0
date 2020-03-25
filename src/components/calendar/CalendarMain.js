@@ -31,6 +31,8 @@ class CalendarMain extends React.Component {
 
     this.data = extend([{}], null, true);
     this.instance = new Internationalization();
+    this.dogs = [];
+    this.appointedDogs = [];
   }
 
   state = {
@@ -60,8 +62,13 @@ class CalendarMain extends React.Component {
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
 
-        /*
+        
         var dogIds = result.data[i].dogIdNumber.split(',');
+        this.getDogs(dogIds[i]);
+        appointment.dogs = this.dogs;
+        appointment.appointedDogs = this.appointedDogs;
+        console.log(this.dogs);
+        /*
         var dogArray = [];
         
         for(let i=0; i<dogIds.length; i++){
@@ -216,8 +223,11 @@ class CalendarMain extends React.Component {
     var dogArrayDropDown = [];
     dogs.map(doggy => dogArrayDropDown.push(doggy.name));
 
+    this.dogs = dogArrayDropDown;
+    this.appointedDogs = dogArrayAppointed;
+
     console.log(this.state.initialDogs);
-    if (!this.state.initialDogs) {
+    if (false) {
       this.setState({
         dogs: dogArrayDropDown,
         initialDogs: true,
@@ -226,16 +236,33 @@ class CalendarMain extends React.Component {
     }
   };
 
-  onPopupOpen(args) {
+  onCellClick() {
+    console.log("cell");
+  }
+
+  onEventClick() {
+    console.log("event");
+  }
+
+  onPopupClose(args) {
+    console.log("close");
+    this.setState({ initialDogs: false });
+  }
+
+  onPopupOpen(args, props) {
     if (args.type === "Editor") {
       let statusElement = args.element.querySelector("#Subject");
       statusElement.setAttribute("name", "Subject");
+      //this.getDogs(props.dogIdNumber);
     }
+    console.log("open");
+
+    //this.setState({ initialDogs: false });
   }
   editorTemplate(props) {
     //console.log(props.dogIdNumber);
     //if (props.dogIdNumber !== undefined) {
-    this.getDogs(props.dogIdNumber);
+    //this.getDogs(props.dogIdNumber);
     //this.setState({ initialDogs: false });
     //}
 
@@ -279,14 +306,14 @@ class CalendarMain extends React.Component {
             <td className="e-textlabel">Dogs</td>
             <td colSpan={4}>
               <MultiSelectComponent
-                id="dogIdNumber"
+                id="appointedDogs"
                 placeholder="Choose dogs"
-                data-name="dogIdNumber"
+                data-name="appointedDogs"
                 className="e-field"
                 style={{ width: "100%" }}
-                dataSource={this.state.dogs}
-                value={this.state.appointedDogs || null}
-                fields={this.state.dogs}
+                dataSource={props.dogs}
+                value={props.appointedDogs || null}
+                fields={props.dogs}
                 mode="Box"
               ></MultiSelectComponent>
             </td>
@@ -422,6 +449,7 @@ class CalendarMain extends React.Component {
         }}
         editorTemplate={this.editorTemplate.bind(this)}
         popupOpen={this.onPopupOpen.bind(this)}
+        popupClose={this.onPopupClose.bind(this)}
       >
         <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
       </ScheduleComponent>
