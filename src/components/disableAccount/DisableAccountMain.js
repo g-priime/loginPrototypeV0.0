@@ -42,7 +42,8 @@ class DisableAccountMain extends React.Component {
 
     const response = await BasePath.put("/webresources/deleteAccount", {
       token,
-      username
+      username,
+      password
     });
 
     this.setState({ response: response.data });
@@ -50,10 +51,11 @@ class DisableAccountMain extends React.Component {
     if (this.state.response === "Password is incorrect") {
       this.setState({ cn: "popup4" });
       this.togglePopup();
+      this.setState({ password: "" });
     } else if (this.state.response === "yes") {
       this.logOut();
       this.props.onHideDisableAccount();
-      this.setState({ response: "" });
+      this.setState({ response: "", password: "" });
     }
   };
 
