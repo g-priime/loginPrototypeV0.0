@@ -15,7 +15,8 @@ class DisableAccountMain extends React.Component {
       showPopup: false,
       cn: "",
       username: "",
-      initialState: false
+      initialState: false,
+      token: ""
     };
   }
 
@@ -28,8 +29,8 @@ class DisableAccountMain extends React.Component {
           token
         }
       );
-      if (!this.state.initialState) {
-        this.setState({ username: response.data.username, initialState: true });
+      if (!this.state.initialState || this.state.token !== token) {
+        this.setState({ username: response.data.username, initialState: true, token: token });
       }
     }
   };
