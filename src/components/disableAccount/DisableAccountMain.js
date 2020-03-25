@@ -9,17 +9,40 @@ class DisableAccountMain extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { response: "", password: "", showPopup: false, cn: "" };
+    this.state = {
+      response: "",
+      password: "",
+      showPopup: false,
+      cn: "",
+      username: "",
+      initialState: false
+    };
   }
+
+  getUsername = async () => {
+    var token = localStorage.getItem("token");
+    if (token != null) {
+      const response = await BasePath.get(
+        `/webresources/RetrieveUser/${token}`,
+        {
+          token
+        }
+      );
+      if (!this.state.initialState) {
+        this.setState({ username: response.data.username, initialState: true });
+      }
+    }
+  };
 
   onSubmit = async () => {
     //add back in when done testing
-    //var token = localStorage.getItem("token");
+    var token = localStorage.getItem("token");
+    var username = this.state.username;
     var password = this.state.password;
 
-    const response = await BasePath.put("/webresources/disableAccount", {
-      //token,
-      password
+    const response = await BasePath.put("/webresources/deleteAccount", {
+      token,
+      username
     });
 
     this.setState({ response: response.data });
@@ -27,7 +50,7 @@ class DisableAccountMain extends React.Component {
     if (this.state.response === "Password is incorrect") {
       this.setState({ cn: "popup4" });
       this.togglePopup();
-    } else if (this.state.response === "Disabled") {
+    } else if (this.state.response === "yes") {
       this.logOut();
       this.props.onHideDisableAccount();
       this.setState({ response: "" });
@@ -54,7 +77,9 @@ class DisableAccountMain extends React.Component {
   };
 
   render() {
-    if (this.state.response === "Disabled") {
+    this.getUsername();
+
+    if (this.state.response === "yes") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
