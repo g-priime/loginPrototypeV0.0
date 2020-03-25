@@ -36,7 +36,9 @@ class CalendarMain extends React.Component {
   state = {
     initialStates: false,
     initialCustomers: false,
-    customers: []
+    customers: [],
+    dogs: [],
+    initialDogs: false
   };
 
   getAppointmentInfo = async () => {
@@ -57,7 +59,29 @@ class CalendarMain extends React.Component {
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
 
-        appointment.dogIdNumber = result.data[i].dogIdNumber.split(',');
+        /*
+        var dogIds = result.data[i].dogIdNumber.split(',');
+        var dogArray = [];
+        
+        for(let i=0; i<dogIds.length; i++){
+          var dog = this.getDogs(dogIds[i]);
+          dogArray.push(dog);
+        }
+        console.log(dogArray);
+        */
+        //subjects.push(result.data[i].type);
+        //appointment.dogIdNumber = result.data[i].dogIdNumber.split(',');
+        //appointment.dogIdNumber = dogArray;
+        var dogIds = result.data[i].dogIdNumber.split(",");
+        var dogArray = [];
+        for (let i = 0; i < dogIds.length; i++) {
+          if (dogIds[i] === "1") {
+            dogArray.push("Max");
+          } else {
+            dogArray.push("Sparky");
+          }
+        }
+        appointment.dogIdNumber = dogArray;
 
         appointment.username = result.data[i].username;
         appointment.EventType = result.data[i].type;
@@ -72,7 +96,25 @@ class CalendarMain extends React.Component {
       }
     }
   };
+  /*
+  getDogs = (dogId) => {
+    
+    var token = localStorage.getItem("token");
+    var dog = "";
 
+    BasePath.get(`/webresources/GetDog/${token}/${dogId}`)
+    .then(result => {
+      dog = result.data.name;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+    //console.log(response.data.name);
+    
+   return dog;
+  };
+*/
   getCustomerInfo = async () => {
     var token = localStorage.getItem("token");
 
@@ -135,6 +177,22 @@ class CalendarMain extends React.Component {
     }
   }
 
+  getDogs = async () => {
+    //this.setState({ initialDogs: false });
+    var token = localStorage.getItem("token");
+    console.log(token);
+    const response = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
+
+    const dogs = response.data;
+    var dogArray = [];
+    dogs.map(doggy => dogArray.push(doggy.name));
+
+    if(!this.state.initialDogs){
+      this.setState({ dogs: dogArray, initialDogs: true });
+    }
+    
+  };
+
   onPopupOpen(args) {
     if (args.type === "Editor") {
       let statusElement = args.element.querySelector("#Subject");
@@ -142,6 +200,8 @@ class CalendarMain extends React.Component {
     }
   }
   editorTemplate(props) {
+    this.getDogs();
+
     return props !== undefined ? (
       <table
         className="custom-event-editor"
@@ -185,9 +245,9 @@ class CalendarMain extends React.Component {
                 data-name="dogIdNumber"
                 className="e-field"
                 style={{ width: "100%" }}
-                dataSource={["1", "2"]}
+                dataSource={this.state.dogs}
                 value={props.dogIdNumber}
-                fields={["1", "2"]} 
+                fields={this.state.dogs}
                 mode="Box"
               ></MultiSelectComponent>
             </td>
