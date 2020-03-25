@@ -85,8 +85,9 @@ class BookDaycareMain extends React.Component {
     var selectedDogs = [];
     this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
-    var startTime = Moment(this.state.fieldName[1]).format("YYYY-MM-DD hh:mm:ss");
-    var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD hh:mm:ss");
+    var startTime = Moment(this.state.fieldName[1]).format("YYYY-MM-DD HH:mm:ss");
+    var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD HH:mm:ss");
+    console.log(endTime);
     var additionalComments = this.state.fieldName[3];
     var total = this.state.cost;
 
