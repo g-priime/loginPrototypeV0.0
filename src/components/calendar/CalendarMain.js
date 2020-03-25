@@ -38,7 +38,8 @@ class CalendarMain extends React.Component {
     initialCustomers: false,
     customers: [],
     dogs: [],
-    initialDogs: false
+    initialDogs: false,
+    appointedDogs: []
   };
 
   getAppointmentInfo = async () => {
@@ -96,23 +97,26 @@ class CalendarMain extends React.Component {
       }
     }
   };
-  /*
-  getDogs = (dogId) => {
-    
+/*
+  getAppointedDogs = dogIds => {
     var token = localStorage.getItem("token");
-    var dog = "";
+    var dogArray = [];
 
-    BasePath.get(`/webresources/GetDog/${token}/${dogId}`)
-    .then(result => {
-      dog = result.data.name;
-    })
-    .catch(err => {
-      console.log(err);
-    });
+    for (let i = 0; i < dogIds.length; i++) {
+      var dog = "";
+      BasePath.get(`/webresources/GetDog/${token}/${dogIds[i]}`)
+        .then(result => {
+          dog = result.data.name;
+          dogArray.push(dog);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
 
-    //console.log(response.data.name);
-    
-   return dog;
+    console.log(dogArray);
+
+    return dog;
   };
 */
   getCustomerInfo = async () => {
@@ -178,6 +182,7 @@ class CalendarMain extends React.Component {
   }
 
   getDogs = async () => {
+    let dogIds = [ "1", "2" ];
     //this.setState({ initialDogs: false });
     var token = localStorage.getItem("token");
     console.log(token);
@@ -185,12 +190,25 @@ class CalendarMain extends React.Component {
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy => dogArray.push(doggy.name));
-
-    if(!this.state.initialDogs){
-      this.setState({ dogs: dogArray, initialDogs: true });
+    dogs.map(doggy =>
+      dogArray.push({ key: doggy.idNumber, value: doggy.name })
+    );
+    var dogArrayAppointed = [];
+    for(let i=0; i<dogArray.length; i++){
+      for(let j=0; i<dogIds.length; j++){
+        if(dogIds[j] === dogArray[i].key){
+          dogArrayAppointed.push(dogArray[i].value);
+        }
+      }
     }
-    
+    console.log(dogArrayAppointed);
+
+    var dogArrayDropDown = [];
+    dogs.map(doggy => dogArrayDropDown.push(doggy.name));
+
+    if (!this.state.initialDogs) {
+      this.setState({ dogs: dogArrayDropDown, initialDogs: true });
+    }
   };
 
   onPopupOpen(args) {
@@ -201,6 +219,7 @@ class CalendarMain extends React.Component {
   }
   editorTemplate(props) {
     this.getDogs();
+    //this.getAppointedDogs(["1", "2"]);
 
     return props !== undefined ? (
       <table
