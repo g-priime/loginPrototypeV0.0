@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
 import Moment from "moment";
+import EditDaycareMain from "./EditDaycareMain";
 
 class EditAppointmentMain extends React.Component {
   constructor() {
@@ -32,14 +33,18 @@ class EditAppointmentMain extends React.Component {
 
   getAppointmentInfo = () => {
     this.appointment = this.props.location.state.appointment;
-    console.log(this.appointment.type);
+    console.log(this.appointment);
   };
 
   render() {
     this.getAppointmentInfo();
 
     if (this.appointment.type === "daycare") {
-      return <div style={{ marginTop: "10px" }}>Book Daycare</div>;
+      return (
+        <div style={{ marginTop: "10px" }}>
+          <EditDaycareMain appointment={this.appointment}></EditDaycareMain>
+        </div>
+      );
     } else if (this.appointment.type === "boarding") {
       return <div style={{ marginTop: "10px" }}>boarding</div>;
     } else {
