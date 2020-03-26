@@ -43,7 +43,8 @@ class CalendarMain extends React.Component {
     initialDogs: false,
     appointedDogs: [],
 
-    usernames: []
+    usernames: [],
+    dognames: []
   };
 
   getAppointmentInfo = async () => {
@@ -96,6 +97,9 @@ class CalendarMain extends React.Component {
         }
         appointment.dogIdNumber = dogArray;
 */
+appointment.appointedDogs = this.state.dognames;
+console.log(appointment.appointedDogs);
+
         appointment.username = result.data[i].username;
         appointment.EventType = result.data[i].type;
         appointment.total = result.data[i].total;
@@ -147,10 +151,7 @@ class CalendarMain extends React.Component {
       this.setState({ customers: customers });
 
       let usernames = [];
-      customers.map(
-        customer => (
-        usernames.push(customer.username))
-      );
+      customers.map(customer => usernames.push(customer.username));
       this.setState({ usernames: usernames });
     }
     console.log(this.state.customers);
@@ -168,11 +169,16 @@ class CalendarMain extends React.Component {
 
       let dogs = [];
       for (let i = 0; i < result.data.length; i++) {
-        dogs.push(result.data[i].name);
+        dogs.push(result.data[i]);
       }
       this.setState({ dogs: dogs });
+
+      let dognames = [];
+      dogs.map(dog => dognames.push(dog.name));
+      this.setState({ dognames: dognames });
     }
-    console.log(this.state.dogs);
+
+    console.log(this.state.dognames);
   };
 
   getTimeString(value) {
@@ -296,8 +302,16 @@ class CalendarMain extends React.Component {
     //this.getDogs(props.dogIdNumber);
     //this.setState({ initialDogs: false });
     //}
-
-    //this.getAppointedDogs(["1", "2"]);
+    let customer = {};
+for(let i=0; i<this.state.customers.length; i++)
+{
+  if(props.username === this.state.customers[i].username){
+customer = this.state.customers[i];
+  }
+}
+console.log(customer);
+console.log(this.state.dogs);
+    props.appointedDogs = ["Max"];
 
     return props !== undefined ? (
       <table
@@ -342,9 +356,9 @@ class CalendarMain extends React.Component {
                 data-name="appointedDogs"
                 className="e-field"
                 style={{ width: "100%" }}
-                dataSource={["Fido", "Lizard"]}
-                value={["Lizard"]}
-                fields={["Fido", "Lizard"]}
+                dataSource={this.state.dognames}
+                value={props.appointedDogs}
+                fields={this.state.dognames}
                 mode="Box"
               ></MultiSelectComponent>
             </td>
