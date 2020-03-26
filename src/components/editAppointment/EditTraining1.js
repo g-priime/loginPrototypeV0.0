@@ -102,7 +102,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="baby"
                           value="Yes"
-                          defaultChecked={this.props.baby === "Yes"}
+                          checked={this.props.baby === "Yes"}
                           onChange={this.props.onChangeBaby}
                         />
                       </td>
@@ -112,7 +112,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="baby"
                           value="No"
-                          defaultChecked={this.props.baby === "No"}
+                          checked={this.props.baby === "No"}
                           onChange={this.props.onChangeBaby}
                         />
                       </td>
@@ -125,7 +125,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="cat"
                           value="Yes"
-                          defaultChecked={this.props.cat === "Yes"}
+                          checked={this.props.cat === "Yes"}
                           onChange={this.props.onChangeCat}
                         />
                       </td>
@@ -135,7 +135,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="cat"
                           value="No"
-                          defaultChecked={this.props.cat === "No"}
+                          checked={this.props.cat === "No"}
                           onChange={this.props.onChangeCat}
                         />
                       </td>
@@ -148,7 +148,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="newDog"
                           value="Yes"
-                          defaultChecked={this.props.newDog === "Yes"}
+                          checked={this.props.newDog === "Yes"}
                           onChange={this.props.onChangeNewDog}
                         />
                       </td>
@@ -158,7 +158,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="newDog"
                           value="No"
-                          defaultChecked={this.props.newDog === "No"}
+                          checked={this.props.newDog === "No"}
                           onChange={this.props.onChangeNewDog}
                         />
                       </td>
@@ -171,7 +171,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="significantOther"
                           value="Yes"
-                          defaultChecked={this.props.significantOther === "Yes"}
+                          checked={this.props.significantOther === "Yes"}
                           onChange={this.props.onChangeSignificantOther}
                         />
                       </td>
@@ -181,7 +181,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="significantOther"
                           value="No"
-                          defaultChecked={this.props.significantOther === "No"}
+                          checked={this.props.significantOther === "No"}
                           onChange={this.props.onChangeSignificantOther}
                         />
                       </td>
@@ -194,7 +194,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="members"
                           value="Yes"
-                          defaultChecked={this.props.members === "Yes"}
+                          checked={this.props.members === "Yes"}
                           onChange={this.props.onChangeMembers}
                         />
                       </td>
@@ -204,7 +204,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="members"
                           value="No"
-                          defaultChecked={this.props.members === "No"}
+                          checked={this.props.members === "No"}
                           onChange={this.props.onChangeMembers}
                         />
                       </td>
@@ -217,7 +217,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="children"
                           value="Yes"
-                          defaultChecked={this.props.children === "Yes"}
+                          checked={this.props.children === "Yes"}
                           onChange={this.props.onChangeChildren}
                         />
                       </td>
@@ -227,7 +227,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="children"
                           value="No"
-                          defaultChecked={this.props.children === "No"}
+                          checked={this.props.children === "No"}
                           onChange={this.props.onChangeChildren}
                         />
                       </td>
@@ -240,7 +240,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="home"
                           value="Yes"
-                          defaultChecked={this.props.home === "Yes"}
+                          checked={this.props.home === "Yes"}
                           onChange={this.props.onChangeHome}
                         />
                       </td>
@@ -250,7 +250,7 @@ class EditTraining1 extends React.Component {
                           type="radio"
                           name="home"
                           value="No"
-                          defaultChecked={this.props.home === "No"}
+                          checked={this.props.home === "No"}
                           onChange={this.props.onChangeHome}
                         />
                       </td>
