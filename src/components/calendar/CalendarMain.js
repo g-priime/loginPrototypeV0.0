@@ -97,8 +97,8 @@ class CalendarMain extends React.Component {
         }
         appointment.dogIdNumber = dogArray;
 */
-appointment.appointedDogs = this.state.dognames;
-console.log(appointment.appointedDogs);
+        appointment.appointedDogs = this.state.dognames;
+        console.log(appointment.appointedDogs);
 
         appointment.username = result.data[i].username;
         appointment.EventType = result.data[i].type;
@@ -172,6 +172,7 @@ console.log(appointment.appointedDogs);
         dogs.push(result.data[i]);
       }
       this.setState({ dogs: dogs });
+      this.dogs = dogs;
 
       let dognames = [];
       dogs.map(dog => dognames.push(dog.name));
@@ -303,14 +304,41 @@ console.log(appointment.appointedDogs);
     //this.setState({ initialDogs: false });
     //}
     let customer = {};
-for(let i=0; i<this.state.customers.length; i++)
-{
-  if(props.username === this.state.customers[i].username){
-customer = this.state.customers[i];
-  }
-}
-console.log(customer);
-console.log(this.state.dogs);
+    for (let i = 0; i < this.state.customers.length; i++) {
+      if (props.username === this.state.customers[i].username) {
+        customer = this.state.customers[i];
+      }
+    }
+    //console.log(customer);
+    //console.log(this.state.dogs);
+    //console.log(props.dogIdNumber);
+    //let dogs = this.state.dogs;
+    console.log(this.dogs);
+    let appointedDogs = [];
+    if (props.dogIdNumber !== undefined) {
+      for (let i = 0; i < props.dogIdNumber.length; i++) {
+        for (let j = 0; j < this.dogs.length; j++) {
+          if (props.dogIdNumber[i] === this.dogs[j].idNumber) {
+            console.log(this.dogs.length);
+            appointedDogs.push(this.dogs[j].name);
+          }
+        }
+      }
+    }
+    //console.log(appointedDogs);
+    /*
+    let dogIdNumber = [];
+    dogIdNumber = props.dogIdNumber;
+    let appointedDogs = [];
+    for (let i = 0; i < dogIdNumber.length; i++) {
+      for (let j = 0; j < this.state.dogs; j++) {
+        if (dogIdNumber[i] === this.state.dogs[j].idNumber) {
+          appointedDogs.push(this.state.dogs[j].name);
+        }
+      }
+    }
+    console.log(appointedDogs);
+    */
     props.appointedDogs = ["Max"];
 
     return props !== undefined ? (
