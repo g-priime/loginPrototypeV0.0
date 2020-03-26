@@ -96,7 +96,8 @@ class CalendarMain extends React.Component {
           }
         }
         appointment.dogIdNumber = dogArray;
-*/
+*/      appointment.dogNames = result.data[i].dogNames.split(",");
+
         appointment.appointedDogs = this.state.dognames;
         console.log(appointment.appointedDogs);
 
@@ -165,7 +166,7 @@ class CalendarMain extends React.Component {
       this.setState({
         initialDogs: true
       });
-      //console.log(result);
+      console.log(result);
 
       let dogs = [];
       for (let i = 0; i < result.data.length; i++) {
@@ -385,7 +386,7 @@ class CalendarMain extends React.Component {
                 className="e-field"
                 style={{ width: "100%" }}
                 dataSource={this.state.dognames}
-                value={props.appointedDogs}
+                value={props.dogNames || null}
                 fields={this.state.dognames}
                 mode="Box"
               ></MultiSelectComponent>
@@ -517,8 +518,8 @@ class CalendarMain extends React.Component {
           dataSource: this.data,
           template: this.eventTemplate.bind(this),
           fields: {
-            description: { name: "dogIdNumber", title: "Dogs" },
-            location: { name: "username", title: "Owner" }
+            description: { name: "dogNames", title: "Dogs" },
+            Owner: { name: "username", title: "Owner" }
           }
         }}
         editorTemplate={this.editorTemplate.bind(this)}
