@@ -34,13 +34,27 @@ class EditDaycareMain extends React.Component {
       dogArray.push({ key: doggy.idNumber, value: doggy.name })
     );
 
+    const dogIds = this.props.appointment.dogIdNumber;
+    const dogArrayAppointed = [];
+    for (let i = 0; i < dogArray.length; i++) {
+      for (let j = 0; j < dogIds.length; j++) {
+        if (dogIds[j] == dogArray[i].key) {
+          dogArrayAppointed.push(dogArray[i]);
+        }
+      }
+    }
+
     if (!this.state.initialStates) {
       this.setState({
         dogs: dogArray,
         initialStates: true,
-        selectedDogs: [],
-        startTime: Moment(this.props.appointment.startTime).format("YYYY-MM-DDThh:mm:ss"),
-        endTime: Moment(this.props.appointment.endTime).format("YYYY-MM-DDThh:mm:ss"),
+        selectedDogs: dogArrayAppointed,
+        startTime: Moment(this.props.appointment.startTime).format(
+          "YYYY-MM-DDThh:mm:ss"
+        ),
+        endTime: Moment(this.props.appointment.endTime).format(
+          "YYYY-MM-DDThh:mm:ss"
+        ),
         comments: this.props.appointment.additionalComments
       });
     }
