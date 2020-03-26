@@ -7,7 +7,6 @@ import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
 import Moment from "moment";
-import PendingAppointment from "../viewAppointments/PendingAppointment";
 
 class EditDaycareMain extends React.Component {
   state = {
@@ -50,10 +49,10 @@ class EditDaycareMain extends React.Component {
         initialStates: true,
         selectedDogs: dogArrayAppointed,
         startTime: Moment(this.props.appointment.startTime).format(
-          "YYYY-MM-DDThh:mm:ss"
+          "YYYY-MM-DDThh:mm"
         ),
         endTime: Moment(this.props.appointment.endTime).format(
-          "YYYY-MM-DDThh:mm:ss"
+          "YYYY-MM-DDThh:mm"
         ),
         comments: this.props.appointment.additionalComments
       });
@@ -107,6 +106,9 @@ class EditDaycareMain extends React.Component {
   onSearchSubmit2 = async () => {
     var token = localStorage.getItem("token");
 
+    var username = this.props.appointment.username;
+    var idNumber = this.props.appointment.idNumber;
+
     var selectedDogs = [];
     this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
@@ -118,12 +120,23 @@ class EditDaycareMain extends React.Component {
     var additionalComments = this.state.fieldName[3];
     var total = this.state.cost;
 
-    const response = await BasePath.put("/webresources/bookdaycare", {
+    var amountPaid = this.props.appointment.amountPaid;
+    var isApproved = this.props.appointment.isApproved; 
+    var isCancelled = this.props.appointment.isCancelled;
+    var type = this.props.appointment.type;
+
+    const response = await BasePath.put("/webresources/editdaycare", {
       token,
+      username,
+      idNumber,
       dogIdNumber,
       startTime,
       endTime,
       total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
       additionalComments
     });
 
@@ -183,13 +196,13 @@ class EditDaycareMain extends React.Component {
           />
         </div>
       );
-    } else if (isValid === "Succsessfully added appointment") {
+    } else if (isValid === "Appointment updated") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
               pathname: "/Services",
-              state: { message: "Appointment is booked pending approval" }
+              state: { message: "Appointment updated" }
             }}
           />
         </div>
