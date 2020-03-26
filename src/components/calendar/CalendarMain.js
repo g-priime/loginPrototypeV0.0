@@ -41,13 +41,17 @@ class CalendarMain extends React.Component {
     customers: [],
     dogs: [],
     initialDogs: false,
-    appointedDogs: []
+    appointedDogs: [],
+
+    usernames: []
   };
 
   getAppointmentInfo = async () => {
     var token = localStorage.getItem("token");
 
-    const result = await BasePath.get(`/webresources/getappointments/${token}`);
+    const result = await BasePath.get(
+      `/webresources/getAllAppointments/${token}`
+    );
     if (this.state.initialStates === false) {
       this.setState({
         initialStates: true
@@ -61,13 +65,13 @@ class CalendarMain extends React.Component {
         appointment.Subject = result.data[i].type;
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
-
-        
-        var dogIds = result.data[i].dogIdNumber.split(',');
+        /*
+        var dogIds = result.data[i].dogIdNumber.split(",");
         this.getDogs(dogIds[i]);
         appointment.dogs = this.dogs;
         appointment.appointedDogs = this.appointedDogs;
         console.log(this.dogs);
+        */
         /*
         var dogArray = [];
         
@@ -130,8 +134,7 @@ class CalendarMain extends React.Component {
   getCustomerInfo = async () => {
     var token = localStorage.getItem("token");
 
-    //get dogs instead of customers for until back end has get all customers
-    const result = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
+    const result = await BasePath.get(`/webresources/RetrieveUsers/${token}`);
     if (this.state.initialCustomers === false) {
       this.setState({
         initialCustomers: true
@@ -139,10 +142,37 @@ class CalendarMain extends React.Component {
 
       let customers = [];
       for (let i = 0; i < result.data.length; i++) {
-        customers.push(result.data[i].name);
+        customers.push(result.data[i]);
       }
       this.setState({ customers: customers });
+
+      let usernames = [];
+      customers.map(
+        customer => (
+        usernames.push(customer.username))
+      );
+      this.setState({ usernames: usernames });
     }
+    console.log(this.state.customers);
+  };
+
+  getDogInfo = async () => {
+    var token = localStorage.getItem("token");
+
+    const result = await BasePath.get(`/webresources/GetDogs/${token}`);
+    if (this.state.initialDogs === false) {
+      this.setState({
+        initialDogs: true
+      });
+      //console.log(result);
+
+      let dogs = [];
+      for (let i = 0; i < result.data.length; i++) {
+        dogs.push(result.data[i].name);
+      }
+      this.setState({ dogs: dogs });
+    }
+    console.log(this.state.dogs);
   };
 
   getTimeString(value) {
@@ -188,13 +218,14 @@ class CalendarMain extends React.Component {
       );
     }
   }
-
+  /*
   getDogs = async dogIds => {
     //let dogIds = ["1", "2"];
     //this.setState({ initialDogs: false });
     var token = localStorage.getItem("token");
     console.log(token);
-    const response = await BasePath.get(`/webresources/RetrieveDogs/${token}`);
+    const response = await BasePath.get(`/webresources/GetDogs/${token}`);
+    //console.log(response.data);
 
     const dogs = response.data;
     var dogArray = [];
@@ -235,7 +266,7 @@ class CalendarMain extends React.Component {
       });
     }
   };
-
+*/
   onCellClick() {
     console.log("cell");
   }
@@ -246,7 +277,7 @@ class CalendarMain extends React.Component {
 
   onPopupClose(args) {
     console.log("close");
-    this.setState({ initialDogs: false });
+    //this.setState({ initialDogs: false });
   }
 
   onPopupOpen(args, props) {
@@ -297,7 +328,7 @@ class CalendarMain extends React.Component {
                 data-name="username"
                 className="e-field"
                 style={{ width: "100%" }}
-                dataSource={this.state.customers}
+                dataSource={this.state.usernames}
                 value={props.username || null}
               ></DropDownListComponent>
             </td>
@@ -311,9 +342,9 @@ class CalendarMain extends React.Component {
                 data-name="appointedDogs"
                 className="e-field"
                 style={{ width: "100%" }}
-                dataSource={props.dogs}
-                value={props.appointedDogs || null}
-                fields={props.dogs}
+                dataSource={["Fido", "Lizard"]}
+                value={["Lizard"]}
+                fields={["Fido", "Lizard"]}
                 mode="Box"
               ></MultiSelectComponent>
             </td>
@@ -435,6 +466,7 @@ class CalendarMain extends React.Component {
   render() {
     this.getAppointmentInfo();
     this.getCustomerInfo();
+    this.getDogInfo();
 
     return (
       <ScheduleComponent
