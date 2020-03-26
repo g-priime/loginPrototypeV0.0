@@ -9,7 +9,7 @@ class ApprovedAppointment extends React.Component {
           <b>{this.props.appointmentType}</b>
         </div>
         <div className="col-sm left">{this.props.startTime}</div>
-        <div className="col-sm left">{this.props.idNumber}</div>
+        <div className="col-sm left">{this.props.endTime}</div>
         <div className="col-sm left">
         <Link
           to={{pathname:"EditAppointment", state:{appointment: this.props.appointment}}}
@@ -21,7 +21,8 @@ class ApprovedAppointment extends React.Component {
             color: "#ECEBE7",
             boxShadow:
               "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-            marginRight: 15
+            width: 150,
+            marginTop: "-3%"
           }}
         >
           Edit 
