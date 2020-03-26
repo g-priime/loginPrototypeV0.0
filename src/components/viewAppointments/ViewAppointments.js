@@ -235,6 +235,7 @@ class ViewAppointments extends React.Component {
           {this.state.pendingList.map(appointment => (
             <PendingAppointment
             key={appointment.idNumber}
+              appointment={appointment}
             appointmentType={appointment.type.toUpperCase()}
             startTime={Moment(appointment.startTime).format("LL LT")}
             endTime={Moment(appointment.endTime).format("LL LT")}
