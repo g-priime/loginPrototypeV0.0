@@ -58,7 +58,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="barking"
                           value="Yes"
-                          defaultChecked={this.props.barking === "Yes"}
+                          checked={this.props.barking === "Yes"}
                           onChange={this.props.onChangeBarking}
                         />
                       </td>
@@ -68,7 +68,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="barking"
                           value="No"
-                          defaultChecked={this.props.barking === "No"}
+                          checked={this.props.barking === "No"}
                           onChange={this.props.onChangeBarking}
                         />
                       </td>
@@ -81,7 +81,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="destruction"
                           value="Yes"
-                          defaultChecked={this.props.destruction === "Yes"}
+                          checked={this.props.destruction === "Yes"}
                           onChange={this.props.onChangeDestruction}
                         />
                       </td>
@@ -91,7 +91,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="destruction"
                           value="No"
-                          defaultChecked={this.props.destruction === "No"}
+                          checked={this.props.destruction === "No"}
                           onChange={this.props.onChangeDestruction}
                         />
                       </td>
@@ -104,7 +104,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="surfing"
                           value="Yes"
-                          defaultChecked={this.props.surfing === "Yes"}
+                          checked={this.props.surfing === "Yes"}
                           onChange={this.props.onChangeSurfing}
                         />
                       </td>
@@ -114,7 +114,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="surfing"
                           value="No"
-                          defaultChecked={this.props.surfing === "No"}
+                          checked={this.props.surfing === "No"}
                           onChange={this.props.onChangeSurfing}
                         />
                       </td>
@@ -127,7 +127,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="digging"
                           value="Yes"
-                          defaultChecked={this.props.digging === "Yes"}
+                          checked={this.props.digging === "Yes"}
                           onChange={this.props.onChangeDigging}
                         />
                       </td>
@@ -137,7 +137,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="digging"
                           value="No"
-                          defaultChecked={this.props.digging === "No"}
+                          checked={this.props.digging === "No"}
                           onChange={this.props.onChangeDigging}
                         />
                       </td>
@@ -150,7 +150,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="jumping"
                           value="Yes"
-                          defaultChecked={this.props.jumping === "Yes"}
+                          checked={this.props.jumping === "Yes"}
                           onChange={this.props.onChangeJumping}
                         />
                       </td>
@@ -160,7 +160,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="jumping"
                           value="No"
-                          defaultChecked={this.props.jumping === "No"}
+                          checked={this.props.jumping === "No"}
                           onChange={this.props.onChangeJumping}
                         />
                       </td>
@@ -173,7 +173,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="pulling"
                           value="Yes"
-                          defaultChecked={this.props.pulling === "Yes"}
+                          checked={this.props.pulling === "Yes"}
                           onChange={this.props.onChangePulling}
                         />
                       </td>
@@ -183,7 +183,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="pulling"
                           value="No"
-                          defaultChecked={this.props.pulling === "No"}
+                          checked={this.props.pulling === "No"}
                           onChange={this.props.onChangePulling}
                         />
                       </td>
@@ -196,7 +196,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="confidence"
                           value="Yes"
-                          defaultChecked={this.props.confidence === "Yes"}
+                          checked={this.props.confidence === "Yes"}
                           onChange={this.props.onChangeConfidence}
                         />
                       </td>
@@ -206,7 +206,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="confidence"
                           value="No"
-                          defaultChecked={this.props.confidence === "No"}
+                          checked={this.props.confidence === "No"}
                           onChange={this.props.onChangeConfidence}
                         />
                       </td>
@@ -219,7 +219,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="chewing"
                           value="Yes"
-                          defaultChecked={this.props.chewing === "Yes"}
+                          checked={this.props.chewing === "Yes"}
                           onChange={this.props.onChangeChewing}
                         />
                       </td>
@@ -229,7 +229,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="chewing"
                           value="No"
-                          defaultChecked={this.props.chewing === "No"}
+                          checked={this.props.chewing === "No"}
                           onChange={this.props.onChangeChewing}
                         />
                       </td>
@@ -242,7 +242,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="handling"
                           value="Yes"
-                          defaultChecked={this.props.handling === "Yes"}
+                          checked={this.props.handling === "Yes"}
                           onChange={this.props.onChangeHandling}
                         />
                       </td>
@@ -252,7 +252,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="handling"
                           value="No"
-                          defaultChecked={this.props.handling === "No"}
+                          checked={this.props.handling === "No"}
                           onChange={this.props.onChangeHandling}
                         />
                       </td>
@@ -265,7 +265,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="play"
                           value="Yes"
-                          defaultChecked={this.props.play === "Yes"}
+                          checked={this.props.play === "Yes"}
                           onChange={this.props.onChangePlay}
                         />
                       </td>
@@ -275,7 +275,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="play"
                           value="No"
-                          defaultChecked={this.props.play === "No"}
+                          checked={this.props.play === "No"}
                           onChange={this.props.onChangePlay}
                         />
                       </td>
@@ -295,7 +295,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="houseTraining"
                           value="Yes"
-                          defaultChecked={this.props.houseTraining === "Yes"}
+                          checked={this.props.houseTraining === "Yes"}
                           onChange={this.props.onChangeHouseTraining}
                         />
                       </td>
@@ -305,7 +305,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="houseTraining"
                           value="No"
-                          defaultChecked={this.props.houseTraining === "No"}
+                          checked={this.props.houseTraining === "No"}
                           onChange={this.props.onChangeHouseTraining}
                         />
                       </td>
@@ -318,7 +318,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="mouthing"
                           value="Yes"
-                          defaultChecked={this.props.mouthing === "Yes"}
+                          checked={this.props.mouthing === "Yes"}
                           onChange={this.props.onChangeMouthing}
                         />
                       </td>
@@ -328,7 +328,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="mouthing"
                           value="No"
-                          defaultChecked={this.props.mouthing === "No"}
+                          checked={this.props.mouthing === "No"}
                           onChange={this.props.onChangeMouthing}
                         />
                       </td>
@@ -341,7 +341,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="socialization"
                           value="Yes"
-                          defaultChecked={this.props.socialization === "Yes"}
+                          checked={this.props.socialization === "Yes"}
                           onChange={this.props.onChangeSocialization}
                         />
                       </td>
@@ -351,7 +351,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="socialization"
                           value="No"
-                          defaultChecked={this.props.socialization === "No"}
+                          checked={this.props.socialization === "No"}
                           onChange={this.props.onChangeSocialization}
                         />
                       </td>
@@ -364,7 +364,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="distraction"
                           value="Yes"
-                          defaultChecked={this.props.distraction === "Yes"}
+                          checked={this.props.distraction === "Yes"}
                           onChange={this.props.onChangeDistraction}
                         />
                       </td>
@@ -374,7 +374,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="distraction"
                           value="No"
-                          defaultChecked={this.props.distraction === "No"}
+                          checked={this.props.distraction === "No"}
                           onChange={this.props.onChangeDistraction}
                         />
                       </td>
@@ -387,7 +387,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="exercise"
                           value="Yes"
-                          defaultChecked={this.props.exercise === "Yes"}
+                          checked={this.props.exercise === "Yes"}
                           onChange={this.props.onChangeExercise}
                         />
                       </td>
@@ -397,7 +397,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="exercise"
                           value="No"
-                          defaultChecked={this.props.exercise === "No"}
+                          checked={this.props.exercise === "No"}
                           onChange={this.props.onChangeExercise}
                         />
                       </td>
@@ -410,7 +410,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="focus"
                           value="Yes"
-                          defaultChecked={this.props.focus === "Yes"}
+                          checked={this.props.focus === "Yes"}
                           onChange={this.props.onChangeFocus}
                         />
                       </td>
@@ -420,7 +420,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="focus"
                           value="No"
-                          defaultChecked={this.props.focus === "No"}
+                          checked={this.props.focus === "No"}
                           onChange={this.props.onChangeFocus}
                         />
                       </td>
@@ -433,7 +433,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="walking"
                           value="Yes"
-                          defaultChecked={this.props.walking === "Yes"}
+                          checked={this.props.walking === "Yes"}
                           onChange={this.props.onChangeWalking}
                         />
                       </td>
@@ -443,7 +443,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="walking"
                           value="No"
-                          defaultChecked={this.props.walking === "No"}
+                          checked={this.props.walking === "No"}
                           onChange={this.props.onChangeWalking}
                         />
                       </td>
@@ -456,7 +456,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="matWork"
                           value="Yes"
-                          defaultChecked={this.props.matWork === "Yes"}
+                          checked={this.props.matWork === "Yes"}
                           onChange={this.props.onChangeMatWork}
                         />
                       </td>
@@ -466,7 +466,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="matWork"
                           value="No"
-                          defaultChecked={this.props.matWork === "No"}
+                          checked={this.props.matWork === "No"}
                           onChange={this.props.onChangeMatWork}
                         />
                       </td>
@@ -479,7 +479,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="stealing"
                           value="Yes"
-                          defaultChecked={this.props.stealing === "Yes"}
+                          checked={this.props.stealing === "Yes"}
                           onChange={this.props.onChangeStealing}
                         />
                       </td>
@@ -489,7 +489,7 @@ class EditTraining2 extends React.Component {
                           type="radio"
                           name="stealing"
                           value="No"
-                          defaultChecked={this.props.stealing === "No"}
+                          checked={this.props.stealing === "No"}
                           onChange={this.props.onChangeStealing}
                         />
                       </td>
