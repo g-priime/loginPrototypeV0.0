@@ -8,6 +8,8 @@ import Popup from "../PopUp";
 
 import Moment from "moment";
 import EditDaycareMain from "./EditDaycareMain";
+import EditBoardingMain from "./EditBoardingMain";
+import EditTrainingMain from "./EditTrainingMain";
 
 class EditAppointmentMain extends React.Component {
   constructor() {
@@ -46,9 +48,13 @@ class EditAppointmentMain extends React.Component {
         </div>
       );
     } else if (this.appointment.type === "boarding") {
-      return <div style={{ marginTop: "10px" }}>boarding</div>;
+      return <div style={{ marginTop: "10px" }}>
+          <EditBoardingMain appointment={this.appointment}></EditBoardingMain>
+      </div>;
     } else {
-      return <div style={{ marginTop: "10px" }}>Training</div>;
+      return <div style={{ marginTop: "10px" }}>
+          <EditTrainingMain appointment={this.appointment}></EditTrainingMain>
+      </div>;
     }
 
     /*
