@@ -387,7 +387,7 @@ class CalendarMain extends React.Component {
                 style={{ width: "100%" }}
                 dataSource={this.state.dognames}
                 value={props.dogNames || null}
-                fields={this.state.dognames}
+                //fields={this.state.dognames}
                 mode="Box"
               ></MultiSelectComponent>
             </td>
@@ -519,7 +519,7 @@ class CalendarMain extends React.Component {
           template: this.eventTemplate.bind(this),
           fields: {
             description: { name: "dogNames", title: "Dogs" },
-            Owner: { name: "username", title: "Owner" }
+            location: { name: "username", title: "Owner" }
           }
         }}
         editorTemplate={this.editorTemplate.bind(this)}
