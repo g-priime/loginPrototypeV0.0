@@ -86,7 +86,7 @@ class CalendarMain extends React.Component {
       }
     }
   };
- 
+
   getCustomerInfo = async () => {
     var token = localStorage.getItem("token");
 
@@ -177,17 +177,33 @@ class CalendarMain extends React.Component {
       );
     }
   }
-  
+
+  onActionBegin(ActionEventArgs) {
+    console.log("Begin");
+    if (ActionEventArgs.changedRecords !== undefined) {
+      if (ActionEventArgs.requestType === "eventChanged") {
+        console.log(ActionEventArgs.requestType[0]);
+        console.log(ActionEventArgs.changedRecords[0].username);
+      }
+      console.log(ActionEventArgs.requestType);
+    }
+  }
+
+  onActionComplete(props) {
+    //console.log("Complete");
+    //console.log(props.username);
+  }
+
   onCellClick() {
-    console.log("cell");
+    //console.log("cell");
   }
 
   onEventClick() {
-    console.log("event");
+    //console.log("event");
   }
 
   onPopupClose(args) {
-    console.log("close");
+    //console.log("close");
   }
 
   onPopupOpen(args, props) {
@@ -195,10 +211,10 @@ class CalendarMain extends React.Component {
       let statusElement = args.element.querySelector("#Subject");
       statusElement.setAttribute("name", "Subject");
     }
-    console.log("open");
+    //console.log("open");
   }
   editorTemplate(props) {
-    console.log(props.username);
+    //console.log(props.username);
 
     let customer = {};
     for (let i = 0; i < this.state.customers.length; i++) {
@@ -404,6 +420,8 @@ class CalendarMain extends React.Component {
         editorTemplate={this.editorTemplate.bind(this)}
         popupOpen={this.onPopupOpen.bind(this)}
         popupClose={this.onPopupClose.bind(this)}
+        //actionComplete={this.onActionComplete.bind(this)}
+        actionBegin={this.onActionBegin.bind(this)}
       >
         <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
       </ScheduleComponent>
