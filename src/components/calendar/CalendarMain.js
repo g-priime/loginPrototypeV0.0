@@ -57,7 +57,7 @@ class CalendarMain extends React.Component {
       this.setState({
         initialStates: true
       });
-      console.log(result.data);
+      //console.log(result.data);
 
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
@@ -66,40 +66,12 @@ class CalendarMain extends React.Component {
         appointment.Subject = result.data[i].type;
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
-        /*
-        var dogIds = result.data[i].dogIdNumber.split(",");
-        this.getDogs(dogIds[i]);
-        appointment.dogs = this.dogs;
-        appointment.appointedDogs = this.appointedDogs;
-        console.log(this.dogs);
-        */
-        /*
-        var dogArray = [];
-        
-        for(let i=0; i<dogIds.length; i++){
-          var dog = this.getDogs(dogIds[i]);
-          dogArray.push(dog);
-        }
-        console.log(dogArray);
-        */
-        //subjects.push(result.data[i].type);
+
         appointment.dogIdNumber = result.data[i].dogIdNumber.split(",");
-        //appointment.dogIdNumber = dogArray;
-        /*
-        var dogIds = result.data[i].dogIdNumber.split(",");
-        var dogArray = [];
-        for (let i = 0; i < dogIds.length; i++) {
-          if (dogIds[i] === "1") {
-            dogArray.push("Max");
-          } else {
-            dogArray.push("Sparky");
-          }
-        }
-        appointment.dogIdNumber = dogArray;
-*/      appointment.dogNames = result.data[i].dogNames.split(",");
+        appointment.dogNames = result.data[i].dogNames.split(",");
 
         appointment.appointedDogs = this.state.dognames;
-        console.log(appointment.appointedDogs);
+        //console.log(appointment.appointedDogs);
 
         appointment.username = result.data[i].username;
         appointment.EventType = result.data[i].type;
@@ -114,28 +86,7 @@ class CalendarMain extends React.Component {
       }
     }
   };
-  /*
-  getAppointedDogs = dogIds => {
-    var token = localStorage.getItem("token");
-    var dogArray = [];
-
-    for (let i = 0; i < dogIds.length; i++) {
-      var dog = "";
-      BasePath.get(`/webresources/GetDog/${token}/${dogIds[i]}`)
-        .then(result => {
-          dog = result.data.name;
-          dogArray.push(dog);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-
-    console.log(dogArray);
-
-    return dog;
-  };
-*/
+ 
   getCustomerInfo = async () => {
     var token = localStorage.getItem("token");
 
@@ -155,7 +106,7 @@ class CalendarMain extends React.Component {
       customers.map(customer => usernames.push(customer.username));
       this.setState({ usernames: usernames });
     }
-    console.log(this.state.customers);
+    //console.log(this.state.customers);
   };
 
   getDogInfo = async () => {
@@ -166,7 +117,7 @@ class CalendarMain extends React.Component {
       this.setState({
         initialDogs: true
       });
-      console.log(result);
+      //console.log(result);
 
       let dogs = [];
       for (let i = 0; i < result.data.length; i++) {
@@ -180,7 +131,7 @@ class CalendarMain extends React.Component {
       this.setState({ dognames: dognames });
     }
 
-    console.log(this.state.dognames);
+    //console.log(this.state.dognames);
   };
 
   getTimeString(value) {
@@ -226,55 +177,7 @@ class CalendarMain extends React.Component {
       );
     }
   }
-  /*
-  getDogs = async dogIds => {
-    //let dogIds = ["1", "2"];
-    //this.setState({ initialDogs: false });
-    var token = localStorage.getItem("token");
-    console.log(token);
-    const response = await BasePath.get(`/webresources/GetDogs/${token}`);
-    //console.log(response.data);
-
-    const dogs = response.data;
-    var dogArray = [];
-    dogs.map(doggy =>
-      dogArray.push({ key: doggy.idNumber, value: doggy.name })
-    );
-    //console.log(dogArray[0].key);
-
-    var dogArrayAppointed = [];
-
-    if (dogIds !== undefined) {
-      for (let i = 0; i < dogArray.length; i++) {
-        for (let j = 0; j < dogIds.length; j++) {
-          //console.log(dogArray[i].key);
-          //console.log(dogIds[j]);
-          if (dogIds[j] == dogArray[i].key) {
-            //console.log("here");
-            dogArrayAppointed.push(dogArray[i].value);
-          }
-        }
-      }
-    }
-
-    //console.log(dogArrayAppointed);
-
-    var dogArrayDropDown = [];
-    dogs.map(doggy => dogArrayDropDown.push(doggy.name));
-
-    this.dogs = dogArrayDropDown;
-    this.appointedDogs = dogArrayAppointed;
-
-    console.log(this.state.initialDogs);
-    if (false) {
-      this.setState({
-        dogs: dogArrayDropDown,
-        initialDogs: true,
-        appointedDogs: dogArrayAppointed
-      });
-    }
-  };
-*/
+  
   onCellClick() {
     console.log("cell");
   }
@@ -285,62 +188,37 @@ class CalendarMain extends React.Component {
 
   onPopupClose(args) {
     console.log("close");
-    //this.setState({ initialDogs: false });
   }
 
   onPopupOpen(args, props) {
     if (args.type === "Editor") {
       let statusElement = args.element.querySelector("#Subject");
       statusElement.setAttribute("name", "Subject");
-      //this.getDogs(props.dogIdNumber);
     }
     console.log("open");
-
-    //this.setState({ initialDogs: false });
   }
   editorTemplate(props) {
-    //console.log(props.dogIdNumber);
-    //if (props.dogIdNumber !== undefined) {
-    //this.getDogs(props.dogIdNumber);
-    //this.setState({ initialDogs: false });
-    //}
+    console.log(props.username);
+
     let customer = {};
     for (let i = 0; i < this.state.customers.length; i++) {
       if (props.username === this.state.customers[i].username) {
         customer = this.state.customers[i];
       }
     }
-    //console.log(customer);
-    //console.log(this.state.dogs);
-    //console.log(props.dogIdNumber);
-    //let dogs = this.state.dogs;
-    console.log(this.dogs);
+
+    //console.log(this.dogs);
     let appointedDogs = [];
     if (props.dogIdNumber !== undefined) {
       for (let i = 0; i < props.dogIdNumber.length; i++) {
         for (let j = 0; j < this.dogs.length; j++) {
           if (props.dogIdNumber[i] === this.dogs[j].idNumber) {
-            console.log(this.dogs.length);
+            //console.log(this.dogs.length);
             appointedDogs.push(this.dogs[j].name);
           }
         }
       }
     }
-    //console.log(appointedDogs);
-    /*
-    let dogIdNumber = [];
-    dogIdNumber = props.dogIdNumber;
-    let appointedDogs = [];
-    for (let i = 0; i < dogIdNumber.length; i++) {
-      for (let j = 0; j < this.state.dogs; j++) {
-        if (dogIdNumber[i] === this.state.dogs[j].idNumber) {
-          appointedDogs.push(this.state.dogs[j].name);
-        }
-      }
-    }
-    console.log(appointedDogs);
-    */
-    props.appointedDogs = ["Max"];
 
     return props !== undefined ? (
       <table
