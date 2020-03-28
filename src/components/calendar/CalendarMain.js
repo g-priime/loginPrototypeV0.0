@@ -30,7 +30,7 @@ class CalendarMain extends React.Component {
   constructor() {
     super(...arguments);
 
-    this.data = extend([{}], null, true);
+    this.data = extend([], null, true);
     this.instance = new Internationalization();
     this.dogs = [];
     this.appointedDogs = [];
@@ -63,7 +63,7 @@ class CalendarMain extends React.Component {
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
         //appointment.Id = parseInt(result.data[i].idNumber);
-        appointment.Id = result.data[i].idNumber;//problem shifting ids getting from backend into calendar
+        //appointment.Id = i;//problem shifting ids getting from backend into calendar
 
         appointment.Subject = result.data[i].type;
         appointment.StartTime = result.data[i].startTime;
@@ -473,6 +473,7 @@ class CalendarMain extends React.Component {
           dataSource: this.data,
           template: this.eventTemplate.bind(this),
           fields: {
+            id: 'Id',
             description: { name: "dogNames", title: "Dogs" },
             location: { name: "username", title: "Owner" }
           }
