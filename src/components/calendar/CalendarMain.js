@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "moment";
 import {
   Inject,
   ScheduleComponent,
@@ -61,7 +62,8 @@ class CalendarMain extends React.Component {
 
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
-        appointment.Id = result.data[i].idNumber;
+        //appointment.Id = parseInt(result.data[i].idNumber);
+        appointment.Id = result.data[i].idNumber+1;//problem shifting ids getting from backend into calendar
 
         appointment.Subject = result.data[i].type;
         appointment.StartTime = result.data[i].startTime;
@@ -179,14 +181,59 @@ class CalendarMain extends React.Component {
   }
 
   onActionBegin(ActionEventArgs) {
-    console.log("Begin");
+    //console.log("Begin");
     if (ActionEventArgs.changedRecords !== undefined) {
-      if (ActionEventArgs.requestType === "eventChanged") {
-        console.log(ActionEventArgs.requestType[0]);
-        console.log(ActionEventArgs.changedRecords[0].username);
+      if (ActionEventArgs.requestType === "eventChange") {
+        this.editAppointment(ActionEventArgs.changedRecords[0]);
+        //console.log(ActionEventArgs.changedRecords[0]);
+        //console.log(ActionEventArgs.changedRecords[0].username);
       }
-      console.log(ActionEventArgs.requestType);
+      console.log(ActionEventArgs);
     }
+  }
+
+  editAppointment(appointment) {
+    //console.log(Appointment);
+    if (appointment.Subject === "daycare") {
+      this.editDaycare(appointment);
+    }
+  }
+
+  editDaycare = async (appointment) => {
+    console.log(appointment);
+
+    let token = localStorage.getItem("token");
+    let username = appointment.username;
+    let idNumber = appointment.Id;
+    let dogIdNumber = appointment.dogNames.toString();
+    let startTime = Moment(appointment.StartTime).format(
+      "YYYY-MM-DD HH:mm:ss"
+    );
+    let endTime = Moment(appointment.EndTime).format(
+      "YYYY-MM-DD HH:mm:ss"
+    );
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+    let type = 'daycare';
+    let additionalComments = appointment.additionalComments;
+
+    const response = await BasePath.put("/webresources/editdaycare", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
+      additionalComments
+    });
+    console.log(response);
   }
 
   onActionComplete(props) {
