@@ -85,7 +85,7 @@ class EditBoarding2 extends React.Component {
                 <div className="col-sm">
                   <div className="d-flex justify-content-between">
                     <Link
-                      to="/Services"
+                      to="ViewAppointments"
                       type="button"
                       className="btn mb-3"
                       style={{

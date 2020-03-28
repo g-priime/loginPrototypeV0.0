@@ -520,7 +520,7 @@ class EditTraining2 extends React.Component {
                     Previous Step
                   </button>
                   <Link
-                    to="/Services"
+                    to="ViewAppointments"
                     type="button"
                     className="btn mb-3"
                     style={{
