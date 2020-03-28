@@ -258,15 +258,16 @@ class CalendarMain extends React.Component {
             <td className="e-textlabel">Dogs</td>
             <td colSpan={4}>
               <MultiSelectComponent
-                id="appointedDogs"
+                id="dogNames"
                 placeholder="Choose dogs"
-                data-name="appointedDogs"
+                data-name="dogNames"
                 className="e-field"
                 style={{ width: "100%" }}
                 dataSource={this.state.dognames}
                 value={props.dogNames || null}
-                //fields={this.state.dognames}
+                //fields={{ text: 'sports', value: 'id' }}
                 mode="Box"
+                //enablePersistence={true}
               ></MultiSelectComponent>
             </td>
           </tr>
