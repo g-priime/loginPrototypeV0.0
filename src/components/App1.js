@@ -30,7 +30,8 @@ import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
 import ViewAppointments from './viewAppointments/ViewAppointments';
 import DisableAccountMain from "./disableAccount/DisableAccountMain";
-
+import CalendarMain from './calendar/CalendarMain';
+import EditAppointmentMain from './editAppointment/EditAppointmentMain';
 
 class App1 extends React.Component {
   state = {
@@ -83,6 +84,7 @@ class App1 extends React.Component {
               <Route path="/EditDog" component={EditDog} />
               <Route path="/EditCustomer" component={EditCustomer} />
               <Route path="/DisableAccount" component={DisableAccountMain} />
+              <Route path="/EditAppointment" component={EditAppointmentMain} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}

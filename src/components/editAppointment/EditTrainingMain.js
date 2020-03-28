@@ -1,15 +1,15 @@
 import React from "react";
 
 import BasePath from "../../api/BasePath";
-import BookTraining1 from "./BookTraining1";
-import BookTraining2 from "./BookTraining2";
+import EditTraining1 from "./EditTraining1";
+import EditTraining2 from "./EditTraining2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
 import Moment from "moment";
-import BookTraining3 from "./BookTraining3";
+import EditTraining3 from "./EditTraining3";
 
-class BookTrainingMain extends React.Component {
+class EditTrainingMain extends React.Component {
   state = {
     response: "",
     fieldName: [],
@@ -35,8 +35,161 @@ class BookTrainingMain extends React.Component {
       dogArray.push({ key: doggy.idNumber, value: doggy.name })
     );
 
+    const dogIds = this.props.appointment.dogIdNumber;
+    var dogAppointed = "";
+    for (let i = 0; i < dogArray.length; i++) {
+      if (dogIds == dogArray[i].key) {
+        dogAppointed = dogArray[i];
+      }
+    }
+
+    var barking = "No";
+    if (this.props.appointment.barking) {
+      barking = "Yes";
+    }
+    var chewingDestruction = "No";
+    if (this.props.appointment.chewingDestruction) {
+      chewingDestruction = "Yes";
+    }
+    var counterSurfing = "No";
+    if (this.props.appointment.counterSurfing) {
+      counterSurfing = "Yes";
+    }
+    var digging = "No";
+    if (this.props.appointment.digging) {
+      digging = "Yes";
+    }
+    var jumping = "No";
+    if (this.props.appointment.jumping) {
+      jumping = "Yes";
+    }
+    var pullingOnLeash = "No";
+    if (this.props.appointment.pullingOnLeash) {
+      pullingOnLeash = "Yes";
+    }
+    var buildingConfidence = "No";
+    if (this.props.appointment.buildingConfidence) {
+      buildingConfidence = "Yes";
+    }
+    var chewing = "No";
+    if (this.props.appointment.chewing) {
+      chewing = "Yes";
+    }
+    var handling = "No";
+    if (this.props.appointment.handling) {
+      handling = "Yes";
+    }
+
+    var houseTraining = "No";
+    if (this.props.appointment.houseTraining) {
+      houseTraining = "Yes";
+    }
+    var mouthing = "No";
+    if (this.props.appointment.mouthing) {
+      mouthing = "Yes";
+    }
+    var socialization = "No";
+    if (this.props.appointment.socialization) {
+      socialization = "Yes";
+    }
+    var distractionStrategies = "No";
+    if (this.props.appointment.distractionStrategies) {
+      distractionStrategies = "Yes";
+    }
+    var exercise = "No";
+    if (this.props.appointment.exercise) {
+      exercise = "Yes";
+    }
+    var focusStrategies = "No";
+    if (this.props.appointment.focusStrategies) {
+      focusStrategies = "Yes";
+    }
+    var looseLeashWalking = "No";
+    if (this.props.appointment.looseLeashWalking) {
+      looseLeashWalking = "Yes";
+    }
+    var matWork = "No";
+    if (this.props.appointment.matWork) {
+      matWork = "Yes";
+    }
+    var stealingItemsChaseGame = "No";
+    if (this.props.appointment.stealingItemsChaseGame) {
+      stealingItemsChaseGame = "Yes";
+    }
+
+    var newBaby = "No";
+    if (this.props.appointment.newBaby) {
+      newBaby = "Yes";
+    }
+    var newCat = "No";
+    if (this.props.appointment.newCat) {
+      newCat = "Yes";
+    }
+    var newDog = "No";
+    if (this.props.appointment.newDog) {
+      newDog = "Yes";
+    }
+    var newSignificantOther = "No";
+    if (this.props.appointment.newSignificantOther) {
+      newSignificantOther = "Yes";
+    }
+    var additionalHouseholdMembers = "No";
+    if (this.props.appointment.additionalHouseholdMembers) {
+      additionalHouseholdMembers = "Yes";
+    }
+    var childrenAndDogs = "No";
+    if (this.props.appointment.childrenAndDogs) {
+      childrenAndDogs = "Yes";
+    }
+    var newHome = "No";
+    if (this.props.appointment.newHome) {
+      newHome = "Yes";
+    }
+
+    var play = "No";
+    if (this.props.appointment.play) {
+      play = "Yes";
+    }
+
     if (!this.state.initialStates) {
-      this.setState({ dogs: dogArray, initialStates: true, selectedDogs: "" });
+      this.setState({
+        dogs: dogArray,
+        initialStates: true,
+        selectedDogs: dogAppointed,
+        startTime: Moment(this.props.appointment.startTime).format(
+          "YYYY-MM-DDThh:mm"
+        ),
+        endTime: Moment(this.props.appointment.endTime).format(
+          "YYYY-MM-DDThh:mm"
+        ),
+        comments: this.props.appointment.additionalComments,
+        barking: barking,
+        destruction: chewingDestruction,
+        surfing: counterSurfing,
+        digging: digging,
+        jumping: jumping,
+        pulling: pullingOnLeash,
+        confidence: buildingConfidence,
+        chewing: chewing,
+        handling: handling,
+        houseTraining: houseTraining,
+        mouthing: mouthing,
+        socialization: socialization,
+        distraction: distractionStrategies,
+        exercise: exercise,
+        focus: focusStrategies,
+        walking: looseLeashWalking,
+        matWork: matWork,
+        stealing: stealingItemsChaseGame,
+        baby: newBaby,
+        cat: newCat,
+        newDog: newDog,
+        significantOther: newSignificantOther,
+        members: additionalHouseholdMembers,
+        children: childrenAndDogs,
+        home: newHome,
+        play: play
+      });
     }
   };
 
@@ -48,7 +201,7 @@ class BookTrainingMain extends React.Component {
         this.state.endTime,
         this.state.grooming,
         this.state.comments,
-        //this.state.sessionId
+
         this.state.baby
       ]
     });
@@ -56,11 +209,10 @@ class BookTrainingMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var dogs = "";
-    if (this.state.selectedDogs !== ""){
+    if (this.state.selectedDogs !== "") {
       dogs = this.state.selectedDogs.key;
     }
-    console.log(this.state.selectedDogs);
-    //this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
+
     var dogString = dogs.toString();
 
     var startTime = this.state.startTime;
@@ -73,8 +225,6 @@ class BookTrainingMain extends React.Component {
       grooming = "true";
     }
     var type = "training";
-
-    console.log(this.state.dog);
 
     const response = await BasePath.put("/webresources/calculatecost", {
       token,
@@ -100,7 +250,7 @@ class BookTrainingMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var selectedDogs = this.state.selectedDogs.key;
-    //this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
+
     var dogIdNumber = selectedDogs.toString();
     var startTime = Moment(this.state.fieldName[1]).format(
       "YYYY-MM-DD HH:mm:ss"
@@ -218,13 +368,28 @@ class BookTrainingMain extends React.Component {
       play = true;
     }
 
-    const response = await BasePath.put("/webresources/booktraining", {
+    var username = this.props.appointment.username;
+    var idNumber = this.props.appointment.idNumber;
+
+    var amountPaid = this.props.appointment.amountPaid;
+    var isApproved = this.props.appointment.isApproved;
+    var isCancelled = this.props.appointment.isCancelled;
+    var type = this.props.appointment.type;
+
+    const response = await BasePath.put("/webresources/edittraining", {
       token,
+      username,
+      idNumber,
       dogIdNumber,
       startTime,
       endTime,
       total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
       additionalComments,
+
       barking,
       chewingDestruction,
       counterSurfing,
@@ -382,7 +547,7 @@ class BookTrainingMain extends React.Component {
     if (isValid === "Cost estimate successful") {
       return (
         <div style={{ marginTop: "10px" }}>
-          <BookTraining2
+          <EditTraining2
             onChangeBarking={this.handleChangeBarking}
             onChangeDestruction={this.handleChangeDestruction}
             onChangeSurfing={this.handleChangeSurfing}
@@ -429,7 +594,7 @@ class BookTrainingMain extends React.Component {
     } else if (isValid === "Details") {
       return (
         <div style={{ marginTop: "10px" }}>
-          <BookTraining3
+          <EditTraining3
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
@@ -467,13 +632,13 @@ class BookTrainingMain extends React.Component {
           />
         </div>
       );
-    } else if (isValid === "Successfully added appointment") {
+    } else if (isValid === "Appointment updated") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/Services",
-              state: { message: "Appointment is booked pending approval" }
+              pathname: "ViewAppointments",
+              state: { message: "Appointment updated" }
             }}
           />
         </div>
@@ -492,7 +657,7 @@ class BookTrainingMain extends React.Component {
     } else {
       return (
         <div style={{ marginTop: "10px" }}>
-          <BookTraining1
+          <EditTraining1
             onChangeDog={this.handleChangeDog}
             onChangeStartTime={this.handleChangeStartTime}
             onChangeEndTime={this.handleChangeEndTime}
@@ -535,4 +700,4 @@ class BookTrainingMain extends React.Component {
   }
 }
 
-export default BookTrainingMain;
+export default EditTrainingMain;
