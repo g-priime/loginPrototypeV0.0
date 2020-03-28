@@ -6,6 +6,7 @@ import BasePath from "../../api/BasePath";
 import ApprovedAppointment from "./ApprovedAppointment";
 import PendingAppointment from "./PendingAppointment";
 import Moment from "moment";
+import Popup from "../PopUp";
 
 import { ReactComponent as Hint } from "../hint.svg";
 const hint = () => (
@@ -42,7 +43,8 @@ class ViewAppointments extends React.Component {
     initialStates: false,
     appointmentList: [],
     approvedList: [],
-    pendingList: []
+    pendingList: [],
+    bgColor: "blue",
   };
 
   getAppointmentInfo = async () => {
@@ -74,6 +76,25 @@ class ViewAppointments extends React.Component {
     //const dogz = this.state.dogList.map(dog => dog + "dog");
     console.log(this.state.appointmentList);
   };
+
+  UNSAFE_componentWillMount() {
+    if (
+      typeof this.props.location.state == "undefined" ||
+      this.props.location.state === null
+    ) {
+      this.setState({ message: "" });
+    } else {
+      this.setState({ message: this.props.location.state.message });
+      this.setState({ cn: "popup3" });
+      this.togglePopup();
+    }
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+  }
 
   render() {
     this.getAppointmentInfo();
@@ -294,6 +315,16 @@ class ViewAppointments extends React.Component {
             </button>
           </div>
         </div> */}
+        <div>
+          {this.state.showPopup ? (
+            <Popup
+              cn={this.state.cn}
+              text={this.state.message}
+              closePopup={this.togglePopup.bind(this)}
+              bgColor={this.state.bgColor}
+            />
+          ) : null}
+        </div>
       </div>
     );
   }
