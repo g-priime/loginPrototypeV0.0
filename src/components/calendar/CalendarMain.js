@@ -63,7 +63,7 @@ class CalendarMain extends React.Component {
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
         //appointment.Id = parseInt(result.data[i].idNumber);
-        appointment.Id = result.data[i].idNumber+1;//problem shifting ids getting from backend into calendar
+        appointment.Id = result.data[i].idNumber;//problem shifting ids getting from backend into calendar
 
         appointment.Subject = result.data[i].type;
         appointment.StartTime = result.data[i].startTime;
@@ -258,10 +258,11 @@ class CalendarMain extends React.Component {
       let statusElement = args.element.querySelector("#Subject");
       statusElement.setAttribute("name", "Subject");
     }
-    //console.log("open");
+    //console.log(props.Id);
   }
   editorTemplate(props) {
     //console.log(props.username);
+    console.log(props.Id);
 
     let customer = {};
     for (let i = 0; i < this.state.customers.length; i++) {
@@ -289,6 +290,18 @@ class CalendarMain extends React.Component {
         style={{ width: "100%", cellpadding: "5" }}
       >
         <tbody>
+        <tr>
+            <td className="e-textlabel">Id</td>
+            <td colSpan={4}>
+              <input
+                id="Id"
+                className="e-field e-input"
+                type="text"
+                name="Id"
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
           <tr>
             <td className="e-textlabel">Appointment Type</td>
             <td colSpan={4}>
