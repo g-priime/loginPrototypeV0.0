@@ -205,7 +205,24 @@ class CalendarMain extends React.Component {
     let token = localStorage.getItem("token");
     let username = appointment.username;
     let idNumber = appointment.Id;
-    let dogIdNumber = appointment.dogNames.toString();
+
+    let dogNames = appointment.dogNames;
+    let allDogs = [];
+    allDogs = this.state.dogs;
+    let dogArray = [];
+    console.log(allDogs);
+    for(let i=0; i<allDogs.length; i++){
+      for(let j=0; j<dogNames.length; j++){
+        if(dogNames[j] === allDogs[i].name){
+          console.log(dogNames[i]);
+          console.log(allDogs[i].name);
+          dogArray.push(allDogs[i].idNumber);
+        }
+      }
+    }
+    console.log(dogArray);
+    let dogIdNumber = dogArray.toString();
+
     let startTime = Moment(appointment.StartTime).format(
       "YYYY-MM-DD HH:mm:ss"
     );
