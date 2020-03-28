@@ -72,7 +72,7 @@ class App1 extends React.Component {
               <Route path="/Register" component={RegisterMain} />
               <Route path="/Services" component={Services} />
               <Route path="/Gallery" component={Gallery} />
-              <Route path="/Testimonials" component={Testimonials} />
+              <Route path="/Testimonials" component={CalendarMain} />
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={UserAccount} />
