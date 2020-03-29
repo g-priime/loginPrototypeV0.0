@@ -34,6 +34,8 @@ class CalendarMain extends React.Component {
     this.instance = new Internationalization();
     this.dogs = [];
     this.appointedDogs = [];
+    this.dogList = ["Fido"];
+    this.dogBit = false;
   }
 
   state = {
@@ -212,6 +214,15 @@ class CalendarMain extends React.Component {
     }
   }
 
+  onActionComplete(ActionEventArgs) {
+    if (ActionEventArgs.changedRecords !== undefined) {
+      this.scheduleObj.refreshEvents();
+    }
+    //this.scheduleObj.refreshEvents();
+    //this.onDataBound();
+    console.log("complete");
+  }
+
   onActionBegin(ActionEventArgs) {
     //console.log("Begin");
     if (ActionEventArgs.changedRecords !== undefined) {
@@ -219,8 +230,7 @@ class CalendarMain extends React.Component {
         this.editAppointment(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0].username);
-      }
-      else if (ActionEventArgs.requestType === "eventCreate") {
+      } else if (ActionEventArgs.requestType === "eventCreate") {
         this.addAppointment(ActionEventArgs.addedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0].username);
@@ -229,7 +239,7 @@ class CalendarMain extends React.Component {
     }
   }
 
-  addAppointment(appointment){
+  addAppointment(appointment) {
     console.log(appointment);
 
     let username = appointment.username;
@@ -449,6 +459,9 @@ class CalendarMain extends React.Component {
     } else if (appointment.Subject === "training") {
       this.editTraining(appointment, username, dogIdNumber);
     }
+
+    //this.scheduleObj.saveEvent(appointment);
+    //this.scheduleObj.refreshEvents();
   }
 
   editDaycare = async (appointment, username, dogIdNumber) => {
@@ -480,6 +493,7 @@ class CalendarMain extends React.Component {
       additionalComments
     });
     console.log(response);
+    //this.scheduleObj.refreshEvents();
   };
 
   editBoarding = async (appointment, username, dogIdNumber) => {
@@ -602,11 +616,8 @@ class CalendarMain extends React.Component {
     });
     console.log(response);
   };
-
-  onActionComplete(props) {
-    //console.log("Complete");
-    //console.log(props.username);
-  }
+  /*
+  
 
   onCellClick() {
     //console.log("cell");
@@ -619,6 +630,39 @@ class CalendarMain extends React.Component {
   onPopupClose(args) {
     //console.log("close");
   }
+*/
+
+  onDataBound() {
+    this.scheduleObj.refreshEvents();
+    //let event = this.scheduleObj.getEvents();
+    //this.appendElement('Events present on scheduler <b>' + event.length + '<b><hr>');
+  }
+
+  onComplete(ChangeEventArgs) {
+    console.log("comp");
+    this.dogBit = true;
+    //this.dogList = ["Max", "Sparky", "Fido"]
+    //this.dogList.push("Sparky");
+    //console.log(ChangeEventArgs.itemData.value);
+    let username = ChangeEventArgs.itemData.value;
+    this.alterDogList(username);
+
+    //this.setState({ usernames: ["admin", "bugsbunny", "mickey"] });
+  }
+
+  alterDogList(username) {
+    console.log(username);
+    //let dogList = [];
+    if (username !== undefined) {
+      for (let i = 0; i < this.dogs.length; i++) {
+        if (username === this.dogs[i].owner) {
+          //console.log(this.dogs.length);
+          this.dogList.push(this.dogs[i].name);
+        }
+      }
+    }
+    console.log(this.dogList);
+  }
 
   onPopupOpen(args, props) {
     if (args.type === "Editor") {
@@ -629,26 +673,28 @@ class CalendarMain extends React.Component {
   }
   editorTemplate(props) {
     //console.log(props.username);
-    console.log(props.Id);
-
+    //console.log(props.Id);
+    /*
     let customer = {};
     for (let i = 0; i < this.state.customers.length; i++) {
       if (props.username === this.state.customers[i].username) {
         customer = this.state.customers[i];
       }
     }
+*/
+    let dogList = [];
+    if (this.dogBit == true) {
+      console.log(props.username);
 
-    //console.log(this.dogs);
-    let appointedDogs = [];
-    if (props.dogIdNumber !== undefined) {
-      for (let i = 0; i < props.dogIdNumber.length; i++) {
-        for (let j = 0; j < this.dogs.length; j++) {
-          if (props.dogIdNumber[i] === this.dogs[j].idNumber) {
+      if (props.username !== undefined) {
+        for (let i = 0; i < this.dogs.length; i++) {
+          if (props.username === this.dogs[i].owner) {
             //console.log(this.dogs.length);
-            appointedDogs.push(this.dogs[j].name);
+            dogList.push(this.dogs[i].name);
           }
         }
       }
+      console.log(dogList);
     }
 
     return props !== undefined ? (
@@ -694,6 +740,9 @@ class CalendarMain extends React.Component {
                 style={{ width: "100%" }}
                 dataSource={this.state.usernames}
                 value={props.username || null}
+                select={this.onComplete.bind(this)}
+                //actionComplete={this.onComplete}
+                //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
               ></DropDownListComponent>
             </td>
           </tr>
@@ -706,11 +755,14 @@ class CalendarMain extends React.Component {
                 data-name="dogNames"
                 className="e-field"
                 style={{ width: "100%" }}
-                dataSource={this.state.dognames}
+                //dataSource={this.state.dognames}
+                dataSource={this.dogList}
                 value={props.dogNames || null}
                 //fields={{ text: 'sports', value: 'id' }}
                 mode="Box"
                 //enablePersistence={true}
+                //select={this.onComplete}
+                //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
               ></MultiSelectComponent>
             </td>
           </tr>
@@ -849,6 +901,7 @@ class CalendarMain extends React.Component {
 
     return (
       <ScheduleComponent
+        ref={t => (this.scheduleObj = t)}
         currentView="Month"
         eventSettings={{
           dataSource: this.data,
@@ -861,9 +914,11 @@ class CalendarMain extends React.Component {
         }}
         editorTemplate={this.editorTemplate.bind(this)}
         popupOpen={this.onPopupOpen.bind(this)}
-        popupClose={this.onPopupClose.bind(this)}
+        //popupClose={this.onPopupClose.bind(this)}
         //actionComplete={this.onActionComplete.bind(this)}
         actionBegin={this.onActionBegin.bind(this)}
+        //dataBound={this.onDataBound.bind(this)}
+        //actionComplete={this.onComplete}
       >
         <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
       </ScheduleComponent>
