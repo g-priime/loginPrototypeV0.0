@@ -1,4 +1,5 @@
 import React from "react";
+import Moment from "moment";
 import {
   Inject,
   ScheduleComponent,
@@ -29,7 +30,7 @@ class CalendarMain extends React.Component {
   constructor() {
     super(...arguments);
 
-    this.data = extend([{}], null, true);
+    this.data = extend([], null, true);
     this.instance = new Internationalization();
     this.dogs = [];
     this.appointedDogs = [];
@@ -57,49 +58,22 @@ class CalendarMain extends React.Component {
       this.setState({
         initialStates: true
       });
-      console.log(result.data);
+      //console.log(result.data);
 
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
-        appointment.Id = result.data[i].idNumber;
+        //appointment.Id = parseInt(result.data[i].idNumber);
+        //appointment.Id = i;//problem shifting ids getting from backend into calendar
 
         appointment.Subject = result.data[i].type;
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
-        /*
-        var dogIds = result.data[i].dogIdNumber.split(",");
-        this.getDogs(dogIds[i]);
-        appointment.dogs = this.dogs;
-        appointment.appointedDogs = this.appointedDogs;
-        console.log(this.dogs);
-        */
-        /*
-        var dogArray = [];
-        
-        for(let i=0; i<dogIds.length; i++){
-          var dog = this.getDogs(dogIds[i]);
-          dogArray.push(dog);
-        }
-        console.log(dogArray);
-        */
-        //subjects.push(result.data[i].type);
+
         appointment.dogIdNumber = result.data[i].dogIdNumber.split(",");
-        //appointment.dogIdNumber = dogArray;
-        /*
-        var dogIds = result.data[i].dogIdNumber.split(",");
-        var dogArray = [];
-        for (let i = 0; i < dogIds.length; i++) {
-          if (dogIds[i] === "1") {
-            dogArray.push("Max");
-          } else {
-            dogArray.push("Sparky");
-          }
-        }
-        appointment.dogIdNumber = dogArray;
-*/      appointment.dogNames = result.data[i].dogNames.split(",");
+        appointment.dogNames = result.data[i].dogNames.split(",");
 
         appointment.appointedDogs = this.state.dognames;
-        console.log(appointment.appointedDogs);
+        //console.log(appointment.appointedDogs);
 
         appointment.username = result.data[i].username;
         appointment.EventType = result.data[i].type;
@@ -110,32 +84,43 @@ class CalendarMain extends React.Component {
         appointment.isPaid = result.data[i].isPaid;
         appointment.additionalComments = result.data[i].additionalComments;
 
+        appointment.grooming = result.data[i].grooming;
+
+        appointment.barking = result.data[i].barking;
+        appointment.chewingDestruction = result.data[i].chewingDestruction;
+        appointment.counterSurfing = result.data[i].counterSurfing;
+        appointment.digging = result.data[i].digging;
+        appointment.jumping = result.data[i].jumping;
+        appointment.pullingOnLeash = result.data[i].pullingOnLeash;
+        appointment.buildingConfidence = result.data[i].buildingConfidence;
+        appointment.chewing = result.data[i].chewing;
+        appointment.handling = result.data[i].handling;
+        appointment.houseTraining = result.data[i].houseTraining;
+        appointment.mouthing = result.data[i].mouthing;
+        appointment.socialization = result.data[i].socialization;
+        appointment.distractionStrategies =
+          result.data[i].distractionStrategies;
+        appointment.exercise = result.data[i].exercise;
+        appointment.focusStrategies = result.data[i].focusStrategies;
+        appointment.looseLeashWalking = result.data[i].looseLeashWalking;
+        appointment.matWork = result.data[i].matWork;
+        appointment.stealingItemsChaseGame =
+          result.data[i].stealingItemsChaseGame;
+        appointment.newBaby = result.data[i].newBaby;
+        appointment.newCat = result.data[i].newCat;
+        appointment.newDog = result.data[i].newDog;
+        appointment.newSignificantOther = result.data[i].newSignificantOther;
+        appointment.additionalHouseholdMembers =
+          result.data[i].additionalHouseholdMembers;
+        appointment.childrenAndDogs = result.data[i].childrenAndDogs;
+        appointment.newHome = result.data[i].newHome;
+        appointment.play = result.data[i].play;
+
         this.data.push(appointment);
       }
     }
   };
-  /*
-  getAppointedDogs = dogIds => {
-    var token = localStorage.getItem("token");
-    var dogArray = [];
 
-    for (let i = 0; i < dogIds.length; i++) {
-      var dog = "";
-      BasePath.get(`/webresources/GetDog/${token}/${dogIds[i]}`)
-        .then(result => {
-          dog = result.data.name;
-          dogArray.push(dog);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-
-    console.log(dogArray);
-
-    return dog;
-  };
-*/
   getCustomerInfo = async () => {
     var token = localStorage.getItem("token");
 
@@ -155,7 +140,7 @@ class CalendarMain extends React.Component {
       customers.map(customer => usernames.push(customer.username));
       this.setState({ usernames: usernames });
     }
-    console.log(this.state.customers);
+    //console.log(this.state.customers);
   };
 
   getDogInfo = async () => {
@@ -166,7 +151,7 @@ class CalendarMain extends React.Component {
       this.setState({
         initialDogs: true
       });
-      console.log(result);
+      //console.log(result);
 
       let dogs = [];
       for (let i = 0; i < result.data.length; i++) {
@@ -180,7 +165,7 @@ class CalendarMain extends React.Component {
       this.setState({ dognames: dognames });
     }
 
-    console.log(this.state.dognames);
+    //console.log(this.state.dognames);
   };
 
   getTimeString(value) {
@@ -226,121 +211,445 @@ class CalendarMain extends React.Component {
       );
     }
   }
-  /*
-  getDogs = async dogIds => {
-    //let dogIds = ["1", "2"];
-    //this.setState({ initialDogs: false });
-    var token = localStorage.getItem("token");
-    console.log(token);
-    const response = await BasePath.get(`/webresources/GetDogs/${token}`);
-    //console.log(response.data);
 
-    const dogs = response.data;
-    var dogArray = [];
-    dogs.map(doggy =>
-      dogArray.push({ key: doggy.idNumber, value: doggy.name })
-    );
-    //console.log(dogArray[0].key);
+  onActionBegin(ActionEventArgs) {
+    //console.log("Begin");
+    if (ActionEventArgs.changedRecords !== undefined) {
+      if (ActionEventArgs.requestType === "eventChange") {
+        this.editAppointment(ActionEventArgs.changedRecords[0]);
+        //console.log(ActionEventArgs.changedRecords[0]);
+        //console.log(ActionEventArgs.changedRecords[0].username);
+      }
+      else if (ActionEventArgs.requestType === "eventCreate") {
+        this.addAppointment(ActionEventArgs.addedRecords[0]);
+        //console.log(ActionEventArgs.changedRecords[0]);
+        //console.log(ActionEventArgs.changedRecords[0].username);
+      }
+      //console.log(ActionEventArgs);
+    }
+  }
 
-    var dogArrayAppointed = [];
+  addAppointment(appointment){
+    console.log(appointment);
 
-    if (dogIds !== undefined) {
-      for (let i = 0; i < dogArray.length; i++) {
-        for (let j = 0; j < dogIds.length; j++) {
-          //console.log(dogArray[i].key);
-          //console.log(dogIds[j]);
-          if (dogIds[j] == dogArray[i].key) {
-            //console.log("here");
-            dogArrayAppointed.push(dogArray[i].value);
-          }
-        }
+    let username = appointment.username;
+
+    let dogNames = appointment.dogNames;
+    let allDogs = [];
+    allDogs = this.state.dogs;
+    let ownedDogs = [];
+    for (let i = 0; i < allDogs.length; i++) {
+      if (allDogs[i].owner === username) {
+        ownedDogs.push(allDogs[i]);
       }
     }
 
-    //console.log(dogArrayAppointed);
-
-    var dogArrayDropDown = [];
-    dogs.map(doggy => dogArrayDropDown.push(doggy.name));
-
-    this.dogs = dogArrayDropDown;
-    this.appointedDogs = dogArrayAppointed;
-
-    console.log(this.state.initialDogs);
-    if (false) {
-      this.setState({
-        dogs: dogArrayDropDown,
-        initialDogs: true,
-        appointedDogs: dogArrayAppointed
-      });
+    let dogArray = [];
+    console.log(allDogs);
+    for (let i = 0; i < ownedDogs.length; i++) {
+      for (let j = 0; j < dogNames.length; j++) {
+        if (dogNames[j] === ownedDogs[i].name) {
+          dogArray.push(ownedDogs[i].idNumber);
+        }
+      }
     }
+    let dogIdNumber = dogArray.toString();
+
+    if (appointment.Subject === "daycare") {
+      this.addDaycare(appointment, username, dogIdNumber);
+    } else if (appointment.Subject === "boarding") {
+      this.addBoarding(appointment, username, dogIdNumber);
+    } else if (appointment.Subject === "training") {
+      this.addTraining(appointment, username, dogIdNumber);
+    }
+  }
+
+  addDaycare = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+    let type = "daycare";
+    let additionalComments = appointment.additionalComments;
+
+    const response = await BasePath.put("/webresources/bookdaycare", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
+      additionalComments
+    });
+    console.log(response);
   };
-*/
+
+  addBoarding = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+
+    let grooming = appointment.grooming;
+    let type = "boarding";
+    let additionalComments = appointment.additionalComments;
+
+    const response = await BasePath.put("/webresources/bookboarding", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+
+      grooming,
+      type,
+      additionalComments
+    });
+    console.log(response);
+  };
+
+  addTraining = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+
+    let type = "training";
+    let additionalComments = appointment.additionalComments;
+
+    let barking = appointment.barking;
+    let chewingDestruction = appointment.chewingDestruction;
+    let counterSurfing = appointment.counterSurfing;
+    let digging = appointment.digging;
+    let jumping = appointment.jumping;
+    let pullingOnLeash = appointment.pullingOnLeash;
+    let buildingConfidence = appointment.buildingConfidence;
+    let chewing = appointment.chewing;
+    let handling = appointment.handling;
+    let houseTraining = appointment.houseTraining;
+    let mouthing = appointment.mouthing;
+    let socialization = appointment.socialization;
+    let distractionStrategies = appointment.distractionStrategies;
+    let exercise = appointment.exercise;
+    let focusStrategies = appointment.focusStrategies;
+    let looseLeashWalking = appointment.looseLeashWalking;
+    let matWork = appointment.matWork;
+    let stealingItemsChaseGame = appointment.stealingItemsChaseGame;
+    let newBaby = appointment.newBaby;
+    let newCat = appointment.newCat;
+    let newDog = appointment.newDog;
+    let newSignificantOther = appointment.newSignificantOther;
+    let additionalHouseholdMembers = appointment.additionalHouseholdMembers;
+    let childrenAndDogs = appointment.childrenAndDogs;
+    let newHome = appointment.newHome;
+    let play = appointment.play;
+
+    const response = await BasePath.put("/webresources/booktraining", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
+      additionalComments,
+
+      barking,
+      chewingDestruction,
+      counterSurfing,
+      digging,
+      jumping,
+      pullingOnLeash,
+      buildingConfidence,
+      chewing,
+      handling,
+      houseTraining,
+      mouthing,
+      socialization,
+      distractionStrategies,
+      exercise,
+      focusStrategies,
+      looseLeashWalking,
+      matWork,
+      stealingItemsChaseGame,
+      newBaby,
+      newCat,
+      newDog,
+      newSignificantOther,
+      additionalHouseholdMembers,
+      childrenAndDogs,
+      newHome,
+      play
+    });
+    console.log(response);
+  };
+
+  editAppointment(appointment) {
+    //console.log(Appointment);
+
+    let username = appointment.username;
+
+    let dogNames = appointment.dogNames;
+    let allDogs = [];
+    allDogs = this.state.dogs;
+    let ownedDogs = [];
+    for (let i = 0; i < allDogs.length; i++) {
+      if (allDogs[i].owner === username) {
+        ownedDogs.push(allDogs[i]);
+      }
+    }
+
+    let dogArray = [];
+    console.log(allDogs);
+    for (let i = 0; i < ownedDogs.length; i++) {
+      for (let j = 0; j < dogNames.length; j++) {
+        if (dogNames[j] === ownedDogs[i].name) {
+          dogArray.push(ownedDogs[i].idNumber);
+        }
+      }
+    }
+    let dogIdNumber = dogArray.toString();
+
+    if (appointment.Subject === "daycare") {
+      this.editDaycare(appointment, username, dogIdNumber);
+    } else if (appointment.Subject === "boarding") {
+      this.editBoarding(appointment, username, dogIdNumber);
+    } else if (appointment.Subject === "training") {
+      this.editTraining(appointment, username, dogIdNumber);
+    }
+  }
+
+  editDaycare = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+    let type = "daycare";
+    let additionalComments = appointment.additionalComments;
+
+    const response = await BasePath.put("/webresources/editdaycare", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
+      additionalComments
+    });
+    console.log(response);
+  };
+
+  editBoarding = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+
+    let grooming = appointment.grooming;
+    let type = "boarding";
+    let additionalComments = appointment.additionalComments;
+
+    const response = await BasePath.put("/webresources/editboarding", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+
+      grooming,
+      type,
+      additionalComments
+    });
+    console.log(response);
+  };
+
+  editTraining = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+
+    let type = "training";
+    let additionalComments = appointment.additionalComments;
+
+    let barking = appointment.barking;
+    let chewingDestruction = appointment.chewingDestruction;
+    let counterSurfing = appointment.counterSurfing;
+    let digging = appointment.digging;
+    let jumping = appointment.jumping;
+    let pullingOnLeash = appointment.pullingOnLeash;
+    let buildingConfidence = appointment.buildingConfidence;
+    let chewing = appointment.chewing;
+    let handling = appointment.handling;
+    let houseTraining = appointment.houseTraining;
+    let mouthing = appointment.mouthing;
+    let socialization = appointment.socialization;
+    let distractionStrategies = appointment.distractionStrategies;
+    let exercise = appointment.exercise;
+    let focusStrategies = appointment.focusStrategies;
+    let looseLeashWalking = appointment.looseLeashWalking;
+    let matWork = appointment.matWork;
+    let stealingItemsChaseGame = appointment.stealingItemsChaseGame;
+    let newBaby = appointment.newBaby;
+    let newCat = appointment.newCat;
+    let newDog = appointment.newDog;
+    let newSignificantOther = appointment.newSignificantOther;
+    let additionalHouseholdMembers = appointment.additionalHouseholdMembers;
+    let childrenAndDogs = appointment.childrenAndDogs;
+    let newHome = appointment.newHome;
+    let play = appointment.play;
+
+    const response = await BasePath.put("/webresources/edittraining", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
+      additionalComments,
+
+      barking,
+      chewingDestruction,
+      counterSurfing,
+      digging,
+      jumping,
+      pullingOnLeash,
+      buildingConfidence,
+      chewing,
+      handling,
+      houseTraining,
+      mouthing,
+      socialization,
+      distractionStrategies,
+      exercise,
+      focusStrategies,
+      looseLeashWalking,
+      matWork,
+      stealingItemsChaseGame,
+      newBaby,
+      newCat,
+      newDog,
+      newSignificantOther,
+      additionalHouseholdMembers,
+      childrenAndDogs,
+      newHome,
+      play
+    });
+    console.log(response);
+  };
+
+  onActionComplete(props) {
+    //console.log("Complete");
+    //console.log(props.username);
+  }
+
   onCellClick() {
-    console.log("cell");
+    //console.log("cell");
   }
 
   onEventClick() {
-    console.log("event");
+    //console.log("event");
   }
 
   onPopupClose(args) {
-    console.log("close");
-    //this.setState({ initialDogs: false });
+    //console.log("close");
   }
 
   onPopupOpen(args, props) {
     if (args.type === "Editor") {
       let statusElement = args.element.querySelector("#Subject");
       statusElement.setAttribute("name", "Subject");
-      //this.getDogs(props.dogIdNumber);
     }
-    console.log("open");
-
-    //this.setState({ initialDogs: false });
+    //console.log(props.Id);
   }
   editorTemplate(props) {
-    //console.log(props.dogIdNumber);
-    //if (props.dogIdNumber !== undefined) {
-    //this.getDogs(props.dogIdNumber);
-    //this.setState({ initialDogs: false });
-    //}
+    //console.log(props.username);
+    console.log(props.Id);
+
     let customer = {};
     for (let i = 0; i < this.state.customers.length; i++) {
       if (props.username === this.state.customers[i].username) {
         customer = this.state.customers[i];
       }
     }
-    //console.log(customer);
-    //console.log(this.state.dogs);
-    //console.log(props.dogIdNumber);
-    //let dogs = this.state.dogs;
-    console.log(this.dogs);
+
+    //console.log(this.dogs);
     let appointedDogs = [];
     if (props.dogIdNumber !== undefined) {
       for (let i = 0; i < props.dogIdNumber.length; i++) {
         for (let j = 0; j < this.dogs.length; j++) {
           if (props.dogIdNumber[i] === this.dogs[j].idNumber) {
-            console.log(this.dogs.length);
+            //console.log(this.dogs.length);
             appointedDogs.push(this.dogs[j].name);
           }
         }
       }
     }
-    //console.log(appointedDogs);
-    /*
-    let dogIdNumber = [];
-    dogIdNumber = props.dogIdNumber;
-    let appointedDogs = [];
-    for (let i = 0; i < dogIdNumber.length; i++) {
-      for (let j = 0; j < this.state.dogs; j++) {
-        if (dogIdNumber[i] === this.state.dogs[j].idNumber) {
-          appointedDogs.push(this.state.dogs[j].name);
-        }
-      }
-    }
-    console.log(appointedDogs);
-    */
-    props.appointedDogs = ["Max"];
 
     return props !== undefined ? (
       <table
@@ -348,6 +657,18 @@ class CalendarMain extends React.Component {
         style={{ width: "100%", cellpadding: "5" }}
       >
         <tbody>
+          <tr>
+            <td className="e-textlabel">Id</td>
+            <td colSpan={4}>
+              <input
+                id="Id"
+                className="e-field e-input"
+                type="text"
+                name="Id"
+                style={{ width: "100%" }}
+              />
+            </td>
+          </tr>
           <tr>
             <td className="e-textlabel">Appointment Type</td>
             <td colSpan={4}>
@@ -380,15 +701,16 @@ class CalendarMain extends React.Component {
             <td className="e-textlabel">Dogs</td>
             <td colSpan={4}>
               <MultiSelectComponent
-                id="appointedDogs"
+                id="dogNames"
                 placeholder="Choose dogs"
-                data-name="appointedDogs"
+                data-name="dogNames"
                 className="e-field"
                 style={{ width: "100%" }}
                 dataSource={this.state.dognames}
                 value={props.dogNames || null}
-                //fields={this.state.dognames}
+                //fields={{ text: 'sports', value: 'id' }}
                 mode="Box"
+                //enablePersistence={true}
               ></MultiSelectComponent>
             </td>
           </tr>
@@ -483,6 +805,20 @@ class CalendarMain extends React.Component {
             </td>
           </tr>
           <tr>
+            <td className="e-textlabel">Grooming</td>
+            <td colSpan={4}>
+              <CheckBoxComponent
+                id="grooming"
+                className="e-field"
+                type="checkbox"
+                data-name="grooming"
+                style={{ width: "100%" }}
+                value={props.grooming}
+                checked={props.grooming}
+              ></CheckBoxComponent>
+            </td>
+          </tr>
+          <tr>
             <td className="e-textlabel">Additional Comments</td>
             <td colSpan={4}>
               <textarea
@@ -518,6 +854,7 @@ class CalendarMain extends React.Component {
           dataSource: this.data,
           template: this.eventTemplate.bind(this),
           fields: {
+            id: "Id",
             description: { name: "dogNames", title: "Dogs" },
             location: { name: "username", title: "Owner" }
           }
@@ -525,6 +862,8 @@ class CalendarMain extends React.Component {
         editorTemplate={this.editorTemplate.bind(this)}
         popupOpen={this.onPopupOpen.bind(this)}
         popupClose={this.onPopupClose.bind(this)}
+        //actionComplete={this.onActionComplete.bind(this)}
+        actionBegin={this.onActionBegin.bind(this)}
       >
         <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
       </ScheduleComponent>
