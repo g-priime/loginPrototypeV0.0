@@ -646,22 +646,35 @@ class CalendarMain extends React.Component {
     //console.log(ChangeEventArgs.itemData.value);
     let username = ChangeEventArgs.itemData.value;
     this.alterDogList(username);
-
-    //this.setState({ usernames: ["admin", "bugsbunny", "mickey"] });
   }
 
   alterDogList(username) {
     console.log(username);
-    //let dogList = [];
+    //this.dogList.empty();
+    //this.dogList.splice(0, this.dogList.length);
+    while (this.dogList.length > 0) {
+      this.dogList.pop();
+    }
     if (username !== undefined) {
       for (let i = 0; i < this.dogs.length; i++) {
         if (username === this.dogs[i].owner) {
           //console.log(this.dogs.length);
+
           this.dogList.push(this.dogs[i].name);
         }
       }
+      /*
+      for (let i = 0; i < this.dogList.length; i++) {
+        if (username === this.dogsList[i]) {
+          //console.log(this.dogs.length);
+
+          this.dogList.pop();
+        }
+      }
+      */
     }
     console.log(this.dogList);
+    //this.setState({ dognames: this.dogList });
   }
 
   onPopupOpen(args, props) {
@@ -756,6 +769,7 @@ class CalendarMain extends React.Component {
                 className="e-field"
                 style={{ width: "100%" }}
                 //dataSource={this.state.dognames}
+                //dataSource={this.dogList}
                 dataSource={this.dogList}
                 value={props.dogNames || null}
                 //fields={{ text: 'sports', value: 'id' }}
