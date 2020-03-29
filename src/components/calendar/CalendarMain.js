@@ -84,6 +84,8 @@ class CalendarMain extends React.Component {
         appointment.isPaid = result.data[i].isPaid;
         appointment.additionalComments = result.data[i].additionalComments;
 
+        appointment.grooming = result.data[i].grooming;
+
         this.data.push(appointment);
       }
     }
@@ -194,50 +196,50 @@ class CalendarMain extends React.Component {
 
   editAppointment(appointment) {
     //console.log(Appointment);
-    if (appointment.Subject === "daycare") {
-      this.editDaycare(appointment);
-    }
-  }
 
-  editDaycare = async (appointment) => {
-    console.log(appointment);
-
-    let token = localStorage.getItem("token");
     let username = appointment.username;
-    let idNumber = appointment.Id;
 
     let dogNames = appointment.dogNames;
     let allDogs = [];
     allDogs = this.state.dogs;
     let ownedDogs = [];
-    for(let i=0; i<allDogs.length; i++){
-      if(allDogs[i].owner === username){
-        ownedDogs.push(allDogs[i])
+    for (let i = 0; i < allDogs.length; i++) {
+      if (allDogs[i].owner === username) {
+        ownedDogs.push(allDogs[i]);
       }
     }
 
     let dogArray = [];
     console.log(allDogs);
-    for(let i=0; i<ownedDogs.length; i++){
-      for(let j=0; j<dogNames.length; j++){
-        if(dogNames[j] === ownedDogs[i].name){
+    for (let i = 0; i < ownedDogs.length; i++) {
+      for (let j = 0; j < dogNames.length; j++) {
+        if (dogNames[j] === ownedDogs[i].name) {
           dogArray.push(ownedDogs[i].idNumber);
         }
       }
     }
     let dogIdNumber = dogArray.toString();
 
-    let startTime = Moment(appointment.StartTime).format(
-      "YYYY-MM-DD HH:mm:ss"
-    );
-    let endTime = Moment(appointment.EndTime).format(
-      "YYYY-MM-DD HH:mm:ss"
-    );
+    if (appointment.Subject === "daycare") {
+      this.editDaycare(appointment, username, dogIdNumber);
+    } 
+    else if(appointment.Subject === "boarding"){
+      this.editBoarding(appointment, username, dogIdNumber);
+    }
+  }
+
+  editDaycare = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
     let total = appointment.total;
     let amountPaid = appointment.amountPaid;
     let isApproved = appointment.isApproved;
     let isCancelled = appointment.isCancelled;
-    let type = 'daycare';
+    let type = "daycare";
     let additionalComments = appointment.additionalComments;
 
     const response = await BasePath.put("/webresources/editdaycare", {
@@ -255,7 +257,42 @@ class CalendarMain extends React.Component {
       additionalComments
     });
     console.log(response);
-  }
+  };
+
+  editBoarding = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+
+    let grooming = appointment.grooming;
+    let type = "boarding";
+    let additionalComments = appointment.additionalComments;
+
+    const response = await BasePath.put("/webresources/editboarding", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+
+      grooming,
+      type,
+      additionalComments
+    });
+    console.log(response);
+  };
 
   onActionComplete(props) {
     //console.log("Complete");
@@ -311,7 +348,7 @@ class CalendarMain extends React.Component {
         style={{ width: "100%", cellpadding: "5" }}
       >
         <tbody>
-        <tr>
+          <tr>
             <td className="e-textlabel">Id</td>
             <td colSpan={4}>
               <input
@@ -459,6 +496,20 @@ class CalendarMain extends React.Component {
             </td>
           </tr>
           <tr>
+            <td className="e-textlabel">Grooming</td>
+            <td colSpan={4}>
+              <CheckBoxComponent
+                id="grooming"
+                className="e-field"
+                type="checkbox"
+                data-name="grooming"
+                style={{ width: "100%" }}
+                value={props.grooming}
+                checked={props.grooming}
+              ></CheckBoxComponent>
+            </td>
+          </tr>
+          <tr>
             <td className="e-textlabel">Additional Comments</td>
             <td colSpan={4}>
               <textarea
@@ -494,7 +545,7 @@ class CalendarMain extends React.Component {
           dataSource: this.data,
           template: this.eventTemplate.bind(this),
           fields: {
-            id: 'Id',
+            id: "Id",
             description: { name: "dogNames", title: "Dogs" },
             location: { name: "username", title: "Owner" }
           }
