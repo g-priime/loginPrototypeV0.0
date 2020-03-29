@@ -220,9 +220,201 @@ class CalendarMain extends React.Component {
         //console.log(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0].username);
       }
-      console.log(ActionEventArgs);
+      else if (ActionEventArgs.requestType === "eventCreate") {
+        this.addAppointment(ActionEventArgs.addedRecords[0]);
+        //console.log(ActionEventArgs.changedRecords[0]);
+        //console.log(ActionEventArgs.changedRecords[0].username);
+      }
+      //console.log(ActionEventArgs);
     }
   }
+
+  addAppointment(appointment){
+    console.log(appointment);
+
+    let username = appointment.username;
+
+    let dogNames = appointment.dogNames;
+    let allDogs = [];
+    allDogs = this.state.dogs;
+    let ownedDogs = [];
+    for (let i = 0; i < allDogs.length; i++) {
+      if (allDogs[i].owner === username) {
+        ownedDogs.push(allDogs[i]);
+      }
+    }
+
+    let dogArray = [];
+    console.log(allDogs);
+    for (let i = 0; i < ownedDogs.length; i++) {
+      for (let j = 0; j < dogNames.length; j++) {
+        if (dogNames[j] === ownedDogs[i].name) {
+          dogArray.push(ownedDogs[i].idNumber);
+        }
+      }
+    }
+    let dogIdNumber = dogArray.toString();
+
+    if (appointment.Subject === "daycare") {
+      this.addDaycare(appointment, username, dogIdNumber);
+    } else if (appointment.Subject === "boarding") {
+      this.addBoarding(appointment, username, dogIdNumber);
+    } else if (appointment.Subject === "training") {
+      this.addTraining(appointment, username, dogIdNumber);
+    }
+  }
+
+  addDaycare = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+    let type = "daycare";
+    let additionalComments = appointment.additionalComments;
+
+    const response = await BasePath.put("/webresources/bookdaycare", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
+      additionalComments
+    });
+    console.log(response);
+  };
+
+  addBoarding = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+
+    let grooming = appointment.grooming;
+    let type = "boarding";
+    let additionalComments = appointment.additionalComments;
+
+    const response = await BasePath.put("/webresources/bookboarding", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+
+      grooming,
+      type,
+      additionalComments
+    });
+    console.log(response);
+  };
+
+  addTraining = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+
+    let type = "training";
+    let additionalComments = appointment.additionalComments;
+
+    let barking = appointment.barking;
+    let chewingDestruction = appointment.chewingDestruction;
+    let counterSurfing = appointment.counterSurfing;
+    let digging = appointment.digging;
+    let jumping = appointment.jumping;
+    let pullingOnLeash = appointment.pullingOnLeash;
+    let buildingConfidence = appointment.buildingConfidence;
+    let chewing = appointment.chewing;
+    let handling = appointment.handling;
+    let houseTraining = appointment.houseTraining;
+    let mouthing = appointment.mouthing;
+    let socialization = appointment.socialization;
+    let distractionStrategies = appointment.distractionStrategies;
+    let exercise = appointment.exercise;
+    let focusStrategies = appointment.focusStrategies;
+    let looseLeashWalking = appointment.looseLeashWalking;
+    let matWork = appointment.matWork;
+    let stealingItemsChaseGame = appointment.stealingItemsChaseGame;
+    let newBaby = appointment.newBaby;
+    let newCat = appointment.newCat;
+    let newDog = appointment.newDog;
+    let newSignificantOther = appointment.newSignificantOther;
+    let additionalHouseholdMembers = appointment.additionalHouseholdMembers;
+    let childrenAndDogs = appointment.childrenAndDogs;
+    let newHome = appointment.newHome;
+    let play = appointment.play;
+
+    const response = await BasePath.put("/webresources/booktraining", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
+      additionalComments,
+
+      barking,
+      chewingDestruction,
+      counterSurfing,
+      digging,
+      jumping,
+      pullingOnLeash,
+      buildingConfidence,
+      chewing,
+      handling,
+      houseTraining,
+      mouthing,
+      socialization,
+      distractionStrategies,
+      exercise,
+      focusStrategies,
+      looseLeashWalking,
+      matWork,
+      stealingItemsChaseGame,
+      newBaby,
+      newCat,
+      newDog,
+      newSignificantOther,
+      additionalHouseholdMembers,
+      childrenAndDogs,
+      newHome,
+      play
+    });
+    console.log(response);
+  };
 
   editAppointment(appointment) {
     //console.log(Appointment);
