@@ -86,6 +86,36 @@ class CalendarMain extends React.Component {
 
         appointment.grooming = result.data[i].grooming;
 
+        appointment.barking = result.data[i].barking;
+        appointment.chewingDestruction = result.data[i].chewingDestruction;
+        appointment.counterSurfing = result.data[i].counterSurfing;
+        appointment.digging = result.data[i].digging;
+        appointment.jumping = result.data[i].jumping;
+        appointment.pullingOnLeash = result.data[i].pullingOnLeash;
+        appointment.buildingConfidence = result.data[i].buildingConfidence;
+        appointment.chewing = result.data[i].chewing;
+        appointment.handling = result.data[i].handling;
+        appointment.houseTraining = result.data[i].houseTraining;
+        appointment.mouthing = result.data[i].mouthing;
+        appointment.socialization = result.data[i].socialization;
+        appointment.distractionStrategies =
+          result.data[i].distractionStrategies;
+        appointment.exercise = result.data[i].exercise;
+        appointment.focusStrategies = result.data[i].focusStrategies;
+        appointment.looseLeashWalking = result.data[i].looseLeashWalking;
+        appointment.matWork = result.data[i].matWork;
+        appointment.stealingItemsChaseGame =
+          result.data[i].stealingItemsChaseGame;
+        appointment.newBaby = result.data[i].newBaby;
+        appointment.newCat = result.data[i].newCat;
+        appointment.newDog = result.data[i].newDog;
+        appointment.newSignificantOther = result.data[i].newSignificantOther;
+        appointment.additionalHouseholdMembers =
+          result.data[i].additionalHouseholdMembers;
+        appointment.childrenAndDogs = result.data[i].childrenAndDogs;
+        appointment.newHome = result.data[i].newHome;
+        appointment.play = result.data[i].play;
+
         this.data.push(appointment);
       }
     }
@@ -222,9 +252,10 @@ class CalendarMain extends React.Component {
 
     if (appointment.Subject === "daycare") {
       this.editDaycare(appointment, username, dogIdNumber);
-    } 
-    else if(appointment.Subject === "boarding"){
+    } else if (appointment.Subject === "boarding") {
       this.editBoarding(appointment, username, dogIdNumber);
+    } else if (appointment.Subject === "training") {
+      this.editTraining(appointment, username, dogIdNumber);
     }
   }
 
@@ -290,6 +321,92 @@ class CalendarMain extends React.Component {
       grooming,
       type,
       additionalComments
+    });
+    console.log(response);
+  };
+
+  editTraining = async (appointment, username, dogIdNumber) => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    let startTime = Moment(appointment.StartTime).format("YYYY-MM-DD HH:mm:ss");
+    let endTime = Moment(appointment.EndTime).format("YYYY-MM-DD HH:mm:ss");
+    let total = appointment.total;
+    let amountPaid = appointment.amountPaid;
+    let isApproved = appointment.isApproved;
+    let isCancelled = appointment.isCancelled;
+
+    let type = "training";
+    let additionalComments = appointment.additionalComments;
+
+    let barking = appointment.barking;
+    let chewingDestruction = appointment.chewingDestruction;
+    let counterSurfing = appointment.counterSurfing;
+    let digging = appointment.digging;
+    let jumping = appointment.jumping;
+    let pullingOnLeash = appointment.pullingOnLeash;
+    let buildingConfidence = appointment.buildingConfidence;
+    let chewing = appointment.chewing;
+    let handling = appointment.handling;
+    let houseTraining = appointment.houseTraining;
+    let mouthing = appointment.mouthing;
+    let socialization = appointment.socialization;
+    let distractionStrategies = appointment.distractionStrategies;
+    let exercise = appointment.exercise;
+    let focusStrategies = appointment.focusStrategies;
+    let looseLeashWalking = appointment.looseLeashWalking;
+    let matWork = appointment.matWork;
+    let stealingItemsChaseGame = appointment.stealingItemsChaseGame;
+    let newBaby = appointment.newBaby;
+    let newCat = appointment.newCat;
+    let newDog = appointment.newDog;
+    let newSignificantOther = appointment.newSignificantOther;
+    let additionalHouseholdMembers = appointment.additionalHouseholdMembers;
+    let childrenAndDogs = appointment.childrenAndDogs;
+    let newHome = appointment.newHome;
+    let play = appointment.play;
+
+    const response = await BasePath.put("/webresources/edittraining", {
+      token,
+      username,
+      idNumber,
+      dogIdNumber,
+      startTime,
+      endTime,
+      total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
+      additionalComments,
+
+      barking,
+      chewingDestruction,
+      counterSurfing,
+      digging,
+      jumping,
+      pullingOnLeash,
+      buildingConfidence,
+      chewing,
+      handling,
+      houseTraining,
+      mouthing,
+      socialization,
+      distractionStrategies,
+      exercise,
+      focusStrategies,
+      looseLeashWalking,
+      matWork,
+      stealingItemsChaseGame,
+      newBaby,
+      newCat,
+      newDog,
+      newSignificantOther,
+      additionalHouseholdMembers,
+      childrenAndDogs,
+      newHome,
+      play
     });
     console.log(response);
   };
