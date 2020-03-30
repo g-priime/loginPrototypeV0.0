@@ -60,7 +60,7 @@ class CalendarMain extends React.Component {
       this.setState({
         initialStates: true
       });
-      //console.log(result.data);
+      console.log(result);
 
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
@@ -131,6 +131,7 @@ class CalendarMain extends React.Component {
       this.setState({
         initialCustomers: true
       });
+      console.log(result);
 
       let customers = [];
       for (let i = 0; i < result.data.length; i++) {
@@ -153,7 +154,7 @@ class CalendarMain extends React.Component {
       this.setState({
         initialDogs: true
       });
-      //console.log(result);
+      console.log(result);
 
       let dogs = [];
       for (let i = 0; i < result.data.length; i++) {
@@ -166,7 +167,7 @@ class CalendarMain extends React.Component {
       dogs.map(dog => dognames.push(dog.name));
       this.setState({ dognames: dognames });
     }
-
+    //console.log(this.state.dognames);
     //console.log(this.state.dognames);
   };
 
