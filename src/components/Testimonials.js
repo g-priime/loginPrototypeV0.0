@@ -21,6 +21,7 @@ class Testimonials extends React.Component {
     }
 
     submit = () => {
+        console.log(this.state.contents);
         var token = localStorage.getItem('token');
         BasePath.put('webresources/SubmitTestimonial',
             {
@@ -54,15 +55,16 @@ class Testimonials extends React.Component {
                         </ListGroupItem>
                     ))}
                 </ListGroup>
-                <h2>Add Testimonial</h2>
+                <h3 className="subHeader">Add Testimonial</h3>
                 <form
                 onSubmit={this.submit}>
                     <div className="form-group">
-                    <textarea className="form-control" value={this.state.contents} onChange={this.changeContent}>
+                    <textarea className="form-control" value={this.contents} onChange={this.changeContent}>
                     </textarea>
                     </div>
                     <br></br>
                     <button
+                     type="submit"
                      className="btn mb-3"
                      style={{
                        fontWeight: "bold",
