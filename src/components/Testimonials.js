@@ -25,7 +25,7 @@ class Testimonials extends React.Component {
         BasePath.put('webresources/SubmitTestimonial',
             {
                 token: token,
-                content: this.state.contents
+                contents: this.state.contents
             }).catch(err => {
                 console.log(err);
             });
