@@ -1,5 +1,6 @@
 import React from "react";
 import BasePath from "../api/BasePath";
+import '../css/testimonials.css';
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 
 class Testimonials extends React.Component {
@@ -32,7 +33,9 @@ class Testimonials extends React.Component {
               <ListGroupItem>
                 <ListGroupItemHeading>{testimonial.username}</ListGroupItemHeading>
                 <ListGroupItemText>
-                 {testimonial.content}
+                <span className="wrap"> 
+   {testimonial.content}
+</span>
                </ListGroupItemText>
               </ListGroupItem>
               ))}
