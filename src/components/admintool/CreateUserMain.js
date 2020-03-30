@@ -41,7 +41,7 @@ class CreateUserMain extends React.Component {
     }
   }
 
-  onSearchSubmit1 = async () => {
+  onSearchSubmit = async () => {
     this.setState({
       fieldName: [
         this.state.username,
@@ -53,32 +53,6 @@ class CreateUserMain extends React.Component {
       ]
     });
 
-    var uname = this.state.username;
-    var pword = this.state.password;
-    var confirmPword = this.state.confirmPassword;
-    var email = this.state.email;
-
-    const response = await BasePath.put("/webresources/verify", {
-      uname,
-      pword,
-      confirmPword,
-      email
-    });
-
-    console.log(response.data);
-    console.log(response.status);
-    this.setState({ images: response.data });
-
-    if (this.state.images === "Username Already Exists") {
-      this.setState({ cn: "popup1", message: "Username already exists" });
-      this.togglePopup();
-    } else if (this.state.images === "Passwords do not match") {
-      this.setState({ cn: "popup2", message: "Passwords do not match" });
-      this.togglePopup();
-    }
-  };
-
-  onSearchSubmit2 = async () => {
     var username = this.state.fieldName[0];
     var password = this.state.fieldName[1];
 
@@ -120,8 +94,11 @@ class CreateUserMain extends React.Component {
     console.log(response.status);
     this.setState({ images: response.data });
 
-    if (this.state.images === "Username already taken.") {
-      this.setState({ cn: "popup1" });
+    if (this.state.images === "Username Already Exists") {
+      this.setState({ cn: "popup1", message: "Username already exists" });
+      this.togglePopup();
+    } else if (this.state.images === "Passwords do not match") {
+      this.setState({ cn: "popup2", message: "Passwords do not match" });
       this.togglePopup();
     }
   };
@@ -243,7 +220,7 @@ class CreateUserMain extends React.Component {
             phone={this.state.phone}
             emergencyphone={this.state.emergencyphone}
             emergencyname={this.state.emergencyname}
-            onSubmit={this.onSearchSubmit1}
+            onSubmit={this.onSearchSubmit}
             onClick={() => {
               this.props.onChangePage("about"); ////////////
             }}
