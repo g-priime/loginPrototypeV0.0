@@ -23,7 +23,6 @@ class CreateUser extends React.Component {
     emergencyphone: "",
     emergencyname: ""
   };
-  // vaues for postal code, province and city are harcoded
 
   onFormSubmit = event => {
     event.preventDefault();
@@ -57,91 +56,89 @@ class CreateUser extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container">
-            <div className="container">
-              <div className="row">
-                <div className="col-sm">
-                  <label>Username:</label>
-                  <input
-                    required
-                    title="Cannot be shorter than 5 and longer then 20 characters, can only contain numbers and letters"
-                    pattern="^[a-zA-Z1-9]{5,20}$"
-                    className="field b-5"
-                    type="text"
-                    placeholder="Enter username"
-                    value={this.props.username}
-                    onChange={this.props.onChangeUsername}
-                  />
-                  <br />
-                  <br />
-
-                  <label>Password:</label>
-                  <input
-                    type="password"
-                    name="password"
-                    pattern="^[a-zA-Z1-9_*-]{8,20}$"
-                    title="Cannot be shorter than 8 and longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
-                    placeholder="Enter password"
-                    value={this.props.password}
-                    onChange={this.props.onChangePassword}
-                    required
-                  />
-                  <br />
-                  <br />
-
-                  <label>Confirm Password:</label>
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    pattern="^[a-zA-Z1-9_*-]{8,20}$"
-                    title="Cannot be shorter than 8 and longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
-                    placeholder="Confirm password"
-                    value={this.props.confirmPassword}
-                    onChange={this.props.onChangeConfirmPassword} //how to confirm it?
-                    required
-                  />
-                </div>
+            <div className="row">
+              <div className="col-sm">
+                <label>Username:</label>
+                <input
+                  required
+                  title="Cannot be shorter than 5 and longer then 20 characters, can only contain numbers and letters"
+                  pattern="^[a-zA-Z1-9]{5,20}$"
+                  className="field b-5"
+                  type="text"
+                  placeholder="Enter username"
+                  value={this.props.username}
+                  onChange={this.props.onChangeUsername}
+                />
                 <br />
                 <br />
 
-                <div className="col-sm">
-                  <label>First Name:</label>
-                  <input
-                    pattern="^[a-zA-Z'-]{1,20}$"
-                    type="text"
-                    title="Cannot be longer then 20 characters, ' and - allowed"
-                    placeholder="Enter First Name"
-                    value={this.props.fname}
-                    onChange={this.props.onChangeFname}
-                    required
-                  />
-                  <br />
-                  <br />
+                <label>Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  pattern="^[a-zA-Z1-9_*-]{8,20}$"
+                  title="Cannot be shorter than 8 and longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
+                  placeholder="Enter password"
+                  value={this.props.password}
+                  onChange={this.props.onChangePassword}
+                  required
+                />
+                <br />
+                <br />
 
-                  <label>Last Name:</label>
-                  <input
-                    pattern="^[a-zA-Z'-]{1,20}$"
-                    type="text"
-                    placeholder="Enter Last Name"
-                    value={this.props.lname}
-                    onChange={this.props.onChangeLname}
-                    required
-                  />
-                  <br />
-                  <br />
+                <label>Confirm Password:</label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  pattern="^[a-zA-Z1-9_*-]{8,20}$"
+                  title="Cannot be shorter than 8 and longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
+                  placeholder="Confirm password"
+                  value={this.props.confirmPassword}
+                  onChange={this.props.onChangeConfirmPassword} 
+                  required
+                />
+              </div>
+              <br />
+              <br />
 
-                  <label>Email:</label>
-                  <input
-                    type="email"
-                    maxLength="20"
-                    minLength="3"
-                    placeholder="Enter Email"
-                    value={this.props.email}
-                    onChange={this.props.onChangeEmail}
-                    required
-                  />
-                  <br />
-                  <br />
-                </div>
+              <div className="col-sm">
+                <label>First Name:</label>
+                <input
+                  pattern="^[a-zA-Z'-]{1,20}$"
+                  type="text"
+                  title="Cannot be longer then 20 characters, ' and - allowed"
+                  placeholder="Enter First Name"
+                  value={this.props.fname}
+                  onChange={this.props.onChangeFname}
+                  required
+                />
+                <br />
+                <br />
+
+                <label>Last Name:</label>
+                <input
+                  pattern="^[a-zA-Z'-]{1,20}$"
+                  type="text"
+                  placeholder="Enter Last Name"
+                  value={this.props.lname}
+                  onChange={this.props.onChangeLname}
+                  required
+                />
+                <br />
+                <br />
+
+                <label>Email:</label>
+                <input
+                  type="email"
+                  maxLength="20"
+                  minLength="3"
+                  placeholder="Enter Email"
+                  value={this.props.email}
+                  onChange={this.props.onChangeEmail}
+                  required
+                />
+                <br />
+                <br />
               </div>
             </div>
           </div>
