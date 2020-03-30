@@ -493,7 +493,8 @@ class CalendarMain extends React.Component {
       additionalComments
     });
     console.log(response);
-    //this.scheduleObj.refreshEvents();
+    this.getAppointmentInfo();
+    this.scheduleObj.refreshEvents();
   };
 
   editBoarding = async (appointment, username, dogIdNumber) => {
