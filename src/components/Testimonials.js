@@ -1,4 +1,6 @@
 import React from "react";
+import BasePath from "../api/BasePath";
+import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 
 class Testimonials extends React.Component {
   state = {
@@ -8,6 +10,16 @@ class Testimonials extends React.Component {
     contents: ""
   };
 
+  componentWillMount = () => {
+    BasePath.get('/webresources/Testimonials')
+    .then( result => {
+      this.setState({testimonialsList: result.data});
+      console.log(result);
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
   render() {
     return (
       <div
@@ -15,19 +27,19 @@ class Testimonials extends React.Component {
         style={{ backgroundColor: "#ECEBE7" }}
       >
         <h1 className="txt">Testimonials</h1>
-        <div>
-        {this.state.testimonialsList.map(testimonial => (
-            <Testimonials
-            key={testimonial.test_id}
-              testimonial={testimonial}
-              testimonialUsername={testimonial.username}
-              testimonialContent={testimonial.contents}
-            />
-            ))}
-        </div>
+        <ListGroup>
+          {this.state.testimonialsList.map(testimonial => (
+              <ListGroupItem>
+                <ListGroupItemHeading>{testimonial.username}</ListGroupItemHeading>
+                <ListGroupItemText>
+                 {testimonial.content}
+               </ListGroupItemText>
+              </ListGroupItem>
+              ))}
+        </ListGroup>
       </div>
-    );
-  }
-}
-
-export default Testimonials;
+        );
+      }
+    }
+    
+    export default Testimonials;
