@@ -24,12 +24,13 @@ class Testimonials extends React.Component {
 
     submit = () => {
         var token = localStorage.getItem('token');
-        BasePath.post('webresources/SubmitTestimonial',
+        BasePath.put('webresources/SubmitTestimonial',
             {
                 token: token,
                 
-            }
-        );
+            }).catch(err => {
+                console.log(err);
+            });
     }
 
     contentChange = event => {
@@ -60,7 +61,6 @@ class Testimonials extends React.Component {
                 onSubmit={this.submit}>
                     <div className="form-group">
                     <textarea className="form-control" value={this.content} onChange={this.changeContent}>
-                        Enter testimonial here...
                     </textarea>
                     </div>
                     <br></br>
