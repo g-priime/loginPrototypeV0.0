@@ -15,8 +15,6 @@ class Testimonials extends React.Component {
         BasePath.get('/webresources/Testimonials')
             .then(result => {
                 this.setState({ testimonialsList: result.data });
-                console.log(result);
-                console.log(localStorage.getItem('token'));
             }).catch(err => {
                 console.log(err);
             });
@@ -27,7 +25,7 @@ class Testimonials extends React.Component {
         BasePath.put('webresources/SubmitTestimonial',
             {
                 token: token,
-                
+                content: this.state.contents
             }).catch(err => {
                 console.log(err);
             });
@@ -60,7 +58,7 @@ class Testimonials extends React.Component {
                 <form
                 onSubmit={this.submit}>
                     <div className="form-group">
-                    <textarea className="form-control" value={this.content} onChange={this.changeContent}>
+                    <textarea className="form-control" value={this.state.contents} onChange={this.changeContent}>
                     </textarea>
                     </div>
                     <br></br>
