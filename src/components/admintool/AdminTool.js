@@ -3,7 +3,7 @@ import Popup from "../PopUp";
 import '../../css/admin.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import ViewCalendar from './ViewCalendar';
-import CreateUser from './CreateUser';
+import CreateUserMain from './CreateUserMain';
 import ManageUsers from './ManageUsers';
 import ManagePhotos from './ManagePhotos';
 import ManageTestimonials from './ManageTestimonials';
@@ -111,7 +111,7 @@ class AdminTool extends React.Component {
                 <div>
                   <div className="mt-4 ml-5 mr-5">
                     <Route path="/ViewCalendar" exact component={ViewCalendar} />
-                    <Route path="/CreateUser" exact component={CreateUser} />
+                    <Route path="/CreateUser" exact component={CreateUserMain} />
                     <Route path="/ManageUsers" exact component={ManageUsers} />
                     <Route path="/ManagePhotos" exact component={ManagePhotos} />
                     <Route path="/ManageTestimonials" exact component={ManageTestimonials} />
