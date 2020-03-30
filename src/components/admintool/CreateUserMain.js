@@ -126,18 +126,6 @@ class CreateUserMain extends React.Component {
     }
   };
 
-  //   onPrevious = () => {
-  //     console.log("main");
-  //     this.setState({ images: [] });
-  //     console.log(this.state.images);
-  //   };
-
-  //   onHome = event => {
-  //     event.preventDefault();
-  //     this.props.onClick("home");
-  //     console.log("main event");
-  //   };
-
   onChangePage = () => {
     this.props.onClick(this.state.page);
     console.log("here");
@@ -217,7 +205,7 @@ class CreateUserMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/", //redirect to the where? 
+              pathname: "/", //redirect to the where?
               state: { message: "Account Registered" }
             }}
           />
@@ -226,20 +214,38 @@ class CreateUserMain extends React.Component {
     } else if (isValid !== "Valid") {
       return (
         <div style={{ marginTop: "10px" }}>
-          <Register1
+          <CreateUser
             onChangeUsername={this.handleChangeUsername}
             onChangePassword={this.handleChangePassword}
             onChangeConfirmPassword={this.handleChangeConfirmPassword}
             onChangeFname={this.handleChangeFname}
             onChangeLname={this.handleChangeLname}
             onChangeEmail={this.handleChangeEmail}
+            onChangeAppt={this.handleChangeAppt}
+            onChangeBuilding={this.handleChangeBuilding}
+            onChangeStreet={this.handleChangeStreet}
+            onChangeCity={this.handleChangeCity}
+            onChangeProvince={this.handleChangeProvince}
+            onChangePostcode={this.handleChangePostcode}
+            onChangePhone={this.handleChangePhone}
+            onChangeEmergencyphone={this.handleChangeEmergencyphone}
+            onChangeEmergencyname={this.handleChangeEmergencyname}
             username={this.state.username}
             fname={this.state.fname}
             lname={this.state.lname}
             email={this.state.email}
+            appt={this.state.appt}
+            building={this.state.building}
+            street={this.state.street}
+            city={this.state.city}
+            province={this.state.province}
+            postcode={this.state.postcode}
+            phone={this.state.phone}
+            emergencyphone={this.state.emergencyphone}
+            emergencyname={this.state.emergencyname}
             onSubmit={this.onSearchSubmit1}
             onClick={() => {
-              this.props.onChangePage("about");
+              this.props.onChangePage("about"); ////////////
             }}
           />
           <div>
@@ -252,33 +258,6 @@ class CreateUserMain extends React.Component {
               />
             ) : null}
           </div>
-        </div>
-      );
-    } else {
-      return (
-        <div style={{ marginTop: "10px" }}>
-          <Register2
-            onChangeAppt={this.handleChangeAppt}
-            onChangeBuilding={this.handleChangeBuilding}
-            onChangeStreet={this.handleChangeStreet}
-            onChangeCity={this.handleChangeCity}
-            onChangeProvince={this.handleChangeProvince}
-            onChangePostcode={this.handleChangePostcode}
-            onChangePhone={this.handleChangePhone}
-            onChangeEmergencyphone={this.handleChangeEmergencyphone}
-            onChangeEmergencyname={this.handleChangeEmergencyname}
-            appt={this.state.appt}
-            building={this.state.building}
-            street={this.state.street}
-            city={this.state.city}
-            province={this.state.province}
-            postcode={this.state.postcode}
-            phone={this.state.phone}
-            emergencyphone={this.state.emergencyphone}
-            emergencyname={this.state.emergencyname}
-            onSubmit={this.onSearchSubmit2}
-            onClick={this.onPrevious}
-          />
         </div>
       );
     }
