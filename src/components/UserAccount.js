@@ -116,7 +116,7 @@ class UserAccount extends React.Component {
                 <div className="col-sm">
                   <b>Phone: </b>
                 </div>
-                <div className="col-sm">{this.state.user.phone}</div>
+                <div className="col-sm">{this.state.user.phoneNumber}</div>
               </div>
               <br />
               <br />
