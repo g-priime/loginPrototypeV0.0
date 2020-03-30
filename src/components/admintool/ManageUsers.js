@@ -46,7 +46,7 @@ class ManageUsers extends React.Component {
                 >
                   <div className="container">
                     <div className="row">
-                      <div className="col-sm colEditCustomer">
+                      <div className="col-sm ">
                         <label>First Name:</label>
                         <input
                           pattern="^[a-zA-Z'-]{1,20}$"
@@ -57,7 +57,8 @@ class ManageUsers extends React.Component {
                           required
                         />
                         <br />
-
+                      </div>
+                      <div className="col-sm ">
                         <label>Last Name:</label>
                         <input
                           pattern="^[a-zA-Z'-]{1,20}$"
@@ -68,21 +69,25 @@ class ManageUsers extends React.Component {
                           required
                         />
                         <br />
-
-                        <label>Email:</label>
-                        <input
-                          type="email"
-                          maxLength="20"
-                          minLength="3"
-                          placeholder="Enter Email"
-                          value={this.props.email}
-                          onChange={this.props.onChangeEmail}
-                          required
-                        />
-                        <br />
-                        <br />
+                        </div>
                       </div>
-                    </div>
+                      <div className="row ">
+                        <div className="col-sm ">
+                          <label>Email:</label>
+                          <input
+                            type="email"
+                            maxLength="20"
+                            minLength="3"
+                            placeholder="Enter Email"
+                            value={this.props.email}
+                            onChange={this.props.onChangeEmail}
+                            required
+                          />
+                          <br />
+                          <br />
+                        </div>
+                      </div>
+                    
                     <div className="d-flex justify-content-between"></div>
                   </div>
                   <div className="container">
@@ -221,7 +226,7 @@ class ManageUsers extends React.Component {
                       </div>
                     </div>
                     <br />
-                    <div >
+                    <div>
                       <button
                         className="btn mr-3 mb-3"
                         style={{
