@@ -59,7 +59,7 @@ class Testimonials extends React.Component {
                 <form
                 onSubmit={this.submit}>
                     <div className="form-group">
-                    <textarea className="form-control" value={this.contents} onChange={this.changeContent}>
+                    <textarea className="form-control" value={this.contents} onChange={this.contentChange}>
                     </textarea>
                     </div>
                     <br></br>
