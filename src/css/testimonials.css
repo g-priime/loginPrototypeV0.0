@@ -1,0 +1,5 @@
+.wrap {
+    max-width:1100px; 
+    word-wrap:break-word; 
+    display:inline-block;
+}
