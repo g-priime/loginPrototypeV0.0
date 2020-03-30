@@ -768,15 +768,14 @@ class CalendarMain extends React.Component {
                 data-name="dogNames"
                 className="e-field"
                 style={{ width: "100%" }}
-                //dataSource={this.state.dognames}
+                dataSource={this.state.dognames}
                 //dataSource={this.dogList}
-                dataSource={this.dogList}
                 value={props.dogNames || null}
                 //fields={{ text: 'sports', value: 'id' }}
                 mode="Box"
                 //enablePersistence={true}
                 //select={this.onComplete}
-                //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
+                //actionBegin={this.scheduleObj.refreshEvents.bind(this)}
               ></MultiSelectComponent>
             </td>
           </tr>
