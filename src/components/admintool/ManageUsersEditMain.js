@@ -32,36 +32,6 @@ class ManageUsersEditMain extends React.Component {
     initialStates: false
   };
 
-  getCustomerInfo = async () => {
-    var token = localStorage.getItem("token");
-
-    const customerInfo = await BasePath.get(
-      `/webresources/RetrieveUser/${token}`
-    );
-
-    if (this.state.initialStates === false) {
-      this.setState({
-        initialStates: true,
-        username: customerInfo.data.username,
-        password: customerInfo.data.password,
-        confirmPassword: customerInfo.data.password,
-        fname: customerInfo.data.firstName,
-        lname: customerInfo.data.lastName,
-        email: customerInfo.data.email,
-
-        appt: customerInfo.data.address.houseNum,
-        building: customerInfo.data.address.buildingNum,
-        street: customerInfo.data.address.streetName,
-        city: customerInfo.data.address.city,
-        province: customerInfo.data.address.province,
-        postcode: customerInfo.data.address.postal,
-        phone: customerInfo.data.phoneNumber,
-        emergencyphone: customerInfo.data.emergencyPhone,
-        emergencyname: customerInfo.data.emergencyName
-      });
-    }
-  };
-
   onSearchSubmit = async () => {
     this.setState({
       fieldName: [
