@@ -1,11 +1,47 @@
 import React from "react";
 import PopUpConfirm from "../PopUpConfirm";
 import BasePath from "../../api/BasePath";
+import { Link } from "react-router-dom";
 
 class ManageUsers extends React.Component {
   state = {
-    userList: [],
-    user: {}
+    username: "",
+    password: "",
+    confirmPassword: "",
+    fname: "",
+    lname: "",
+    email: "",
+    appt: "",
+    building: "",
+    street: "",
+    city: "",
+    province: "",
+    postcode: "",
+    phone: "",
+    emergencyphone: "",
+    emergencyname: ""
+  };
+
+  onFormSubmit = event => {
+    event.preventDefault();
+
+    this.props.onSubmit(
+      this.state.username,
+      this.state.password,
+      this.state.confirmPassword,
+      this.state.fname,
+      this.state.lname,
+      this.state.email,
+      this.state.appt,
+      this.state.building,
+      this.state.street,
+      this.state.city,
+      this.state.province,
+      this.state.postcode,
+      this.state.phone,
+      this.state.emergencyphone,
+      this.state.emergencyname
+    );
   };
 
   render() {
@@ -22,13 +58,13 @@ class ManageUsers extends React.Component {
                 <div>
                   <h3>User List</h3>
                 </div>
-                {this.state.userList.map(user => (
+                {/* {this.state.userList.map(user => (
                   <li
                     key={user.username}
                     chosenUsr={user}
                     updateList={this.updateList}
                   />
-                ))}
+                ))} */}
               </div>
             </div>
           </div>
@@ -69,25 +105,25 @@ class ManageUsers extends React.Component {
                           required
                         />
                         <br />
-                        </div>
                       </div>
-                      <div className="row ">
-                        <div className="col-sm ">
-                          <label>Email:</label>
-                          <input
-                            type="email"
-                            maxLength="20"
-                            minLength="3"
-                            placeholder="Enter Email"
-                            value={this.props.email}
-                            onChange={this.props.onChangeEmail}
-                            required
-                          />
-                          <br />
-                          <br />
-                        </div>
+                    </div>
+                    <div className="row ">
+                      <div className="col-sm ">
+                        <label>Email:</label>
+                        <input
+                          type="email"
+                          maxLength="20"
+                          minLength="3"
+                          placeholder="Enter Email"
+                          value={this.props.email}
+                          onChange={this.props.onChangeEmail}
+                          required
+                        />
+                        <br />
+                        <br />
                       </div>
-                    
+                    </div>
+
                     <div className="d-flex justify-content-between"></div>
                   </div>
                   <div className="container">
@@ -226,7 +262,21 @@ class ManageUsers extends React.Component {
                       </div>
                     </div>
                     <br />
-                    <div>
+                    <div className="d-flex justify-content-between">
+                      <Link
+                        to="/ManageUsers"
+                        type="button"
+                        className="btn mb-3"
+                        style={{
+                          fontWeight: "bold",
+                          backgroundColor: "#1D3461",
+                          color: "#ECEBE7",
+                          boxShadow:
+                            "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                        }}
+                      >
+                        Clear
+                      </Link>
                       <button
                         className="btn mr-3 mb-3"
                         style={{
