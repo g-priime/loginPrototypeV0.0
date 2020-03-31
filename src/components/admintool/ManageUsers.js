@@ -2,9 +2,11 @@ import React from "react";
 import PopUpConfirm from "../PopUpConfirm";
 import BasePath from "../../api/BasePath";
 import { Link } from "react-router-dom";
+import User from './User';
 
 class ManageUsers extends React.Component {
   state = {
+    userList: [],
     username: "",
     password: "",
     confirmPassword: "",
@@ -19,7 +21,8 @@ class ManageUsers extends React.Component {
     postcode: "",
     phone: "",
     emergencyphone: "",
-    emergencyname: ""
+    emergencyname: "",
+    initialStates: false
   };
 
   onFormSubmit = event => {
@@ -44,6 +47,66 @@ class ManageUsers extends React.Component {
     );
   };
 
+  clearStates = () => {
+    if (this.state.initialStates === true) {
+      this.setState({
+        initialStates: false,
+        username: "",
+        password: "",
+        confirmPassword: "",
+        fname: "",
+        lname: "",
+        email: "",
+        appt: "",
+        building: "",
+        street: "",
+        city: "",
+        province: "",
+        postcode: "",
+        phone: "",
+        emergencyphone: "",
+        emergencyname: ""
+      });
+    }
+  }
+
+  UNSAFE_componentWillMount() {
+    var token = localStorage.getItem('token');
+    BasePath.get(`webresources/RetrieveUsers/${token}`)
+      .then(result => {
+        console.log(result);
+        this.setState({ userList: result.data });
+      });
+  }
+
+  editUser = (user) => {
+    if (this.state.initialStates === false) {
+      this.setState({
+        initialStates: true,
+        username: user.username,
+        password: user.password,
+        confirmPassword: user.password,
+        fname: user.firstName,
+        lname: user.lastName,
+        email: user.email,
+
+        appt: user.address.houseNum,
+        building: user.address.buildingNum,
+        street: user.address.streetName,
+        city: user.address.city,
+        province: user.address.province,
+        postcode: user.address.postal,
+        phone: user.phoneNumber,
+        emergencyphone: user.emergencyPhone,
+        emergencyname: user.emergencyName
+      });
+    }
+  }
+
+  deleteUser = (user) => {
+
+  }
+
   render() {
     return (
       <div>
@@ -58,13 +121,9 @@ class ManageUsers extends React.Component {
                 <div>
                   <h3>User List</h3>
                 </div>
-                {/* {this.state.userList.map(user => (
-                  <li
-                    key={user.username}
-                    chosenUsr={user}
-                    updateList={this.updateList}
-                  />
-                ))} */}
+                {this.state.userList.map(user => (
+                  <User chosenUser={user} editUser={this.editUser} deleteUser={this.deleteUser} />
+                ))}
               </div>
             </div>
           </div>
@@ -88,7 +147,7 @@ class ManageUsers extends React.Component {
                           pattern="^[a-zA-Z'-]{1,20}$"
                           type="text"
                           placeholder="Enter First Name"
-                          value={this.props.fname}
+                          value={this.state.fname}
                           onChange={this.props.onChangeFname}
                           required
                         />
@@ -100,7 +159,7 @@ class ManageUsers extends React.Component {
                           pattern="^[a-zA-Z'-]{1,20}$"
                           type="text"
                           placeholder="Enter Last Name"
-                          value={this.props.lname}
+                          value={this.state.lname}
                           onChange={this.props.onChangeLname}
                           required
                         />
@@ -115,7 +174,7 @@ class ManageUsers extends React.Component {
                           maxLength="20"
                           minLength="3"
                           placeholder="Enter Email"
-                          value={this.props.email}
+                          value={this.state.email}
                           onChange={this.props.onChangeEmail}
                           required
                         />
@@ -136,7 +195,7 @@ class ManageUsers extends React.Component {
                               className="field b-5"
                               type="text"
                               placeholder="Apartment/suit/unit/house #"
-                              value={this.props.appt}
+                              value={this.state.appt}
                               onChange={this.props.onChangeAppt}
                               required
                             />
@@ -147,7 +206,7 @@ class ManageUsers extends React.Component {
                               className="field b-5"
                               type="text"
                               placeholder="Building #"
-                              value={this.props.building}
+                              value={this.state.building}
                               onChange={this.props.onChangeBuilding}
                               required
                             />
@@ -163,7 +222,7 @@ class ManageUsers extends React.Component {
                               min="1"
                               max="20"
                               placeholder="Enter your street/avenue"
-                              value={this.props.street}
+                              value={this.state.street}
                               onChange={this.props.onChangeStreet}
                               required
                             />
@@ -181,7 +240,7 @@ class ManageUsers extends React.Component {
                                 type="text"
                                 placeholder="Format: A1A1A1"
                                 pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$"
-                                value={this.props.postcode}
+                                value={this.state.postcode}
                                 onChange={this.props.onChangePostcode}
                                 required
                               />
@@ -193,7 +252,7 @@ class ManageUsers extends React.Component {
                                 className="field b-5"
                                 type="text"
                                 placeholder="Enter your province"
-                                value={this.props.province}
+                                value={this.state.province}
                                 onChange={this.props.onChangeProvince}
                                 required
                               />
@@ -208,7 +267,7 @@ class ManageUsers extends React.Component {
                                 type="text"
                                 max="20"
                                 placeholder="Enter your city"
-                                value={this.props.city}
+                                value={this.state.city}
                                 onChange={this.props.onChangeCity}
                                 required
                               />
@@ -229,7 +288,7 @@ class ManageUsers extends React.Component {
                             type="text"
                             placeholder="Format: 5551235678"
                             pattern="^\d{10}$"
-                            value={this.props.phone}
+                            value={this.state.phone}
                             onChange={this.props.onChangePhone}
                             required
                           />
@@ -243,7 +302,7 @@ class ManageUsers extends React.Component {
                             type="text"
                             placeholder="Format: 5551235678"
                             pattern="^\d{10}$"
-                            value={this.props.emergencyphone}
+                            value={this.state.emergencyphone}
                             onChange={this.props.onChangeEmergencyphone}
                             required
                           />
@@ -254,7 +313,7 @@ class ManageUsers extends React.Component {
                             className="field b-5"
                             type="text"
                             placeholder="Enter your emergency contact Name"
-                            value={this.props.emergencyname}
+                            value={this.state.emergencyname}
                             onChange={this.props.onChangeEmergencyname}
                             required
                           />
@@ -274,6 +333,7 @@ class ManageUsers extends React.Component {
                           boxShadow:
                             "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                         }}
+                        onClick={this.clearStates}
                       >
                         Clear
                       </Link>
