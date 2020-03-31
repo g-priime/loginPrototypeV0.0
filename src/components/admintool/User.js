@@ -1,0 +1,38 @@
+import React from 'react';
+
+class User extends React.Component {
+
+    render() {
+        return (
+            <div>
+                <div>
+                    <span style={{fontSize:"large"}} className="mr-3">{this.props.chosenUser.username}</span>
+                <button  className="btn mr-3 mb-3"
+                        style={{
+                          fontWeight: "bold",
+                          backgroundColor: "#1D3461",
+                          color: "#ECEBE7",
+                          boxShadow:
+                            "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                        }}
+                        onClick={this.props.editUser(this.props.chosenUser)}>
+                Edit
+                </button>
+                <button  className="btn mr-3 mb-3"
+                        style={{
+                          fontWeight: "bold",
+                          backgroundColor: "#1D3461",
+                          color: "#ECEBE7",
+                          boxShadow:
+                            "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                        }}
+                        onCLick={this.props.deleteUser(this.props.chosenUser)}>
+                Delete
+                </button>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default User;
