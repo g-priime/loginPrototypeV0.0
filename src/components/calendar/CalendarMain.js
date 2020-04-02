@@ -674,7 +674,7 @@ class CalendarMain extends React.Component {
   alterDogList(username) {
     console.log(username);
     //this.dogList.empty();
-    //this.dogList.splice(0, this.dogList.length);
+    this.dogList.splice(0, this.dogList.length);
 
     //while (this.dogList.length > 0) {
     //this.dogList.pop();
@@ -1555,15 +1555,49 @@ class CalendarMain extends React.Component {
 
 <div className="e-event-content e-template">
 <div className="e-subject-wrap">
-  
+
+
+              <div className="e-textlabel">Owner</div>
+              <div colSpan={4}>
+                <DropDownListComponent
+                  id="username"
+                  placeholder="Choose customer"
+                  data-name="username"
+                  className="e-subject e-field e-input"
+                  style={{ width: "100%" }}
+                  dataSource={this.state.usernames}
+                  value={props.Subject || null}
+                  select={this.onComplete.bind(this)}
+                  //actionComplete={this.onComplete}
+                  //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
+                ></DropDownListComponent>
+              </div>
+            
+  {/*
     <input className="e-subject e-field e-input" type="text"
     name="username" placeholder="Owner"
     aria-placeholder="Owner" defaultValue="admin"></input>
-  
-  
+  */}
+
+
+              <div className="e-textlabel">Appointment Type</div>
+              <div colSpan={4}>
+                <DropDownListComponent
+                  id="Location"
+                  placeholder="Choose appointment type"
+                  data-name="Location"
+                  className="e-location e-field e-input"
+                  style={{ width: "100%" }}
+                  dataSource={["daycare", "boarding", "training"]}
+                  value={props.Location || null}
+                ></DropDownListComponent>
+              </div>
+            
+  {/*
     <input className="e-description e-field e-input" type="text"
     name="Description" placeholder="Appointment type"
     aria-placeholder="Appointment type"></input>
+  */}
   
   {props.Description !== undefined ? (
     <div className="description">{props.Description}</div>
