@@ -223,25 +223,26 @@ class CalendarMain extends React.Component {
     //this.onDataBound();
     console.log("complete");
 
-    
-    if ((document.querySelector('.e-schedule-dialog'))!==undefined) { 
-      let diaObj = (document.querySelector('.e-schedule-dialog')).ej2_instances[0]; 
-      this.scheduleObj.uiStateValues.isBlock = false; 
-      diaObj.hide(); 
-    } 
-    
+    if (document.querySelector(".e-schedule-dialog") !== undefined) {
+      let diaObj = document.querySelector(".e-schedule-dialog")
+        .ej2_instances[0];
+      this.scheduleObj.uiStateValues.isBlock = false;
+      diaObj.hide();
+    }
   }
 
   onActionBegin(ActionEventArgs) {
     //console.log("Begin");
     if (ActionEventArgs.changedRecords !== undefined) {
-      if (ActionEventArgs.requestType === "eventCreate" && ActionEventArgs.data[0].Subject === "daycare") { 
-        console.log('hello');
-        this.scheduleObj.uiStateValues.isBlock = true; 
-        ActionEventArgs.cancel = true; 
-        alert('Enter Title'); 
-      } 
-      else if (ActionEventArgs.requestType === "eventChange") {
+      if (
+        ActionEventArgs.requestType === "eventCreate" &&
+        ActionEventArgs.data[0].Subject === "daycare"
+      ) {
+        console.log("hello");
+        this.scheduleObj.uiStateValues.isBlock = true;
+        ActionEventArgs.cancel = true;
+        alert("Enter Title");
+      } else if (ActionEventArgs.requestType === "eventChange") {
         this.editAppointment(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0].username);
@@ -254,11 +255,7 @@ class CalendarMain extends React.Component {
     }
 
     console.log(ActionEventArgs);
-    
-  } 
-
-    
-  
+  }
 
   addAppointment(appointment) {
     console.log(appointment);
@@ -674,9 +671,9 @@ class CalendarMain extends React.Component {
     console.log(username);
     //this.dogList.empty();
     //this.dogList.splice(0, this.dogList.length);
-    
+
     //while (this.dogList.length > 0) {
-      //this.dogList.pop();
+    //this.dogList.pop();
     //}
     if (username !== undefined) {
       for (let i = 0; i < this.dogs.length; i++) {
@@ -686,7 +683,7 @@ class CalendarMain extends React.Component {
           this.dogList.push(this.dogs[i].name);
         }
       }
-      
+
       /*
       for (let i = 0; i < this.dogList.length; i++) {
         if (username === this.dogsList[i]) {
@@ -702,14 +699,21 @@ class CalendarMain extends React.Component {
   }
 
   onPopupOpen(args) {
-    
-    if (args.type === "Editor" && args.data.Subject === undefined) { 
-      console.log('hello');
-      this.scheduleObj.uiStateValues.isBlock = true; 
-      args.cancel = true; 
-      alert('Enter Title'); 
-    } 
-    
+    /*
+    if (args.type === "QuickInfo") {
+      let statusElement = args.element.querySelector("#Subject");
+      statusElement.setAttribute("name", "Subject");
+    }
+*/
+    /*
+    if (args.type === "Editor" && args.data.Subject === undefined) {
+      console.log("hello");
+      this.scheduleObj.uiStateValues.isBlock = true;
+      args.cancel = true;
+      alert("Enter Title");
+    }
+    */
+
     if (args.type === "Editor") {
       let statusElement = args.element.querySelector("#Subject");
       statusElement.setAttribute("name", "Subject");
@@ -761,7 +765,7 @@ class CalendarMain extends React.Component {
                 />
               </td>
             </tr>
-            
+
             <tr>
               <td className="e-textlabel">Appointment Type</td>
               <td colSpan={4}>
@@ -793,7 +797,7 @@ class CalendarMain extends React.Component {
                 ></DropDownListComponent>
               </td>
             </tr>
-{/*
+            {/*
             <tr>
             <td className="e-textlabel">Cars</td>
             <td colSpan={4}>
@@ -1521,6 +1525,129 @@ class CalendarMain extends React.Component {
     } else return <div></div>;
   }
 
+  header(props) {
+    return (
+      <div>
+        {props.elementType === "cell" ? (
+          <div className="e-cell-header">
+            <div className="e-header-icon-wrapper">
+              <button className="e-close" title="Close"></button>
+            </div>
+          </div>
+        ) : (
+          <div className="e-event-header">
+            <div className="e-header-icon-wrapper">
+              <button className="e-close" title="CLOSE"></button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+  content(props) {
+    return (
+      <div>
+        {props.elementType === "cell" ? (
+          <div className="e-cell-content e-template">
+<form className="e-schedule-form e-lib e-formvalidator"
+ noValidate>
+  <span className="e-input-group e-control-wrapper">
+    
+    <input className="e-subject e-field e-input" type="text"
+    name="Subject" placeholder="Add title"
+    aria-placeholder="Add title"></input>
+    
+  </span>
+</form>
+
+{/*
+            <form className="e-schedule-form">
+              {/*
+              <div className="e-textlabel">Appointment Type</div>
+              <div colSpan={4}>
+                <DropDownListComponent
+                  id="Subject"
+                  placeholder="Choose appointment type"
+                  data-name="Subject"
+                  className="e-field"
+                  style={{ width: "100%" }}
+                  dataSource={["daycare", "boarding", "training"]}
+                  value={props.Subject || null}
+                ></DropDownListComponent>
+              </div>
+        
+
+              <div>
+                <input
+                  className="subject"
+                  type="text"
+                  name="Subject"
+                  placeholder="Title"
+                  //value={props.Subject}
+                />
+              </div>
+
+              <div>
+                <input
+                  className="location e-field"
+                  type="text"
+                  name="Location"
+                  placeholder="Location"
+                />
+              </div>
+            </form>
+        */}
+          </div>
+        ) : (
+          <div className="e-event-content e-template">
+            <div className="e-subject-wrap">
+              {props.Subject !== undefined ? (
+                <div className="subject">{props.Subject}</div>
+              ) : (
+                ""
+              )}
+              {props.Location !== undefined ? (
+                <div className="location">{props.Location}</div>
+              ) : (
+                ""
+              )}
+              {props.Description !== undefined ? (
+                <div className="description">{props.Description}</div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+  footer(props) {
+    return (
+      <div>
+        {props.elementType === "cell" ? (
+          <div className="e-cell-footer">
+            <button className="e-event-details" title="Extra Details">
+              Extra Details
+            </button>
+            <button className="e-event-create" title="Add">
+              Add
+            </button>
+          </div>
+        ) : (
+          <div className="e-event-footer">
+            <button className="e-event-edit" title="Edit">
+              Edit
+            </button>
+            <button className="e-event-delete" title="Delete">
+              Delete
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  }
+
   render() {
     this.getAppointmentInfo();
     this.getCustomerInfo();
@@ -1551,6 +1678,22 @@ class CalendarMain extends React.Component {
         actionBegin={this.onActionBegin.bind(this)}
         //dataBound={this.onDataBound.bind(this)}
         //actionComplete={this.onComplete}
+        quickInfoTemplates={{
+          dataSource: this.data,
+          header: this.header.bind(this),
+          content: this.content.bind(this),
+          footer: this.footer.bind(this),
+          fields: {
+            id: "Id",
+            description: { name: "dogNames", title: "Dogs" },
+            location: { name: "username", title: "Owner" },
+            subject: {
+              title: "Appointment Type",
+              name: "Subject",
+              default: "daycare"
+            }
+          }
+        }}
       >
         <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
       </ScheduleComponent>
