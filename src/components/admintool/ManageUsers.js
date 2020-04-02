@@ -120,6 +120,7 @@ class ManageUsers extends React.Component {
               <div>
                 <div>
                   <h3>User List</h3>
+                  <br />
                 </div>
                 {this.state.userList.map(user => (
                   <User chosenUser={user} editUser={this.editUser} deleteUser={this.deleteUser} />
