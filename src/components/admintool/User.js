@@ -5,7 +5,8 @@ class User extends React.Component {
     render() {
         return (
             <div>
-                <div>
+                <div className="row">
+                    <div className="col-sm">
                     <span style={{fontSize:"large"}} className="mr-3">{this.props.chosenUser.username}</span>
                 <button  className="btn mr-3 mb-3"
                         style={{
@@ -18,6 +19,8 @@ class User extends React.Component {
                         onClick={this.props.editUser(this.props.chosenUser)}>
                 Edit
                 </button>
+                </div>
+                <div className="col-sm">
                 <button  className="btn mr-3 mb-3"
                         style={{
                           fontWeight: "bold",
@@ -29,6 +32,7 @@ class User extends React.Component {
                         onCLick={this.props.deleteUser(this.props.chosenUser)}>
                 Delete
                 </button>
+                </div>
                 </div>
             </div>
         );
