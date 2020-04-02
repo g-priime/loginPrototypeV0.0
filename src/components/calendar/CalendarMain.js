@@ -68,7 +68,7 @@ class CalendarMain extends React.Component {
         //appointment.Id = i;//problem shifting ids getting from backend into calendar
 
         //appointment.Subject = result.data[i].type;
-        appointment.Location = result.data[i].type;
+        appointment.type = result.data[i].type;
 
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
@@ -79,7 +79,7 @@ class CalendarMain extends React.Component {
         appointment.appointedDogs = this.state.dognames;
         //console.log(appointment.appointedDogs);
 
-        //appointment.username = result.data[i].username;
+        appointment.username = result.data[i].username;
         appointment.Subject = result.data[i].username;
 
         appointment.EventType = result.data[i].type;
@@ -180,11 +180,11 @@ class CalendarMain extends React.Component {
   }
 
   eventTemplate(props) {
-    if (props.Location === "daycare") {
+    if (props.type === "daycare") {
       return (
         <div className="template-wrap" style={{ background: "red" }}>
-          <div className="subject" style={{ background: "red" }}>
-            {props.Subject}
+          <div className="type" style={{ background: "red" }}>
+            {props.type}
           </div>
           <div className="time" style={{ background: "red" }}>
             Time: {this.getTimeString(props.StartTime)} -{" "}
@@ -192,11 +192,11 @@ class CalendarMain extends React.Component {
           </div>
         </div>
       );
-    } else if (props.Location === "boarding") {
+    } else if (props.type === "boarding") {
       return (
         <div className="template-wrap" style={{ background: "green" }}>
-          <div className="subject" style={{ background: "green" }}>
-            {props.Subject}
+          <div className="type" style={{ background: "green" }}>
+            {props.type}
           </div>
           <div className="time" style={{ background: "green" }}>
             Time: {this.getTimeString(props.StartTime)} -{" "}
@@ -207,8 +207,8 @@ class CalendarMain extends React.Component {
     } else {
       return (
         <div className="template-wrap" style={{ background: "orange" }}>
-          <div className="subject" style={{ background: "orange" }}>
-            {props.Subject}
+          <div className="type" style={{ background: "orange" }}>
+            {props.type}
           </div>
           <div className="time" style={{ background: "orange" }}>
             Time: {this.getTimeString(props.StartTime)} -{" "}
@@ -774,20 +774,20 @@ class CalendarMain extends React.Component {
               <td className="e-textlabel">Appointment Type</td>
               <td colSpan={4}>
                 <DropDownListComponent
-                  id="Location"
+                  id="type"
                   placeholder="Choose appointment type"
-                  data-name="Location"
+                  data-name="type"
                   className="e-field"
                   style={{ width: "100%" }}
                   dataSource={["daycare", "boarding", "training"]}
-                  value={props.Location || null}
+                  value={props.type || null}
                 ></DropDownListComponent>
               </td>
             </tr>
             <tr>
               <td className="e-textlabel">Owner</td>
               <td colSpan={4}>
-              <input
+                <input
                   id="username"
                   className="e-field e-input"
                   type="text"
@@ -1563,11 +1563,8 @@ class CalendarMain extends React.Component {
     return (
       <div>
         {props.elementType === "cell" ? (
-
-<div className="e-event-content e-template">
-<div className="e-subject-wrap">
-
-
+          <div className="e-event-content e-template">
+            <div className="e-subject-wrap">
               <div className="e-textlabel">Owner</div>
               <div colSpan={4}>
                 <DropDownListComponent
@@ -1583,14 +1580,14 @@ class CalendarMain extends React.Component {
                   //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
                 ></DropDownListComponent>
               </div>
-            
-  {/*
+
+              {/*
     <input className="e-subject e-field e-input" type="text"
     name="username" placeholder="Owner"
     aria-placeholder="Owner" defaultValue="admin"></input>
   */}
 
-{/*
+              {/*
               <div className="e-textlabel">Appointment Type</div>
               <div colSpan={4}>
                 <DropDownListComponent
@@ -1604,20 +1601,20 @@ class CalendarMain extends React.Component {
                 ></DropDownListComponent>
               </div>
 */}
-  {/*
+              {/*
     <input className="e-description e-field e-input" type="text"
     name="Description" placeholder="Appointment type"
     aria-placeholder="Appointment type"></input>
   */}
-  
-  {props.Description !== undefined ? (
-    <div className="description">{props.Description}</div>
-  ) : (
-    ""
-  )}
-</div>
 
-{/*
+              {props.Description !== undefined ? (
+                <div className="description">{props.Description}</div>
+              ) : (
+                ""
+              )}
+            </div>
+
+            {/*
           <div className="e-cell-content e-template">
 <form className="e-schedule-form e-lib e-formvalidator"
  noValidate>
@@ -1636,7 +1633,7 @@ class CalendarMain extends React.Component {
   </span>
 </form>
 */}
-{/*
+            {/*
             <form className="e-schedule-form">
               {/*
               <div className="e-textlabel">Appointment Type</div>
@@ -1677,22 +1674,31 @@ class CalendarMain extends React.Component {
         ) : (
           <div className="e-event-content e-template">
             <div className="e-subject-wrap">
+              {props.type !== undefined ? (
+                <div className="type">{props.type}</div>
+              ) : (
+                ""
+              )}
               {props.Subject !== undefined ? (
                 <div className="subject">{props.Subject}</div>
               ) : (
                 ""
               )}
-              {props.Location !== undefined ? (
-                <div className="location">{props.Location}</div>
-              ) : (
-                ""
-              )}
+
               {props.Description !== undefined ? (
                 <div className="description">{props.Description}</div>
               ) : (
                 ""
               )}
             </div>
+            <div className="e-event-footer">
+            <button className="e-event-edit" title="Edit">
+              Edit
+            </button>
+            <button className="e-event-delete" title="Delete">
+              Delete
+            </button>
+          </div>
           </div>
         )}
       </div>
@@ -1714,12 +1720,7 @@ class CalendarMain extends React.Component {
           </div>
         ) : (
           <div className="e-event-footer">
-            <button className="e-event-edit" title="Edit">
-              Edit
-            </button>
-            <button className="e-event-delete" title="Delete">
-              Delete
-            </button>
+            
           </div>
         )}
       </div>
