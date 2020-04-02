@@ -2118,7 +2118,7 @@ class CalendarMain extends React.Component {
           fields: {
             id: "Id",
             description: { name: "dogNames", title: "Dogs" },
-            subject: { name: "username", title: "Owner", default: "admin" },
+            subject: { name: "username", title: "Owner", default: "admin", validation: { required: true } },
             location: {
               title: "Appointment Type",
               name: "Location",
@@ -2141,7 +2141,7 @@ class CalendarMain extends React.Component {
           fields: {
             id: "Id",
             description: { name: "dogNames", title: "Dogs" },
-            subject: { name: "username", title: "Owner", default: "admin" },
+            subject: { name: "username", title: "Owner", default: "admin", validation: { required: true } },
             location: {
               title: "Appointment Type",
               name: "Location",
