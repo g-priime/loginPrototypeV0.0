@@ -787,6 +787,16 @@ class CalendarMain extends React.Component {
             <tr>
               <td className="e-textlabel">Owner</td>
               <td colSpan={4}>
+              <input
+                  id="username"
+                  className="e-field e-input"
+                  type="text"
+                  name="username"
+                  style={{ width: "100%" }}
+                  value={props.Subject}
+                  readOnly
+                />
+                {/*
                 <DropDownListComponent
                   id="username"
                   placeholder="Choose customer"
@@ -799,6 +809,7 @@ class CalendarMain extends React.Component {
                   //actionComplete={this.onComplete}
                   //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
                 ></DropDownListComponent>
+                */}
               </td>
             </tr>
             {/*
@@ -1579,7 +1590,7 @@ class CalendarMain extends React.Component {
     aria-placeholder="Owner" defaultValue="admin"></input>
   */}
 
-
+{/*
               <div className="e-textlabel">Appointment Type</div>
               <div colSpan={4}>
                 <DropDownListComponent
@@ -1592,7 +1603,7 @@ class CalendarMain extends React.Component {
                   value={props.Location || null}
                 ></DropDownListComponent>
               </div>
-            
+*/}
   {/*
     <input className="e-description e-field e-input" type="text"
     name="Description" placeholder="Appointment type"
@@ -1695,9 +1706,11 @@ class CalendarMain extends React.Component {
             <button className="e-event-details" title="Extra Details">
               Next Step
             </button>
+            {/*
             <button className="e-event-create" title="Add">
               Add
             </button>
+            */}
           </div>
         ) : (
           <div className="e-event-footer">
