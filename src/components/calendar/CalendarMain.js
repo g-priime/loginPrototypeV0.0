@@ -254,12 +254,28 @@ class CalendarMain extends React.Component {
         this.addAppointment(ActionEventArgs.addedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0].username);
+      } else if (ActionEventArgs.requestType === "eventRemove") {
+        this.deleteAppointment(ActionEventArgs.data[0]);
+        //console.log(ActionEventArgs.changedRecords[0]);
+        //console.log(ActionEventArgs.changedRecords[0].username);
       }
       //console.log(ActionEventArgs);
     }
 
     console.log(ActionEventArgs);
   }
+
+  deleteAppointment = async appointment => {
+    console.log(appointment);
+    let token = localStorage.getItem("token");
+    let idNumber = appointment.Id;
+
+    const response = await BasePath.put("/webresources/deleteAppointment", {
+      token,
+      idNumber
+    });
+    console.log(response);
+  };
 
   addAppointment(appointment) {
     console.log(appointment);
@@ -2118,7 +2134,12 @@ class CalendarMain extends React.Component {
           fields: {
             id: "Id",
             description: { name: "dogNames", title: "Dogs" },
-            subject: { name: "username", title: "Owner", default: "admin", validation: { required: true } },
+            subject: {
+              name: "username",
+              title: "Owner",
+              default: "admin",
+              validation: { required: true }
+            },
             location: {
               title: "Appointment Type",
               name: "Location",
@@ -2141,7 +2162,12 @@ class CalendarMain extends React.Component {
           fields: {
             id: "Id",
             description: { name: "dogNames", title: "Dogs" },
-            subject: { name: "username", title: "Owner", default: "admin", validation: { required: true } },
+            subject: {
+              name: "username",
+              title: "Owner",
+              default: "admin",
+              validation: { required: true }
+            },
             location: {
               title: "Appointment Type",
               name: "Location",
