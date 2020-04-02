@@ -222,12 +222,26 @@ class CalendarMain extends React.Component {
     //this.scheduleObj.refreshEvents();
     //this.onDataBound();
     console.log("complete");
+
+    
+    if ((document.querySelector('.e-schedule-dialog'))!==undefined) { 
+      let diaObj = (document.querySelector('.e-schedule-dialog')).ej2_instances[0]; 
+      this.scheduleObj.uiStateValues.isBlock = false; 
+      diaObj.hide(); 
+    } 
+    
   }
 
   onActionBegin(ActionEventArgs) {
     //console.log("Begin");
     if (ActionEventArgs.changedRecords !== undefined) {
-      if (ActionEventArgs.requestType === "eventChange") {
+      if (ActionEventArgs.requestType === "eventCreate" && ActionEventArgs.data[0].Subject === "daycare") { 
+        console.log('hello');
+        this.scheduleObj.uiStateValues.isBlock = true; 
+        ActionEventArgs.cancel = true; 
+        alert('Enter Title'); 
+      } 
+      else if (ActionEventArgs.requestType === "eventChange") {
         this.editAppointment(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0].username);
@@ -238,7 +252,13 @@ class CalendarMain extends React.Component {
       }
       //console.log(ActionEventArgs);
     }
-  }
+
+    console.log(ActionEventArgs);
+    
+  } 
+
+    
+  
 
   addAppointment(appointment) {
     console.log(appointment);
@@ -654,17 +674,19 @@ class CalendarMain extends React.Component {
     console.log(username);
     //this.dogList.empty();
     //this.dogList.splice(0, this.dogList.length);
-    while (this.dogList.length > 0) {
-      this.dogList.pop();
-    }
+    
+    //while (this.dogList.length > 0) {
+      //this.dogList.pop();
+    //}
     if (username !== undefined) {
       for (let i = 0; i < this.dogs.length; i++) {
         if (username === this.dogs[i].owner) {
-          //console.log(this.dogs.length);
+          console.log(this.dogs[i].name);
 
           this.dogList.push(this.dogs[i].name);
         }
       }
+      
       /*
       for (let i = 0; i < this.dogList.length; i++) {
         if (username === this.dogsList[i]) {
@@ -675,16 +697,24 @@ class CalendarMain extends React.Component {
       }
       */
     }
-    console.log(this.dogList);
+    //console.log(this.dogList);
     //this.setState({ dognames: this.dogList });
   }
 
-  onPopupOpen(args, props) {
+  onPopupOpen(args) {
+    
+    if (args.type === "Editor" && args.data.Subject === undefined) { 
+      console.log('hello');
+      this.scheduleObj.uiStateValues.isBlock = true; 
+      args.cancel = true; 
+      alert('Enter Title'); 
+    } 
+    
     if (args.type === "Editor") {
       let statusElement = args.element.querySelector("#Subject");
       statusElement.setAttribute("name", "Subject");
     }
-    //console.log(props.Id);
+    console.log(args);
   }
   editorTemplate(props) {
     //console.log(props.username);
@@ -731,6 +761,7 @@ class CalendarMain extends React.Component {
                 />
               </td>
             </tr>
+            
             <tr>
               <td className="e-textlabel">Appointment Type</td>
               <td colSpan={4}>
@@ -762,6 +793,19 @@ class CalendarMain extends React.Component {
                 ></DropDownListComponent>
               </td>
             </tr>
+{/*
+            <tr>
+            <td className="e-textlabel">Cars</td>
+            <td colSpan={4}>
+            <select id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+</td>
+</tr>
+*/}
             <tr>
               <td className="e-textlabel">Dogs</td>
               <td colSpan={4}>
@@ -771,8 +815,8 @@ class CalendarMain extends React.Component {
                   data-name="dogNames"
                   className="e-field"
                   style={{ width: "100%" }}
-                  dataSource={this.state.dognames}
-                  //dataSource={this.dogList}
+                  //dataSource={this.state.dognames}
+                  dataSource={this.dogList}
                   value={props.dogNames || null}
                   //fields={{ text: 'sports', value: 'id' }}
                   mode="Box"
