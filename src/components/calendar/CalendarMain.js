@@ -64,7 +64,7 @@ class CalendarMain extends React.Component {
 
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
-        //appointment.Id = parseInt(result.data[i].idNumber);
+        appointment.Id = result.data[i].idNumber;
         //appointment.Id = i;//problem shifting ids getting from backend into calendar
 
         //appointment.Subject = result.data[i].type;
@@ -287,11 +287,11 @@ class CalendarMain extends React.Component {
     }
     let dogIdNumber = dogArray.toString();
 
-    if (appointment.Subject === "daycare") {
+    if (appointment.type === "daycare") {
       this.addDaycare(appointment, username, dogIdNumber);
-    } else if (appointment.Subject === "boarding") {
+    } else if (appointment.type === "boarding") {
       this.addBoarding(appointment, username, dogIdNumber);
-    } else if (appointment.Subject === "training") {
+    } else if (appointment.type === "training") {
       this.addTraining(appointment, username, dogIdNumber);
     }
   }
@@ -474,11 +474,11 @@ class CalendarMain extends React.Component {
     }
     let dogIdNumber = dogArray.toString();
 
-    if (appointment.Subject === "daycare") {
+    if (appointment.type === "daycare") {
       this.editDaycare(appointment, username, dogIdNumber);
-    } else if (appointment.Subject === "boarding") {
+    } else if (appointment.type=== "boarding") {
       this.editBoarding(appointment, username, dogIdNumber);
-    } else if (appointment.Subject === "training") {
+    } else if (appointment.type === "training") {
       this.editTraining(appointment, username, dogIdNumber);
     }
 
@@ -670,7 +670,17 @@ class CalendarMain extends React.Component {
     let username = ChangeEventArgs.itemData.value;
     this.alterDogList(username);
   }
-
+/*
+  onBegin(ChangeEventArgs) {
+    console.log("begin");
+    this.dogBit = true;
+    //this.dogList = ["Max", "Sparky", "Fido"]
+    //this.dogList.push("Sparky");
+    //console.log(ChangeEventArgs.itemData.value);
+    let username = ChangeEventArgs.itemData.value;
+    this.alterDogList(username);
+  }
+*/
   alterDogList(username) {
     console.log(username);
     //this.dogList.empty();
@@ -703,12 +713,13 @@ class CalendarMain extends React.Component {
   }
 
   onPopupOpen(args) {
-    /*
+    
     if (args.type === "QuickInfo") {
-      let statusElement = args.element.querySelector("#Subject");
-      statusElement.setAttribute("name", "Subject");
+      //console.log(args);
+      let username = args.data.username;
+      this.alterDogList(username);
     }
-*/
+
     /*
     if (args.type === "Editor" && args.data.Subject === undefined) {
       console.log("hello");
