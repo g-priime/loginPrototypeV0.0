@@ -67,7 +67,9 @@ class CalendarMain extends React.Component {
         //appointment.Id = parseInt(result.data[i].idNumber);
         //appointment.Id = i;//problem shifting ids getting from backend into calendar
 
-        appointment.Subject = result.data[i].type;
+        //appointment.Subject = result.data[i].type;
+        appointment.Location = result.data[i].type;
+
         appointment.StartTime = result.data[i].startTime;
         appointment.EndTime = result.data[i].endTime;
 
@@ -77,7 +79,9 @@ class CalendarMain extends React.Component {
         appointment.appointedDogs = this.state.dognames;
         //console.log(appointment.appointedDogs);
 
-        appointment.username = result.data[i].username;
+        //appointment.username = result.data[i].username;
+        appointment.Subject = result.data[i].username;
+
         appointment.EventType = result.data[i].type;
         appointment.total = result.data[i].total;
         appointment.amountPaid = result.data[i].amountPaid;
@@ -176,7 +180,7 @@ class CalendarMain extends React.Component {
   }
 
   eventTemplate(props) {
-    if (props.Subject === "daycare") {
+    if (props.Location === "daycare") {
       return (
         <div className="template-wrap" style={{ background: "red" }}>
           <div className="subject" style={{ background: "red" }}>
@@ -188,7 +192,7 @@ class CalendarMain extends React.Component {
           </div>
         </div>
       );
-    } else if (props.Subject === "boarding") {
+    } else if (props.Location === "boarding") {
       return (
         <div className="template-wrap" style={{ background: "green" }}>
           <div className="subject" style={{ background: "green" }}>
@@ -715,8 +719,8 @@ class CalendarMain extends React.Component {
     */
 
     if (args.type === "Editor") {
-      let statusElement = args.element.querySelector("#Subject");
-      statusElement.setAttribute("name", "Subject");
+      let statusElement = args.element.querySelector("#username");
+      statusElement.setAttribute("name", "username");
     }
     console.log(args);
   }
@@ -746,7 +750,7 @@ class CalendarMain extends React.Component {
       console.log(dogList);
     }
 
-    if (props !== undefined && props.Subject === "boarding") {
+    if (props !== undefined) {
       return (
         <table
           className="custom-event-editor"
@@ -770,13 +774,13 @@ class CalendarMain extends React.Component {
               <td className="e-textlabel">Appointment Type</td>
               <td colSpan={4}>
                 <DropDownListComponent
-                  id="Subject"
+                  id="Location"
                   placeholder="Choose appointment type"
-                  data-name="Subject"
+                  data-name="Location"
                   className="e-field"
                   style={{ width: "100%" }}
                   dataSource={["daycare", "boarding", "training"]}
-                  value={props.Subject || null}
+                  value={props.Location || null}
                 ></DropDownListComponent>
               </td>
             </tr>
@@ -790,7 +794,7 @@ class CalendarMain extends React.Component {
                   className="e-field"
                   style={{ width: "100%" }}
                   dataSource={this.state.usernames}
-                  value={props.username || null}
+                  value={props.Subject || null}
                   select={this.onComplete.bind(this)}
                   //actionComplete={this.onComplete}
                   //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
@@ -1553,9 +1557,15 @@ class CalendarMain extends React.Component {
  noValidate>
   <span className="e-input-group e-control-wrapper">
     
+    <input className="e-field e-input" type="text"
+    name="Subject" placeholder="Owner"
+    aria-placeholder="Owner"></input>
+    
+  
+    
     <input className="e-subject e-field e-input" type="text"
-    name="Subject" placeholder="Add title"
-    aria-placeholder="Add title"></input>
+    name="Location" placeholder="Appointment type"
+    aria-placeholder="Appointment type"></input>
     
   </span>
 </form>
@@ -1663,10 +1673,10 @@ class CalendarMain extends React.Component {
           fields: {
             id: "Id",
             description: { name: "dogNames", title: "Dogs" },
-            location: { name: "username", title: "Owner" },
-            subject: {
+            subject: { name: "username", title: "Owner", default: "admin" },
+            location: {
               title: "Appointment Type",
-              name: "Subject",
+              name: "Location",
               default: "daycare"
             }
           }
@@ -1686,10 +1696,10 @@ class CalendarMain extends React.Component {
           fields: {
             id: "Id",
             description: { name: "dogNames", title: "Dogs" },
-            location: { name: "username", title: "Owner" },
-            subject: {
+            subject: { name: "username", title: "Owner", default: "admin" },
+            location: {
               title: "Appointment Type",
-              name: "Subject",
+              name: "Location",
               default: "daycare"
             }
           }
