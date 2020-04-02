@@ -1,14 +1,14 @@
 import React from "react";
 
 import BasePath from "../../api/BasePath";
-import BookDaycare1 from "./BookDaycare1";
-import BookDaycare2 from "./BookDaycare2";
+import EditDaycare1 from "./EditDaycare1";
+import EditDaycare2 from "./EditDaycare2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
 import Moment from "moment";
 
-class BookDaycareMain extends React.Component {
+class EditDaycareMain extends React.Component {
   state = {
     response: "",
     fieldName: [],
@@ -33,8 +33,29 @@ class BookDaycareMain extends React.Component {
       dogArray.push({ key: doggy.idNumber, value: doggy.name })
     );
 
+    const dogIds = this.props.appointment.dogIdNumber;
+    const dogArrayAppointed = [];
+    for (let i = 0; i < dogArray.length; i++) {
+      for (let j = 0; j < dogIds.length; j++) {
+        if (dogIds[j] == dogArray[i].key) {
+          dogArrayAppointed.push(dogArray[i]);
+        }
+      }
+    }
+
     if (!this.state.initialStates) {
-      this.setState({ dogs: dogArray, initialStates: true, selectedDogs: [] });
+      this.setState({
+        dogs: dogArray,
+        initialStates: true,
+        selectedDogs: dogArrayAppointed,
+        startTime: Moment(this.props.appointment.startTime).format(
+          "YYYY-MM-DDThh:mm"
+        ),
+        endTime: Moment(this.props.appointment.endTime).format(
+          "YYYY-MM-DDThh:mm"
+        ),
+        comments: this.props.appointment.additionalComments
+      });
     }
   };
 
@@ -71,7 +92,10 @@ class BookDaycareMain extends React.Component {
       type
     });
 
-    this.setState({ response: response.data.message, cost: response.data.total });
+    this.setState({
+      response: response.data.message,
+      cost: response.data.total
+    });
 
     if (response.data === "") {
       this.setState({ cn: "popup4", response: "Must select at least one dog" });
@@ -82,21 +106,37 @@ class BookDaycareMain extends React.Component {
   onSearchSubmit2 = async () => {
     var token = localStorage.getItem("token");
 
+    var username = this.props.appointment.username;
+    var idNumber = this.props.appointment.idNumber;
+
     var selectedDogs = [];
     this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
-    var startTime = Moment(this.state.fieldName[1]).format("YYYY-MM-DD HH:mm:ss");
+    var startTime = Moment(this.state.fieldName[1]).format(
+      "YYYY-MM-DD HH:mm:ss"
+    );
     var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD HH:mm:ss");
     console.log(endTime);
     var additionalComments = this.state.fieldName[3];
     var total = this.state.cost;
 
-    const response = await BasePath.put("/webresources/bookdaycare", {
+    var amountPaid = this.props.appointment.amountPaid;
+    var isApproved = this.props.appointment.isApproved; 
+    var isCancelled = this.props.appointment.isCancelled;
+    var type = this.props.appointment.type;
+
+    const response = await BasePath.put("/webresources/editdaycare", {
       token,
+      username,
+      idNumber,
       dogIdNumber,
       startTime,
       endTime,
       total,
+      amountPaid,
+      isApproved,
+      isCancelled,
+      type,
       additionalComments
     });
 
@@ -143,12 +183,11 @@ class BookDaycareMain extends React.Component {
     if (isValid === "Cost estimate successful") {
       return (
         <div style={{ marginTop: "10px" }}>
-          <BookDaycare2
+          <EditDaycare2
             dog={this.state.dog}
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
-
             comments={this.state.comments}
             cost={this.state.cost}
             onClick={this.onPrevious}
@@ -157,13 +196,13 @@ class BookDaycareMain extends React.Component {
           />
         </div>
       );
-    } else if (isValid === "Succsessfully added appointment") {
+    } else if (isValid === "Appointment updated") {
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
               pathname: "/Services",
-              state: { message: "Appointment is booked pending approval" }
+              state: { message: "Appointment updated" }
             }}
           />
         </div>
@@ -182,7 +221,7 @@ class BookDaycareMain extends React.Component {
     } else {
       return (
         <div style={{ marginTop: "10px" }}>
-          <BookDaycare1
+          <EditDaycare1
             onChangeDog={this.handleChangeDog}
             onChangeStartTime={this.handleChangeStartTime}
             onChangeEndTime={this.handleChangeEndTime}
@@ -192,7 +231,6 @@ class BookDaycareMain extends React.Component {
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
-
             comments={this.state.comments}
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
@@ -213,4 +251,4 @@ class BookDaycareMain extends React.Component {
   }
 }
 
-export default BookDaycareMain;
+export default EditDaycareMain;

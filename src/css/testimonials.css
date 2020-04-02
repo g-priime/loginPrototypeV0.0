@@ -1,0 +1,10 @@
+.wrap {
+    word-wrap:break-word; 
+}
+
+.subHeader {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+    color: #715d5c;
+}
