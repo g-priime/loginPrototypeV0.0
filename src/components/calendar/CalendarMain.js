@@ -1552,6 +1552,27 @@ class CalendarMain extends React.Component {
     return (
       <div>
         {props.elementType === "cell" ? (
+
+<div className="e-event-content e-template">
+<div className="e-subject-wrap">
+  
+    <input className="e-subject e-field e-input" type="text"
+    name="username" placeholder="Owner"
+    aria-placeholder="Owner" defaultValue="admin"></input>
+  
+  
+    <input className="e-description e-field e-input" type="text"
+    name="Description" placeholder="Appointment type"
+    aria-placeholder="Appointment type"></input>
+  
+  {props.Description !== undefined ? (
+    <div className="description">{props.Description}</div>
+  ) : (
+    ""
+  )}
+</div>
+
+{/*
           <div className="e-cell-content e-template">
 <form className="e-schedule-form e-lib e-formvalidator"
  noValidate>
@@ -1563,13 +1584,13 @@ class CalendarMain extends React.Component {
     
   
     
-    <input className="e-subject e-field e-input" type="text"
+    <input className="e-location e-field e-input" type="text"
     name="Location" placeholder="Appointment type"
     aria-placeholder="Appointment type"></input>
     
   </span>
 </form>
-
+*/}
 {/*
             <form className="e-schedule-form">
               {/*
@@ -1638,7 +1659,7 @@ class CalendarMain extends React.Component {
         {props.elementType === "cell" ? (
           <div className="e-cell-footer">
             <button className="e-event-details" title="Extra Details">
-              Extra Details
+              Next Step
             </button>
             <button className="e-event-create" title="Add">
               Add
