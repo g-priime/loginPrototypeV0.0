@@ -1,7 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BasePath from "../../api/BasePath";
 
 class PendingAppointment extends React.Component {
+  deleteAppointment = async () => {
+    console.log(this.props.appointment.idNumber);
+    let token = localStorage.getItem("token");
+    let idNumber = this.props.appointment.idNumber;
+
+    const response = await BasePath.put("/webresources/deleteAppointment", {
+      token,
+      idNumber
+    });
+    console.log(response);
+  };
+
   render() {
     return (
       <div className="row ">
@@ -30,6 +43,7 @@ class PendingAppointment extends React.Component {
         </div>
         <div className="col-sm left">
           <button
+            onClick={this.deleteAppointment}
             className="btn mb-3"
             style={{
               fontWeight: "bold",
