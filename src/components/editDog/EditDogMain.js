@@ -69,15 +69,9 @@ class EditDogMain extends React.Component {
     initialStates: false
   };
 
-  // UNSAFE_componentWillMount() {
-  //   this.setState({dog: this.props.location.state});
-  // }
 
   getDogInfo = async () => {
-    // should be the dog info somewhere
-    //for editing not for Add
-    //const dogInfo = await BasePath.get("/webresources/"); // the path?
-    //this.setState({dog: this.props.location.state});
+
     const dogInfo = this.props.location.state.dog;
     console.log(dogInfo);
 
@@ -100,8 +94,8 @@ class EditDogMain extends React.Component {
         smalldogs: dogInfo.smalldogs,
         puppies: dogInfo.puppies,
         da2pp: dogInfo.vaccines.da2pp,
-        rabies: dogInfo.rabies,
-        bordetella: dogInfo.bordetella
+        rabies: dogInfo.vaccines.rabies,
+        bordetella: dogInfo.vaccines.bordetella
       });
     }
   };
@@ -267,13 +261,13 @@ class EditDogMain extends React.Component {
 
     var isValid = this.state.images; // images - message sent from the back
 
-    if (isValid === "dog added") {
+    if (isValid === "Updated") {
       //validation after submitting the 2nd step, add and edit
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/", //will be path for the UserAcc
+              pathname: "/Profile", //will be path for the UserAcc
               state: { message: "Dog added" }
             }}
           />
