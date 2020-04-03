@@ -30,9 +30,8 @@ import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
 import ViewAppointments from './viewAppointments/ViewAppointments';
 import DisableAccountMain from "./disableAccount/DisableAccountMain";
-//import CalendarMain from './calendar/CalendarMain';
+import CalendarMain from './calendar/CalendarMain';
 import EditAppointmentMain from './editAppointment/EditAppointmentMain';
-import DeleteAppointment from "./viewAppointments/DeleteAppointment";
 
 class App1 extends React.Component {
   state = {
@@ -73,7 +72,7 @@ class App1 extends React.Component {
               <Route path="/Register" component={RegisterMain} />
               <Route path="/Services" component={Services} />
               <Route path="/Gallery" component={Gallery} />
-              <Route path="/Testimonials" component={Testimonials} />
+              <Route path="/Testimonials" component={CalendarMain} />
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={UserAccount} />
@@ -86,7 +85,6 @@ class App1 extends React.Component {
               <Route path="/EditCustomer" component={EditCustomer} />
               <Route path="/DisableAccount" component={DisableAccountMain} />
               <Route path="/EditAppointment" component={EditAppointmentMain} />
-              <Route path="/DeleteAppointment" component={DeleteAppointment} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
