@@ -735,14 +735,14 @@ class CalendarMain extends React.Component {
       this.alterDogList(username);
     }
 
-    /*
-    if (args.type === "Editor" && args.data.Subject === undefined) {
+    
+    if (args.type === "Editor" && args.data.username === undefined) {
       console.log("hello");
       this.scheduleObj.uiStateValues.isBlock = true;
       args.cancel = true;
-      alert("Enter Title");
+      alert("Enter Customer");
     }
-    */
+    
 
     if (args.type === "Editor") {
       let statusElement = args.element.querySelector("#username");
