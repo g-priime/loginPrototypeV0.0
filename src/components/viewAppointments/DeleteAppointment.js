@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import BasePath from "../../api/BasePath";
 
+//This class is not being used anymore
 class DeleteAppointment extends React.Component {
   constructor() {
     super(...arguments);
