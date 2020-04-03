@@ -64,7 +64,7 @@ class AddDog2 extends React.Component {
 
   previousStep_onClick = event => {
     event.preventDefault();
-    this.props.onClick();
+    this.props.onClickPrev();
   };
 
   render() {
@@ -277,7 +277,7 @@ class AddDog2 extends React.Component {
           </div>
           <div className="d-flex justify-content-between">
           <Link
-                to="/AddDog1"
+                to="AddDog1"
                 type="button"
                 className="btn mb-3"
                 style={{
@@ -287,6 +287,7 @@ class AddDog2 extends React.Component {
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
+                onClick={this.previousStep_onClick}
               >
                 Previous Step
               </Link>
