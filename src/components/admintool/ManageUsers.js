@@ -2,7 +2,7 @@ import React from "react";
 import PopUpConfirm from "../PopUpConfirm";
 import BasePath from "../../api/BasePath";
 import { Link } from "react-router-dom";
-import User from './User';
+import User from "./User";
 
 class ManageUsers extends React.Component {
   state = {
@@ -68,18 +68,17 @@ class ManageUsers extends React.Component {
         emergencyname: ""
       });
     }
-  }
+  };
 
   UNSAFE_componentWillMount() {
-    var token = localStorage.getItem('token');
-    BasePath.get(`webresources/RetrieveUsers/${token}`)
-      .then(result => {
-        console.log(result);
-        this.setState({ userList: result.data });
-      });
+    var token = localStorage.getItem("token");
+    BasePath.get(`webresources/RetrieveUsers/${token}`).then(result => {
+      console.log(result);
+      this.setState({ userList: result.data });
+    });
   }
 
-  editUser = (user) => {
+  editUser = user => {
     if (this.state.initialStates === false) {
       this.setState({
         initialStates: true,
@@ -101,11 +100,9 @@ class ManageUsers extends React.Component {
         emergencyname: user.emergencyName
       });
     }
-  }
+  };
 
-  deleteUser = (user) => {
-
-  }
+  deleteUser = user => {};
 
   render() {
     return (
@@ -123,7 +120,11 @@ class ManageUsers extends React.Component {
                   <br />
                 </div>
                 {this.state.userList.map(user => (
-                  <User chosenUser={user} editUser={this.editUser} deleteUser={this.deleteUser} />
+                  <User
+                    chosenUser={user}
+                    editUser={this.editUser}
+                    deleteUser={this.deleteUser}
+                  />
                 ))}
               </div>
             </div>
@@ -209,7 +210,6 @@ class ManageUsers extends React.Component {
                               placeholder="Building #"
                               value={this.state.building}
                               onChange={this.props.onChangeBuilding}
-                              
                             />
                           </div>
                         </div>
@@ -280,7 +280,6 @@ class ManageUsers extends React.Component {
                     <br />
                     <br />
                     <div>
-                      {/* <h2>Phone number information</h2> */}
                       <div className="row pr-3">
                         <div className="col-sm">
                           <label>Personal Phone:</label>
