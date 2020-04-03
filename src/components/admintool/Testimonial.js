@@ -7,7 +7,7 @@ class Testimonial extends React.Component {
             <div>
                 <div className="row">
                     <div className="col-sm d-flex justify-content-between">
-                    <span style={{fontSize:"large"}} className="mr-3">{this.props.chosenTestimonial}</span>
+                    <span style={{fontSize:"large"}} className="mr-3">{this.props.chosenTestimonial.content}</span>
                 <button  className="btn mr-3 mb-3"
                         style={{
                           fontWeight: "bold",
