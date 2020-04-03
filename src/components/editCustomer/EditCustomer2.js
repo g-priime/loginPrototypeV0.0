@@ -70,7 +70,7 @@ class EditCustomer2 extends React.Component {
                       placeholder="Building #"
                       value={this.props.building}
                       onChange={this.props.onChangeBuilding}
-                      required
+                      
                     />
                   </div>
                 </div>

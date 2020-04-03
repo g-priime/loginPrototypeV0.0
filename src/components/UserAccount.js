@@ -116,7 +116,7 @@ class UserAccount extends React.Component {
                 <div className="col-sm">
                   <b>Phone: </b>
                 </div>
-                <div className="col-sm">{this.state.user.phone}</div>
+                <div className="col-sm">{this.state.user.phoneNumber}</div>
               </div>
               <br />
               <br />
@@ -204,7 +204,7 @@ class UserAccount extends React.Component {
             <br />
             <div>
               {this.state.dogList.map(dog => (
-                <DogProfile key={dog.idNumber} chosenDog={dog} allergies={dog.allergies} updateList={this.updateList}/>
+                <DogProfile key={dog.idNumber} chosenDog={dog} allergies={dog.allergies} updateList={this.updateList} />
               ))}
             </div>
           </div>

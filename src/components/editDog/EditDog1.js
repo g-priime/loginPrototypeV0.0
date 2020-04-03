@@ -208,7 +208,7 @@ class EditDog1 extends React.Component {
                 <input
                   type="text"
                   value=""
-                  // value={this.props.veterinarian}
+                  value={this.props.veterinarian}
                   onChange={this.props.onChangeVeterinarian}
                 />
               </div>

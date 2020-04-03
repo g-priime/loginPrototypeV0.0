@@ -78,7 +78,7 @@ class AddDog1 extends React.Component {
       this.state.medication,
       this.state.allergies,
       this.state.physlimit,
-      this.state.veterinaria
+      this.state.veterinarian
     );
   };
 
