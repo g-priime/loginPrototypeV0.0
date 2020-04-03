@@ -151,7 +151,7 @@ class EditDogMain extends React.Component {
     var medication = this.state.fieldName[6];
     var allergies = this.state.fieldName[7];
     var physlimit = this.state.fieldName[8];
-    var veterinarianName = this.state.fieldName[9];
+    var veterinarian = this.state.fieldName[9];
 
     var strangers = this.state.strangers;
     var largerdogs = this.state.largerdogs;
