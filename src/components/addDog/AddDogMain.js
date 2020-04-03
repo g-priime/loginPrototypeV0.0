@@ -112,12 +112,6 @@ class AddDogMain extends React.Component {
       ]
     });
 
-    // onPrevious = () => {
-    //   console.log("main");
-    //   this.setState({ images: [] });
-    //   console.log(this.state.images);
-    // };
-
     //these vars weren't being used so i commented them out
 /*
     var dname = this.state.dogname; //passing the state from the fields
@@ -132,18 +126,25 @@ class AddDogMain extends React.Component {
     var vet = this.state.veterinarian;
     */
 
-    const response = await BasePath.get("/webresources/registerDog", {
-      /*
-      dname,
-      br,
-      dateofbirth,
-      gen,
-      wei
-      */
-    });
+    // const response = await BasePath.get("/webresources/registerDog", {
+    //   /*
+    //   dname,
+    //   br,
+    //   dateofbirth,
+    //   gen,
+    //   wei
+    //   */
+    // });
  //console.log(response);
-    this.setState({ images: response.data });
+    this.setState({ images: 'Valid' });
   };
+
+  onPrevious = () => {
+    console.log("main");
+    this.setState({ images: [] });
+    console.log(this.state.images);
+  };
+
 
   onSearchSubmit2 = async () => {
     //called when step 2 submitted
@@ -170,10 +171,7 @@ class AddDogMain extends React.Component {
 
     var token = localStorage.getItem('token');
     
-    const response = await BasePath.put("/webresources/registerDog", {
-      //what path??????????
-      
-      token,
+    const response = await BasePath.put(`/webresources/registerDog/${token}`, {
       dogname,
       breed,
       dob,
@@ -360,7 +358,7 @@ class AddDogMain extends React.Component {
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
             onSubmit={this.onSearchSubmit2} //calls onsearch submit, all the stuff is getting passed from main page to the step2
-             onClick={this.onPrevious} //don't need
+             onClickPrev={this.onPrevious} //don't need
           />
         </div>
       );
