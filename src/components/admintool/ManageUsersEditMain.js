@@ -182,7 +182,7 @@ class ManageUsersEditMain extends React.Component {
   };
 
   render() {
-    this.getCustomerInfo();
+    // this.getCustomerInfo();
 
     var isValid = this.state.images;
 
