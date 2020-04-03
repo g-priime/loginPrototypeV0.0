@@ -11,8 +11,10 @@ class ManageTestimonials extends React.Component {
   };
 
   componentWillMount = () => {
-    BasePath.get("/webresources/Testimonials")
+    var token = localStorage.getItem("token");
+    BasePath.get(`/webresources/PendingTestimonials/${token}`)
       .then(result => {
+        console.log(result.data);
         this.setState({ testimonialsList: result.data });
       })
       .catch(err => {
@@ -24,7 +26,9 @@ class ManageTestimonials extends React.Component {
 
   };
 
-  deleteTestimonial = testimonial => {};
+  deleteTestimonial = testimonial => {
+    
+  };
 
   render() {
     return (
@@ -39,7 +43,7 @@ class ManageTestimonials extends React.Component {
           </div>
           {this.state.testimonialsList.map(testimonial => (
             <Testimonial
-              chosenTestimonial={testimonial.contents}
+              chosenTestimonial={testimonial}
               approveTestimonial={this.approveTestimonial}
               deleteTestimonial={this.deleteTestimonial}
             />
