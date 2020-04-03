@@ -209,7 +209,7 @@ class ManageUsers extends React.Component {
                               placeholder="Building #"
                               value={this.state.building}
                               onChange={this.props.onChangeBuilding}
-                              required
+                              
                             />
                           </div>
                         </div>
