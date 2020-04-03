@@ -118,11 +118,11 @@ class EditDogMain extends React.Component {
       ]
     });
 
-    // onPrevious = () => {
-    //   console.log("main");
-    //   this.setState({ images: [] });
-    //   console.log(this.state.images);
-    // };
+    //  onPrevious = () => {
+    //    console.log("main");
+    //    this.setState({ images: [] });
+    //    console.log(this.state.images);
+    //  };
 
     var dname = this.state.dogname; //passing the state from the fields
     var br = this.state.breed;
@@ -131,6 +131,12 @@ class EditDogMain extends React.Component {
     var wei = this.state.weight;
 
     this.setState({ images: 'Valid'});
+  };
+
+  onPrevious = () => {
+    console.log("main");
+    this.setState({ images: [] });
+    console.log(this.state.images);
   };
 
   onSearchSubmit2 = async () => {
@@ -336,7 +342,7 @@ class EditDogMain extends React.Component {
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
             onSubmit={this.onSearchSubmit2} //calls onsearch submit, all the stuff is getting passed from main page to the step2
-            // onClick={this.onPrevious} //don't need
+            onClickPrev={this.onPrevious} //don't need
           />
         </div>
       );
