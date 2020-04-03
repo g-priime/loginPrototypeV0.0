@@ -29,7 +29,7 @@ class User extends React.Component {
                           boxShadow:
                             "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                         }}
-                        onCLick={this.props.deleteUser(this.props.chosenUser)}>
+                        onClick={this.props.deleteUser(this.props.chosenUser)}>
                 Delete
                 </button>
                 </div>
