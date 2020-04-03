@@ -152,7 +152,7 @@ class EditDogMain extends React.Component {
       gen,
       wei
     });
-
+console.log(response.data);
     this.setState({ images: response.data });
   };
 
