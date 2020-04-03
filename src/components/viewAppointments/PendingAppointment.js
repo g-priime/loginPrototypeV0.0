@@ -19,7 +19,7 @@ class PendingAppointment extends React.Component {
       token,
       idNumber
     }).then( result => {
-      this.props.getAppointmentInfo();
+      this.props.updateAppointments();
     });
   };
 
@@ -83,7 +83,8 @@ onClick={this.showConAndDel}
         </div>
 
         { this.state.showCon ? (
-        <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text={'Are you sure you want to delete '+ this.props.appointmentType +'?'} cn="popup3"/>
+        <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text={'Delete '+ 
+        this.props.appointment.type + ' for ' + this.props.startTime + '?'} cn="popup3"/>
         ) : null}
 
       </div>
