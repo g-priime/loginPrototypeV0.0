@@ -60,7 +60,7 @@ class EditDog2 extends React.Component {
   previousStep_onClick = event => {
     //differents name?
     event.preventDefault();
-    this.props.onClick();
+    this.props.onClickPrev();
   };
 
   render() {
