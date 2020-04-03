@@ -4,6 +4,7 @@ import '../../css/admin.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import ViewCalendar from './ViewCalendar';
 import CreateUserMain from './CreateUserMain';
+import ManageUsersEditMain from './ManageUsersEditMain';
 import ManageUsers from './ManageUsers';
 import ManagePhotos from './ManagePhotos';
 import ManageTestimonials from './ManageTestimonials';
@@ -58,7 +59,7 @@ class AdminTool extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Manage Users
               </Link>
-              <Link
+              {/* <Link
                 to="ManagePhotos"
                 type="button"
                 className="btn mb-3"
@@ -69,7 +70,7 @@ class AdminTool extends React.Component {
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Manage Photos
-              </Link>
+              </Link> */}
               <Link
                 to="ManageTestimonials"
                 type="button"
@@ -82,7 +83,7 @@ class AdminTool extends React.Component {
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Manage Testimonials
               </Link>
-              <Link
+              {/* <Link
                 to="Reports"
                 type="button"
                 className="btn mb-3"
@@ -92,7 +93,7 @@ class AdminTool extends React.Component {
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}>Reports
-              </Link>
+              </Link> */}
               <Link
                 to="/"
                 type="button"
@@ -112,7 +113,7 @@ class AdminTool extends React.Component {
                   <div className="mt-4 ml-5 mr-5">
                     <Route path="/ViewCalendar" exact component={ViewCalendar} />
                     <Route path="/CreateUser" exact component={CreateUserMain} />
-                    <Route path="/ManageUsers" exact component={ManageUsers} />
+                    <Route path="/ManageUsers" exact component={ManageUsersEditMain} />
                     <Route path="/ManagePhotos" exact component={ManagePhotos} />
                     <Route path="/ManageTestimonials" exact component={ManageTestimonials} />
                     <Route path="/Reports" exact component={Reports} />
