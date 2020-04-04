@@ -32,7 +32,6 @@ import ViewAppointments from './viewAppointments/ViewAppointments';
 import DisableAccountMain from "./disableAccount/DisableAccountMain";
 //import CalendarMain from './calendar/CalendarMain';
 import EditAppointmentMain from './editAppointment/EditAppointmentMain';
-import DeleteAppointment from "./viewAppointments/DeleteAppointment";
 
 class App1 extends React.Component {
   state = {
@@ -86,7 +85,6 @@ class App1 extends React.Component {
               <Route path="/EditCustomer" component={EditCustomer} />
               <Route path="/DisableAccount" component={DisableAccountMain} />
               <Route path="/EditAppointment" component={EditAppointmentMain} />
-              <Route path="/DeleteAppointment" component={DeleteAppointment} />
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
