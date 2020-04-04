@@ -47,7 +47,10 @@ class CalendarMain extends React.Component {
     appointedDogs: [],
 
     usernames: [],
-    dognames: []
+    dognames: [],
+
+    data: [],
+    intitialData: false
   };
 
   getAppointmentInfo = async () => {
@@ -125,6 +128,109 @@ class CalendarMain extends React.Component {
         this.data.push(appointment);
       }
     }
+    if (!this.state.intitialData) {
+      this.setState({ data: this.data, intitialData: true });
+    }
+
+    //this.DataSource = this.data;
+    this.scheduleObj.refreshEvents();
+    console.log("got appts");
+  };
+
+  updateAppointmentInfo = async () => {
+    var token = localStorage.getItem("token");
+
+    const result = await BasePath.get(
+      `/webresources/getAllAppointments/${token}`
+    );
+    //if (this.state.initialStates === false) {
+      //this.setState({
+        //initialStates: true
+      //});
+      console.log(result);
+
+      this.data.splice(0, this.data.length);
+      //for(let i=0; i<this.data.length; i++){
+        //this.data.pop();
+      //}
+      //this.data.empty();
+      //this.data.clear();
+      //this.data = extend([], null, true);
+      console.log(this.data);
+
+      for (let i = 0; i < result.data.length; i++) {
+        var appointment = new Object();
+        appointment.Id = result.data[i].idNumber;
+        //appointment.Id = i;//problem shifting ids getting from backend into calendar
+
+        //appointment.Subject = result.data[i].type;
+        appointment.type = result.data[i].type;
+
+        appointment.StartTime = result.data[i].startTime;
+        appointment.EndTime = result.data[i].endTime;
+
+        appointment.dogIdNumber = result.data[i].dogIdNumber.split(",");
+        appointment.dogNames = result.data[i].dogNames.split(",");
+
+        appointment.appointedDogs = this.state.dognames;
+        //console.log(appointment.appointedDogs);
+
+        appointment.username = result.data[i].username;
+        appointment.Subject = result.data[i].username;
+
+        appointment.EventType = result.data[i].type;
+        appointment.total = result.data[i].total;
+        appointment.amountPaid = result.data[i].amountPaid;
+        appointment.isApproved = result.data[i].isApproved;
+        appointment.isCancelled = result.data[i].isCancelled;
+        appointment.isPaid = result.data[i].isPaid;
+        appointment.additionalComments = result.data[i].additionalComments;
+
+        appointment.grooming = result.data[i].grooming;
+
+        appointment.barking = result.data[i].barking;
+        appointment.chewingDestruction = result.data[i].chewingDestruction;
+        appointment.counterSurfing = result.data[i].counterSurfing;
+        appointment.digging = result.data[i].digging;
+        appointment.jumping = result.data[i].jumping;
+        appointment.pullingOnLeash = result.data[i].pullingOnLeash;
+        appointment.buildingConfidence = result.data[i].buildingConfidence;
+        appointment.chewing = result.data[i].chewing;
+        appointment.handling = result.data[i].handling;
+        appointment.houseTraining = result.data[i].houseTraining;
+        appointment.mouthing = result.data[i].mouthing;
+        appointment.socialization = result.data[i].socialization;
+        appointment.distractionStrategies =
+          result.data[i].distractionStrategies;
+        appointment.exercise = result.data[i].exercise;
+        appointment.focusStrategies = result.data[i].focusStrategies;
+        appointment.looseLeashWalking = result.data[i].looseLeashWalking;
+        appointment.matWork = result.data[i].matWork;
+        appointment.stealingItemsChaseGame =
+          result.data[i].stealingItemsChaseGame;
+        appointment.newBaby = result.data[i].newBaby;
+        appointment.newCat = result.data[i].newCat;
+        appointment.newDog = result.data[i].newDog;
+        appointment.newSignificantOther = result.data[i].newSignificantOther;
+        appointment.additionalHouseholdMembers =
+          result.data[i].additionalHouseholdMembers;
+        appointment.childrenAndDogs = result.data[i].childrenAndDogs;
+        appointment.newHome = result.data[i].newHome;
+        appointment.play = result.data[i].play;
+
+        this.data.push(appointment);
+        //console.log(this.data);
+      }
+    //}
+console.log(this.data);
+    this.setState({ data: this.data, intitialData: true });
+
+    //this.DataSource = this.data;
+    this.scheduleObj.eventSettings.dataSource = this.data;
+    //let scheduleObj = document.getElementById("Schedule").ej2_instances[0];
+    //scheduleObj.eventSettings.dataSource = this.data;
+    this.scheduleObj.refreshEvents();
+    console.log("updated appts");
   };
 
   getCustomerInfo = async () => {
@@ -248,6 +354,8 @@ class CalendarMain extends React.Component {
         alert("Enter Title");
       } else if (ActionEventArgs.requestType === "eventChange") {
         this.editAppointment(ActionEventArgs.changedRecords[0]);
+        //this.updateAppointmentInfo();
+        //this.scheduleObj.refreshEvents();
         //console.log(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0].username);
       } else if (ActionEventArgs.requestType === "eventCreate") {
@@ -531,7 +639,10 @@ class CalendarMain extends React.Component {
       additionalComments
     });
     console.log(response);
-    this.getAppointmentInfo();
+    if (response.data === "Appointment updated") {
+      this.updateAppointmentInfo();
+    }
+    //this.getAppointmentInfo();
     this.scheduleObj.refreshEvents();
   };
 
@@ -568,6 +679,9 @@ class CalendarMain extends React.Component {
       additionalComments
     });
     console.log(response);
+    if (response.data === "Appointment updated") {
+      this.updateAppointmentInfo();
+    }
   };
 
   editTraining = async (appointment, username, dogIdNumber) => {
@@ -654,6 +768,9 @@ class CalendarMain extends React.Component {
       play
     });
     console.log(response);
+    if (response.data === "Appointment updated") {
+      this.updateAppointmentInfo();
+    }
   };
   /*
   
@@ -670,8 +787,19 @@ class CalendarMain extends React.Component {
     //console.log("close");
   }
 */
+  onEditorClose(args) {
+    args.Cancel = true; //to prevent closing of the editor window
+  }
 
   onDataBound() {
+    console.log("data bound");
+    this.scheduleObj.refreshEvents();
+    //let event = this.scheduleObj.getEvents();
+    //this.appendElement('Events present on scheduler <b>' + event.length + '<b><hr>');
+  }
+
+  onDataChange() {
+    console.log("data change");
     this.scheduleObj.refreshEvents();
     //let event = this.scheduleObj.getEvents();
     //this.appendElement('Events present on scheduler <b>' + event.length + '<b><hr>');
@@ -735,14 +863,12 @@ class CalendarMain extends React.Component {
       this.alterDogList(username);
     }
 
-    
     if (args.type === "Editor" && args.data.username === undefined) {
       console.log("hello");
       this.scheduleObj.uiStateValues.isBlock = true;
       args.cancel = true;
       alert("Enter Customer");
     }
-    
 
     if (args.type === "Editor") {
       let statusElement = args.element.querySelector("#username");
@@ -2129,7 +2255,8 @@ class CalendarMain extends React.Component {
         ref={t => (this.scheduleObj = t)}
         currentView="Month"
         eventSettings={{
-          dataSource: this.data,
+          //dataSource: this.data,
+          dataSource: this.state.data,
           template: this.eventTemplate.bind(this),
           fields: {
             id: "Id",
@@ -2153,9 +2280,11 @@ class CalendarMain extends React.Component {
         //actionComplete={this.onActionComplete.bind(this)}
         actionBegin={this.onActionBegin.bind(this)}
         //dataBound={this.onDataBound.bind(this)}
+        dataChange={this.onDataChange.bind(this)}
+        editorClose={this.onEditorClose.bind(this)}
         //actionComplete={this.onComplete}
         quickInfoTemplates={{
-          dataSource: this.data,
+          dataSource: this.state.data,
           header: this.header.bind(this),
           content: this.content.bind(this),
           footer: this.footer.bind(this),
