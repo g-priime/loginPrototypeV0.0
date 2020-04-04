@@ -2148,6 +2148,11 @@ class CalendarMain extends React.Component {
     );
   }
   content(props) {
+    let startTime = "";
+    if(props.StartTime !== undefined){
+      startTime = new Date(props.startTime || props.StartTime).toString();
+    } 
+
     return (
       <div>
         {props.elementType === "cell" ? (
@@ -2272,6 +2277,12 @@ class CalendarMain extends React.Component {
               ) : (
                 ""
               )}
+              {props.StartTime !== undefined ? (              
+                <div className="startTime">{startTime}</div>
+              ) : (
+                ""
+              )}
+              {console.log(startTime)}
 
               {props.Description !== undefined ? (
                 <div className="description">{props.Description}</div>
