@@ -30,7 +30,7 @@ import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
 import ViewAppointments from './viewAppointments/ViewAppointments';
 import DisableAccountMain from "./disableAccount/DisableAccountMain";
-import CalendarMain from './calendar/CalendarMain';
+//import CalendarMain from './calendar/CalendarMain';
 import EditAppointmentMain from './editAppointment/EditAppointmentMain';
 
 class App1 extends React.Component {
@@ -72,7 +72,7 @@ class App1 extends React.Component {
               <Route path="/Register" component={RegisterMain} />
               <Route path="/Services" component={Services} />
               <Route path="/Gallery" component={Gallery} />
-              <Route path="/Testimonials" component={CalendarMain} />
+              <Route path="/Testimonials" component={Testimonials} />
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={UserAccount} />
