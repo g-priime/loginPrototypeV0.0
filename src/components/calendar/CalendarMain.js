@@ -1095,9 +1095,10 @@ class CalendarMain extends React.Component {
                 />
               </td>
             </tr>
+
             <tr>
               <td className="e-textlabel">Approved</td>
-              <td colSpan={4}>
+              <td >
                 <CheckBoxComponent
                   id="isApproved"
                   className="e-field"
@@ -1108,10 +1109,8 @@ class CalendarMain extends React.Component {
                   checked={props.isApproved}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
               <td className="e-textlabel">Cancelled</td>
-              <td colSpan={4}>
+              <td >
                 <CheckBoxComponent
                   id="isCancelled"
                   className="e-field"
@@ -1122,35 +1121,7 @@ class CalendarMain extends React.Component {
                   checked={props.isCancelled}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">Paid</td>
-              <td colSpan={4}>
-                <CheckBoxComponent
-                  id="isPaid"
-                  className="e-field"
-                  type="checkbox"
-                  data-name="isPaid"
-                  style={{ width: "100%" }}
-                  value={props.isPaid}
-                  checked={props.isPaid}
-                ></CheckBoxComponent>
-              </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">Grooming</td>
-              <td colSpan={4}>
-                <CheckBoxComponent
-                  id="grooming"
-                  className="e-field"
-                  type="checkbox"
-                  data-name="grooming"
-                  style={{ width: "100%" }}
-                  value={props.grooming}
-                  checked={props.grooming}
-                ></CheckBoxComponent>
-              </td>
-            </tr>
+            </tr>         
             <tr>
               <td className="e-textlabel">Additional Comments</td>
               <td colSpan={4}>
@@ -1169,9 +1140,28 @@ class CalendarMain extends React.Component {
               </td>
             </tr>
 
+<tr><td className="e-textlabel"></td></tr>
+<tr><td className="e-textlabel">Boarding Option:</td></tr>
             <tr>
-              <td className="e-textlabel">barking</td>
+              <td className="e-textlabel">Grooming</td>
               <td colSpan={4}>
+                <CheckBoxComponent
+                  id="grooming"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="grooming"
+                  style={{ width: "100%" }}
+                  value={props.grooming}
+                  checked={props.grooming}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+
+<tr><td className="e-textlabel"></td></tr>
+            <tr><td className="e-textlabel">Training Options:</td></tr>
+            <tr>
+              <td className="e-textlabel">Barking</td>
+              <td >
                 <CheckBoxComponent
                   id="barking"
                   className="e-field"
@@ -1181,11 +1171,9 @@ class CalendarMain extends React.Component {
                   value={props.barking}
                   checked={props.barking}
                 ></CheckBoxComponent>
-              </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">chewingDestruction</td>
-              <td colSpan={4}>
+              </td>   
+              <td className="e-textlabel">Chewing Destruction</td>
+              <td >
                 <CheckBoxComponent
                   id="chewingDestruction"
                   className="e-field"
@@ -1197,9 +1185,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">counterSurfing</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Counter Surfing</td>
+              <td >
                 <CheckBoxComponent
                   id="counterSurfing"
                   className="e-field"
@@ -1210,10 +1199,8 @@ class CalendarMain extends React.Component {
                   checked={props.counterSurfing}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">digging</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Digging</td>
+              <td >
                 <CheckBoxComponent
                   id="digging"
                   className="e-field"
@@ -1225,9 +1212,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">jumping</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Jumping</td>
+              <td >
                 <CheckBoxComponent
                   id="jumping"
                   className="e-field"
@@ -1238,10 +1226,8 @@ class CalendarMain extends React.Component {
                   checked={props.jumping}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">pullingOnLeash</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Pulling on Leash</td>
+              <td >
                 <CheckBoxComponent
                   id="pullingOnLeash"
                   className="e-field"
@@ -1253,9 +1239,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">buildingConfidence</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Building Confidence</td>
+              <td >
                 <CheckBoxComponent
                   id="buildingConfidence"
                   className="e-field"
@@ -1266,10 +1253,8 @@ class CalendarMain extends React.Component {
                   checked={props.buildingConfidence}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">chewing</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Chewing</td>
+              <td >
                 <CheckBoxComponent
                   id="chewing"
                   className="e-field"
@@ -1281,9 +1266,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">handling</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Handling</td>
+              <td >
                 <CheckBoxComponent
                   id="handling"
                   className="e-field"
@@ -1294,10 +1280,8 @@ class CalendarMain extends React.Component {
                   checked={props.handling}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">houseTraining</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">House Training</td>
+              <td >
                 <CheckBoxComponent
                   id="houseTraining"
                   className="e-field"
@@ -1309,9 +1293,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">mouthing</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Mouthing</td>
+              <td >
                 <CheckBoxComponent
                   id="mouthing"
                   className="e-field"
@@ -1322,10 +1307,8 @@ class CalendarMain extends React.Component {
                   checked={props.mouthing}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">socialization</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Socialization</td>
+              <td >
                 <CheckBoxComponent
                   id="socialization"
                   className="e-field"
@@ -1337,9 +1320,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">distractionStrategies</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Distraction Strategies</td>
+              <td >
                 <CheckBoxComponent
                   id="distractionStrategies"
                   className="e-field"
@@ -1350,10 +1334,8 @@ class CalendarMain extends React.Component {
                   checked={props.distractionStrategies}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">exercise</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Exercise</td>
+              <td >
                 <CheckBoxComponent
                   id="exercise"
                   className="e-field"
@@ -1365,9 +1347,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">focusStrategies</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Focus Strategies</td>
+              <td >
                 <CheckBoxComponent
                   id="focusStrategies"
                   className="e-field"
@@ -1378,10 +1361,8 @@ class CalendarMain extends React.Component {
                   checked={props.focusStrategies}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">looseLeashWalking</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Loose Leash Walking</td>
+              <td >
                 <CheckBoxComponent
                   id="looseLeashWalking"
                   className="e-field"
@@ -1393,9 +1374,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">matWork</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Mat Work</td>
+              <td >
                 <CheckBoxComponent
                   id="matWork"
                   className="e-field"
@@ -1406,10 +1388,8 @@ class CalendarMain extends React.Component {
                   checked={props.matWork}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">stealingItemsChaseGame</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Stealing Items Chase Game</td>
+              <td >
                 <CheckBoxComponent
                   id="stealingItemsChaseGame"
                   className="e-field"
@@ -1421,9 +1401,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">newBaby</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Baby</td>
+              <td >
                 <CheckBoxComponent
                   id="newBaby"
                   className="e-field"
@@ -1434,10 +1415,8 @@ class CalendarMain extends React.Component {
                   checked={props.newBaby}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">newCat</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Cat</td>
+              <td >
                 <CheckBoxComponent
                   id="newCat"
                   className="e-field"
@@ -1449,9 +1428,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">newDog</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Dog</td>
+              <td >
                 <CheckBoxComponent
                   id="newDog"
                   className="e-field"
@@ -1462,10 +1442,8 @@ class CalendarMain extends React.Component {
                   checked={props.newDog}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">newSignificantOther</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Significant Other</td>
+              <td >
                 <CheckBoxComponent
                   id="newSignificantOther"
                   className="e-field"
@@ -1477,9 +1455,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">additionalHouseholdMembers</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Additional Household Members</td>
+              <td >
                 <CheckBoxComponent
                   id="additionalHouseholdMembers"
                   className="e-field"
@@ -1490,10 +1469,8 @@ class CalendarMain extends React.Component {
                   checked={props.additionalHouseholdMembers}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">childrenAndDogs</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Children And Dogs</td>
+              <td >
                 <CheckBoxComponent
                   id="childrenAndDogs"
                   className="e-field"
@@ -1505,9 +1482,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">newHome</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Home</td>
+              <td >
                 <CheckBoxComponent
                   id="newHome"
                   className="e-field"
@@ -1518,10 +1496,8 @@ class CalendarMain extends React.Component {
                   checked={props.newHome}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">play</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Play</td>
+              <td >
                 <CheckBoxComponent
                   id="play"
                   className="e-field"
@@ -1684,9 +1660,10 @@ class CalendarMain extends React.Component {
                 />
               </td>
             </tr>
+
             <tr>
               <td className="e-textlabel">Approved</td>
-              <td colSpan={4}>
+              <td >
                 <CheckBoxComponent
                   id="isApproved"
                   className="e-field"
@@ -1697,10 +1674,8 @@ class CalendarMain extends React.Component {
                   checked={props.isApproved}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
               <td className="e-textlabel">Cancelled</td>
-              <td colSpan={4}>
+              <td >
                 <CheckBoxComponent
                   id="isCancelled"
                   className="e-field"
@@ -1711,35 +1686,7 @@ class CalendarMain extends React.Component {
                   checked={props.isCancelled}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">Paid</td>
-              <td colSpan={4}>
-                <CheckBoxComponent
-                  id="isPaid"
-                  className="e-field"
-                  type="checkbox"
-                  data-name="isPaid"
-                  style={{ width: "100%" }}
-                  value={props.isPaid}
-                  checked={props.isPaid}
-                ></CheckBoxComponent>
-              </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">Grooming</td>
-              <td colSpan={4}>
-                <CheckBoxComponent
-                  id="grooming"
-                  className="e-field"
-                  type="checkbox"
-                  data-name="grooming"
-                  style={{ width: "100%" }}
-                  value={props.grooming}
-                  checked={props.grooming}
-                ></CheckBoxComponent>
-              </td>
-            </tr>
+            </tr>         
             <tr>
               <td className="e-textlabel">Additional Comments</td>
               <td colSpan={4}>
@@ -1758,9 +1705,28 @@ class CalendarMain extends React.Component {
               </td>
             </tr>
 
+<tr><td className="e-textlabel"></td></tr>
+<tr><td className="e-textlabel">Boarding Option:</td></tr>
             <tr>
-              <td className="e-textlabel">barking</td>
+              <td className="e-textlabel">Grooming</td>
               <td colSpan={4}>
+                <CheckBoxComponent
+                  id="grooming"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="grooming"
+                  style={{ width: "100%" }}
+                  value={props.grooming}
+                  checked={props.grooming}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+
+<tr><td className="e-textlabel"></td></tr>
+            <tr><td className="e-textlabel">Training Options:</td></tr>
+            <tr>
+              <td className="e-textlabel">Barking</td>
+              <td >
                 <CheckBoxComponent
                   id="barking"
                   className="e-field"
@@ -1770,11 +1736,9 @@ class CalendarMain extends React.Component {
                   value={props.barking}
                   checked={props.barking}
                 ></CheckBoxComponent>
-              </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">chewingDestruction</td>
-              <td colSpan={4}>
+              </td>   
+              <td className="e-textlabel">Chewing Destruction</td>
+              <td >
                 <CheckBoxComponent
                   id="chewingDestruction"
                   className="e-field"
@@ -1786,9 +1750,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">counterSurfing</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Counter Surfing</td>
+              <td >
                 <CheckBoxComponent
                   id="counterSurfing"
                   className="e-field"
@@ -1799,10 +1764,8 @@ class CalendarMain extends React.Component {
                   checked={props.counterSurfing}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">digging</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Digging</td>
+              <td >
                 <CheckBoxComponent
                   id="digging"
                   className="e-field"
@@ -1814,9 +1777,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">jumping</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Jumping</td>
+              <td >
                 <CheckBoxComponent
                   id="jumping"
                   className="e-field"
@@ -1827,10 +1791,8 @@ class CalendarMain extends React.Component {
                   checked={props.jumping}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">pullingOnLeash</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Pulling on Leash</td>
+              <td >
                 <CheckBoxComponent
                   id="pullingOnLeash"
                   className="e-field"
@@ -1842,9 +1804,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">buildingConfidence</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Building Confidence</td>
+              <td >
                 <CheckBoxComponent
                   id="buildingConfidence"
                   className="e-field"
@@ -1855,10 +1818,8 @@ class CalendarMain extends React.Component {
                   checked={props.buildingConfidence}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">chewing</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Chewing</td>
+              <td >
                 <CheckBoxComponent
                   id="chewing"
                   className="e-field"
@@ -1870,9 +1831,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">handling</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Handling</td>
+              <td >
                 <CheckBoxComponent
                   id="handling"
                   className="e-field"
@@ -1883,10 +1845,8 @@ class CalendarMain extends React.Component {
                   checked={props.handling}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">houseTraining</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">House Training</td>
+              <td >
                 <CheckBoxComponent
                   id="houseTraining"
                   className="e-field"
@@ -1898,9 +1858,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">mouthing</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Mouthing</td>
+              <td >
                 <CheckBoxComponent
                   id="mouthing"
                   className="e-field"
@@ -1911,10 +1872,8 @@ class CalendarMain extends React.Component {
                   checked={props.mouthing}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">socialization</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Socialization</td>
+              <td >
                 <CheckBoxComponent
                   id="socialization"
                   className="e-field"
@@ -1926,9 +1885,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">distractionStrategies</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Distraction Strategies</td>
+              <td >
                 <CheckBoxComponent
                   id="distractionStrategies"
                   className="e-field"
@@ -1939,10 +1899,8 @@ class CalendarMain extends React.Component {
                   checked={props.distractionStrategies}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">exercise</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Exercise</td>
+              <td >
                 <CheckBoxComponent
                   id="exercise"
                   className="e-field"
@@ -1954,9 +1912,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">focusStrategies</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Focus Strategies</td>
+              <td >
                 <CheckBoxComponent
                   id="focusStrategies"
                   className="e-field"
@@ -1967,10 +1926,8 @@ class CalendarMain extends React.Component {
                   checked={props.focusStrategies}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">looseLeashWalking</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Loose Leash Walking</td>
+              <td >
                 <CheckBoxComponent
                   id="looseLeashWalking"
                   className="e-field"
@@ -1982,9 +1939,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">matWork</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Mat Work</td>
+              <td >
                 <CheckBoxComponent
                   id="matWork"
                   className="e-field"
@@ -1995,10 +1953,8 @@ class CalendarMain extends React.Component {
                   checked={props.matWork}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">stealingItemsChaseGame</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Stealing Items Chase Game</td>
+              <td >
                 <CheckBoxComponent
                   id="stealingItemsChaseGame"
                   className="e-field"
@@ -2010,9 +1966,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">newBaby</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Baby</td>
+              <td >
                 <CheckBoxComponent
                   id="newBaby"
                   className="e-field"
@@ -2023,10 +1980,8 @@ class CalendarMain extends React.Component {
                   checked={props.newBaby}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">newCat</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Cat</td>
+              <td >
                 <CheckBoxComponent
                   id="newCat"
                   className="e-field"
@@ -2038,9 +1993,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">newDog</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Dog</td>
+              <td >
                 <CheckBoxComponent
                   id="newDog"
                   className="e-field"
@@ -2051,10 +2007,8 @@ class CalendarMain extends React.Component {
                   checked={props.newDog}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">newSignificantOther</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Significant Other</td>
+              <td >
                 <CheckBoxComponent
                   id="newSignificantOther"
                   className="e-field"
@@ -2066,9 +2020,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">additionalHouseholdMembers</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Additional Household Members</td>
+              <td >
                 <CheckBoxComponent
                   id="additionalHouseholdMembers"
                   className="e-field"
@@ -2079,10 +2034,8 @@ class CalendarMain extends React.Component {
                   checked={props.additionalHouseholdMembers}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">childrenAndDogs</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Children And Dogs</td>
+              <td >
                 <CheckBoxComponent
                   id="childrenAndDogs"
                   className="e-field"
@@ -2094,9 +2047,10 @@ class CalendarMain extends React.Component {
                 ></CheckBoxComponent>
               </td>
             </tr>
+
             <tr>
-              <td className="e-textlabel">newHome</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">New Home</td>
+              <td >
                 <CheckBoxComponent
                   id="newHome"
                   className="e-field"
@@ -2107,10 +2061,8 @@ class CalendarMain extends React.Component {
                   checked={props.newHome}
                 ></CheckBoxComponent>
               </td>
-            </tr>
-            <tr>
-              <td className="e-textlabel">play</td>
-              <td colSpan={4}>
+              <td className="e-textlabel">Play</td>
+              <td >
                 <CheckBoxComponent
                   id="play"
                   className="e-field"
