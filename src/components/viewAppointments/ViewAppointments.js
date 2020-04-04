@@ -44,13 +44,12 @@ class ViewAppointments extends React.Component {
     appointmentList: [],
     approvedList: [],
     pendingList: [],
-    bgColor: "blue",
+    bgColor: "blue"
   };
 
   getAppointmentInfo = async () => {
     var token = localStorage.getItem("token");
 
-    //use dog info as placeholder til backend creates resource to get appointment info
     const result = await BasePath.get(`/webresources/getappointments/${token}`);
     if (this.state.initialStates === false) {
       this.setState({
@@ -73,8 +72,31 @@ class ViewAppointments extends React.Component {
         pendingList: pendingList
       });
     }
-    //const dogz = this.state.dogList.map(dog => dog + "dog");
-    console.log(this.state.appointmentList);
+  };
+
+  updateAppointments = () => {
+    var token = localStorage.getItem("token");
+
+    BasePath.get(`/webresources/getappointments/${token}`).then(result => {
+      this.setState({
+        appointmentList: result.data
+      });
+      console.log(result);
+
+      const pendingList = [];
+      const approvedList = [];
+      for (var i = 0; i < this.state.appointmentList.length; i++) {
+        if (this.state.appointmentList[i].isApproved === true) {
+          approvedList.push(this.state.appointmentList[i]);
+        } else {
+          pendingList.push(this.state.appointmentList[i]);
+        }
+      }
+      this.setState({
+        approvedList: approvedList,
+        pendingList: pendingList
+      });
+    });
   };
 
   UNSAFE_componentWillMount() {
@@ -189,11 +211,11 @@ class ViewAppointments extends React.Component {
         <div>
           {this.state.approvedList.map(appointment => (
             <ApprovedAppointment
-            key={appointment.idNumber}
+              key={appointment.idNumber}
               appointment={appointment}
               appointmentType={appointment.type.toUpperCase()}
               startTime={Moment(appointment.startTime).format("LL LT")}
-            endTime={Moment(appointment.endTime).format("LL LT")}
+              endTime={Moment(appointment.endTime).format("LL LT")}
             />
           ))}
         </div>
@@ -255,11 +277,12 @@ class ViewAppointments extends React.Component {
         <div>
           {this.state.pendingList.map(appointment => (
             <PendingAppointment
-            key={appointment.idNumber}
+              key={appointment.idNumber}
               appointment={appointment}
-            appointmentType={appointment.type.toUpperCase()}
-            startTime={Moment(appointment.startTime).format("LL LT")}
-            endTime={Moment(appointment.endTime).format("LL LT")}
+              appointmentType={appointment.type.toUpperCase()}
+              startTime={Moment(appointment.startTime).format("LL LT")}
+              endTime={Moment(appointment.endTime).format("LL LT")}
+              updateAppointments={this.updateAppointments}
             />
           ))}
         </div>
