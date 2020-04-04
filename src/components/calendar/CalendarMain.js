@@ -932,7 +932,8 @@ console.log(this.data);
                   className="e-field"
                   style={{ width: "100%" }}
                   dataSource={["daycare", "boarding", "training"]}
-                  value={props.type || null}
+                  value={props.type || "daycare"}
+                  //required
                 ></DropDownListComponent>
               </td>
             </tr>
@@ -994,6 +995,7 @@ console.log(this.data);
                   //enablePersistence={true}
                   //select={this.onComplete}
                   //actionBegin={this.scheduleObj.refreshEvents.bind(this)}
+                  //required
                 ></MultiSelectComponent>
               </td>
             </tr>
@@ -1030,6 +1032,9 @@ console.log(this.data);
                   type="text"
                   name="total"
                   style={{ width: "100%" }}
+                  //required
+                  //defaultValue="0"
+                  //pattern="^[a-zA-Z1-9]{5,20}$"
                 />
               </td>
             </tr>
@@ -2260,7 +2265,7 @@ console.log(this.data);
           template: this.eventTemplate.bind(this),
           fields: {
             id: "Id",
-            description: { name: "dogNames", title: "Dogs" },
+            description: { name: "dogNames", title: "Dogs", validation: { required: true } },
             subject: {
               name: "username",
               title: "Owner",
@@ -2270,7 +2275,8 @@ console.log(this.data);
             location: {
               title: "Appointment Type",
               name: "Location",
-              default: "daycare"
+              default: "daycare",
+              validation: { required: true }
             }
           }
         }}
