@@ -2152,13 +2152,25 @@ class CalendarMain extends React.Component {
     if(props.StartTime !== undefined){
       startTime = new Date(props.startTime || props.StartTime).toString();
     } 
+    var formattedStart = Moment(startTime).format("LL LT");
+
+    let endTime = "";
+    if(props.StartTime !== undefined){
+      endTime = new Date(props.endTime || props.EndTime).toString();
+    } 
+    var formattedEnd = Moment(endTime).format("LL LT");
+
+    let dogNames = "";
+    if(props.dogNames !== undefined){
+      dogNames = props.dogNames.toString();
+    } 
 
     return (
       <div>
         {props.elementType === "cell" ? (
           <div className="e-event-content e-template">
             <div className="e-subject-wrap">
-              <div className="e-textlabel">Owner</div>
+              <div className="e-textlabel"><h4>New Event</h4></div>
               <div colSpan={4}>
                 <DropDownListComponent
                   id="username"
@@ -2268,21 +2280,31 @@ class CalendarMain extends React.Component {
           <div className="e-event-content e-template">
             <div className="e-subject-wrap">
               {props.type !== undefined ? (
-                <div className="type">{props.type}</div>
+                <div className="type">Appointment Type: {props.type}</div>
               ) : (
                 ""
               )}
-              {props.Subject !== undefined ? (
-                <div className="subject">{props.Subject}</div>
+              {props.username !== undefined ? (
+                <div className="username">Customer: {props.username}</div>
+              ) : (
+                ""
+              )}
+              {props.dogNames !== undefined ? (
+                <div className="dogNames">Dogs: {dogNames}</div>
               ) : (
                 ""
               )}
               {props.StartTime !== undefined ? (              
-                <div className="startTime">{startTime}</div>
+                <div className="startTime">Start Time: {formattedStart}</div>
               ) : (
                 ""
               )}
-              {console.log(startTime)}
+              {props.EndTime !== undefined ? (              
+                <div className="endTime">End Time: {formattedEnd}</div>
+              ) : (
+                ""
+              )}
+              {console.log(formattedStart)}
 
               {props.Description !== undefined ? (
                 <div className="description">{props.Description}</div>
