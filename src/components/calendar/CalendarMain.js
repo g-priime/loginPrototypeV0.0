@@ -352,19 +352,20 @@ class CalendarMain extends React.Component {
         ActionEventArgs.cancel = true;
         alert("Enter Title");
       } else if (ActionEventArgs.requestType === "eventChange") {
-        if (ActionEventArgs.changedRecords[0].dogNames.length == 0 || ActionEventArgs.changedRecords[0].dogNames == null) {
+        if (
+          ActionEventArgs.changedRecords[0].dogNames.length == 0 ||
+          ActionEventArgs.changedRecords[0].dogNames == null
+        ) {
           //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        }
-        else if (ActionEventArgs.changedRecords[0].total === "") {
+        } else if (ActionEventArgs.changedRecords[0].total === "") {
           //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Total");
-        }
-        else if (ActionEventArgs.changedRecords[0].amountPaid === "") {
+        } else if (ActionEventArgs.changedRecords[0].amountPaid === "") {
           //console.log("no amount paid entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
@@ -372,7 +373,7 @@ class CalendarMain extends React.Component {
         } else {
           this.editAppointment(ActionEventArgs.changedRecords[0]);
         }
-        
+
         //this.updateAppointmentInfo();
         //this.scheduleObj.refreshEvents();
         //console.log(ActionEventArgs.changedRecords[0]);
@@ -384,20 +385,17 @@ class CalendarMain extends React.Component {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Appointment Type");
-        }
-        else if (ActionEventArgs.addedRecords[0].dogNames == null) {
+        } else if (ActionEventArgs.addedRecords[0].dogNames == null) {
           //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        }
-        else if (ActionEventArgs.addedRecords[0].total === "") {
+        } else if (ActionEventArgs.addedRecords[0].total === "") {
           //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Total");
-        }
-        else if (ActionEventArgs.addedRecords[0].amountPaid === "") {
+        } else if (ActionEventArgs.addedRecords[0].amountPaid === "") {
           //console.log("no amount paid entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
@@ -950,7 +948,595 @@ class CalendarMain extends React.Component {
       console.log(dogList);
     }
 
-    if (props !== undefined) {
+    if (props !== undefined && props.type !== undefined) {
+      return (
+        <table
+          className="custom-event-editor"
+          style={{ width: "100%", cellpadding: "5" }}
+        >
+          <tbody>
+            <tr>
+              <td className="e-textlabel">Id</td>
+              <td colSpan={4}>
+                <input
+                  id="Id"
+                  className="e-field e-input"
+                  type="text"
+                  name="Id"
+                  style={{ width: "100%" }}
+                />
+              </td>
+            </tr>
+
+            <tr>
+            <td className="e-textlabel">Appointment Type</td>
+              <td colSpan={4}>
+                <input
+                  id="type"
+                  className="e-field e-input"
+                  type="text"
+                  name="type"
+                  style={{ width: "100%" }}
+                  value={props.Subject}
+                  readOnly
+                />
+                </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">Owner</td>
+              <td colSpan={4}>
+                <input
+                  id="username"
+                  className="e-field e-input"
+                  type="text"
+                  name="username"
+                  style={{ width: "100%" }}
+                  value={props.Subject}
+                  readOnly
+                />
+                {/*
+                <DropDownListComponent
+                  id="username"
+                  placeholder="Choose customer"
+                  data-name="username"
+                  className="e-field"
+                  style={{ width: "100%" }}
+                  dataSource={this.state.usernames}
+                  value={props.Subject || null}
+                  select={this.onComplete.bind(this)}
+                  //actionComplete={this.onComplete}
+                  //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
+                ></DropDownListComponent>
+                */}
+              </td>
+            </tr>
+            {/*
+            <tr>
+            <td className="e-textlabel">Cars</td>
+            <td colSpan={4}>
+            <select id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+</td>
+</tr>
+*/}
+            <tr>
+              <td className="e-textlabel">Dogs</td>
+              <td colSpan={4}>
+                <MultiSelectComponent
+                  id="dogNames"
+                  placeholder="Choose dogs"
+                  data-name="dogNames"
+                  className="e-field"
+                  style={{ width: "100%" }}
+                  //dataSource={this.state.dognames}
+                  dataSource={this.dogList}
+                  value={props.dogNames || null}
+                  //fields={{ text: 'sports', value: 'id' }}
+                  mode="Box"
+                  //enablePersistence={true}
+                  //select={this.onComplete}
+                  //actionBegin={this.scheduleObj.refreshEvents.bind(this)}
+                  //required
+                ></MultiSelectComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">Start Time</td>
+              <td colSpan={4}>
+                <DateTimePickerComponent
+                  format="dd/MM/yy hh:mm a"
+                  id="StartTime"
+                  data-name="StartTime"
+                  value={new Date(props.startTime || props.StartTime)}
+                  className="e-field"
+                ></DateTimePickerComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">End Time</td>
+              <td colSpan={4}>
+                <DateTimePickerComponent
+                  format="dd/MM/yy hh:mm a"
+                  id="EndTime"
+                  data-name="EndTime"
+                  value={new Date(props.endTime || props.EndTime)}
+                  className="e-field"
+                ></DateTimePickerComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">Total</td>
+              <td colSpan={4}>
+                <input
+                  id="total"
+                  className="e-field e-input"
+                  type="text"
+                  name="total"
+                  style={{ width: "100%" }}
+                  //required
+                  //defaultValue="0"
+                  //pattern="^[a-zA-Z1-9]{5,20}$"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">Amount Paid</td>
+              <td colSpan={4}>
+                <input
+                  id="amountPaid"
+                  className="e-field e-input"
+                  type="text"
+                  name="amountPaid"
+                  style={{ width: "100%" }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">Approved</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="isApproved"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="isApproved"
+                  style={{ width: "100%" }}
+                  value={props.isApproved}
+                  checked={props.isApproved}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">Cancelled</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="isCancelled"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="isCancelled"
+                  style={{ width: "100%" }}
+                  value={props.isCancelled}
+                  checked={props.isCancelled}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">Paid</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="isPaid"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="isPaid"
+                  style={{ width: "100%" }}
+                  value={props.isPaid}
+                  checked={props.isPaid}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">Grooming</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="grooming"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="grooming"
+                  style={{ width: "100%" }}
+                  value={props.grooming}
+                  checked={props.grooming}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">Additional Comments</td>
+              <td colSpan={4}>
+                <textarea
+                  id="additionalComments"
+                  className="e-field e-input"
+                  name="additionalComments"
+                  rows={3}
+                  cols={50}
+                  style={{
+                    width: "100%",
+                    height: "60px !important",
+                    resize: "vertical",
+                  }}
+                ></textarea>
+              </td>
+            </tr>
+
+            <tr>
+              <td className="e-textlabel">barking</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="barking"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="barking"
+                  style={{ width: "100%" }}
+                  value={props.barking}
+                  checked={props.barking}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">chewingDestruction</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="chewingDestruction"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="chewingDestruction"
+                  style={{ width: "100%" }}
+                  value={props.chewingDestruction}
+                  checked={props.chewingDestruction}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">counterSurfing</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="counterSurfing"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="counterSurfing"
+                  style={{ width: "100%" }}
+                  value={props.counterSurfing}
+                  checked={props.counterSurfing}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">digging</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="digging"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="digging"
+                  style={{ width: "100%" }}
+                  value={props.digging}
+                  checked={props.digging}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">jumping</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="jumping"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="jumping"
+                  style={{ width: "100%" }}
+                  value={props.jumping}
+                  checked={props.jumping}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">pullingOnLeash</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="pullingOnLeash"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="pullingOnLeash"
+                  style={{ width: "100%" }}
+                  value={props.pullingOnLeash}
+                  checked={props.pullingOnLeash}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">buildingConfidence</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="buildingConfidence"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="buildingConfidence"
+                  style={{ width: "100%" }}
+                  value={props.buildingConfidence}
+                  checked={props.buildingConfidence}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">chewing</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="chewing"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="chewing"
+                  style={{ width: "100%" }}
+                  value={props.chewing}
+                  checked={props.chewing}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">handling</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="handling"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="handling"
+                  style={{ width: "100%" }}
+                  value={props.handling}
+                  checked={props.handling}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">houseTraining</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="houseTraining"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="houseTraining"
+                  style={{ width: "100%" }}
+                  value={props.houseTraining}
+                  checked={props.houseTraining}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">mouthing</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="mouthing"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="mouthing"
+                  style={{ width: "100%" }}
+                  value={props.mouthing}
+                  checked={props.mouthing}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">socialization</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="socialization"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="socialization"
+                  style={{ width: "100%" }}
+                  value={props.socialization}
+                  checked={props.socialization}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">distractionStrategies</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="distractionStrategies"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="distractionStrategies"
+                  style={{ width: "100%" }}
+                  value={props.distractionStrategies}
+                  checked={props.distractionStrategies}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">exercise</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="exercise"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="exercise"
+                  style={{ width: "100%" }}
+                  value={props.exercise}
+                  checked={props.exercise}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">focusStrategies</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="focusStrategies"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="focusStrategies"
+                  style={{ width: "100%" }}
+                  value={props.focusStrategies}
+                  checked={props.focusStrategies}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">looseLeashWalking</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="looseLeashWalking"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="looseLeashWalking"
+                  style={{ width: "100%" }}
+                  value={props.looseLeashWalking}
+                  checked={props.looseLeashWalking}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">matWork</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="matWork"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="matWork"
+                  style={{ width: "100%" }}
+                  value={props.matWork}
+                  checked={props.matWork}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">stealingItemsChaseGame</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="stealingItemsChaseGame"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="stealingItemsChaseGame"
+                  style={{ width: "100%" }}
+                  value={props.stealingItemsChaseGame}
+                  checked={props.stealingItemsChaseGame}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">newBaby</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="newBaby"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="newBaby"
+                  style={{ width: "100%" }}
+                  value={props.newBaby}
+                  checked={props.newBaby}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">newCat</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="newCat"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="newCat"
+                  style={{ width: "100%" }}
+                  value={props.newCat}
+                  checked={props.newCat}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">newDog</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="newDog"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="newDog"
+                  style={{ width: "100%" }}
+                  value={props.newDog}
+                  checked={props.newDog}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">newSignificantOther</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="newSignificantOther"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="newSignificantOther"
+                  style={{ width: "100%" }}
+                  value={props.newSignificantOther}
+                  checked={props.newSignificantOther}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">additionalHouseholdMembers</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="additionalHouseholdMembers"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="additionalHouseholdMembers"
+                  style={{ width: "100%" }}
+                  value={props.additionalHouseholdMembers}
+                  checked={props.additionalHouseholdMembers}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">childrenAndDogs</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="childrenAndDogs"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="childrenAndDogs"
+                  style={{ width: "100%" }}
+                  value={props.childrenAndDogs}
+                  checked={props.childrenAndDogs}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">newHome</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="newHome"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="newHome"
+                  style={{ width: "100%" }}
+                  value={props.newHome}
+                  checked={props.newHome}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+            <tr>
+              <td className="e-textlabel">play</td>
+              <td colSpan={4}>
+                <CheckBoxComponent
+                  id="play"
+                  className="e-field"
+                  type="checkbox"
+                  data-name="play"
+                  style={{ width: "100%" }}
+                  value={props.play}
+                  checked={props.play}
+                ></CheckBoxComponent>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      );
+    } else if (props !== undefined) {
       return (
         <table
           className="custom-event-editor"
@@ -998,34 +1584,34 @@ class CalendarMain extends React.Component {
                   readOnly
                 />
                 {/*
-                <DropDownListComponent
-                  id="username"
-                  placeholder="Choose customer"
-                  data-name="username"
-                  className="e-field"
-                  style={{ width: "100%" }}
-                  dataSource={this.state.usernames}
-                  value={props.Subject || null}
-                  select={this.onComplete.bind(this)}
-                  //actionComplete={this.onComplete}
-                  //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
-                ></DropDownListComponent>
-                */}
+                            <DropDownListComponent
+                              id="username"
+                              placeholder="Choose customer"
+                              data-name="username"
+                              className="e-field"
+                              style={{ width: "100%" }}
+                              dataSource={this.state.usernames}
+                              value={props.Subject || null}
+                              select={this.onComplete.bind(this)}
+                              //actionComplete={this.onComplete}
+                              //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
+                            ></DropDownListComponent>
+                            */}
               </td>
             </tr>
             {/*
-            <tr>
-            <td className="e-textlabel">Cars</td>
-            <td colSpan={4}>
-            <select id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
-</td>
-</tr>
-*/}
+                        <tr>
+                        <td className="e-textlabel">Cars</td>
+                        <td colSpan={4}>
+                        <select id="cars">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+            </td>
+            </tr>
+            */}
             <tr>
               <td className="e-textlabel">Dogs</td>
               <td colSpan={4}>
