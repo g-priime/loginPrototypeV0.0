@@ -14,7 +14,7 @@ class ChangePassAdminMain extends React.Component {
     cn: ""
   };
 
-  onSearchSubmit1 = async (oldPassword) => {
+  onSearchSubmit1 = async oldPassword => {
     this.setState({
       fieldName: [
         this.state.oldPassword,
@@ -24,7 +24,7 @@ class ChangePassAdminMain extends React.Component {
       ]
     });
 
-    var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
 
     var oldPword = this.state.oldPassword;
     var pword = this.state.password;
@@ -36,7 +36,7 @@ class ChangePassAdminMain extends React.Component {
       token,
       oldPword,
       pword,
-      confirmPword,
+      confirmPword
     });
 
     console.log(response.data);
@@ -50,18 +50,6 @@ class ChangePassAdminMain extends React.Component {
       this.setState({ cn: "popup5" });
       this.togglePopup();
     }
-  };
-
-  onPrevious = () => {
-    console.log("main");
-    this.setState({ images: [] });
-    console.log(this.state.images);
-  };
-
-  onHome = event => {
-    event.preventDefault();
-    this.props.onClick("home");
-    console.log("main event");
   };
 
   onChangePage = () => {
@@ -125,7 +113,7 @@ class ChangePassAdminMain extends React.Component {
           </div>
         </div>
       );
-    } 
+    }
   }
 }
 
