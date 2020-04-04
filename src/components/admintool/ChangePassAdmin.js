@@ -15,30 +15,27 @@ class ChangePassAdmin extends React.Component {
     this.props.onSubmit(
       this.state.oldPassword,
       this.state.password,
-      this.state.confirmPassword,
+      this.state.confirmPassword
     );
-  };
-
-  previousStep_onClick = event => {
-    event.preventDefault();
-    this.props.onClick();
-    console.log("here");
   };
 
   render() {
     return (
-      <div className="ui segment contChangePassword" style={{ backgroundColor: "#ECEBE7" }}>
+      <div
+        className="ui segment contChangePassword"
+        style={{ backgroundColor: "#ECEBE7" }}
+      >
         <form
           onSubmit={this.onFormSubmit}
           className="ui form"
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container">
-          <h1 style={{ color: "#212529" }}>Change Password</h1>
+            <h1 style={{ color: "#212529" }}>Change Password</h1>
 
             <div className="row">
               <div className="col-sm">
-              <label>Old Password:</label>
+                <label>Old Password:</label>
                 <input
                   type="password"
                   name="oldPassword"
@@ -74,31 +71,16 @@ class ChangePassAdmin extends React.Component {
                   title="Cannot be longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
                   placeholder="Confirm new password"
                   value={this.props.confirmPassword}
-                  onChange={this.props.onChangeConfirmPassword} //how to confirm it?
+                  onChange={this.props.onChangeConfirmPassword} 
                   required
                 />
               </div>
               <br />
               <br />
-
             </div>
             <br />
 
             <div className="d-flex justify-content-between">
-              {/* <Link
-                to="/Profile"
-                type="button"
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-              >
-                Back to Profile
-              </Link> */}
               <button
                 className="btn mb-3"
                 style={{
