@@ -319,6 +319,9 @@ class CalendarMain extends React.Component {
         ActionEventArgs.cancel = true;
         alert("Enter Title");
       } else if (ActionEventArgs.requestType === "eventChange") {
+        let validTotal = this.checkValidNumber(ActionEventArgs.changedRecords[0].total);
+        let validAmountPaid = this.checkValidNumber(ActionEventArgs.changedRecords[0].amountPaid);
+
         if (
           ActionEventArgs.changedRecords[0].dogNames == null ||
           ActionEventArgs.changedRecords[0].dogNames.length == 0
@@ -327,12 +330,12 @@ class CalendarMain extends React.Component {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        } else if (ActionEventArgs.changedRecords[0].total === "") {
+        } else if (ActionEventArgs.changedRecords[0].total === "" || !validTotal) {
           //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Total");
-        } else if (ActionEventArgs.changedRecords[0].amountPaid === "") {
+        } else if (ActionEventArgs.changedRecords[0].amountPaid === "" || !validAmountPaid) {
           //console.log("no amount paid entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
@@ -346,6 +349,8 @@ class CalendarMain extends React.Component {
         //console.log(ActionEventArgs.changedRecords[0]);
         //console.log(ActionEventArgs.changedRecords[0].username);
       } else if (ActionEventArgs.requestType === "eventCreate") {
+        let validTotal = this.checkValidNumber(ActionEventArgs.addedRecords[0].total);
+        let validAmountPaid = this.checkValidNumber(ActionEventArgs.addedRecords[0].amountPaid);
         //console.log(ActionEventArgs.addedRecords)
         if (ActionEventArgs.addedRecords[0].type == null) {
           //console.log("no total entered");
@@ -367,12 +372,12 @@ class CalendarMain extends React.Component {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        } else if (ActionEventArgs.addedRecords[0].total === "") {
+        } else if (ActionEventArgs.addedRecords[0].total === "" || !validTotal) {
           //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Total");
-        } else if (ActionEventArgs.addedRecords[0].amountPaid === "") {
+        } else if (ActionEventArgs.addedRecords[0].amountPaid === "" || !validAmountPaid) {
           //console.log("no amount paid entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
@@ -393,6 +398,14 @@ class CalendarMain extends React.Component {
     }
 
     console.log(ActionEventArgs);
+  }
+
+  checkValidNumber(stringValue) {
+    let invalidNumber = isNaN(stringValue);
+    if(!invalidNumber && stringValue >= 0){
+      return true;
+    }
+    return false;
   }
 
   deleteAppointment = async (appointment) => {
