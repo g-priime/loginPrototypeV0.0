@@ -320,8 +320,8 @@ class CalendarMain extends React.Component {
         alert("Enter Title");
       } else if (ActionEventArgs.requestType === "eventChange") {
         if (
-          ActionEventArgs.changedRecords[0].dogNames.length == 0 ||
-          ActionEventArgs.changedRecords[0].dogNames == null
+          ActionEventArgs.changedRecords[0].dogNames == null ||
+          ActionEventArgs.changedRecords[0].dogNames.length == 0
         ) {
           //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
@@ -359,7 +359,10 @@ class CalendarMain extends React.Component {
           });
           this.togglePopup();
           */
-        } else if (ActionEventArgs.addedRecords[0].dogNames == null) {
+        } else if (
+          ActionEventArgs.addedRecords[0].dogNames == null ||
+          ActionEventArgs.addedRecords[0].dogNames.length == 0
+        ) {
           //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
