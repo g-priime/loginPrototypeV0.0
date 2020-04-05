@@ -162,6 +162,7 @@ class AddDog1 extends React.Component {
                 <input
                   type="number"
                   placeholder="Enter dog's weight"
+                  max="6"
                   value={this.props.weight}
                   onChange={this.props.onChangeWeight}
                 />
@@ -200,6 +201,7 @@ class AddDog1 extends React.Component {
                 <Hint />
                 <input
                   type="text"
+                  max="200"
                   value={this.props.medication}
                   onChange={this.props.onChangeMedication}
                 />
@@ -209,6 +211,7 @@ class AddDog1 extends React.Component {
                 <Hint />
                 <input
                   type="text"
+                  max="200"
                   value={this.props.allergies}
                   onChange={this.props.onChangeAllergies}
                 />

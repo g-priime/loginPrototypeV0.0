@@ -113,6 +113,8 @@ class Register2 extends React.Component {
                       <input
                         className="field b-5"
                         type="text"
+                        min="1"
+                        max="20"
                         placeholder="Enter your province"
                         value={this.props.province}
                         onChange={this.props.onChangeProvince}
@@ -128,6 +130,7 @@ class Register2 extends React.Component {
                         className="field b-5"
                         type="text"
                         max="20"
+                        min="1"
                         placeholder="Enter your city"
                         value={this.props.city}
                         onChange={this.props.onChangeCity}
@@ -175,6 +178,7 @@ class Register2 extends React.Component {
                     className="field b-5"
                     type="text"
                     placeholder="Enter your emergency contact Name"
+                    max="40"
                     value={this.props.emergencyname}
                     onChange={this.props.onChangeEmergencyname}
                     required
