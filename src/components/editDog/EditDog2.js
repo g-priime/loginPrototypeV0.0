@@ -192,33 +192,6 @@ class EditDog2 extends React.Component {
                     </label>
                   </td>
                 </tr>
-                <tr>
-                  <td>Is training done?</td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="train"
-                        value='true'
-                        checked={this.props.train === "true"}
-                        onChange={this.props.onChangeTrain}
-                      />
-                    </label>
-                  </td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="train"
-                        value='false'
-                        checked={this.props.train === "false"}
-                        onChange={this.props.onChangeTrain}
-                      />
-                    </label>
-                  </td>
-                </tr>
               </table>
             </div>
             <br />
