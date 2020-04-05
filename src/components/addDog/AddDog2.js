@@ -40,6 +40,7 @@ class AddDog2 extends React.Component {
     largerdogs: "",
     smalldogs: "",
     puppies: "",
+    train: "",
     da2pp: "",
     rabies: "",
     bordetella: ""
@@ -54,6 +55,7 @@ class AddDog2 extends React.Component {
       this.state.largerdogs,
       this.state.smalldogs,
       this.state.puppies,
+      this.state.train,
       this.state.da2pp,
       this.state.rabies,
       this.state.bordetella
@@ -64,7 +66,7 @@ class AddDog2 extends React.Component {
 
   previousStep_onClick = event => {
     event.preventDefault();
-    this.props.onClick();
+    this.props.onClickPrev();
   };
 
   render() {
@@ -102,7 +104,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="strangers"
                       value="yes"
-                       //checked={this.props.strangers}
+                      //checked={this.props.strangers}
                       onChange={this.props.onChangeStrangers}
                     />
                   </label>
@@ -114,7 +116,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="strangers"
                       value="no"
-                       //checked={this.props.strangers}
+                      //checked={this.props.strangers}
                       onChange={this.props.onChangeStrangers}
                     />
                   </label>
@@ -132,7 +134,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="largerdogs"
                       value="yes"
-                       //checked={this.props.largerdogs}
+                      //checked={this.props.largerdogs}
                       onChange={this.props.onChangeLargerdogs}
                     />
                   </label>
@@ -144,7 +146,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="largerdogs"
                       value="no"
-                       //checked={this.props.largerdogs}
+                      //checked={this.props.largerdogs}
                       onChange={this.props.onChangeLargerdogs}
                     />
                   </label>
@@ -174,7 +176,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="smalldogs"
                       value="no"
-                       //checked={this.props.smalldogs}
+                      //checked={this.props.smalldogs}
                       onChange={this.props.onChangeSmalldogs}
                     />
                   </label>
@@ -192,7 +194,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="puppies"
                       value="yes"
-                       //checked={this.props.puppies}
+                      //checked={this.props.puppies}
                       onChange={this.props.onChangePuppies}
                     />
                   </label>
@@ -204,8 +206,38 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="puppies"
                       value="no"
-                       //checked={this.props.puppies}
+                      //checked={this.props.puppies}
                       onChange={this.props.onChangePuppies}
+                    />
+                  </label>
+                </div>
+              </div> 
+              <br />
+              <div className="row">
+                <div className="col-sm-6">
+                  Is your dog done training?
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                    <input
+                      type="radio"
+                      name="train"
+                      value="yes"
+                      //checked={this.props.train}
+                      onChange={this.props.onChangeTrain}
+                    />
+                  </label>
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                    <input
+                      type="radio"
+                      name="train"
+                      value="no"
+                      //checked={this.props.train}
+                      onChange={this.props.onChangeTrain}
                     />
                   </label>
                 </div>
@@ -277,7 +309,7 @@ class AddDog2 extends React.Component {
           </div>
           <div className="d-flex justify-content-between">
           <Link
-                to="/AddDog1"
+                to="AddDog1"
                 type="button"
                 className="btn mb-3"
                 style={{
@@ -287,6 +319,7 @@ class AddDog2 extends React.Component {
                   boxShadow:
                     "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
+                onClick={this.previousStep_onClick}
               >
                 Previous Step
               </Link>
