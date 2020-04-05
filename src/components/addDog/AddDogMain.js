@@ -113,40 +113,14 @@ class AddDogMain extends React.Component {
     var physlimit = this.state.fieldName[8];
     var veterinarianName = this.state.fieldName[9];
 
+    console.log(this.state.strangers);
     var dogId = this.state.dogId;
-    var strangers, largerdogs, smalldogs, puppies, train;
-    if (this.state.strangers == "yes") {
-      strangers=true;
-    } else {
-      strangers=false;
-    }
-    if (this.state.largerdogs == "yes") {
-      largerdogs=true;
-    } else {
-      largerdogs=false;
-    }
-    if (this.state.smalldogs =="yes") {
-      smalldogs =true;
-    } else {
-      smalldogs=false;
-    }
-    if (this.state.puppies =="yes") {
-      puppies =true;
-    } else {
-      puppies=false;
-    }
-    if (this.state.train =="yes") {
-      train=true;
-    } else {
-      train=false;
-    }
-
-    console.log(train);
-
     var strangers = this.state.strangers;
-    var largerdogs = this.state.largerdogs;
+    var  largerdogs = this.state.largerdogs;
     var smalldogs = this.state.smalldogs;
     var puppies = this.state.puppies;
+    var train = this.state.train;
+
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
@@ -317,13 +291,9 @@ class AddDogMain extends React.Component {
             physlimit={this.state.physlimit}
             veterinarian={this.state.veterinarian}
             onSubmit={this.onSearchSubmit1}
-             //onClick={() => {
-            //   //no needed
-               //this.props.onChangePage("about"); //no needed
-             //}}
           />
           <div>
-            {this.state.showPopup ? ( //need it probably for error messages
+            {this.state.showPopup ? ( 
               <Popup
                 cn={this.state.cn}
                 text={this.state.images}
