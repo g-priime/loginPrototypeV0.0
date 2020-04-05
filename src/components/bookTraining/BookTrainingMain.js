@@ -21,7 +21,9 @@ class BookTrainingMain extends React.Component {
     selectedDogs: "",
     dogs: [],
     initialStates: false,
-    cost: ""
+    cost: "",
+
+    cancelLink: "/Services"
   };
 
   getDogs = async () => {
@@ -39,6 +41,15 @@ class BookTrainingMain extends React.Component {
       this.setState({ dogs: dogArray, initialStates: true, selectedDogs: "" });
     }
   };
+
+  UNSAFE_componentWillMount() {
+    if (
+      typeof this.props.location.state != "undefined" &&
+      this.props.location.state !== null
+    ) {
+      this.setState({ cancelLink: this.props.location.state.cancelLink });
+    } 
+  }
 
   onSearchSubmit1 = async () => {
     this.setState({
@@ -423,6 +434,8 @@ class BookTrainingMain extends React.Component {
             stealing={this.state.stealing}
             onClick={this.onPrevious}
             toDetails={this.toDetails}
+
+            cancelLink={this.state.cancelLink}
           />
         </div>
       );
@@ -464,6 +477,8 @@ class BookTrainingMain extends React.Component {
             toPage2={this.toPage2}
             proceedToPayment={this.proceedToPayment}
             onSubmit={this.onSearchSubmit2}
+
+            cancelLink={this.state.cancelLink}
           />
         </div>
       );
@@ -518,6 +533,8 @@ class BookTrainingMain extends React.Component {
             comments={this.state.comments}
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
+
+            cancelLink={this.state.cancelLink}
           />
           <div>
             {this.state.showPopup ? (
