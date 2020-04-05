@@ -209,12 +209,12 @@ class AddDog2 extends React.Component {
                     />
                   </label>
                 </div>
-                <div className="row">
+              </div> 
+              <br />
+              <div className="row">
                 <div className="col-sm-6">
-                  Does your dog get along well with puppies?
+                  Is your dog done training?
                 </div>
-                <br>
-                </br>
                 <div className="col-sm-3">
                   {" "}
                   <label>
@@ -222,7 +222,7 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="train"
                       value="yes"
-                      //checked={this.props.puppies}
+                       //checked={this.props.puppies}
                       onChange={this.props.onChangeTrain}
                     />
                   </label>
@@ -232,7 +232,7 @@ class AddDog2 extends React.Component {
                   <label>
                     <input
                       type="radio"
-                      name="puppies"
+                      name="train"
                       value="no"
                        //checked={this.props.puppies}
                       onChange={this.props.onChangeTrain}
