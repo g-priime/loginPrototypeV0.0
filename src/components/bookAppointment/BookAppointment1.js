@@ -120,6 +120,7 @@ class BookAppointment1 extends React.Component {
                 <textarea
                   rows="2"
                   name="comments"
+                  max="100"
                   value={this.props.comments}
                   onChange={this.props.onChangeComments}
                 />

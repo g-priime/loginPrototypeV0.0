@@ -9,7 +9,7 @@ var style = {
   position: "relative",
   left: "0",
   bottom: "0",
-  height: "100px",
+  height: "120px",
   width: "100%"
 };
 
