@@ -56,6 +56,7 @@ class EditDog2 extends React.Component {
       this.state.bordetella
     );
   };
+  
 
   previousStep_onClick = event => {
     //differents name?
@@ -87,9 +88,10 @@ class EditDog2 extends React.Component {
                     {" "}
                     <label>
                       <input
+                        id="strangersRadio"
                         type="radio"
                         name="strangers"
-                        value='true'
+                        value="true"
                         checked={this.props.strangers === "true"}
                         onChange={this.props.onChangeStrangers}
                       />
