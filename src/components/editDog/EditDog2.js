@@ -38,6 +38,7 @@ class EditDog2 extends React.Component {
     largerdogs: "",
     smalldogs: "",
     puppies: "",
+    train:"",
     da2pp: "",
     rabies: "",
     bordetella: ""
@@ -51,6 +52,7 @@ class EditDog2 extends React.Component {
       this.state.largerdogs,
       this.state.smalldogs,
       this.state.puppies,
+      this.state.train,
       this.state.da2pp,
       this.state.rabies,
       this.state.bordetella
@@ -88,7 +90,6 @@ class EditDog2 extends React.Component {
                     {" "}
                     <label>
                       <input
-                        id="strangersRadio"
                         type="radio"
                         name="strangers"
                         value="true"
@@ -187,6 +188,33 @@ class EditDog2 extends React.Component {
                         value='false'
                         checked={this.props.puppies === "false"}
                         onChange={this.props.onChangePuppies}
+                      />
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Is training done?</td>
+                  <td>
+                    {" "}
+                    <label>
+                      <input
+                        type="radio"
+                        name="train"
+                        value='true'
+                        checked={this.props.train === "true"}
+                        onChange={this.props.onChangeTrain}
+                      />
+                    </label>
+                  </td>
+                  <td>
+                    {" "}
+                    <label>
+                      <input
+                        type="radio"
+                        name="train"
+                        value='false'
+                        checked={this.props.train === "false"}
+                        onChange={this.props.onChangeTrain}
                       />
                     </label>
                   </td>
