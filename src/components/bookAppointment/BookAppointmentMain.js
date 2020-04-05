@@ -21,7 +21,9 @@ class BookAppointmentMain extends React.Component {
     dogs: [],
     initialStates: false,
     cost: "",
-    grooming: "No"
+    grooming: "No",
+
+    cancelLink: "/Services"
   };
 
   getDogs = async () => {
@@ -38,6 +40,15 @@ class BookAppointmentMain extends React.Component {
       this.setState({ dogs: dogArray, initialStates: true, selectedDogs: [] });
     }
   };
+
+  UNSAFE_componentWillMount() {
+    if (
+      typeof this.props.location.state != "undefined" &&
+      this.props.location.state !== null
+    ) {
+      this.setState({ cancelLink: this.props.location.state.cancelLink });
+    } 
+  }
 
   onSearchSubmit1 = async () => {
     this.setState({
@@ -166,6 +177,8 @@ class BookAppointmentMain extends React.Component {
             onClick={this.onPrevious}
             proceedToPayment={this.proceedToPayment}
             onSubmit={this.onSearchSubmit2}
+
+            cancelLink={this.state.cancelLink}
           />
         </div>
       );
@@ -208,6 +221,8 @@ class BookAppointmentMain extends React.Component {
             comments={this.state.comments}
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
+
+            cancelLink={this.state.cancelLink}
           />
           <div>
             {this.state.showPopup ? (

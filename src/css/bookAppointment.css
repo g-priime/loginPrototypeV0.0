@@ -25,3 +25,16 @@
 .container .bookAppointmentFooter {
     justify-content: flex-end;
 }
+
+.contBookAppointmentOptions {
+    width: 50%;
+    left: 25%;
+    height: 30vh;
+}
+
+.container.bookAppointmentOptionsContainer {
+    justify-content: space-between;
+    flex-direction: column;
+    height: 25vh;
+    display: flex;
+}
