@@ -291,50 +291,6 @@ class CalendarMain extends React.Component {
     //console.log(this.state.dognames);
   };
 
-  getTimeString(value) {
-    return this.instance.formatDate(value, { skeleton: "hm" });
-  }
-
-  eventTemplate(props) {
-    if (props.type === "daycare") {
-      return (
-        <div className="template-wrap" style={{ background: "red" }}>
-          <div className="type" style={{ background: "red" }}>
-            {props.type}
-          </div>
-          <div className="time" style={{ background: "red" }}>
-            Time: {this.getTimeString(props.StartTime)} -{" "}
-            {this.getTimeString(props.EndTime)}
-          </div>
-        </div>
-      );
-    } else if (props.type === "boarding") {
-      return (
-        <div className="template-wrap" style={{ background: "green" }}>
-          <div className="type" style={{ background: "green" }}>
-            {props.type}
-          </div>
-          <div className="time" style={{ background: "green" }}>
-            Time: {this.getTimeString(props.StartTime)} -{" "}
-            {this.getTimeString(props.EndTime)}
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div className="template-wrap" style={{ background: "orange" }}>
-          <div className="type" style={{ background: "orange" }}>
-            {props.type}
-          </div>
-          <div className="time" style={{ background: "orange" }}>
-            Time: {this.getTimeString(props.StartTime)} -{" "}
-            {this.getTimeString(props.EndTime)}
-          </div>
-        </div>
-      );
-    }
-  }
-
   onActionComplete(ActionEventArgs) {
     if (ActionEventArgs.changedRecords !== undefined) {
       this.scheduleObj.refreshEvents();
@@ -2522,24 +2478,120 @@ class CalendarMain extends React.Component {
     } else return <div></div>;
   }
 
+  getTimeString(value) {
+    return this.instance.formatDate(value, { skeleton: "hm" });
+  }
+
+  eventTemplate(props) {
+    if (props.type === "daycare") {
+      return (
+        <div
+          className="template-wrap"
+          style={{
+            //background: "#1F271B",
+            //background: "#5B5B5B",
+            background: "#06070E",
+            paddingBottom: 2000,
+            marginLeft: -5,
+            marginRight: -20,
+            paddingLeft: 5,
+            paddingRight: 1000,
+          }}
+        >
+          <div className="type" style={{ background: "#06070E" }}>
+            {props.type}
+          </div>
+          <div className="time" style={{ background: "#06070E" }}>
+            Time: {this.getTimeString(props.StartTime)} -{" "}
+            {this.getTimeString(props.EndTime)}
+          </div>
+        </div>
+      );
+    } else if (props.type === "boarding") {
+      return (
+        <div
+          className="template-wrap"
+          style={{
+            //background: "#19674E",
+            //background: "#7D7C7A",
+            background: "#29524A",
+            paddingBottom: 2000,
+            marginLeft: -5,
+            marginRight: -20,
+            paddingLeft: 5,
+            paddingRight: 1000,
+          }}
+        >
+          <div className="type" style={{ background: "#29524A" }}>
+            {props.type}
+          </div>
+          <div className="time" style={{ background: "#29524A" }}>
+            Time: {this.getTimeString(props.StartTime)} -{" "}
+            {this.getTimeString(props.EndTime)}
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className="template-wrap"
+          style={{
+            //background: "#28AFB0",
+            //background: "#C9C19F",
+            background: "#94A187",
+            paddingBottom: 2000,
+            marginLeft: -5,
+            marginRight: -20,
+            paddingLeft: 5,
+            paddingRight: 1000,
+          }}
+        >
+          <div className="type" style={{ background: "#94A187" }}>
+            {props.type}
+          </div>
+          <div className="time" style={{ background: "#94A187" }}>
+            Time: {this.getTimeString(props.StartTime)} -{" "}
+            {this.getTimeString(props.EndTime)}
+          </div>
+        </div>
+      );
+    }
+  }
+
   header(props) {
-    return (
-      <div>
-        {props.elementType === "cell" ? (
-          <div className="e-cell-header">
-            <div className="e-header-icon-wrapper">
-              <button className="e-close" title="Close"></button>
-            </div>
+    if (props.elementType === "cell") {
+      return (
+        <div className="e-cell-header">
+          <div className="e-header-icon-wrapper">
+            <button className="e-close" title="Close"></button>
           </div>
-        ) : (
-          <div className="e-event-header">
-            <div className="e-header-icon-wrapper">
-              <button className="e-close" title="CLOSE"></button>
-            </div>
+        </div>
+      );
+    } else if (props.type === "daycare") {
+      return (
+        <div className="e-event-header" style={{ backgroundColor: "#06070E" }}>
+          <div className="e-header-icon-wrapper">
+            <button className="e-close" title="CLOSE"></button>
           </div>
-        )}
-      </div>
-    );
+        </div>
+      );
+    } else if (props.type === "boarding") {
+      return (
+        <div className="e-event-header" style={{ backgroundColor: "#29524A" }}>
+          <div className="e-header-icon-wrapper">
+            <button className="e-close" title="CLOSE"></button>
+          </div>
+        </div>
+      );
+    } else if (props.type === "training") {
+      return (
+        <div className="e-event-header" style={{ backgroundColor: "#94A187" }}>
+          <div className="e-header-icon-wrapper">
+            <button className="e-close" title="CLOSE"></button>
+          </div>
+        </div>
+      );
+    }
   }
   content(props) {
     let startTime = "";
@@ -2565,7 +2617,7 @@ class CalendarMain extends React.Component {
           <div className="e-event-content e-template">
             <div className="e-subject-wrap">
               <div className="e-textlabel">
-                <h4>New Event</h4>
+                <h3>New Event</h3>
               </div>
               <div colSpan={4}>
                 <DropDownListComponent
@@ -2676,27 +2728,37 @@ class CalendarMain extends React.Component {
           <div className="e-event-content e-template">
             <div className="e-subject-wrap">
               {props.type !== undefined ? (
-                <div className="type">Appointment Type: {props.type}</div>
+                <div className="type">
+                  <h3>{props.type}</h3>
+                </div>
               ) : (
                 ""
               )}
               {props.username !== undefined ? (
-                <div className="username">Customer: {props.username}</div>
+                <div className="username">
+                  <h5>Customer: {props.username}</h5>
+                </div>
               ) : (
                 ""
               )}
               {props.dogNames !== undefined ? (
-                <div className="dogNames">Dogs: {dogNames}</div>
+                <div className="dogNames">
+                  <h5>Dogs: {dogNames}</h5>
+                </div>
               ) : (
                 ""
               )}
               {props.StartTime !== undefined ? (
-                <div className="startTime">Start Time: {formattedStart}</div>
+                <div className="startTime">
+                  <h5>Start Time: {formattedStart}</h5>
+                </div>
               ) : (
                 ""
               )}
               {props.EndTime !== undefined ? (
-                <div className="endTime">End Time: {formattedEnd}</div>
+                <div className="endTime">
+                  <h5>End Time: {formattedEnd}</h5>
+                </div>
               ) : (
                 ""
               )}
