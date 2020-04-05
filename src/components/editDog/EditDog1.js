@@ -41,7 +41,7 @@ class EditDog1 extends React.Component {
     gender: "",
     weight: "",
     neuteredspayed: "",
-    medication: "",
+    medication: [],
     allergies: "",
     physlimit: "",
     veterinarian: ""
