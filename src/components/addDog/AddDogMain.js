@@ -154,7 +154,7 @@ class AddDogMain extends React.Component {
         bordetella: bordetella
       },
       active: true,
-      trainingDone: train
+      trainingDone: false
     });
 
     this.setState({ images: response.data });
@@ -219,10 +219,6 @@ class AddDogMain extends React.Component {
   handleChangeStrangers = event => {
     this.setState({ strangers: event.target.value });
   };
-
-  handleChangeTrain = event => {
-    this.setState({ train: event.target.value });
-  }
 
   handleChangeLargerdogs = event => {
     this.setState({ largerdogs: event.target.value });
@@ -313,7 +309,6 @@ class AddDogMain extends React.Component {
             onChangeLargerdogs={this.handleChangeLargerdogs}
             onChangeSmalldogs={this.handleChangeSmalldogs}
             onChangePuppies={this.handleChangePuppies}
-            onChangeTrain={this.handleChangeTrain}
             onChangeDa2pp={this.handleChangeDa2pp}
             onChangeRabies={this.handleChangeRabies}
             onChangeBordetella={this.handleChangeBordetella}
@@ -321,7 +316,6 @@ class AddDogMain extends React.Component {
             largerdogs={this.state.largerdogs}
             smalldogs={this.state.smalldogs}
             puppies={this.state.puppies}
-            train={this.state.train}
             da2pp={this.state.da2pp}
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
