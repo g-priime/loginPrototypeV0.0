@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class BookAppointment extends React.Component {
   render() {
@@ -32,7 +33,10 @@ class BookAppointment extends React.Component {
                 Cancel
               </Link>
               <Link
-                to="/BookBoarding"
+                to={{
+                    pathname: "/BookBoarding",
+                    state: { cancelLink: "/ViewAppointments" }
+                  }}
                 type="button"
                 className="btn mb-3"
                 style={{
@@ -46,7 +50,10 @@ class BookAppointment extends React.Component {
                 Book Boarding
               </Link>
               <Link
-                to="/BookTraining"
+                to={{
+                    pathname: "/BookTraining",
+                    state: { cancelLink: "/ViewAppointments" }
+                  }}
                 type="button"
                 className="btn mb-3"
                 style={{
@@ -60,7 +67,10 @@ class BookAppointment extends React.Component {
                 Book Training
               </Link>
               <Link
-                to="/BookDaycare"
+                to={{
+                    pathname: "/BookDaycare",
+                    state: { cancelLink: "/ViewAppointments" }
+                  }}
                 type="button"
                 className="btn mb-3"
                 style={{
