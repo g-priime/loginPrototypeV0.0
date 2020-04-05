@@ -48,6 +48,7 @@ class EditDogMain extends React.Component {
     dogsList: [],
 
     dogname: "",
+    dogId: "",
     breed: "",
     dob: "",
     gender: "",
@@ -75,10 +76,17 @@ class EditDogMain extends React.Component {
     const dogInfo = this.props.location.state.dog;
     console.log(dogInfo);
 
+    var vetName = '';
+
+    if (dogInfo.veterinarian !=null ) {
+      vetName = dogInfo.veterinarian.name;
+    };
+
     if (this.state.initialStates === false) {
       this.setState({
         initialStates: true,
         dogname: dogInfo.name,
+        dogId: dogInfo.idNumber,
         breed: dogInfo.breed,
         dob: dogInfo.dateOfBirth,
         gender: dogInfo.gender,
@@ -87,8 +95,7 @@ class EditDogMain extends React.Component {
         medication: dogInfo.medications,
         allergies: dogInfo.allergies,
         physlimit: dogInfo.physLimit,
-        veterinarian: dogInfo.veterinarian.name,
-
+        veterinarian: vetName,
         strangers: dogInfo.strangers,
         largerdogs: dogInfo.largerdogs,
         smalldogs: dogInfo.smalldogs,
@@ -124,11 +131,11 @@ class EditDogMain extends React.Component {
     //    console.log(this.state.images);
     //  };
 
-    var dname = this.state.dogname; //passing the state from the fields
-    var br = this.state.breed;
-    var dateofbirth = this.state.dob;
-    var gen = this.state.gender;
-    var wei = this.state.weight;
+    // var dname = this.state.dogname; //passing the state from the fields
+    // var br = this.state.breed;
+    // var dateofbirth = this.state.dob;
+    // var gen = this.state.gender;
+    // var wei = this.state.weight;
 
     this.setState({ images: 'Valid' });
   };
@@ -153,6 +160,7 @@ class EditDogMain extends React.Component {
     var physlimit = this.state.fieldName[8];
     var veterinarianName = this.state.fieldName[9];
 
+    var dogId = this.state.dogId;
     var strangers, largerdogs, smalldogs, puppies;
     if (this.state.strangers == 'true') {
       strangers=true;
@@ -177,34 +185,36 @@ class EditDogMain extends React.Component {
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
-    console.log(dob);
     var token = localStorage.getItem("token");
 
     const response = await BasePath.put('/webresources/updateDog', {
-      token,
-      dogname,
-      breed,
-      dob,
-      gender,
-      weight,
-      neuteredspayed,
-      medication,
-      allergies,
-      physlimit,
+      token:token,
+      idNumber: dogId,
+      name:dogname,
+      breed: breed,
+      dateOfBirth: dob,
+      gender: gender,
+      weight: weight,
+      spayedNeutered: neuteredspayed,
+      medications: [medication],
+      allergies: [allergies],
+      physLimit: physlimit,
       veterinarian: {
-        veterinarianName
+        name: veterinarianName
       },
 
-      strangers,
-      largerdogs,
-      smalldogs,
-      puppies,
-      Vaccines:
+      strangerComfortable: strangers,
+      largeDogFriendly: largerdogs,
+      smallDogFriendly: smalldogs,
+      puppyFriendly: puppies,
+      vaccines:
       {
-        da2pp,
-        rabies,
-        bordetella
-      }
+        da2pp: da2pp,
+        rabies: rabies,
+        bordetella: bordetella
+      },
+      active: true,
+      trainingDone: true
     });
 
     this.setState({ images: response.data });
@@ -298,7 +308,7 @@ class EditDogMain extends React.Component {
           <Redirect
             to={{
               pathname: "/Profile", //will be path for the UserAcc
-              state: { message: "Dog added" }
+              state: { message: "Dog updated" }
             }}
           />
         </div>
