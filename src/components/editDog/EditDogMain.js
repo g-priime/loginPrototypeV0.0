@@ -176,11 +176,7 @@ class EditDogMain extends React.Component {
     } else {
       puppies=false;
     }
-    if (this.state.train =='true') {
-      train =true;
-    } else {
-      train=false;
-    }
+    var train = this.state.train;
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
@@ -285,10 +281,6 @@ class EditDogMain extends React.Component {
     this.setState({ puppies: event.target.value });
   };
 
-  handleChangeTrain = event => {
-    this.setState({ train: event.target.value });
-  }
-
   handleChangeDa2pp = event => {
     this.setState({ da2pp: event.target.value });
   };
@@ -370,7 +362,6 @@ class EditDogMain extends React.Component {
             onChangeLargerdogs={this.handleChangeLargerdogs}
             onChangeSmalldogs={this.handleChangeSmalldogs}
             onChangePuppies={this.handleChangePuppies}
-            onChangeTrain={this.handleChangeTrain}
             onChangeDa2pp={this.handleChangeDa2pp}
             onChangeRabies={this.handleChangeRabies}
             onChangeBordetella={this.handleChangeBordetella}
@@ -378,7 +369,6 @@ class EditDogMain extends React.Component {
             largerdogs={this.state.largerdogs}
             smalldogs={this.state.smalldogs}
             puppies={this.state.puppies}
-            train={this.state.train}
             da2pp={this.state.da2pp}
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
