@@ -182,7 +182,7 @@ class CreateUserMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/", //redirect to the where?
+              pathname: "/CreateUser", //redirect to the where?
               state: { message: "Account Registered" }
             }}
           />
