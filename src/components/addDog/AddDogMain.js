@@ -136,10 +136,12 @@ class AddDogMain extends React.Component {
       puppies=false;
     }
     if (this.state.train =="yes") {
-      train =true;
+      train=true;
     } else {
       train=false;
     }
+
+    console.log(train);
 
     var strangers = this.state.strangers;
     var largerdogs = this.state.largerdogs;
@@ -283,7 +285,7 @@ class AddDogMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/", //will be path for the UserAcc
+              pathname: "/Profile", //will be path for the UserAcc
               state: { message: "Dog added" }
             }}
           />
