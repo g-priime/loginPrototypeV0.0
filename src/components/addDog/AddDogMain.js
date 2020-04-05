@@ -55,7 +55,7 @@ class AddDogMain extends React.Component {
     allergies: "",
     medList:[],
     allList:[],
-    train:"",
+    train:false,
     physlimit: "",
     veterinarian: "",
 
@@ -154,7 +154,7 @@ class AddDogMain extends React.Component {
         bordetella: bordetella
       },
       active: true,
-      trainingDone: false
+      trainingDone: train
     });
 
     this.setState({ images: response.data });
