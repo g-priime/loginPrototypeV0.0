@@ -103,7 +103,7 @@ class AddDog2 extends React.Component {
                     <input
                       type="radio"
                       name="strangers"
-                      value="yes"
+                      value={true}
                       //checked={this.props.strangers}
                       onChange={this.props.onChangeStrangers}
                     />
@@ -133,7 +133,7 @@ class AddDog2 extends React.Component {
                     <input
                       type="radio"
                       name="largerdogs"
-                      value="yes"
+                      value={true}
                       //checked={this.props.largerdogs}
                       onChange={this.props.onChangeLargerdogs}
                     />
@@ -163,7 +163,7 @@ class AddDog2 extends React.Component {
                     <input
                       type="radio"
                       name="smalldogs"
-                      value="yes"
+                      value={true}
                       //checked={this.props.smalldogs}
                       onChange={this.props.onChangeSmalldogs}
                     />
@@ -193,7 +193,7 @@ class AddDog2 extends React.Component {
                     <input
                       type="radio"
                       name="puppies"
-                      value="yes"
+                      value={true}
                       //checked={this.props.puppies}
                       onChange={this.props.onChangePuppies}
                     />
@@ -223,7 +223,7 @@ class AddDog2 extends React.Component {
                     <input
                       type="radio"
                       name="train"
-                      value="yes"
+                      value={true}
                       //checked={this.props.train}
                       onChange={this.props.onChangeTrain}
                     />
