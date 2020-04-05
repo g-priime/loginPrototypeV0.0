@@ -53,6 +53,9 @@ class AddDogMain extends React.Component {
     neuteredspayed: "",
     medication: "",
     allergies: "",
+    medList:[],
+    allList:[],
+    train:"",
     physlimit: "",
     veterinarian: "",
 
@@ -66,33 +69,6 @@ class AddDogMain extends React.Component {
 
     initialStates: false
   };
-
-  // getCustomerInfo = async () => {
-  //   //for editing not for Add
-  //   const customerInfo = await BasePath.get("/webresources/sendCustomerInfo");
-
-  //   if (this.state.initialStates === false) {
-  //     this.setState({
-  //       initialStates: true,
-  //       username: customerInfo.data.username,
-  //       password: customerInfo.data.password,
-  //       confirmPassword: customerInfo.data.password,
-  //       fname: customerInfo.data.firstName,
-  //       lname: customerInfo.data.lastName,
-  //       email: customerInfo.data.email,
-
-  //       appt: customerInfo.data.appt,
-  //       building: customerInfo.data.building,
-  //       street: customerInfo.data.street,
-  //       city: customerInfo.data.city,
-  //       province: customerInfo.data.province,
-  //       postcode: customerInfo.data.postcode,
-  //       phone: customerInfo.data.phone,
-  //       emergencyphone: customerInfo.data.emergencyphone,
-  //       emergencyname: customerInfo.data.emergencyname
-  //     });
-  //   }
-  // };
 
   onSearchSubmit1 = async () => {
     //should the name be different?
@@ -135,7 +111,35 @@ class AddDogMain extends React.Component {
     var medication = this.state.fieldName[6];
     var allergies = this.state.fieldName[7];
     var physlimit = this.state.fieldName[8];
-    var veterinarian = this.state.fieldName[9];
+    var veterinarianName = this.state.fieldName[9];
+
+    var dogId = this.state.dogId;
+    var strangers, largerdogs, smalldogs, puppies, train;
+    if (this.state.strangers == "yes") {
+      strangers=true;
+    } else {
+      strangers=false;
+    }
+    if (this.state.largerdogs == "yes") {
+      largerdogs=true;
+    } else {
+      largerdogs=false;
+    }
+    if (this.state.smalldogs =='yes') {
+      smalldogs =true;
+    } else {
+      smalldogs=false;
+    }
+    if (this.state.puppies =='yes') {
+      puppies =true;
+    } else {
+      puppies=false;
+    }
+    if (this.state.train =='yes') {
+      train =true;
+    } else {
+      train=false;
+    }
 
     var strangers = this.state.strangers;
     var largerdogs = this.state.largerdogs;
@@ -220,10 +224,12 @@ class AddDogMain extends React.Component {
 
   handleChangeMedication = event => {
     this.setState({ medication: event.target.value });
+    this.state.medList.push(this.state.medication);
   };
 
   handleChangeAllergies = event => {
     this.setState({ allergies: event.target.value });
+    this.state.allList.push(this.state.allergies);
   };
 
   handleChangePhyslimit = event => {
@@ -237,6 +243,10 @@ class AddDogMain extends React.Component {
   handleChangeStrangers = event => {
     this.setState({ strangers: event.target.value });
   };
+
+  handleChangeTrain = event => {
+    this.setState({ train: event.target.value });
+  }
 
   handleChangeLargerdogs = event => {
     this.setState({ largerdogs: event.target.value });
@@ -331,6 +341,7 @@ class AddDogMain extends React.Component {
             onChangeLargerdogs={this.handleChangeLargerdogs}
             onChangeSmalldogs={this.handleChangeSmalldogs}
             onChangePuppies={this.handleChangePuppies}
+            onChangeTrain={this.handleChangeTrain}
             onChangeDa2pp={this.handleChangeDa2pp}
             onChangeRabies={this.handleChangeRabies}
             onChangeBordetella={this.handleChangeBordetella}
@@ -338,6 +349,7 @@ class AddDogMain extends React.Component {
             largerdogs={this.state.largerdogs}
             smalldogs={this.state.smalldogs}
             puppies={this.state.puppies}
+            train={this.state.train}
             da2pp={this.state.da2pp}
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
