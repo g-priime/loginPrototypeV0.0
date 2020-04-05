@@ -54,8 +54,10 @@ class EditDogMain extends React.Component {
     gender: "",
     weight: "",
     neuteredspayed: "",
-    medication: [],
-    allergies: [],
+    medication: "",
+    medList:[],
+    allList: [],
+    allergies: "",
     physlimit: "",
     veterinarian: "",
 
@@ -92,8 +94,10 @@ class EditDogMain extends React.Component {
         gender: dogInfo.gender,
         weight: dogInfo.weight,
         neuteredspayed: dogInfo.spayedNeutered,
-        medication: dogInfo.medications,
-        allergies: dogInfo.allergies,
+        medList: dogInfo.medications,
+        allList: dogInfo.allergies,
+        medication: dogInfo.medications[0],
+        allergies: dogInfo.allergies[0],
         physlimit: dogInfo.physLimit,
         veterinarian: vetName,
         strangers: dogInfo.strangers,
@@ -196,8 +200,8 @@ class EditDogMain extends React.Component {
       gender: gender,
       weight: weight,
       spayedNeutered: neuteredspayed,
-      medications: [medication],
-      allergies: [allergies],
+      medications: this.state.medList,
+      allergies: this.state.allList,
       physLimit: physlimit,
       veterinarian: {
         name: veterinarianName
@@ -254,10 +258,12 @@ class EditDogMain extends React.Component {
 
   handleChangeMedication = event => {
     this.setState({ medication: event.target.value });
+    this.state.medList.push(this.state.medication);
   };
 
   handleChangeAllergies = event => {
     this.setState({ allergies: event.target.value });
+    this.state.allList.push(this.state.allergies);
   };
 
   handleChangePhyslimit = event => {
