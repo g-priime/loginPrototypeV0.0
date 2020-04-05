@@ -125,17 +125,17 @@ class AddDogMain extends React.Component {
     } else {
       largerdogs=false;
     }
-    if (this.state.smalldogs =='yes') {
+    if (this.state.smalldogs =="yes") {
       smalldogs =true;
     } else {
       smalldogs=false;
     }
-    if (this.state.puppies =='yes') {
+    if (this.state.puppies =="yes") {
       puppies =true;
     } else {
       puppies=false;
     }
-    if (this.state.train =='yes') {
+    if (this.state.train =="yes") {
       train =true;
     } else {
       train=false;
