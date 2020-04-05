@@ -111,7 +111,7 @@ class AddDogMain extends React.Component {
         this.state.veterinarian
       ]
     });
-    
+
     this.setState({ images: 'Valid' });
   };
 
@@ -147,26 +147,34 @@ class AddDogMain extends React.Component {
 
     var token = localStorage.getItem('token');
     
-    const response = await BasePath.put(`/webresources/registerDog/${token}`, {
-      dogname,
-      breed,
-      dob,
-      gender,
-      weight,
-      neuteredspayed,
-      medication,
-      allergies,
-      physlimit,
-      veterinarian,
+    const response = await BasePath.put('/webresources/registerDog', {
+      token:token,
+      idNumber: dogId,
+      name:dogname,
+      breed: breed,
+      dateOfBirth: dob,
+      gender: gender,
+      weight: weight,
+      spayedNeutered: neuteredspayed,
+      medications: this.state.medList,
+      allergies: this.state.allList,
+      physLimit: physlimit,
+      veterinarian: {
+        name: veterinarianName
+      },
 
-      strangers,
-      largerdogs,
-      smalldogs,
-      puppies,
-      da2pp,
-      rabies,
-      bordetella
-      
+      strangerComfortable: strangers,
+      largeDogFriendly: largerdogs,
+      smallDogFriendly: smalldogs,
+      puppyFriendly: puppies,
+      vaccines:
+      {
+        da2pp: da2pp,
+        rabies: rabies,
+        bordetella: bordetella
+      },
+      active: true,
+      trainingDone: train
     });
 
     this.setState({ images: response.data });
@@ -259,7 +267,7 @@ class AddDogMain extends React.Component {
 
     var isValid = this.state.images; // images - message sent from the back
 
-    if (isValid === "dog added") {
+    if (isValid === "Successfully added") {
       //validation after submitting the 2nd step, add and edit
       return (
         <div style={{ marginTop: "10px" }}>
