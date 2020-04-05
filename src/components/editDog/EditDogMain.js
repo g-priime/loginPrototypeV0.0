@@ -179,9 +179,11 @@ class EditDogMain extends React.Component {
       largerdogs,
       smalldogs,
       puppies,
-      da2pp,
+      Vaccines: 
+      {da2pp,
       rabies,
       bordetella
+      }
     });
 
     this.setState({ images: response.data });
