@@ -209,6 +209,36 @@ class AddDog2 extends React.Component {
                     />
                   </label>
                 </div>
+                <div className="row">
+                <div className="col-sm-6">
+                  Does your dog get along well with puppies?
+                </div>
+                <br>
+                </br>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                    <input
+                      type="radio"
+                      name="train"
+                      value="yes"
+                      //checked={this.props.puppies}
+                      onChange={this.props.onChangeTrain}
+                    />
+                  </label>
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                    <input
+                      type="radio"
+                      name="puppies"
+                      value="no"
+                       //checked={this.props.puppies}
+                      onChange={this.props.onChangeTrain}
+                    />
+                  </label>
+                </div>
               </div> 
               <br />
               <br />
