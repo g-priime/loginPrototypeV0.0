@@ -30,7 +30,7 @@ import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
 import ViewAppointments from './viewAppointments/ViewAppointments';
 import DisableAccountMain from "./disableAccount/DisableAccountMain";
-import CalendarMain from './calendar/CalendarMain';
+//import CalendarMain from './calendar/CalendarMain';
 import EditAppointmentMain from './editAppointment/EditAppointmentMain';
 
 class App1 extends React.Component {
