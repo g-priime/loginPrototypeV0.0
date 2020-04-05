@@ -65,6 +65,7 @@ class EditDogMain extends React.Component {
     largerdogs: "",
     smalldogs: "",
     puppies: "",
+    train:"",
     da2pp: "",
     rabies: "",
     bordetella: "",
@@ -104,6 +105,7 @@ class EditDogMain extends React.Component {
         largerdogs: dogInfo.largerdogs,
         smalldogs: dogInfo.smalldogs,
         puppies: dogInfo.puppies,
+        train: dogInfo.trainingDone,
         da2pp: dogInfo.vaccines.da2pp,
         rabies: dogInfo.vaccines.rabies,
         bordetella: dogInfo.vaccines.bordetella
@@ -129,18 +131,6 @@ class EditDogMain extends React.Component {
       ]
     });
 
-    //  onPrevious = () => {
-    //    console.log("main");
-    //    this.setState({ images: [] });
-    //    console.log(this.state.images);
-    //  };
-
-    // var dname = this.state.dogname; //passing the state from the fields
-    // var br = this.state.breed;
-    // var dateofbirth = this.state.dob;
-    // var gen = this.state.gender;
-    // var wei = this.state.weight;
-
     this.setState({ images: 'Valid' });
   };
 
@@ -165,7 +155,7 @@ class EditDogMain extends React.Component {
     var veterinarianName = this.state.fieldName[9];
 
     var dogId = this.state.dogId;
-    var strangers, largerdogs, smalldogs, puppies;
+    var strangers, largerdogs, smalldogs, puppies, train;
     if (this.state.strangers == 'true') {
       strangers=true;
     } else {
@@ -185,6 +175,11 @@ class EditDogMain extends React.Component {
       puppies =true;
     } else {
       puppies=false;
+    }
+    if (this.state.train =='true') {
+      train =true;
+    } else {
+      train=false;
     }
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
@@ -218,7 +213,7 @@ class EditDogMain extends React.Component {
         bordetella: bordetella
       },
       active: true,
-      trainingDone: true
+      trainingDone: train
     });
 
     this.setState({ images: response.data });
@@ -289,6 +284,10 @@ class EditDogMain extends React.Component {
   handleChangePuppies = event => {
     this.setState({ puppies: event.target.value });
   };
+
+  handleChangeTrain = event => {
+    this.setState({ train: event.target.value });
+  }
 
   handleChangeDa2pp = event => {
     this.setState({ da2pp: event.target.value });
@@ -371,6 +370,7 @@ class EditDogMain extends React.Component {
             onChangeLargerdogs={this.handleChangeLargerdogs}
             onChangeSmalldogs={this.handleChangeSmalldogs}
             onChangePuppies={this.handleChangePuppies}
+            onChangeTrain={this.handleChangeTrain}
             onChangeDa2pp={this.handleChangeDa2pp}
             onChangeRabies={this.handleChangeRabies}
             onChangeBordetella={this.handleChangeBordetella}
@@ -378,6 +378,7 @@ class EditDogMain extends React.Component {
             largerdogs={this.state.largerdogs}
             smalldogs={this.state.smalldogs}
             puppies={this.state.puppies}
+            train={this.state.train}
             da2pp={this.state.da2pp}
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
