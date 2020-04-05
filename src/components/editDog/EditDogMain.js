@@ -45,7 +45,7 @@ class EditDogMain extends React.Component {
     showPopup: false,
     cn: "",
     dog: {},
-    dogsList:[],
+    dogsList: [],
 
     dogname: "",
     breed: "",
@@ -53,8 +53,8 @@ class EditDogMain extends React.Component {
     gender: "",
     weight: "",
     neuteredspayed: "",
-    medication: "",
-    allergies: "",
+    medication: [],
+    allergies: [],
     physlimit: "",
     veterinarian: "",
 
@@ -130,7 +130,7 @@ class EditDogMain extends React.Component {
     var gen = this.state.gender;
     var wei = this.state.weight;
 
-    this.setState({ images: 'Valid'});
+    this.setState({ images: 'Valid' });
   };
 
   onPrevious = () => {
@@ -151,19 +151,37 @@ class EditDogMain extends React.Component {
     var medication = this.state.fieldName[6];
     var allergies = this.state.fieldName[7];
     var physlimit = this.state.fieldName[8];
-    var veterinarian = this.state.fieldName[9];
+    var veterinarianName = this.state.fieldName[9];
 
-    var strangers = this.state.strangers;
-    var largerdogs = this.state.largerdogs;
-    var smalldogs = this.state.smalldogs;
-    var puppies = this.state.puppies;
+    var strangers, largerdogs, smalldogs, puppies;
+    if (this.state.strangers == 'true') {
+      strangers=true;
+    } else {
+      strangers=false;
+    }
+    if (this.state.largerdogs == 'true') {
+      largerdogs=true;
+    } else {
+      largerdogs=false;
+    }
+    if (this.state.smalldogs =='true') {
+      smalldogs =true;
+    } else {
+      smalldogs=false;
+    }
+    if (this.state.puppies =='true') {
+      puppies =true;
+    } else {
+      puppies=false;
+    }
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
-    console.log(largerdogs);
+    console.log(dob);
     var token = localStorage.getItem("token");
 
-    const response = await BasePath.put(`/webresources/updateDog/${token}`, {
+    const response = await BasePath.put('/webresources/updateDog', {
+      token,
       dogname,
       breed,
       dob,
@@ -173,16 +191,19 @@ class EditDogMain extends React.Component {
       medication,
       allergies,
       physlimit,
-      veterinarian,
+      veterinarian: {
+        veterinarianName
+      },
 
       strangers,
       largerdogs,
       smalldogs,
       puppies,
-      Vaccines: 
-      {da2pp,
-      rabies,
-      bordetella
+      Vaccines:
+      {
+        da2pp,
+        rabies,
+        bordetella
       }
     });
 
@@ -308,10 +329,10 @@ class EditDogMain extends React.Component {
             physlimit={this.state.physlimit}
             veterinarian={this.state.veterinarian}
             onSubmit={this.onSearchSubmit1}
-            // onClick={() => {
-            //   //no needed
-            //   this.props.onChangePage("about"); //no needed
-            // }}
+          // onClick={() => {
+          //   //no needed
+          //   this.props.onChangePage("about"); //no needed
+          // }}
           />
           <div>
             {this.state.showPopup ? ( //need it probably for error messages
