@@ -23,7 +23,7 @@ class BookAppointmentMain extends React.Component {
     cost: "",
     grooming: "No",
 
-    cancelLink: "/Services"
+    cancelLink: "/Services",
   };
 
   getDogs = async () => {
@@ -32,7 +32,7 @@ class BookAppointmentMain extends React.Component {
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy =>
+    dogs.map((doggy) =>
       dogArray.push({ key: doggy.idNumber, value: doggy.name })
     );
 
@@ -47,7 +47,7 @@ class BookAppointmentMain extends React.Component {
       this.props.location.state !== null
     ) {
       this.setState({ cancelLink: this.props.location.state.cancelLink });
-    } 
+    }
   }
 
   onSearchSubmit1 = async () => {
@@ -58,37 +58,48 @@ class BookAppointmentMain extends React.Component {
         this.state.endTime,
         this.state.grooming,
         this.state.comments,
-        this.state.sessionId
-      ]
+        this.state.sessionId,
+      ],
     });
 
-    var token = localStorage.getItem("token");
-    var dogs = [];
-    this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
-    var dogString = dogs.toString();
-    var startTime = this.state.startTime;
-    var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
-    var endTime = this.state.endTime;
-    var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
-    
-    var grooming = "false";
-    if (this.state.grooming === "Yes") {
-      grooming = "true";
-    }
-    var type = "boarding";
+    if (this.state.selectedDogs != null) {
+      var token = localStorage.getItem("token");
+      var dogs = [];
+      this.state.selectedDogs.map((doggy) => dogs.push(doggy.key));
+      var dogString = dogs.toString();
+      var startTime = this.state.startTime;
+      var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
+      var endTime = this.state.endTime;
+      var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
 
-    const response = await BasePath.put("/webresources/calculatecost", {
-      token,
-      dogString,
-      formattedStart,
-      formattedEnd,
-      grooming,
-      type
-    });
+      var grooming = "false";
+      if (this.state.grooming === "Yes") {
+        grooming = "true";
+      }
+      var type = "boarding";
 
-    this.setState({ response: response.data.message, cost: response.data.total });
+      const response = await BasePath.put("/webresources/calculatecost", {
+        token,
+        dogString,
+        formattedStart,
+        formattedEnd,
+        grooming,
+        type,
+      });
 
-    if (response.data === "") {
+      this.setState({
+        response: response.data.message,
+        cost: response.data.total,
+      });
+
+      if (response.data === "") {
+        this.setState({
+          cn: "popup4",
+          response: "Must select at least one dog",
+        });
+        this.togglePopup();
+      }
+    } else {
       this.setState({ cn: "popup4", response: "Must select at least one dog" });
       this.togglePopup();
     }
@@ -98,9 +109,11 @@ class BookAppointmentMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var selectedDogs = [];
-    this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
+    this.state.fieldName[0].map((doggy) => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
-    var startTime = Moment(this.state.fieldName[1]).format("YYYY-MM-DD HH:mm:ss");
+    var startTime = Moment(this.state.fieldName[1]).format(
+      "YYYY-MM-DD HH:mm:ss"
+    );
     var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD HH:mm:ss");
     var grooming = "false";
     if (this.state.fieldName[3] === "Yes") {
@@ -116,7 +129,7 @@ class BookAppointmentMain extends React.Component {
       endTime,
       total,
       additionalComments,
-      grooming
+      grooming,
     });
 
     this.setState({ response: response.data });
@@ -132,29 +145,29 @@ class BookAppointmentMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeDog = selectedOption => {
+  handleChangeDog = (selectedOption) => {
     this.setState({ selectedDogs: selectedOption }, () =>
       console.log(`Option selected:`, this.state.selectedDogs)
     );
   };
 
-  handleChangeStartTime = event => {
+  handleChangeStartTime = (event) => {
     this.setState({ startTime: event.target.value });
   };
 
-  handleChangeEndTime = event => {
+  handleChangeEndTime = (event) => {
     this.setState({ endTime: event.target.value });
   };
 
-  handleChangeGrooming = event => {
+  handleChangeGrooming = (event) => {
     this.setState({ grooming: event.target.value });
   };
 
-  handleChangeComments = event => {
+  handleChangeComments = (event) => {
     this.setState({ comments: event.target.value });
   };
 
@@ -177,7 +190,6 @@ class BookAppointmentMain extends React.Component {
             onClick={this.onPrevious}
             proceedToPayment={this.proceedToPayment}
             onSubmit={this.onSearchSubmit2}
-
             cancelLink={this.state.cancelLink}
           />
         </div>
@@ -188,7 +200,7 @@ class BookAppointmentMain extends React.Component {
           <Redirect
             to={{
               pathname: "/Services",
-              state: { message: "Appointment is booked pending approval" }
+              state: { message: "Appointment is booked pending approval" },
             }}
           />
         </div>
@@ -199,7 +211,7 @@ class BookAppointmentMain extends React.Component {
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Redirect to PayPal" }
+              state: { message: "Redirect to PayPal" },
             }}
           />
         </div>
@@ -221,7 +233,6 @@ class BookAppointmentMain extends React.Component {
             comments={this.state.comments}
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
-
             cancelLink={this.state.cancelLink}
           />
           <div>
