@@ -105,6 +105,8 @@ class ManageUsersEditMain extends React.Component {
   };
 
   editUser = user => {
+
+    console.log('in edit user');
     var build;
     var street;
     var prov;
