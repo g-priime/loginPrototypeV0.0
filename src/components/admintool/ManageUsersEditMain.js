@@ -4,6 +4,7 @@ import BasePath from "../../api/BasePath";
 import ManageUsers from "./ManageUsers";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
+import PopUpConfirm from "../PopUpConfirm";
 
 class ManageUsersEditMain extends React.Component {
   state = {
@@ -11,6 +12,7 @@ class ManageUsersEditMain extends React.Component {
     fieldName: [],
     page: "",
     showPopup: false,
+    showCon: false,
     cn: "",
     username: "",
     password: "",
@@ -18,6 +20,7 @@ class ManageUsersEditMain extends React.Component {
     fname: "",
     lname: "",
     email: "",
+    delUser: "",
 
     appt: "",
     building: "",
@@ -120,33 +123,54 @@ class ManageUsersEditMain extends React.Component {
       prov = user.address.province;
       post = user.address.postal;
       house = user.address.houseNum;
-      city= user.address.city;
+      city = user.address.city;
     }
 
-      this.setState({
-        initialStates: true,
-        username: user.username,
-        password: user.password,
-        confirmPassword: user.password,
-        fname: user.firstName,
-        lname: user.lastName,
-        email: user.email,
+    this.setState({
+      initialStates: true,
+      username: user.username,
+      password: user.password,
+      confirmPassword: user.password,
+      fname: user.firstName,
+      lname: user.lastName,
+      email: user.email,
 
-        appt: house,
-        building: build,
-        street: street,
-        city: city,
-        province: prov,
-        postcode: post,
-        phone: user.phoneNumber,
-        emergencyphone: user.emergencyPhone,
-        emergencyname: user.emergencyName
-      });
+      appt: house,
+      building: build,
+      street: street,
+      city: city,
+      province: prov,
+      postcode: post,
+      phone: user.phoneNumber,
+      emergencyphone: user.emergencyPhone,
+      emergencyname: user.emergencyName
+    });
   };
+
+  delUser = () => {
+    var token = localStorage.getItem('token');
+    console.log(token);
+    BasePath.put('/webresources/deleteAccount', {
+      token: token,
+      username: this.state.delUser.username
+    }).then(result => {
+      console.log('done');
+    });
+  }
 
   deleteUser = user => {
-
+    this.setState({ delUser: user });
+    this.setState({ showCon: true });
   };
+
+  dontConfirm = () => {
+    this.setState({ showCon: false });
+  }
+
+  confirm = () => {
+    this.setState({ showCon: false });
+    this.delUser();
+  }
 
   onHome = event => {
     event.preventDefault();
@@ -282,6 +306,9 @@ class ManageUsersEditMain extends React.Component {
               this.props.onChangePage("about");
             }}
           />
+          {this.state.showCon && this.state.delUser != null ? (
+            <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text={'Are you sure you want to delete ' + this.state.delUser.username + '?'} cn="popup3" />
+          ) : null}
           <div>
             {this.state.showPopup ? (
               <Popup
