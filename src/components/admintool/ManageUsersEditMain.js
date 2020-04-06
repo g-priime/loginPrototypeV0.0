@@ -123,7 +123,6 @@ class ManageUsersEditMain extends React.Component {
       city= user.address.city;
     }
 
-    if (this.state.initialStates === false) {
       this.setState({
         initialStates: true,
         username: user.username,
@@ -143,7 +142,6 @@ class ManageUsersEditMain extends React.Component {
         emergencyphone: user.emergencyPhone,
         emergencyname: user.emergencyName
       });
-    }
   };
 
   deleteUser = user => {
