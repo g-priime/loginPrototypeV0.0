@@ -23,11 +23,19 @@ class ManageTestimonials extends React.Component {
   };
 
   approveTestimonial = testimonial => {
-
+    var token = localStorage.getItem('token');
+    var id = testimonial.test_id;
+    BasePath.put(`/webresources/ApproveTestimonial/${token}/${id}`).then(result => {
+      console.log(result.data);
+    });
   };
 
   deleteTestimonial = testimonial => {
-    
+    var token = localStorage.getItem('token');
+    var id = testimonial.test_id;
+    BasePath.put(`/webresources/DeleteTestimonial/${token}/${id}`).then(result => {
+      console.log(result.data);
+    });
   };
 
   render() {
