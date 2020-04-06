@@ -11,30 +11,35 @@ class ManageTestimonials extends React.Component {
   };
 
   componentWillMount = () => {
+    this.updateTestimoials();
+  };
+
+  updateTestimoials() {
     var token = localStorage.getItem("token");
     BasePath.get(`/webresources/PendingTestimonials/${token}`)
       .then(result => {
-        console.log(result.data);
-        this.setState({ testimonialsList: result.data });
+        this.setState({testimonialsList: result.data}); 
       })
       .catch(err => {
         console.log(err);
       });
-  };
+  }
 
   approveTestimonial = testimonial => {
     var token = localStorage.getItem('token');
-    var id = testimonial.test_id;
+    var id = testimonial.id;
     BasePath.put(`/webresources/ApproveTestimonial/${token}/${id}`).then(result => {
       console.log(result.data);
+      this.updateTestimoials();
     });
   };
 
   deleteTestimonial = testimonial => {
     var token = localStorage.getItem('token');
-    var id = testimonial.test_id;
+    var id = testimonial.id;
     BasePath.put(`/webresources/DeleteTestimonial/${token}/${id}`).then(result => {
       console.log(result.data);
+      this.updateTestimoials();
     });
   };
 
@@ -52,8 +57,8 @@ class ManageTestimonials extends React.Component {
           {this.state.testimonialsList.map(testimonial => (
             <Testimonial
               chosenTestimonial={testimonial}
-              approveTestimonial={this.approveTestimonial}
-              deleteTestimonial={this.deleteTestimonial}
+              approveTestimonial={this.approveTestimonial.bind(this, testimonial)}
+              deleteTestimonial={this.deleteTestimonial.bind(this, testimonial)}
             />
           ))}
         </div>
