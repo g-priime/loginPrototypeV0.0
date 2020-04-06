@@ -78,48 +78,48 @@ class ManageUsers extends React.Component {
     });
   }
 
-  editUser = user => {
+  // editUser = user => {
     
-    var build;
-    var street;
-    var prov;
-    var post;
-    var house;
-    var city;
+  //   var build;
+  //   var street;
+  //   var prov;
+  //   var post;
+  //   var house;
+  //   var city;
 
-    if (user.address != null) {
-      build = user.address.buildingNum;
-      street = user.address.streetName;
-      prov = user.address.province;
-      post = user.address.postal;
-      house = user.address.houseNum;
-      city= user.address.city;
-    }
+  //   if (user.address != null) {
+  //     build = user.address.buildingNum;
+  //     street = user.address.streetName;
+  //     prov = user.address.province;
+  //     post = user.address.postal;
+  //     house = user.address.houseNum;
+  //     city= user.address.city;
+  //   }
 
-    if (this.state.initialStates === false) {
-      this.setState({
-        initialStates: true,
-        username: user.username,
-        password: user.password,
-        confirmPassword: user.password,
-        fname: user.firstName,
-        lname: user.lastName,
-        email: user.email,
+  //   if (this.state.initialStates === false) {
+  //     this.setState({
+  //       initialStates: true,
+  //       username: user.username,
+  //       password: user.password,
+  //       confirmPassword: user.password,
+  //       fname: user.firstName,
+  //       lname: user.lastName,
+  //       email: user.email,
 
-        appt: house,
-        building: build,
-        street: street,
-        city: city,
-        province: prov,
-        postcode: post,
-        phone: user.phoneNumber,
-        emergencyphone: user.emergencyPhone,
-        emergencyname: user.emergencyName
-      });
-    }
-  };
+  //       appt: house,
+  //       building: build,
+  //       street: street,
+  //       city: city,
+  //       province: prov,
+  //       postcode: post,
+  //       phone: user.phoneNumber,
+  //       emergencyphone: user.emergencyPhone,
+  //       emergencyname: user.emergencyName
+  //     });
+  //   }
+  // };
 
-  deleteUser = user => {};
+  // deleteUser = user => {};
 
   render() {
     return (
@@ -139,8 +139,8 @@ class ManageUsers extends React.Component {
                 {this.state.userList.map(user => (
                   <User
                     chosenUser={user}
-                    editUser={this.editUser}
-                    deleteUser={this.deleteUser}
+                    editUser={this.props.editUser.bind(this, user)}
+                    deleteUser={this.props.deleteUser}
                   />
                 ))}
               </div>
@@ -166,7 +166,7 @@ class ManageUsers extends React.Component {
                           pattern="^[a-zA-Z'-]{1,20}$"
                           type="text"
                           placeholder="Enter First Name"
-                          value={this.state.fname}
+                          value={this.props.fname}
                           onChange={this.props.onChangeFname}
                           required
                         />
@@ -178,7 +178,7 @@ class ManageUsers extends React.Component {
                           pattern="^[a-zA-Z'-]{1,20}$"
                           type="text"
                           placeholder="Enter Last Name"
-                          value={this.state.lname}
+                          value={this.props.lname}
                           onChange={this.props.onChangeLname}
                           required
                         />
@@ -193,7 +193,7 @@ class ManageUsers extends React.Component {
                           maxLength="20"
                           minLength="3"
                           placeholder="Enter Email"
-                          value={this.state.email}
+                          value={this.props.email}
                           onChange={this.props.onChangeEmail}
                           required
                         />
@@ -214,7 +214,7 @@ class ManageUsers extends React.Component {
                               className="field b-5"
                               type="text"
                               placeholder="Apartment/suit/unit/house #"
-                              value={this.state.appt}
+                              value={this.props.appt}
                               onChange={this.props.onChangeAppt}
                               required
                             />
@@ -225,7 +225,7 @@ class ManageUsers extends React.Component {
                               className="field b-5"
                               type="text"
                               placeholder="Building #"
-                              value={this.state.building}
+                              value={this.props.building}
                               onChange={this.props.onChangeBuilding}
                             />
                           </div>
@@ -240,7 +240,7 @@ class ManageUsers extends React.Component {
                               min="1"
                               max="20"
                               placeholder="Enter your street/avenue"
-                              value={this.state.street}
+                              value={this.props.street}
                               onChange={this.props.onChangeStreet}
                               required
                             />
@@ -258,7 +258,7 @@ class ManageUsers extends React.Component {
                                 type="text"
                                 placeholder="Format: A1A1A1"
                                 pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$"
-                                value={this.state.postcode}
+                                value={this.props.postcode}
                                 onChange={this.props.onChangePostcode}
                                 required
                               />
@@ -270,7 +270,7 @@ class ManageUsers extends React.Component {
                                 className="field b-5"
                                 type="text"
                                 placeholder="Enter your province"
-                                value={this.state.province}
+                                value={this.props.province}
                                 onChange={this.props.onChangeProvince}
                                 required
                               />
@@ -285,7 +285,7 @@ class ManageUsers extends React.Component {
                                 type="text"
                                 max="20"
                                 placeholder="Enter your city"
-                                value={this.state.city}
+                                value={this.props.city}
                                 onChange={this.props.onChangeCity}
                                 required
                               />
@@ -305,7 +305,7 @@ class ManageUsers extends React.Component {
                             type="text"
                             placeholder="Format: 5551235678"
                             pattern="^\d{10}$"
-                            value={this.state.phone}
+                            value={this.props.phone}
                             onChange={this.props.onChangePhone}
                             required
                           />
@@ -319,7 +319,7 @@ class ManageUsers extends React.Component {
                             type="text"
                             placeholder="Format: 5551235678"
                             pattern="^\d{10}$"
-                            value={this.state.emergencyphone}
+                            value={this.props.emergencyphone}
                             onChange={this.props.onChangeEmergencyphone}
                             required
                           />
@@ -330,7 +330,7 @@ class ManageUsers extends React.Component {
                             className="field b-5"
                             type="text"
                             placeholder="Enter your emergency contact Name"
-                            value={this.state.emergencyname}
+                            value={this.props.emergencyname}
                             onChange={this.props.onChangeEmergencyname}
                             required
                           />
