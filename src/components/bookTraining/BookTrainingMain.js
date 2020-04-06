@@ -487,7 +487,7 @@ class BookTrainingMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/Services",
+              pathname: "/ViewAppointments",
               state: { message: "Appointment is booked pending approval" }
             }}
           />
