@@ -83,7 +83,7 @@ class ChangePassAdminMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/Profile",
+              pathname: "/ChangePassAdminMain",
               state: { message: "Password has been changed" }
             }}
           />
