@@ -42,7 +42,7 @@ class EditTraining1 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container bookAppointmentContainer">
-            <h1>Book Training: Step 1</h1>
+            <h1>Edit Training: Step 1</h1>
 
             <div className="row" style={{ marginTop: "6%" }}>
               <div className="col-sm" style={{ marginLeft: "10%", marginRight: "5%" }}>
