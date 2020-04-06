@@ -1,5 +1,6 @@
 import React from "react";
 import "../../css/reg.css";
+import Select from "react-select";
 
 class EditCustomer2 extends React.Component {
   state = {
@@ -11,10 +12,10 @@ class EditCustomer2 extends React.Component {
     postcode: "",
     phone: "",
     emergencyphone: "",
-    emergencyname: ""
+    emergencyname: "",
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
@@ -30,7 +31,7 @@ class EditCustomer2 extends React.Component {
     );
   };
 
-  previousStep_onClick = event => {
+  previousStep_onClick = (event) => {
     event.preventDefault();
     this.props.onClick();
     console.log("here");
@@ -70,7 +71,6 @@ class EditCustomer2 extends React.Component {
                       placeholder="Building #"
                       value={this.props.building}
                       onChange={this.props.onChangeBuilding}
-                      
                     />
                   </div>
                 </div>
@@ -110,13 +110,14 @@ class EditCustomer2 extends React.Component {
 
                     <div className="col-sm">
                       <label>Province:</label>
-                      <input
-                        className="field b-5"
-                        type="text"
-                        placeholder="Enter your province"
+                      <Select
+                        closeMenuOnSelect={true}
                         value={this.props.province}
                         onChange={this.props.onChangeProvince}
-                        required
+                        options={this.props.provinces}
+                        getOptionLabel={(option) => option.value}
+                        getOptionValue={(option) => option.value}
+                        getOptionKey={(option) => option.key}
                       />
                     </div>
                   </div>
@@ -193,7 +194,7 @@ class EditCustomer2 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Previous Step
@@ -205,7 +206,7 @@ class EditCustomer2 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Register
