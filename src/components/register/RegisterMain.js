@@ -22,22 +22,41 @@ class RegisterMain extends React.Component {
     building: "",
     street: "",
     city: "",
-    province: "",
+    province: { key: 1, value: "Alberta" },
     postcode: "",
     phone: "",
     emergencyphone: "",
-    emergencyname: ""
+    emergencyname: "",
+
+    provinces: [
+      { key: 1, value: "Alberta" },
+      { key: 2, value: "British Columbia" },
+      { key: 3, value: "Manitoba" },
+      { key: 4, value: "New Brunswick" },
+      { key: 5, value: "Newfoundland and Labrador" },
+      { key: 6, value: "Northwest Territories" },
+      { key: 7, value: "Nova Scotia" },
+      { key: 8, value: "Nunavut" },
+      { key: 9, value: "Ontario" },
+      { key: 10, value: "Prince Edward Island" },
+      { key: 11, value: "Quebec" },
+      { key: 12, value: "Saskatchewan" },
+      { key: 13, value: "Yukon" },
+    ],
   };
 
   UNSAFE_componentWillMount() {
-    if (typeof this.props.location.state == "undefined" || this.props.location.state === null) {
-        this.setState({ message: "" });
-      } else {
-        this.setState({ message: this.props.location.state.message });
-        this.setState({ cn: "popup3" });
-        this.togglePopup();
-      }
- }
+    if (
+      typeof this.props.location.state == "undefined" ||
+      this.props.location.state === null
+    ) {
+      this.setState({ message: "" });
+    } else {
+      this.setState({ message: this.props.location.state.message });
+      this.setState({ cn: "popup3" });
+      this.togglePopup();
+    }
+  }
 
   onSearchSubmit1 = async () => {
     this.setState({
@@ -47,8 +66,8 @@ class RegisterMain extends React.Component {
         this.state.confirmPassword,
         this.state.fname,
         this.state.lname,
-        this.state.email
-      ]
+        this.state.email,
+      ],
     });
 
     var uname = this.state.username;
@@ -60,7 +79,7 @@ class RegisterMain extends React.Component {
       uname,
       pword,
       confirmPword,
-      email
+      email,
     });
 
     console.log(response.data);
@@ -68,10 +87,13 @@ class RegisterMain extends React.Component {
     this.setState({ images: response.data });
 
     if (this.state.images === "Username Already Exists") {
-      this.setState({ cn: "popup1", message: "Username already exists" });
+      this.setState({ cn: "popup1", message: "Username already taken" });
       this.togglePopup();
     } else if (this.state.images === "Passwords do not match") {
       this.setState({ cn: "popup2", message: "Passwords do not match" });
+      this.togglePopup();
+    } else if (this.state.images === "Email Already in Use") {
+      this.setState({ cn: "popup6", message: "Email already taken" });
       this.togglePopup();
     }
   };
@@ -88,7 +110,7 @@ class RegisterMain extends React.Component {
     var buildingNum = this.state.building;
     var streetName = this.state.street;
     var city = this.state.city;
-    var province = this.state.province;
+    var province = this.state.province.value;
     var postal = this.state.postcode;
     var phoneNumber = this.state.phone;
     var emergencyPhone = this.state.emergencyphone;
@@ -104,24 +126,19 @@ class RegisterMain extends React.Component {
       emergencyPhone,
       emergencyName,
 
-      address:{
-      houseNum,
-      buildingNum,
-      streetName,
-      city,
-      province,
-      postal
-      }
+      address: {
+        houseNum,
+        buildingNum,
+        streetName,
+        city,
+        province,
+        postal,
+      },
     });
 
     console.log(response.data);
     console.log(response.status);
     this.setState({ images: response.data });
-
-    if (this.state.images === "Username already taken.") {
-      this.setState({ cn: "popup1" });
-      this.togglePopup();
-    }
   };
 
   onPrevious = () => {
@@ -130,7 +147,7 @@ class RegisterMain extends React.Component {
     console.log(this.state.images);
   };
 
-  onHome = event => {
+  onHome = (event) => {
     event.preventDefault();
     this.props.onClick("home");
     console.log("main event");
@@ -143,67 +160,69 @@ class RegisterMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeUsername = event => {
+  handleChangeUsername = (event) => {
     this.setState({ username: event.target.value });
   };
 
-  handleChangePassword = event => {
+  handleChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
 
-  handleChangeConfirmPassword = event => {
+  handleChangeConfirmPassword = (event) => {
     this.setState({ confirmPassword: event.target.value });
   };
 
-  handleChangeFname = event => {
+  handleChangeFname = (event) => {
     this.setState({ fname: event.target.value });
   };
 
-  handleChangeLname = event => {
+  handleChangeLname = (event) => {
     this.setState({ lname: event.target.value });
   };
 
-  handleChangeEmail = event => {
+  handleChangeEmail = (event) => {
     this.setState({ email: event.target.value });
   };
 
-  handleChangeAppt = event => {
+  handleChangeAppt = (event) => {
     this.setState({ appt: event.target.value });
   };
 
-  handleChangeBuilding = event => {
+  handleChangeBuilding = (event) => {
     this.setState({ building: event.target.value });
   };
 
-  handleChangeStreet = event => {
+  handleChangeStreet = (event) => {
     this.setState({ street: event.target.value });
   };
 
-  handleChangeCity = event => {
+  handleChangeCity = (event) => {
     this.setState({ city: event.target.value });
   };
 
-  handleChangeProvince = event => {
-    this.setState({ province: event.target.value });
+  handleChangeProvince = (selectedOption) => {
+    this.setState({ province: selectedOption }, () =>
+      console.log(`Option selected:`, this.state.province)
+    );
   };
 
-  handleChangePostcode = event => {
+  handleChangePostcode = (event) => {
     this.setState({ postcode: event.target.value });
   };
 
-  handleChangePhone = event => {
+  handleChangePhone = (event) => {
     this.setState({ phone: event.target.value });
   };
 
-  handleChangeEmergencyphone = event => {
+  handleChangeEmergencyphone = (event) => {
     this.setState({ emergencyphone: event.target.value });
   };
 
-  handleChangeEmergencyname = event => {
+  handleChangeEmergencyname = (event) => {
     this.setState({ emergencyname: event.target.value });
   };
 
@@ -216,7 +235,7 @@ class RegisterMain extends React.Component {
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Account Registered" }
+              state: { message: "Account Registered" },
             }}
           />
         </div>
@@ -276,6 +295,7 @@ class RegisterMain extends React.Component {
             emergencyname={this.state.emergencyname}
             onSubmit={this.onSearchSubmit2}
             onClick={this.onPrevious}
+            provinces={this.state.provinces}
           />
         </div>
       );

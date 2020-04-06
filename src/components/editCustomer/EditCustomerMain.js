@@ -30,15 +30,42 @@ class EditCustomerMain extends React.Component {
     emergencyphone: "",
     emergencyname: "",
 
-    initialStates: false
+    initialStates: false,
+
+    provinces: [
+      { key: 1, value: "Alberta" },
+      { key: 2, value: "British Columbia" },
+      { key: 3, value: "Manitoba" },
+      { key: 4, value: "New Brunswick" },
+      { key: 5, value: "Newfoundland and Labrador" },
+      { key: 6, value: "Northwest Territories" },
+      { key: 7, value: "Nova Scotia" },
+      { key: 8, value: "Nunavut" },
+      { key: 9, value: "Ontario" },
+      { key: 10, value: "Prince Edward Island" },
+      { key: 11, value: "Quebec" },
+      { key: 12, value: "Saskatchewan" },
+      { key: 13, value: "Yukon" },
+    ],
   };
 
   getCustomerInfo = async () => {
-    var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
 
-    const customerInfo = await BasePath.get(`/webresources/RetrieveUser/${token}`);
+    const customerInfo = await BasePath.get(
+      `/webresources/RetrieveUser/${token}`
+    );
 
     if (this.state.initialStates === false) {
+      let province = {};
+      for (let i = 0; i < this.state.provinces.length; i++) {
+        if (
+          customerInfo.data.address.province === this.state.provinces[i].value
+        ) {
+          province = this.state.provinces[i];
+        }
+      }
+
       this.setState({
         initialStates: true,
         username: customerInfo.data.username,
@@ -52,11 +79,12 @@ class EditCustomerMain extends React.Component {
         building: customerInfo.data.address.buildingNum,
         street: customerInfo.data.address.streetName,
         city: customerInfo.data.address.city,
-        province: customerInfo.data.address.province,
+
+        province: province,
         postcode: customerInfo.data.address.postal,
         phone: customerInfo.data.phoneNumber,
         emergencyphone: customerInfo.data.emergencyPhone,
-        emergencyname: customerInfo.data.emergencyName
+        emergencyname: customerInfo.data.emergencyName,
       });
     }
   };
@@ -69,23 +97,26 @@ class EditCustomerMain extends React.Component {
         this.state.confirmPassword,
         this.state.fname,
         this.state.lname,
-        this.state.email
-      ]
+        this.state.email,
+      ],
     });
 
-    var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
     var email = this.state.email;
 
     const response = await BasePath.put("/webresources/checkEditCustomer", {
       token,
-      email
+      email,
     });
 
     console.log(response.data);
     console.log(response.status);
     this.setState({ images: response.data });
 
-    if (this.state.images === "Username Already Exists" || this.state.images === "Username already taken.") {
+    if (
+      this.state.images === "Username Already Exists" ||
+      this.state.images === "Username already taken."
+    ) {
       this.setState({ cn: "popup1" });
       this.togglePopup();
     } else if (this.state.images === "Passwords do not match") {
@@ -108,13 +139,13 @@ class EditCustomerMain extends React.Component {
     var buildingNum = this.state.building;
     var streetName = this.state.street;
     var city = this.state.city;
-    var province = this.state.province;
+    var province = this.state.province.value;
     var postal = this.state.postcode;
     var phoneNumber = this.state.phone;
     var emergencyPhone = this.state.emergencyphone;
     var emergencyName = this.state.emergencyname;
 
-    var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
 
     const response = await BasePath.put("/webresources/update", {
       token,
@@ -127,24 +158,19 @@ class EditCustomerMain extends React.Component {
       emergencyPhone,
       emergencyName,
 
-      address:{
-      houseNum,
-      buildingNum,
-      streetName,
-      city,
-      province,
-      postal
-      }
+      address: {
+        houseNum,
+        buildingNum,
+        streetName,
+        city,
+        province,
+        postal,
+      },
     });
 
     console.log(response.data);
     console.log(response.status);
     this.setState({ images: response.data });
-
-    if (this.state.images === "Username already taken.") {
-      this.setState({ cn: "popup1" });
-      this.togglePopup();
-    }
   };
 
   onPrevious = () => {
@@ -153,7 +179,7 @@ class EditCustomerMain extends React.Component {
     console.log(this.state.images);
   };
 
-  onHome = event => {
+  onHome = (event) => {
     event.preventDefault();
     this.props.onClick("home");
     console.log("main event");
@@ -166,67 +192,69 @@ class EditCustomerMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeUsername = event => {
+  handleChangeUsername = (event) => {
     this.setState({ username: event.target.value });
   };
 
-  handleChangePassword = event => {
+  handleChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
 
-  handleChangeConfirmPassword = event => {
+  handleChangeConfirmPassword = (event) => {
     this.setState({ confirmPassword: event.target.value });
   };
 
-  handleChangeFname = event => {
+  handleChangeFname = (event) => {
     this.setState({ fname: event.target.value });
   };
 
-  handleChangeLname = event => {
+  handleChangeLname = (event) => {
     this.setState({ lname: event.target.value });
   };
 
-  handleChangeEmail = event => {
+  handleChangeEmail = (event) => {
     this.setState({ email: event.target.value });
   };
 
-  handleChangeAppt = event => {
+  handleChangeAppt = (event) => {
     this.setState({ appt: event.target.value });
   };
 
-  handleChangeBuilding = event => {
+  handleChangeBuilding = (event) => {
     this.setState({ building: event.target.value });
   };
 
-  handleChangeStreet = event => {
+  handleChangeStreet = (event) => {
     this.setState({ street: event.target.value });
   };
 
-  handleChangeCity = event => {
+  handleChangeCity = (event) => {
     this.setState({ city: event.target.value });
   };
 
-  handleChangeProvince = event => {
-    this.setState({ province: event.target.value });
+  handleChangeProvince = (selectedOption) => {
+    this.setState({ province: selectedOption }, () =>
+      console.log(`Option selected:`, this.state.province)
+    );
   };
 
-  handleChangePostcode = event => {
+  handleChangePostcode = (event) => {
     this.setState({ postcode: event.target.value });
   };
 
-  handleChangePhone = event => {
+  handleChangePhone = (event) => {
     this.setState({ phone: event.target.value });
   };
 
-  handleChangeEmergencyphone = event => {
+  handleChangeEmergencyphone = (event) => {
     this.setState({ emergencyphone: event.target.value });
   };
 
-  handleChangeEmergencyname = event => {
+  handleChangeEmergencyname = (event) => {
     this.setState({ emergencyname: event.target.value });
   };
 
@@ -241,7 +269,7 @@ class EditCustomerMain extends React.Component {
           <Redirect
             to={{
               pathname: "/Profile",
-              state: { message: "Account Updated" }
+              state: { message: "Account Updated" },
             }}
           />
         </div>
@@ -303,6 +331,7 @@ class EditCustomerMain extends React.Component {
             emergencyname={this.state.emergencyname}
             onSubmit={this.onSearchSubmit2}
             onClick={this.onPrevious}
+            provinces={this.state.provinces}
           />
         </div>
       );
