@@ -40,7 +40,7 @@ class EditTraining2 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container bookAppointmentContainer">
-            <h1>Book Training: Step 2</h1>
+            <h1>Edit Training: Step 2</h1>
             <br />
 
             <label>
