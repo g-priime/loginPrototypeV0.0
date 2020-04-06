@@ -63,7 +63,7 @@ class ManageUsersEditMain extends React.Component {
     var emergencyPhone = this.state.emergencyphone;
     var emergencyName = this.state.emergencyname;
 
-    const response = await BasePath.put("/webresources/checkEditCustomer", {
+    const response = await BasePath.put("/webresources/update", {
       token,
       email,
       username,
