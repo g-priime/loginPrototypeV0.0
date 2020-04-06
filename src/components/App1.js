@@ -86,7 +86,7 @@ class App1 extends React.Component {
               <Route path="/Register" component={RegisterMain} />
               <Route path="/Services" component={Services} />
               <Route path="/Gallery" component={Gallery} />
-              <Route path="/Testimonials" component={Testimonials} />
+              <Route path="/Testimonials" component={CalendarMain} />
               <Route path="/FAQ" component={FAQ} />
               <Route path="/ChangePass" component={ChangePasswordMain} />
               <Route path="/Profile" component={UserAccount} />
@@ -101,6 +101,7 @@ class App1 extends React.Component {
               <Route path="/admin" component={() => <AdminTool authenticate={this.authenticate}/>} />
               <Route path="/EditAppointment" component={EditAppointmentMain} />
               <Route path="/BookAppointment" component={BookAppointment} />
+              
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
