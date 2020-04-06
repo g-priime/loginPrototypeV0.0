@@ -1,13 +1,16 @@
 import React from "react";
 import Testimonial from "./Testimonial";
 import BasePath from "../../api/BasePath";
+import PopUpConfirm from "../PopUpConfirm";
 
 class ManageTestimonials extends React.Component {
   state = {
     testimonialsList: [],
     test_id: {},
+    testDel: "",
     username: {},
-    contents: ""
+    contents: "",
+    showCon: false
   };
 
   componentWillMount = () => {
@@ -34,14 +37,28 @@ class ManageTestimonials extends React.Component {
     });
   };
 
-  deleteTestimonial = testimonial => {
+  deleteTest = () => {
     var token = localStorage.getItem('token');
-    var id = testimonial.id;
+    var id = this.state.testDel.id;
     BasePath.put(`/webresources/DeleteTestimonial/${token}/${id}`).then(result => {
       console.log(result.data);
       this.updateTestimoials();
     });
   };
+
+  deleteTestimonial = testimonial => {
+    this.setState({ testDel: testimonial });
+    this.setState({ showCon: true });
+  };
+
+  dontConfirm = () => {
+    this.setState({ showCon: false });
+  }
+
+  confirm = () => {
+    this.setState({ showCon: false });
+    this.deleteTest();
+  }
 
   render() {
     return (
@@ -54,6 +71,9 @@ class ManageTestimonials extends React.Component {
             <h3>Manage Testimonials</h3>
             <br />
           </div>
+          {this.state.showCon && this.state.testDels != null ? (
+            <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text={'Are you sure you want to delete ' + this.state.testDel.contents + '?'} cn="popup3" />
+          ) : null}
           {this.state.testimonialsList.map(testimonial => (
             <Testimonial
               chosenTestimonial={testimonial}
