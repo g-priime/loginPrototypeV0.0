@@ -7,25 +7,19 @@ import {
   Week,
   WorkWeek,
   Month,
-  Agenda,
-  //EventSettingsModel
+  Agenda
 } from "@syncfusion/ej2-react-schedule";
-//import { DataManager, WebApiAdaptor } from "@syncfusion/ej2-data";
 import BasePath from "../../api/BasePath";
-//import { WebinarData } from './dataSource';
 import {
   Internationalization,
-  extend,
-  //createElement
+  extend
 } from "@syncfusion/ej2-base";
-//import { DropDownList } from "@syncfusion/ej2-dropdowns";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import {
   DropDownListComponent,
   MultiSelectComponent,
 } from "@syncfusion/ej2-react-dropdowns";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
-import Popup from "../PopUp";
 
 class CalendarMain extends React.Component {
   constructor() {
@@ -79,9 +73,6 @@ class CalendarMain extends React.Component {
       for (let i = 0; i < result.data.length; i++) {
         var appointment = new Object();
         appointment.Id = result.data[i].idNumber;
-        //appointment.Id = i;//problem shifting ids getting from backend into calendar
-
-        //appointment.Subject = result.data[i].type;
         appointment.type = result.data[i].type;
 
         appointment.StartTime = result.data[i].startTime;
@@ -91,7 +82,6 @@ class CalendarMain extends React.Component {
         appointment.dogNames = result.data[i].dogNames.split(",");
 
         appointment.appointedDogs = this.state.dognames;
-        //console.log(appointment.appointedDogs);
 
         appointment.username = result.data[i].username;
         appointment.Subject = result.data[i].username;
@@ -142,10 +132,7 @@ class CalendarMain extends React.Component {
     if (!this.state.intitialData) {
       this.setState({ data: this.data, intitialData: true });
     }
-
-    //this.DataSource = this.data;
     this.scheduleObj.refreshEvents();
-    console.log("got appts");
   };
 
   updateAppointmentInfo = async () => {
@@ -154,27 +141,12 @@ class CalendarMain extends React.Component {
     const result = await BasePath.get(
       `/webresources/getAllAppointments/${token}`
     );
-    //if (this.state.initialStates === false) {
-    //this.setState({
-    //initialStates: true
-    //});
-    console.log(result);
 
     this.data.splice(0, this.data.length);
-    //for(let i=0; i<this.data.length; i++){
-    //this.data.pop();
-    //}
-    //this.data.empty();
-    //this.data.clear();
-    //this.data = extend([], null, true);
-    console.log(this.data);
 
     for (let i = 0; i < result.data.length; i++) {
       var appointment = new Object();
       appointment.Id = result.data[i].idNumber;
-      //appointment.Id = i;//problem shifting ids getting from backend into calendar
-
-      //appointment.Subject = result.data[i].type;
       appointment.type = result.data[i].type;
 
       appointment.StartTime = result.data[i].startTime;
@@ -184,7 +156,6 @@ class CalendarMain extends React.Component {
       appointment.dogNames = result.data[i].dogNames.split(",");
 
       appointment.appointedDogs = this.state.dognames;
-      //console.log(appointment.appointedDogs);
 
       appointment.username = result.data[i].username;
       appointment.Subject = result.data[i].username;
@@ -229,18 +200,11 @@ class CalendarMain extends React.Component {
       appointment.play = result.data[i].play;
 
       this.data.push(appointment);
-      //console.log(this.data);
     }
-    //}
     console.log(this.data);
     this.setState({ data: this.data, intitialData: true });
-
-    //this.DataSource = this.data;
     this.scheduleObj.eventSettings.dataSource = this.data;
-    //let scheduleObj = document.getElementById("Schedule").ej2_instances[0];
-    //scheduleObj.eventSettings.dataSource = this.data;
     this.scheduleObj.refreshEvents();
-    console.log("updated appts");
   };
 
   getCustomerInfo = async () => {
@@ -263,7 +227,6 @@ class CalendarMain extends React.Component {
       customers.map((customer) => usernames.push(customer.username));
       this.setState({ usernames: usernames });
     }
-    //console.log(this.state.customers);
   };
 
   getDogInfo = async () => {
@@ -287,17 +250,12 @@ class CalendarMain extends React.Component {
       dogs.map((dog) => dognames.push(dog.name));
       this.setState({ dognames: dognames });
     }
-    //console.log(this.state.dognames);
-    //console.log(this.state.dognames);
   };
 
   onActionComplete(ActionEventArgs) {
     if (ActionEventArgs.changedRecords !== undefined) {
       this.scheduleObj.refreshEvents();
     }
-    //this.scheduleObj.refreshEvents();
-    //this.onDataBound();
-    console.log("complete");
 
     if (document.querySelector(".e-schedule-dialog") !== undefined) {
       let diaObj = document.querySelector(".e-schedule-dialog")
@@ -308,7 +266,6 @@ class CalendarMain extends React.Component {
   }
 
   onActionBegin(ActionEventArgs) {
-    //console.log("Begin");
     if (ActionEventArgs.changedRecords !== undefined) {
       if (
         ActionEventArgs.requestType === "eventCreate" &&
@@ -326,78 +283,49 @@ class CalendarMain extends React.Component {
           ActionEventArgs.changedRecords[0].dogNames == null ||
           ActionEventArgs.changedRecords[0].dogNames.length == 0
         ) {
-          //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
         } else if (ActionEventArgs.changedRecords[0].total === "" || !validTotal) {
-          //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Total");
         } else if (ActionEventArgs.changedRecords[0].amountPaid === "" || !validAmountPaid) {
-          //console.log("no amount paid entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Amount Paid");
         } else {
           this.editAppointment(ActionEventArgs.changedRecords[0]);
         }
-
-        //this.updateAppointmentInfo();
-        //this.scheduleObj.refreshEvents();
-        //console.log(ActionEventArgs.changedRecords[0]);
-        //console.log(ActionEventArgs.changedRecords[0].username);
       } else if (ActionEventArgs.requestType === "eventCreate") {
         let validTotal = this.checkValidNumber(ActionEventArgs.addedRecords[0].total);
         let validAmountPaid = this.checkValidNumber(ActionEventArgs.addedRecords[0].amountPaid);
-        //console.log(ActionEventArgs.addedRecords)
         if (ActionEventArgs.addedRecords[0].type == null) {
-          //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Appointment Type");
-          /*
-          this.setState({
-            cn: "popup1",
-            message: "Must enter Appointment Type",
-          });
-          this.togglePopup();
-          */
         } else if (
           ActionEventArgs.addedRecords[0].dogNames == null ||
           ActionEventArgs.addedRecords[0].dogNames.length == 0
         ) {
-          //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
         } else if (ActionEventArgs.addedRecords[0].total === "" || !validTotal) {
-          //console.log("no total entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Total");
         } else if (ActionEventArgs.addedRecords[0].amountPaid === "" || !validAmountPaid) {
-          //console.log("no amount paid entered");
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Amount Paid");
         } else {
           this.addAppointment(ActionEventArgs.addedRecords[0]);
         }
-        //
-
-        //console.log(ActionEventArgs.changedRecords[0]);
-        //console.log(ActionEventArgs.changedRecords[0].username);
       } else if (ActionEventArgs.requestType === "eventRemove") {
         this.deleteAppointment(ActionEventArgs.data[0]);
-        //console.log(ActionEventArgs.changedRecords[0]);
-        //console.log(ActionEventArgs.changedRecords[0].username);
       }
-      //console.log(ActionEventArgs);
     }
-
-    console.log(ActionEventArgs);
   }
 
   checkValidNumber(stringValue) {
@@ -409,7 +337,6 @@ class CalendarMain extends React.Component {
   }
 
   deleteAppointment = async (appointment) => {
-    console.log(appointment);
     let token = localStorage.getItem("token");
     let idNumber = appointment.Id;
 
@@ -417,7 +344,6 @@ class CalendarMain extends React.Component {
       token,
       idNumber,
     });
-    console.log(response);
   };
 
   addAppointment(appointment) {
@@ -436,7 +362,6 @@ class CalendarMain extends React.Component {
     }
 
     let dogArray = [];
-    console.log(allDogs);
     for (let i = 0; i < ownedDogs.length; i++) {
       for (let j = 0; j < dogNames.length; j++) {
         if (dogNames[j] === ownedDogs[i].name) {
@@ -483,11 +408,9 @@ class CalendarMain extends React.Component {
       type,
       additionalComments,
     });
-    console.log(response);
   };
 
   addBoarding = async (appointment, username, dogIdNumber) => {
-    console.log(appointment);
     let token = localStorage.getItem("token");
     let idNumber = appointment.Id;
 
@@ -518,11 +441,9 @@ class CalendarMain extends React.Component {
       type,
       additionalComments,
     });
-    console.log(response);
   };
 
   addTraining = async (appointment, username, dogIdNumber) => {
-    console.log(appointment);
     let token = localStorage.getItem("token");
     let idNumber = appointment.Id;
 
@@ -604,11 +525,9 @@ class CalendarMain extends React.Component {
       newHome,
       play,
     });
-    console.log(response);
   };
 
   editAppointment(appointment) {
-    //console.log(Appointment);
 
     let username = appointment.username;
 
@@ -623,7 +542,6 @@ class CalendarMain extends React.Component {
     }
 
     let dogArray = [];
-    console.log(allDogs);
     for (let i = 0; i < ownedDogs.length; i++) {
       for (let j = 0; j < dogNames.length; j++) {
         if (dogNames[j] === ownedDogs[i].name) {
@@ -640,13 +558,9 @@ class CalendarMain extends React.Component {
     } else if (appointment.type === "training") {
       this.editTraining(appointment, username, dogIdNumber);
     }
-
-    //this.scheduleObj.saveEvent(appointment);
-    //this.scheduleObj.refreshEvents();
   }
 
   editDaycare = async (appointment, username, dogIdNumber) => {
-    console.log(appointment);
     let token = localStorage.getItem("token");
     let idNumber = appointment.Id;
 
@@ -673,16 +587,14 @@ class CalendarMain extends React.Component {
       type,
       additionalComments,
     });
-    console.log(response);
+
     if (response.data === "Appointment updated") {
       this.updateAppointmentInfo();
     }
-    //this.getAppointmentInfo();
     this.scheduleObj.refreshEvents();
   };
 
   editBoarding = async (appointment, username, dogIdNumber) => {
-    console.log(appointment);
     let token = localStorage.getItem("token");
     let idNumber = appointment.Id;
 
@@ -713,14 +625,12 @@ class CalendarMain extends React.Component {
       type,
       additionalComments,
     });
-    console.log(response);
     if (response.data === "Appointment updated") {
       this.updateAppointmentInfo();
     }
   };
 
   editTraining = async (appointment, username, dogIdNumber) => {
-    console.log(appointment);
     let token = localStorage.getItem("token");
     let idNumber = appointment.Id;
 
@@ -802,22 +712,11 @@ class CalendarMain extends React.Component {
       newHome,
       play,
     });
-    console.log(response);
     if (response.data === "Appointment updated") {
       this.updateAppointmentInfo();
     }
   };
-  /*
-  
 
-  onCellClick() {
-    //console.log("cell");
-  }
-
-  onEventClick() {
-    //console.log("event");
-  }
-*/
   onPopupClose(args) {
     console.log("pop up close");
   }
@@ -828,47 +727,22 @@ class CalendarMain extends React.Component {
   }
 
   onDataBound() {
-    console.log("data bound");
     this.scheduleObj.refreshEvents();
-    //let event = this.scheduleObj.getEvents();
-    //this.appendElement('Events present on scheduler <b>' + event.length + '<b><hr>');
   }
 
   onDataChange() {
-    console.log("data change");
     this.scheduleObj.refreshEvents();
-    //let event = this.scheduleObj.getEvents();
-    //this.appendElement('Events present on scheduler <b>' + event.length + '<b><hr>');
   }
 
   onComplete(ChangeEventArgs) {
-    console.log("comp");
     this.dogBit = true;
-    //this.dogList = ["Max", "Sparky", "Fido"]
-    //this.dogList.push("Sparky");
-    //console.log(ChangeEventArgs.itemData.value);
     let username = ChangeEventArgs.itemData.value;
     this.alterDogList(username);
   }
-  /*
-  onBegin(ChangeEventArgs) {
-    console.log("begin");
-    this.dogBit = true;
-    //this.dogList = ["Max", "Sparky", "Fido"]
-    //this.dogList.push("Sparky");
-    //console.log(ChangeEventArgs.itemData.value);
-    let username = ChangeEventArgs.itemData.value;
-    this.alterDogList(username);
-  }
-*/
+
   alterDogList(username) {
-    console.log(username);
-    //this.dogList.empty();
     this.dogList.splice(0, this.dogList.length);
 
-    //while (this.dogList.length > 0) {
-    //this.dogList.pop();
-    //}
     if (username !== undefined) {
       for (let i = 0; i < this.dogs.length; i++) {
         if (username === this.dogs[i].owner) {
@@ -877,67 +751,37 @@ class CalendarMain extends React.Component {
           this.dogList.push(this.dogs[i].name);
         }
       }
-
-      /*
-      for (let i = 0; i < this.dogList.length; i++) {
-        if (username === this.dogsList[i]) {
-          //console.log(this.dogs.length);
-
-          this.dogList.pop();
-        }
-      }
-      */
     }
-    //console.log(this.dogList);
-    //this.setState({ dognames: this.dogList });
   }
 
   onPopupOpen(args) {
     if (args.type === "QuickInfo") {
-      //console.log(args);
       let username = args.data.username;
       this.alterDogList(username);
     }
 
     if (args.type === "Editor" && args.data.username === undefined) {
-      console.log("hello");
       this.scheduleObj.uiStateValues.isBlock = true;
       args.cancel = true;
       alert("Must enter Customer");
-      //this.setState({ cn: "popup1", message: "Must enter customer" });
-      //this.togglePopup();
     }
 
     if (args.type === "Editor") {
       let statusElement = args.element.querySelector("#username");
       statusElement.setAttribute("name", "username");
     }
-    console.log(args);
   }
   editorTemplate(props) {
-    //console.log(props.username);
-    //console.log(props.Id);
-    /*
-    let customer = {};
-    for (let i = 0; i < this.state.customers.length; i++) {
-      if (props.username === this.state.customers[i].username) {
-        customer = this.state.customers[i];
-      }
-    }
-*/
     let dogList = [];
     if (this.dogBit == true) {
-      console.log(props.username);
 
       if (props.username !== undefined) {
         for (let i = 0; i < this.dogs.length; i++) {
           if (props.username === this.dogs[i].owner) {
-            //console.log(this.dogs.length);
             dogList.push(this.dogs[i].name);
           }
         }
       }
-      console.log(dogList);
     }
 
     if (props !== undefined && props.type === "training") {
@@ -948,20 +792,6 @@ class CalendarMain extends React.Component {
             style={{ width: "100%", cellpadding: "5" }}
           >
             <tbody>
-              {/*
-            <tr>
-              <td className="e-textlabel">Id</td>
-              <td colSpan={4}>
-                <input
-                  id="Id"
-                  className="e-field e-input"
-                  type="text"
-                  name="Id"
-                  style={{ width: "100%" }}
-                />
-              </td>
-            </tr>
-            */}
               <tr>
                 <td className="e-textlabel">Appointment Type</td>
                 <td colSpan={4}>
@@ -988,35 +818,8 @@ class CalendarMain extends React.Component {
                     value={props.Subject}
                     readOnly
                   />
-                  {/*
-                <DropDownListComponent
-                  id="username"
-                  placeholder="Choose customer"
-                  data-name="username"
-                  className="e-field"
-                  style={{ width: "100%" }}
-                  dataSource={this.state.usernames}
-                  value={props.Subject || null}
-                  select={this.onComplete.bind(this)}
-                  //actionComplete={this.onComplete}
-                  //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
-                ></DropDownListComponent>
-                */}
                 </td>
               </tr>
-              {/*
-            <tr>
-            <td className="e-textlabel">Cars</td>
-            <td colSpan={4}>
-            <select id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
-</td>
-</tr>
-*/}
               <tr>
                 <td className="e-textlabel">Dogs</td>
                 <td colSpan={4}>
@@ -1026,15 +829,9 @@ class CalendarMain extends React.Component {
                     data-name="dogNames"
                     className="e-field"
                     style={{ width: "100%" }}
-                    //dataSource={this.state.dognames}
                     dataSource={this.dogList}
                     value={props.dogNames || null}
-                    //fields={{ text: 'sports', value: 'id' }}
                     mode="Box"
-                    //enablePersistence={true}
-                    //select={this.onComplete}
-                    //actionBegin={this.scheduleObj.refreshEvents.bind(this)}
-                    //required
                   ></MultiSelectComponent>
                 </td>
               </tr>
@@ -1072,9 +869,6 @@ class CalendarMain extends React.Component {
                     type="text"
                     name="total"
                     style={{ width: "100%" }}
-                    //required
-                    //defaultValue="0"
-                    //pattern="^[a-zA-Z1-9]{5,20}$"
                   />
                 </td>
                 <td className="e-textlabel">Amount Paid</td>
@@ -1504,20 +1298,6 @@ class CalendarMain extends React.Component {
             style={{ width: "100%", cellpadding: "5" }}
           >
             <tbody>
-              {/*
-            <tr>
-              <td className="e-textlabel">Id</td>
-              <td colSpan={4}>
-                <input
-                  id="Id"
-                  className="e-field e-input"
-                  type="text"
-                  name="Id"
-                  style={{ width: "100%" }}
-                />
-              </td>
-            </tr>
-            */}
               <tr>
                 <td className="e-textlabel">Appointment Type</td>
                 <td colSpan={4}>
@@ -1544,35 +1324,8 @@ class CalendarMain extends React.Component {
                     value={props.Subject}
                     readOnly
                   />
-                  {/*
-                <DropDownListComponent
-                  id="username"
-                  placeholder="Choose customer"
-                  data-name="username"
-                  className="e-field"
-                  style={{ width: "100%" }}
-                  dataSource={this.state.usernames}
-                  value={props.Subject || null}
-                  select={this.onComplete.bind(this)}
-                  //actionComplete={this.onComplete}
-                  //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
-                ></DropDownListComponent>
-                */}
                 </td>
               </tr>
-              {/*
-            <tr>
-            <td className="e-textlabel">Cars</td>
-            <td colSpan={4}>
-            <select id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
-</td>
-</tr>
-*/}
               <tr>
                 <td className="e-textlabel">Dogs</td>
                 <td colSpan={4}>
@@ -1582,15 +1335,9 @@ class CalendarMain extends React.Component {
                     data-name="dogNames"
                     className="e-field"
                     style={{ width: "100%" }}
-                    //dataSource={this.state.dognames}
                     dataSource={this.dogList}
                     value={props.dogNames || null}
-                    //fields={{ text: 'sports', value: 'id' }}
                     mode="Box"
-                    //enablePersistence={true}
-                    //select={this.onComplete}
-                    //actionBegin={this.scheduleObj.refreshEvents.bind(this)}
-                    //required
                   ></MultiSelectComponent>
                 </td>
               </tr>
@@ -1628,9 +1375,6 @@ class CalendarMain extends React.Component {
                     type="text"
                     name="total"
                     style={{ width: "100%" }}
-                    //required
-                    //defaultValue="0"
-                    //pattern="^[a-zA-Z1-9]{5,20}$"
                   />
                 </td>
                 <td className="e-textlabel">Amount Paid</td>
@@ -1724,20 +1468,6 @@ class CalendarMain extends React.Component {
             style={{ width: "100%", cellpadding: "5" }}
           >
             <tbody>
-              {/*
-            <tr>
-              <td className="e-textlabel">Id</td>
-              <td colSpan={4}>
-                <input
-                  id="Id"
-                  className="e-field e-input"
-                  type="text"
-                  name="Id"
-                  style={{ width: "100%" }}
-                />
-              </td>
-            </tr>
-            */}
               <tr>
                 <td className="e-textlabel">Appointment Type</td>
                 <td colSpan={4}>
@@ -1764,35 +1494,8 @@ class CalendarMain extends React.Component {
                     value={props.Subject}
                     readOnly
                   />
-                  {/*
-                <DropDownListComponent
-                  id="username"
-                  placeholder="Choose customer"
-                  data-name="username"
-                  className="e-field"
-                  style={{ width: "100%" }}
-                  dataSource={this.state.usernames}
-                  value={props.Subject || null}
-                  select={this.onComplete.bind(this)}
-                  //actionComplete={this.onComplete}
-                  //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
-                ></DropDownListComponent>
-                */}
                 </td>
               </tr>
-              {/*
-            <tr>
-            <td className="e-textlabel">Cars</td>
-            <td colSpan={4}>
-            <select id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
-</td>
-</tr>
-*/}
               <tr>
                 <td className="e-textlabel">Dogs</td>
                 <td colSpan={4}>
@@ -1802,15 +1505,9 @@ class CalendarMain extends React.Component {
                     data-name="dogNames"
                     className="e-field"
                     style={{ width: "100%" }}
-                    //dataSource={this.state.dognames}
                     dataSource={this.dogList}
                     value={props.dogNames || null}
-                    //fields={{ text: 'sports', value: 'id' }}
                     mode="Box"
-                    //enablePersistence={true}
-                    //select={this.onComplete}
-                    //actionBegin={this.scheduleObj.refreshEvents.bind(this)}
-                    //required
                   ></MultiSelectComponent>
                 </td>
               </tr>
@@ -1848,9 +1545,6 @@ class CalendarMain extends React.Component {
                     type="text"
                     name="total"
                     style={{ width: "100%" }}
-                    //required
-                    //defaultValue="0"
-                    //pattern="^[a-zA-Z1-9]{5,20}$"
                   />
                 </td>
                 <td className="e-textlabel">Amount Paid</td>
@@ -1920,20 +1614,6 @@ class CalendarMain extends React.Component {
           style={{ width: "100%", cellpadding: "5" }}
         >
           <tbody>
-            {/*
-            <tr>
-              <td className="e-textlabel">Id</td>
-              <td colSpan={4}>
-                <input
-                  id="Id"
-                  className="e-field e-input"
-                  type="text"
-                  name="Id"
-                  style={{ width: "100%" }}
-                />
-              </td>
-            </tr>
-            */}
             <tr>
               <td className="e-textlabel">Appointment Type</td>
               <td colSpan={4}>
@@ -1945,7 +1625,6 @@ class CalendarMain extends React.Component {
                   style={{ width: "100%" }}
                   dataSource={["daycare", "boarding", "training"]}
                   value={props.type || null}
-                  //required
                 ></DropDownListComponent>
               </td>
             </tr>
@@ -1961,35 +1640,8 @@ class CalendarMain extends React.Component {
                   value={props.Subject}
                   readOnly
                 />
-                {/*
-                            <DropDownListComponent
-                              id="username"
-                              placeholder="Choose customer"
-                              data-name="username"
-                              className="e-field"
-                              style={{ width: "100%" }}
-                              dataSource={this.state.usernames}
-                              value={props.Subject || null}
-                              select={this.onComplete.bind(this)}
-                              //actionComplete={this.onComplete}
-                              //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
-                            ></DropDownListComponent>
-                            */}
               </td>
             </tr>
-            {/*
-                        <tr>
-                        <td className="e-textlabel">Cars</td>
-                        <td colSpan={4}>
-                        <select id="cars">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
-            </td>
-            </tr>
-            */}
             <tr>
               <td className="e-textlabel">Dogs</td>
               <td colSpan={4}>
@@ -1999,15 +1651,9 @@ class CalendarMain extends React.Component {
                   data-name="dogNames"
                   className="e-field"
                   style={{ width: "100%" }}
-                  //dataSource={this.state.dognames}
                   dataSource={this.dogList}
                   value={props.dogNames || null}
-                  //fields={{ text: 'sports', value: 'id' }}
                   mode="Box"
-                  //enablePersistence={true}
-                  //select={this.onComplete}
-                  //actionBegin={this.scheduleObj.refreshEvents.bind(this)}
-                  //required
                 ></MultiSelectComponent>
               </td>
             </tr>
@@ -2045,9 +1691,6 @@ class CalendarMain extends React.Component {
                   type="text"
                   name="total"
                   style={{ width: "100%" }}
-                  //required
-                  //defaultValue="0"
-                  //pattern="^[a-zA-Z1-9]{5,20}$"
                 />
               </td>
               <td className="e-textlabel">Amount Paid</td>
@@ -2645,36 +2288,8 @@ class CalendarMain extends React.Component {
                   dataSource={this.state.usernames}
                   value={props.Subject || null}
                   select={this.onComplete.bind(this)}
-                  //actionComplete={this.onComplete}
-                  //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
                 ></DropDownListComponent>
               </div>
-
-              {/*
-    <input className="e-subject e-field e-input" type="text"
-    name="username" placeholder="Owner"
-    aria-placeholder="Owner" defaultValue="admin"></input>
-  */}
-
-              {/*
-              <div className="e-textlabel">Appointment Type</div>
-              <div colSpan={4}>
-                <DropDownListComponent
-                  id="Location"
-                  placeholder="Choose appointment type"
-                  data-name="Location"
-                  className="e-location e-field e-input"
-                  style={{ width: "100%" }}
-                  dataSource={["daycare", "boarding", "training"]}
-                  value={props.Location || null}
-                ></DropDownListComponent>
-              </div>
-*/}
-              {/*
-    <input className="e-description e-field e-input" type="text"
-    name="Description" placeholder="Appointment type"
-    aria-placeholder="Appointment type"></input>
-  */}
 
               {props.Description !== undefined ? (
                 <div className="description">{props.Description}</div>
@@ -2682,63 +2297,6 @@ class CalendarMain extends React.Component {
                 ""
               )}
             </div>
-
-            {/*
-          <div className="e-cell-content e-template">
-<form className="e-schedule-form e-lib e-formvalidator"
- noValidate>
-  <span className="e-input-group e-control-wrapper">
-    
-    <input className="e-field e-input" type="text"
-    name="Subject" placeholder="Owner"
-    aria-placeholder="Owner"></input>
-    
-  
-    
-    <input className="e-location e-field e-input" type="text"
-    name="Location" placeholder="Appointment type"
-    aria-placeholder="Appointment type"></input>
-    
-  </span>
-</form>
-*/}
-            {/*
-            <form className="e-schedule-form">
-              {/*
-              <div className="e-textlabel">Appointment Type</div>
-              <div colSpan={4}>
-                <DropDownListComponent
-                  id="Subject"
-                  placeholder="Choose appointment type"
-                  data-name="Subject"
-                  className="e-field"
-                  style={{ width: "100%" }}
-                  dataSource={["daycare", "boarding", "training"]}
-                  value={props.Subject || null}
-                ></DropDownListComponent>
-              </div>
-        
-
-              <div>
-                <input
-                  className="subject"
-                  type="text"
-                  name="Subject"
-                  placeholder="Title"
-                  //value={props.Subject}
-                />
-              </div>
-
-              <div>
-                <input
-                  className="location e-field"
-                  type="text"
-                  name="Location"
-                  placeholder="Location"
-                />
-              </div>
-            </form>
-        */}
           </div>
         ) : (
           <div className="e-event-content e-template">
@@ -2807,11 +2365,6 @@ class CalendarMain extends React.Component {
             <button className="e-event-details" title="Extra Details">
               Next Step
             </button>
-            {/*
-            <button className="e-event-create" title="Add">
-              Add
-            </button>
-            */}
           </div>
         ) : (
           <div className="e-event-footer"></div>
@@ -2831,7 +2384,6 @@ class CalendarMain extends React.Component {
           ref={(t) => (this.scheduleObj = t)}
           currentView="Month"
           eventSettings={{
-            //dataSource: this.data,
             dataSource: this.state.data,
             template: this.eventTemplate.bind(this),
             fields: {
@@ -2857,13 +2409,9 @@ class CalendarMain extends React.Component {
           }}
           editorTemplate={this.editorTemplate.bind(this)}
           popupOpen={this.onPopupOpen.bind(this)}
-          //popupClose={this.onPopupClose.bind(this)}
-          //actionComplete={this.onActionComplete.bind(this)}
           actionBegin={this.onActionBegin.bind(this)}
-          //dataBound={this.onDataBound.bind(this)}
           dataChange={this.onDataChange.bind(this)}
           editorClose={this.onEditorClose.bind(this)}
-          //actionComplete={this.onComplete}
           quickInfoTemplates={{
             dataSource: this.state.data,
             header: this.header.bind(this),
@@ -2875,8 +2423,7 @@ class CalendarMain extends React.Component {
               subject: {
                 name: "username",
                 title: "Owner",
-                default: "admin",
-                //validation: { required: true }
+                default: "admin"
               },
               location: {
                 title: "Appointment Type",
@@ -2888,18 +2435,6 @@ class CalendarMain extends React.Component {
         >
           <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
         </ScheduleComponent>
-        {/*
-        <div>
-        {this.state.showPopup ? (
-          <Popup
-            cn={this.state.cn}
-            text={this.state.message}
-            closePopup={this.togglePopup.bind(this)}
-            bgColor="red"
-          />
-        ) : null}
-      </div>
-        */}
       </div>
     );
   }

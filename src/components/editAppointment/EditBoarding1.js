@@ -41,7 +41,7 @@ class BookBoarding1 extends React.Component {
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container bookAppointmentContainer">
-            <h1>Book Boarding</h1>
+            <h1>Edit Boarding</h1>
 
             <div className="row">
               <div className="col-sm">

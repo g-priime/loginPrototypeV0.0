@@ -22,7 +22,7 @@ class BookDaycareMain extends React.Component {
     initialStates: false,
     cost: "",
 
-    cancelLink: "/Services"
+    cancelLink: "/Services",
   };
 
   getDogs = async () => {
@@ -31,7 +31,7 @@ class BookDaycareMain extends React.Component {
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy =>
+    dogs.map((doggy) =>
       dogArray.push({ key: doggy.idNumber, value: doggy.name })
     );
 
@@ -46,7 +46,7 @@ class BookDaycareMain extends React.Component {
       this.props.location.state !== null
     ) {
       this.setState({ cancelLink: this.props.location.state.cancelLink });
-    } 
+    }
   }
 
   onSearchSubmit1 = async () => {
@@ -56,36 +56,51 @@ class BookDaycareMain extends React.Component {
         this.state.startTime,
         this.state.endTime,
         this.state.comments,
-        this.state.sessionId
-      ]
+        this.state.sessionId,
+      ],
     });
 
-    var token = localStorage.getItem("token");
-    var dogs = [];
-    this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
-    var dogString = dogs.toString();
-    var startTime = this.state.startTime;
-    var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
-    var endTime = this.state.endTime;
-    var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
-    var grooming = "false";
-    var type = "daycare";
+    if (this.state.selectedDogs != null) {
+      var token = localStorage.getItem("token");
+      var dogs = [];
+      this.state.selectedDogs.map((doggy) => dogs.push(doggy.key));
+      var dogString = dogs.toString();
+      var startTime = this.state.startTime;
+      var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
+      var endTime = this.state.endTime;
+      var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
+      var grooming = "false";
+      var type = "daycare";
 
-    console.log(this.state.dog);
+      console.log(this.state.dog);
 
-    const response = await BasePath.put("/webresources/calculatecost", {
-      token,
-      dogString,
-      formattedStart,
-      formattedEnd,
-      grooming,
-      type
-    });
+      const response = await BasePath.put("/webresources/calculatecost", {
+        token,
+        dogString,
+        formattedStart,
+        formattedEnd,
+        grooming,
+        type,
+      });
 
-    this.setState({ response: response.data.message, cost: response.data.total });
+      this.setState({
+        response: response.data.message,
+        cost: response.data.total,
+      });
 
-    if (response.data === "") {
-      this.setState({ cn: "popup4", response: "Must select at least one dog" });
+      if (response.data === "") {
+        this.setState({
+          cn: "popup4",
+          response: "Must select at least one dog",
+        });
+        this.togglePopup();
+      }
+    }
+    else{
+      this.setState({
+        cn: "popup4",
+        response: "Must select at least one dog",
+      });
       this.togglePopup();
     }
   };
@@ -94,9 +109,11 @@ class BookDaycareMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var selectedDogs = [];
-    this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
+    this.state.fieldName[0].map((doggy) => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
-    var startTime = Moment(this.state.fieldName[1]).format("YYYY-MM-DD HH:mm:ss");
+    var startTime = Moment(this.state.fieldName[1]).format(
+      "YYYY-MM-DD HH:mm:ss"
+    );
     var endTime = Moment(this.state.fieldName[2]).format("YYYY-MM-DD HH:mm:ss");
     console.log(endTime);
     var additionalComments = this.state.fieldName[3];
@@ -108,7 +125,7 @@ class BookDaycareMain extends React.Component {
       startTime,
       endTime,
       total,
-      additionalComments
+      additionalComments,
     });
 
     this.setState({ response: response.data });
@@ -124,25 +141,25 @@ class BookDaycareMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeDog = selectedOption => {
+  handleChangeDog = (selectedOption) => {
     this.setState({ selectedDogs: selectedOption }, () =>
       console.log(`Option selected:`, this.state.selectedDogs)
     );
   };
 
-  handleChangeStartTime = event => {
+  handleChangeStartTime = (event) => {
     this.setState({ startTime: event.target.value });
   };
 
-  handleChangeEndTime = event => {
+  handleChangeEndTime = (event) => {
     this.setState({ endTime: event.target.value });
   };
 
-  handleChangeComments = event => {
+  handleChangeComments = (event) => {
     this.setState({ comments: event.target.value });
   };
 
@@ -159,13 +176,11 @@ class BookDaycareMain extends React.Component {
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
-
             comments={this.state.comments}
             cost={this.state.cost}
             onClick={this.onPrevious}
             proceedToPayment={this.proceedToPayment}
             onSubmit={this.onSearchSubmit2}
-
             cancelLink={this.state.cancelLink}
           />
         </div>
@@ -175,8 +190,8 @@ class BookDaycareMain extends React.Component {
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/Services",
-              state: { message: "Appointment is booked pending approval" }
+              pathname: "/ViewAppointments",
+              state: { message: "Appointment is booked pending approval" },
             }}
           />
         </div>
@@ -187,7 +202,7 @@ class BookDaycareMain extends React.Component {
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Redirect to PayPal" }
+              state: { message: "Redirect to PayPal" },
             }}
           />
         </div>
@@ -205,11 +220,9 @@ class BookDaycareMain extends React.Component {
             selectedDogs={this.state.selectedDogs}
             startTime={this.state.startTime}
             endTime={this.state.endTime}
-
             comments={this.state.comments}
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
-
             cancelLink={this.state.cancelLink}
           />
           <div>

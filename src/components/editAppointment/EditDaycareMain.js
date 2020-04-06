@@ -20,7 +20,7 @@ class EditDaycareMain extends React.Component {
     selectedDogs: [],
     dogs: [],
     initialStates: false,
-    cost: ""
+    cost: "",
   };
 
   getDogs = async () => {
@@ -29,7 +29,7 @@ class EditDaycareMain extends React.Component {
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy =>
+    dogs.map((doggy) =>
       dogArray.push({ key: doggy.idNumber, value: doggy.name })
     );
 
@@ -54,7 +54,7 @@ class EditDaycareMain extends React.Component {
         endTime: Moment(this.props.appointment.endTime).format(
           "YYYY-MM-DDThh:mm"
         ),
-        comments: this.props.appointment.additionalComments
+        comments: this.props.appointment.additionalComments,
       });
     }
   };
@@ -66,38 +66,46 @@ class EditDaycareMain extends React.Component {
         this.state.startTime,
         this.state.endTime,
         this.state.comments,
-        this.state.sessionId
-      ]
+        this.state.sessionId,
+      ],
     });
 
-    var token = localStorage.getItem("token");
-    var dogs = [];
-    this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
-    var dogString = dogs.toString();
-    var startTime = this.state.startTime;
-    var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
-    var endTime = this.state.endTime;
-    var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
-    var grooming = "false";
-    var type = "daycare";
+    if (this.state.selectedDogs != null) {
+      var token = localStorage.getItem("token");
+      var dogs = [];
+      this.state.selectedDogs.map((doggy) => dogs.push(doggy.key));
+      var dogString = dogs.toString();
+      var startTime = this.state.startTime;
+      var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
+      var endTime = this.state.endTime;
+      var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
+      var grooming = "false";
+      var type = "daycare";
 
-    console.log(this.state.dog);
+      console.log(this.state.dog);
 
-    const response = await BasePath.put("/webresources/calculatecost", {
-      token,
-      dogString,
-      formattedStart,
-      formattedEnd,
-      grooming,
-      type
-    });
+      const response = await BasePath.put("/webresources/calculatecost", {
+        token,
+        dogString,
+        formattedStart,
+        formattedEnd,
+        grooming,
+        type,
+      });
 
-    this.setState({
-      response: response.data.message,
-      cost: response.data.total
-    });
+      this.setState({
+        response: response.data.message,
+        cost: response.data.total,
+      });
 
-    if (response.data === "") {
+      if (response.data === "") {
+        this.setState({
+          cn: "popup4",
+          response: "Must select at least one dog",
+        });
+        this.togglePopup();
+      }
+    } else {
       this.setState({ cn: "popup4", response: "Must select at least one dog" });
       this.togglePopup();
     }
@@ -110,7 +118,7 @@ class EditDaycareMain extends React.Component {
     var idNumber = this.props.appointment.idNumber;
 
     var selectedDogs = [];
-    this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
+    this.state.fieldName[0].map((doggy) => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
     var startTime = Moment(this.state.fieldName[1]).format(
       "YYYY-MM-DD HH:mm:ss"
@@ -121,7 +129,7 @@ class EditDaycareMain extends React.Component {
     var total = this.state.cost;
 
     var amountPaid = this.props.appointment.amountPaid;
-    var isApproved = this.props.appointment.isApproved; 
+    var isApproved = this.props.appointment.isApproved;
     var isCancelled = this.props.appointment.isCancelled;
     var type = this.props.appointment.type;
 
@@ -137,7 +145,7 @@ class EditDaycareMain extends React.Component {
       isApproved,
       isCancelled,
       type,
-      additionalComments
+      additionalComments,
     });
 
     this.setState({ response: response.data });
@@ -153,25 +161,25 @@ class EditDaycareMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeDog = selectedOption => {
+  handleChangeDog = (selectedOption) => {
     this.setState({ selectedDogs: selectedOption }, () =>
       console.log(`Option selected:`, this.state.selectedDogs)
     );
   };
 
-  handleChangeStartTime = event => {
+  handleChangeStartTime = (event) => {
     this.setState({ startTime: event.target.value });
   };
 
-  handleChangeEndTime = event => {
+  handleChangeEndTime = (event) => {
     this.setState({ endTime: event.target.value });
   };
 
-  handleChangeComments = event => {
+  handleChangeComments = (event) => {
     this.setState({ comments: event.target.value });
   };
 
@@ -202,7 +210,7 @@ class EditDaycareMain extends React.Component {
           <Redirect
             to={{
               pathname: "ViewAppointments",
-              state: { message: "Appointment updated" }
+              state: { message: "Appointment updated" },
             }}
           />
         </div>
@@ -213,7 +221,7 @@ class EditDaycareMain extends React.Component {
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Redirect to PayPal" }
+              state: { message: "Redirect to PayPal" },
             }}
           />
         </div>
