@@ -70,56 +70,20 @@ class ManageUsers extends React.Component {
     }
   };
 
-  UNSAFE_componentWillMount() {
-    var token = localStorage.getItem("token");
-    BasePath.get(`webresources/RetrieveUsers/${token}`).then(result => {
-      console.log(result);
-      this.setState({ userList: result.data });
-    });
-  }
+  // UNSAFE_componentWillMount() {
+  //   var token = localStorage.getItem("token");
+  //   BasePath.get(`webresources/RetrieveUsers/${token}`).then(result => {
+  //     console.log(result.data[0].isActive);
+  //     for (var i = 0;i < result.data.length;i++) {
+  //       if (result.data[i].isActive == true) {
+  //         this.setState({ userList: [...this.state.userList, result.data[i]] })
+  //         console.log('this is the user list' + this.state.userList[0]);
+  //       }
+  //     }
+  //   });
+  // }
 
-  // editUser = user => {
-    
-  //   var build;
-  //   var street;
-  //   var prov;
-  //   var post;
-  //   var house;
-  //   var city;
 
-  //   if (user.address != null) {
-  //     build = user.address.buildingNum;
-  //     street = user.address.streetName;
-  //     prov = user.address.province;
-  //     post = user.address.postal;
-  //     house = user.address.houseNum;
-  //     city= user.address.city;
-  //   }
-
-  //   if (this.state.initialStates === false) {
-  //     this.setState({
-  //       initialStates: true,
-  //       username: user.username,
-  //       password: user.password,
-  //       confirmPassword: user.password,
-  //       fname: user.firstName,
-  //       lname: user.lastName,
-  //       email: user.email,
-
-  //       appt: house,
-  //       building: build,
-  //       street: street,
-  //       city: city,
-  //       province: prov,
-  //       postcode: post,
-  //       phone: user.phoneNumber,
-  //       emergencyphone: user.emergencyPhone,
-  //       emergencyname: user.emergencyName
-  //     });
-  //   }
-  // };
-
-  // deleteUser = user => {};
 
   render() {
     return (
@@ -136,7 +100,7 @@ class ManageUsers extends React.Component {
                   <h3>User List</h3>
                   <br />
                 </div>
-                {this.state.userList.map(user => (
+                {this.props.userList.map(user => (
                   <User
                     chosenUser={user}
                     editUser={this.props.editUser.bind(this, user)}
