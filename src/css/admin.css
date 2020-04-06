@@ -1,0 +1,16 @@
+body {
+    background-color:  #6298C8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-row {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.output{
+    width: 80%;
+    margin-left: 5px;  
+}
+
