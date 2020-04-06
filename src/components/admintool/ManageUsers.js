@@ -140,7 +140,7 @@ class ManageUsers extends React.Component {
                   <User
                     chosenUser={user}
                     editUser={this.props.editUser.bind(this, user)}
-                    deleteUser={this.props.deleteUser}
+                    deleteUser={this.props.deleteUser.bind(this,user)}
                   />
                 ))}
               </div>
