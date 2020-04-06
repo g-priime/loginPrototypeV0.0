@@ -21,7 +21,7 @@ class EditBoardingMain extends React.Component {
     dogs: [],
     initialStates: false,
     cost: "",
-    grooming: "No"
+    grooming: "No",
   };
 
   getDogs = async () => {
@@ -30,7 +30,7 @@ class EditBoardingMain extends React.Component {
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy =>
+    dogs.map((doggy) =>
       dogArray.push({ key: doggy.idNumber, value: doggy.name })
     );
 
@@ -61,7 +61,7 @@ class EditBoardingMain extends React.Component {
           "YYYY-MM-DDThh:mm"
         ),
         grooming: grooming,
-        comments: this.props.appointment.additionalComments
+        comments: this.props.appointment.additionalComments,
       });
     }
   };
@@ -74,40 +74,48 @@ class EditBoardingMain extends React.Component {
         this.state.endTime,
         this.state.grooming,
         this.state.comments,
-        this.state.sessionId
-      ]
+        this.state.sessionId,
+      ],
     });
 
-    var token = localStorage.getItem("token");
-    var dogs = [];
-    this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
-    var dogString = dogs.toString();
-    var startTime = this.state.startTime;
-    var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
-    var endTime = this.state.endTime;
-    var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
+    if (this.state.selectedDogs != null) {
+      var token = localStorage.getItem("token");
+      var dogs = [];
+      this.state.selectedDogs.map((doggy) => dogs.push(doggy.key));
+      var dogString = dogs.toString();
+      var startTime = this.state.startTime;
+      var formattedStart = Moment(startTime).format("YYYY-MM-DD hh:mm:ss");
+      var endTime = this.state.endTime;
+      var formattedEnd = Moment(endTime).format("YYYY-MM-DD hh:mm:ss");
 
-    var grooming = "false";
-    if (this.state.grooming === "Yes") {
-      grooming = "true";
-    }
-    var type = "boarding";
+      var grooming = "false";
+      if (this.state.grooming === "Yes") {
+        grooming = "true";
+      }
+      var type = "boarding";
 
-    const response = await BasePath.put("/webresources/calculatecost", {
-      token,
-      dogString,
-      formattedStart,
-      formattedEnd,
-      grooming,
-      type
-    });
+      const response = await BasePath.put("/webresources/calculatecost", {
+        token,
+        dogString,
+        formattedStart,
+        formattedEnd,
+        grooming,
+        type,
+      });
 
-    this.setState({
-      response: response.data.message,
-      cost: response.data.total
-    });
+      this.setState({
+        response: response.data.message,
+        cost: response.data.total,
+      });
 
-    if (response.data === "") {
+      if (response.data === "") {
+        this.setState({
+          cn: "popup4",
+          response: "Must select at least one dog",
+        });
+        this.togglePopup();
+      }
+    } else {
       this.setState({ cn: "popup4", response: "Must select at least one dog" });
       this.togglePopup();
     }
@@ -120,7 +128,7 @@ class EditBoardingMain extends React.Component {
     var idNumber = this.props.appointment.idNumber;
 
     var selectedDogs = [];
-    this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
+    this.state.fieldName[0].map((doggy) => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
     var startTime = Moment(this.state.fieldName[1]).format(
       "YYYY-MM-DD HH:mm:ss"
@@ -153,7 +161,7 @@ class EditBoardingMain extends React.Component {
       isCancelled,
       type,
       grooming,
-      additionalComments
+      additionalComments,
     });
 
     this.setState({ response: response.data });
@@ -169,29 +177,29 @@ class EditBoardingMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeDog = selectedOption => {
+  handleChangeDog = (selectedOption) => {
     this.setState({ selectedDogs: selectedOption }, () =>
       console.log(`Option selected:`, this.state.selectedDogs)
     );
   };
 
-  handleChangeStartTime = event => {
+  handleChangeStartTime = (event) => {
     this.setState({ startTime: event.target.value });
   };
 
-  handleChangeEndTime = event => {
+  handleChangeEndTime = (event) => {
     this.setState({ endTime: event.target.value });
   };
 
-  handleChangeGrooming = event => {
+  handleChangeGrooming = (event) => {
     this.setState({ grooming: event.target.value });
   };
 
-  handleChangeComments = event => {
+  handleChangeComments = (event) => {
     this.setState({ comments: event.target.value });
   };
 
@@ -223,7 +231,7 @@ class EditBoardingMain extends React.Component {
           <Redirect
             to={{
               pathname: "ViewAppointments",
-              state: { message: "Appointment updated" }
+              state: { message: "Appointment updated" },
             }}
           />
         </div>
@@ -234,7 +242,7 @@ class EditBoardingMain extends React.Component {
           <Redirect
             to={{
               pathname: "/",
-              state: { message: "Redirect to PayPal" }
+              state: { message: "Redirect to PayPal" },
             }}
           />
         </div>

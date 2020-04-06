@@ -85,7 +85,7 @@ class BookAppointment2 extends React.Component {
                 <div className="col-sm">
                   <div className="d-flex justify-content-between">
                     <Link
-                      to="/Services"
+                      to={this.props.cancelLink}
                       type="button"
                       className="btn mb-3"
                       style={{

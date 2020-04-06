@@ -1,7 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BasePath from "../../api/BasePath";
+import PopUpConfirm from "../PopUpConfirm";
 
 class ApprovedAppointment extends React.Component {
+  state = {
+    isOpen: false,
+    showCon: false
+  };
+
+  deleteAppointment = () => {
+    let token = localStorage.getItem("token");
+    let idNumber = this.props.appointment.idNumber;
+
+    BasePath.put("/webresources/deleteAppointment", {
+      token,
+      idNumber
+    }).then(result => {
+      this.props.updateAppointments();
+    });
+  };
+
+  showConAndDel = () => {
+    this.setState({ showCon: true });
+  };
+
+  dontConfirm = () => {
+    this.setState({ showCon: false });
+  };
+
+  confirm = () => {
+    this.setState({ showCon: false });
+    this.deleteAppointment();
+  };
+
   render() {
     return (
       <div className="row ">
@@ -29,7 +61,9 @@ class ApprovedAppointment extends React.Component {
         </Link>
         </div>
         <div className="col-sm left">
-          <button
+        <button
+            onClick={this.showConAndDel}
+            type="button"
             className="btn mb-3"
             style={{
               fontWeight: "bold",
@@ -41,9 +75,24 @@ class ApprovedAppointment extends React.Component {
               marginTop: "-3%"
             }}
           >
-            Make Payment
+            Cancel
           </button>
         </div>
+
+        {this.state.showCon ? (
+          <PopUpConfirm
+            dontConfirm={this.dontConfirm}
+            confirm={this.confirm}
+            text={
+              "Delete " +
+              this.props.appointment.type +
+              " for " +
+              this.props.startTime +
+              "?"
+            }
+            cn="popup3"
+          />
+        ) : null}
       </div>
     );
   }

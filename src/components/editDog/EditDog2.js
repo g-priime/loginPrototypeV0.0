@@ -38,6 +38,7 @@ class EditDog2 extends React.Component {
     largerdogs: "",
     smalldogs: "",
     puppies: "",
+    train:"",
     da2pp: "",
     rabies: "",
     bordetella: ""
@@ -51,16 +52,18 @@ class EditDog2 extends React.Component {
       this.state.largerdogs,
       this.state.smalldogs,
       this.state.puppies,
+      this.state.train,
       this.state.da2pp,
       this.state.rabies,
       this.state.bordetella
     );
   };
+  
 
   previousStep_onClick = event => {
     //differents name?
     event.preventDefault();
-    this.props.onClick();
+    this.props.onClickPrev();
   };
 
   render() {
@@ -89,8 +92,8 @@ class EditDog2 extends React.Component {
                       <input
                         type="radio"
                         name="strangers"
-                        value="yes"
-                        checked={this.props.strangers === "yes"}
+                        value="true"
+                        checked={this.props.strangers === "true"}
                         onChange={this.props.onChangeStrangers}
                       />
                     </label>
@@ -101,8 +104,8 @@ class EditDog2 extends React.Component {
                       <input
                         type="radio"
                         name="strangers"
-                        value="no"
-                        checked={this.props.strangers === "no"}
+                        value='false'
+                        checked={this.props.strangers === "false"}
                         onChange={this.props.onChangeStrangers}
                       />
                     </label>
@@ -116,8 +119,8 @@ class EditDog2 extends React.Component {
                       <input
                         type="radio"
                         name="largerdogs"
-                        value="yes"
-                        checked={this.props.largerdogs === "yes"}
+                        value='true'
+                        checked={this.props.largerdogs === "true"}
                         onChange={this.props.onChangeLargerdogs}
                       />
                     </label>
@@ -128,8 +131,8 @@ class EditDog2 extends React.Component {
                       <input
                         type="radio"
                         name="largerdogs"
-                        value="no"
-                        checked={this.props.largerdogs === "no"}
+                        value='false'
+                        checked={this.props.largerdogs === "false"}
                         onChange={this.props.onChangeLargerdogs}
                       />
                     </label>
@@ -143,8 +146,8 @@ class EditDog2 extends React.Component {
                       <input
                         type="radio"
                         name="smalldogs"
-                        value="yes"
-                        checked={this.props.smalldogs === "yes"}
+                        value='true'
+                        checked={this.props.smalldogs === "true"}
                         onChange={this.props.onChangeSmalldogs}
                       />
                     </label>
@@ -155,8 +158,8 @@ class EditDog2 extends React.Component {
                       <input
                         type="radio"
                         name="smalldogs"
-                        value="no"
-                        checked={this.props.smalldogs === "no"}
+                        value='false'
+                        checked={this.props.smalldogs === "false"}
                         onChange={this.props.onChangeSmalldogs}
                       />
                     </label>
@@ -170,8 +173,8 @@ class EditDog2 extends React.Component {
                       <input
                         type="radio"
                         name="puppies"
-                        value="yes"
-                        checked={this.props.puppies === "yes"}
+                        value='true'
+                        checked={this.props.puppies === "true"}
                         onChange={this.props.onChangePuppies}
                       />
                     </label>
@@ -182,8 +185,8 @@ class EditDog2 extends React.Component {
                       <input
                         type="radio"
                         name="puppies"
-                        value="no"
-                        checked={this.props.puppies === "no"}
+                        value='false'
+                        checked={this.props.puppies === "false"}
                         onChange={this.props.onChangePuppies}
                       />
                     </label>
