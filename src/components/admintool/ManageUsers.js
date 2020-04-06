@@ -79,6 +79,23 @@ class ManageUsers extends React.Component {
   }
 
   editUser = user => {
+    
+    var build;
+    var street;
+    var prov;
+    var post;
+    var house;
+    var city;
+
+    if (user.address != null) {
+      build = user.address.buildingNum;
+      street = user.address.streetName;
+      prov = user.address.province;
+      post = user.address.postal;
+      house = user.address.houseNum;
+      city= user.address.city;
+    }
+
     if (this.state.initialStates === false) {
       this.setState({
         initialStates: true,
@@ -89,12 +106,12 @@ class ManageUsers extends React.Component {
         lname: user.lastName,
         email: user.email,
 
-        appt: user.address.houseNum,
-        building: user.address.buildingNum,
-        street: user.address.streetName,
-        city: user.address.city,
-        province: user.address.province,
-        postcode: user.address.postal,
+        appt: house,
+        building: build,
+        street: street,
+        city: city,
+        province: prov,
+        postcode: post,
         phone: user.phoneNumber,
         emergencyphone: user.emergencyPhone,
         emergencyname: user.emergencyName
