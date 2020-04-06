@@ -24,7 +24,7 @@ class ManageTestimonials extends React.Component {
 
   approveTestimonial = testimonial => {
     var token = localStorage.getItem('token');
-    var id = testimonial.test_id;
+    var id = testimonial.id;
     BasePath.put(`/webresources/ApproveTestimonial/${token}/${id}`).then(result => {
       console.log(result.data);
     });
@@ -32,7 +32,7 @@ class ManageTestimonials extends React.Component {
 
   deleteTestimonial = testimonial => {
     var token = localStorage.getItem('token');
-    var id = testimonial.test_id;
+    var id = testimonial.id;
     BasePath.put(`/webresources/DeleteTestimonial/${token}/${id}`).then(result => {
       console.log(result.data);
     });
