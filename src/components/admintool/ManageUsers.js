@@ -70,21 +70,6 @@ class ManageUsers extends React.Component {
     }
   };
 
-  // UNSAFE_componentWillMount() {
-  //   var token = localStorage.getItem("token");
-  //   BasePath.get(`webresources/RetrieveUsers/${token}`).then(result => {
-  //     console.log(result.data[0].isActive);
-  //     for (var i = 0;i < result.data.length;i++) {
-  //       if (result.data[i].isActive == true) {
-  //         this.setState({ userList: [...this.state.userList, result.data[i]] })
-  //         console.log('this is the user list' + this.state.userList[0]);
-  //       }
-  //     }
-  //   });
-  // }
-
-
-
   render() {
     return (
       <div>

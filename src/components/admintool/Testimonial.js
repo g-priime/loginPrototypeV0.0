@@ -16,7 +16,7 @@ class Testimonial extends React.Component {
                           boxShadow:
                             "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                         }}
-                        onClick={this.props.approveTestimonial(this.props.chosenTestimonial)}>
+                        onClick={this.props.approveTestimonial}>
                 Approve
                 </button>
                 </div>
@@ -29,7 +29,7 @@ class Testimonial extends React.Component {
                           boxShadow:
                             "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                         }}
-                        onClick={this.props.deleteTestimonial(this.props.chosenTestimonial)}>
+                        onClick={this.props.deleteTestimonial}>
                 Delete
                 </button>
                 </div>

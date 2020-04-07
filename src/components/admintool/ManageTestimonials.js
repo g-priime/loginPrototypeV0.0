@@ -1,42 +1,63 @@
 import React from "react";
 import Testimonial from "./Testimonial";
 import BasePath from "../../api/BasePath";
+import PopUpConfirm from "../PopUpConfirm";
 
 class ManageTestimonials extends React.Component {
   state = {
     testimonialsList: [],
-    test_id: {},
-    username: {},
-    contents: ""
+    testDel: "",
+    contents: "",
+    showCon: false
   };
 
   componentWillMount = () => {
+    this.updateTestimonials();
+  };
+
+  updateTestimonials() {
     var token = localStorage.getItem("token");
     BasePath.get(`/webresources/PendingTestimonials/${token}`)
       .then(result => {
-        console.log(result.data);
-        this.setState({ testimonialsList: result.data });
+        this.setState({testimonialsList: result.data}); 
       })
       .catch(err => {
         console.log(err);
       });
-  };
+  }
 
   approveTestimonial = testimonial => {
     var token = localStorage.getItem('token');
     var id = testimonial.id;
     BasePath.put(`/webresources/ApproveTestimonial/${token}/${id}`).then(result => {
       console.log(result.data);
+      this.updateTestimonials();
+    });
+  };
+
+  deleteTest = () => {
+    var token = localStorage.getItem('token');
+    console.log(token);
+    var id = this.state.testDel.id;
+    BasePath.put(`/webresources/DeleteTestimonial/${token}/${id}`).then(result => {
+      console.log(result.data);
+      this.updateTestimonials();
     });
   };
 
   deleteTestimonial = testimonial => {
-    var token = localStorage.getItem('token');
-    var id = testimonial.id;
-    BasePath.put(`/webresources/DeleteTestimonial/${token}/${id}`).then(result => {
-      console.log(result.data);
-    });
+    this.setState({ testDel: testimonial });
+    this.setState({ showCon: true });
   };
+
+  dontConfirm = () => {
+    this.setState({ showCon: false });
+  }
+
+  confirm = () => {
+    this.setState({ showCon: false });
+    this.deleteTest();
+  }
 
   render() {
     return (
@@ -52,11 +73,14 @@ class ManageTestimonials extends React.Component {
           {this.state.testimonialsList.map(testimonial => (
             <Testimonial
               chosenTestimonial={testimonial}
-              approveTestimonial={this.approveTestimonial}
-              deleteTestimonial={this.deleteTestimonial}
+              approveTestimonial={this.approveTestimonial.bind(this, testimonial)}
+              deleteTestimonial={this.deleteTestimonial.bind(this, testimonial)}
             />
           ))}
         </div>
+        {this.state.showCon && this.state.testDel != null ? (
+            <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text={'Are you sure you want to delete ' + this.state.testDel.content + '?'} cn="popup3" />
+          ) : null}
       </div>
     );
   }
