@@ -184,18 +184,6 @@ class ManageUsersEditMain extends React.Component {
       console.log(result.data[0]);
       for (var i = 0; i < result.data.length; i++) {
         if (result.data[i].isActive == true) {
-          /*
-          let province = {};
-          for (let j = 0; j < this.state.provinces.length; j++) {
-            if (
-              result.data[i].address.province ===
-              this.state.provinces[j].value
-            ) {
-              province = this.state.provinces[j];
-              result.data[i].address.province = province;
-            }
-          }
-*/
           this.setState({ userList: [...this.state.userList, result.data[i]] });
         }
       }
