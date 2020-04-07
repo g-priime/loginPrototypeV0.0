@@ -9,7 +9,6 @@ import PopUpConfirm from "../PopUpConfirm";
 class ManageUsersEditMain extends React.Component {
   state = {
     images: [],
-    fieldName: [],
     page: "",
     showPopup: false,
     showCon: false,
@@ -39,16 +38,6 @@ class ManageUsersEditMain extends React.Component {
   };
 
   onSearchSubmit = async () => {
-    this.setState({
-      fieldName: [
-        this.state.username,
-        this.state.password,
-        this.state.confirmPassword,
-        this.state.fname,
-        this.state.lname,
-        this.state.email
-      ]
-    });
 
     var token = localStorage.getItem("token");
     //var email = this.state.email;
