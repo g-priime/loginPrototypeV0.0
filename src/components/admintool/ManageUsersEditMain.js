@@ -12,7 +12,7 @@ class ManageUsersEditMain extends React.Component {
     page: "",
     showPopup: false,
     showCon: false,
-    userList:[],
+    userList: [],
     cn: "",
     bgColor: "red",
 
@@ -34,11 +34,26 @@ class ManageUsersEditMain extends React.Component {
     emergencyphone: "",
     emergencyname: "",
 
-    initialStates: false
+    initialStates: false,
+
+    provinces: [
+      { key: 1, value: "Alberta" },
+      { key: 2, value: "British Columbia" },
+      { key: 3, value: "Manitoba" },
+      { key: 4, value: "New Brunswick" },
+      { key: 5, value: "Newfoundland and Labrador" },
+      { key: 6, value: "Northwest Territories" },
+      { key: 7, value: "Nova Scotia" },
+      { key: 8, value: "Nunavut" },
+      { key: 9, value: "Ontario" },
+      { key: 10, value: "Prince Edward Island" },
+      { key: 11, value: "Quebec" },
+      { key: 12, value: "Saskatchewan" },
+      { key: 13, value: "Yukon" },
+    ],
   };
 
   onSearchSubmit = async () => {
-
     var token = localStorage.getItem("token");
     //var email = this.state.email;
 
@@ -53,14 +68,14 @@ class ManageUsersEditMain extends React.Component {
     var buildingNum = this.state.building;
     var streetName = this.state.street;
     var city = this.state.city;
-    var province = this.state.province;
+    var province = this.state.province.value;
+
     var postal = this.state.postcode;
     var phoneNumber = this.state.phone;
     var emergencyPhone = this.state.emergencyphone;
     var emergencyName = this.state.emergencyname;
 
-    const response = await BasePath.put("/webresources/update",{
-    
+    const response = await BasePath.put("/webresources/update", {
       token,
       email,
       username,
@@ -78,9 +93,8 @@ class ManageUsersEditMain extends React.Component {
         streetName,
         city,
         province,
-        postal
-      }
-    
+        postal,
+      },
     });
 
     console.log(response.data);
@@ -102,7 +116,7 @@ class ManageUsersEditMain extends React.Component {
     } else if (this.state.images === "Email Already in Use") {
       this.setState({ cn: "popup6" });
       this.togglePopup();
-    } else if(this.state.images === "Updated") {
+    } else if (this.state.images === "Updated") {
       this.updateList();
       this.setState({ cn: "popup3", bgColor: "grey" });
       this.togglePopup();
@@ -110,9 +124,8 @@ class ManageUsersEditMain extends React.Component {
     }
   };
 
-  editUser = user => {
-
-    console.log('in edit user');
+  editUser = (user) => {
+    console.log("in edit user");
     var build;
     var street;
     var prov;
@@ -129,6 +142,15 @@ class ManageUsersEditMain extends React.Component {
       city = user.address.city;
     }
 
+    let province = {};
+      for (let i = 0; i < this.state.provinces.length; i++) {
+        if (
+          prov === this.state.provinces[i].value
+        ) {
+          province = this.state.provinces[i];
+        }
+      }
+
     this.setState({
       initialStates: true,
       username: user.username,
@@ -142,11 +164,12 @@ class ManageUsersEditMain extends React.Component {
       building: build,
       street: street,
       city: city,
-      province: prov,
+      province: province,
+
       postcode: post,
       phone: user.phoneNumber,
       emergencyphone: user.emergencyPhone,
-      emergencyname: user.emergencyName
+      emergencyname: user.emergencyName,
     });
   };
 
@@ -155,44 +178,44 @@ class ManageUsersEditMain extends React.Component {
   }
 
   updateList = () => {
-    this.setState({userList: []});
+    this.setState({ userList: [] });
     var token = localStorage.getItem("token");
-    BasePath.get(`webresources/RetrieveUsers/${token}`).then(result => {
-      console.log(result.data[0].isActive);
-      for (var i = 0;i < result.data.length;i++) {
+    BasePath.get(`webresources/RetrieveUsers/${token}`).then((result) => {
+      console.log(result.data[0]);
+      for (var i = 0; i < result.data.length; i++) {
         if (result.data[i].isActive == true) {
-          this.setState({ userList: [...this.state.userList, result.data[i]] })
+          this.setState({ userList: [...this.state.userList, result.data[i]] });
         }
       }
     });
-  }
+  };
 
   delUser = () => {
-    var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
     console.log(token);
-    BasePath.put('/webresources/DeleteUser', {
+    BasePath.put("/webresources/DeleteUser", {
       token: token,
-      username: this.state.delUser.username
-    }).then(result => {
+      username: this.state.delUser.username,
+    }).then((result) => {
       this.updateList();
     });
-  }
+  };
 
-  deleteUser = user => {
+  deleteUser = (user) => {
     this.setState({ delUser: user });
     this.setState({ showCon: true });
   };
 
   dontConfirm = () => {
     this.setState({ showCon: false });
-  }
+  };
 
   confirm = () => {
     this.setState({ showCon: false });
     this.delUser();
-  }
+  };
 
-  onHome = event => {
+  onHome = (event) => {
     event.preventDefault();
     this.props.onClick("home");
     console.log("main event");
@@ -205,98 +228,100 @@ class ManageUsersEditMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeUsername = event => {
+  handleChangeUsername = (event) => {
     this.setState({ username: event.target.value });
   };
 
-  handleChangePassword = event => {
+  handleChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
 
-  handleChangeConfirmPassword = event => {
+  handleChangeConfirmPassword = (event) => {
     this.setState({ confirmPassword: event.target.value });
   };
 
-  handleChangeFname = event => {
+  handleChangeFname = (event) => {
     this.setState({ fname: event.target.value });
   };
 
-  handleChangeLname = event => {
+  handleChangeLname = (event) => {
     this.setState({ lname: event.target.value });
   };
 
-  handleChangeEmail = event => {
+  handleChangeEmail = (event) => {
     this.setState({ email: event.target.value });
   };
 
-  handleChangeAppt = event => {
+  handleChangeAppt = (event) => {
     this.setState({ appt: event.target.value });
   };
 
-  handleChangeBuilding = event => {
+  handleChangeBuilding = (event) => {
     this.setState({ building: event.target.value });
   };
 
-  handleChangeStreet = event => {
+  handleChangeStreet = (event) => {
     this.setState({ street: event.target.value });
   };
 
-  handleChangeCity = event => {
+  handleChangeCity = (event) => {
     this.setState({ city: event.target.value });
   };
 
-  handleChangeProvince = event => {
-    this.setState({ province: event.target.value });
+  handleChangeProvince = (selectedOption) => {
+    this.setState({ province: selectedOption }, () =>
+      console.log(`Option selected:`, this.state.province)
+    );
   };
 
-  handleChangePostcode = event => {
+  handleChangePostcode = (event) => {
     this.setState({ postcode: event.target.value });
   };
 
-  handleChangePhone = event => {
+  handleChangePhone = (event) => {
     this.setState({ phone: event.target.value });
   };
 
-  handleChangeEmergencyphone = event => {
+  handleChangeEmergencyphone = (event) => {
     this.setState({ emergencyphone: event.target.value });
   };
 
-  handleChangeEmergencyname = event => {
+  handleChangeEmergencyname = (event) => {
     this.setState({ emergencyname: event.target.value });
   };
 
   clearStates = () => {
     // if (this.state.initialStates === true) {
-       this.setState({
-         initialStates: false,
-         username: "",
-         password: "",
-         confirmPassword: "",
-         fname: "",
-         lname: "",
-         email: "",
-         appt: "",
-         building: "",
-         street: "",
-         city: "",
-         province: "",
-         postcode: "",
-         phone: "",
-         emergencyphone: "",
-         emergencyname: ""
-       });
-     //}
-   };
+    this.setState({
+      initialStates: false,
+      username: "",
+      password: "",
+      confirmPassword: "",
+      fname: "",
+      lname: "",
+      email: "",
+      appt: "",
+      building: "",
+      street: "",
+      city: "",
+      province: "",
+      postcode: "",
+      phone: "",
+      emergencyphone: "",
+      emergencyname: "",
+    });
+    //}
+  };
 
   render() {
     // this.getCustomerInfo();
 
     var isValid = this.state.images;
-/*
+    /*
     if (isValid === "Updated") {
       return (
         <div style={{ marginTop: "10px" }}>
@@ -351,11 +376,20 @@ class ManageUsersEditMain extends React.Component {
             onClick={() => {
               this.props.onChangePage("about");
             }}
-
             clearStates={this.clearStates}
+            provinces={this.state.provinces}
           />
           {this.state.showCon && this.state.delUser != null ? (
-            <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text={'Are you sure you want to delete ' + this.state.delUser.username + '?'} cn="popup3" />
+            <PopUpConfirm
+              dontConfirm={this.dontConfirm}
+              confirm={this.confirm}
+              text={
+                "Are you sure you want to delete " +
+                this.state.delUser.username +
+                "?"
+              }
+              cn="popup3"
+            />
           ) : null}
           <div>
             {this.state.showPopup ? (
