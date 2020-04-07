@@ -175,7 +175,7 @@ class CreateUserMain extends React.Component {
     //       />
     //     </div>
     //   );
-    if (isValid !== "Valid" || isValid === "Updated") {
+    if (isValid !== "Valid" || isValid === "account registered") {
       return (
         <div style={{ marginTop: "10px" }}>
           <CreateUser
