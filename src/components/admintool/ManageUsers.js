@@ -135,6 +135,7 @@ class ManageUsers extends React.Component {
                         <br />
                       </div>
                     </div>
+                    <br />
                     <div className="row ">
                       <div className="col-sm ">
                         <label>Email:</label>
@@ -182,6 +183,25 @@ class ManageUsers extends React.Component {
                         </div>
                         <br />
                         <div className="row">
+                        <div className="col-sm">
+                              <label>Province:</label>
+                              <Select
+                        closeMenuOnSelect={true}
+                        value={this.props.province}
+                        onChange={this.props.onChangeProvince}
+                        options={this.props.provinces}
+                        getOptionLabel={(option) => option.value}
+                        getOptionValue={(option) => option.value}
+                        getOptionKey={(option) => option.key}
+                      />
+
+                            </div>
+                        </div>
+                      </div>
+
+                      <div className="col-sm">
+                        <div className="col-sm">
+                          <div className="row">
                           <div className="col-sm">
                             <label>Street/Avenue:</label>
                             <input
@@ -195,24 +215,7 @@ class ManageUsers extends React.Component {
                               required
                             />
                           </div>
-                        </div>
-                      </div>
-
-                      <div className="col-sm">
-                        <div className="col-sm">
-                          <div className="row">
-                            <div className="col-sm">
-                              <label>Postal Code:</label>
-                              <input
-                                className="field b-5"
-                                type="text"
-                                placeholder="Format: A1A1A1"
-                                pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$"
-                                value={this.props.postcode}
-                                onChange={this.props.onChangePostcode}
-                                required
-                              />
-                            </div>
+                            
 
                             
                           </div>
@@ -239,18 +242,18 @@ class ManageUsers extends React.Component {
 
                     <div className="row pr-3">
                     <div className="col-sm">
-                              <label>Province:</label>
-                              <Select
-                        closeMenuOnSelect={true}
-                        value={this.props.province}
-                        onChange={this.props.onChangeProvince}
-                        options={this.props.provinces}
-                        getOptionLabel={(option) => option.value}
-                        getOptionValue={(option) => option.value}
-                        getOptionKey={(option) => option.key}
-                      />
-
+                              <label>Postal Code:</label>
+                              <input
+                                className="field b-5"
+                                type="text"
+                                placeholder="Format: A1A1A1"
+                                pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$"
+                                value={this.props.postcode}
+                                onChange={this.props.onChangePostcode}
+                                required
+                              />
                             </div>
+                    
                             <div className="col-sm">
                           <label>Personal Phone:</label>
                           <input
