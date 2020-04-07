@@ -2460,7 +2460,7 @@ class CalendarMain extends React.Component {
               startHour="07:00"
               endHour="21:00"
             />
-            <ViewDirective option="Month" readonly={true} />
+            <ViewDirective option="Month" />
           </ViewsDirective>
           <Inject services={[Day, Week, WorkWeek, Month]} />
         </ScheduleComponent>
