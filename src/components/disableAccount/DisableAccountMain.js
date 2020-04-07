@@ -76,6 +76,7 @@ class DisableAccountMain extends React.Component {
 
   logOut = () => {
     localStorage.clear();
+    this.props.authenticate(false);
     //this.setState({ initialStates: false, username: "" });
   };
 
