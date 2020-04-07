@@ -6,17 +6,17 @@ var style = {
   borderTop: "4px solid #707070",
   textAlign: "center",
   padding: "20px",
-  position: "relative",
+  position: "sticky",
   left: "0",
   bottom: "0",
-  height: "120px",
+  height: "100px",
   width: "100%"
 };
 
 var phantom = {
   display: "block",
   padding: "20px",
-  height: "60px",
+  height: "100px",
   width: "100%"
 };
 
