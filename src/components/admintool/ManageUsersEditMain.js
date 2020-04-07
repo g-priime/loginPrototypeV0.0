@@ -96,6 +96,9 @@ class ManageUsersEditMain extends React.Component {
     } else if (this.state.images === "Passwords do not match") {
       this.setState({ cn: "popup2" });
       this.togglePopup();
+    } else if (this.state.images === "Not Updated") {
+      this.setState({ cn: "popup2" });
+      this.togglePopup();
     } else if (this.state.images === "Email Already in Use") {
       this.setState({ cn: "popup6" });
       this.togglePopup();
