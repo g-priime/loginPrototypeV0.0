@@ -169,7 +169,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="center">picture goes here</div>
+                    {/* <div className="center">picture goes here</div> */}
                     {/* find some way to store an image and bring it to the front end? */}
                   </div>
                 </div>
