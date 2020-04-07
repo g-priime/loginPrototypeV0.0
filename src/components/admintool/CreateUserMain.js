@@ -43,7 +43,7 @@ class CreateUserMain extends React.Component {
   onSearchSubmit = async () => {
   
     var email = this.state.email;
-    var username = this.state.email;
+    var username = this.state.username;
     var password = this.state.password;
     var firstName = this.state.fname;
     var lastName = this.state.lname;
