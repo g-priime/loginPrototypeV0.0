@@ -46,9 +46,9 @@ class ManageUsers extends React.Component {
       this.state.emergencyname
     );
   };
-
+/*
   clearStates = () => {
-    if (this.state.initialStates === true) {
+   // if (this.state.initialStates === true) {
       this.setState({
         initialStates: false,
         username: "",
@@ -67,9 +67,9 @@ class ManageUsers extends React.Component {
         emergencyphone: "",
         emergencyname: ""
       });
-    }
+    //}
   };
-
+*/
   render() {
     return (
       <div>
@@ -299,7 +299,7 @@ class ManageUsers extends React.Component {
                           boxShadow:
                             "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                         }}
-                        onClick={this.clearStates}
+                        onClick={this.props.clearStates}
                       >
                         Clear
                       </Link>
