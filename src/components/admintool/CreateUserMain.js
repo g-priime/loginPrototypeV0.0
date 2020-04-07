@@ -101,6 +101,9 @@ class CreateUserMain extends React.Component {
     if (this.state.images === "Username Already Exists") {
       this.setState({ cn: "popup1", message: "Username already exists" });
       this.togglePopup();
+    } else if  (this.state.images === "Email Already in Use") {
+        this.setState({ cn: "popup1", message: "Email Already in Use" });
+        this.togglePopup();
     } else if (this.state.images === "Passwords do not match") {
       this.setState({ cn: "popup2", message: "Passwords do not match" });
       this.togglePopup();
@@ -206,20 +209,6 @@ class CreateUserMain extends React.Component {
   };
 
   render() {
-    var isValid = this.state.images;
-
-    // if (isValid === "account registered") {
-    //   return (
-    //     <div style={{ marginTop: "10px" }}>
-    //       <Redirect
-    //         to={{
-    //           pathname: "/CreateUser", //redirect to the where?
-    //           state: { message: "Account Registered" }
-    //         }}
-    //       />
-    //     </div>
-    //   );
-    // if (isValid !== "Valid" || isValid === "account registered") {
       return (
         <div style={{ marginTop: "10px" }}>
           <CreateUser
