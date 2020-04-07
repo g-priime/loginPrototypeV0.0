@@ -214,28 +214,7 @@ class ManageUsers extends React.Component {
                               />
                             </div>
 
-                            <div className="col-sm">
-                              <label>Province:</label>
-                              <Select
-                        closeMenuOnSelect={true}
-                        value={this.props.province}
-                        onChange={this.props.onChangeProvince}
-                        options={this.props.provinces}
-                        getOptionLabel={(option) => option.value}
-                        getOptionValue={(option) => option.value}
-                        getOptionKey={(option) => option.key}
-                      />
-                      {/*
-                              <input
-                                className="field b-5"
-                                type="text"
-                                placeholder="Enter your province"
-                                value={this.props.province}
-                                onChange={this.props.onChangeProvince}
-                                required
-                              />
-                      */}
-                            </div>
+                            
                           </div>
                           <br />
                           <div className="row">
@@ -256,10 +235,23 @@ class ManageUsers extends React.Component {
                       </div>
                     </div>
                     <br />
-                    <br />
-                    <div>
-                      <div className="row pr-3">
-                        <div className="col-sm">
+                    
+
+                    <div className="row pr-3">
+                    <div className="col-sm">
+                              <label>Province:</label>
+                              <Select
+                        closeMenuOnSelect={true}
+                        value={this.props.province}
+                        onChange={this.props.onChangeProvince}
+                        options={this.props.provinces}
+                        getOptionLabel={(option) => option.value}
+                        getOptionValue={(option) => option.value}
+                        getOptionKey={(option) => option.key}
+                      />
+
+                            </div>
+                            <div className="col-sm">
                           <label>Personal Phone:</label>
                           <input
                             className="field b-5"
@@ -271,8 +263,27 @@ class ManageUsers extends React.Component {
                             required
                           />
                         </div>
+                    </div>
+                    <br />
+                    
+
+                    <div>
+                      <div className="row pr-3">
+                        
                         <br />
 
+                        
+                        <div className="col-sm">
+                          <label>Emergency Name:</label>
+                          <input
+                            className="field b-5"
+                            type="text"
+                            placeholder="Enter your emergency contact Name"
+                            value={this.props.emergencyname}
+                            onChange={this.props.onChangeEmergencyname}
+                            required
+                          />
+                        </div>
                         <div className="col-sm">
                           <label>Emergency Phone:</label>
                           <input
@@ -282,17 +293,6 @@ class ManageUsers extends React.Component {
                             pattern="^\d{10}$"
                             value={this.props.emergencyphone}
                             onChange={this.props.onChangeEmergencyphone}
-                            required
-                          />
-                        </div>
-                        <div className="col-sm">
-                          <label>Emergency Name:</label>
-                          <input
-                            className="field b-5"
-                            type="text"
-                            placeholder="Enter your emergency contact Name"
-                            value={this.props.emergencyname}
-                            onChange={this.props.onChangeEmergencyname}
                             required
                           />
                         </div>
