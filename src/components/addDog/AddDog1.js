@@ -174,7 +174,7 @@ class AddDog1 extends React.Component {
                   <input
                     type="radio"
                     name="neuteredspayed"
-                    value="yes"
+                    value={true}
                     // checked={this.props.neuteredspayed === "yes"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
