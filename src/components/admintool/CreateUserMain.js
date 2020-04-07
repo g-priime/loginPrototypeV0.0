@@ -148,6 +148,8 @@ class CreateUserMain extends React.Component {
       emergencyphone: "",
       emergencyname: "",
     });
+    document.getElementById("p1").value = "";
+    document.getElementById("p2").value = "";
     //}
   };
 
