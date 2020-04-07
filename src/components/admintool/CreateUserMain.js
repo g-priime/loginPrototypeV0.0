@@ -8,7 +8,6 @@ import Popup from "../PopUp";
 class CreateUserMain extends React.Component {
   state = {
     images: [],
-    fieldName: [],
     page: "",
     showPopup: false,
     cn: "",
@@ -42,24 +41,12 @@ class CreateUserMain extends React.Component {
   }
 
   onSearchSubmit = async () => {
-    this.setState({
-      fieldName: [
-        this.state.username,
-        this.state.password,
-        this.state.confirmPassword,
-        this.state.fname,
-        this.state.lname,
-        this.state.email
-      ]
-    });
-
-    var username = this.state.fieldName[0];
-    var password = this.state.fieldName[1];
-
-    var firstName = this.state.fieldName[3];
-    var lastName = this.state.fieldName[4];
-    var email = this.state.fieldName[5];
-
+  
+    var email = this.state.email;
+    var username = this.state.email;
+    var password = this.state.password;
+    var firstName = this.state.fname;
+    var lastName = this.state.lastName;
     var houseNum = this.state.appt;
     var buildingNum = this.state.building;
     var streetName = this.state.street;
@@ -177,18 +164,18 @@ class CreateUserMain extends React.Component {
   render() {
     var isValid = this.state.images;
 
-    if (isValid === "account registered") {
-      return (
-        <div style={{ marginTop: "10px" }}>
-          <Redirect
-            to={{
-              pathname: "/CreateUser", //redirect to the where?
-              state: { message: "Account Registered" }
-            }}
-          />
-        </div>
-      );
-    } else if (isValid !== "Valid") {
+    // if (isValid === "account registered") {
+    //   return (
+    //     <div style={{ marginTop: "10px" }}>
+    //       <Redirect
+    //         to={{
+    //           pathname: "/CreateUser", //redirect to the where?
+    //           state: { message: "Account Registered" }
+    //         }}
+    //       />
+    //     </div>
+    //   );
+    if (isValid !== "Valid" || isValid === "Updated") {
       return (
         <div style={{ marginTop: "10px" }}>
           <CreateUser
