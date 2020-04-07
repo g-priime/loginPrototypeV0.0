@@ -14,29 +14,11 @@ import { Redirect } from "react-router-dom";
 import ChangePassAdminMain from "./ChangePassAdminMain";
 
 class AdminTool extends React.Component {
-  state= {
-    loggedOut : false
-  }
   
-  // logout = () => {
-  //   localStorage.clear();
-  //   this.props.authenticate(false);
-  //   this.setState({loggedOut : true});
-  // };
-
   render() {
-    if (this.state.loggedOut == true) {
-      return (
-      <div style={{ marginTop: "10px" }}>
-      <Redirect
-        to= "/"
-      />
-    </div>
-      );
-    } else {
     return (
       <div
-        style={{ backgroundColor: "rgba(255,255,255,0)" }}
+        style={{ backgroundColor: "rgba(255,255,255,0)"}}
         className="ui segment admin-container"
       >
         <BrowserRouter>
@@ -192,7 +174,6 @@ class AdminTool extends React.Component {
         </BrowserRouter>
       </div>
     );
-    }
   }
 }
 
