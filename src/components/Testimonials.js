@@ -4,6 +4,7 @@ import '../css/testimonials.css';
 import Popup from "./PopUp";
 import TestimonialForm from "./TestimonialForm";
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import Testimonial from "./admintool/Testimonial";
 
 class Testimonials extends React.Component {
     state = {
@@ -64,7 +65,7 @@ class Testimonials extends React.Component {
                 <h1 className="txt">Testimonials</h1>
                 <ListGroup>
                     {this.state.testimonialsList.map(testimonial => (
-                        <ListGroupItem>
+                        <ListGroupItem key={testimonial}>
                             <ListGroupItemHeading>{testimonial.username}</ListGroupItemHeading>
                             <ListGroupItemText>
                                 <span className="wrap">
