@@ -3,6 +3,7 @@ import PopUpConfirm from "../PopUpConfirm";
 import BasePath from "../../api/BasePath";
 import { Link } from "react-router-dom";
 import User from "./User";
+import Select from "react-select";
 
 class ManageUsers extends React.Component {
   state = {
@@ -215,6 +216,16 @@ class ManageUsers extends React.Component {
 
                             <div className="col-sm">
                               <label>Province:</label>
+                              <Select
+                        closeMenuOnSelect={true}
+                        value={this.props.province}
+                        onChange={this.props.onChangeProvince}
+                        options={this.props.provinces}
+                        getOptionLabel={(option) => option.value}
+                        getOptionValue={(option) => option.value}
+                        getOptionKey={(option) => option.key}
+                      />
+                      {/*
                               <input
                                 className="field b-5"
                                 type="text"
@@ -223,6 +234,7 @@ class ManageUsers extends React.Component {
                                 onChange={this.props.onChangeProvince}
                                 required
                               />
+                      */}
                             </div>
                           </div>
                           <br />
