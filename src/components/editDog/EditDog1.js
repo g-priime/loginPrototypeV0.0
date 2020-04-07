@@ -216,7 +216,7 @@ class EditDog1 extends React.Component {
             </div>
             <br />
             <br />
-            <div className="row">
+            {/* <div className="row">
               <Link //creates a link, styled like a button
                 to="/" //telling to go to home, in adddog it should be accinfo
                 type="button"
@@ -231,7 +231,7 @@ class EditDog1 extends React.Component {
               >
                 Upload Picture
               </Link>
-            </div>
+            </div> */}
             <br />
             <br />
           </div>
