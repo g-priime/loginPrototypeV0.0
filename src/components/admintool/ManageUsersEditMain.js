@@ -49,13 +49,14 @@ class ManageUsersEditMain extends React.Component {
     });
 
     var token = localStorage.getItem("token");
+    //var email = this.state.email;
+
+    var username = this.state.username;
+
+    var firstName = this.state.fname;
+    var lastName = this.state.lname;
     var email = this.state.email;
-
-    var username = this.state.fieldName[0];
-
-    var firstName = this.state.fieldName[3];
-    var lastName = this.state.fieldName[4];
-    var email = this.state.fieldName[5];
+    var emailCheck = email;
 
     var houseNum = this.state.appt;
     var buildingNum = this.state.building;
@@ -67,14 +68,15 @@ class ManageUsersEditMain extends React.Component {
     var emergencyPhone = this.state.emergencyphone;
     var emergencyName = this.state.emergencyname;
 
-    const response = await BasePath.put("/webresources/update", {
+    const response = await BasePath.put("/webresources/update",{
+    
       token,
       email,
       username,
 
       firstName,
       lastName,
-      email,
+
       phoneNumber,
       emergencyPhone,
       emergencyName,
@@ -87,6 +89,7 @@ class ManageUsersEditMain extends React.Component {
         province,
         postal
       }
+    
     });
 
     console.log(response.data);
