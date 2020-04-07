@@ -109,6 +109,7 @@ class App1 extends React.Component {
                 changeErr={this.changeErr}
               />
               <DisableAccountMain
+                authenticate={this.authenticate}
                 showDisableAccount={this.state.showDisableAccount}
                 onHideDisableAccount={this.onHideDisableAccount}
               />

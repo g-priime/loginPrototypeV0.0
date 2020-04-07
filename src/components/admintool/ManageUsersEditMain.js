@@ -15,6 +15,8 @@ class ManageUsersEditMain extends React.Component {
     showCon: false,
     userList:[],
     cn: "",
+    bgColor: "red",
+
     username: "",
     password: "",
     confirmPassword: "",
@@ -49,13 +51,14 @@ class ManageUsersEditMain extends React.Component {
     });
 
     var token = localStorage.getItem("token");
+    //var email = this.state.email;
+
+    var username = this.state.username;
+
+    var firstName = this.state.fname;
+    var lastName = this.state.lname;
     var email = this.state.email;
-
-    var username = this.state.fieldName[0];
-
-    var firstName = this.state.fieldName[3];
-    var lastName = this.state.fieldName[4];
-    var email = this.state.fieldName[5];
+    //var emailCheck = email;
 
     var houseNum = this.state.appt;
     var buildingNum = this.state.building;
@@ -67,14 +70,15 @@ class ManageUsersEditMain extends React.Component {
     var emergencyPhone = this.state.emergencyphone;
     var emergencyName = this.state.emergencyname;
 
-    const response = await BasePath.put("/webresources/update", {
+    const response = await BasePath.put("/webresources/update",{
+    
       token,
       email,
       username,
 
       firstName,
       lastName,
-      email,
+
       phoneNumber,
       emergencyPhone,
       emergencyName,
@@ -87,6 +91,7 @@ class ManageUsersEditMain extends React.Component {
         province,
         postal
       }
+    
     });
 
     console.log(response.data);
@@ -105,6 +110,11 @@ class ManageUsersEditMain extends React.Component {
     } else if (this.state.images === "Email Already in Use") {
       this.setState({ cn: "popup6" });
       this.togglePopup();
+    } else if(this.state.images === "Updated") {
+      this.updateList();
+      this.setState({ cn: "popup3", bgColor: "grey" });
+      this.togglePopup();
+      this.clearStates();
     }
   };
 
@@ -267,11 +277,34 @@ class ManageUsersEditMain extends React.Component {
     this.setState({ emergencyname: event.target.value });
   };
 
+  clearStates = () => {
+    // if (this.state.initialStates === true) {
+       this.setState({
+         initialStates: false,
+         username: "",
+         password: "",
+         confirmPassword: "",
+         fname: "",
+         lname: "",
+         email: "",
+         appt: "",
+         building: "",
+         street: "",
+         city: "",
+         province: "",
+         postcode: "",
+         phone: "",
+         emergencyphone: "",
+         emergencyname: ""
+       });
+     //}
+   };
+
   render() {
     // this.getCustomerInfo();
 
     var isValid = this.state.images;
-
+/*
     if (isValid === "Updated") {
       return (
         <div style={{ marginTop: "10px" }}>
@@ -283,7 +316,9 @@ class ManageUsersEditMain extends React.Component {
           />
         </div>
       );
-    } else if (isValid !== "Valid") {
+    } else 
+    */
+    if (isValid !== "Valid" || isValid === "Updated") {
       return (
         <div style={{ marginTop: "10px" }}>
           <ManageUsers
@@ -324,6 +359,8 @@ class ManageUsersEditMain extends React.Component {
             onClick={() => {
               this.props.onChangePage("about");
             }}
+
+            clearStates={this.clearStates}
           />
           {this.state.showCon && this.state.delUser != null ? (
             <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text={'Are you sure you want to delete ' + this.state.delUser.username + '?'} cn="popup3" />
@@ -334,7 +371,7 @@ class ManageUsersEditMain extends React.Component {
                 cn={this.state.cn}
                 text={this.state.images}
                 closePopup={this.togglePopup.bind(this)}
-                bgColor="red"
+                bgColor={this.state.bgColor}
               />
             ) : null}
           </div>
