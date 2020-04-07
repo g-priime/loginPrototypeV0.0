@@ -6,10 +6,10 @@ var style = {
   borderTop: "4px solid #707070",
   textAlign: "center",
   padding: "20px",
-  position: "sticky",
+  position: "fixed",
   left: "0",
   bottom: "0",
-  height: "100px",
+  height: "80px",
   width: "100%"
 };
 
