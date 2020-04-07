@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 
 class CreateUser extends React.Component {
   state = {
@@ -204,13 +205,14 @@ class CreateUser extends React.Component {
 
                     <div className="col-sm">
                       <label>Province:</label>
-                      <input
-                        className="field b-5"
-                        type="text"
-                        placeholder="Enter your province"
+                      <Select
+                        closeMenuOnSelect={true}
                         value={this.props.province}
                         onChange={this.props.onChangeProvince}
-                        required
+                        options={this.props.provinces}
+                        getOptionLabel={(option) => option.value}
+                        getOptionValue={(option) => option.value}
+                        getOptionKey={(option) => option.key}
                       />
                     </div>
                   </div>
@@ -273,7 +275,7 @@ class CreateUser extends React.Component {
               </div>
             </div>
             <div>
-            <br />
+              <br />
               <button
                 className="btn mr-3 mb-3"
                 style={{
