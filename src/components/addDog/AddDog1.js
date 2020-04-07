@@ -162,7 +162,7 @@ class AddDog1 extends React.Component {
                 <input
                   type="number"
                   placeholder="Enter dog's weight"
-                  max="6"
+                  max="60"
                   value={this.props.weight}
                   onChange={this.props.onChangeWeight}
                 />

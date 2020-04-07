@@ -1,9 +1,18 @@
 import React from "react";
-import "../../css/reg.css";
-import Select from "react-select";
+import { Link } from "react-router-dom";
 
-class EditCustomer2 extends React.Component {
+class CreateUser extends React.Component {
   state = {
+    images: [],
+    fieldName: [],
+    page: "",
+    showPopup: false,
+    cn: "",
+    username: "",
+    fname: "",
+    lname: "",
+    email: "",
+
     appt: "",
     building: "",
     street: "",
@@ -12,13 +21,19 @@ class EditCustomer2 extends React.Component {
     postcode: "",
     phone: "",
     emergencyphone: "",
-    emergencyname: "",
+    emergencyname: ""
   };
 
-  onFormSubmit = (event) => {
+  onFormSubmit = event => {
     event.preventDefault();
 
     this.props.onSubmit(
+      this.state.username,
+      this.state.password,
+      this.state.confirmPassword,
+      this.state.fname,
+      this.state.lname,
+      this.state.email,
       this.state.appt,
       this.state.building,
       this.state.street,
@@ -31,24 +46,103 @@ class EditCustomer2 extends React.Component {
     );
   };
 
-  previousStep_onClick = (event) => {
-    event.preventDefault();
-    this.props.onClick();
-    console.log("here");
-  };
-
   render() {
     return (
-      <div className="ui segment cont" style={{ backgroundColor: "#ECEBE7" }}>
+      <div>
+        <h1 style={{ color: "#212529" }}>Create new user</h1>
         <form
           onSubmit={this.onFormSubmit}
           className="ui form"
           style={{ backgroundColor: "#ECEBE7 " }}
         >
           <div className="container">
-            <h1>Edit Information</h1>
-            <h2>Step 2</h2>
-            {/* <h2>Address</h2> */}
+            <div className="row">
+              <div className="col-sm">
+                <label>Username:</label>
+                <input
+                  required
+                  title="Cannot be shorter than 5 and longer then 20 characters, can only contain numbers and letters"
+                  pattern="^[a-zA-Z1-9]{5,20}$"
+                  className="field b-5"
+                  type="text"
+                  placeholder="Enter username"
+                  value={this.props.username}
+                  onChange={this.props.onChangeUsername}
+                />
+                <br />
+                <br />
+
+                <label>Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  pattern="^[a-zA-Z1-9_*-]{8,20}$"
+                  title="Cannot be shorter than 8 and longer then 20 Characters. Letters, numbers, only special characters '_' '*' '-' allowed"
+                  placeholder="Enter password"
+                  value={this.props.password}
+                  onChange={this.props.onChangePassword}
+                  required
+                />
+                <br />
+                <br />
+
+                <label>Confirm Password:</label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  pattern="^[a-zA-Z1-9_*-]{8,20}$"
+                  title="Cannot be shorter than 8 and longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
+                  placeholder="Confirm password"
+                  value={this.props.confirmPassword}
+                  onChange={this.props.onChangeConfirmPassword} 
+                  required
+                />
+              </div>
+              <br />
+              <br />
+
+              <div className="col-sm">
+                <label>First Name:</label>
+                <input
+                  pattern="^[a-zA-Z'-]{1,20}$"
+                  type="text"
+                  title="Cannot be longer then 20 characters, ' and - allowed"
+                  placeholder="Enter First Name"
+                  value={this.props.fname}
+                  onChange={this.props.onChangeFname}
+                  required
+                />
+                <br />
+                <br />
+
+                <label>Last Name:</label>
+                <input
+                  pattern="^[a-zA-Z'-]{1,20}$"
+                  type="text"
+                  placeholder="Enter Last Name"
+                  value={this.props.lname}
+                  onChange={this.props.onChangeLname}
+                  required
+                />
+                <br />
+                <br />
+
+                <label>Email:</label>
+                <input
+                  type="email"
+                  maxLength="20"
+                  minLength="3"
+                  placeholder="Enter Email"
+                  value={this.props.email}
+                  onChange={this.props.onChangeEmail}
+                  required
+                />
+                <br />
+                <br />
+              </div>
+            </div>
+          </div>
+          <div className="container">
             <div className="row">
               <div className="col-sm">
                 <div className="row">
@@ -110,14 +204,13 @@ class EditCustomer2 extends React.Component {
 
                     <div className="col-sm">
                       <label>Province:</label>
-                      <Select
-                        closeMenuOnSelect={true}
+                      <input
+                        className="field b-5"
+                        type="text"
+                        placeholder="Enter your province"
                         value={this.props.province}
                         onChange={this.props.onChangeProvince}
-                        options={this.props.provinces}
-                        getOptionLabel={(option) => option.value}
-                        getOptionValue={(option) => option.value}
-                        getOptionKey={(option) => option.key}
+                        required
                       />
                     </div>
                   </div>
@@ -140,65 +233,7 @@ class EditCustomer2 extends React.Component {
               </div>
             </div>
             <br />
-            <br />
             <div>
-              {/* <h2>Phone number information</h2> */}
-              <div className="row pr-3">
-                <div className="col-sm">
-                  <label>Personal Phone:</label>
-                  <input
-                    className="field b-5"
-                    type="text"
-                    placeholder="Format: 5551235678"
-                    pattern="^\d{10}$"
-                    value={this.props.phone}
-                    onChange={this.props.onChangePhone}
-                    required
-                  />
-                </div>
-                <br />
-
-                <div className="col-sm">
-                  <label>Emergency Contact Phone:</label>
-                  <input
-                    className="field b-5"
-                    type="text"
-                    placeholder="Format: 5551235678"
-                    pattern="^\d{10}$"
-                    value={this.props.emergencyphone}
-                    onChange={this.props.onChangeEmergencyphone}
-                    required
-                  />
-                </div>
-                <div className="col-sm">
-                  <label>Emergency Contact Name:</label>
-                  <input
-                    className="field b-5"
-                    type="text"
-                    placeholder="Enter your emergency contact Name"
-                    value={this.props.emergencyname}
-                    onChange={this.props.onChangeEmergencyname}
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-            <br />
-            <div className="d-flex justify-content-between">
-              <button
-                type="button"
-                onClick={this.previousStep_onClick}
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                }}
-              >
-                Previous Step
-              </button>
               <button
                 className="btn mr-3 mb-3"
                 style={{
@@ -206,10 +241,10 @@ class EditCustomer2 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
                 }}
               >
-                Register
+                Create User
               </button>
             </div>
           </div>
@@ -219,4 +254,4 @@ class EditCustomer2 extends React.Component {
   }
 }
 
-export default EditCustomer2;
+export default CreateUser;
