@@ -46,7 +46,7 @@ class CreateUserMain extends React.Component {
     var username = this.state.email;
     var password = this.state.password;
     var firstName = this.state.fname;
-    var lastName = this.state.lastName;
+    var lastName = this.state.lname;
     var houseNum = this.state.appt;
     var buildingNum = this.state.building;
     var streetName = this.state.street;
