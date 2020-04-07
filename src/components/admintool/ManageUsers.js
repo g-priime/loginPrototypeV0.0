@@ -23,10 +23,10 @@ class ManageUsers extends React.Component {
     phone: "",
     emergencyphone: "",
     emergencyname: "",
-    initialStates: false
+    initialStates: false,
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
@@ -47,7 +47,7 @@ class ManageUsers extends React.Component {
       this.state.emergencyname
     );
   };
-/*
+  /*
   clearStates = () => {
    // if (this.state.initialStates === true) {
       this.setState({
@@ -86,11 +86,11 @@ class ManageUsers extends React.Component {
                   <h3>User List</h3>
                   <br />
                 </div>
-                {this.props.userList.map(user => (
+                {this.props.userList.map((user) => (
                   <User
                     chosenUser={user}
                     editUser={this.props.editUser.bind(this, user)}
-                    deleteUser={this.props.deleteUser.bind(this,user)}
+                    deleteUser={this.props.deleteUser.bind(this, user)}
                   />
                 ))}
               </div>
@@ -183,41 +183,37 @@ class ManageUsers extends React.Component {
                         </div>
                         <br />
                         <div className="row">
-                        <div className="col-sm">
-                              <label>Province:</label>
-                              <Select
-                        closeMenuOnSelect={true}
-                        value={this.props.province}
-                        onChange={this.props.onChangeProvince}
-                        options={this.props.provinces}
-                        getOptionLabel={(option) => option.value}
-                        getOptionValue={(option) => option.value}
-                        getOptionKey={(option) => option.key}
-                      />
-
-                            </div>
+                          <div className="col-sm">
+                            <label>Province:</label>
+                            <Select
+                              closeMenuOnSelect={true}
+                              value={this.props.province}
+                              onChange={this.props.onChangeProvince}
+                              options={this.props.provinces}
+                              getOptionLabel={(option) => option.value}
+                              getOptionValue={(option) => option.value}
+                              getOptionKey={(option) => option.key}
+                            />
+                          </div>
                         </div>
                       </div>
 
                       <div className="col-sm">
                         <div className="col-sm">
                           <div className="row">
-                          <div className="col-sm">
-                            <label>Street/Avenue:</label>
-                            <input
-                              className="field b-5"
-                              type="text"
-                              min="1"
-                              max="20"
-                              placeholder="Enter your street/avenue"
-                              value={this.props.street}
-                              onChange={this.props.onChangeStreet}
-                              required
-                            />
-                          </div>
-                            
-
-                            
+                            <div className="col-sm">
+                              <label>Street/Avenue:</label>
+                              <input
+                                className="field b-5"
+                                type="text"
+                                min="1"
+                                max="20"
+                                placeholder="Enter your street/avenue"
+                                value={this.props.street}
+                                onChange={this.props.onChangeStreet}
+                                required
+                              />
+                            </div>
                           </div>
                           <br />
                           <div className="row">
@@ -238,44 +234,40 @@ class ManageUsers extends React.Component {
                       </div>
                     </div>
                     <br />
-                    
 
                     <div className="row pr-3">
-                    <div className="col-sm">
-                              <label>Postal Code:</label>
-                              <input
-                                className="field b-5"
-                                type="text"
-                                placeholder="Format: A1A1A1"
-                                pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$"
-                                value={this.props.postcode}
-                                onChange={this.props.onChangePostcode}
-                                required
-                              />
-                            </div>
-                    
-                            <div className="col-sm">
-                          <label>Personal Phone:</label>
-                          <input
-                            className="field b-5"
-                            type="text"
-                            placeholder="Format: 5551235678"
-                            pattern="^\d{10}$"
-                            value={this.props.phone}
-                            onChange={this.props.onChangePhone}
-                            required
-                          />
-                        </div>
+                      <div className="col-sm">
+                        <label>Postal Code:</label>
+                        <input
+                          className="field b-5"
+                          type="text"
+                          placeholder="Format: A1A1A1"
+                          pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$"
+                          value={this.props.postcode}
+                          onChange={this.props.onChangePostcode}
+                          required
+                        />
+                      </div>
+
+                      <div className="col-sm">
+                        <label>Personal Phone:</label>
+                        <input
+                          className="field b-5"
+                          type="text"
+                          placeholder="Format: 5551235678"
+                          pattern="^\d{10}$"
+                          value={this.props.phone}
+                          onChange={this.props.onChangePhone}
+                          required
+                        />
+                      </div>
                     </div>
                     <br />
-                    
 
                     <div>
                       <div className="row pr-3">
-                        
                         <br />
 
-                        
                         <div className="col-sm">
                           <label>Emergency Name:</label>
                           <input
@@ -312,7 +304,7 @@ class ManageUsers extends React.Component {
                           backgroundColor: "#1D3461",
                           color: "#ECEBE7",
                           boxShadow:
-                            "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                            "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                         }}
                         onClick={this.props.clearStates}
                       >
@@ -325,7 +317,7 @@ class ManageUsers extends React.Component {
                           backgroundColor: "#1D3461",
                           color: "#ECEBE7",
                           boxShadow:
-                            "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                            "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                         }}
                       >
                         Save changes
