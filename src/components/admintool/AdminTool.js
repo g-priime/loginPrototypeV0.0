@@ -10,15 +10,30 @@ import ManagePhotos from "./ManagePhotos";
 import ManageTestimonials from "./ManageTestimonials";
 import Reports from "./Reports";
 import ChangePassAdmin from "./ChangePassAdmin";
+import { Redirect } from "react-router-dom";
 import ChangePassAdminMain from "./ChangePassAdminMain";
 
 class AdminTool extends React.Component {
-  logout = () => {
-    localStorage.clear();
-    this.props.authenticate(false);
-  };
+  state= {
+    loggedOut : false
+  }
+  
+  // logout = () => {
+  //   localStorage.clear();
+  //   this.props.authenticate(false);
+  //   this.setState({loggedOut : true});
+  // };
 
   render() {
+    if (this.state.loggedOut == true) {
+      return (
+      <div style={{ marginTop: "10px" }}>
+      <Redirect
+        to= "/"
+      />
+    </div>
+      );
+    } else {
     return (
       <div
         style={{ backgroundColor: "rgba(255,255,255,0)" }}
@@ -120,9 +135,7 @@ class AdminTool extends React.Component {
                 >
                   Change Password
                 </Link>
-                <Link
-                  to="/"
-                  type="button"
+                {/* <button
                   className="btn mb-3"
                   style={{
                     fontWeight: "bold",
@@ -133,7 +146,7 @@ class AdminTool extends React.Component {
                   onClick={this.logout}
                 >
                   Log Out
-                </Link>
+                </button> */}
               </div>
               <div style={{ backgroundColor: "#ECEBE7" }} className="output">
                 {/* <BrowserRouter> */}
@@ -169,7 +182,7 @@ class AdminTool extends React.Component {
                       exact
                       component={ChangePassAdminMain}
                     />
-                    <Route path="/Reports" exact component={Reports} />
+                    {/* <Route path="/Reports" exact component={Reports} /> */}
                   </div>
                 </div>
                 {/* </BrowserRouter> */}
@@ -179,6 +192,7 @@ class AdminTool extends React.Component {
         </BrowserRouter>
       </div>
     );
+    }
   }
 }
 
