@@ -54,16 +54,16 @@ class AddDog1 extends React.Component {
     this.setState({ selectedFile: event.target.files[0] });
   };
 
-  uploadHandler = () => {
-    const formData = new FormData();
-    formData.append(
-      "myFile",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-     BasePath.post('my-domain.com/file-upload', formData) //path??????
+  // uploadHandler = () => {
+  //   const formData = new FormData();
+  //   formData.append(
+  //     "myFile",
+  //     this.state.selectedFile,
+  //     this.state.selectedFile.name
+  //   );
+  //    BasePath.post('my-domain.com/file-upload', formData) //path??????
 
-  };
+  // };
 
   onFormSubmit = event => {
     event.preventDefault();
@@ -237,7 +237,7 @@ class AddDog1 extends React.Component {
             </div>
             <br />
             <br />
-            <div className="row">
+            {/* <div className="row">
               <input type="file" onChange={this.fileChangedHandler} />
 
               <button //button to upload the picture
@@ -255,7 +255,7 @@ class AddDog1 extends React.Component {
               >
                 Upload picture
               </button>
-            </div>
+            </div> */}
             <br />
             <br />
           </div>
