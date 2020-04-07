@@ -7,13 +7,14 @@ import {
   Week,
   WorkWeek,
   Month,
-  Agenda
+  Agenda,
+  ViewDirective,
+  ViewsDirective,
+  MonthAgenda,
+  TimelineViews
 } from "@syncfusion/ej2-react-schedule";
 import BasePath from "../../api/BasePath";
-import {
-  Internationalization,
-  extend
-} from "@syncfusion/ej2-base";
+import { Internationalization, extend } from "@syncfusion/ej2-base";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import {
   DropDownListComponent,
@@ -276,8 +277,12 @@ class CalendarMain extends React.Component {
         ActionEventArgs.cancel = true;
         alert("Enter Title");
       } else if (ActionEventArgs.requestType === "eventChange") {
-        let validTotal = this.checkValidNumber(ActionEventArgs.changedRecords[0].total);
-        let validAmountPaid = this.checkValidNumber(ActionEventArgs.changedRecords[0].amountPaid);
+        let validTotal = this.checkValidNumber(
+          ActionEventArgs.changedRecords[0].total
+        );
+        let validAmountPaid = this.checkValidNumber(
+          ActionEventArgs.changedRecords[0].amountPaid
+        );
 
         if (
           ActionEventArgs.changedRecords[0].dogNames == null ||
@@ -286,11 +291,17 @@ class CalendarMain extends React.Component {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        } else if (ActionEventArgs.changedRecords[0].total === "" || !validTotal) {
+        } else if (
+          ActionEventArgs.changedRecords[0].total === "" ||
+          !validTotal
+        ) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Total");
-        } else if (ActionEventArgs.changedRecords[0].amountPaid === "" || !validAmountPaid) {
+        } else if (
+          ActionEventArgs.changedRecords[0].amountPaid === "" ||
+          !validAmountPaid
+        ) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Amount Paid");
@@ -298,8 +309,12 @@ class CalendarMain extends React.Component {
           this.editAppointment(ActionEventArgs.changedRecords[0]);
         }
       } else if (ActionEventArgs.requestType === "eventCreate") {
-        let validTotal = this.checkValidNumber(ActionEventArgs.addedRecords[0].total);
-        let validAmountPaid = this.checkValidNumber(ActionEventArgs.addedRecords[0].amountPaid);
+        let validTotal = this.checkValidNumber(
+          ActionEventArgs.addedRecords[0].total
+        );
+        let validAmountPaid = this.checkValidNumber(
+          ActionEventArgs.addedRecords[0].amountPaid
+        );
         if (ActionEventArgs.addedRecords[0].type == null) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
@@ -311,11 +326,17 @@ class CalendarMain extends React.Component {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        } else if (ActionEventArgs.addedRecords[0].total === "" || !validTotal) {
+        } else if (
+          ActionEventArgs.addedRecords[0].total === "" ||
+          !validTotal
+        ) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Total");
-        } else if (ActionEventArgs.addedRecords[0].amountPaid === "" || !validAmountPaid) {
+        } else if (
+          ActionEventArgs.addedRecords[0].amountPaid === "" ||
+          !validAmountPaid
+        ) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Amount Paid");
@@ -330,7 +351,7 @@ class CalendarMain extends React.Component {
 
   checkValidNumber(stringValue) {
     let invalidNumber = isNaN(stringValue);
-    if(!invalidNumber && stringValue >= 0){
+    if (!invalidNumber && stringValue >= 0) {
       return true;
     }
     return false;
@@ -528,7 +549,6 @@ class CalendarMain extends React.Component {
   };
 
   editAppointment(appointment) {
-
     let username = appointment.username;
 
     let dogNames = appointment.dogNames;
@@ -774,7 +794,6 @@ class CalendarMain extends React.Component {
   editorTemplate(props) {
     let dogList = [];
     if (this.dogBit == true) {
-
       if (props.username !== undefined) {
         for (let i = 0; i < this.dogs.length; i++) {
           if (props.username === this.dogs[i].owner) {
@@ -2423,7 +2442,7 @@ class CalendarMain extends React.Component {
               subject: {
                 name: "username",
                 title: "Owner",
-                default: "admin"
+                default: "admin",
               },
               location: {
                 title: "Appointment Type",
@@ -2433,7 +2452,17 @@ class CalendarMain extends React.Component {
             },
           }}
         >
-          <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+          <ViewsDirective>
+            <ViewDirective option="Day" />
+            <ViewDirective option="Week" />
+            <ViewDirective
+              option="WorkWeek"
+              startHour="07:00"
+              endHour="21:00"
+            />
+            <ViewDirective option="Month" readonly={true} />
+          </ViewsDirective>
+          <Inject services={[Day, Week, WorkWeek, Month]} />
         </ScheduleComponent>
       </div>
     );
