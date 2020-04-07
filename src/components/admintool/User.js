@@ -1,4 +1,6 @@
 import React from 'react';
+import "../../css/userInAdmin.css";
+
 
 class User extends React.Component {
 
@@ -6,10 +8,11 @@ class User extends React.Component {
         return (
             <div>
                 <div className="row">
-                    <div className="col-sm d-flex justify-content-between">
-                    <span style={{fontSize:"large"}} className="mr-3">{this.props.chosenUser.username}</span>
-                <button  className="btn mr-3 mb-3"
+                    <div className="col-sm-8 d-flex justify-content-between  ">
+                    <span style={{fontSize:"large"}} className="mr-3 ">{this.props.chosenUser.username}</span>
+                <button  className="btn mr-3 mb-3 "
                         style={{
+                            
                           fontWeight: "bold",
                           backgroundColor: "#1D3461",
                           color: "#ECEBE7",
@@ -20,7 +23,7 @@ class User extends React.Component {
                 Edit
                 </button>
                 </div>
-                <div className="col-sm">
+                <div className="col-sm formatRight">
                 <button  className="btn mr-3 mb-3"
                         style={{
                           fontWeight: "bold",

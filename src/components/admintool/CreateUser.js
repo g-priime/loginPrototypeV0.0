@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 
 class CreateUser extends React.Component {
   state = {
@@ -61,8 +62,8 @@ class CreateUser extends React.Component {
                 <label>Username:</label>
                 <input
                   required
-                  title="Cannot be shorter than 5 and longer then 20 characters, can only contain numbers and letters"
-                  pattern="^[a-zA-Z1-9]{5,20}$"
+                  title="Cannot be shorter than 5 and longer then 15 characters, can only contain numbers and letters"
+                  pattern="^[a-zA-Z1-9]{5,15}$"
                   className="field b-5"
                   type="text"
                   placeholder="Enter username"
@@ -74,6 +75,7 @@ class CreateUser extends React.Component {
 
                 <label>Password:</label>
                 <input
+                  id="p1"
                   type="password"
                   name="password"
                   pattern="^[a-zA-Z1-9_*-]{8,20}$"
@@ -88,6 +90,7 @@ class CreateUser extends React.Component {
 
                 <label>Confirm Password:</label>
                 <input
+                  id="p2"
                   type="password"
                   name="confirmPassword"
                   pattern="^[a-zA-Z1-9_*-]{8,20}$"
@@ -204,13 +207,14 @@ class CreateUser extends React.Component {
 
                     <div className="col-sm">
                       <label>Province:</label>
-                      <input
-                        className="field b-5"
-                        type="text"
-                        placeholder="Enter your province"
+                      <Select
+                        closeMenuOnSelect={true}
                         value={this.props.province}
                         onChange={this.props.onChangeProvince}
-                        required
+                        options={this.props.provinces}
+                        getOptionLabel={(option) => option.value}
+                        getOptionValue={(option) => option.value}
+                        getOptionKey={(option) => option.key}
                       />
                     </div>
                   </div>
@@ -273,7 +277,7 @@ class CreateUser extends React.Component {
               </div>
             </div>
             <div>
-            <br />
+              <br />
               <button
                 className="btn mr-3 mb-3"
                 style={{

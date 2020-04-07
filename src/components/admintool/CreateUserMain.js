@@ -8,7 +8,6 @@ import Popup from "../PopUp";
 class CreateUserMain extends React.Component {
   state = {
     images: [],
-    fieldName: [],
     page: "",
     showPopup: false,
     cn: "",
@@ -16,16 +15,34 @@ class CreateUserMain extends React.Component {
     fname: "",
     lname: "",
     email: "",
+    password: "",
+    confirmPassword: "",
 
     appt: "",
     building: "",
     street: "",
     city: "",
-    province: "",
+    province: { key: 1, value: "Alberta" },
     postcode: "",
     phone: "",
     emergencyphone: "",
-    emergencyname: ""
+    emergencyname: "",
+
+    provinces: [
+      { key: 1, value: "Alberta" },
+      { key: 2, value: "British Columbia" },
+      { key: 3, value: "Manitoba" },
+      { key: 4, value: "New Brunswick" },
+      { key: 5, value: "Newfoundland and Labrador" },
+      { key: 6, value: "Northwest Territories" },
+      { key: 7, value: "Nova Scotia" },
+      { key: 8, value: "Nunavut" },
+      { key: 9, value: "Ontario" },
+      { key: 10, value: "Prince Edward Island" },
+      { key: 11, value: "Quebec" },
+      { key: 12, value: "Saskatchewan" },
+      { key: 13, value: "Yukon" },
+    ],
   };
 
   UNSAFE_componentWillMount() {
@@ -42,65 +59,98 @@ class CreateUserMain extends React.Component {
   }
 
   onSearchSubmit = async () => {
-    this.setState({
-      fieldName: [
-        this.state.username,
-        this.state.password,
-        this.state.confirmPassword,
-        this.state.fname,
-        this.state.lname,
-        this.state.email
-      ]
-    });
-
-    var username = this.state.fieldName[0];
-    var password = this.state.fieldName[1];
-
-    var firstName = this.state.fieldName[3];
-    var lastName = this.state.fieldName[4];
-    var email = this.state.fieldName[5];
-
+    var email = this.state.email;
+    var username = this.state.username;
+    var password = this.state.password;
+    var confirmPassword = this.state.confirmPassword;
+    var firstName = this.state.fname;
+    var lastName = this.state.lname;
     var houseNum = this.state.appt;
     var buildingNum = this.state.building;
     var streetName = this.state.street;
     var city = this.state.city;
-    var province = this.state.province;
+    var province = this.state.province.value;
+
     var postal = this.state.postcode;
     var phoneNumber = this.state.phone;
     var emergencyPhone = this.state.emergencyphone;
     var emergencyName = this.state.emergencyname;
 
-    const response = await BasePath.put("/webresources/register", {
+    const reply = await BasePath.put("/webresources/verify", {
       username,
       password,
-      firstName,
-      lastName,
+      confirmPassword,
       email,
-      phoneNumber,
-      emergencyPhone,
-      emergencyName,
-
-      address: {
-        houseNum,
-        buildingNum,
-        streetName,
-        city,
-        province,
-        postal
-      }
     });
 
-    console.log(response.data);
-    console.log(response.status);
-    this.setState({ images: response.data });
+    console.log(reply.data);
+    console.log(reply.status);
+    this.setState({ images: reply.data });
+
+    if (reply.data == "Valid") {
+      const response = await BasePath.put("/webresources/register", {
+        username,
+        password,
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        emergencyPhone,
+        emergencyName,
+
+        address: {
+          houseNum,
+          buildingNum,
+          streetName,
+          city,
+          province,
+          postal,
+        },
+      });
+      console.log(response.data);
+      console.log(response.status);
+      this.setState({ images: response.data });
+    }
 
     if (this.state.images === "Username Already Exists") {
       this.setState({ cn: "popup1", message: "Username already exists" });
       this.togglePopup();
+    } else if (this.state.images === "Email Already in Use") {
+      this.setState({ cn: "popup1", message: "Email Already in Use" });
+      this.togglePopup();
     } else if (this.state.images === "Passwords do not match") {
       this.setState({ cn: "popup2", message: "Passwords do not match" });
       this.togglePopup();
+    } else if (this.state.images === "account registered") {
+      this.setState({ cn: "popup3", bgColor: "grey" });
+      this.togglePopup();
+      this.clearStates();
     }
+  };
+
+  clearStates = () => {
+    // if (this.state.initialStates === true) {
+    this.setState({
+      initialStates: false,
+      username: "",
+      password: "",
+      confirmPassword: "",
+      fname: "",
+      lname: "",
+      email: "",
+      appt: "",
+      building: "",
+      street: "",
+      city: "",
+      province: "",
+      postcode: "",
+      phone: "",
+      emergencyphone: "",
+      emergencyname: "",
+    });
+    document.getElementById("p1").value = "";
+    document.getElementById("p2").value = "";
+    //}
   };
 
   onChangePage = () => {
@@ -110,134 +160,124 @@ class CreateUserMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeUsername = event => {
+  handleChangeUsername = (event) => {
     this.setState({ username: event.target.value });
   };
 
-  handleChangePassword = event => {
+  handleChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
 
-  handleChangeConfirmPassword = event => {
+  handleChangeConfirmPassword = (event) => {
     this.setState({ confirmPassword: event.target.value });
   };
 
-  handleChangeFname = event => {
+  handleChangeFname = (event) => {
     this.setState({ fname: event.target.value });
   };
 
-  handleChangeLname = event => {
+  handleChangeLname = (event) => {
     this.setState({ lname: event.target.value });
   };
 
-  handleChangeEmail = event => {
+  handleChangeEmail = (event) => {
     this.setState({ email: event.target.value });
   };
 
-  handleChangeAppt = event => {
+  handleChangeAppt = (event) => {
     this.setState({ appt: event.target.value });
   };
 
-  handleChangeBuilding = event => {
+  handleChangeBuilding = (event) => {
     this.setState({ building: event.target.value });
   };
 
-  handleChangeStreet = event => {
+  handleChangeStreet = (event) => {
     this.setState({ street: event.target.value });
   };
 
-  handleChangeCity = event => {
+  handleChangeCity = (event) => {
     this.setState({ city: event.target.value });
   };
 
-  handleChangeProvince = event => {
-    this.setState({ province: event.target.value });
+  handleChangeProvince = (selectedOption) => {
+    this.setState({ province: selectedOption }, () =>
+      console.log(`Option selected:`, this.state.province)
+    );
   };
 
-  handleChangePostcode = event => {
+  handleChangePostcode = (event) => {
     this.setState({ postcode: event.target.value });
   };
 
-  handleChangePhone = event => {
+  handleChangePhone = (event) => {
     this.setState({ phone: event.target.value });
   };
 
-  handleChangeEmergencyphone = event => {
+  handleChangeEmergencyphone = (event) => {
     this.setState({ emergencyphone: event.target.value });
   };
 
-  handleChangeEmergencyname = event => {
+  handleChangeEmergencyname = (event) => {
     this.setState({ emergencyname: event.target.value });
   };
 
   render() {
-    var isValid = this.state.images;
-
-    if (isValid === "account registered") {
-      return (
-        <div style={{ marginTop: "10px" }}>
-          <Redirect
-            to={{
-              pathname: "/CreateUser", //redirect to the where?
-              state: { message: "Account Registered" }
-            }}
-          />
+    return (
+      <div style={{ marginTop: "10px" }}>
+        <CreateUser
+          onChangeUsername={this.handleChangeUsername}
+          onChangePassword={this.handleChangePassword}
+          onChangeConfirmPassword={this.handleChangeConfirmPassword}
+          onChangeFname={this.handleChangeFname}
+          onChangeLname={this.handleChangeLname}
+          onChangeEmail={this.handleChangeEmail}
+          onChangeAppt={this.handleChangeAppt}
+          onChangeBuilding={this.handleChangeBuilding}
+          onChangeStreet={this.handleChangeStreet}
+          onChangeCity={this.handleChangeCity}
+          onChangeProvince={this.handleChangeProvince}
+          onChangePostcode={this.handleChangePostcode}
+          onChangePhone={this.handleChangePhone}
+          onChangeEmergencyphone={this.handleChangeEmergencyphone}
+          onChangeEmergencyname={this.handleChangeEmergencyname}
+          username={this.state.username}
+          fname={this.state.fname}
+          lname={this.state.lname}
+          email={this.state.email}
+          appt={this.state.appt}
+          building={this.state.building}
+          street={this.state.street}
+          city={this.state.city}
+          province={this.state.province}
+          postcode={this.state.postcode}
+          phone={this.state.phone}
+          emergencyphone={this.state.emergencyphone}
+          emergencyname={this.state.emergencyname}
+          onSubmit={this.onSearchSubmit}
+          onClick={() => {
+            this.props.onChangePage("about"); ////////////
+          }}
+          clearStates={this.clearStates}
+          provinces={this.state.provinces}
+        />
+        <div>
+          {this.state.showPopup ? (
+            <Popup
+              cn={this.state.cn}
+              text={this.state.images}
+              closePopup={this.togglePopup.bind(this)}
+              bgColor={this.state.bgColor}
+            />
+          ) : null}
         </div>
-      );
-    } else if (isValid !== "Valid") {
-      return (
-        <div style={{ marginTop: "10px" }}>
-          <CreateUser
-            onChangeUsername={this.handleChangeUsername}
-            onChangePassword={this.handleChangePassword}
-            onChangeConfirmPassword={this.handleChangeConfirmPassword}
-            onChangeFname={this.handleChangeFname}
-            onChangeLname={this.handleChangeLname}
-            onChangeEmail={this.handleChangeEmail}
-            onChangeAppt={this.handleChangeAppt}
-            onChangeBuilding={this.handleChangeBuilding}
-            onChangeStreet={this.handleChangeStreet}
-            onChangeCity={this.handleChangeCity}
-            onChangeProvince={this.handleChangeProvince}
-            onChangePostcode={this.handleChangePostcode}
-            onChangePhone={this.handleChangePhone}
-            onChangeEmergencyphone={this.handleChangeEmergencyphone}
-            onChangeEmergencyname={this.handleChangeEmergencyname}
-            username={this.state.username}
-            fname={this.state.fname}
-            lname={this.state.lname}
-            email={this.state.email}
-            appt={this.state.appt}
-            building={this.state.building}
-            street={this.state.street}
-            city={this.state.city}
-            province={this.state.province}
-            postcode={this.state.postcode}
-            phone={this.state.phone}
-            emergencyphone={this.state.emergencyphone}
-            emergencyname={this.state.emergencyname}
-            onSubmit={this.onSearchSubmit}
-            onClick={() => {
-              this.props.onChangePage("about"); ////////////
-            }}
-          />
-          <div>
-            {this.state.showPopup ? (
-              <Popup
-                cn={this.state.cn}
-                text={this.state.message}
-                closePopup={this.togglePopup.bind(this)}
-                bgColor="red"
-              />
-            ) : null}
-          </div>
-        </div>
-      );
-    }
+      </div>
+    );
+    // }
   }
 }
 
