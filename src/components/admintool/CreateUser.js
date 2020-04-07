@@ -62,8 +62,8 @@ class CreateUser extends React.Component {
                 <label>Username:</label>
                 <input
                   required
-                  title="Cannot be shorter than 5 and longer then 20 characters, can only contain numbers and letters"
-                  pattern="^[a-zA-Z1-9]{5,20}$"
+                  title="Cannot be shorter than 5 and longer then 15 characters, can only contain numbers and letters"
+                  pattern="^[a-zA-Z1-9]{5,15}$"
                   className="field b-5"
                   type="text"
                   placeholder="Enter username"
