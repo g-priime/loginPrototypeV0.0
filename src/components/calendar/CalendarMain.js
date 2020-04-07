@@ -10,6 +10,8 @@ import {
   Agenda,
   ViewDirective,
   ViewsDirective,
+  MonthAgenda,
+  TimelineViews
 } from "@syncfusion/ej2-react-schedule";
 import BasePath from "../../api/BasePath";
 import { Internationalization, extend } from "@syncfusion/ej2-base";
@@ -2459,9 +2461,8 @@ class CalendarMain extends React.Component {
               endHour="21:00"
             />
             <ViewDirective option="Month" readonly={true} />
-            <ViewDirective option="Agenda" />
           </ViewsDirective>
-          <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
+          <Inject services={[Day, Week, WorkWeek, Month]} />
         </ScheduleComponent>
       </div>
     );
