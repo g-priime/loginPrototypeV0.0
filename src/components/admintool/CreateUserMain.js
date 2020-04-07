@@ -87,8 +87,35 @@ class CreateUserMain extends React.Component {
     } else if (this.state.images === "Passwords do not match") {
       this.setState({ cn: "popup2", message: "Passwords do not match" });
       this.togglePopup();
+    } else if(this.state.images === "account registered") {
+      this.setState({ cn: "popup3", bgColor: "grey" });
+      this.togglePopup();
+      this.clearStates();
     }
   };
+
+  clearStates = () => {
+    // if (this.state.initialStates === true) {
+       this.setState({
+         initialStates: false,
+         username: "",
+         password: "",
+         confirmPassword: "",
+         fname: "",
+         lname: "",
+         email: "",
+         appt: "",
+         building: "",
+         street: "",
+         city: "",
+         province: "",
+         postcode: "",
+         phone: "",
+         emergencyphone: "",
+         emergencyname: ""
+       });
+     //}
+   };
 
   onChangePage = () => {
     this.props.onClick(this.state.page);
@@ -211,14 +238,15 @@ class CreateUserMain extends React.Component {
             onClick={() => {
               this.props.onChangePage("about"); ////////////
             }}
+            clearStates={this.clearStates}
           />
-          <div>
+           <div>
             {this.state.showPopup ? (
               <Popup
                 cn={this.state.cn}
-                text={this.state.message}
+                text={this.state.images}
                 closePopup={this.togglePopup.bind(this)}
-                bgColor="red"
+                bgColor={this.state.bgColor}
               />
             ) : null}
           </div>
