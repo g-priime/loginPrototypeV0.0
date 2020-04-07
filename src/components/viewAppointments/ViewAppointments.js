@@ -216,6 +216,7 @@ class ViewAppointments extends React.Component {
               appointmentType={appointment.type.toUpperCase()}
               startTime={Moment(appointment.startTime).format("LL LT")}
               endTime={Moment(appointment.endTime).format("LL LT")}
+              updateAppointments={this.updateAppointments}
             />
           ))}
         </div>

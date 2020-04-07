@@ -520,7 +520,7 @@ class BookTraining2 extends React.Component {
                     Previous Step
                   </button>
                   <Link
-                    to="/Services"
+                    to={this.props.cancelLink}
                     type="button"
                     className="btn mb-3"
                     style={{

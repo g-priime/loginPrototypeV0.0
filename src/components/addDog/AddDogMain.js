@@ -53,6 +53,9 @@ class AddDogMain extends React.Component {
     neuteredspayed: "",
     medication: "",
     allergies: "",
+    medList:[],
+    allList:[],
+    train:false,
     physlimit: "",
     veterinarian: "",
 
@@ -66,33 +69,6 @@ class AddDogMain extends React.Component {
 
     initialStates: false
   };
-
-  // getCustomerInfo = async () => {
-  //   //for editing not for Add
-  //   const customerInfo = await BasePath.get("/webresources/sendCustomerInfo");
-
-  //   if (this.state.initialStates === false) {
-  //     this.setState({
-  //       initialStates: true,
-  //       username: customerInfo.data.username,
-  //       password: customerInfo.data.password,
-  //       confirmPassword: customerInfo.data.password,
-  //       fname: customerInfo.data.firstName,
-  //       lname: customerInfo.data.lastName,
-  //       email: customerInfo.data.email,
-
-  //       appt: customerInfo.data.appt,
-  //       building: customerInfo.data.building,
-  //       street: customerInfo.data.street,
-  //       city: customerInfo.data.city,
-  //       province: customerInfo.data.province,
-  //       postcode: customerInfo.data.postcode,
-  //       phone: customerInfo.data.phone,
-  //       emergencyphone: customerInfo.data.emergencyphone,
-  //       emergencyname: customerInfo.data.emergencyname
-  //     });
-  //   }
-  // };
 
   onSearchSubmit1 = async () => {
     //should the name be different?
@@ -112,38 +88,15 @@ class AddDogMain extends React.Component {
       ]
     });
 
-    // onPrevious = () => {
-    //   console.log("main");
-    //   this.setState({ images: [] });
-    //   console.log(this.state.images);
-    // };
-
-    //these vars weren't being used so i commented them out
-/*
-    var dname = this.state.dogname; //passing the state from the fields
-    var br = this.state.breed;
-    var dateofbirth = this.state.dob;
-    var gen = this.state.gender;
-    var wei = this.state.weight;
-    var ns = this.state.neuteredspayed;
-    var med = this.state.medication;
-    var allerg = this.state.allergies;
-    var plimit = this.state.physlimit;
-    var vet = this.state.veterinarian;
-    */
-
-    const response = await BasePath.get("/webresources/registerDog", {
-      /*
-      dname,
-      br,
-      dateofbirth,
-      gen,
-      wei
-      */
-    });
- //console.log(response);
-    this.setState({ images: response.data });
+    this.setState({ images: 'Valid' });
   };
+
+  onPrevious = () => {
+    console.log("main");
+    this.setState({ images: [] });
+    console.log(this.state.images);
+  };
+
 
   onSearchSubmit2 = async () => {
     //called when step 2 submitted
@@ -158,41 +111,50 @@ class AddDogMain extends React.Component {
     var medication = this.state.fieldName[6];
     var allergies = this.state.fieldName[7];
     var physlimit = this.state.fieldName[8];
-    var veterinarian = this.state.fieldName[9];
+    var veterinarianName = this.state.fieldName[9];
 
+    console.log(this.state.strangers);
+    var dogId = this.state.dogId;
     var strangers = this.state.strangers;
-    var largerdogs = this.state.largerdogs;
+    var  largerdogs = this.state.largerdogs;
     var smalldogs = this.state.smalldogs;
     var puppies = this.state.puppies;
+    var train = this.state.train;
+
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
 
     var token = localStorage.getItem('token');
     
-    const response = await BasePath.put("/webresources/registerDog", {
-      //what path??????????
-      
-      token,
-      dogname,
-      breed,
-      dob,
-      gender,
-      weight,
-      neuteredspayed,
-      medication,
-      allergies,
-      physlimit,
-      veterinarian,
+    const response = await BasePath.put('/webresources/registerDog', {
+      token:token,
+      idNumber: dogId,
+      name:dogname,
+      breed: breed,
+      dateOfBirth: dob,
+      gender: gender,
+      weight: weight,
+      spayedNeutered: neuteredspayed,
+      medications: this.state.medList,
+      allergies: this.state.allList,
+      physLimit: physlimit,
+      veterinarian: {
+        name: veterinarianName
+      },
 
-      strangers,
-      largerdogs,
-      smalldogs,
-      puppies,
-      da2pp,
-      rabies,
-      bordetella
-      
+      strangerComfortable: strangers,
+      largeDogFriendly: largerdogs,
+      smallDogFriendly: smalldogs,
+      puppyFriendly: puppies,
+      vaccines:
+      {
+        da2pp: da2pp,
+        rabies: rabies,
+        bordetella: bordetella
+      },
+      active: true,
+      trainingDone: train
     });
 
     this.setState({ images: response.data });
@@ -238,10 +200,12 @@ class AddDogMain extends React.Component {
 
   handleChangeMedication = event => {
     this.setState({ medication: event.target.value });
+    this.state.medList.push(this.state.medication);
   };
 
   handleChangeAllergies = event => {
     this.setState({ allergies: event.target.value });
+    this.state.allList.push(this.state.allergies);
   };
 
   handleChangePhyslimit = event => {
@@ -285,13 +249,13 @@ class AddDogMain extends React.Component {
 
     var isValid = this.state.images; // images - message sent from the back
 
-    if (isValid === "dog added") {
+    if (isValid === "Successfully added") {
       //validation after submitting the 2nd step, add and edit
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/", //will be path for the UserAcc
+              pathname: "/Profile", //will be path for the UserAcc
               state: { message: "Dog added" }
             }}
           />
@@ -323,13 +287,9 @@ class AddDogMain extends React.Component {
             physlimit={this.state.physlimit}
             veterinarian={this.state.veterinarian}
             onSubmit={this.onSearchSubmit1}
-             //onClick={() => {
-            //   //no needed
-               //this.props.onChangePage("about"); //no needed
-             //}}
           />
           <div>
-            {this.state.showPopup ? ( //need it probably for error messages
+            {this.state.showPopup ? ( 
               <Popup
                 cn={this.state.cn}
                 text={this.state.images}
@@ -360,7 +320,7 @@ class AddDogMain extends React.Component {
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
             onSubmit={this.onSearchSubmit2} //calls onsearch submit, all the stuff is getting passed from main page to the step2
-             onClick={this.onPrevious} //don't need
+             onClickPrev={this.onPrevious} //don't need
           />
         </div>
       );

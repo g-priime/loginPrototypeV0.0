@@ -1,6 +1,7 @@
 import React from "react";
 import BasePath from "../api/BasePath";
 import '../css/testimonials.css';
+import Popup from "./PopUp";
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 
 class Testimonials extends React.Component {
@@ -8,8 +9,17 @@ class Testimonials extends React.Component {
         testimonialsList: [],
         test_id: {},
         username: {},
-        contents: ""
+        contents: "",
+        showPopup: false,
+        images: []
     };
+
+    togglePopup() {
+        //just for the popup for validation
+        this.setState({
+          showPopup: !this.state.showPopup
+        });
+      }
 
     componentWillMount = () => {
         BasePath.get('/webresources/Testimonials')
@@ -27,6 +37,9 @@ class Testimonials extends React.Component {
             {
                 token: token,
                 contents: this.state.contents
+            }).then( result => {
+                this.setState({images: 'Testimonial was sent for approval.'});
+                this.togglePopup();
             }).catch(err => {
                 console.log(err);
             });

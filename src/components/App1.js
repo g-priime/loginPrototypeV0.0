@@ -1,14 +1,18 @@
 import React from "react";
 //import UserAccount from './UserAccount';
-//import HomePage from "./HomePage";
-import RegisterMain from "./register/RegisterMain";
-import Gallery from "./Gallery";
-import FAQ from "./FAQ";
-import Testimonials from "./Testimonials";
-import Services from "./Services";
-import Login from "./login/Login";
+import HomePage from './HomePage';
+import RegisterMain from './register/RegisterMain';
+import Gallery from './Gallery';
+import FAQ from './FAQ';
+import Testimonials from './Testimonials';
+import Services from './Services';
+import Login from './login/Login';
+import BasePath from './../api/BasePath';
+import '../css/main.css';
+import Admin from './admintool/AdminTool';
 import Footer from "./Footer";
-import "../css/main.css";
+import AdminTool from './admintool/AdminTool';
+//import "../css/main.css";
 
 import { BrowserRouter, Route } from "react-router-dom";
 import Header1 from "./Header1";
@@ -30,14 +34,15 @@ import EditDog from './editDog/EditDogMain';
 import EditCustomer from './editCustomer/EditCustomerMain';
 import ViewAppointments from './viewAppointments/ViewAppointments';
 import DisableAccountMain from "./disableAccount/DisableAccountMain";
-//import CalendarMain from './calendar/CalendarMain';
 import EditAppointmentMain from './editAppointment/EditAppointmentMain';
+import BookAppointment from "./viewAppointments/BookAppointment";
 
 class App1 extends React.Component {
   state = {
     show: false,
     errMsg: "",
-    showDisableAccount: false
+    showDisableAccount: false,
+    authenticated: false
   };
 
   toggleLogin = () => {
@@ -61,12 +66,20 @@ class App1 extends React.Component {
     this.setState({ showDisableAccount: false });
   };
 
+  authenticate= (value) => {
+    if (value) {
+      this.setState({authenticated: true});
+    } else {
+      this.setState({authenticated: false});
+    }
+  }
+
   render() {
     return (
       <div>
         <BrowserRouter>
           <div>
-            <Header1 showLogin={this.toggleLogin} showDisableAccount={this.toggleDisableAccount} />
+            <Header1 showLogin={this.toggleLogin} authenticate={this.authenticate} authenticated={this.state.authenticated} showDisableAccount={this.toggleDisableAccount} />
             <div className="mt-4 ml-5 mr-5">
               <Route path="/" exact component={HomePageHTML} />
               <Route path="/Register" component={RegisterMain} />
@@ -84,7 +97,10 @@ class App1 extends React.Component {
               <Route path="/EditDog" component={EditDog} />
               <Route path="/EditCustomer" component={EditCustomer} />
               <Route path="/DisableAccount" component={DisableAccountMain} />
+              <Route path="/admin" component={() => <AdminTool authenticate={this.authenticate}/>} />
               <Route path="/EditAppointment" component={EditAppointmentMain} />
+              <Route path="/BookAppointment" component={BookAppointment} />
+              
               <Login
                 show={this.state.show}
                 onHide={this.onHide}

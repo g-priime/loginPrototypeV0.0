@@ -45,15 +45,18 @@ class EditDogMain extends React.Component {
     showPopup: false,
     cn: "",
     dog: {},
-    dogsList:[],
+    dogsList: [],
 
     dogname: "",
+    dogId: "",
     breed: "",
     dob: "",
     gender: "",
     weight: "",
     neuteredspayed: "",
     medication: "",
+    medList:[],
+    allList: [],
     allergies: "",
     physlimit: "",
     veterinarian: "",
@@ -62,6 +65,7 @@ class EditDogMain extends React.Component {
     largerdogs: "",
     smalldogs: "",
     puppies: "",
+    train:"",
     da2pp: "",
     rabies: "",
     bordetella: "",
@@ -69,39 +73,42 @@ class EditDogMain extends React.Component {
     initialStates: false
   };
 
-  // UNSAFE_componentWillMount() {
-  //   this.setState({dog: this.props.location.state});
-  // }
 
   getDogInfo = async () => {
-    // should be the dog info somewhere
-    //for editing not for Add
-    //const dogInfo = await BasePath.get("/webresources/"); // the path?
-    //this.setState({dog: this.props.location.state});
+
     const dogInfo = this.props.location.state.dog;
     console.log(dogInfo);
+
+    var vetName = '';
+
+    if (dogInfo.veterinarian !=null ) {
+      vetName = dogInfo.veterinarian.name;
+    };
 
     if (this.state.initialStates === false) {
       this.setState({
         initialStates: true,
         dogname: dogInfo.name,
+        dogId: dogInfo.idNumber,
         breed: dogInfo.breed,
         dob: dogInfo.dateOfBirth,
         gender: dogInfo.gender,
         weight: dogInfo.weight,
         neuteredspayed: dogInfo.spayedNeutered,
-        medication: dogInfo.medications,
-        allergies: dogInfo.allergies,
+        medList: dogInfo.medications,
+        allList: dogInfo.allergies,
+        medication: dogInfo.medications[0],
+        allergies: dogInfo.allergies[0],
         physlimit: dogInfo.physLimit,
-        veterinarian: dogInfo.veterinarian.name,
-
+        veterinarian: vetName,
         strangers: dogInfo.strangers,
         largerdogs: dogInfo.largerdogs,
         smalldogs: dogInfo.smalldogs,
         puppies: dogInfo.puppies,
+        train: dogInfo.trainingDone,
         da2pp: dogInfo.vaccines.da2pp,
-        rabies: dogInfo.rabies,
-        bordetella: dogInfo.bordetella
+        rabies: dogInfo.vaccines.rabies,
+        bordetella: dogInfo.vaccines.bordetella
       });
     }
   };
@@ -124,19 +131,13 @@ class EditDogMain extends React.Component {
       ]
     });
 
-    // onPrevious = () => {
-    //   console.log("main");
-    //   this.setState({ images: [] });
-    //   console.log(this.state.images);
-    // };
+    this.setState({ images: 'Valid' });
+  };
 
-    var dname = this.state.dogname; //passing the state from the fields
-    var br = this.state.breed;
-    var dateofbirth = this.state.dob;
-    var gen = this.state.gender;
-    var wei = this.state.weight;
-
-    this.setState({ images: 'Valid'});
+  onPrevious = () => {
+    console.log("main");
+    this.setState({ images: [] });
+    console.log(this.state.images);
   };
 
   onSearchSubmit2 = async () => {
@@ -151,36 +152,64 @@ class EditDogMain extends React.Component {
     var medication = this.state.fieldName[6];
     var allergies = this.state.fieldName[7];
     var physlimit = this.state.fieldName[8];
-    var veterinarian = this.state.fieldName[9];
+    var veterinarianName = this.state.fieldName[9];
 
-    var strangers = this.state.strangers;
-    var largerdogs = this.state.largerdogs;
-    var smalldogs = this.state.smalldogs;
-    var puppies = this.state.puppies;
+    var dogId = this.state.dogId;
+    var strangers, largerdogs, smalldogs, puppies, train;
+    if (this.state.strangers == 'true') {
+      strangers=true;
+    } else {
+      strangers=false;
+    }
+    if (this.state.largerdogs == 'true') {
+      largerdogs=true;
+    } else {
+      largerdogs=false;
+    }
+    if (this.state.smalldogs =='true') {
+      smalldogs =true;
+    } else {
+      smalldogs=false;
+    }
+    if (this.state.puppies =='true') {
+      puppies =true;
+    } else {
+      puppies=false;
+    }
+    var train = this.state.train;
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
     var token = localStorage.getItem("token");
 
-    const response = await BasePath.put(`/webresources/updateDog/${token}`, {
-      dogname,
-      breed,
-      dob,
-      gender,
-      weight,
-      neuteredspayed,
-      medication,
-      allergies,
-      physlimit,
-      veterinarian,
+    const response = await BasePath.put('/webresources/updateDog', {
+      token:token,
+      idNumber: dogId,
+      name:dogname,
+      breed: breed,
+      dateOfBirth: dob,
+      gender: gender,
+      weight: weight,
+      spayedNeutered: neuteredspayed,
+      medications: this.state.medList,
+      allergies: this.state.allList,
+      physLimit: physlimit,
+      veterinarian: {
+        name: veterinarianName
+      },
 
-      strangers,
-      largerdogs,
-      smalldogs,
-      puppies,
-      da2pp,
-      rabies,
-      bordetella
+      strangerComfortable: strangers,
+      largeDogFriendly: largerdogs,
+      smallDogFriendly: smalldogs,
+      puppyFriendly: puppies,
+      vaccines:
+      {
+        da2pp: da2pp,
+        rabies: rabies,
+        bordetella: bordetella
+      },
+      active: true,
+      trainingDone: train
     });
 
     this.setState({ images: response.data });
@@ -220,10 +249,12 @@ class EditDogMain extends React.Component {
 
   handleChangeMedication = event => {
     this.setState({ medication: event.target.value });
+    this.state.medList.push(this.state.medication);
   };
 
   handleChangeAllergies = event => {
     this.setState({ allergies: event.target.value });
+    this.state.allList.push(this.state.allergies);
   };
 
   handleChangePhyslimit = event => {
@@ -267,14 +298,14 @@ class EditDogMain extends React.Component {
 
     var isValid = this.state.images; // images - message sent from the back
 
-    if (isValid === "dog added") {
+    if (isValid === "Updated") {
       //validation after submitting the 2nd step, add and edit
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/", //will be path for the UserAcc
-              state: { message: "Dog added" }
+              pathname: "/Profile", //will be path for the UserAcc
+              state: { message: "Dog updated" }
             }}
           />
         </div>
@@ -305,10 +336,10 @@ class EditDogMain extends React.Component {
             physlimit={this.state.physlimit}
             veterinarian={this.state.veterinarian}
             onSubmit={this.onSearchSubmit1}
-            // onClick={() => {
-            //   //no needed
-            //   this.props.onChangePage("about"); //no needed
-            // }}
+          // onClick={() => {
+          //   //no needed
+          //   this.props.onChangePage("about"); //no needed
+          // }}
           />
           <div>
             {this.state.showPopup ? ( //need it probably for error messages
@@ -342,7 +373,7 @@ class EditDogMain extends React.Component {
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
             onSubmit={this.onSearchSubmit2} //calls onsearch submit, all the stuff is getting passed from main page to the step2
-            // onClick={this.onPrevious} //don't need
+            onClickPrev={this.onPrevious} //don't need
           />
         </div>
       );
