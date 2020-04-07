@@ -116,7 +116,7 @@ class App1 extends React.Component {
             </div>
           </div>
         </BrowserRouter>
-        <div><Footer /></div>
+        <footer><Footer /></footer>
       </div>
     );
   }
