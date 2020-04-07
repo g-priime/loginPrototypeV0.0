@@ -75,6 +75,7 @@ class CreateUser extends React.Component {
 
                 <label>Password:</label>
                 <input
+                  id="p1"
                   type="password"
                   name="password"
                   pattern="^[a-zA-Z1-9_*-]{8,20}$"
@@ -89,6 +90,7 @@ class CreateUser extends React.Component {
 
                 <label>Confirm Password:</label>
                 <input
+                  id="p2"
                   type="password"
                   name="confirmPassword"
                   pattern="^[a-zA-Z1-9_*-]{8,20}$"
