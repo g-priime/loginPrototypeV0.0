@@ -15,6 +15,8 @@ class CreateUserMain extends React.Component {
     fname: "",
     lname: "",
     email: "",
+    password:"",
+    confirmPassword:"",
 
     appt: "",
     building: "",
@@ -45,6 +47,7 @@ class CreateUserMain extends React.Component {
     var email = this.state.email;
     var username = this.state.username;
     var password = this.state.password;
+    var confirmPassword = this.state.confirmPassword;
     var firstName = this.state.fname;
     var lastName = this.state.lname;
     var houseNum = this.state.appt;
@@ -56,6 +59,19 @@ class CreateUserMain extends React.Component {
     var phoneNumber = this.state.phone;
     var emergencyPhone = this.state.emergencyphone;
     var emergencyName = this.state.emergencyname;
+
+    const reply = await BasePath.put("/webresources/verify", {
+      username,
+      password,
+      confirmPassword,
+      email,
+    });
+
+    console.log(reply.data);
+    console.log(reply.status);
+    this.setState({ images: reply.data });
+
+    if (reply.data == 'Valid') {
 
     const response = await BasePath.put("/webresources/register", {
       username,
@@ -76,10 +92,11 @@ class CreateUserMain extends React.Component {
         postal
       }
     });
-
     console.log(response.data);
     console.log(response.status);
     this.setState({ images: response.data });
+  }
+  
 
     if (this.state.images === "Username Already Exists") {
       this.setState({ cn: "popup1", message: "Username already exists" });
@@ -202,7 +219,7 @@ class CreateUserMain extends React.Component {
     //       />
     //     </div>
     //   );
-    if (isValid !== "Valid" || isValid === "account registered") {
+    // if (isValid !== "Valid" || isValid === "account registered") {
       return (
         <div style={{ marginTop: "10px" }}>
           <CreateUser
@@ -252,7 +269,7 @@ class CreateUserMain extends React.Component {
           </div>
         </div>
       );
-    }
+    // }
   }
 }
 
