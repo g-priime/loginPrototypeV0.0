@@ -149,11 +149,12 @@ class EditCustomerMain extends React.Component {
 
     const response = await BasePath.put("/webresources/update", {
       token,
+      email,
       username,
 
       firstName,
       lastName,
-      email,
+      
       phoneNumber,
       emergencyPhone,
       emergencyName,
