@@ -65,7 +65,7 @@ class Testimonials extends React.Component {
                 <h1 className="txt">Testimonials</h1>
                 <ListGroup>
                     {this.state.testimonialsList.map(testimonial => (
-                        <ListGroupItem key={testimonial}>
+                        <ListGroupItem key={testimonial.id}>
                             <ListGroupItemHeading>{testimonial.username}</ListGroupItemHeading>
                             <ListGroupItemText>
                                 <span className="wrap">
