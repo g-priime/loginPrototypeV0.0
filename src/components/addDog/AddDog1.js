@@ -110,7 +110,7 @@ class AddDog1 extends React.Component {
                 <br />
                 <label>Breed:</label>
                 <input
-                  pattern="^[a-zA-Z1-9]{1,20}$"
+                  pattern="^[a-zA-Z ]{1,30}$"
                   type="text"
                   placeholder="Enter breed"
                   value={this.props.breed}
