@@ -5,11 +5,9 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle
-  //Button
+  CardSubtitle,
 } from "reactstrap";
 import "../css/services.css";
-//import boarding from '../images/boarding.jpg';
 import { Link } from "react-router-dom";
 import Popup from "./PopUp";
 import BasePath from "../api/BasePath";
@@ -22,7 +20,7 @@ class Services extends React.Component {
     bgColor: "blue",
     daycareLink: "/Register",
     boardingLink: "/Register",
-    trainingLink: "/Register"
+    trainingLink: "/Register",
   };
 
   getCustomerInfo = async () => {
@@ -41,7 +39,7 @@ class Services extends React.Component {
         initialStates: true,
         daycareLink: "/BookDaycare",
         boardingLink: "/BookBoarding",
-        trainingLink: "/BookTraining"
+        trainingLink: "/BookTraining",
       });
     }
   };
@@ -61,7 +59,7 @@ class Services extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
@@ -150,7 +148,6 @@ class Services extends React.Component {
               </small>
             </CardText>
             <br></br>
-            {/*<Button className="button">Book Now</Button>*/}
             <Link
               to={this.state.boardingLink}
               type="button"
@@ -160,7 +157,7 @@ class Services extends React.Component {
                 backgroundColor: "#1D3461",
                 color: "#ECEBE7",
                 boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               }}
             >
               Book Now
@@ -205,7 +202,6 @@ class Services extends React.Component {
               </small>
             </CardText>
             <br></br>
-            {/*<Button className="button">Book Now</Button>*/}
             <Link
               to={this.state.trainingLink}
               type="button"
@@ -215,7 +211,7 @@ class Services extends React.Component {
                 backgroundColor: "#1D3461",
                 color: "#ECEBE7",
                 boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               }}
             >
               Book Now
@@ -305,7 +301,7 @@ class Services extends React.Component {
                 backgroundColor: "#1D3461",
                 color: "#ECEBE7",
                 boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               }}
             >
               Book Now
