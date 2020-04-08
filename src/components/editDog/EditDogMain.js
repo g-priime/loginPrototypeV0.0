@@ -59,7 +59,7 @@ class EditDogMain extends React.Component {
     allList: [],
     allergies: "",
     physlimit: "",
-    veterinarian: "",
+    veterinarianN: "",
 
     strangers: "",
     largerdogs: "",
@@ -75,6 +75,8 @@ class EditDogMain extends React.Component {
 
 
   getDogInfo = async () => {
+
+    console.log(localStorage.getItem('token'));
 
     const dogInfo = this.props.location.state.dog;
     console.log(dogInfo);
@@ -100,7 +102,7 @@ class EditDogMain extends React.Component {
         medication: dogInfo.medications[0],
         allergies: dogInfo.allergies[0],
         physlimit: dogInfo.physLimit,
-        veterinarian: vetName,
+        veterinarianN: vetName,
         strangers: dogInfo.strangers,
         largerdogs: dogInfo.largerdogs,
         smalldogs: dogInfo.smalldogs,
@@ -137,8 +139,7 @@ class EditDogMain extends React.Component {
     var weight = this.state.weight;
     var neuteredspayed = this.state.neuteredspayed;
     var physlimit = this.state.physlimit;
-    var veterinarianName = this.state.veterinarian;
-
+    var veterinarianName = this.state.veterinarianN;
     var dogId = this.state.dogId;
     var strangers = this.state.strangers;
     var largerdogs = this.state.largerdogs;
@@ -251,7 +252,7 @@ class EditDogMain extends React.Component {
   };
 
   handleChangeVeterinarian = event => {
-    this.setState({ veterinarian: event.target.value });
+    this.setState({ veterinarianN: event.target.value });
   };
 
   handleChangeStrangers = event => {
@@ -323,7 +324,7 @@ class EditDogMain extends React.Component {
             medication={this.state.medication}
             allergies={this.state.allergies}
             physlimit={this.state.physlimit}
-            veterinarian={this.state.veterinarian}
+            veterinarianN={this.state.veterinarianN}
             onSubmit={this.onSearchSubmit1}
           // onClick={() => {
           //   //no needed
