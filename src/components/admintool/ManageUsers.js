@@ -1,6 +1,4 @@
 import React from "react";
-import PopUpConfirm from "../PopUpConfirm";
-import BasePath from "../../api/BasePath";
 import { Link } from "react-router-dom";
 import User from "./User";
 import Select from "react-select";
@@ -47,30 +45,7 @@ class ManageUsers extends React.Component {
       this.state.emergencyname
     );
   };
-  /*
-  clearStates = () => {
-   // if (this.state.initialStates === true) {
-      this.setState({
-        initialStates: false,
-        username: "",
-        password: "",
-        confirmPassword: "",
-        fname: "",
-        lname: "",
-        email: "",
-        appt: "",
-        building: "",
-        street: "",
-        city: "",
-        province: "",
-        postcode: "",
-        phone: "",
-        emergencyphone: "",
-        emergencyname: ""
-      });
-    //}
-  };
-*/
+
   render() {
     return (
       <div>
