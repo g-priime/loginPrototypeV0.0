@@ -6,7 +6,7 @@ class Testimonial extends React.Component {
     render() {
         return (
             <div>
-                <div className="row">
+                <div className="row borderTest" >
                     <div className="col-sm-10 d-flex justify-content-between ">
                     <span style={{fontSize:"large"}} className="mr-3 wrapAdmin">{this.props.chosenTestimonial.content}</span>
                 <button  className="btn mr-3 mb-3"
