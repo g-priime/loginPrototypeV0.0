@@ -133,7 +133,7 @@ class CalendarMain extends React.Component {
     if (!this.state.intitialData) {
       this.setState({ data: this.data, intitialData: true });
     }
-    this.scheduleObj.refreshEvents();
+    //this.scheduleObj.refreshEvents();
   };
 
   updateAppointmentInfo = async () => {
@@ -267,6 +267,8 @@ class CalendarMain extends React.Component {
   }
 
   onActionBegin(ActionEventArgs) {
+    
+
     if (ActionEventArgs.changedRecords !== undefined) {
       if (
         ActionEventArgs.requestType === "eventCreate" &&
@@ -277,6 +279,12 @@ class CalendarMain extends React.Component {
         ActionEventArgs.cancel = true;
         alert("Enter Title");
       } else if (ActionEventArgs.requestType === "eventChange") {
+        let start = new Date(ActionEventArgs.changedRecords[0].StartTime);
+        let end = new Date(ActionEventArgs.changedRecords[0].EndTime);
+        let current = new Date();
+        let validStart = start > current;
+        let validRange = end > start;
+
         let validTotal = this.checkValidNumber(
           ActionEventArgs.changedRecords[0].total
         );
@@ -291,7 +299,28 @@ class CalendarMain extends React.Component {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        } else if (
+        }
+        else if (ActionEventArgs.changedRecords[0].StartTime == null) {
+          this.scheduleObj.uiStateValues.isBlock = true;
+          ActionEventArgs.cancel = true;
+          alert("Must enter Start Time");
+        }
+        else if (ActionEventArgs.changedRecords[0].EndTime == null) {
+          this.scheduleObj.uiStateValues.isBlock = true;
+          ActionEventArgs.cancel = true;
+          alert("Must enter End Time");
+        }
+        else if (!validStart) {
+          this.scheduleObj.uiStateValues.isBlock = true;
+          ActionEventArgs.cancel = true;
+          alert("Start Time must be later than current time");
+        }
+        else if (!validRange) {
+          this.scheduleObj.uiStateValues.isBlock = true;
+          ActionEventArgs.cancel = true;
+          alert("End Time must be later than Start Time");
+        }
+         else if (
           ActionEventArgs.changedRecords[0].total === "" ||
           !validTotal
         ) {
@@ -309,6 +338,13 @@ class CalendarMain extends React.Component {
           this.editAppointment(ActionEventArgs.changedRecords[0]);
         }
       } else if (ActionEventArgs.requestType === "eventCreate") {
+        console.log(ActionEventArgs.addedRecords[0].StartTime);
+        let start = new Date(ActionEventArgs.addedRecords[0].StartTime);
+        let end = new Date(ActionEventArgs.addedRecords[0].EndTime);
+        let current = new Date();
+        let validStart = start > current;
+        let validRange = end > start;
+
         let validTotal = this.checkValidNumber(
           ActionEventArgs.addedRecords[0].total
         );
@@ -326,7 +362,28 @@ class CalendarMain extends React.Component {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        } else if (
+        }
+        else if (ActionEventArgs.addedRecords[0].StartTime == null) {
+          this.scheduleObj.uiStateValues.isBlock = true;
+          ActionEventArgs.cancel = true;
+          alert("Must enter Start Time");
+        }
+        else if (ActionEventArgs.addedRecords[0].EndTime == null) {
+          this.scheduleObj.uiStateValues.isBlock = true;
+          ActionEventArgs.cancel = true;
+          alert("Must enter End Time");
+        }
+        else if (!validStart) {
+          this.scheduleObj.uiStateValues.isBlock = true;
+          ActionEventArgs.cancel = true;
+          alert("Start Time must be later than current time");
+        }
+        else if (!validRange) {
+          this.scheduleObj.uiStateValues.isBlock = true;
+          ActionEventArgs.cancel = true;
+          alert("End Time must be later than Start Time");
+        }
+         else if (
           ActionEventArgs.addedRecords[0].total === "" ||
           !validTotal
         ) {
