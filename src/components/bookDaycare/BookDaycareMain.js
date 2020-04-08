@@ -60,6 +60,12 @@ class BookDaycareMain extends React.Component {
       ],
     });
 
+    var d1 = new Date(this.state.startTime);
+    var d2 = new Date(this.state.endTime);
+    var validTimes = d1.getTime() < d2.getTime();
+    var dNow = new Date();
+    var validStart = dNow.getTime() <= d1.getTime();
+
     if (this.state.selectedDogs != null) {
       var token = localStorage.getItem("token");
       var dogs = [];
@@ -94,9 +100,20 @@ class BookDaycareMain extends React.Component {
           response: "Must select at least one dog",
         });
         this.togglePopup();
+      } else if (!validStart) {
+        this.setState({
+          cn: "popup4",
+          response: "Must enter a Start Time that has not passed",
+        });
+        this.togglePopup();
+      } else if (!validTimes) {
+        this.setState({
+          cn: "popup4",
+          response: "Must enter an End Time that is greater than Start Time",
+        });
+        this.togglePopup();
       }
-    }
-    else{
+    } else if (this.state.selectedDogs == null) {
       this.setState({
         cn: "popup4",
         response: "Must select at least one dog",
