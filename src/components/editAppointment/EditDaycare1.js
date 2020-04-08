@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 import Select from "react-select";
 
+import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
+import Moment from 'moment';
+
 class EditDaycare1 extends React.Component {
   state = {
     dog: "",
@@ -61,24 +64,22 @@ class EditDaycare1 extends React.Component {
                 <br />
 
                 <label>Select Start Time:</label>
-                <input
-                  type="datetime-local"
-                  name="startTime"
-                  defaultValue={this.props.startTime}
-                  onChange={this.props.onChangeStartTime}
-                  required
-                />
+                <DateTimePickerComponent
+                    format="dd/MM/yy hh:mm a"
+                    id="startTime"
+                    value={new Date(this.props.startTime)}
+                    onChange={this.props.onChangeStartTime}
+                  ></DateTimePickerComponent>
                 <br />
                 <br />
 
                 <label>Select End Time:</label>
-                <input
-                  type="datetime-local"
-                  name="endTime"
-                  defaultValue={this.props.endTime}
-                  onChange={this.props.onChangeEndTime}
-                  required
-                />
+                <DateTimePickerComponent
+                    format="dd/MM/yy hh:mm a"
+                    id="startTime"
+                    value={new Date(this.props.endTime)}
+                    onChange={this.props.onChangeEndTime}
+                  ></DateTimePickerComponent>
                 <br />
                 <br />
 

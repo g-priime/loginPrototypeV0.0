@@ -54,12 +54,8 @@ class EditBoardingMain extends React.Component {
         dogs: dogArray,
         initialStates: true,
         selectedDogs: dogArrayAppointed,
-        startTime: Moment(this.props.appointment.startTime).format(
-          "YYYY-MM-DDThh:mm"
-        ),
-        endTime: Moment(this.props.appointment.endTime).format(
-          "YYYY-MM-DDThh:mm"
-        ),
+        startTime: this.props.appointment.startTime,
+        endTime: this.props.appointment.endTime,
         grooming: grooming,
         comments: this.props.appointment.additionalComments,
       });
@@ -77,6 +73,12 @@ class EditBoardingMain extends React.Component {
         this.state.sessionId,
       ],
     });
+
+    var d1 = new Date(this.state.startTime);
+    var d2 = new Date(this.state.endTime);
+    var validTimes = d1.getTime() < d2.getTime();
+    var dNow = new Date();
+    var validStart = dNow.getTime() <= d1.getTime();
 
     if (this.state.selectedDogs != null) {
       var token = localStorage.getItem("token");
@@ -112,6 +114,19 @@ class EditBoardingMain extends React.Component {
         this.setState({
           cn: "popup4",
           response: "Must select at least one dog",
+        });
+        this.togglePopup();
+      }
+      else if (!validStart) {
+        this.setState({
+          cn: "popup4",
+          response: "Must enter a Start Time that has not passed",
+        });
+        this.togglePopup();
+      } else if (!validTimes) {
+        this.setState({
+          cn: "popup4",
+          response: "Must enter an End Time that is greater than Start Time",
         });
         this.togglePopup();
       }

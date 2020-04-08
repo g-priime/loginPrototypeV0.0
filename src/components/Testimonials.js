@@ -1,17 +1,32 @@
 import React from "react";
 import BasePath from "../api/BasePath";
 import '../css/testimonials.css';
+import Popup from "./PopUp";
+import TestimonialForm from "./TestimonialForm";
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import Testimonial from "./admintool/Testimonial";
 
 class Testimonials extends React.Component {
     state = {
         testimonialsList: [],
         test_id: {},
         username: {},
-        contents: ""
+        contents: "",
+        showPopup: false,
+        message: "",
+        cn: "",
+        bgColor: "red",
+        images: []
     };
 
-    componentWillMount = () => {
+    togglePopup() {
+        //just for the popup for validation
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
+    }
+
+    UNSAFE_componentWillMount = () => {
         BasePath.get('/webresources/Testimonials')
             .then(result => {
                 this.setState({ testimonialsList: result.data });
@@ -27,16 +42,21 @@ class Testimonials extends React.Component {
             {
                 token: token,
                 contents: this.state.contents
+            }).then(result => {
+                this.setState({ cn: "popup3", bgColor: "grey", images: "Testimonial was sent for approval" });
+                this.togglePopup();
             }).catch(err => {
-                console.log(err);
+                this.setState({ cn: "popup6", bgColor: "red", images: "There was an error with submitting testimonial" });
+                this.togglePopup();
             });
     }
 
     contentChange = event => {
-        this.setState({contents: event.target.value});
+        this.setState({ contents: event.target.value });
     }
 
     render() {
+        var token = localStorage.getItem('token');
         return (
             <div
                 className="gallery-container ui segment cont "
@@ -45,7 +65,7 @@ class Testimonials extends React.Component {
                 <h1 className="txt">Testimonials</h1>
                 <ListGroup>
                     {this.state.testimonialsList.map(testimonial => (
-                        <ListGroupItem>
+                        <ListGroupItem key={testimonial.id}>
                             <ListGroupItemHeading>{testimonial.username}</ListGroupItemHeading>
                             <ListGroupItemText>
                                 <span className="wrap">
@@ -55,28 +75,25 @@ class Testimonials extends React.Component {
                         </ListGroupItem>
                     ))}
                 </ListGroup>
-                <h3 className="subHeader">Add Testimonial</h3>
-                <form
-                onSubmit={this.submit}>
-                    <div className="form-group">
-                    <textarea className="form-control" value={this.contents} onChange={this.contentChange}>
-                    </textarea>
-                    </div>
-                    <br></br>
-                    <button
-                     type="submit"
-                     className="btn mb-3"
-                     style={{
-                       fontWeight: "bold",
-                       backgroundColor: "#1D3461",
-                       color: "#ECEBE7",
-                       boxShadow:
-                         "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                     }}
-                      >
-                        Submit
-                    </button>
-                </form>
+                <div>
+                    {this.state.showPopup ? (
+                        <Popup
+                            cn={this.state.cn}
+                            text={this.state.images}
+                            closePopup={this.togglePopup.bind(this)}
+                            bgColor={this.state.bgColor}
+                        />
+                    ) : null}
+                </div>
+                {token != null ? (
+                    <div>
+                        <h3 className="subHeader">Add Testimonial</h3>
+                        <TestimonialForm
+                            onSubmit={this.submit}
+                            contentChange={this.contentChange}
+                            content={this.contents}>
+                        </TestimonialForm></div>)
+                    : null}
             </div>
         );
     }

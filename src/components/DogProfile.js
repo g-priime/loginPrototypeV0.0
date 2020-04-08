@@ -169,7 +169,7 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="center">picture goes here</div>
+                    {/* <div className="center">picture goes here</div> */}
                     {/* find some way to store an image and bring it to the front end? */}
                   </div>
                 </div>
@@ -218,7 +218,7 @@ class DogProfile extends React.Component {
                   </div>
                   <div className="col-sm">
                       {this.props.chosenDog.veterinarian != null?
-                      ( <div className="left">{this.props.chosenDog.veterinarian.name}</div>):null}
+                      ( <div className="left">{this.props.chosenDog.veterinarian.vetName}</div>):null}
                   </div>
                 </div>
                 <br />

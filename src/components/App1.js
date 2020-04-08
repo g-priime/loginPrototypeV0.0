@@ -101,6 +101,7 @@ class App1 extends React.Component {
               <Route path="/EditAppointment" component={EditAppointmentMain} />
               <Route path="/BookAppointment" component={BookAppointment} />
               
+              
               <Login
                 show={this.state.show}
                 onHide={this.onHide}
@@ -108,13 +109,14 @@ class App1 extends React.Component {
                 changeErr={this.changeErr}
               />
               <DisableAccountMain
+                authenticate={this.authenticate}
                 showDisableAccount={this.state.showDisableAccount}
                 onHideDisableAccount={this.onHideDisableAccount}
               />
             </div>
           </div>
         </BrowserRouter>
-        <div><Footer /></div>
+        <footer><Footer /></footer>
       </div>
     );
   }

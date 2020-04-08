@@ -44,7 +44,7 @@ class EditDog1 extends React.Component {
     medication: [],
     allergies: "",
     physlimit: "",
-    veterinarian: ""
+    veterinarianN: ""
   };
 
   onFormSubmit = event => {
@@ -60,7 +60,7 @@ class EditDog1 extends React.Component {
       this.state.medication,
       this.state.allergies,
       this.state.physlimit,
-      this.state.veterinarian
+      this.state.veterinarianN
     );
   };
 
@@ -154,8 +154,8 @@ class EditDog1 extends React.Component {
                   <input
                     type="radio"
                     name="neuteredspayed"
-                    value="yes"
-                    checked={this.props.neuteredspayed === true}
+                    value={true}
+                    checked={this.props.neuteredspayed=== "true"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>Yes</span>
@@ -165,8 +165,8 @@ class EditDog1 extends React.Component {
                   <input
                     type="radio"
                     name="neuteredspayed"
-                    value="no"
-                    checked={this.props.neuteredspayed === false}
+                    value={false}
+                    checked={this.props.neuteredspayed === "false"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>No</span>
@@ -209,14 +209,14 @@ class EditDog1 extends React.Component {
                 <input
                   type="text"
                   value=""
-                  value={this.props.veterinarian}
+                  value={this.props.veterinarianN}
                   onChange={this.props.onChangeVeterinarian}
                 />
               </div>
             </div>
             <br />
             <br />
-            <div className="row">
+            {/* <div className="row">
               <Link //creates a link, styled like a button
                 to="/" //telling to go to home, in adddog it should be accinfo
                 type="button"
@@ -231,7 +231,7 @@ class EditDog1 extends React.Component {
               >
                 Upload Picture
               </Link>
-            </div>
+            </div> */}
             <br />
             <br />
           </div>

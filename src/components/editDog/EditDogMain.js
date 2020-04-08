@@ -59,7 +59,7 @@ class EditDogMain extends React.Component {
     allList: [],
     allergies: "",
     physlimit: "",
-    veterinarian: "",
+    veterinarianN: "",
 
     strangers: "",
     largerdogs: "",
@@ -76,13 +76,15 @@ class EditDogMain extends React.Component {
 
   getDogInfo = async () => {
 
+    console.log(localStorage.getItem('token'));
+
     const dogInfo = this.props.location.state.dog;
     console.log(dogInfo);
 
     var vetName = '';
 
     if (dogInfo.veterinarian !=null ) {
-      vetName = dogInfo.veterinarian.name;
+      vetName = dogInfo.veterinarian.vetName;
     };
 
     if (this.state.initialStates === false) {
@@ -100,7 +102,7 @@ class EditDogMain extends React.Component {
         medication: dogInfo.medications[0],
         allergies: dogInfo.allergies[0],
         physlimit: dogInfo.physLimit,
-        veterinarian: vetName,
+        veterinarianN: vetName,
         strangers: dogInfo.strangers,
         largerdogs: dogInfo.largerdogs,
         smalldogs: dogInfo.smalldogs,
@@ -114,22 +116,9 @@ class EditDogMain extends React.Component {
   };
 
   onSearchSubmit1 = async () => {
-    //should the name be different?
-    //is called when go from step 1 to step 2
-    this.setState({
-      fieldName: [
-        this.state.dogname,
-        this.state.breed,
-        this.state.dob,
-        this.state.gender,
-        this.state.weight,
-        this.state.neuteredspayed,
-        this.state.medication,
-        this.state.allergies,
-        this.state.physlimit,
-        this.state.veterinarian
-      ]
-    });
+    
+    this.state.medList.push(this.state.medication);
+    this.state.allList.push(this.state.allergies);
 
     this.setState({ images: 'Valid' });
   };
@@ -142,41 +131,41 @@ class EditDogMain extends React.Component {
 
   onSearchSubmit2 = async () => {
     //called when step 2 submitted
-    var dogname = this.state.fieldName[0];
-    var breed = this.state.fieldName[1];
+    var dogname = this.state.dogname;
+    var breed = this.state.breed;
 
-    var dob = this.state.fieldName[2];
-    var gender = this.state.fieldName[3];
-    var weight = this.state.fieldName[4];
-    var neuteredspayed = this.state.fieldName[5];
-    var medication = this.state.fieldName[6];
-    var allergies = this.state.fieldName[7];
-    var physlimit = this.state.fieldName[8];
-    var veterinarianName = this.state.fieldName[9];
-
+    var dob = this.state.dob;
+    var gender = this.state.gender;
+    var weight = this.state.weight;
+    var neuteredspayed = this.state.neuteredspayed;
+    var physlimit = this.state.physlimit;
+    var veterinarianName = this.state.veterinarianN;
     var dogId = this.state.dogId;
-    var strangers, largerdogs, smalldogs, puppies, train;
-    if (this.state.strangers == 'true') {
-      strangers=true;
-    } else {
-      strangers=false;
-    }
-    if (this.state.largerdogs == 'true') {
-      largerdogs=true;
-    } else {
-      largerdogs=false;
-    }
-    if (this.state.smalldogs =='true') {
-      smalldogs =true;
-    } else {
-      smalldogs=false;
-    }
-    if (this.state.puppies =='true') {
-      puppies =true;
-    } else {
-      puppies=false;
-    }
+    var strangers = this.state.strangers;
+    var largerdogs = this.state.largerdogs;
+    var smalldogs = this.state.smalldogs;
+    var puppies = this.state.puppies;
     var train = this.state.train;
+    // if (this.state.strangers == 'true') {
+    //   strangers=true;
+    // } else {
+    //   strangers=false;
+    // }
+    // if (this.state.largerdogs == 'true') {
+    //   largerdogs=true;
+    // } else {
+    //   largerdogs=false;
+    // }
+    // if (this.state.smalldogs =='true') {
+    //   smalldogs =true;
+    // } else {
+    //   smalldogs=false;
+    // }
+    // if (this.state.puppies =='true') {
+    //   puppies =true;
+    // } else {
+    //   puppies=false;
+    // }
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
@@ -195,7 +184,7 @@ class EditDogMain extends React.Component {
       allergies: this.state.allList,
       physLimit: physlimit,
       veterinarian: {
-        name: veterinarianName
+        vetName: veterinarianName
       },
 
       strangerComfortable: strangers,
@@ -245,16 +234,17 @@ class EditDogMain extends React.Component {
 
   handleChangeNeuteredspayed = event => {
     this.setState({ neuteredspayed: event.target.value });
+    console.log(this.state.neuteredspayed);
   };
 
   handleChangeMedication = event => {
     this.setState({ medication: event.target.value });
-    this.state.medList.push(this.state.medication);
+    //this.state.medList.push(this.state.medication);
   };
 
   handleChangeAllergies = event => {
     this.setState({ allergies: event.target.value });
-    this.state.allList.push(this.state.allergies);
+    //this.state.allList.push(this.state.allergies);
   };
 
   handleChangePhyslimit = event => {
@@ -262,7 +252,7 @@ class EditDogMain extends React.Component {
   };
 
   handleChangeVeterinarian = event => {
-    this.setState({ veterinarian: event.target.value });
+    this.setState({ veterinarianN: event.target.value });
   };
 
   handleChangeStrangers = event => {
@@ -334,7 +324,7 @@ class EditDogMain extends React.Component {
             medication={this.state.medication}
             allergies={this.state.allergies}
             physlimit={this.state.physlimit}
-            veterinarian={this.state.veterinarian}
+            veterinarianN={this.state.veterinarianN}
             onSubmit={this.onSearchSubmit1}
           // onClick={() => {
           //   //no needed

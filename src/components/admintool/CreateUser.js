@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 
 class CreateUser extends React.Component {
   state = {
@@ -21,10 +22,10 @@ class CreateUser extends React.Component {
     postcode: "",
     phone: "",
     emergencyphone: "",
-    emergencyname: ""
+    emergencyname: "",
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
@@ -61,8 +62,8 @@ class CreateUser extends React.Component {
                 <label>Username:</label>
                 <input
                   required
-                  title="Cannot be shorter than 5 and longer then 20 characters, can only contain numbers and letters"
-                  pattern="^[a-zA-Z1-9]{5,20}$"
+                  title="Cannot be shorter than 5 and longer then 15 characters, can only contain numbers and letters"
+                  pattern="^[a-zA-Z1-9]{5,15}$"
                   className="field b-5"
                   type="text"
                   placeholder="Enter username"
@@ -74,6 +75,7 @@ class CreateUser extends React.Component {
 
                 <label>Password:</label>
                 <input
+                  id="p1"
                   type="password"
                   name="password"
                   pattern="^[a-zA-Z1-9_*-]{8,20}$"
@@ -88,13 +90,14 @@ class CreateUser extends React.Component {
 
                 <label>Confirm Password:</label>
                 <input
+                  id="p2"
                   type="password"
                   name="confirmPassword"
                   pattern="^[a-zA-Z1-9_*-]{8,20}$"
                   title="Cannot be shorter than 8 and longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
                   placeholder="Confirm password"
                   value={this.props.confirmPassword}
-                  onChange={this.props.onChangeConfirmPassword} 
+                  onChange={this.props.onChangeConfirmPassword}
                   required
                 />
               </div>
@@ -204,13 +207,14 @@ class CreateUser extends React.Component {
 
                     <div className="col-sm">
                       <label>Province:</label>
-                      <input
-                        className="field b-5"
-                        type="text"
-                        placeholder="Enter your province"
+                      <Select
+                        closeMenuOnSelect={true}
                         value={this.props.province}
                         onChange={this.props.onChangeProvince}
-                        required
+                        options={this.props.provinces}
+                        getOptionLabel={(option) => option.value}
+                        getOptionValue={(option) => option.value}
+                        getOptionKey={(option) => option.key}
                       />
                     </div>
                   </div>
@@ -234,6 +238,46 @@ class CreateUser extends React.Component {
             </div>
             <br />
             <div>
+              <div className="row pr-3">
+                <div className="col-sm">
+                  <label>Personal Phone:</label>
+                  <input
+                    className="field b-5"
+                    type="text"
+                    placeholder="Format: 5551235678"
+                    pattern="^\d{10}$"
+                    value={this.props.phone}
+                    onChange={this.props.onChangePhone}
+                    required
+                  />
+                </div>
+                <div className="col-sm">
+                  <label>Emergency Phone:</label>
+                  <input
+                    className="field b-5"
+                    type="text"
+                    placeholder="Format: 5551235678"
+                    pattern="^\d{10}$"
+                    value={this.props.emergencyphone}
+                    onChange={this.props.onChangeEmergencyphone}
+                    required
+                  />
+                </div>
+                <div className="col-sm">
+                  <label>Emergency Name:</label>
+                  <input
+                    className="field b-5"
+                    type="text"
+                    placeholder="Enter your emergency contact Name"
+                    value={this.props.emergencyname}
+                    onChange={this.props.onChangeEmergencyname}
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <br />
               <button
                 className="btn mr-3 mb-3"
                 style={{
@@ -241,7 +285,7 @@ class CreateUser extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Create User

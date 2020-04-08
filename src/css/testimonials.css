@@ -8,3 +8,17 @@
     font-size: x-large;
     color: #715d5c;
 }
+
+.wrapAdmin {
+    word-wrap:break-word; 
+    hyphens: auto;
+    width: 80%;
+
+}
+
+.borderTest {
+    margin: 5px;
+    border-style: solid;
+    border-color:#715d5c5e;
+    border-width: thin;
+}
