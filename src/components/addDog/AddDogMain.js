@@ -52,9 +52,9 @@ class AddDogMain extends React.Component {
     neuteredspayed: "",
     medication: "",
     allergies: "",
-    medList:"",
-    allList:"",
-    train:false,
+    medList: "",
+    allList: "",
+    train: false,
     physlimit: "",
     veterinarian: "",
 
@@ -66,12 +66,11 @@ class AddDogMain extends React.Component {
     rabies: "",
     bordetella: "",
 
-    initialStates: false
+    initialStates: false,
   };
 
   onSearchSubmit1 = async () => {
-
-    this.setState({ images: 'Valid' });
+    this.setState({ images: "Valid" });
   };
 
   onPrevious = () => {
@@ -80,13 +79,12 @@ class AddDogMain extends React.Component {
     console.log(this.state.images);
   };
 
-
   onSearchSubmit2 = async () => {
     //called when step 2 submitted
 
     var medList = this.state.medication;
     var allList = this.state.allergies;
-    
+
     var dogname = this.state.dogname;
     var breed = this.state.breed;
 
@@ -100,7 +98,7 @@ class AddDogMain extends React.Component {
     console.log(this.state.strangers);
     var dogId = this.state.dogId;
     var strangers = this.state.strangers;
-    var  largerdogs = this.state.largerdogs;
+    var largerdogs = this.state.largerdogs;
     var smalldogs = this.state.smalldogs;
     var puppies = this.state.puppies;
     var train = this.state.train;
@@ -111,12 +109,12 @@ class AddDogMain extends React.Component {
 
     console.log(veterinarianName);
 
-    var token = localStorage.getItem('token');
-    
-    const response = await BasePath.put('/webresources/registerDog', {
-      token:token,
+    var token = localStorage.getItem("token");
+
+    const response = await BasePath.put("/webresources/registerDog", {
+      token: token,
       idNumber: dogId,
-      name:dogname,
+      name: dogname,
       breed: breed,
       dateOfBirth: dob,
       gender: gender,
@@ -126,129 +124,119 @@ class AddDogMain extends React.Component {
       allergies: allList,
       physLimit: physlimit,
       veterinarian: {
-        vetName: veterinarianName
+        vetName: veterinarianName,
       },
 
       strangerComfortable: strangers,
       largeDogFriendly: largerdogs,
       smallDogFriendly: smalldogs,
       puppyFriendly: puppies,
-      vaccines:
-      {
+      vaccines: {
         da2pp: da2pp,
         rabies: rabies,
-        bordetella: bordetella
+        bordetella: bordetella,
       },
       active: true,
-      trainingDone: train
+      trainingDone: train,
     });
 
     this.setState({ images: response.data });
   };
 
   togglePopup() {
-    //just for the popup for validation
+    //for the popup for validation
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
-/*
-  onChangePage = () => {
-    this.props.onClick(this.state.page);
-    console.log("here");
-  };
-*/
-  handleChangeDogname = event => {
-    //getting info from the fields, needed
+
+  handleChangeDogname = (event) => {
+    //getting info from the fields
     this.setState({ dogname: event.target.value });
   };
 
-  handleChangeBreed = event => {
+  handleChangeBreed = (event) => {
     this.setState({ breed: event.target.value });
   };
 
-  handleChangeDob = event => {
+  handleChangeDob = (event) => {
     this.setState({ dob: event.target.value });
   };
 
-  handleChangeGender = event => {
+  handleChangeGender = (event) => {
     console.log(event.target.value);
     this.setState({ gender: event.target.value });
   };
 
-  handleChangeWeight = event => {
+  handleChangeWeight = (event) => {
     this.setState({ weight: event.target.value });
   };
 
-  handleChangeNeuteredspayed = event => {
+  handleChangeNeuteredspayed = (event) => {
     this.setState({ neuteredspayed: event.target.value });
   };
 
-  handleChangeMedication = event => {
+  handleChangeMedication = (event) => {
     this.setState({ medication: event.target.value });
-    //this.state.medList.push(this.state.medication);
   };
 
-  handleChangeAllergies = event => {
+  handleChangeAllergies = (event) => {
     this.setState({ allergies: event.target.value });
-    //this.state.allList.push(this.state.allergies);
   };
 
-  handleChangePhyslimit = event => {
+  handleChangePhyslimit = (event) => {
     this.setState({ physlimit: event.target.value });
   };
 
-  handleChangeVeterinarian = event => {
+  handleChangeVeterinarian = (event) => {
     this.setState({ veterinarian: event.target.value });
   };
 
-  handleChangeStrangers = event => {
+  handleChangeStrangers = (event) => {
     this.setState({ strangers: event.target.value });
   };
 
-  handleChangeLargerdogs = event => {
+  handleChangeLargerdogs = (event) => {
     this.setState({ largerdogs: event.target.value });
   };
 
-  handleChangeSmalldogs = event => {
+  handleChangeSmalldogs = (event) => {
     this.setState({ smalldogs: event.target.value });
   };
 
-  handleChangePuppies = event => {
+  handleChangePuppies = (event) => {
     this.setState({ puppies: event.target.value });
   };
 
-  handleChangeDa2pp = event => {
+  handleChangeDa2pp = (event) => {
     this.setState({ da2pp: event.target.value });
   };
 
-  handleChangeRabies = event => {
+  handleChangeRabies = (event) => {
     this.setState({ rabies: event.target.value });
   };
 
-  handleChangeBordetella = event => {
+  handleChangeBordetella = (event) => {
     this.setState({ bordetella: event.target.value });
   };
 
   render() {
-    //this.getCustomerInfo(); //just for editing
-
     var isValid = this.state.images; // images - message sent from the back
 
     if (isValid === "Successfully added") {
-      //validation after submitting the 2nd step, add and edit
+      //validation after submitting the 2nd step
       return (
         <div style={{ marginTop: "10px" }}>
           <Redirect
             to={{
-              pathname: "/Profile", //will be path for the UserAcc
-              state: { message: "Dog added" }
+              pathname: "/Profile",
+              state: { message: "Dog added" },
             }}
           />
         </div>
       );
     } else if (isValid !== "Valid") {
-      //will be the first step
+      //the first step
       return (
         <div style={{ marginTop: "10px" }}>
           <AddDog1
@@ -275,7 +263,7 @@ class AddDogMain extends React.Component {
             onSubmit={this.onSearchSubmit1}
           />
           <div>
-            {this.state.showPopup ? ( 
+            {this.state.showPopup ? (
               <Popup
                 cn={this.state.cn}
                 text={this.state.images}
@@ -306,7 +294,7 @@ class AddDogMain extends React.Component {
             rabies={this.state.rabies}
             bordetella={this.state.bordetella}
             onSubmit={this.onSearchSubmit2} //calls onsearch submit, all the stuff is getting passed from main page to the step2
-             onClickPrev={this.onPrevious} //don't need
+            onClickPrev={this.onPrevious}
           />
         </div>
       );
