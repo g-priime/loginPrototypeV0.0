@@ -21,10 +21,7 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     position: relative;
-    //font-size: 100%;
     background: #6298C8;
-    //background: -webkit-linear-gradient(to right, #FFD194, #D1913C);
-    //background: linear-gradient(to right, #FFD194, #D1913C);
 }
 
 .gallery-container {
@@ -35,10 +32,6 @@ body {
     margin: 2rem 0;
     padding: 0;
     text-align: center;
-    //color: #fff;
-    //text-transform: uppercase;
-    //font-size: 6.5vw;
-    //font-weight: lighter;
 }
 
 .gallery-grid {
@@ -57,7 +50,6 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    // When above our large breakpoint, make sure we have 3 columns
     @include bp(large) {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -157,7 +149,6 @@ body {
     font-weight: lighter;
     background: #fff;
     border-radius: 5px;
-    //height: 40px; width: 40px;
     text-align: center;
 }
 
