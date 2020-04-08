@@ -1,23 +1,20 @@
 import React from "react";
-
 import dog from "../images/logo.png";
-
 import "../css/head.css";
 import { NavLink } from "react-router-dom";
-
 import BasePath from "../api/BasePath";
 import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
 } from "reactstrap";
 
 class Header1 extends React.Component {
   state = {
     initialStates: false,
     username: "",
-    admin: false
+    admin: false,
   };
 
   getCustomerInfo = async () => {
@@ -37,7 +34,7 @@ class Header1 extends React.Component {
       this.setState({
         initialStates: true,
         username: customerInfo.data.username,
-        admin: customerInfo.data.admin
+        admin: customerInfo.data.admin,
       });
     }
   };
@@ -68,7 +65,6 @@ class Header1 extends React.Component {
             </NavLink>
             <h2 className="title mr-3">K9 FUN FAMILY</h2>
           </div>
-          {/* TODO: find a way to keep track of current page for highlighting the tab, maybe store in session? */}
           <div
             className="container-head d-flex align-items-center d-flex justify-content-around header"
             style={{ backgroundColor: "#ECEBE7" }}
@@ -118,9 +114,12 @@ class Header1 extends React.Component {
                     </NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    <div style={{ color: "#707070" }} onClick={this.props.showDisableAccount}>
+                    <div
+                      style={{ color: "#707070" }}
+                      onClick={this.props.showDisableAccount}
+                    >
                       Disable Account
-                     </div>
+                    </div>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
@@ -153,7 +152,6 @@ class Header1 extends React.Component {
             </NavLink>
             <h2 className="title mr-3">K9 FUN FAMILY</h2>
           </div>
-          {/* TODO: find a way to keep track of current page for highlighting the tab, maybe store in session? */}
           <div
             className="container-head d-flex align-items-center d-flex justify-content-around header"
             style={{ backgroundColor: "#ECEBE7" }}
@@ -183,11 +181,6 @@ class Header1 extends React.Component {
                 <div className="pt-3 pb-3">FAQ</div>
               </NavLink>
             </div>
-            {/* <div>
-              <NavLink to="/admin" style={{ color: "#707070" }}>
-                <div className="pt-3 pb-3">Admin Tool</div>
-              </NavLink>
-            </div> */}
             <div className="dropDown">
               <UncontrolledDropdown>
                 <DropdownToggle nav caret style={{ color: "#707070" }}>
@@ -200,9 +193,12 @@ class Header1 extends React.Component {
                     </NavLink>
                   </DropdownItem>
                   <DropdownItem>
-                    <div style={{ color: "#707070" }} onClick={this.props.showDisableAccount}>
+                    <div
+                      style={{ color: "#707070" }}
+                      onClick={this.props.showDisableAccount}
+                    >
                       Disable Account
-                     </div>
+                    </div>
                   </DropdownItem>
                   <DropdownItem divider />
                   <DropdownItem>
@@ -218,7 +214,8 @@ class Header1 extends React.Component {
               </UncontrolledDropdown>
             </div>
           </div>
-        </div >);
+        </div>
+      );
     } else {
       return (
         <div>
@@ -234,7 +231,6 @@ class Header1 extends React.Component {
             </NavLink>
             <h2 className="title mr-3">K9 FUN FAMILY</h2>
           </div>
-          {/* TODO: find a way to keep track of current page for highlighting the tab, maybe store in session? */}
           <div
             className="container-head d-flex align-items-center d-flex justify-content-around header"
             style={{ backgroundColor: "#ECEBE7" }}

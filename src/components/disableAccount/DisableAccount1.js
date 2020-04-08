@@ -5,7 +5,7 @@ import "../../css/changePassword.css";
 class DisableAccount1 extends React.Component {
   state = { password: "" };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(this.state.password);
@@ -40,7 +40,7 @@ class DisableAccount1 extends React.Component {
                 backgroundColor: "#1D3461",
                 color: "#ECEBE7",
                 boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               }}
             >
               Disable Account

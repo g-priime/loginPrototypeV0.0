@@ -4,18 +4,12 @@ import BasePath from "../api/BasePath";
 import "../css/reg.css";
 import "../css/userAccount.css";
 import { Link } from "react-router-dom";
-import PopUpConfirm from './PopUpConfirm';
-//here receive the dog, in the props
+import PopUpConfirm from "./PopUpConfirm";
 
 class DogProfile extends React.Component {
-  // const DogProfile = props => {
-  //   const [isOpen, setIsOpen] = useState(false);
-
-  //   const toggle = () => setIsOpen(!isOpen);
-
   state = {
     isOpen: false,
-    showCon: false
+    showCon: false,
   };
 
   toggle = () => {
@@ -27,27 +21,27 @@ class DogProfile extends React.Component {
   };
 
   deleteDog = () => {
-    var token = localStorage.getItem('token');
-    BasePath.put('/webresources/deleteDog', {
+    var token = localStorage.getItem("token");
+    BasePath.put("/webresources/deleteDog", {
       token: token,
-      petID: this.props.chosenDog.idNumber
-    }).then( result => {
+      petID: this.props.chosenDog.idNumber,
+    }).then((result) => {
       this.props.updateList();
     });
   };
 
   showConAndDel = () => {
-    this.setState({showCon : true});
-  }
+    this.setState({ showCon: true });
+  };
 
   dontConfirm = () => {
-    this.setState({showCon : false});
-  }
+    this.setState({ showCon: false });
+  };
 
   confirm = () => {
-    this.setState({showCon : false});
+    this.setState({ showCon: false });
     this.deleteDog();
-  }
+  };
 
   render() {
     return (
@@ -62,7 +56,7 @@ class DogProfile extends React.Component {
               "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
             marginBottom: "1rem",
             width: "30%",
-            marginRight: 15
+            marginRight: 15,
           }}
           onClick={this.toggle}
         >
@@ -70,7 +64,7 @@ class DogProfile extends React.Component {
         </Button>
 
         <Link
-          to={{pathname:"EditDog", state:{dog: this.props.chosenDog}}}
+          to={{ pathname: "EditDog", state: { dog: this.props.chosenDog } }}
           type="button"
           className="btn mb-3"
           style={{
@@ -79,7 +73,7 @@ class DogProfile extends React.Component {
             color: "#ECEBE7",
             boxShadow:
               "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-            marginRight: 15
+            marginRight: 15,
           }}
         >
           Edit dog
@@ -94,26 +88,30 @@ class DogProfile extends React.Component {
             color: "#ECEBE7",
             boxShadow:
               "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-            marginRight: 15
+            marginRight: 15,
           }}
           onClick={this.showConAndDel}
         >
           Delete dog
         </div>
 
-        { this.state.showCon ? (
-        <PopUpConfirm dontConfirm={this.dontConfirm} confirm={this.confirm} text={'Are you sure you want to delete '+ this.props.chosenDog.name +'?'} cn="popup3"/>
+        {this.state.showCon ? (
+          <PopUpConfirm
+            dontConfirm={this.dontConfirm}
+            confirm={this.confirm}
+            text={
+              "Are you sure you want to delete " +
+              this.props.chosenDog.name +
+              "?"
+            }
+            cn="popup3"
+          />
         ) : null}
 
-        {/* 2 buttons. for Edit onClick goes to function that Edit willgo to edit dog ....in edit dog=>(Put method....BasePath.put(chosenDog.idNumber, {})) Edit would onClick sets boolean and if Edit is true - display the other HTML */}
-        {/* {this.props.chosenDog.dogname} */}
         <Collapse isOpen={this.state.isOpen}>
-          {/* <Collapse isOpen={true}> */}
           <Card style={{ backgroundColor: "#ECEBE7" }}>
             <CardBody>
               <div>
-                {/* <div>{this.props.chosenDog.dogname}</div> */}
-
                 <div className="row">
                   <div className="col-sm">
                     <div className="row">
@@ -168,10 +166,7 @@ class DogProfile extends React.Component {
                       )}
                     </div>
                   </div>
-                  <div className="col-sm">
-                    {/* <div className="center">picture goes here</div> */}
-                    {/* find some way to store an image and bring it to the front end? */}
-                  </div>
+                  <div className="col-sm"></div>
                 </div>
                 <br />
                 <h2>Care</h2>
@@ -217,8 +212,11 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                      {this.props.chosenDog.veterinarian != null?
-                      ( <div className="left">{this.props.chosenDog.veterinarian.vetName}</div>):null}
+                    {this.props.chosenDog.veterinarian != null ? (
+                      <div className="left">
+                        {this.props.chosenDog.veterinarian.vetName}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
                 <br />
@@ -288,7 +286,9 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                      <div className="left">{this.props.chosenDog.vaccines.da2pp}</div>
+                    <div className="left">
+                      {this.props.chosenDog.vaccines.da2pp}
+                    </div>
                   </div>
                 </div>
                 <div className="row">
@@ -298,7 +298,9 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">{this.props.chosenDog.vaccines.rabies}</div>
+                    <div className="left">
+                      {this.props.chosenDog.vaccines.rabies}
+                    </div>
                   </div>
                 </div>
                 <div className="row">
@@ -308,7 +310,9 @@ class DogProfile extends React.Component {
                     </div>
                   </div>
                   <div className="col-sm">
-                    <div className="left">{this.props.chosenDog.vaccines.bordetella}</div>
+                    <div className="left">
+                      {this.props.chosenDog.vaccines.bordetella}
+                    </div>
                   </div>
                 </div>
               </div>

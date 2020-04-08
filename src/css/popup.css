@@ -1,102 +1,101 @@
+.popup1 {
+  position: fixed;
+  width: 30%;
+  height: 20%;
+  top: 5%;
+  left: 0;
+  right: 40%;
+  bottom: 0;
+  margin: auto;
+  border-radius: 20px;
+  border-color: red;
+  border-style: solid;
+  background-color: white;
+}
 
-.popup1 {  
-    position: fixed;  
-    width: 30%;  
-    height: 20%;  
-    top: 5%;  
-    left: 0;  
-    right: 40%;  
-    bottom: 0;  
-    margin: auto;  
-    border-radius: 20px;
-    border-color: red;
-    border-style: solid;
-    background-color: white;  
-  }  
-  
-  .popup2 {  
-    position: fixed;  
-    width: 30%;  
-    height: 20%;  
-    top: 30%;  
-    left: 0;  
-    right: 40%;  
-    bottom: 0;  
-    margin: auto;  
-    border-radius: 20px;
-    border-color: red;
-    border-style: solid;
-    background-color: white;  
-  }  
-  
-  .popup3 {  
-    position: fixed;  
-    width: 30%;  
-    height: 20%;  
-    top: 0%;  
-    left: 0;  
-    right: 0%;  
-    bottom: 30%;  
-    margin: auto;  
-    border-radius: 20px;
-    border-color: #707070;
-    border-style: solid;
-    background-color: white;  
-    z-index:1;
-  } 
+.popup2 {
+  position: fixed;
+  width: 30%;
+  height: 20%;
+  top: 30%;
+  left: 0;
+  right: 40%;
+  bottom: 0;
+  margin: auto;
+  border-radius: 20px;
+  border-color: red;
+  border-style: solid;
+  background-color: white;
+}
 
-  .popup4 {  
-    position: fixed;  
-    width: 30%;  
-    height: 20%;  
-    top: -15%;  
-    left: 0;  
-    right: 0;  
-    bottom: 0;  
-    margin: auto;  
-    border-radius: 20px;
-    border-color: red;
-    border-style: solid;
-    background-color: white;  
-  }  
-  
-  .popup5 {  
-    position: fixed;  
-    width: 30%;  
-    height: 20%;  
-    top: 10%;  
-    left: 0;  
-    right: 0;  
-    bottom: 0;  
-    margin: auto;  
-    border-radius: 20px;
-    border-color: red;
-    border-style: solid;
-    background-color: white;  
-  } 
-  
-  .popup6 {  
-    position: fixed;  
-    width: 30%;  
-    height: 20%;  
-    top: 10%;  
-    left: 0;  
-    right: 0;  
-    bottom: 0;  
-    margin: auto;  
-    border-radius: 20px;
-    border-color: red;
-    border-style: solid;
-    background-color: white;  
-  }
-  
-  .popup\_inner {  
-    position: absolute;  
-    left: 25%;  
-    right: 25%;  
-    top: 25%;  
-    bottom: 25%;  
-    margin: auto;  
-    border-radius: 20px;  
-    background: white;  
-  }
+.popup3 {
+  position: fixed;
+  width: 30%;
+  height: 20%;
+  top: 0%;
+  left: 0;
+  right: 0%;
+  bottom: 30%;
+  margin: auto;
+  border-radius: 20px;
+  border-color: #707070;
+  border-style: solid;
+  background-color: white;
+  z-index: 1;
+}
+
+.popup4 {
+  position: fixed;
+  width: 30%;
+  height: 20%;
+  top: -15%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 20px;
+  border-color: red;
+  border-style: solid;
+  background-color: white;
+}
+
+.popup5 {
+  position: fixed;
+  width: 30%;
+  height: 20%;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 20px;
+  border-color: red;
+  border-style: solid;
+  background-color: white;
+}
+
+.popup6 {
+  position: fixed;
+  width: 30%;
+  height: 20%;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 20px;
+  border-color: red;
+  border-style: solid;
+  background-color: white;
+}
+
+.popup\_inner {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  border-radius: 20px;
+  background: white;
+}

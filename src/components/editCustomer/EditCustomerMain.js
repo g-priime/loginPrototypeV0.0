@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import EditCustomer2 from "./EditCustomer2";
 import EditCustomer1 from "./EditCustomer1";
@@ -154,7 +153,7 @@ class EditCustomerMain extends React.Component {
 
       firstName,
       lastName,
-      
+
       phoneNumber,
       emergencyPhone,
       emergencyName,

@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import EditBoarding1 from "./EditBoarding1";
 import EditBoarding2 from "./EditBoarding2";

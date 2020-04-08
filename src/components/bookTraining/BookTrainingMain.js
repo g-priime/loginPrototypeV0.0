@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import BookTraining1 from "./BookTraining1";
 import BookTraining2 from "./BookTraining2";
@@ -59,7 +58,6 @@ class BookTrainingMain extends React.Component {
         this.state.endTime,
         this.state.grooming,
         this.state.comments,
-        //this.state.sessionId
         this.state.baby,
       ],
     });
@@ -81,7 +79,6 @@ class BookTrainingMain extends React.Component {
       dogs = this.state.selectedDogs.key;
     }
     console.log(this.state.selectedDogs);
-    //this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
     var dogString = dogs.toString();
 
     var startTime = this.state.startTime;
@@ -156,7 +153,6 @@ class BookTrainingMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var selectedDogs = this.state.selectedDogs.key;
-    //this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
     var startTime = Moment(this.state.fieldName[1]).format(
       "YYYY-MM-DD HH:mm:ss"

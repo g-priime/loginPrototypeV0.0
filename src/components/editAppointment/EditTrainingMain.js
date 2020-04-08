@@ -1,11 +1,9 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import EditTraining1 from "./EditTraining1";
 import EditTraining2 from "./EditTraining2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
-
 import Moment from "moment";
 import EditTraining3 from "./EditTraining3";
 

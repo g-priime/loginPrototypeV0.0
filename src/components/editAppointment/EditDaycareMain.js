@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import EditDaycare1 from "./EditDaycare1";
 import EditDaycare2 from "./EditDaycare2";

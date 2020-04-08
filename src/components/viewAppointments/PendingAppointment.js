@@ -6,7 +6,7 @@ import PopUpConfirm from "../PopUpConfirm";
 class PendingAppointment extends React.Component {
   state = {
     isOpen: false,
-    showCon: false
+    showCon: false,
   };
 
   deleteAppointment = () => {
@@ -15,8 +15,8 @@ class PendingAppointment extends React.Component {
 
     BasePath.put("/webresources/deleteAppointment", {
       token,
-      idNumber
-    }).then(result => {
+      idNumber,
+    }).then((result) => {
       this.props.updateAppointments();
     });
   };
@@ -46,7 +46,7 @@ class PendingAppointment extends React.Component {
           <Link
             to={{
               pathname: "EditAppointment",
-              state: { appointment: this.props.appointment }
+              state: { appointment: this.props.appointment },
             }}
             type="button"
             className="btn mb-3"
@@ -57,7 +57,7 @@ class PendingAppointment extends React.Component {
               boxShadow:
                 "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               width: 150,
-              marginTop: "-3%"
+              marginTop: "-3%",
             }}
           >
             Edit
@@ -75,7 +75,7 @@ class PendingAppointment extends React.Component {
               boxShadow:
                 "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               width: 150,
-              marginTop: "-3%"
+              marginTop: "-3%",
             }}
           >
             Cancel

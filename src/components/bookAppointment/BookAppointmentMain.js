@@ -1,11 +1,9 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import BookAppointment1 from "./BookAppointment1";
 import BookAppointment2 from "./BookAppointment2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
-
 import Moment from "moment";
 
 class BookAppointmentMain extends React.Component {
@@ -108,8 +106,7 @@ class BookAppointmentMain extends React.Component {
           response: "Must select at least one dog",
         });
         this.togglePopup();
-      }
-      else if (!validStart) {
+      } else if (!validStart) {
         this.setState({
           cn: "popup4",
           response: "Must enter a Start Time that is after present time",

@@ -2,22 +2,24 @@ import React from "react";
 import Popup from "./PopUp";
 
 class HomePage extends React.Component {
+  state = { message: "", cn: "", bgColor: "blue" };
 
-  state = { message: "", cn: "", bgColor: 'blue' };
-
- UNSAFE_componentWillMount() {
-    if (typeof this.props.location.state == "undefined" || this.props.location.state === null) {
-        this.setState({ message: "" });
-      } else {
-        this.setState({ message: this.props.location.state.message });
-        this.setState({ cn: "popup3" });
-        this.togglePopup();
-      }
- }
+  UNSAFE_componentWillMount() {
+    if (
+      typeof this.props.location.state == "undefined" ||
+      this.props.location.state === null
+    ) {
+      this.setState({ message: "" });
+    } else {
+      this.setState({ message: this.props.location.state.message });
+      this.setState({ cn: "popup3" });
+      this.togglePopup();
+    }
+  }
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 

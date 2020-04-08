@@ -1,7 +1,6 @@
 import React from "react";
 import "../../css/addDog.css";
 import "../../css/reg.css";
-import AddDog1 from "./AddDog1";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Hint } from "../hint.svg";
@@ -43,14 +42,13 @@ class AddDog2 extends React.Component {
     train: "",
     da2pp: "",
     rabies: "",
-    bordetella: ""
+    bordetella: "",
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
-      
       this.state.strangers,
       this.state.largerdogs,
       this.state.smalldogs,
@@ -59,12 +57,10 @@ class AddDog2 extends React.Component {
       this.state.da2pp,
       this.state.rabies,
       this.state.bordetella
-      
     );
-    
   };
 
-  previousStep_onClick = event => {
+  previousStep_onClick = (event) => {
     event.preventDefault();
     this.props.onClickPrev();
   };
@@ -92,8 +88,8 @@ class AddDog2 extends React.Component {
                 </div>
               </div>
               <br />
-              
-               <div className="row">
+
+              <div className="row">
                 <div className="col-sm-6">
                   Is your dog comfortable with strangers?
                 </div>
@@ -104,7 +100,6 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="strangers"
                       value={true}
-                      //checked={this.props.strangers}
                       onChange={this.props.onChangeStrangers}
                     />
                   </label>
@@ -116,7 +111,6 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="strangers"
                       value="no"
-                      //checked={this.props.strangers}
                       onChange={this.props.onChangeStrangers}
                     />
                   </label>
@@ -134,7 +128,6 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="largerdogs"
                       value={true}
-                      //checked={this.props.largerdogs}
                       onChange={this.props.onChangeLargerdogs}
                     />
                   </label>
@@ -146,7 +139,6 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="largerdogs"
                       value="no"
-                      //checked={this.props.largerdogs}
                       onChange={this.props.onChangeLargerdogs}
                     />
                   </label>
@@ -164,7 +156,6 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="smalldogs"
                       value={true}
-                      //checked={this.props.smalldogs}
                       onChange={this.props.onChangeSmalldogs}
                     />
                   </label>
@@ -176,7 +167,6 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="smalldogs"
                       value="no"
-                      //checked={this.props.smalldogs}
                       onChange={this.props.onChangeSmalldogs}
                     />
                   </label>
@@ -194,7 +184,6 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="puppies"
                       value={true}
-                      //checked={this.props.puppies}
                       onChange={this.props.onChangePuppies}
                     />
                   </label>
@@ -206,93 +195,90 @@ class AddDog2 extends React.Component {
                       type="radio"
                       name="puppies"
                       value="no"
-                      //checked={this.props.puppies}
                       onChange={this.props.onChangePuppies}
                     />
                   </label>
                 </div>
-              </div> 
+              </div>
               <br />
               <br />
               <h3>Dog must have up to date vaccination Documents from vet</h3>
-              
-                 <div className="row">
-                  
-                  <div className="col-sm">
-                    {" "}
-                    <Hint />
-                  </div>
-                  <div className="col-sm">DA2PP</div>
-                  <div className="col-sm">
-                    {" "}
-                    <input
-                      required
-                      type="date"
-                      value={this.props.da2pp}
-                      onChange={this.props.onChangeDa2pp}
-                      inputlabelprops={{
-                        shrink: true
-                      }}
-                    />
-                  </div>
+
+              <div className="row">
+                <div className="col-sm">
+                  {" "}
+                  <Hint />
                 </div>
-                <div className="row">
-                  <div className="col-sm">
-                    {" "}
-                    <Hint />
-                  </div>
-                  <div className="col-sm">RABIES</div>
-                  <div className="col-sm">
-                    {" "}
-                    <input
-                      required
-                      type="date"
-                      value={this.props.rabies}
-                      onChange={this.props.onChangeRabies}
-                      inputlabelprops={{
-                        shrink: true
-                      }}
-                    />
-                  </div>
+                <div className="col-sm">DA2PP</div>
+                <div className="col-sm">
+                  {" "}
+                  <input
+                    required
+                    type="date"
+                    value={this.props.da2pp}
+                    onChange={this.props.onChangeDa2pp}
+                    inputlabelprops={{
+                      shrink: true,
+                    }}
+                  />
                 </div>
-                <div className="row">
-                  <div className="col-sm">
-                    {" "}
-                    <Hint />
-                  </div>
-                  <div className="col-sm">BORDETELLA</div>
-                  <div className="col-sm">
-                    {" "}
-                    <input
-                      required
-                      type="date"
-                      value={this.props.bordetella}
-                      onChange={this.props.onChangeBordetella}
-                      inputlabelprops={{
-                        shrink: true
-                      }}
-                    />
-                  </div>
-                </div> 
               </div>
-           
+              <div className="row">
+                <div className="col-sm">
+                  {" "}
+                  <Hint />
+                </div>
+                <div className="col-sm">RABIES</div>
+                <div className="col-sm">
+                  {" "}
+                  <input
+                    required
+                    type="date"
+                    value={this.props.rabies}
+                    onChange={this.props.onChangeRabies}
+                    inputlabelprops={{
+                      shrink: true,
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm">
+                  {" "}
+                  <Hint />
+                </div>
+                <div className="col-sm">BORDETELLA</div>
+                <div className="col-sm">
+                  {" "}
+                  <input
+                    required
+                    type="date"
+                    value={this.props.bordetella}
+                    onChange={this.props.onChangeBordetella}
+                    inputlabelprops={{
+                      shrink: true,
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           <div className="d-flex justify-content-between">
-          <Link
-                to="AddDog1"
-                type="button"
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-                onClick={this.previousStep_onClick}
-              >
-                Previous Step
-              </Link>
+            <Link
+              to="AddDog1"
+              type="button"
+              className="btn mb-3"
+              style={{
+                fontWeight: "bold",
+                backgroundColor: "#1D3461",
+                color: "#ECEBE7",
+                boxShadow:
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+              }}
+              onClick={this.previousStep_onClick}
+            >
+              Previous Step
+            </Link>
             <button
               className="btn mr-3 mb-3"
               style={{
@@ -300,7 +286,7 @@ class AddDog2 extends React.Component {
                 backgroundColor: "#1D3461",
                 color: "#ECEBE7",
                 boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               }}
             >
               Save Information

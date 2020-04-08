@@ -48,7 +48,6 @@ class Register2 extends React.Component {
           <div className="container">
             <h1>Registration Page</h1>
             <h2>Step 2</h2>
-            {/* <h2>Address</h2> */}
             <div className="row">
               <div className="col-sm">
                 <div className="row">
@@ -143,7 +142,6 @@ class Register2 extends React.Component {
             <br />
             <br />
             <div>
-              {/* <h2>Phone number information</h2> */}
               <div className="row pr-3">
                 <div className="col-sm">
                   <label>Personal Phone:</label>

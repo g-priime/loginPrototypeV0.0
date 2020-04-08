@@ -10,10 +10,10 @@ class EditCustomer1 extends React.Component {
     confirmPassword: "",
     fname: "",
     lname: "",
-    email: ""
+    email: "",
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
@@ -26,7 +26,7 @@ class EditCustomer1 extends React.Component {
     );
   };
 
-  previousStep_onClick = event => {
+  previousStep_onClick = (event) => {
     event.preventDefault();
     this.props.onClick();
     console.log("here");
@@ -46,7 +46,6 @@ class EditCustomer1 extends React.Component {
             <h2>Step 1</h2>
 
             <div className="row">
-
               <div className="col-sm colEditCustomer">
                 <label>First Name:</label>
                 <input
@@ -97,7 +96,7 @@ class EditCustomer1 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Back to Profile
@@ -109,7 +108,7 @@ class EditCustomer1 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Next Step
