@@ -82,7 +82,7 @@ class EditDogMain extends React.Component {
     var vetName = '';
 
     if (dogInfo.veterinarian !=null ) {
-      vetName = dogInfo.veterinarian.name;
+      vetName = dogInfo.veterinarian.vetName;
     };
 
     if (this.state.initialStates === false) {
@@ -183,7 +183,7 @@ class EditDogMain extends React.Component {
       allergies: this.state.allList,
       physLimit: physlimit,
       veterinarian: {
-        name: veterinarianName
+        vetName: veterinarianName
       },
 
       strangerComfortable: strangers,
