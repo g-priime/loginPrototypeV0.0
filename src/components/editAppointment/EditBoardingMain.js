@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import EditBoarding1 from "./EditBoarding1";
 import EditBoarding2 from "./EditBoarding2";
@@ -116,8 +115,7 @@ class EditBoardingMain extends React.Component {
           response: "Must select at least one dog",
         });
         this.togglePopup();
-      }
-      else if (!validStart) {
+      } else if (!validStart) {
         this.setState({
           cn: "popup4",
           response: "Must enter a Start Time that has not passed",
