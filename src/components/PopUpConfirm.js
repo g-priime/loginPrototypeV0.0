@@ -12,32 +12,32 @@ class PopUpConfirm extends React.Component {
             <div className="popup\_inner">
               <h1>{this.props.text}</h1>
               <div className="d-flex justify-content-around">
-              <button
-                className="btn"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: this.props.bgColor,
-                  color: "black",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-                onClick={this.props.confirm}
-              >
-                Yes
-              </button>
-              <button
-                className="btn"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: this.props.bgColor,
-                  color: "black",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-                onClick={this.props.dontConfirm}
-              >
-                No
-              </button>
+                <button
+                  className="btn"
+                  style={{
+                    fontWeight: "bold",
+                    backgroundColor: this.props.bgColor,
+                    color: "black",
+                    boxShadow:
+                      "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+                  }}
+                  onClick={this.props.confirm}
+                >
+                  Yes
+                </button>
+                <button
+                  className="btn"
+                  style={{
+                    fontWeight: "bold",
+                    backgroundColor: this.props.bgColor,
+                    color: "black",
+                    boxShadow:
+                      "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+                  }}
+                  onClick={this.props.dontConfirm}
+                >
+                  No
+                </button>
               </div>
             </div>
           </div>
