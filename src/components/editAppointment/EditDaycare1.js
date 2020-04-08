@@ -1,11 +1,8 @@
 import React from "react";
 import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
-
 import Select from "react-select";
-
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
-import Moment from 'moment';
 
 class EditDaycare1 extends React.Component {
   state = {
@@ -16,10 +13,10 @@ class EditDaycare1 extends React.Component {
     dogs: [],
     comments: "",
     selectedDogs: [],
-    selectedOption: null
+    selectedOption: null,
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
@@ -46,44 +43,41 @@ class EditDaycare1 extends React.Component {
 
             <div className="row">
               <div className="col-sm">
+                <br />
 
-                <br/>
-                
                 <label>Select Dogs:</label>
-                
+
                 <Select
                   isMulti
                   closeMenuOnSelect={false}
                   value={this.props.selectedDogs}
                   onChange={this.props.onChangeDog}
                   options={this.props.dogs}
-                  getOptionLabel={option => option.value}
-                  getOptionValue={option => option.value}
-                  getOptionKey={option => option.key}
+                  getOptionLabel={(option) => option.value}
+                  getOptionValue={(option) => option.value}
+                  getOptionKey={(option) => option.key}
                 />
                 <br />
 
                 <label>Select Start Time:</label>
                 <DateTimePickerComponent
-                    format="dd/MM/yy hh:mm a"
-                    id="startTime"
-                    value={new Date(this.props.startTime)}
-                    onChange={this.props.onChangeStartTime}
-                  ></DateTimePickerComponent>
+                  format="dd/MM/yy hh:mm a"
+                  id="startTime"
+                  value={new Date(this.props.startTime)}
+                  onChange={this.props.onChangeStartTime}
+                ></DateTimePickerComponent>
                 <br />
                 <br />
 
                 <label>Select End Time:</label>
                 <DateTimePickerComponent
-                    format="dd/MM/yy hh:mm a"
-                    id="startTime"
-                    value={new Date(this.props.endTime)}
-                    onChange={this.props.onChangeEndTime}
-                  ></DateTimePickerComponent>
+                  format="dd/MM/yy hh:mm a"
+                  id="startTime"
+                  value={new Date(this.props.endTime)}
+                  onChange={this.props.onChangeEndTime}
+                ></DateTimePickerComponent>
                 <br />
                 <br />
-
-                
 
                 <label>Additional Comments: </label>
                 <textarea
@@ -108,7 +102,7 @@ class EditDaycare1 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Cancel
@@ -120,7 +114,7 @@ class EditDaycare1 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Continue
