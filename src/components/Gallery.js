@@ -1,17 +1,6 @@
 import React from "react";
 import "../css/gallery.css";
 
-// class Gallery extends React.Component {
-
-//     render() {
-//         return (
-//             <div className="ui segment cont" style={{ backgroundColor: "#6298C8" }}>
-//                 <h1 className="txt">Check out our safe space!</h1>
-//             </div>
-//         );
-//     }
-// }
-
 const imgUrls = [
   require("../images/gallery/1_1.jpg"),
   require("../images/gallery/2_2.jpg"),
@@ -36,8 +25,8 @@ const imgUrls = [
   require("../images/gallery/21_21.jpg"),
   require("../images/gallery/22_22.jpg"),
   require("../images/gallery/23_23.jpg"),
-  require("../images/gallery/24_24.jpg")
-];
+  require("../images/gallery/24_24.jpg"),
+]; //all the images are taken from the client's Facebook page with her permission https://www.facebook.com/photo.php?fbid=10203843200676363&set=a.10203838093188679&type=3&theater
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -50,7 +39,7 @@ class Gallery extends React.Component {
   }
   renderImageContent(src, index) {
     return (
-      <div onClick={e => this.openModal(e, index)}>
+      <div onClick={(e) => this.openModal(e, index)}>
         <img src={src} key={src} />
       </div>
     );
@@ -68,16 +57,16 @@ class Gallery extends React.Component {
     if (e != undefined) {
       e.preventDefault();
     }
-    this.setState(prevState => ({
-      currentIndex: prevState.currentIndex - 1
+    this.setState((prevState) => ({
+      currentIndex: prevState.currentIndex - 1,
     }));
   }
   findNext(e) {
     if (e != undefined) {
       e.preventDefault();
     }
-    this.setState(prevState => ({
-      currentIndex: prevState.currentIndex + 1
+    this.setState((prevState) => ({
+      currentIndex: prevState.currentIndex + 1,
     }));
   }
   render() {
@@ -111,9 +100,9 @@ class GalleryModal extends React.Component {
   componentDidMount() {
     document.body.addEventListener("keydown", this.handleKeyDown);
   }
-   componentWillUnmount() {
-      document.body.removeEventListener('keydown', this.handleKeyDown);
-    }
+  componentWillUnmount() {
+    document.body.removeEventListener("keydown", this.handleKeyDown);
+  }
   handleKeyDown(e) {
     if (e.keyCode === 27) this.props.closeModal();
     if (e.keyCode === 37 && this.props.hasPrev) this.props.findPrev();
@@ -126,7 +115,7 @@ class GalleryModal extends React.Component {
       hasPrev,
       findNext,
       findPrev,
-      src
+      src,
     } = this.props;
     if (!src) {
       console.log("whut");
@@ -172,7 +161,5 @@ class GalleryModal extends React.Component {
     );
   }
 }
-
-//ReactDOM.render(<Gallery />, document.querySelector('.gallery-container'));
 
 export default Gallery;
