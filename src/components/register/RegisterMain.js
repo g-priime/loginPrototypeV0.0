@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import Register2 from "./Register2";
 import Register1 from "./Register1";
