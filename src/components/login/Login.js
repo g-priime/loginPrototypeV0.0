@@ -72,8 +72,8 @@ class Login extends React.Component {
                 ) : null}
               <br />
               <Link
-                to="/ChangePass"
-                onClick={this.closeLogin}
+                // to="/ChangePass"
+                // onClick={this.closeLogin}
               >
                 {/* get username and send to the change password link*/}
                 Forgot your Password?
