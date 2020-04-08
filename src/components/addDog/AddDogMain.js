@@ -40,7 +40,6 @@ const hint = () => (
 class AddDogMain extends React.Component {
   state = {
     images: [],
-    fieldName: [],
     page: "",
     showPopup: false,
     cn: "",
@@ -71,22 +70,6 @@ class AddDogMain extends React.Component {
   };
 
   onSearchSubmit1 = async () => {
-    //should the name be different?
-    //is called when go from step 1 to step 2
-    this.setState({
-      fieldName: [
-        this.state.dogname,
-        this.state.breed,
-        this.state.dob,
-        this.state.gender,
-        this.state.weight,
-        this.state.neuteredspayed,
-        this.state.medication,
-        this.state.allergies,
-        this.state.physlimit,
-        this.state.veterinarian
-      ]
-    });
 
     this.setState({ images: 'Valid' });
   };
