@@ -42,6 +42,7 @@
     border-color: #707070;
     border-style: solid;
     background-color: white;  
+    z-index:1;
   } 
 
   .popup4 {  
