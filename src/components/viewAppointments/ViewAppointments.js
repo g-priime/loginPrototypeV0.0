@@ -44,7 +44,7 @@ class ViewAppointments extends React.Component {
     appointmentList: [],
     approvedList: [],
     pendingList: [],
-    bgColor: "blue"
+    bgColor: "blue",
   };
 
   getAppointmentInfo = async () => {
@@ -54,7 +54,7 @@ class ViewAppointments extends React.Component {
     if (this.state.initialStates === false) {
       this.setState({
         initialStates: true,
-        appointmentList: result.data
+        appointmentList: result.data,
       });
       console.log(result);
 
@@ -69,7 +69,7 @@ class ViewAppointments extends React.Component {
       }
       this.setState({
         approvedList: approvedList,
-        pendingList: pendingList
+        pendingList: pendingList,
       });
     }
   };
@@ -77,9 +77,9 @@ class ViewAppointments extends React.Component {
   updateAppointments = () => {
     var token = localStorage.getItem("token");
 
-    BasePath.get(`/webresources/getappointments/${token}`).then(result => {
+    BasePath.get(`/webresources/getappointments/${token}`).then((result) => {
       this.setState({
-        appointmentList: result.data
+        appointmentList: result.data,
       });
       console.log(result);
 
@@ -94,7 +94,7 @@ class ViewAppointments extends React.Component {
       }
       this.setState({
         approvedList: approvedList,
-        pendingList: pendingList
+        pendingList: pendingList,
       });
     });
   };
@@ -114,7 +114,7 @@ class ViewAppointments extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
@@ -136,8 +136,8 @@ class ViewAppointments extends React.Component {
           </div>
           <div className="col-sm">
             <div className="center">
-              <Link //creates a link, styled like a button
-                to="/BookAppointment" //telling to go to home, in adddog it should be accinfo
+              <Link
+                to="/BookAppointment"
                 type="button"
                 className="btn mb-3"
                 style={{
@@ -145,7 +145,7 @@ class ViewAppointments extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Book Appointment
@@ -171,8 +171,12 @@ class ViewAppointments extends React.Component {
           <div className="col-sm right">
             <b>Appointment Type</b>
           </div>
-          <div className="col-sm left">Start Time</div>
-          <div className="col-sm left">End Time</div>
+          <div className="col-sm left">
+            <b>Start Time</b>
+          </div>
+          <div className="col-sm left">
+            <b>End Time</b>
+          </div>
           <div className="col-sm left">
             <button
               className="btn mb-3"
@@ -183,7 +187,7 @@ class ViewAppointments extends React.Component {
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 width: 150,
-                display: "none"
+                display: "none",
               }}
             >
               Edit
@@ -199,7 +203,7 @@ class ViewAppointments extends React.Component {
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 width: 150,
-                display: "none"
+                display: "none",
               }}
             >
               Make Payment
@@ -209,7 +213,7 @@ class ViewAppointments extends React.Component {
         <br />
 
         <div>
-          {this.state.approvedList.map(appointment => (
+          {this.state.approvedList.map((appointment) => (
             <ApprovedAppointment
               key={appointment.idNumber}
               appointment={appointment}
@@ -238,8 +242,12 @@ class ViewAppointments extends React.Component {
           <div className="col-sm right">
             <b>Appointment Type</b>
           </div>
-          <div className="col-sm left">Start Time</div>
-          <div className="col-sm left">End Time</div>
+          <div className="col-sm left">
+            <b>Start Time</b>
+          </div>
+          <div className="col-sm left">
+            <b>End Time</b>
+          </div>
           <div className="col-sm left">
             <button
               className="btn mb-3"
@@ -250,7 +258,7 @@ class ViewAppointments extends React.Component {
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 width: 150,
-                display: "none"
+                display: "none",
               }}
             >
               Edit
@@ -266,7 +274,7 @@ class ViewAppointments extends React.Component {
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 width: 150,
-                display: "none"
+                display: "none",
               }}
             >
               Cancel
@@ -276,7 +284,7 @@ class ViewAppointments extends React.Component {
         <br />
 
         <div>
-          {this.state.pendingList.map(appointment => (
+          {this.state.pendingList.map((appointment) => (
             <PendingAppointment
               key={appointment.idNumber}
               appointment={appointment}
@@ -288,57 +296,6 @@ class ViewAppointments extends React.Component {
           ))}
         </div>
 
-        {/* <div className="row">
-          <div className="col-sm-1 right">
-            <Hint />{" "}
-          </div>
-          <div className="col-sm-2 left">Billing Information</div>
-          <div className="col-sm left">
-            {" "}
-            <hr width="60%" size="8" align="center"></hr>
-          </div>
-        </div>
-        <br />
-        <br />
-        <div className="pad">
-          <div
-            className="ui segment p-3 mb-2"
-            style={{ backgroundColor: "#FFFFFF" }}
-          ></div>
-        </div>
-        <br />
-        <div className="row">
-          <div className="col-sm">
-            <button
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
-              }}
-            >
-              Download
-            </button>
-          </div>
-          <div className="col-sm">
-            <button
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: 150
-              }}
-            >
-              Print
-            </button>
-          </div>
-        </div> */}
         <div>
           {this.state.showPopup ? (
             <Popup
