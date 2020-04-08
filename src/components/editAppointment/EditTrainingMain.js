@@ -1,11 +1,9 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import EditTraining1 from "./EditTraining1";
 import EditTraining2 from "./EditTraining2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
-
 import Moment from "moment";
 import EditTraining3 from "./EditTraining3";
 
@@ -21,7 +19,7 @@ class EditTrainingMain extends React.Component {
     selectedDogs: "",
     dogs: [],
     initialStates: false,
-    cost: ""
+    cost: "",
   };
 
   getDogs = async () => {
@@ -31,7 +29,7 @@ class EditTrainingMain extends React.Component {
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy =>
+    dogs.map((doggy) =>
       dogArray.push({ key: doggy.idNumber, value: doggy.name })
     );
 
@@ -184,7 +182,7 @@ class EditTrainingMain extends React.Component {
         members: additionalHouseholdMembers,
         children: childrenAndDogs,
         home: newHome,
-        play: play
+        play: play,
       });
     }
   };
@@ -198,8 +196,8 @@ class EditTrainingMain extends React.Component {
         this.state.grooming,
         this.state.comments,
 
-        this.state.baby
-      ]
+        this.state.baby,
+      ],
     });
 
     var d1 = new Date(this.state.startTime);
@@ -234,19 +232,18 @@ class EditTrainingMain extends React.Component {
       formattedStart,
       formattedEnd,
       grooming,
-      type
+      type,
     });
 
     this.setState({
       response: response.data.message,
-      cost: response.data.total
+      cost: response.data.total,
     });
 
     if (response.data === "") {
       this.setState({ cn: "popup4", response: "Must select at least one dog" });
       this.togglePopup();
-    }
-    else if (!validStart) {
+    } else if (!validStart) {
       this.setState({
         cn: "popup4",
         response: "Must enter a Start Time that has not passed",
@@ -430,7 +427,7 @@ class EditTrainingMain extends React.Component {
       additionalHouseholdMembers,
       childrenAndDogs,
       newHome,
-      play
+      play,
     });
 
     this.setState({ response: response.data });
@@ -454,103 +451,103 @@ class EditTrainingMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeDog = selectedOption => {
+  handleChangeDog = (selectedOption) => {
     this.setState({ selectedDogs: selectedOption }, () =>
       console.log(`Option selected:`, this.state.selectedDogs)
     );
   };
-  handleChangeStartTime = event => {
+  handleChangeStartTime = (event) => {
     this.setState({ startTime: event.target.value });
   };
-  handleChangeEndTime = event => {
+  handleChangeEndTime = (event) => {
     this.setState({ endTime: event.target.value });
   };
-  handleChangeComments = event => {
+  handleChangeComments = (event) => {
     this.setState({ comments: event.target.value });
   };
 
-  handleChangeBaby = event => {
+  handleChangeBaby = (event) => {
     this.setState({ baby: event.target.value });
   };
-  handleChangeCat = event => {
+  handleChangeCat = (event) => {
     this.setState({ cat: event.target.value });
   };
-  handleChangeNewDog = event => {
+  handleChangeNewDog = (event) => {
     this.setState({ newDog: event.target.value });
   };
-  handleChangeSignificantOther = event => {
+  handleChangeSignificantOther = (event) => {
     this.setState({ significantOther: event.target.value });
   };
-  handleChangeMembers = event => {
+  handleChangeMembers = (event) => {
     this.setState({ members: event.target.value });
   };
-  handleChangeChildren = event => {
+  handleChangeChildren = (event) => {
     this.setState({ children: event.target.value });
   };
-  handleChangeHome = event => {
+  handleChangeHome = (event) => {
     this.setState({ home: event.target.value });
   };
 
-  handleChangeBarking = event => {
+  handleChangeBarking = (event) => {
     this.setState({ barking: event.target.value });
   };
-  handleChangeDestruction = event => {
+  handleChangeDestruction = (event) => {
     this.setState({ destruction: event.target.value });
   };
-  handleChangeSurfing = event => {
+  handleChangeSurfing = (event) => {
     this.setState({ surfing: event.target.value });
   };
-  handleChangeDigging = event => {
+  handleChangeDigging = (event) => {
     this.setState({ digging: event.target.value });
   };
-  handleChangeJumping = event => {
+  handleChangeJumping = (event) => {
     this.setState({ jumping: event.target.value });
   };
-  handleChangePulling = event => {
+  handleChangePulling = (event) => {
     this.setState({ pulling: event.target.value });
   };
-  handleChangeConfidence = event => {
+  handleChangeConfidence = (event) => {
     this.setState({ confidence: event.target.value });
   };
-  handleChangeChewing = event => {
+  handleChangeChewing = (event) => {
     this.setState({ chewing: event.target.value });
   };
-  handleChangeHandling = event => {
+  handleChangeHandling = (event) => {
     this.setState({ handling: event.target.value });
   };
-  handleChangePlay = event => {
+  handleChangePlay = (event) => {
     this.setState({ play: event.target.value });
   };
 
-  handleChangeHouseTraining = event => {
+  handleChangeHouseTraining = (event) => {
     this.setState({ houseTraining: event.target.value });
   };
-  handleChangeMouthing = event => {
+  handleChangeMouthing = (event) => {
     this.setState({ mouthing: event.target.value });
   };
-  handleChangeSocialization = event => {
+  handleChangeSocialization = (event) => {
     this.setState({ socialization: event.target.value });
   };
-  handleChangeDistraction = event => {
+  handleChangeDistraction = (event) => {
     this.setState({ distraction: event.target.value });
   };
-  handleChangeExercise = event => {
+  handleChangeExercise = (event) => {
     this.setState({ exercise: event.target.value });
   };
-  handleChangeFocus = event => {
+  handleChangeFocus = (event) => {
     this.setState({ focus: event.target.value });
   };
-  handleChangeWalking = event => {
+  handleChangeWalking = (event) => {
     this.setState({ walking: event.target.value });
   };
-  handleChangeMatWork = event => {
+  handleChangeMatWork = (event) => {
     this.setState({ matWork: event.target.value });
   };
-  handleChangeStealing = event => {
+  handleChangeStealing = (event) => {
     this.setState({ stealing: event.target.value });
   };
 
@@ -653,7 +650,7 @@ class EditTrainingMain extends React.Component {
           <Redirect
             to={{
               pathname: "ViewAppointments",
-              state: { message: "Appointment updated" }
+              state: { message: "Appointment updated" },
             }}
           />
         </div>
@@ -664,7 +661,7 @@ class EditTrainingMain extends React.Component {
           <Redirect
             to={{
               pathname: "/Services",
-              state: { message: "Redirect to PayPal" }
+              state: { message: "Redirect to PayPal" },
             }}
           />
         </div>
