@@ -8,3 +8,10 @@
     font-size: x-large;
     color: #715d5c;
 }
+
+.wrapAdmin {
+    word-wrap:break-word; 
+    hyphens: auto;
+    width: 80%;
+
+}
