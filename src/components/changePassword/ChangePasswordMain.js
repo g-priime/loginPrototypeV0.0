@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import ChangePassword1 from "./ChangePassword1";
 import { Redirect } from "react-router-dom";
@@ -11,7 +10,7 @@ class ChangePasswordMain extends React.Component {
     fieldName: [],
     page: "",
     showPopup: false,
-    cn: ""
+    cn: "",
   };
 
   onSearchSubmit1 = async (oldPassword) => {
@@ -20,11 +19,11 @@ class ChangePasswordMain extends React.Component {
         this.state.oldPassword,
         this.state.password,
         this.state.confirmPassword,
-        this.state.sessionId
-      ]
+        this.state.sessionId,
+      ],
     });
 
-    var token = localStorage.getItem('token');
+    var token = localStorage.getItem("token");
 
     var oldPword = this.state.oldPassword;
     var pword = this.state.password;
@@ -58,7 +57,7 @@ class ChangePasswordMain extends React.Component {
     console.log(this.state.images);
   };
 
-  onHome = event => {
+  onHome = (event) => {
     event.preventDefault();
     this.props.onClick("home");
     console.log("main event");
@@ -71,19 +70,19 @@ class ChangePasswordMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeOldPassword = event => {
+  handleChangeOldPassword = (event) => {
     this.setState({ oldPassword: event.target.value });
   };
 
-  handleChangePassword = event => {
+  handleChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
 
-  handleChangeConfirmPassword = event => {
+  handleChangeConfirmPassword = (event) => {
     this.setState({ confirmPassword: event.target.value });
   };
 
@@ -96,7 +95,7 @@ class ChangePasswordMain extends React.Component {
           <Redirect
             to={{
               pathname: "/Profile",
-              state: { message: "Password has been changed" }
+              state: { message: "Password has been changed" },
             }}
           />
         </div>
@@ -125,7 +124,7 @@ class ChangePasswordMain extends React.Component {
           </div>
         </div>
       );
-    } 
+    }
   }
 }
 
