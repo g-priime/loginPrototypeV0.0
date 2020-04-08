@@ -1,8 +1,6 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import ManageUsers from "./ManageUsers";
-import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 import PopUpConfirm from "../PopUpConfirm";
 
@@ -55,14 +53,10 @@ class ManageUsersEditMain extends React.Component {
 
   onSearchSubmit = async () => {
     var token = localStorage.getItem("token");
-    //var email = this.state.email;
-
     var username = this.state.username;
-
     var firstName = this.state.fname;
     var lastName = this.state.lname;
     var email = this.state.email;
-    //var emailCheck = email;
 
     var houseNum = this.state.appt;
     var buildingNum = this.state.building;
@@ -143,13 +137,11 @@ class ManageUsersEditMain extends React.Component {
     }
 
     let province = {};
-      for (let i = 0; i < this.state.provinces.length; i++) {
-        if (
-          prov === this.state.provinces[i].value
-        ) {
-          province = this.state.provinces[i];
-        }
+    for (let i = 0; i < this.state.provinces.length; i++) {
+      if (prov === this.state.provinces[i].value) {
+        province = this.state.provinces[i];
       }
+    }
 
     this.setState({
       initialStates: true,
@@ -295,7 +287,6 @@ class ManageUsersEditMain extends React.Component {
   };
 
   clearStates = () => {
-    // if (this.state.initialStates === true) {
     this.setState({
       initialStates: false,
       username: "",
@@ -314,27 +305,11 @@ class ManageUsersEditMain extends React.Component {
       emergencyphone: "",
       emergencyname: "",
     });
-    //}
   };
 
   render() {
-    // this.getCustomerInfo();
-
     var isValid = this.state.images;
-    /*
-    if (isValid === "Updated") {
-      return (
-        <div style={{ marginTop: "10px" }}>
-          <Redirect
-            to={{
-              pathname: "/ManageUsers",
-              state: { message: "Account Updated" }
-            }}
-          />
-        </div>
-      );
-    } else 
-    */
+
     if (isValid !== "Valid" || isValid === "Updated") {
       return (
         <div style={{ marginTop: "10px" }}>
