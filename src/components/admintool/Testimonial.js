@@ -8,8 +8,8 @@ class Testimonial extends React.Component {
             <div>
                 <div className="row borderTest" >
                     <div className="col-sm-10 d-flex justify-content-between ">
-                    <span style={{fontSize:"large"}} className="mr-3 wrapAdmin">{this.props.chosenTestimonial.content}</span>
-                <button  className="btn mr-3 mb-3"
+                    <span style={{fontSize:"large"}} className="mt-3 mr-3 wrapAdmin">{this.props.chosenTestimonial.content}</span>
+                <button  className="btn mr-3 mb-3 mt-3"
                         style={{
                           fontWeight: "bold",
                           backgroundColor: "#1D3461",
@@ -23,7 +23,7 @@ class Testimonial extends React.Component {
                 </button>
                 </div>
                 <div className="col-sm">
-                <button  className="btn mr-3 mb-3"
+                <button  className="btn mr-3 mb-3 mt-3"
                         style={{
                           fontWeight: "bold",
                           backgroundColor: "#1D3461",
