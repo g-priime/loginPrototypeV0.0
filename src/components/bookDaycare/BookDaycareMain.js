@@ -1,11 +1,9 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import BookDaycare1 from "./BookDaycare1";
 import BookDaycare2 from "./BookDaycare2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
-
 import Moment from "moment";
 
 class BookDaycareMain extends React.Component {
