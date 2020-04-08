@@ -1,15 +1,10 @@
 import React from "react";
-import Popup from "../PopUp";
 import "../../css/admin.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import ViewCalendar from "./ViewCalendar";
 import CreateUserMain from "./CreateUserMain";
 import ManageUsersEditMain from "./ManageUsersEditMain";
-import ManageUsers from "./ManageUsers";
-import ManagePhotos from "./ManagePhotos";
 import ManageTestimonials from "./ManageTestimonials";
-import Reports from "./Reports";
-import ChangePassAdmin from "./ChangePassAdmin";
 import { Redirect } from "react-router-dom";
 import ChangePassAdminMain from "./ChangePassAdminMain";
 
@@ -17,12 +12,6 @@ class AdminTool extends React.Component {
   state = {
     loggedOut: false,
   };
-
-  // logout = () => {
-  //   localStorage.clear();
-  //   this.props.authenticate(false);
-  //   this.setState({loggedOut : true});
-  // };
 
   render() {
     if (this.state.loggedOut == true) {
@@ -83,18 +72,6 @@ class AdminTool extends React.Component {
                   >
                     Manage Users
                   </Link>
-                  {/* <Link
-                to="ManagePhotos"
-                type="button"
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#ECEBE7",
-
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}>Manage Photos
-              </Link> */}
                   <Link
                     to="ManageTestimonials"
                     type="button"
@@ -109,17 +86,6 @@ class AdminTool extends React.Component {
                   >
                     Manage Testimonials
                   </Link>
-                  {/* <Link
-                to="Reports"
-                type="button"
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}>Reports
-              </Link> */}
                   <Link
                     to="ChangePassAdminMain"
                     type="button"
@@ -134,21 +100,8 @@ class AdminTool extends React.Component {
                   >
                     Change Password
                   </Link>
-                  {/* <button
-                  className="btn mb-3"
-                  style={{
-                    fontWeight: "bold",
-                    backgroundColor: "#ECEBE7",
-                    boxShadow:
-                      "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                  }}
-                  onClick={this.logout}
-                >
-                  Log Out
-                </button> */}
                 </div>
                 <div style={{ backgroundColor: "#ECEBE7" }} className="output">
-                  {/* <BrowserRouter> */}
                   <div>
                     <div className="mt-4 ml-5 mr-5">
                       <Route
@@ -167,11 +120,6 @@ class AdminTool extends React.Component {
                         component={ManageUsersEditMain}
                       />
                       <Route
-                        path="/ManagePhotos"
-                        exact
-                        component={ManagePhotos}
-                      />
-                      <Route
                         path="/ManageTestimonials"
                         exact
                         component={ManageTestimonials}
@@ -181,10 +129,8 @@ class AdminTool extends React.Component {
                         exact
                         component={ChangePassAdminMain}
                       />
-                      {/* <Route path="/Reports" exact component={Reports} /> */}
                     </div>
                   </div>
-                  {/* </BrowserRouter> */}
                 </div>
               </div>
             </div>
