@@ -208,7 +208,6 @@ class EditDog1 extends React.Component {
                 <Hint />
                 <input
                   type="text"
-                  value=""
                   value={this.props.veterinarianN}
                   onChange={this.props.onChangeVeterinarian}
                 />

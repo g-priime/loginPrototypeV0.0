@@ -55,8 +55,8 @@ class EditDogMain extends React.Component {
     weight: "",
     neuteredspayed: "",
     medication: "",
-    medList:[],
-    allList: [],
+    medList: "",
+    allList: "",
     allergies: "",
     physlimit: "",
     veterinarianN: "",
@@ -99,8 +99,8 @@ class EditDogMain extends React.Component {
         neuteredspayed: dogInfo.spayedNeutered,
         medList: dogInfo.medications,
         allList: dogInfo.allergies,
-        medication: dogInfo.medications[0],
-        allergies: dogInfo.allergies[0],
+        medication: dogInfo.medications,
+        allergies: dogInfo.allergies,
         physlimit: dogInfo.physLimit,
         veterinarianN: vetName,
         strangers: dogInfo.strangers,
@@ -116,10 +116,6 @@ class EditDogMain extends React.Component {
   };
 
   onSearchSubmit1 = async () => {
-    
-    this.state.medList.push(this.state.medication);
-    this.state.allList.push(this.state.allergies);
-
     this.setState({ images: 'Valid' });
   };
 
@@ -166,6 +162,8 @@ class EditDogMain extends React.Component {
     // } else {
     //   puppies=false;
     // }
+    var medList = this.state.medication;
+    var allList = this.state.allergies;
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
@@ -180,8 +178,8 @@ class EditDogMain extends React.Component {
       gender: gender,
       weight: weight,
       spayedNeutered: neuteredspayed,
-      medications: this.state.medList,
-      allergies: this.state.allList,
+      medications: medList,
+      allergies: allList,
       physLimit: physlimit,
       veterinarian: {
         vetName: veterinarianName
@@ -239,12 +237,10 @@ class EditDogMain extends React.Component {
 
   handleChangeMedication = event => {
     this.setState({ medication: event.target.value });
-    //this.state.medList.push(this.state.medication);
   };
 
   handleChangeAllergies = event => {
     this.setState({ allergies: event.target.value });
-    //this.state.allList.push(this.state.allergies);
   };
 
   handleChangePhyslimit = event => {
