@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
+import Moment from 'moment';
 
 class EditDaycare1 extends React.Component {
   state = {
