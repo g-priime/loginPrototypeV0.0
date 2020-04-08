@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import EditDaycare1 from "./EditDaycare1";
 import EditDaycare2 from "./EditDaycare2";
@@ -106,8 +105,7 @@ class EditDaycareMain extends React.Component {
           response: "Must select at least one dog",
         });
         this.togglePopup();
-      }
-      else if (!validStart) {
+      } else if (!validStart) {
         this.setState({
           cn: "popup4",
           response: "Must enter a Start Time that has not passed",
