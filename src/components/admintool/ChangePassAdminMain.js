@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import ChangePassAdmin from "./ChangePassAdmin";
 import { Redirect } from "react-router-dom";
@@ -11,17 +10,17 @@ class ChangePassAdminMain extends React.Component {
     fieldName: [],
     page: "",
     showPopup: false,
-    cn: ""
+    cn: "",
   };
 
-  onSearchSubmit1 = async oldPassword => {
+  onSearchSubmit1 = async (oldPassword) => {
     this.setState({
       fieldName: [
         this.state.oldPassword,
         this.state.password,
         this.state.confirmPassword,
-        this.state.sessionId
-      ]
+        this.state.sessionId,
+      ],
     });
 
     var token = localStorage.getItem("token");
@@ -36,7 +35,7 @@ class ChangePassAdminMain extends React.Component {
       token,
       oldPword,
       pword,
-      confirmPword
+      confirmPword,
     });
 
     console.log(response.data);
@@ -59,19 +58,19 @@ class ChangePassAdminMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeOldPassword = event => {
+  handleChangeOldPassword = (event) => {
     this.setState({ oldPassword: event.target.value });
   };
 
-  handleChangePassword = event => {
+  handleChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
 
-  handleChangeConfirmPassword = event => {
+  handleChangeConfirmPassword = (event) => {
     this.setState({ confirmPassword: event.target.value });
   };
 
@@ -84,7 +83,7 @@ class ChangePassAdminMain extends React.Component {
           <Redirect
             to={{
               pathname: "/ChangePassAdminMain",
-              state: { message: "Password has been changed" }
+              state: { message: "Password has been changed" },
             }}
           />
         </div>
