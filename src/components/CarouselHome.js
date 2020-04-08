@@ -5,29 +5,29 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
-  CarouselCaption
+  CarouselCaption,
 } from "reactstrap";
 
 const items = [
   {
     src: require("../images/carousel1.jpg"),
-    altText: "Slide 1"
+    altText: "Slide 1",
   },
   {
     src: require("../images/carousel2.jpg"),
-    altText: "Slide 2"
+    altText: "Slide 2",
   },
   {
     src: require("../images/carousel3.jpg"),
-    altText: "Slide 3"
+    altText: "Slide 3",
   },
   {
     src: require("../images/carousel4.jpg"),
-    altText: "Slide 4"
-  }
+    altText: "Slide 4",
+  },
 ];
 
-const CarouselHome = props => {
+const CarouselHome = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -43,12 +43,12 @@ const CarouselHome = props => {
     setActiveIndex(nextIndex);
   };
 
-  const goToIndex = newIndex => {
+  const goToIndex = (newIndex) => {
     if (animating) return;
     setActiveIndex(newIndex);
   };
 
-  const slides = items.map(item => {
+  const slides = items.map((item) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
