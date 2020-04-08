@@ -1,5 +1,4 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import BookTraining1 from "./BookTraining1";
 import BookTraining2 from "./BookTraining2";
@@ -23,7 +22,7 @@ class BookTrainingMain extends React.Component {
     initialStates: false,
     cost: "",
 
-    cancelLink: "/Services"
+    cancelLink: "/Services",
   };
 
   getDogs = async () => {
@@ -33,7 +32,7 @@ class BookTrainingMain extends React.Component {
 
     const dogs = response.data;
     var dogArray = [];
-    dogs.map(doggy =>
+    dogs.map((doggy) =>
       dogArray.push({ key: doggy.idNumber, value: doggy.name })
     );
 
@@ -48,7 +47,7 @@ class BookTrainingMain extends React.Component {
       this.props.location.state !== null
     ) {
       this.setState({ cancelLink: this.props.location.state.cancelLink });
-    } 
+    }
   }
 
   onSearchSubmit1 = async () => {
@@ -59,9 +58,8 @@ class BookTrainingMain extends React.Component {
         this.state.endTime,
         this.state.grooming,
         this.state.comments,
-        //this.state.sessionId
-        this.state.baby
-      ]
+        this.state.baby,
+      ],
     });
 
     var d1 = new Date(this.state.startTime);
@@ -73,11 +71,10 @@ class BookTrainingMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var dogs = "";
-    if (this.state.selectedDogs !== ""){
+    if (this.state.selectedDogs !== "") {
       dogs = this.state.selectedDogs.key;
     }
     console.log(this.state.selectedDogs);
-    //this.state.selectedDogs.map(doggy => dogs.push(doggy.key));
     var dogString = dogs.toString();
 
     var startTime = this.state.startTime;
@@ -99,19 +96,18 @@ class BookTrainingMain extends React.Component {
       formattedStart,
       formattedEnd,
       grooming,
-      type
+      type,
     });
 
     this.setState({
       response: response.data.message,
-      cost: response.data.total
+      cost: response.data.total,
     });
 
     if (response.data === "") {
       this.setState({ cn: "popup4", response: "Must select at least one dog" });
       this.togglePopup();
-    }
-    else if (!validStart) {
+    } else if (!validStart) {
       this.setState({
         cn: "popup4",
         response: "Must enter a Start Time that has not passed",
@@ -130,7 +126,6 @@ class BookTrainingMain extends React.Component {
     var token = localStorage.getItem("token");
 
     var selectedDogs = this.state.selectedDogs.key;
-    //this.state.fieldName[0].map(doggy => selectedDogs.push(doggy.key));
     var dogIdNumber = selectedDogs.toString();
     var startTime = Moment(this.state.fieldName[1]).format(
       "YYYY-MM-DD HH:mm:ss"
@@ -280,7 +275,7 @@ class BookTrainingMain extends React.Component {
       additionalHouseholdMembers,
       childrenAndDogs,
       newHome,
-      play
+      play,
     });
 
     this.setState({ response: response.data });
@@ -304,103 +299,103 @@ class BookTrainingMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangeDog = selectedOption => {
+  handleChangeDog = (selectedOption) => {
     this.setState({ selectedDogs: selectedOption }, () =>
       console.log(`Option selected:`, this.state.selectedDogs)
     );
   };
-  handleChangeStartTime = event => {
+  handleChangeStartTime = (event) => {
     this.setState({ startTime: event.target.value });
   };
-  handleChangeEndTime = event => {
+  handleChangeEndTime = (event) => {
     this.setState({ endTime: event.target.value });
   };
-  handleChangeComments = event => {
+  handleChangeComments = (event) => {
     this.setState({ comments: event.target.value });
   };
 
-  handleChangeBaby = event => {
+  handleChangeBaby = (event) => {
     this.setState({ baby: event.target.value });
   };
-  handleChangeCat = event => {
+  handleChangeCat = (event) => {
     this.setState({ cat: event.target.value });
   };
-  handleChangeNewDog = event => {
+  handleChangeNewDog = (event) => {
     this.setState({ newDog: event.target.value });
   };
-  handleChangeSignificantOther = event => {
+  handleChangeSignificantOther = (event) => {
     this.setState({ significantOther: event.target.value });
   };
-  handleChangeMembers = event => {
+  handleChangeMembers = (event) => {
     this.setState({ members: event.target.value });
   };
-  handleChangeChildren = event => {
+  handleChangeChildren = (event) => {
     this.setState({ children: event.target.value });
   };
-  handleChangeHome = event => {
+  handleChangeHome = (event) => {
     this.setState({ home: event.target.value });
   };
 
-  handleChangeBarking = event => {
+  handleChangeBarking = (event) => {
     this.setState({ barking: event.target.value });
   };
-  handleChangeDestruction = event => {
+  handleChangeDestruction = (event) => {
     this.setState({ destruction: event.target.value });
   };
-  handleChangeSurfing = event => {
+  handleChangeSurfing = (event) => {
     this.setState({ surfing: event.target.value });
   };
-  handleChangeDigging = event => {
+  handleChangeDigging = (event) => {
     this.setState({ digging: event.target.value });
   };
-  handleChangeJumping = event => {
+  handleChangeJumping = (event) => {
     this.setState({ jumping: event.target.value });
   };
-  handleChangePulling = event => {
+  handleChangePulling = (event) => {
     this.setState({ pulling: event.target.value });
   };
-  handleChangeConfidence = event => {
+  handleChangeConfidence = (event) => {
     this.setState({ confidence: event.target.value });
   };
-  handleChangeChewing = event => {
+  handleChangeChewing = (event) => {
     this.setState({ chewing: event.target.value });
   };
-  handleChangeHandling = event => {
+  handleChangeHandling = (event) => {
     this.setState({ handling: event.target.value });
   };
-  handleChangePlay = event => {
+  handleChangePlay = (event) => {
     this.setState({ play: event.target.value });
   };
 
-  handleChangeHouseTraining = event => {
+  handleChangeHouseTraining = (event) => {
     this.setState({ houseTraining: event.target.value });
   };
-  handleChangeMouthing = event => {
+  handleChangeMouthing = (event) => {
     this.setState({ mouthing: event.target.value });
   };
-  handleChangeSocialization = event => {
+  handleChangeSocialization = (event) => {
     this.setState({ socialization: event.target.value });
   };
-  handleChangeDistraction = event => {
+  handleChangeDistraction = (event) => {
     this.setState({ distraction: event.target.value });
   };
-  handleChangeExercise = event => {
+  handleChangeExercise = (event) => {
     this.setState({ exercise: event.target.value });
   };
-  handleChangeFocus = event => {
+  handleChangeFocus = (event) => {
     this.setState({ focus: event.target.value });
   };
-  handleChangeWalking = event => {
+  handleChangeWalking = (event) => {
     this.setState({ walking: event.target.value });
   };
-  handleChangeMatWork = event => {
+  handleChangeMatWork = (event) => {
     this.setState({ matWork: event.target.value });
   };
-  handleChangeStealing = event => {
+  handleChangeStealing = (event) => {
     this.setState({ stealing: event.target.value });
   };
 
@@ -453,7 +448,6 @@ class BookTrainingMain extends React.Component {
             stealing={this.state.stealing}
             onClick={this.onPrevious}
             toDetails={this.toDetails}
-
             cancelLink={this.state.cancelLink}
           />
         </div>
@@ -496,7 +490,6 @@ class BookTrainingMain extends React.Component {
             toPage2={this.toPage2}
             proceedToPayment={this.proceedToPayment}
             onSubmit={this.onSearchSubmit2}
-
             cancelLink={this.state.cancelLink}
           />
         </div>
@@ -507,7 +500,7 @@ class BookTrainingMain extends React.Component {
           <Redirect
             to={{
               pathname: "/ViewAppointments",
-              state: { message: "Appointment is booked pending approval" }
+              state: { message: "Appointment is booked pending approval" },
             }}
           />
         </div>
@@ -518,7 +511,7 @@ class BookTrainingMain extends React.Component {
           <Redirect
             to={{
               pathname: "/Services",
-              state: { message: "Redirect to PayPal" }
+              state: { message: "Redirect to PayPal" },
             }}
           />
         </div>
@@ -552,7 +545,6 @@ class BookTrainingMain extends React.Component {
             comments={this.state.comments}
             onSubmit={this.onSearchSubmit1}
             dogs={this.state.dogs}
-
             cancelLink={this.state.cancelLink}
           />
           <div>
