@@ -44,7 +44,7 @@ class EditDog1 extends React.Component {
     medication: [],
     allergies: "",
     physlimit: "",
-    veterinarian: ""
+    veterinarianN: ""
   };
 
   onFormSubmit = event => {
@@ -60,7 +60,7 @@ class EditDog1 extends React.Component {
       this.state.medication,
       this.state.allergies,
       this.state.physlimit,
-      this.state.veterinarian
+      this.state.veterinarianN
     );
   };
 
@@ -209,7 +209,7 @@ class EditDog1 extends React.Component {
                 <input
                   type="text"
                   value=""
-                  value={this.props.veterinarian}
+                  value={this.props.veterinarianN}
                   onChange={this.props.onChangeVeterinarian}
                 />
               </div>
