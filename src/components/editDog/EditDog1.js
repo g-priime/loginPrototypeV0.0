@@ -154,8 +154,8 @@ class EditDog1 extends React.Component {
                   <input
                     type="radio"
                     name="neuteredspayed"
-                    value="yes"
-                    checked={this.props.neuteredspayed === true}
+                    value={true}
+                    checked={this.props.neuteredspayed=== "true"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>Yes</span>
@@ -165,8 +165,8 @@ class EditDog1 extends React.Component {
                   <input
                     type="radio"
                     name="neuteredspayed"
-                    value="no"
-                    checked={this.props.neuteredspayed === false}
+                    value={false}
+                    checked={this.props.neuteredspayed === "false"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>No</span>
