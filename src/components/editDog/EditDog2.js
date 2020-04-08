@@ -38,13 +38,13 @@ class EditDog2 extends React.Component {
     largerdogs: "",
     smalldogs: "",
     puppies: "",
-    train:"",
+    train: "",
     da2pp: "",
     rabies: "",
-    bordetella: ""
+    bordetella: "",
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
@@ -58,9 +58,8 @@ class EditDog2 extends React.Component {
       this.state.bordetella
     );
   };
-  
 
-  previousStep_onClick = event => {
+  previousStep_onClick = (event) => {
     //differents name?
     event.preventDefault();
     this.props.onClickPrev();
@@ -76,182 +75,201 @@ class EditDog2 extends React.Component {
           <div className="container">
             <h1>Edit Dog</h1>
             <h2>Step 2</h2>
+            <div className="left">
+              <div className="row">
+                <div className="col-sm-6">
+                  <h3>Pet behavior Profile</h3>
+                </div>
+                <div className="col-sm-3">
+                  <h3>Yes</h3>
+                </div>
+                <div className="col-sm-3">
+                  <h3>No</h3>
+                </div>
+              </div>
+              <br />
 
-            <div className="row">
-              <table>
-                <tr>
-                  <th>Pet behavior Profile</th>
-                  <th>Yes</th>
-                  <th>No</th>
-                </tr>
-                <tr>
-                  <td>Is your dog comfortable with strangers?</td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="strangers"
-                        value={true}
-                        checked={this.props.strangers === "true"}
-                        onChange={this.props.onChangeStrangers}
-                      />
-                    </label>
-                  </td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="strangers"
-                        value={false}
-                        checked={this.props.strangers === "false"}
-                        onChange={this.props.onChangeStrangers}
-                      />
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Does your dog get along well with larger dogs?</td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="largerdogs"
-                        value={true}
-                        checked={this.props.largerdogs === "true"}
-                        onChange={this.props.onChangeLargerdogs}
-                      />
-                    </label>
-                  </td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="largerdogs"
-                        value={false}
-                        checked={this.props.largerdogs === "false"}
-                        onChange={this.props.onChangeLargerdogs}
-                      />
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Does your dog get along well with smaller dogs?</td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="smalldogs"
-                        value={true}
-                        checked={this.props.smalldogs === "true"}
-                        onChange={this.props.onChangeSmalldogs}
-                      />
-                    </label>
-                  </td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="smalldogs"
-                        value={false}
-                        checked={this.props.smalldogs === "false"}
-                        onChange={this.props.onChangeSmalldogs}
-                      />
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Does your dog get along well with puppies?</td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="puppies"
-                        value={true}
-                        checked={this.props.puppies === "true"}
-                        onChange={this.props.onChangePuppies}
-                      />
-                    </label>
-                  </td>
-                  <td>
-                    {" "}
-                    <label>
-                      <input
-                        type="radio"
-                        name="puppies"
-                        value={false}
-                        checked={this.props.puppies === "false"}
-                        onChange={this.props.onChangePuppies}
-                      />
-                    </label>
-                  </td>
-                </tr>
-              </table>
+              <div className="row">
+                <div className="col-sm-6">
+                  Is your dog comfortable with strangers?
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                        <input
+                          type="radio"
+                          name="strangers"
+                          value={true}
+                          checked={this.props.strangers === "true"}
+                          onChange={this.props.onChangeStrangers}
+                        />
+                      </label>
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                        <input
+                          type="radio"
+                          name="strangers"
+                          value={false}
+                          checked={this.props.strangers === "false"}
+                          onChange={this.props.onChangeStrangers}
+                        />
+                      </label>
+                </div>
+              </div>
+              <br />
+              <div className="row">
+                <div className="col-sm-6">
+                  Does your dog get along well with larger dogs?
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                        <input
+                          type="radio"
+                          name="largerdogs"
+                          value={true}
+                          checked={this.props.largerdogs === "true"}
+                          onChange={this.props.onChangeLargerdogs}
+                        />
+                      </label>
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                        <input
+                          type="radio"
+                          name="largerdogs"
+                          value={false}
+                          checked={this.props.largerdogs === "false"}
+                          onChange={this.props.onChangeLargerdogs}
+                        />
+                      </label>
+                </div>
+              </div>
+              <br />
+              <div className="row">
+                <div className="col-sm-6">
+                  Does your dog get along well with smaller dogs?
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                        <input
+                          type="radio"
+                          name="smalldogs"
+                          value={true}
+                          checked={this.props.smalldogs === "true"}
+                          onChange={this.props.onChangeSmalldogs}
+                        />
+                      </label>
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                        <input
+                          type="radio"
+                          name="smalldogs"
+                          value={false}
+                          checked={this.props.smalldogs === "false"}
+                          onChange={this.props.onChangeSmalldogs}
+                        />
+                      </label>
+                </div>
+              </div>
+              <br />
+              <div className="row">
+                <div className="col-sm-6">
+                  Does your dog get along well with puppies?
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                        <input
+                          type="radio"
+                          name="puppies"
+                          value={true}
+                          checked={this.props.puppies === "true"}
+                          onChange={this.props.onChangePuppies}
+                        />
+                      </label>
+                </div>
+                <div className="col-sm-3">
+                  {" "}
+                  <label>
+                        <input
+                          type="radio"
+                          name="puppies"
+                          value={false}
+                          checked={this.props.puppies === "false"}
+                          onChange={this.props.onChangePuppies}
+                        />
+                      </label>
+                </div>
+              </div>
+              <br />
+              <br />
+              <h3>Dog must have up to date vaccination Documents from vet</h3>
+
+              <div className="row">
+                <div className="col-sm">
+                  {" "}
+                  <Hint />
+                </div>
+                <div className="col-sm">DA2PP</div>
+                <div className="col-sm">
+                  {" "}
+                  <input
+                      required
+                      type="date"
+                      value={this.props.da2pp}
+                      onChange={this.props.onChangeDa2pp}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm">
+                  {" "}
+                  <Hint />
+                </div>
+                <div className="col-sm">RABIES</div>
+                <div className="col-sm">
+                  {" "}
+                  <input
+                      required
+                      type="date"
+                      value={this.props.rabies}
+                      onChange={this.props.onChangeRabies}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-sm">
+                  {" "}
+                  <Hint />
+                </div>
+                <div className="col-sm">BORDETELLA</div>
+                <div className="col-sm">
+                  {" "}
+                  <input
+                      required
+                      type="date"
+                      value={this.props.bordetella}
+                      onChange={this.props.onChangeBordetella}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                </div>
+              </div>
             </div>
-            <br />
-            <label>
-              <h2>Dog must have up to date vaccination Documents from vet</h2>
-            </label>
-
-            <table>
-              <tr>
-                <td>
-                  <Hint />
-                </td>
-                <td>DA2PP</td>
-                <td>
-                  <input
-                    required
-                    type="date"
-                    value={this.props.da2pp}
-                    onChange={this.props.onChangeDa2pp}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Hint />
-                </td>
-                <td>RABIES</td>
-                <td>
-                  <input
-                    required
-                    type="date"
-                    value={this.props.rabies}
-                    onChange={this.props.onChangeRabies}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Hint />
-                </td>
-                <td>BORDETELLA</td>
-                <td>
-                  <input
-                    required
-                    type="date"
-                    value={this.props.bordetella}
-                    onChange={this.props.onChangeBordetella}
-                    InputLabelProps={{
-                      shrink: true
-                    }}
-                  />
-                </td>
-              </tr>
-            </table>
           </div>
           <div className="d-flex justify-content-between">
             <button
@@ -263,7 +281,7 @@ class EditDog2 extends React.Component {
                 backgroundColor: "#1D3461",
                 color: "#ECEBE7",
                 boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               }}
             >
               Previous Step
@@ -275,7 +293,7 @@ class EditDog2 extends React.Component {
                 backgroundColor: "#1D3461",
                 color: "#ECEBE7",
                 boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               }}
             >
               Save Information
