@@ -65,7 +65,7 @@ class BookTraining1 extends React.Component {
                 <DateTimePickerComponent
                     format="dd/MM/yy hh:mm a"
                     id="startTime"
-                    value={new Date(this.props.startTime)}
+                    value={new Date(this.props.startTime || "")}
                     onChange={this.props.onChangeStartTime}
                   ></DateTimePickerComponent>
                 <br />
@@ -75,7 +75,7 @@ class BookTraining1 extends React.Component {
                 <DateTimePickerComponent
                     format="dd/MM/yy hh:mm a"
                     id="startTime"
-                    value={new Date(this.props.endTime)}
+                    value={new Date(this.props.endTime || "")}
                     onChange={this.props.onChangeEndTime}
                   ></DateTimePickerComponent>
                 <br />
