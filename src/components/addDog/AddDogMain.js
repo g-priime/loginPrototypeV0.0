@@ -126,7 +126,7 @@ class AddDogMain extends React.Component {
       allergies: this.state.allList,
       physLimit: physlimit,
       veterinarian: {
-        name: veterinarianName
+        vetName: veterinarianName
       },
 
       strangerComfortable: strangers,
