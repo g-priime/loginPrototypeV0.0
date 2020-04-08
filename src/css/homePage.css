@@ -8,11 +8,10 @@
 }
 
 .card-bodyHome {
-    /* flex: 1 1 auto; */
     padding: 0;
-  }
+}
 
-  .d-md-block {
+.d-md-block {
     display: none !important;
 }
 
