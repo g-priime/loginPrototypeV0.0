@@ -60,7 +60,6 @@ class EditDog2 extends React.Component {
   };
 
   previousStep_onClick = (event) => {
-    //differents name?
     event.preventDefault();
     this.props.onClickPrev();
   };
@@ -96,26 +95,26 @@ class EditDog2 extends React.Component {
                 <div className="col-sm-3">
                   {" "}
                   <label>
-                        <input
-                          type="radio"
-                          name="strangers"
-                          value={true}
-                          checked={this.props.strangers === "true"}
-                          onChange={this.props.onChangeStrangers}
-                        />
-                      </label>
+                    <input
+                      type="radio"
+                      name="strangers"
+                      value={true}
+                      checked={this.props.strangers === "true"}
+                      onChange={this.props.onChangeStrangers}
+                    />
+                  </label>
                 </div>
                 <div className="col-sm-3">
                   {" "}
                   <label>
-                        <input
-                          type="radio"
-                          name="strangers"
-                          value={false}
-                          checked={this.props.strangers === "false"}
-                          onChange={this.props.onChangeStrangers}
-                        />
-                      </label>
+                    <input
+                      type="radio"
+                      name="strangers"
+                      value={false}
+                      checked={this.props.strangers === "false"}
+                      onChange={this.props.onChangeStrangers}
+                    />
+                  </label>
                 </div>
               </div>
               <br />
@@ -126,26 +125,26 @@ class EditDog2 extends React.Component {
                 <div className="col-sm-3">
                   {" "}
                   <label>
-                        <input
-                          type="radio"
-                          name="largerdogs"
-                          value={true}
-                          checked={this.props.largerdogs === "true"}
-                          onChange={this.props.onChangeLargerdogs}
-                        />
-                      </label>
+                    <input
+                      type="radio"
+                      name="largerdogs"
+                      value={true}
+                      checked={this.props.largerdogs === "true"}
+                      onChange={this.props.onChangeLargerdogs}
+                    />
+                  </label>
                 </div>
                 <div className="col-sm-3">
                   {" "}
                   <label>
-                        <input
-                          type="radio"
-                          name="largerdogs"
-                          value={false}
-                          checked={this.props.largerdogs === "false"}
-                          onChange={this.props.onChangeLargerdogs}
-                        />
-                      </label>
+                    <input
+                      type="radio"
+                      name="largerdogs"
+                      value={false}
+                      checked={this.props.largerdogs === "false"}
+                      onChange={this.props.onChangeLargerdogs}
+                    />
+                  </label>
                 </div>
               </div>
               <br />
@@ -156,26 +155,26 @@ class EditDog2 extends React.Component {
                 <div className="col-sm-3">
                   {" "}
                   <label>
-                        <input
-                          type="radio"
-                          name="smalldogs"
-                          value={true}
-                          checked={this.props.smalldogs === "true"}
-                          onChange={this.props.onChangeSmalldogs}
-                        />
-                      </label>
+                    <input
+                      type="radio"
+                      name="smalldogs"
+                      value={true}
+                      checked={this.props.smalldogs === "true"}
+                      onChange={this.props.onChangeSmalldogs}
+                    />
+                  </label>
                 </div>
                 <div className="col-sm-3">
                   {" "}
                   <label>
-                        <input
-                          type="radio"
-                          name="smalldogs"
-                          value={false}
-                          checked={this.props.smalldogs === "false"}
-                          onChange={this.props.onChangeSmalldogs}
-                        />
-                      </label>
+                    <input
+                      type="radio"
+                      name="smalldogs"
+                      value={false}
+                      checked={this.props.smalldogs === "false"}
+                      onChange={this.props.onChangeSmalldogs}
+                    />
+                  </label>
                 </div>
               </div>
               <br />
@@ -186,26 +185,26 @@ class EditDog2 extends React.Component {
                 <div className="col-sm-3">
                   {" "}
                   <label>
-                        <input
-                          type="radio"
-                          name="puppies"
-                          value={true}
-                          checked={this.props.puppies === "true"}
-                          onChange={this.props.onChangePuppies}
-                        />
-                      </label>
+                    <input
+                      type="radio"
+                      name="puppies"
+                      value={true}
+                      checked={this.props.puppies === "true"}
+                      onChange={this.props.onChangePuppies}
+                    />
+                  </label>
                 </div>
                 <div className="col-sm-3">
                   {" "}
                   <label>
-                        <input
-                          type="radio"
-                          name="puppies"
-                          value={false}
-                          checked={this.props.puppies === "false"}
-                          onChange={this.props.onChangePuppies}
-                        />
-                      </label>
+                    <input
+                      type="radio"
+                      name="puppies"
+                      value={false}
+                      checked={this.props.puppies === "false"}
+                      onChange={this.props.onChangePuppies}
+                    />
+                  </label>
                 </div>
               </div>
               <br />
@@ -221,14 +220,14 @@ class EditDog2 extends React.Component {
                 <div className="col-sm">
                   {" "}
                   <input
-                      required
-                      type="date"
-                      value={this.props.da2pp}
-                      onChange={this.props.onChangeDa2pp}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
+                    required
+                    type="date"
+                    value={this.props.da2pp}
+                    onChange={this.props.onChangeDa2pp}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
                 </div>
               </div>
               <div className="row">
@@ -240,14 +239,14 @@ class EditDog2 extends React.Component {
                 <div className="col-sm">
                   {" "}
                   <input
-                      required
-                      type="date"
-                      value={this.props.rabies}
-                      onChange={this.props.onChangeRabies}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
+                    required
+                    type="date"
+                    value={this.props.rabies}
+                    onChange={this.props.onChangeRabies}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
                 </div>
               </div>
               <div className="row">
@@ -259,14 +258,14 @@ class EditDog2 extends React.Component {
                 <div className="col-sm">
                   {" "}
                   <input
-                      required
-                      type="date"
-                      value={this.props.bordetella}
-                      onChange={this.props.onChangeBordetella}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
+                    required
+                    type="date"
+                    value={this.props.bordetella}
+                    onChange={this.props.onChangeBordetella}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
                 </div>
               </div>
             </div>
