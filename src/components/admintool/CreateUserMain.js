@@ -1,8 +1,6 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import CreateUser from "./CreateUser";
-import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
 
 class CreateUserMain extends React.Component {
@@ -129,7 +127,6 @@ class CreateUserMain extends React.Component {
   };
 
   clearStates = () => {
-    // if (this.state.initialStates === true) {
     this.setState({
       initialStates: false,
       username: "",
@@ -150,7 +147,6 @@ class CreateUserMain extends React.Component {
     });
     document.getElementById("p1").value = "";
     document.getElementById("p2").value = "";
-    //}
   };
 
   onChangePage = () => {
@@ -260,7 +256,7 @@ class CreateUserMain extends React.Component {
           emergencyname={this.state.emergencyname}
           onSubmit={this.onSearchSubmit}
           onClick={() => {
-            this.props.onChangePage("about"); ////////////
+            this.props.onChangePage("about");
           }}
           clearStates={this.clearStates}
           provinces={this.state.provinces}
@@ -277,7 +273,6 @@ class CreateUserMain extends React.Component {
         </div>
       </div>
     );
-    // }
   }
 }
 
