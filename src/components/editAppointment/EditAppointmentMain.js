@@ -1,5 +1,4 @@
 import React from "react";
-
 import EditDaycareMain from "./EditDaycareMain";
 import EditBoardingMain from "./EditBoardingMain";
 import EditTrainingMain from "./EditTrainingMain";
@@ -23,7 +22,7 @@ class EditAppointmentMain extends React.Component {
     dogs: [],
     initialStates: false,
     cost: "",
-    grooming: "No"
+    grooming: "No",
   };
 
   getAppointmentInfo = () => {
