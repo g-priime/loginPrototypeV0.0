@@ -218,7 +218,7 @@ class DogProfile extends React.Component {
                   </div>
                   <div className="col-sm">
                       {this.props.chosenDog.veterinarian != null?
-                      ( <div className="left">{this.props.chosenDog.veterinarian.name}</div>):null}
+                      ( <div className="left">{this.props.chosenDog.veterinarian.vetName}</div>):null}
                   </div>
                 </div>
                 <br />

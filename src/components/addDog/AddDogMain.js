@@ -40,7 +40,6 @@ const hint = () => (
 class AddDogMain extends React.Component {
   state = {
     images: [],
-    fieldName: [],
     page: "",
     showPopup: false,
     cn: "",
@@ -71,22 +70,6 @@ class AddDogMain extends React.Component {
   };
 
   onSearchSubmit1 = async () => {
-    //should the name be different?
-    //is called when go from step 1 to step 2
-    this.setState({
-      fieldName: [
-        this.state.dogname,
-        this.state.breed,
-        this.state.dob,
-        this.state.gender,
-        this.state.weight,
-        this.state.neuteredspayed,
-        this.state.medication,
-        this.state.allergies,
-        this.state.physlimit,
-        this.state.veterinarian
-      ]
-    });
 
     this.setState({ images: 'Valid' });
   };
@@ -100,18 +83,19 @@ class AddDogMain extends React.Component {
 
   onSearchSubmit2 = async () => {
     //called when step 2 submitted
-    
-    var dogname = this.state.fieldName[0];
-    var breed = this.state.fieldName[1];
 
-    var dob = this.state.fieldName[2];
-    var gender = this.state.fieldName[3];
-    var weight = this.state.fieldName[4];
-    var neuteredspayed = this.state.fieldName[5];
-    var medication = this.state.fieldName[6];
-    var allergies = this.state.fieldName[7];
-    var physlimit = this.state.fieldName[8];
-    var veterinarianName = this.state.fieldName[9];
+    this.state.medList.push(this.state.medication);
+    this.state.allList.push(this.state.allergies);
+    
+    var dogname = this.state.dogname;
+    var breed = this.state.breed;
+
+    var dob = this.state.dob;
+    var gender = this.state.gender;
+    var weight = this.state.weight;
+    var neuteredspayed = this.state.neuteredspayed;
+    var physlimit = this.state.physlimit;
+    var veterinarianName = this.state.veterinarian;
 
     console.log(this.state.strangers);
     var dogId = this.state.dogId;
@@ -124,6 +108,8 @@ class AddDogMain extends React.Component {
     var da2pp = this.state.da2pp;
     var rabies = this.state.rabies;
     var bordetella = this.state.bordetella;
+
+    console.log(veterinarianName);
 
     var token = localStorage.getItem('token');
     
@@ -140,7 +126,7 @@ class AddDogMain extends React.Component {
       allergies: this.state.allList,
       physLimit: physlimit,
       veterinarian: {
-        name: veterinarianName
+        vetName: veterinarianName
       },
 
       strangerComfortable: strangers,
@@ -200,12 +186,12 @@ class AddDogMain extends React.Component {
 
   handleChangeMedication = event => {
     this.setState({ medication: event.target.value });
-    this.state.medList.push(this.state.medication);
+    //this.state.medList.push(this.state.medication);
   };
 
   handleChangeAllergies = event => {
     this.setState({ allergies: event.target.value });
-    this.state.allList.push(this.state.allergies);
+    //this.state.allList.push(this.state.allergies);
   };
 
   handleChangePhyslimit = event => {

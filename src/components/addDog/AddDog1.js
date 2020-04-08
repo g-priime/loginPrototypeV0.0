@@ -54,16 +54,16 @@ class AddDog1 extends React.Component {
     this.setState({ selectedFile: event.target.files[0] });
   };
 
-  uploadHandler = () => {
-    const formData = new FormData();
-    formData.append(
-      "myFile",
-      this.state.selectedFile,
-      this.state.selectedFile.name
-    );
-     BasePath.post('my-domain.com/file-upload', formData) //path??????
+  // uploadHandler = () => {
+  //   const formData = new FormData();
+  //   formData.append(
+  //     "myFile",
+  //     this.state.selectedFile,
+  //     this.state.selectedFile.name
+  //   );
+  //    BasePath.post('my-domain.com/file-upload', formData) //path??????
 
-  };
+  // };
 
   onFormSubmit = event => {
     event.preventDefault();
@@ -110,7 +110,7 @@ class AddDog1 extends React.Component {
                 <br />
                 <label>Breed:</label>
                 <input
-                  pattern="^[a-zA-Z1-9]{1,20}$"
+                  pattern="^[a-zA-Z ]{1,30}$"
                   type="text"
                   placeholder="Enter breed"
                   value={this.props.breed}
@@ -174,7 +174,7 @@ class AddDog1 extends React.Component {
                   <input
                     type="radio"
                     name="neuteredspayed"
-                    value="yes"
+                    value={true}
                     // checked={this.props.neuteredspayed === "yes"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
@@ -237,7 +237,7 @@ class AddDog1 extends React.Component {
             </div>
             <br />
             <br />
-            <div className="row">
+            {/* <div className="row">
               <input type="file" onChange={this.fileChangedHandler} />
 
               <button //button to upload the picture
@@ -255,7 +255,7 @@ class AddDog1 extends React.Component {
               >
                 Upload picture
               </button>
-            </div>
+            </div> */}
             <br />
             <br />
           </div>
