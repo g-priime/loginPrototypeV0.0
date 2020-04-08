@@ -52,8 +52,8 @@ class AddDogMain extends React.Component {
     neuteredspayed: "",
     medication: "",
     allergies: "",
-    medList:[],
-    allList:[],
+    medList:"",
+    allList:"",
     train:false,
     physlimit: "",
     veterinarian: "",
@@ -84,8 +84,8 @@ class AddDogMain extends React.Component {
   onSearchSubmit2 = async () => {
     //called when step 2 submitted
 
-    this.state.medList.push(this.state.medication);
-    this.state.allList.push(this.state.allergies);
+    var medList = this.state.medication;
+    var allList = this.state.allergies;
     
     var dogname = this.state.dogname;
     var breed = this.state.breed;
@@ -122,8 +122,8 @@ class AddDogMain extends React.Component {
       gender: gender,
       weight: weight,
       spayedNeutered: neuteredspayed,
-      medications: this.state.medList,
-      allergies: this.state.allList,
+      medications: medList,
+      allergies: allList,
       physLimit: physlimit,
       veterinarian: {
         vetName: veterinarianName
