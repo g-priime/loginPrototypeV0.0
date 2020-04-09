@@ -1,15 +1,14 @@
 import React from "react";
 import "../../css/changePassword.css";
-import { Link } from "react-router-dom";
 
 class ChangePassAdmin extends React.Component {
   state = {
     oldPassword: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
@@ -71,7 +70,7 @@ class ChangePassAdmin extends React.Component {
                   title="Cannot be longer then 20 Characters. Letters, numbers, only special characters _ * - allowed"
                   placeholder="Confirm new password"
                   value={this.props.confirmPassword}
-                  onChange={this.props.onChangeConfirmPassword} 
+                  onChange={this.props.onChangeConfirmPassword}
                   required
                 />
               </div>
@@ -88,7 +87,7 @@ class ChangePassAdmin extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Save Changes

@@ -44,10 +44,10 @@ class EditDog1 extends React.Component {
     medication: [],
     allergies: "",
     physlimit: "",
-    veterinarianN: ""
+    veterinarianN: "",
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
@@ -85,7 +85,7 @@ class EditDog1 extends React.Component {
                   type="text"
                   placeholder="Enter dog's name"
                   value={this.props.dogname}
-                  onChange={this.props.onChangeDogname} //getting passed from editcustomerMain page
+                  onChange={this.props.onChangeDogname}
                   required
                 />
                 <br />
@@ -108,7 +108,7 @@ class EditDog1 extends React.Component {
                   value={this.props.dob}
                   onChange={this.props.onChangeDob}
                   InputLabelProps={{
-                    shrink: true
+                    shrink: true,
                   }}
                 />
                 <br />
@@ -155,7 +155,7 @@ class EditDog1 extends React.Component {
                     type="radio"
                     name="neuteredspayed"
                     value={true}
-                    checked={this.props.neuteredspayed=== "true"}
+                    checked={this.props.neuteredspayed === "true"}
                     onChange={this.props.onChangeNeuteredspayed}
                   />
                   <span>Yes</span>
@@ -208,7 +208,6 @@ class EditDog1 extends React.Component {
                 <Hint />
                 <input
                   type="text"
-                  value=""
                   value={this.props.veterinarianN}
                   onChange={this.props.onChangeVeterinarian}
                 />
@@ -216,28 +215,13 @@ class EditDog1 extends React.Component {
             </div>
             <br />
             <br />
-            {/* <div className="row">
-              <Link //creates a link, styled like a button
-                to="/" //telling to go to home, in adddog it should be accinfo
-                type="button"
-                className="btn mb-3"
-                style={{
-                  fontWeight: "bold",
-                  backgroundColor: "#1D3461",
-                  color: "#ECEBE7",
-                  boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-                }}
-              >
-                Upload Picture
-              </Link>
-            </div> */}
+
             <br />
             <br />
           </div>
           <div className="d-flex justify-content-between">
             <Link //creates a link, styled like a button
-              to="Profile" //telling to go to home, in adddog it should be accinfo
+              to="Profile"
               type="button"
               className="btn mb-3"
               style={{
@@ -245,7 +229,7 @@ class EditDog1 extends React.Component {
                 backgroundColor: "#1D3461",
                 color: "#ECEBE7",
                 boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               }}
             >
               Back to User Account
@@ -257,7 +241,7 @@ class EditDog1 extends React.Component {
                 backgroundColor: "#1D3461",
                 color: "#ECEBE7",
                 boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
               }}
             >
               Go to Step 2

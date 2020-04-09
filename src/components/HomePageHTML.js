@@ -4,32 +4,27 @@ import "../css/homePage.css";
 import CarouselHome from "./CarouselHome";
 import Popup from "./PopUp";
 
-import {
-  Card,
-  CardImg,
-  //CardText,
-  CardBody,
-  //CardTitle,
-  //CardSubtitle,
-  //Button
-} from "reactstrap";
+import { Card, CardImg, CardBody } from "reactstrap";
 
 class HomePageHTML extends React.Component {
-  state = { message: "", cn: "", bgColor: 'blue' };
+  state = { message: "", cn: "", bgColor: "blue" };
 
- UNSAFE_componentWillMount() {
-    if (typeof this.props.location.state == "undefined" || this.props.location.state === null) {
-        this.setState({ message: "" });
-      } else {
-        this.setState({ message: this.props.location.state.message });
-        this.setState({ cn: "popup3" });
-        this.togglePopup();
-      }
- }
+  UNSAFE_componentWillMount() {
+    if (
+      typeof this.props.location.state == "undefined" ||
+      this.props.location.state === null
+    ) {
+      this.setState({ message: "" });
+    } else {
+      this.setState({ message: this.props.location.state.message });
+      this.setState({ cn: "popup3" });
+      this.togglePopup();
+    }
+  }
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
@@ -46,7 +41,7 @@ class HomePageHTML extends React.Component {
               style={{
                 borderColor: "#827153",
                 borderWidth: "4px",
-                margin: "35px"
+                margin: "35px",
               }}
             >
               <CardImg
@@ -59,16 +54,21 @@ class HomePageHTML extends React.Component {
               <CardBody className="card-bodyHome"></CardBody>
             </Card>
             <h1 style={{ color: "#715d5c" }}>Welcome to our fun family!</h1>
-            {/* <p style={{ width: "70%", margin: "45px" }}> */}
-            <div style={{ width: "100%", display:"flex",flexDirection:"column"}}>
-            <p className="par" style={{ width: "80%", alignSelf: "center"}}>
-              We have everything you need for the day to day care of your canine
-              friend. We offer progressive training methods to help you get
-              through the toughest problems and shape your pal into the perfect
-              companion. For those times when you’re away, we offer boarding in
-              our home. We understand how important your dog is to you, and we
-              want to be a part of your adventure together!
-            </p>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <p className="par" style={{ width: "80%", alignSelf: "center" }}>
+                We have everything you need for the day to day care of your
+                canine friend. We offer progressive training methods to help you
+                get through the toughest problems and shape your pal into the
+                perfect companion. For those times when you’re away, we offer
+                boarding in our home. We understand how important your dog is to
+                you, and we want to be a part of your adventure together!
+              </p>
             </div>
           </div>
         </div>
@@ -112,7 +112,8 @@ class HomePageHTML extends React.Component {
                       want to be a part of your adventure together!
                     </li>
                     <li>
-                    After the private consultation, you can purchase the training bundle that’s right for you.
+                      After the private consultation, you can purchase the
+                      training bundle that’s right for you.
                     </li>
                   </ul>
                 </div>

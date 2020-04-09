@@ -1,7 +1,6 @@
 import React from "react";
 import "../../css/bookAppointment.css";
 import { Link } from "react-router-dom";
-
 import Select from "react-select";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 
@@ -14,10 +13,10 @@ class EditTraining1 extends React.Component {
     dogs: [],
     comments: "",
     selectedDogs: [],
-    selectedOption: null
+    selectedOption: null,
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
@@ -46,18 +45,20 @@ class EditTraining1 extends React.Component {
             <h1>Edit Training: Step 1</h1>
 
             <div className="row" style={{ marginTop: "6%" }}>
-              <div className="col-sm" style={{ marginLeft: "10%", marginRight: "5%" }}>
+              <div
+                className="col-sm"
+                style={{ marginLeft: "10%", marginRight: "5%" }}
+              >
                 <label>Select Dog:</label>
 
                 <Select
-                  //isMulti
                   closeMenuOnSelect={true}
                   value={this.props.selectedDogs}
                   onChange={this.props.onChangeDog}
                   options={this.props.dogs}
-                  getOptionLabel={option => option.value}
-                  getOptionValue={option => option.value}
-                  getOptionKey={option => option.key}
+                  getOptionLabel={(option) => option.value}
+                  getOptionValue={(option) => option.value}
+                  getOptionKey={(option) => option.key}
                 />
                 <br />
 
@@ -65,7 +66,7 @@ class EditTraining1 extends React.Component {
                 <DateTimePickerComponent
                     format="dd/MM/yy hh:mm a"
                     id="startTime"
-                    value={new Date(this.props.startTime)}
+                    value={new Date(this.props.startTime || "")}
                     onChange={this.props.onChangeStartTime}
                   ></DateTimePickerComponent>
                 <br />
@@ -75,7 +76,7 @@ class EditTraining1 extends React.Component {
                 <DateTimePickerComponent
                     format="dd/MM/yy hh:mm a"
                     id="startTime"
-                    value={new Date(this.props.endTime)}
+                    value={new Date(this.props.endTime || "")}
                     onChange={this.props.onChangeEndTime}
                   ></DateTimePickerComponent>
                 <br />
@@ -90,7 +91,10 @@ class EditTraining1 extends React.Component {
                 />
               </div>
 
-              <div className="col-sm" style={{ marginLeft: "5%", marginRight: "10%" }}>
+              <div
+                className="col-sm"
+                style={{ marginLeft: "5%", marginRight: "10%" }}
+              >
                 <label>Select other interactions for dog:</label>
                 <table className="table table-striped">
                   <tbody>
@@ -275,7 +279,7 @@ class EditTraining1 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Cancel
@@ -289,7 +293,7 @@ class EditTraining1 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Continue

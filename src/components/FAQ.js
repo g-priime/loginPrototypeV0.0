@@ -4,10 +4,9 @@ import {
   AccordionItem,
   AccordionItemHeading,
   AccordionItemButton,
-  AccordionItemPanel
+  AccordionItemPanel,
 } from "react-accessible-accordion";
 import "../css/faq.css";
-//import 'react-accessible-accordion/dist/fancy-example.css';
 
 class FAQ extends React.Component {
   render() {

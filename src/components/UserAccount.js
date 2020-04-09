@@ -3,7 +3,6 @@ import "../css/reg.css";
 import "../css/userAccount.css";
 import DogProfile from "./DogProfile";
 import BasePath from "../api/BasePath";
-import { getQueriesForElement } from "@testing-library/react";
 import { Link } from "react-router-dom";
 import Popup from "./PopUp";
 
@@ -15,53 +14,52 @@ class UserAccount extends React.Component {
     address: {},
     message: "",
     cn: "",
-    bgColor: "blue"
+    bgColor: "blue",
   };
 
   UNSAFE_componentWillMount() {
     var token = localStorage.getItem("token");
     BasePath.get(`/webresources/RetrieveUser/${token}`)
-      .then(result => {
+      .then((result) => {
         this.setState({ user: result.data });
         this.setState({ address: this.state.user.address });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
     var token = localStorage.getItem("token");
     BasePath.get(`/webresources/RetrieveDogs/${token}`)
-      .then(result => {
+      .then((result) => {
         this.setState({ dogList: result.data });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
 
-      if (
-        typeof this.props.location.state == "undefined" ||
-        this.props.location.state === null
-      ) {
-        this.setState({ message: "" });
-      } else {
-        this.setState({ message: this.props.location.state.message });
-        this.setState({ cn: "popup3" });
-        this.togglePopup();
-      }
+    if (
+      typeof this.props.location.state == "undefined" ||
+      this.props.location.state === null
+    ) {
+      this.setState({ message: "" });
+    } else {
+      this.setState({ message: this.props.location.state.message });
+      this.setState({ cn: "popup3" });
+      this.togglePopup();
+    }
   }
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  updateList =()=> {
+  updateList = () => {
     var token = localStorage.getItem("token");
-    BasePath.get(`/webresources/RetrieveDogs/${token}`)
-      .then(result => {
-        this.setState({ dogList: result.data });
-      });
-  }
+    BasePath.get(`/webresources/RetrieveDogs/${token}`).then((result) => {
+      this.setState({ dogList: result.data });
+    });
+  };
 
   render() {
     return (
@@ -145,7 +143,7 @@ class UserAccount extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: "50%"
+                width: "50%",
               }}
             >
               Edit customer information
@@ -162,12 +160,11 @@ class UserAccount extends React.Component {
                 color: "#ECEBE7",
                 boxShadow:
                   "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-                width: "50%"
+                width: "50%",
               }}
             >
               Change password
             </Link>
-            
           </div>
         </div>
         <div className="col-sm-7">
@@ -177,34 +174,39 @@ class UserAccount extends React.Component {
           >
             <div className="row">
               <div className="col-sm">
-              <div className="left">
-                <h1>Your dogs: </h1>
+                <div className="left">
+                  <h1>Your dogs: </h1>
                 </div>
               </div>
               <div className="col-sm">
-              <div className="left">
-              <Link 
-              to="AddDog" 
-              type="button"
-              className="btn mb-3"
-              style={{
-                fontWeight: "bold",
-                backgroundColor: "#1D3461",
-                color: "#ECEBE7",
-                boxShadow:
-                  "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
-              }}
-            >
-              Add new dog
-            </Link>
-            </div>
+                <div className="left">
+                  <Link
+                    to="AddDog"
+                    type="button"
+                    className="btn mb-3"
+                    style={{
+                      fontWeight: "bold",
+                      backgroundColor: "#1D3461",
+                      color: "#ECEBE7",
+                      boxShadow:
+                        "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+                    }}
+                  >
+                    Add new dog
+                  </Link>
+                </div>
               </div>
             </div>
             <br />
             <br />
             <div>
-              {this.state.dogList.map(dog => (
-                <DogProfile key={dog.idNumber} chosenDog={dog} allergies={dog.allergies} updateList={this.updateList} />
+              {this.state.dogList.map((dog) => (
+                <DogProfile
+                  key={dog.idNumber}
+                  chosenDog={dog}
+                  allergies={dog.allergies}
+                  updateList={this.updateList}
+                />
               ))}
             </div>
           </div>

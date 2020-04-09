@@ -6,20 +6,20 @@ class ChangePassword1 extends React.Component {
   state = {
     oldPassword: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     this.props.onSubmit(
       this.state.oldPassword,
       this.state.password,
-      this.state.confirmPassword,
+      this.state.confirmPassword
     );
   };
 
-  previousStep_onClick = event => {
+  previousStep_onClick = (event) => {
     event.preventDefault();
     this.props.onClick();
     console.log("here");
@@ -27,7 +27,10 @@ class ChangePassword1 extends React.Component {
 
   render() {
     return (
-      <div className="ui segment contChangePassword" style={{ backgroundColor: "#ECEBE7" }}>
+      <div
+        className="ui segment contChangePassword"
+        style={{ backgroundColor: "#ECEBE7" }}
+      >
         <form
           onSubmit={this.onFormSubmit}
           className="ui form"
@@ -38,7 +41,7 @@ class ChangePassword1 extends React.Component {
 
             <div className="row">
               <div className="col-sm">
-              <label>Old Password:</label>
+                <label>Old Password:</label>
                 <input
                   type="password"
                   name="oldPassword"
@@ -80,7 +83,6 @@ class ChangePassword1 extends React.Component {
               </div>
               <br />
               <br />
-
             </div>
             <br />
 
@@ -94,7 +96,7 @@ class ChangePassword1 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Back to Profile
@@ -106,7 +108,7 @@ class ChangePassword1 extends React.Component {
                   backgroundColor: "#1D3461",
                   color: "#ECEBE7",
                   boxShadow:
-                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                    "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                 }}
               >
                 Submit

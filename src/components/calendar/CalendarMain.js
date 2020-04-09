@@ -11,7 +11,7 @@ import {
   ViewDirective,
   ViewsDirective,
   MonthAgenda,
-  TimelineViews
+  TimelineViews,
 } from "@syncfusion/ej2-react-schedule";
 import BasePath from "../../api/BasePath";
 import { Internationalization, extend } from "@syncfusion/ej2-base";
@@ -133,7 +133,6 @@ class CalendarMain extends React.Component {
     if (!this.state.intitialData) {
       this.setState({ data: this.data, intitialData: true });
     }
-    //this.scheduleObj.refreshEvents();
   };
 
   updateAppointmentInfo = async () => {
@@ -267,8 +266,6 @@ class CalendarMain extends React.Component {
   }
 
   onActionBegin(ActionEventArgs) {
-    
-
     if (ActionEventArgs.changedRecords !== undefined) {
       if (
         ActionEventArgs.requestType === "eventCreate" &&
@@ -299,28 +296,23 @@ class CalendarMain extends React.Component {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        }
-        else if (ActionEventArgs.changedRecords[0].StartTime == null) {
+        } else if (ActionEventArgs.changedRecords[0].StartTime == null) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Start Time");
-        }
-        else if (ActionEventArgs.changedRecords[0].EndTime == null) {
+        } else if (ActionEventArgs.changedRecords[0].EndTime == null) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter End Time");
-        }
-        else if (!validStart) {
+        } else if (!validStart) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Start Time must be later than current time");
-        }
-        else if (!validRange) {
+        } else if (!validRange) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("End Time must be later than Start Time");
-        }
-         else if (
+        } else if (
           ActionEventArgs.changedRecords[0].total === "" ||
           !validTotal
         ) {
@@ -362,28 +354,23 @@ class CalendarMain extends React.Component {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Dogs");
-        }
-        else if (ActionEventArgs.addedRecords[0].StartTime == null) {
+        } else if (ActionEventArgs.addedRecords[0].StartTime == null) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter Start Time");
-        }
-        else if (ActionEventArgs.addedRecords[0].EndTime == null) {
+        } else if (ActionEventArgs.addedRecords[0].EndTime == null) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Must enter End Time");
-        }
-        else if (!validStart) {
+        } else if (!validStart) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("Start Time must be later than current time");
-        }
-        else if (!validRange) {
+        } else if (!validRange) {
           this.scheduleObj.uiStateValues.isBlock = true;
           ActionEventArgs.cancel = true;
           alert("End Time must be later than Start Time");
-        }
-         else if (
+        } else if (
           ActionEventArgs.addedRecords[0].total === "" ||
           !validTotal
         ) {
@@ -2223,8 +2210,6 @@ class CalendarMain extends React.Component {
         <div
           className="template-wrap"
           style={{
-            //background: "#1F271B",
-            //background: "#5B5B5B",
             background: "#06070E",
             paddingBottom: 2000,
             marginLeft: -5,
@@ -2247,8 +2232,6 @@ class CalendarMain extends React.Component {
         <div
           className="template-wrap"
           style={{
-            //background: "#19674E",
-            //background: "#7D7C7A",
             background: "#29524A",
             paddingBottom: 2000,
             marginLeft: -5,
@@ -2271,8 +2254,6 @@ class CalendarMain extends React.Component {
         <div
           className="template-wrap"
           style={{
-            //background: "#28AFB0",
-            //background: "#C9C19F",
             background: "#94A187",
             paddingBottom: 2000,
             marginLeft: -5,

@@ -11,10 +11,10 @@ class BookDaycare2 extends React.Component {
 
     dogs: [],
     comments: "",
-    selectedDogs: []
+    selectedDogs: [],
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault();
 
     console.log(this.state.dog);
@@ -46,7 +46,7 @@ class BookDaycare2 extends React.Component {
                 <tr>
                   <td>Dogs:</td>
                   <td>
-                    {this.props.selectedDogs.map(doggy => (
+                    {this.props.selectedDogs.map((doggy) => (
                       <div key={doggy.key.toString()}>{doggy.value}</div>
                     ))}
                   </td>
@@ -54,15 +54,19 @@ class BookDaycare2 extends React.Component {
 
                 <tr>
                   <td>Start Time:</td>
-                  <td>{Moment(this.props.startTime).format("MMMM Do YYYY, h:mm a")}</td>
+                  <td>
+                    {Moment(this.props.startTime).format(
+                      "MMMM Do YYYY, h:mm a"
+                    )}
+                  </td>
                 </tr>
 
                 <tr>
                   <td>End Time:</td>
-                  <td>{Moment(this.props.endTime).format("MMMM Do YYYY, h:mm a")}</td>
+                  <td>
+                    {Moment(this.props.endTime).format("MMMM Do YYYY, h:mm a")}
+                  </td>
                 </tr>
-
-                
 
                 <tr>
                   <td>Additional Comments:</td>
@@ -89,7 +93,7 @@ class BookDaycare2 extends React.Component {
                         backgroundColor: "#1D3461",
                         color: "#ECEBE7",
                         boxShadow:
-                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                       }}
                     >
                       Cancel Appointment
@@ -102,7 +106,7 @@ class BookDaycare2 extends React.Component {
                         backgroundColor: "#1D3461",
                         color: "#ECEBE7",
                         boxShadow:
-                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                       }}
                     >
                       Proceed To Payment
@@ -123,7 +127,7 @@ class BookDaycare2 extends React.Component {
                         backgroundColor: "#1D3461",
                         color: "#ECEBE7",
                         boxShadow:
-                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                       }}
                     >
                       Modify Information
@@ -136,7 +140,7 @@ class BookDaycare2 extends React.Component {
                         backgroundColor: "#1D3461",
                         color: "#ECEBE7",
                         boxShadow:
-                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)"
+                          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
                       }}
                     >
                       Book Now Pay Later

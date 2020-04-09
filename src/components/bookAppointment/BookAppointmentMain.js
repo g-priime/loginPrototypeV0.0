@@ -1,11 +1,9 @@
 import React from "react";
-
 import BasePath from "../../api/BasePath";
 import BookAppointment1 from "./BookAppointment1";
 import BookAppointment2 from "./BookAppointment2";
 import { Redirect } from "react-router-dom";
 import Popup from "../PopUp";
-
 import Moment from "moment";
 
 class BookAppointmentMain extends React.Component {
@@ -68,7 +66,11 @@ class BookAppointmentMain extends React.Component {
     var dNow = new Date();
     var validStart = dNow.getTime() <= d1.getTime();
 
-    if (this.state.selectedDogs != null) {
+    var dInvalid = "Wed Dec 31 1969 17:00:00 GMT-0700 (Mountain Standard Time)";
+    var invalidStart = d1.toString() === dInvalid;
+    var invalidEnd = d2.toString() === dInvalid;
+
+    if (this.state.selectedDogs != null && !invalidStart && !invalidEnd) {
       var token = localStorage.getItem("token");
       var dogs = [];
       this.state.selectedDogs.map((doggy) => dogs.push(doggy.key));
@@ -104,22 +106,33 @@ class BookAppointmentMain extends React.Component {
           response: "Must select at least one dog",
         });
         this.togglePopup();
-      }
-      else if (!validStart) {
+      } else if (!validStart) {
         this.setState({
           cn: "popup4",
-          response: "Must enter a Start Time that has not passed",
+          response: "Must enter a Start Time that is after present time",
         });
         this.togglePopup();
       } else if (!validTimes) {
         this.setState({
           cn: "popup4",
-          response: "Must enter an End Time that is greater than Start Time",
+          response: "Must enter an End Time that is after Start Time",
         });
         this.togglePopup();
       }
-    } else {
+    } else if (this.state.selectedDogs == null) {
       this.setState({ cn: "popup4", response: "Must select at least one dog" });
+      this.togglePopup();
+    } else if (invalidStart) {
+      this.setState({
+        cn: "popup4",
+        response: "Must enter a Start Time that is after present time",
+      });
+      this.togglePopup();
+    } else if (invalidEnd) {
+      this.setState({
+        cn: "popup4",
+        response: "Must enter an End Time that is after Start Time",
+      });
       this.togglePopup();
     }
   };

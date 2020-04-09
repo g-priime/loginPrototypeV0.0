@@ -1,28 +1,8 @@
 import React from "react";
-import Moment from "moment";
-import {
-  Inject,
-  ScheduleComponent,
-  Day,
-  Week,
-  WorkWeek,
-  Month,
-  Agenda
-  //EventSettingsModel
-} from "@syncfusion/ej2-react-schedule";
-//import { DataManager, WebApiAdaptor } from "@syncfusion/ej2-data";
-import BasePath from "../../api/BasePath";
-//import { WebinarData } from './dataSource';
-import {
-  Internationalization,
-  extend
-  //createElement
-} from "@syncfusion/ej2-base";
-//import { DropDownList } from "@syncfusion/ej2-dropdowns";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import {
   DropDownListComponent,
-  MultiSelectComponent
+  MultiSelectComponent,
 } from "@syncfusion/ej2-react-dropdowns";
 import { CheckBoxComponent } from "@syncfusion/ej2-react-buttons";
 
@@ -76,8 +56,6 @@ class EditorTemplateBoarding extends React.Component {
                 dataSource={this.state.usernames}
                 value={props.username || null}
                 select={this.onComplete.bind(this)}
-                //actionComplete={this.onComplete}
-                //actionComplete={()=>(this.dogList = ["Max", "Sparky", "Fido"])}
               ></DropDownListComponent>
             </td>
           </tr>
@@ -91,13 +69,8 @@ class EditorTemplateBoarding extends React.Component {
                 className="e-field"
                 style={{ width: "100%" }}
                 dataSource={this.state.dognames}
-                //dataSource={this.dogList}
                 value={props.dogNames || null}
-                //fields={{ text: 'sports', value: 'id' }}
                 mode="Box"
-                //enablePersistence={true}
-                //select={this.onComplete}
-                //actionBegin={this.scheduleObj.refreshEvents.bind(this)}
               ></MultiSelectComponent>
             </td>
           </tr>
@@ -217,7 +190,7 @@ class EditorTemplateBoarding extends React.Component {
                 style={{
                   width: "100%",
                   height: "60px !important",
-                  resize: "vertical"
+                  resize: "vertical",
                 }}
               ></textarea>
             </td>

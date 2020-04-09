@@ -16,7 +16,7 @@ class DisableAccountMain extends React.Component {
       cn: "",
       username: "",
       initialState: false,
-      token: ""
+      token: "",
     };
   }
 
@@ -26,17 +26,20 @@ class DisableAccountMain extends React.Component {
       const response = await BasePath.get(
         `/webresources/RetrieveUser/${token}`,
         {
-          token
+          token,
         }
       );
       if (!this.state.initialState || this.state.token !== token) {
-        this.setState({ username: response.data.username, initialState: true, token: token });
+        this.setState({
+          username: response.data.username,
+          initialState: true,
+          token: token,
+        });
       }
     }
   };
 
   onSubmit = async () => {
-    //add back in when done testing
     var token = localStorage.getItem("token");
     var username = this.state.username;
     var password = this.state.password;
@@ -44,7 +47,7 @@ class DisableAccountMain extends React.Component {
     const response = await BasePath.put("/webresources/deleteAccount", {
       token,
       username,
-      password
+      password,
     });
 
     this.setState({ response: response.data });
@@ -66,18 +69,17 @@ class DisableAccountMain extends React.Component {
 
   togglePopup() {
     this.setState({
-      showPopup: !this.state.showPopup
+      showPopup: !this.state.showPopup,
     });
   }
 
-  handleChangePassword = event => {
+  handleChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
 
   logOut = () => {
     localStorage.clear();
     this.props.authenticate(false);
-    //this.setState({ initialStates: false, username: "" });
   };
 
   render() {
@@ -89,7 +91,7 @@ class DisableAccountMain extends React.Component {
           <Redirect
             to={{
               pathname: "/Register",
-              state: { message: "Account has been disabled" }
+              state: { message: "Account has been disabled" },
             }}
           />
         </div>
