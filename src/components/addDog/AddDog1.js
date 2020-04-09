@@ -3,7 +3,6 @@ import "../../css/addDog.css";
 import "../../css/reg.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Hint } from "../hint.svg";
-
 const hint = () => (
   <div>
     {
@@ -110,6 +109,7 @@ class AddDog1 extends React.Component {
                 <input
                   required
                   type="date"
+                  id="dobDate"
                   value={this.props.dob}
                   onChange={this.props.onChangeDob}
                   inputlabelprops={{
@@ -145,6 +145,7 @@ class AddDog1 extends React.Component {
                 <input
                   type="number"
                   placeholder="Enter dog's weight"
+                  min="0"
                   max="60"
                   value={this.props.weight}
                   onChange={this.props.onChangeWeight}

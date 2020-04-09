@@ -221,6 +221,7 @@ class AddDogMain extends React.Component {
   };
 
   render() {
+
     var isValid = this.state.images; // images - message sent from the back
 
     if (isValid === "Successfully added") {
