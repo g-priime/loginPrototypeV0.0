@@ -1,5 +1,5 @@
 ## Back End
-The back-end code frot his project can be found [here](https://github.com/g-priime/resttest2).
+The back-end code for this project can be found [here](https://github.com/g-priime/resttest2).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
